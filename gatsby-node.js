@@ -2,30 +2,7 @@ const path = require('path');
 const slash = require('slash');
 const queryAll = require('./gatsby/queryAll');
 
-// exports.createPages = ({ graphql, boundActionCreators }) => {
-//   const { createPage } = boundActionCreators
-//   return new Promise((resolve, reject) => {
 
-//     const adjTemplate = path.resolve(`src/templates/base.js`)
-//     resolve(
-//       graphql(queryAll).then(result => {
-//         if (result.errors) {
-//           reject(result.errors);
-//         }
-//         const adjustable = result.data.allAdjBasese.edges;
-//         adjustable.map(({ node}) => {
-//           createPage({
-//             path: `/adjustable/${node.uri}`,
-//             component: slash(adjTemplate),
-//             context: {
-//               uri: node.uri
-//             }
-//           })
-//         })
-//     )
-
-//       }
-//     }
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
   return new Promise((resolve, reject) => {
