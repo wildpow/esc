@@ -6,7 +6,9 @@ import logo from '../images/logo.png';
 import { Main, SiteLinks, MainLinks, MattLinksWrapper, BrandLinks,
   UnList, Lilist, BottomLinks } from '../styles/siteMapStyles';
 import { H2 } from '../styles/mainStyles';
-import AdjSiteMapData from '../components/adjStieMapData'
+import AdjSiteMapData from '../components/adjSiteMapData';
+import BlogSiteMapData from '../components/blogSiteMapData';
+
 const SiteMap = (props) => {
   return (
   <React.Fragment>
@@ -106,7 +108,15 @@ const SiteMap = (props) => {
             <BrandLinks to="/adjustable">Adjustable Bases</BrandLinks>
           </h3>
           <ul>
-            <AdjSiteMapData/>
+            <AdjSiteMapData />
+          </ul>
+        </Main>
+        <Main>
+          <h3>
+            <BrandLinks to="/blog">Blog</BrandLinks>
+          </h3>
+          <ul>
+            <BlogSiteMapData />
           </ul>
         </Main>
       </BottomLinks>
