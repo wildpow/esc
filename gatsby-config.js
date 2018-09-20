@@ -7,7 +7,7 @@ module.exports = {
     {
       resolve: `gatsby-source-graphcms`,
       options: {
-        endpoint: `https://api.graphcms.com/simple/v1/cjlrp4qcs70qt0178mvh6gfn5`,
+        endpoint: `https://api.graphcms.com/simple/v1/escMattressProPandaJoshbillwill`,
         query: require("./gatsby/configQuery")
       }
     },
