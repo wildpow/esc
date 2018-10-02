@@ -39,7 +39,14 @@ class Layout extends React.Component {
   toggleMenu() {
     this.setState({
       visible: !this.state.visible
-    })
+    }, ()=> this.displayNone())
+  }
+  displayNone() {
+    if (this.state.visible) {
+      this.setState({display: 'none'})
+    } else {
+      this.setState({display: 'block'})
+    }
   }
   render() {
     return (
@@ -67,7 +74,7 @@ class Layout extends React.Component {
         <Menu handleMouseDown={this.handleMouseDown} menuVisibility={this.state.visible}/>
         <Navigation />
         <Logo />
-        <Container>
+        <Container style={{display: this.state.display}}>
           {this.props.children}
           <Footer />
         </Container>
