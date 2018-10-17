@@ -26,6 +26,7 @@ const Mattress = (props) => {
   }
   return (
     <Layout>
+      {console.log(BoxspringPrice)}
     <Helmet>
         <title>ESC: {mattress.subBrand} {mattress.subName} Mattress</title>
         <meta name="description" content={mattress.discription}/>
@@ -108,6 +109,7 @@ export const query = graphql`
       setPrice
       setPriceSale
       warranty
+      uriBrandName
       coverImg {
         handle
       }
