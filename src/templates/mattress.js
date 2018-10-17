@@ -15,7 +15,7 @@ const Mattress = (props) => {
   const { mattress } = props.data
   const SealyBoxPrice = [100, 100, 100, 100, 200];
   const StearnsBoxPrice = [125, 125, 150, 150, 250];
-  const TempurBoxPrice = [175, 175, 250, 250, 350];
+  const TempurBoxPrice = [200, 200, 300, 300, 400];
   let BoxspringPrice;
   if (mattress.uriBrandName === 'tempurpedic') {
     BoxspringPrice = TempurBoxPrice;
