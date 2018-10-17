@@ -125,7 +125,13 @@ class MakeOffer extends Component {
                   If you find a lower price on the same mattress from a competitor, just let us know by filling out this form
                   and we will help you "sleep like the experts do".
                 </p>
-                <Form onSubmit={this.handleSubmit}>
+                <Form 
+                  onSubmit={this.handleSubmit}
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                >
+                  <input type="hidden" name="form-name" value="contact" />
+
                   <Input
                     required
                     placeholder="Name"
