@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import Logo from './logo';
 import Navigation from './nav';
-// import './layout.css'
 import Footer from './footer';
 import Topper from './Topper';
 import MenuButton from './MenuButton';

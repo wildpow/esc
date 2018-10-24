@@ -5,6 +5,8 @@ import {Red, Blue, FlexCol, MainFont1,
 
 export const Wrapper = FlexCol.extend`
   margin-top: -15px;
+  /* position: relative;
+  z-index: 2; */
   @media (min-width: 768px) { margin-top: -22px; }
   @media (min-width: 1022px) { margin-top: -85px; }
   @media (min-width: 1300px) { margin-top: -90px; }
@@ -50,4 +52,55 @@ export const H1 = styled.h1`
 export const Span = styled.span`
   color: ${Blue};
   font-style: italic;
-`
+`;
+
+export const ReadersChoice = styled.img`
+  max-width: 75px;
+  float: left;
+  position: absolute;
+  left: 9px;
+  top: 39px;
+  transition: all .25s ease-in;
+  cursor: pointer;
+  &:hover {
+    transform: scale3d(1.1,1.1,1);
+  }
+  @media (min-width: 568px) {
+    left: 17px;
+    top: 34px;
+    max-width: 88px;
+  }
+  @media (min-width: 768px) {
+    max-width: 138px;
+    top: 38px;
+    left: 21px;
+    /* left: 56px; */
+  }
+  @media (min-width: 1024px) {
+    float: right;
+    left: auto;
+    max-width: 140px;
+    right: 27px;
+    top: 118px;
+  }
+  @media (min-width: 1200px) {
+    right: 60px;
+  }
+  @media (min-width: 1300px) {
+    right: 125px;
+    top: 124px;
+  }
+  @media (min-width: 1400px) {
+    right: 140px;
+  }
+  @media (min-width: 1500px) {
+    right: 190px;
+  }
+  @media (min-width: 1600px) {
+    right: 256px;
+    /* z-index: 2; */
+  }
+  @media (min-width: 1800px) {
+    right: 300px;
+  }
+`;
