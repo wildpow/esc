@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
 
-export const PromoLink = styled(Link)`
+export const PromoLink = styled.a`
   color: white;
   text-decoration: none;
 `;

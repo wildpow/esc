@@ -14,7 +14,11 @@ const TopPromo = ({ data }) => {
       }
     `}
     render={data => (
-      <PromoLink to="/current-sale">
+      <PromoLink 
+        href="https://subscribe.mainstreethub.com/email/b1278150-e6a6-4cd5-8708-d72ade6c099a"
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
         <BigPromo>
           {data.topper.currentpromo}
         </BigPromo>
