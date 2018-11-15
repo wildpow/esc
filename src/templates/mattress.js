@@ -13,7 +13,7 @@ import PriceCalculator from '../components/priceCalculator';
 
 const Mattress = (props) => {
   const { mattress } = props.data
-  const SealyBoxPrice = [100, 100, 100, 100, 200];
+  const SealyBoxPrice = [125, 125, 150, 150, 250];
   const StearnsBoxPrice = [125, 125, 150, 150, 250];
   const TempurBoxPrice = [200, 200, 300, 300, 400];
   let BoxspringPrice;
