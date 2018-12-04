@@ -1,8 +1,15 @@
-import React from 'react';
-import logo from '../images/logo.png';
-import { Image, H1, Span, StyledLink, Wrapper, ReadersChoice } from '../styles/logoStyles';
-import readersChoice from '../images/ReadersChoiceWinner300x.png';
-import Link from "gatsby-link"
+import React from 'react'
+import logo from '../images/SiteSantaPanda.png'
+import {
+  Image,
+  H1,
+  Span,
+  StyledLink,
+  Wrapper,
+  ReadersChoice,
+} from '../styles/logoStyles'
+import readersChoice from '../images/ReadersChoiceWinner300x.png'
+import Link from 'gatsby-link'
 
 const Logo = () => {
   return (
@@ -11,12 +18,16 @@ const Logo = () => {
         <ReadersChoice src={readersChoice} />
       </Link>
       <StyledLink to="/">
-        <Image src={logo} alt="E S C Mattress Center logo of a sleeping panda"/>  
+        <Image
+          src={logo}
+          alt="E S C Mattress Center logo of a sleeping panda"
+        />
       </StyledLink>
-      <H1><Span>E.S.C.</Span> Mattress Center </H1>
+      <H1>
+        <Span>E.S.C.</Span> Mattress Center{' '}
+      </H1>
     </Wrapper>
   )
-};
+}
 
-
-export default Logo;
+export default Logo
