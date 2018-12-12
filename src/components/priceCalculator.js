@@ -212,7 +212,6 @@ class PriceCalculator extends React.PureComponent {
           transition: 'opacity 350ms ease-in-out',
         }}
       >
-        {console.log(typeof this.props.freeBoxSpring)}
         <DropDown
           onChange={this.AddBoxPrice}
           value={this.state.boxSector}
