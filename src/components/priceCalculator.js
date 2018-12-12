@@ -153,7 +153,10 @@ class PriceCalculator extends React.PureComponent {
   }
 
   PriceCheck() {
-    if (this.state.totalMattOnlyPrice === '-n/a-') {
+    if (
+      this.state.totalMattOnlyPrice === '-n/a-' ||
+      this.state.totalMattOnlyPrice === '-1'
+    ) {
       this.setState(
         {
           opacityIsNaN: 1,

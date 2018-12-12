@@ -125,6 +125,9 @@ export const query = graphql`
   query SingleMattress($uri: String!) {
     mattress(uri: { eq: $uri }) {
       id
+      isOnSale {
+        saleName
+      }
       uri
       brandName
       subName

@@ -54,6 +54,9 @@ module.exports = `{
     }
   }
   allMattresses(filter: {isPublished: true}) {
+    isOnSale {
+      saleName
+    }
     id
     freeBoxSpring
     uriBrandName

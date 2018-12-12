@@ -40,6 +40,9 @@ module.exports = `
     allMattress(filter: {isPublished: {eq: true}}) {
       edges {
         node {
+          isOnSale {
+            saleName
+          }
           id
           freeBoxSpring
           isPublished
