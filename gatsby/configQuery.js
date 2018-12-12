@@ -3,6 +3,8 @@ module.exports = `{
     isPublished
     id
     currentpromo
+    linkType
+    uRL
   }
   allCarousels(filter: {isPublished: true} orderBy: orderofImages_ASC) {
     isPublished

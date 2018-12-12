@@ -15,7 +15,10 @@ const Logo = () => {
   return (
     <Wrapper>
       <Link to="blog/esc-mattress-center-wins-best-mattress-store-in-snohomish-county">
-        <ReadersChoice src={readersChoice} />
+        <ReadersChoice
+          src={readersChoice}
+          alt="ESC Mattress Center was voted SnoCo best mattress store in Snohomish County"
+        />
       </Link>
       <StyledLink to="/">
         <Image
