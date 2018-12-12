@@ -55,6 +55,7 @@ module.exports = `{
   }
   allMattresses(filter: {isPublished: true}) {
     id
+    freeBoxSpring
     uriBrandName
     uri
     brandName
@@ -104,6 +105,7 @@ module.exports = `{
       brandName
       orderByPrice
       uriBrandName
+      freeBoxSpring
       uri
       id
       subBrand

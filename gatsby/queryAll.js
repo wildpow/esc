@@ -41,6 +41,7 @@ module.exports = `
       edges {
         node {
           id
+          freeBoxSpring
           isPublished
           uri
           uriBrandName

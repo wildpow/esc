@@ -90,7 +90,6 @@ const BreadCrumbs = props => {
           props.here
         )}
       </Location>
-      {console.log(props)}
     </Fragment>
   )
 }
