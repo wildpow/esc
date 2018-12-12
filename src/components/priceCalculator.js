@@ -155,7 +155,7 @@ class PriceCalculator extends React.PureComponent {
   PriceCheck() {
     if (
       this.state.totalMattOnlyPrice === '-n/a-' ||
-      this.state.totalMattOnlyPrice === '-1'
+      this.state.totalMattOnlyPrice === -1
     ) {
       this.setState(
         {
@@ -251,7 +251,7 @@ class PriceCalculator extends React.PureComponent {
             <AddBoxTitle
               style={{
                 opacity: this.state.opacityAddBox,
-                transition: 'opacity 350ms ease-in-out',
+                transition: 'opacity 250ms ease-in-out',
               }}
             >
               Add a Box Spring
@@ -260,7 +260,7 @@ class PriceCalculator extends React.PureComponent {
             <AddBoxTitle
               style={{
                 opacity: this.state.opacityIsNaN,
-                transition: 'opacity 350ms ease-in-out',
+                transition: 'opacity 250ms ease-in-out',
               }}
             >
               Size is Unavailable
@@ -272,37 +272,55 @@ class PriceCalculator extends React.PureComponent {
           <BeforeSalePrice
             style={{
               opacity: this.state.saleOpacity,
-              transition: 'opacity 350ms ease-in-out',
+              transition: 'opacity 250ms ease-in-out',
             }}
           >
             $
             {this.state.BoxAdded
-              ? this.props.setPrice[this.state.sizeSector]
-              : this.props.mattOnly[this.state.sizeSector]}
+              ? this.props.setPrice[this.state.sizeSector] === -1 ||
+                this.props.mattOnly[this.state.sizeSector] === '-n/a-'
+                ? ' '
+                : this.props.setPrice[this.state.sizeSector]
+              : this.props.mattOnly[this.state.sizeSector] === -1 ||
+                this.props.mattOnly[this.state.sizeSector] === '-n/a-'
+                ? ' '
+                : this.props.mattOnly[this.state.sizeSector]}
           </BeforeSalePrice>
         ) : (
           <BeforeSalePrice
             style={{
               opacity: this.state.saleOpacity,
-              transition: 'opacity 350ms ease-in-out',
+              transition: 'opacity 250ms ease-in-out',
             }}
           >
             $
             {this.state.BoxAdded
-              ? this.props.setPrice[0]
-              : this.props.mattOnly[0]}
+              ? this.props.setPrice[0] === -1 ||
+                this.props.setPrice[0] === '-n/a-'
+                ? ' '
+                : this.props.setPrice[0]
+              : this.props.mattOnly[0] === -1 ||
+                this.props.mattOnly[0] === '-n/a-'
+                ? ' '
+                : this.props.mattOnly[0]}
           </BeforeSalePrice>
         )}
         <Total
           style={{
             opacity: this.state.opacityTotal,
-            transition: 'opacity 700ms ease-in-out',
+            transition: 'opacity 250ms ease-in-out',
           }}
         >
           TOTAL: $
           {this.state.BoxAdded
-            ? this.state.totalSetPrice
-            : this.state.totalMattOnlyPrice}
+            ? this.state.totalSetPrice === -1 ||
+              this.state.totalSetPrice === '-n/a-'
+              ? ' '
+              : this.state.totalSetPrice
+            : this.state.totalMattOnlyPrice === -1 ||
+              this.state.totalMattOnlyPrice === '-n/a-'
+              ? ' '
+              : this.state.totalMattOnlyPrice}
         </Total>
         <MakeOffer
           disabled={this.state.boxDisabled}
