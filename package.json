@@ -32,10 +32,14 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "dude": "percy exec -- cypress run"
   },
   "devDependencies": {
+    "@percy/cypress": "^0.2.3",
     "babel-plugin-styled-components": "^1.7.1",
+    "cypress": "^3.1.4",
     "prettier": "^1.14.2"
   },
   "repository": {

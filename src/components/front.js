@@ -1,6 +1,6 @@
-import React from 'react';
-import { Headline, Wrapper, P } from '../styles/homeStyles';
-import { StaticQuery, graphql } from "gatsby";
+import React from 'react'
+import { Headline, Wrapper, P } from '../styles/homeStyles'
+import { StaticQuery, graphql } from 'gatsby'
 
 const Front = () => {
   return (
@@ -17,10 +17,8 @@ const Front = () => {
         `}
         render={data => (
           <>
-          <Headline>{data.front.title}</Headline>
-            <P>
-              {data.front.textBlock}
-            </P>
+            <Headline>{data.front.title}</Headline>
+            <P>{data.front.textBlock}</P>
           </>
         )}
       />
@@ -29,4 +27,4 @@ const Front = () => {
   )
 }
 
-export default Front;
+export default Front
