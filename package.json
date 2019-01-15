@@ -34,7 +34,7 @@
     "format": "prettier --write 'src/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open",
-    "dude": "percy exec -- cypress run"
+    "snap": "percy exec -- cypress run"
   },
   "devDependencies": {
     "@percy/cypress": "^0.2.3",
