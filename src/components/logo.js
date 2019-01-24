@@ -10,7 +10,7 @@ import {
 } from '../styles/logoStyles'
 import readersChoice from '../images/ReadersChoiceWinner300x.png'
 import Link from 'gatsby-link'
-
+//test
 const Logo = () => {
   return (
     <Wrapper>
