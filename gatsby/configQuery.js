@@ -136,4 +136,14 @@ module.exports = `{
       height
     }
   }
+  allPandaLogoes {
+    id
+    logoImage {
+      width
+      height
+      id
+      handle
+    }
+    altText
+  }
   }`
