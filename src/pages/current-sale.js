@@ -1,7 +1,7 @@
-import React from 'react'
-import Layout from '../components/layout'
-import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import React from "react";
+import { graphql } from "gatsby";
+import Helmet from "react-helmet";
+import Layout from "../components/layout";
 import {
   MainWrapper,
   Wrapper,
@@ -14,10 +14,10 @@ import {
   Name,
   PriceRange,
   Divy,
-} from '../styles/mattListStyles'
+} from "../styles/mattListStyles";
 
-const CurrentSale = props => {
-  const { isOnSale } = props.data
+const CurrentSale = ({ data }) => {
+  const { isOnSale } = data;
   return (
     <Layout>
       <Helmet>
@@ -51,43 +51,41 @@ const CurrentSale = props => {
           <Headline red>“Sleep Like the Experts Do!”</Headline>
         </Wrapper2>
         <Wrapper>
-          {isOnSale.mattresses.map(mattress => {
-            return (
-              <LinkWrapper key={mattress.id}>
-                <StyledLink
-                  to={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
-                >
-                  <Divy>
-                    <MattImg
-                      src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                        mattress.coverImg.handle
-                      }`}
-                      alt={`Image of a ${mattress.brandName} ${
-                        mattress.subBrand
-                      } ${mattress.subName} mattress`}
-                    />
-                    <PriceRange>
-                      ${mattress.priceRange[0]} - ${mattress.priceRange[1]}
-                    </PriceRange>
-                  </Divy>
-                  <Name>
-                    {mattress.brandName}
-                    <br />
-                    {mattress.subBrand}
-                    <br />
-                    {mattress.subName}
-                  </Name>
-                </StyledLink>
-              </LinkWrapper>
-            )
-          })}
+          {isOnSale.mattresses.map(mattress => (
+            <LinkWrapper key={mattress.id}>
+              <StyledLink
+                to={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
+              >
+                <Divy>
+                  <MattImg
+                    src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
+                      mattress.coverImg.handle
+                    }`}
+                    alt={`Image of a ${mattress.brandName} ${
+                      mattress.subBrand
+                    } ${mattress.subName} mattress`}
+                  />
+                  <PriceRange>
+                    {`$${mattress.priceRange[0]} - $${mattress.priceRange[1]}`}
+                  </PriceRange>
+                </Divy>
+                <Name>
+                  {mattress.brandName}
+                  <br />
+                  {mattress.subBrand}
+                  <br />
+                  {mattress.subName}
+                </Name>
+              </StyledLink>
+            </LinkWrapper>
+          ))}
         </Wrapper>
       </MainWrapper>
     </Layout>
-  )
-}
+  );
+};
 
-export default CurrentSale
+export default CurrentSale;
 
 export const currentSaleQuery = graphql`
   query currentSaleQuery {
@@ -114,4 +112,4 @@ export const currentSaleQuery = graphql`
       }
     }
   }
-`
+`;
