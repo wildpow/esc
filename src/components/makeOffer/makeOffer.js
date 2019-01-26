@@ -81,6 +81,7 @@ class MakeOffer extends Component {
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   handleSubmit = e => {
+    const { disabled, formSubmit } = this.state;
     fetch("/?no-cache=1", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -88,8 +89,8 @@ class MakeOffer extends Component {
     })
       .then(() =>
         this.setState({
-          formSubmit: !this.state.formSubmit,
-          disabled: !this.state.disabled,
+          formSubmit: !formSubmit,
+          disabled: !disabled,
           opacity: 0.3,
           pointerEvents: "none",
         }),
@@ -112,6 +113,7 @@ class MakeOffer extends Component {
       note: "",
     });
   }
+
   handleFlip() {
     this.setState({ flipCard: "rotateY(180deg)" });
   }

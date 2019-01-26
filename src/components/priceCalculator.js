@@ -46,17 +46,19 @@ class PriceCalculator extends React.PureComponent {
   }
 
   checkForSalePrice() {
-    const SizeSector = Number(this.state.sizeSector);
+    const { sizeSector } = this.state;
+    const { mattOnlySale, mattOnly, setPrice, setPriceSale } = this.props;
+    const SizeSector = Number(sizeSector);
     if (
-      this.props.mattOnlySale === null ||
-      this.props.mattOnlySale[SizeSector] === undefined ||
-      this.props.mattOnlySale[SizeSector] === 0
+      mattOnlySale === null ||
+      mattOnlySale[SizeSector] === undefined ||
+      mattOnlySale[SizeSector] === 0
     ) {
       this.setState(
         {
           isOnSale: false,
-          mattOnlyPrices: this.props.mattOnly,
-          setPrices: this.props.setPrice,
+          mattOnlyPrices: mattOnly,
+          setPrices: setPrice,
         },
         () => this.changePrice(),
       );
@@ -64,8 +66,8 @@ class PriceCalculator extends React.PureComponent {
       this.setState(
         {
           isOnSale: true,
-          mattOnlyPrices: this.props.mattOnlySale,
-          setPrices: this.props.setPriceSale,
+          mattOnlyPrices: mattOnlySale,
+          setPrices: setPriceSale,
         },
         () => this.changePrice(),
       );
@@ -73,14 +75,14 @@ class PriceCalculator extends React.PureComponent {
   }
 
   changePrice() {
-    const { sizeSector } = this.state;
+    const { sizeSector, mattOnlyPrices, setPrices } = this.state;
     switch (sizeSector) {
       case "0":
         this.setState(
           {
             name: "Twin",
-            totalMattOnlyPrice: this.state.mattOnlyPrices[0],
-            totalSetPrice: this.state.setPrices[0],
+            totalMattOnlyPrice: mattOnlyPrices[0],
+            totalSetPrice: setPrices[0],
             boxPrice: this.props.boxPrice[0],
             BoxAdded: false,
             boxSector: "1",

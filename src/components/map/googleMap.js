@@ -17,6 +17,7 @@ class GoogleMapContainer extends React.Component {
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClick = this.onMapClick.bind(this);
   }
+
   onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props,
@@ -24,15 +25,20 @@ class GoogleMapContainer extends React.Component {
       showingInfoWindow: true,
     });
   };
-  onMapClick = props => {
-    if (this.state.showingInfoWindow) {
+
+  onMapClick = () => {
+    const { showingInfoWindow } = this.state;
+    if (showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null,
       });
     }
   };
+
   render() {
+    const { google } = this.props;
+    const { activeMarker, showingInfoWindow } = this.state;
     const style = {
       width: "100%",
       height: "200px",
@@ -50,23 +56,20 @@ class GoogleMapContainer extends React.Component {
         styles={mapStyles}
         xs={12}
         style={style}
-        google={this.props.google}
+        google={google}
         onClick={this.onMapClick}
         zoom={16.6}
         initialCenter={{ lat: 47.90504, lng: -122.242032 }}
       >
         <Marker
           // options={{icon: Logo, size: '1', scaledSize: '1'}}
-          animation={this.props.google.maps.Animation.DROP}
+          animation={google.maps.Animation.DROP}
           onClick={this.onMarkerClick}
-          title={"E.S.C Mattress Center"}
+          title="E.S.C Mattress Center"
           position={{ lat: 47.90524, lng: -122.241332 }}
-          name={"E.S.C Mattress Center"}
+          name="E.S.C Mattress Center"
         />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-        >
+        <InfoWindow marker={activeMarker} visible={showingInfoWindow}>
           <MapInfo>
             <h3>ESC Mattress Center</h3>
             <a href="tel:1-425-512-0017">(425)-512-0017</a>

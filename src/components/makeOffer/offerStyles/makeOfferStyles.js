@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Blue, Red, MainFont2 } from '../../../styles/mainStyles';
+import styled from "styled-components";
+import { Blue, Red, MainFont2 } from "../../../styles/mainStyles";
 
 export const MakeOfferContainer = styled.div`
   display: flex;
@@ -20,8 +20,8 @@ export const MakeOfferButton = styled.button`
   text-transform: uppercase;
   transform-style: flat;
   transition: all ease 0.3s;
-  letter-spacing: .18rem;
-  font-size: .8rem;
+  letter-spacing: 0.18rem;
+  font-size: 0.8rem;
   width: 120px;
   margin: 0px 5px 1px 0px;
   padding: 5px;
@@ -30,43 +30,57 @@ export const MakeOfferButton = styled.button`
     top: 3px;
     outline: none;
   }
-  &:hover:enabled{
+  &:hover:enabled {
     background-color: ${Red};
     color: white;
     cursor: pointer !important;
   }
-  &:active:enabled{
+  &:active:enabled {
     background: ${Blue} !important;
     box-shadow: inset 0px 0px 5px #c1c1c1 !important;
     outline: none;
   }
-  @media(min-width: 360px) { width: 130px; }
-  @media(orientation: landscape) and (max-width: 568px) { width: 160px; }
-  @media(orientation: landscape) and (min-width: 569px) { width: 180px; padding: 7px;}
-  @media(orientation: landscape) and (min-width: 811px) { 
-    width: 220px; 
-    padding: 10px; 
+  @media (min-width: 360px) {
+    width: 130px;
+  }
+  @media (orientation: landscape) and (max-width: 568px) {
+    width: 160px;
+  }
+  @media (orientation: landscape) and (min-width: 569px) {
+    width: 180px;
+    padding: 7px;
+  }
+  @media (orientation: landscape) and (min-width: 811px) {
+    width: 220px;
+    padding: 10px;
     font-size: 1.2rem;
   }
-  @media(min-width: 768px) and (orientation: portrait){
+  @media (min-width: 768px) and (orientation: portrait) {
     width: 260px;
-    letter-spacing: .25rem;
+    letter-spacing: 0.25rem;
     font-size: 1.4rem;
     margin: 5px auto;
     padding: 10px;
     align-self: flex-end;
     margin-right: 5px;
   }
-  @media(min-width: 1024px) { align-self: center; margin: 5px 35px 5px 5px;}
-  @media(min-width: 1300px) { font-size: 1.7rem; margin: 5px 35px 5px 5px; width: 300px; }
+  @media (min-width: 1024px) {
+    align-self: center;
+    margin: 5px 35px 5px 5px;
+  }
+  @media (min-width: 1300px) {
+    font-size: 1.7rem;
+    margin: 5px 35px 5px 5px;
+    width: 300px;
+  }
 `;
 
 export const MakeOfferSpan = styled.span`
   display: none;
-  @media(orientation: landscape) {
+  @media (orientation: landscape) {
     display: initial;
   }
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     display: initial;
   }
 `;
