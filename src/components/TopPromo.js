@@ -1,40 +1,37 @@
-import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import { BigPromo, PromoLink, InboundLink } from '../styles/topperStyles'
+import React from "react";
+import { StaticQuery, graphql } from "gatsby";
+import { BigPromo, PromoLink, InboundLink } from "../styles/topperStyles";
 
-const TopPromo = ({ data }) => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query toppers {
-          topper {
-            id
-            currentpromo
-            linkType
-            uRL
-          }
+const TopPromo = () => (
+  <StaticQuery
+    query={graphql`
+      query toppers {
+        topper {
+          id
+          currentpromo
+          linkType
+          uRL
         }
-      `}
-      render={data => (
-        <>
-          {console.log(typeof data.topper.linkType[0])}
-          {data.topper.linkType[0] === 'Inbound' ? (
-            <InboundLink to={data.topper.uRL}>
-              <BigPromo>{data.topper.currentpromo}</BigPromo>
-            </InboundLink>
-          ) : (
-            <PromoLink
-              href="https://subscribe.mainstreethub.com/email/b1278150-e6a6-4cd5-8708-d72ade6c099a"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BigPromo>{data.topper.currentpromo}</BigPromo>
-            </PromoLink>
-          )}
-        </>
-      )}
-    />
-  )
-}
+      }
+    `}
+    render={data => (
+      <>
+        {data.topper.linkType[0] === "Inbound" ? (
+          <InboundLink to={data.topper.uRL}>
+            <BigPromo>{data.topper.currentpromo}</BigPromo>
+          </InboundLink>
+        ) : (
+          <PromoLink
+            href="https://subscribe.mainstreethub.com/email/b1278150-e6a6-4cd5-8708-d72ade6c099a"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <BigPromo>{data.topper.currentpromo}</BigPromo>
+          </PromoLink>
+        )}
+      </>
+    )}
+  />
+);
 
-export default TopPromo
+export default TopPromo;

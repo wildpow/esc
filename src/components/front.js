@@ -1,30 +1,28 @@
-import React from 'react'
-import { Headline, Wrapper, P } from '../styles/homeStyles'
-import { StaticQuery, graphql } from 'gatsby'
+import React from "react";
+import { StaticQuery, graphql } from "gatsby";
+import { Headline, Wrapper, P } from "../styles/homeStyles";
 
-const Front = () => {
-  return (
-    <Wrapper>
-      <StaticQuery
-        query={graphql`
-          query front {
-            front {
-              id
-              title
-              textBlock
-            }
+const Front = () => (
+  <Wrapper>
+    <StaticQuery
+      query={graphql`
+        query front {
+          front {
+            id
+            title
+            textBlock
           }
-        `}
-        render={data => (
-          <>
-            <Headline>{data.front.title}</Headline>
-            <P>{data.front.textBlock}</P>
-          </>
-        )}
-      />
-      <Headline red>“Sleep Like the Experts Do!”</Headline>
-    </Wrapper>
-  )
-}
+        }
+      `}
+      render={data => (
+        <>
+          <Headline>{data.front.title}</Headline>
+          <P>{data.front.textBlock}</P>
+        </>
+      )}
+    />
+    <Headline red>“Sleep Like the Experts Do!”</Headline>
+  </Wrapper>
+);
 
-export default Front
+export default Front;
