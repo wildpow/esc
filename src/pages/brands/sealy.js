@@ -1,8 +1,8 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Layout from '../../components/layout'
-import Helmet from 'react-helmet'
-import BreadCrumbs, { BreadWrapper } from '../../components/breadCrumbs'
+import React from "react";
+import Helmet from "react-helmet";
+import { graphql } from "gatsby";
+import Layout from "../../components/layout";
+import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 import {
   MainWrapper,
   Wrapper,
@@ -14,13 +14,13 @@ import {
   Name,
   PriceRange,
   Divy,
-} from '../../styles/mattListStyles.js'
-import SealyImg from '../../images/sealyLogo.png'
-import logo from '../../images/logo.png'
+} from "../../styles/mattListStyles";
+import SealyImg from "../../images/sealyLogo.png";
+import logo from "../../images/logo.png";
 
-const Sealy = props => {
-  const { edges } = props.data.allMattress
-  const title = 'sealy'
+const Sealy = ({ data }) => {
+  const { edges } = data.allMattress;
+  const title = "sealy";
   return (
     <Layout>
       <MainWrapper>
@@ -61,7 +61,7 @@ const Sealy = props => {
         <Wrapper>
           {edges.map(mattress => {
             if (mattress.node.subLine !== null) {
-              if (mattress.node.subLine.subLineName === 'Essentials') {
+              if (mattress.node.subLine.subLineName === "Essentials") {
                 return (
                   <LinkWrapper>
                     <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
@@ -75,8 +75,8 @@ const Sealy = props => {
                           } ${mattress.node.subName} mattress`}
                         />
                         <PriceRange>
-                          ${mattress.node.priceRange[0]} - $
-                          {mattress.node.priceRange[1]}
+                          {`$${mattress.node.priceRange[0]} - 
+                          $${mattress.node.priceRange[1]}`}
                         </PriceRange>
                       </Divy>
                       <Name>
@@ -88,17 +88,15 @@ const Sealy = props => {
                       </Name>
                     </StyledLink>
                   </LinkWrapper>
-                )
-              } else {
-                return null
+                );
               }
-            } else {
-              return null
+              return null;
             }
+            return null;
           })}
           {edges.map(mattress => {
             if (mattress.node.subLine !== null) {
-              if (mattress.node.subLine.subLineName === 'Performance') {
+              if (mattress.node.subLine.subLineName === "Performance") {
                 return (
                   <LinkWrapper>
                     <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
@@ -112,8 +110,8 @@ const Sealy = props => {
                           } ${mattress.node.subName} mattress`}
                         />
                         <PriceRange>
-                          ${mattress.node.priceRange[0]} - $
-                          {mattress.node.priceRange[1]}
+                          {`$${mattress.node.priceRange[0]} - 
+                          $${mattress.node.priceRange[1]}`}
                         </PriceRange>
                       </Divy>
                       <Name>
@@ -125,17 +123,15 @@ const Sealy = props => {
                       </Name>
                     </StyledLink>
                   </LinkWrapper>
-                )
-              } else {
-                return null
+                );
               }
-            } else {
-              return null
+              return null;
             }
+            return null;
           })}
           {edges.map(mattress => {
             if (mattress.node.subLine !== null) {
-              if (mattress.node.subLine.subLineName === 'Premium ') {
+              if (mattress.node.subLine.subLineName === "Premium ") {
                 return (
                   <LinkWrapper>
                     <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
@@ -149,8 +145,8 @@ const Sealy = props => {
                           } ${mattress.node.subName} mattress`}
                         />
                         <PriceRange>
-                          ${mattress.node.priceRange[0]} - $
-                          {mattress.node.priceRange[1]}
+                          {`$${mattress.node.priceRange[0]} - 
+                          $${mattress.node.priceRange[1]}`}
                         </PriceRange>
                       </Divy>
                       <Name>
@@ -162,13 +158,11 @@ const Sealy = props => {
                       </Name>
                     </StyledLink>
                   </LinkWrapper>
-                )
-              } else {
-                return null
+                );
               }
-            } else {
-              return null
+              return null;
             }
+            return null;
           })}
         </Wrapper>
         <BreadWrapper Brands Bottom>
@@ -176,10 +170,10 @@ const Sealy = props => {
         </BreadWrapper>
       </MainWrapper>
     </Layout>
-  )
-}
+  );
+};
 
-export default Sealy
+export default Sealy;
 
 export const allMattresses = graphql`
   query allMattresses {
@@ -202,4 +196,4 @@ export const allMattresses = graphql`
       }
     }
   }
-`
+`;
