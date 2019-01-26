@@ -10,7 +10,7 @@ import {
   FlexCol,
   Animation,
   RedBorderBottom,
-} from "./mainStyles.js";
+} from "./mainStyles";
 
 export const MainArticle = styled.article`
   border: ${Border};

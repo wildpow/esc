@@ -96,7 +96,7 @@ export const AccWrapper = styled.article`
 export const AccWrapper2 = AccWrapper.extend`
   margin-bottom: 0px;
 `;
-//640
+// 640
 export const H3 = styled.h3`
   text-shadow: ${TextShadow};
   font-family: ${MainFont1};
@@ -139,7 +139,7 @@ export const InfoWrapper = FlexRow.extend`
 export const InfoWrapperReversed = InfoWrapper.extend`
   flex-direction: row-reverse;
 `;
-//667
+// 667
 export const Img = styled.img`
   color: white;
   max-height: 10rem;

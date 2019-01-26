@@ -11,7 +11,7 @@ import {
   MainFont2,
   Blue,
   Red,
-} from "./mainStyles.js";
+} from "./mainStyles";
 
 export const Main = styled.div`
   animation-name: ${FadeIn};
