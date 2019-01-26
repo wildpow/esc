@@ -1,5 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 
 export default class HTML extends React.Component {
   render() {
@@ -22,24 +22,34 @@ export default class HTML extends React.Component {
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           <div id="modal-root" />
-          <form name="contact" netlify="true" netlify-honeypot="bot-field" hidden>
+          <form
+            name="contact"
+            netlify="true"
+            netlify-honeypot="bot-field"
+            hidden
+          >
             <input type="text" name="name" />
             <input type="email" name="email" />
             <input type="tel" name="tel" />
           </form>
-  
-<form name="makeOffer" netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <input type="tel" name="tel"/>
-  <textarea type="text" name="note"/>
-  <input type="text" name="mattress" />
-  <input type="text" name="size" />
-</form>
+
+          <form
+            name="makeOffer"
+            netlify="true"
+            netlify-honeypot="bot-field"
+            hidden
+          >
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="tel" name="tel" />
+            <textarea type="text" name="note" />
+            <input type="text" name="mattress" />
+            <input type="text" name="size" />
+          </form>
           {this.props.postBodyComponents}
         </body>
       </html>
-    )
+    );
   }
 }
 
@@ -50,4 +60,4 @@ HTML.propTypes = {
   preBodyComponents: PropTypes.array,
   body: PropTypes.string,
   postBodyComponents: PropTypes.array,
-}
+};
