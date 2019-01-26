@@ -1,44 +1,74 @@
-import React from 'react';
-import Layout from '../components/layout';
-import { graphql } from "gatsby"
-import BreadCrumbs, { BreadWrapper } from '../components/breadCrumbs';
+import React from "react";
 import { Helmet } from "react-helmet";
-import ImageViewer from '../components/imageViewer';
-import DropDown from '../components/dropDown';
-import { Wrapper, Main, MainInfo, PriceWrapper,
-  Price, PriceTitle, Warranty, Description, Overview,
-        Article, StyledMarkDown, Profile, MainTitle, InfoAnchor, Stuff }
-        from '../styles/singleMattStyles';
-const Base = (props) => {
-  const { adjBasese } = props.data
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
+import ImageViewer from "../components/imageViewer";
+import DropDown from "../components/dropDown";
+import {
+  Wrapper,
+  Main,
+  MainInfo,
+  PriceWrapper,
+  Price,
+  PriceTitle,
+  Warranty,
+  Description,
+  Overview,
+  Article,
+  StyledMarkDown,
+  Profile,
+  MainTitle,
+  InfoAnchor,
+  Stuff,
+} from "../styles/singleMattStyles";
+
+const Base = ({ data }) => {
+  const { adjBasese } = data;
   return (
     <Layout>
       <BreadWrapper>
-        <BreadCrumbs next="Adjustable" here={adjBasese.fullName}/>
+        <BreadCrumbs next="Adjustable" here={adjBasese.fullName} />
       </BreadWrapper>
       <Wrapper>
         <Helmet>
-          <title>ESC: {adjBasese.fullName}</title>
-          <meta name="description" content={adjBasese.baseDescription}/>
-          <meta property="og:type"   content="website" />
-          <meta property="og:site_name" content="E.S.C. Mattress Center"/>
-          <meta property="og:url" content={`https://www.escmattresscenter.com/adjustable/${adjBasese.uri}`}/>
-          <meta property="og:image" content={`https://media.graphcms.com/resize=w:1200,h:627,fit:clip/${adjBasese.coverImg.handle}`}/>
-          <meta property="og:image:width" content="1200"/>
-          <meta property="og:image:height" content="627"/>
-          <meta property="og:image:alt" content={`E.S.C Mattress Center | ${adjBasese.fullName}`}/>
-          <meta property="og:title" content="E.S.C Mattress Center"/>
-          <meta property="og:description" content={`${adjBasese.fullName} Adjustable Base`}/>
+          <title>{`ESC: ${adjBasese.fullName}`}</title>
+          <meta name="description" content={adjBasese.baseDescription} />
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content="E.S.C. Mattress Center" />
+          <meta
+            property="og:url"
+            content={`https://www.escmattresscenter.com/adjustable/${
+              adjBasese.uri
+            }`}
+          />
+          <meta
+            property="og:image"
+            content={`https://media.graphcms.com/resize=w:1200,h:627,fit:clip/${
+              adjBasese.coverImg.handle
+            }`}
+          />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="627" />
+          <meta
+            property="og:image:alt"
+            content={`E.S.C Mattress Center | ${adjBasese.fullName}`}
+          />
+          <meta property="og:title" content="E.S.C Mattress Center" />
+          <meta
+            property="og:description"
+            content={`${adjBasese.fullName} Adjustable Base`}
+          />
         </Helmet>
         <header>
           <MainTitle>{adjBasese.fullName}</MainTitle>
         </header>
         <Main>
-          <ImageViewer 
-            cover={adjBasese.coverImg.handle} 
-            img1={adjBasese.detail1.handle} 
-            img2={adjBasese.detail2.handle} 
-            type={'adjustable base without mattress'} 
+          <ImageViewer
+            cover={adjBasese.coverImg.handle}
+            img1={adjBasese.detail1.handle}
+            img2={adjBasese.detail2.handle}
+            type="adjustable base without mattress"
             fullname={adjBasese.fullName}
           />
           <MainInfo>
@@ -49,7 +79,7 @@ const Base = (props) => {
             <PriceWrapper>
               <Price>
                 <PriceTitle>Base Price</PriceTitle>
-                <DropDown data={adjBasese.price} data2={adjBasese.salePrice}/>
+                <DropDown data={adjBasese.price} data2={adjBasese.salePrice} />
               </Price>
             </PriceWrapper>
           </MainInfo>
@@ -58,26 +88,24 @@ const Base = (props) => {
           <h2>OVERVIEW & SPECS</h2>
         </Overview>
         <Article>
-          <Description>
-            {adjBasese.baseDescription}
-          </Description>
-          <Profile>Profile: {adjBasese.height}</Profile>
+          <Description>{adjBasese.baseDescription}</Description>
+          <Profile>{`Profile: ${adjBasese.height}`}</Profile>
           <StyledMarkDown source={adjBasese.keyfeatures} escapeHtml={false} />
           <Warranty>{adjBasese.warranty}</Warranty>
         </Article>
       </Wrapper>
       <BreadWrapper>
-        <BreadCrumbs next="adjustable" here={adjBasese.fullName}/>
+        <BreadCrumbs next="adjustable" here={adjBasese.fullName} />
       </BreadWrapper>
     </Layout>
-  )
-}
+  );
+};
 
 export default Base;
 
 export const query = graphql`
   query SingleAjustableQuery($uri: String!) {
-    adjBasese(uri: { eq: $uri}) {
+    adjBasese(uri: { eq: $uri }) {
       id
       uri
       fullName
@@ -95,10 +123,10 @@ export const query = graphql`
       }
       detail1 {
         handle
-      } 
+      }
       detail2 {
         handle
       }
     }
   }
-`
+`;
