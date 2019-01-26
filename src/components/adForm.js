@@ -30,7 +30,7 @@ class Modal extends React.Component {
 
   componentDidMount() {
     modalRoot.appendChild(this.el);
-    document.body.style.overflow = "hidden"; //make backgroup not scrollable
+    document.body.style.overflow = "hidden"; // make backgroup not scrollable
     mainRoot.style.position = "fixed";
     mainRoot.style.filter = "blur(5px) grayscale(50%)";
     mainRoot.style.width = "100%";

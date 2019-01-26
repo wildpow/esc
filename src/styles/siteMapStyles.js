@@ -1,8 +1,16 @@
-import { Link } from 'gatsby'
-import styled from 'styled-components';
-import { FadeIn, Border, BoxShadow,
-          MainFont1, MainFont2, Blue,
-          FlexCol, FlexRow, Animation } from './mainStyles';
+import { Link } from "gatsby";
+import styled from "styled-components";
+import {
+  FadeIn,
+  Border,
+  BoxShadow,
+  MainFont1,
+  MainFont2,
+  Blue,
+  FlexCol,
+  FlexRow,
+  Animation,
+} from "./mainStyles";
 
 export const MattLinksWrapper = FlexRow.extend`
   animation-name: ${FadeIn};
@@ -20,25 +28,25 @@ export const Main = styled.div`
   border: ${Border};
   box-shadow: ${BoxShadow};
   margin-bottom: 20px;
-    ul {
-      padding-right: 20px;
-      padding-left: 20px;
-      list-style: none;
-      line-height: 1.9rem;
-    }
-    li {
-      font-family: ${MainFont2};
-    }
-    h3 {
-      font-family: ${MainFont1};
-      background-color: ${Blue};
-      margin: 0;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      letter-spacing: .20rem;
-      font-size: 1.2rem;
-      text-align: center;
-    }
+  ul {
+    padding-right: 20px;
+    padding-left: 20px;
+    list-style: none;
+    line-height: 1.9rem;
+  }
+  li {
+    font-family: ${MainFont2};
+  }
+  h3 {
+    font-family: ${MainFont1};
+    background-color: ${Blue};
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    letter-spacing: 0.2rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
 `;
 export const BrandLinks = styled(Link)`
   color: white;
@@ -47,7 +55,7 @@ export const BrandLinks = styled(Link)`
   }
 `;
 export const SiteLinks = styled(Link)`
-    color: #1565c0;
+  color: #1565c0;
   &:hover {
     color: #eb1c24;
   }
@@ -68,15 +76,18 @@ export const MainLinks = FlexCol.extend`
 export const Lilist = styled.li`
   font-family: ${MainFont2};
   font-size: 1rem;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   padding-left: 10px;
   padding-right: 10px;
-  @media(min-width:412px) { padding-left: 15px; padding-right: 15px;}
-  @media(min-width: 768px) {
+  @media (min-width: 412px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media (min-width: 768px) {
     font-size: 1.3rem;
     padding-left: 0px;
     padding-right: 0px;
-    }
+  }
 `;
 
 export const UnList = styled.ul`
@@ -90,9 +101,9 @@ export const UnList = styled.ul`
 `;
 
 export const BottomLinks = FlexRow.extend`
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    @media(min-width: 1300px) {
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  @media (min-width: 1300px) {
     margin-left: 85px;
     margin-right: 85px;
   }
@@ -101,7 +112,7 @@ export const BottomLinks = FlexRow.extend`
 // export const TheNew2 = styled.h2`
 //     font-family: ${MainFont1};
 //     background-color: ${Blue};
-//     text-shadow: ${TextShadow}; 
+//     text-shadow: ${TextShadow};
 //     text-align: center;
 //     color: white;
 //     margin: 0;

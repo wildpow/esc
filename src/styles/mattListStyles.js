@@ -1,8 +1,15 @@
-import styled from 'styled-components';
-import { Link } from 'gatsby';
-import { Animation, FadeIn, H2,
-        FlexCol, BoxShadow, FlexRow, Border,
-        MainFont2 } from './mainStyles.js';
+import styled from "styled-components";
+import { Link } from "gatsby";
+import {
+  Animation,
+  FadeIn,
+  H2,
+  FlexCol,
+  BoxShadow,
+  FlexRow,
+  Border,
+  MainFont2,
+} from "./mainStyles";
 
 export const MainWrapper = FlexCol.extend`
   /* box-shadow: ${BoxShadow};  */
@@ -34,14 +41,14 @@ export const SaleTitle = styled.header`
   padding-left: 5px;
 `;
 export const SaleBlurb = styled.p`
-margin: 0;
+  margin: 0;
 `;
 
 export const StearnTitle = styled.h2`
   padding-left: 5px;
   padding-right: 5px;
   padding: 60px;
-  font-size: .8rem;
+  font-size: 0.8rem;
 `;
 export const Img = styled.img`
   color: white;
@@ -53,15 +60,31 @@ export const Img = styled.img`
   margin-bottom: 5px;
   max-height: 10rem;
   max-width: 10rem;
-  @media(min-width: 768px) { max-height: 15rem; max-width: 15rem; margin-top: 10px; margin-bottom: 10px; } 
-  @media(min-width: 1024px) { max-height: 20rem; max-width: 20rem; }
+  @media (min-width: 768px) {
+    max-height: 15rem;
+    max-width: 15rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  @media (min-width: 1024px) {
+    max-height: 20rem;
+    max-width: 20rem;
+  }
 `;
 
 export const SealyImgPlace = Img.extend`
   max-height: 4rem;
   max-width: 4rem;
-  @media(min-width: 768px) { max-height: 6rem; max-width: 6rem; margin-top: 10px; margin-bottom: 10px; } 
-  @media(min-width: 1024px) { max-height: 10rem; max-width: 10rem; } 
+  @media (min-width: 768px) {
+    max-height: 6rem;
+    max-width: 6rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  @media (min-width: 1024px) {
+    max-height: 10rem;
+    max-width: 10rem;
+  }
 `;
 
 export const StearnsImgPlaceHolder = Img.extend`
@@ -86,20 +109,33 @@ export const LinkWrapper = styled.div`
   width: 150px;
   height: 216px;
   margin-top: 15px;
-  box-shadow: 0 10px 6px -6px rgba(119, 119, 119, .9);
-  border-radius: .14rem;
+  box-shadow: 0 10px 6px -6px rgba(119, 119, 119, 0.9);
+  border-radius: 0.14rem;
   background-color: white;
-  transition: all .15s ease-in-out;
-  @media(min-width: 360px) { 
+  transition: all 0.15s ease-in-out;
+  @media (min-width: 360px) {
     margin: 5px;
     width: 165px;
-    height: 235px; }
-  @media(min-width: 414px) { width: 185px;}
-  @media(min-width: 768px) { width: 340px; height: 365px; margin-right: 10px; margin-bottom: 20px; }
-  @media(min-width: 1024px) { width: 300px; height: 360px; margin-right: 10px; margin-bottom: 20px; }
+    height: 235px;
+  }
+  @media (min-width: 414px) {
+    width: 185px;
+  }
+  @media (min-width: 768px) {
+    width: 340px;
+    height: 365px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 1024px) {
+    width: 300px;
+    height: 360px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+  }
   &:hover {
     z-index: 999;
-    transform: scale3d(1.05,1.05,1);
+    transform: scale3d(1.05, 1.05, 1);
   }
 `;
 
@@ -116,9 +152,18 @@ export const MattImg = styled.img`
   margin: 0 auto 0px auto;
   width: 110px;
   height: 110px;
-  @media(min-width: 360px) { width: 130px; height: 130px; }
-  @media(min-width: 768px) { width: 250px; height: 250px; }
-  @media(min-width: 1022px) { width: 250px; margin-bottom: -10px}
+  @media (min-width: 360px) {
+    width: 130px;
+    height: 130px;
+  }
+  @media (min-width: 768px) {
+    width: 250px;
+    height: 250px;
+  }
+  @media (min-width: 1022px) {
+    width: 250px;
+    margin-bottom: -10px;
+  }
 `;
 
 export const Name = styled.div`
@@ -129,24 +174,25 @@ export const Name = styled.div`
   padding-right: 5px;
   padding-bottom: 10px;
   padding-top: 5px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   margin: 0;
-@media(min-width: 768px) { 
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 1.2rem;
-  margin: 0; }
+  @media (min-width: 768px) {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.2rem;
+    margin: 0;
+  }
 `;
 
 export const PriceRange = styled.div`
   color: black;
   font-family: ${MainFont2};
-  font-size: .7rem;
+  font-size: 0.7rem;
   text-align: center;
-  @media(min-width: 360px) {
-    font-size: .8rem;
+  @media (min-width: 360px) {
+    font-size: 0.8rem;
   }
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     font-size: 1rem;
   }
 `;
@@ -167,33 +213,33 @@ export const Wrapper2 = FlexCol.extend`
   margin-left: 0px;
   box-shadow: ${BoxShadow};
   align-self: center;
-  @media(min-width: 360px) {
+  @media (min-width: 360px) {
     margin-right: 3px;
     margin-left: 3px;
     margin-bottom: 5px;
   }
-  @media(min-width: 375px) {
+  @media (min-width: 375px) {
     margin-right: 12px;
     margin-left: 12px;
   }
-  @media(min-width: 411px) {
+  @media (min-width: 411px) {
     margin-right: 15px;
     margin-left: 15px;
   }
-  @media(min-width: 414px) {
+  @media (min-width: 414px) {
     margin-right: 12px;
     margin-left: 12px;
   }
-  @media(min-width: 768px) { 
-   margin-top: 12px;
-   margin-bottom: 12px;
+  @media (min-width: 768px) {
+    margin-top: 12px;
+    margin-bottom: 12px;
   }
-  @media(min-width: 1300px) {
+  @media (min-width: 1300px) {
     margin-top: 15px;
     margin-right: 10px;
     margin-left: 10px;
   }
-  @media(min-width: 1366px) {
+  @media (min-width: 1366px) {
     margin-right: 50px;
     margin-left: 50px;
   }
@@ -206,15 +252,15 @@ export const Headline = H2.extend`
   padding-left: 4px;
   padding-top: 8px;
   padding-bottom: 8px;
-  @media(min-width: 1300px) { 
-    font-size: 1.6rem; 
-    letter-spacing: .1rem; 
+  @media (min-width: 1300px) {
+    font-size: 1.6rem;
+    letter-spacing: 0.1rem;
     padding-right: 1px;
     padding-left: 1px;
     padding-top: 14px;
     padding-bottom: 14px;
     line-height: 1.8rem;
-    }
+  }
 `;
 
 export const P = styled.p`
@@ -224,22 +270,21 @@ export const P = styled.p`
   margin-bottom: 0;
   margin-top: 0;
   padding: 7px 7px 7px 7px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   line-height: 1.3rem;
-  @media(min-width: 640px) {
+  @media (min-width: 640px) {
     padding: 20px 15px 20px 15px;
     line-height: 1.4rem;
     font-size: 1rem;
   }
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     font-size: 1.1rem;
     line-height: 1.5rem;
     padding: 10px 15px 10px 15px;
   }
-  @media(min-width: 1024px) {
+  @media (min-width: 1024px) {
     padding: 15px 25px 15px 25px;
     font-size: 1.2rem;
     line-height: 1.8rem;
-
   }
 `;

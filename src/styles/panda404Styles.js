@@ -1,18 +1,27 @@
-import styled from 'styled-components';
-import { FlexCol, MainFont2, MainFont1, Border, BoxShadow,
-          Animation, FadeIn, Blue, TextShadow} from './mainStyles';
+import styled from "styled-components";
+import {
+  FlexCol,
+  MainFont2,
+  MainFont1,
+  Border,
+  BoxShadow,
+  Animation,
+  FadeIn,
+  Blue,
+  TextShadow,
+} from "./mainStyles";
 
 export const Main = FlexCol.extend`
   font-family: ${MainFont2};
   border: ${Border};
   box-shadow: ${BoxShadow};
-  animation-name: ${FadeIn}; 
+  animation-name: ${FadeIn};
   ${Animation}
   border-radius: .11rem;
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
   text-align: center;
   justify-content: center;
-  @media(min-width: 1300px) {
+  @media (min-width: 1300px) {
     margin-left: 85px;
     margin-right: 85px;
   }
@@ -22,8 +31,10 @@ export const Img = styled.img`
   color: white;
   margin: auto;
   max-width: 20rem;
-  transition: all .2s ease-in;
-  @media(min-width: 800px) { max-width: 40rem; }
+  transition: all 0.2s ease-in;
+  @media (min-width: 800px) {
+    max-width: 40rem;
+  }
 `;
 
 export const Header = styled.header`

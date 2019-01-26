@@ -1,22 +1,35 @@
-import styled from 'styled-components';
-import Markdown from 'react-markdown';
-import { BoxShadow, FadeIn, Animation, Border, FlexCol,
-        Blue, MainFont2 } from './mainStyles';
+import styled from "styled-components";
+import Markdown from "react-markdown";
+import {
+  BoxShadow,
+  FadeIn,
+  Animation,
+  Border,
+  FlexCol,
+  Blue,
+  MainFont2,
+} from "./mainStyles";
 
 export const Main = FlexCol.extend`
   border: ${Border};
-  box-shadow: ${BoxShadow}; 
+  box-shadow: ${BoxShadow};
   animation-name: ${FadeIn};
   ${Animation}
   padding-bottom: 20px;
-  @media(min-width:1200px) { margin-left: 220px; margin-right: 220px; }
+  @media (min-width: 1200px) {
+    margin-left: 220px;
+    margin-right: 220px;
+  }
 `;
 
 export const BottomImg = styled.img`
   margin: auto;
   margin-top: 20px;
   max-width: 100%;
-  @media(min-width: 1022px) { width: 100%; height: 100%; }
+  @media (min-width: 1022px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const Marker = styled(Markdown)`
@@ -26,7 +39,7 @@ export const Marker = styled(Markdown)`
     color: white;
     padding-top: 10px;
     padding-bottom: 20px;
-    }
+  }
   & li {
     font-family: ${MainFont2};
     margin: auto;
@@ -52,7 +65,7 @@ export const Marker = styled(Markdown)`
     margin-top: 20px;
     max-width: 100%;
   }
-  @media(min-width:768px) {
+  @media (min-width: 768px) {
     & p {
       margin-bottom: 0;
       padding-right: 60px;
@@ -69,7 +82,7 @@ export const Marker = styled(Markdown)`
       line-height: 1.5rem;
     }
   }
-  @media(min-width:1024px) {
+  @media (min-width: 1024px) {
     & ol {
       padding-top: 30px;
       padding-bottom: 30px;
@@ -92,7 +105,8 @@ export const Marker = styled(Markdown)`
       padding-bottom: 20px;
     }
     & img {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
     }
   }
 `;
