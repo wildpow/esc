@@ -7,7 +7,5 @@ yarn-error.log
 /public
 .DS_Store
 .env
-*.mp4
-*.mp4
-*.mp4
+/cypress/videos
 *.mp4
