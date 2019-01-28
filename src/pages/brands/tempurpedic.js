@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import Layout from "../../components/layout";
@@ -95,6 +96,9 @@ const Tempurpedic = ({ data }) => {
   );
 };
 
+Tempurpedic.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 export default Tempurpedic;
 
 export const tempurMattresses = graphql`

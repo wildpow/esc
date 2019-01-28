@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import {
   Main,
@@ -61,6 +62,10 @@ const Adjustables = ({ data }) => (
     </Main>
   </Layout>
 );
+
+Adjustables.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default Adjustables;
 

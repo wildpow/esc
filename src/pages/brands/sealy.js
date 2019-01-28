@@ -1,7 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../../components/layout";
+
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 import {
   MainWrapper,
@@ -63,7 +65,7 @@ const Sealy = ({ data }) => {
             if (mattress.node.subLine !== null) {
               if (mattress.node.subLine.subLineName === "Essentials") {
                 return (
-                  <LinkWrapper>
+                  <LinkWrapper key={mattress.node.id}>
                     <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
                       <Divy>
                         <MattImg
@@ -98,7 +100,7 @@ const Sealy = ({ data }) => {
             if (mattress.node.subLine !== null) {
               if (mattress.node.subLine.subLineName === "Performance") {
                 return (
-                  <LinkWrapper>
+                  <LinkWrapper key={mattress.node.id}>
                     <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
                       <Divy>
                         <MattImg
@@ -133,7 +135,7 @@ const Sealy = ({ data }) => {
             if (mattress.node.subLine !== null) {
               if (mattress.node.subLine.subLineName === "Premium ") {
                 return (
-                  <LinkWrapper>
+                  <LinkWrapper key={mattress.node.id}>
                     <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
                       <Divy>
                         <MattImg
@@ -173,6 +175,9 @@ const Sealy = ({ data }) => {
   );
 };
 
+Sealy.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 export default Sealy;
 
 export const allMattresses = graphql`

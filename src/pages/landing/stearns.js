@@ -124,7 +124,8 @@ const StearnsLanding = () => (
           <Ratings>
             <p>
               Love our S&F Mattress!
-              <br />- Howie C.
+              <br />
+              {` - Howie C.`}
             </p>
             <StarImg
               src={Stars}
@@ -134,7 +135,8 @@ const StearnsLanding = () => (
           <Ratings>
             <p>
               Wake up with no back pain and well rested!
-              <br /> - Penny S.
+              <br />
+              {` - Penny S.`}
             </p>
             <StarImg
               src={Stars}
@@ -144,7 +146,8 @@ const StearnsLanding = () => (
           <Ratings Bottom>
             <p>
               A dreamers paradise!
-              <br /> -Houston T.
+              <br />
+              {` -Houston T.`}
             </p>
             <StarImg
               src={Stars}
@@ -155,8 +158,9 @@ const StearnsLanding = () => (
       </BottomWrapper>
       <FooterWraper>
         <p>
-          <Link to="/brands/stearns">Click here</Link> to view the Stears &
-          Foster collection or vist us to experience them in person
+          <Link to="/brands/stearns">Click here</Link>
+          {` to view the Stears & Foster collection or vist us to experience them
+          in person`}
         </p>
         <GoogleMapContainer />
       </FooterWraper>

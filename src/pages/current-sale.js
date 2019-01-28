@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import Layout from "../components/layout";
@@ -85,6 +86,9 @@ const CurrentSale = ({ data }) => {
   );
 };
 
+CurrentSale.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 export default CurrentSale;
 
 export const currentSaleQuery = graphql`

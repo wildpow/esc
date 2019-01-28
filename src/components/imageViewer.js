@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import NodeGroup from "react-move/NodeGroup";
 import {
   ImgWrapper,
@@ -8,6 +9,14 @@ import {
 } from "../styles/imageViewerStyles";
 
 class ImageViewer extends React.PureComponent {
+  static propTypes = {
+    cover: PropTypes.string.isRequired,
+    img1: PropTypes.string.isRequired,
+    img2: PropTypes.string.isRequired,
+    fullname: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {

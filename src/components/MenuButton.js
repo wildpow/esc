@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Button, MenuLines, Bar } from "../styles/menuStyles";
 
 const MenuButton = ({ handleMouseDown }) => (
@@ -16,4 +17,7 @@ const MenuButton = ({ handleMouseDown }) => (
   </Button>
 );
 
+MenuButton.propTypes = {
+  handleMouseDown: PropTypes.func.isRequired,
+};
 export default MenuButton;

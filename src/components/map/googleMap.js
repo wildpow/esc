@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
 import mapStyles from "./mapStyles.json";
 import { MapInfo } from "../../styles/landingStyles";
@@ -7,6 +8,10 @@ const defaultMapOptions = {
   styles: mapStyles,
 };
 class GoogleMapContainer extends React.Component {
+  static propTypes = {
+    google: PropTypes.instanceOf(Object).isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {

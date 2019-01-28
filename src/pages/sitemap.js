@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";
 import Layout from "../components/layout";
@@ -146,6 +147,9 @@ const SiteMap = ({ data }) => (
   </React.Fragment>
 );
 
+SiteMap.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 export default SiteMap;
 
 export const allMattressesSiteMap = graphql`

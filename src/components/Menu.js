@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   StyledLink,
   BottomLinks,
@@ -57,5 +58,10 @@ const Menu = ({ menuVisibility, handleMouseDown }) => {
       </Footer>
     </Wrapper>
   );
+};
+
+Menu.propTypes = {
+  menuVisibility: PropTypes.bool.isRequired,
+  handleMouseDown: PropTypes.func.isRequired,
 };
 export default Menu;

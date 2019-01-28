@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { StyledLink, InfoWrapper, Img, H3 } from "./blogListStyles";
 
 const BlogList = ({ items, count }) => {
@@ -21,5 +22,8 @@ const BlogList = ({ items, count }) => {
     </React.Fragment>
   );
 };
-
+BlogList.propTypes = {
+  items: PropTypes.instanceOf(Array).isRequired,
+  count: PropTypes.number.isRequired,
+};
 export default BlogList;

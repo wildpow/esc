@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import {
@@ -13,6 +14,10 @@ import logo from "../images/logo.png";
 import BlogList from "../components/blog/blogList";
 
 class Blog extends React.Component {
+  static propTypes = {
+    data: PropTypes.instanceOf(Object).isRequired,
+  };
+
   state = {
     postsToShow: 4,
   };

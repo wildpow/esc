@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
@@ -100,7 +101,9 @@ const Base = ({ data }) => {
     </Layout>
   );
 };
-
+Base.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 export default Base;
 
 export const query = graphql`

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import { Carousel } from "react-responsive-carousel";
@@ -92,4 +93,7 @@ export const carouselQuery = graphql`
     }
   }
 `;
+IndexPage.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 export default IndexPage;

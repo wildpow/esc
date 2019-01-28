@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Wrapper,
   WholeThing,
@@ -13,6 +14,11 @@ import {
 } from "../styles/dropDownStyles";
 
 class DropDown extends React.PureComponent {
+  static propTypes = {
+    data: PropTypes.instanceOf(Object).isRequired,
+    data2: PropTypes.instanceOf(Object).isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
