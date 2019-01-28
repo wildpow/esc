@@ -57,17 +57,17 @@ export const Header = styled.header`
   & h3 {
     padding: 15px 15px 15px 15px;
     font-size: 1.2rem;
-    letter-spacing: .2rem;
+    letter-spacing: 0.2rem;
     margin: 0;
     text-shadow: ${TextShadow};
-    @media (min-width: 768px) and (min-height:823px) and (orientation: portrait) {
-    font-size: 1.7rem;
-    letter-spacing: .3rem;
-    padding-left: 25px;
+    @media (min-width: 768px) and (min-height: 823px) and (orientation: portrait) {
+      font-size: 1.7rem;
+      letter-spacing: 0.3rem;
+      padding-left: 25px;
     }
     @media (min-width: 1024px) {
       font-size: 1.7rem;
-      letter-spacing: .3rem;
+      letter-spacing: 0.3rem;
       padding-left: 25px;
     }
   }
@@ -87,7 +87,7 @@ export const Header = styled.header`
     text-indent: 10em;
     cursor: pointer;
     transition: all ease 0.3s;
-    @media (min-width: 768px) and (min-height:823px) and (orientation: portrait) {
+    @media (min-width: 768px) and (min-height: 823px) and (orientation: portrait) {
       font-size: 2.8rem;
     }
     @media (min-width: 1024px) {
@@ -102,8 +102,8 @@ export const Header = styled.header`
       top: 0.45em;
       left: 0.5em;
       text-indent: 0;
-      content: "\00D7"; 
-      @media (min-width: 768px) and (min-height:823px) and (orientation: portrait) {
+      content: "\00D7";
+      @media (min-width: 768px) and (min-height: 823px) and (orientation: portrait) {
         top: 0.35em;
         left: 0.45em;
       }
@@ -112,4 +112,5 @@ export const Header = styled.header`
         left: 0.45em;
       }
     }
+  }
 `;

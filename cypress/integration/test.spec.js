@@ -96,4 +96,9 @@ describe("visual testing", () => {
     cy.wait(1000);
     cy.percySnapshot();
   });
+  it("loads stearns landing page", () => {
+    cy.visit("http://localhost:8000/landing/stearns");
+    cy.wait(1000);
+    cy.percySnapshot();
+  });
 });

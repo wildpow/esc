@@ -401,12 +401,12 @@ export const CallTOAction = styled.p`
   margin-bottom: 0;
   line-height: 1.4rem;
   font-family: ${MainFont2};
-  @media(min-width: 360px) {
+  @media (min-width: 360px) {
     padding-top: 7px;
     padding-bottom: 7px;
     line-height: 1.45rem;
   }
-  @media(min-width: 1024px) {
+  @media (min-width: 1024px) {
     font-size: 1.4rem;
     line-height: 1.8rem;
     padding-top: 14px;
@@ -414,11 +414,12 @@ export const CallTOAction = styled.p`
     padding-right: 10px;
     padding-left: 10px;
   }
-  @media(min-width: 1300px) {
+  @media (min-width: 1300px) {
     line-height: 2.2rem;
     padding-top: 25px;
-    letter-spacing: .27rem;
+    letter-spacing: 0.27rem;
     padding-bottom: 25px;
+  }
 `;
 
 export const MapInfo = styled.div`
