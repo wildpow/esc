@@ -1,8 +1,9 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
-import Layout from '../components/layout'
-import ImageViewer from '../components/imageViewer'
+import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
+import Layout from "../components/layout";
+import ImageViewer from "../components/imageViewer";
 import {
   Wrapper,
   MainTitle,
@@ -16,28 +17,28 @@ import {
   Profile,
   InfoAnchor,
   Stuff,
-} from '../styles/singleMattStyles'
-import BreadCrumbs, { BreadWrapper } from '../components/breadCrumbs'
-import PriceCalculator from '../components/priceCalculator'
+} from "../styles/singleMattStyles";
+import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
+import PriceCalculator from "../components/priceCalculator";
 
-const Mattress = props => {
-  const { mattress } = props.data
-  const SealyBoxPrice = [125, 125, 150, 150, 250]
-  const StearnsBoxPrice = [125, 125, 150, 150, 250]
-  const TempurBoxPrice = [200, 200, 300, 300, 400]
-  let BoxspringPrice
-  if (mattress.uriBrandName === 'tempurpedic') {
-    BoxspringPrice = TempurBoxPrice
-  } else if (mattress.uriBrandName === 'sealy') {
-    BoxspringPrice = SealyBoxPrice
+const Mattress = ({ data }) => {
+  const { mattress } = data;
+  const SealyBoxPrice = [125, 125, 150, 150, 250];
+  const StearnsBoxPrice = [125, 125, 150, 150, 250];
+  const TempurBoxPrice = [200, 200, 300, 300, 400];
+  let BoxspringPrice;
+  if (mattress.uriBrandName === "tempurpedic") {
+    BoxspringPrice = TempurBoxPrice;
+  } else if (mattress.uriBrandName === "sealy") {
+    BoxspringPrice = SealyBoxPrice;
   } else {
-    BoxspringPrice = StearnsBoxPrice
+    BoxspringPrice = StearnsBoxPrice;
   }
   return (
     <Layout>
       <Helmet>
         <title>
-          ESC: {mattress.subBrand} {mattress.subName} Mattress
+          {`ESC: ${mattress.subBrand} ${mattress.subName} Mattress`}
         </title>
         <meta name="description" content={mattress.discription} />
         <meta property="og:type" content="website" />
@@ -80,7 +81,7 @@ const Mattress = props => {
             img1={mattress.detail1.handle}
             img2={mattress.detail2.handle}
             fullname={mattress.name}
-            type={'mattress'}
+            type="mattress"
           />
           <MainInfo>
             <Stuff>
@@ -103,7 +104,7 @@ const Mattress = props => {
         </Overview>
         <Article>
           <Description>{mattress.discription}</Description>
-          <Profile>Profile: {mattress.profile}</Profile>
+          <Profile>{`Profile: ${mattress.profile}`}</Profile>
           <StyledMarkDown source={mattress.contruction} escapeHtml={false} />
           <Warranty>{mattress.warranty}</Warranty>
         </Article>
@@ -116,10 +117,12 @@ const Mattress = props => {
         />
       </BreadWrapper>
     </Layout>
-  )
-}
-
-export default Mattress
+  );
+};
+Mattress.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+export default Mattress;
 
 export const query = graphql`
   query SingleMattress($uri: String!) {
@@ -155,4 +158,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

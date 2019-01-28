@@ -1,7 +1,8 @@
-import React from 'react'
-import Layout from '../../components/layout'
-import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import Helmet from "react-helmet";
+import Layout from "../../components/layout";
 import {
   MainWrapper,
   Wrapper,
@@ -13,14 +14,14 @@ import {
   Name,
   PriceRange,
   Divy,
-} from '../../styles/mattListStyles.js'
-import BreadCrumbs, { BreadWrapper } from '../../components/breadCrumbs'
-import TempurImg from '../../images/tempurLogo2.png'
-import logo from '../../images/logo.png'
+} from "../../styles/mattListStyles";
+import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
+import TempurImg from "../../images/tempurLogo2.png";
+import logo from "../../images/logo.png";
 
-const Tempurpedic = props => {
-  const { edges } = props.data.allMattress
-  const title = 'tempurpedic'
+const Tempurpedic = ({ data }) => {
+  const { edges } = data.allMattress;
+  const title = "tempurpedic";
   return (
     <Layout>
       <MainWrapper>
@@ -59,45 +60,46 @@ const Tempurpedic = props => {
           <Img src={TempurImg} alt="Logo of the Tempurpedic mattress company" />
         </MainTitle>
         <Wrapper>
-          {edges.map(mattress => {
-            return (
-              <LinkWrapper key={mattress.node.id}>
-                <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
-                  <Divy>
-                    <MattImg
-                      src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                        mattress.node.coverImg.handle
-                      }`}
-                      alt={`Image of a ${mattress.node.brandName} ${
-                        mattress.node.subBrand
-                      } ${mattress.node.subName} mattress`}
-                    />
-                    <PriceRange>
-                      ${mattress.node.priceRange[0]} - $
-                      {mattress.node.priceRange[1]}
-                    </PriceRange>
-                  </Divy>
-                  <Name>
-                    {mattress.node.brandName}
-                    <br />
-                    {mattress.node.subBrand}
-                    <br />
-                    {mattress.node.subName}
-                  </Name>
-                </StyledLink>
-              </LinkWrapper>
-            )
-          })}
+          {edges.map(mattress => (
+            <LinkWrapper key={mattress.node.id}>
+              <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
+                <Divy>
+                  <MattImg
+                    src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
+                      mattress.node.coverImg.handle
+                    }`}
+                    alt={`Image of a ${mattress.node.brandName} ${
+                      mattress.node.subBrand
+                    } ${mattress.node.subName} mattress`}
+                  />
+                  <PriceRange>
+                    {`$${mattress.node.priceRange[0]}
+                     - $${mattress.node.priceRange[1]}`}
+                  </PriceRange>
+                </Divy>
+                <Name>
+                  {mattress.node.brandName}
+                  <br />
+                  {mattress.node.subBrand}
+                  <br />
+                  {mattress.node.subName}
+                </Name>
+              </StyledLink>
+            </LinkWrapper>
+          ))}
         </Wrapper>
         <BreadWrapper Brands Bottom>
           <BreadCrumbs next="Brands" here="Tempurpedic" />
         </BreadWrapper>
       </MainWrapper>
     </Layout>
-  )
-}
+  );
+};
 
-export default Tempurpedic
+Tempurpedic.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+export default Tempurpedic;
 
 export const tempurMattresses = graphql`
   query tempurMattresses {
@@ -120,4 +122,4 @@ export const tempurMattresses = graphql`
       }
     }
   }
-`
+`;

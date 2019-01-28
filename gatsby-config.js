@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'E.S.C Mattress Center',
+    title: "E.S.C Mattress Center",
     siteUrl: `https://www.escmattresscenter.com`,
   },
   plugins: [
@@ -8,8 +8,8 @@ module.exports = {
       resolve: `gatsby-source-graphcms`,
       options: {
         endpoint: `https://api.graphcms.com/simple/v1/escMattressProPandaJoshbillwill`,
-        query: require("./gatsby/configQuery")
-      }
+        query: require("./gatsby/configQuery"),
+      },
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
@@ -17,14 +17,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-      name: `E.S.C Mattress Center`,
-      short_name: `E.S.C`,
-      start_url: `/`,
-      background_color: `#ffffff`,
-      theme_color: `#1565c0`,
-      display: `minimal-ui`,
-      icon: `src/images/logo.png`, // This path is relative to the root of the site.
+        name: `E.S.C Mattress Center`,
+        short_name: `E.S.C`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#1565c0`,
+        display: `minimal-ui`,
+        icon: `src/images/logo.png`, // This path is relative to the root of the site.
+      },
     },
-    },
-    `gatsby-plugin-offline`,`gatsby-plugin-netlify`],
-}
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify`,
+  ],
+};

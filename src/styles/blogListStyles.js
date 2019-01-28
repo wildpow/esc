@@ -1,32 +1,48 @@
-import styled from 'styled-components';
-import { Animation, FadeIn, FlexCol, MainFont2,
-        BoxShadow, Border, Blue, FlexRow} from './mainStyles';
+import styled from "styled-components";
+import {
+  Animation,
+  FadeIn,
+  FlexCol,
+  MainFont2,
+  BoxShadow,
+  Border,
+  Blue,
+  FlexRow,
+} from "./mainStyles";
 
 export const Main = FlexCol.extend`
   font-family: ${MainFont2};
   border: ${Border};
-  box-shadow: ${BoxShadow}; 
+  box-shadow: ${BoxShadow};
   animation-name: ${FadeIn};
   ${Animation}
   margin-top: 15px;
-  border-radius: .11rem;
-  transition: all .2s ease-in;
+  border-radius: 0.11rem;
+  transition: all 0.2s ease-in;
   text-align: center;
   justify-content: center;
-  @media(min-width: 1200px) {
+  @media (min-width: 1200px) {
     margin-right: 220px;
     margin-left: 220px;
   }
 `;
 
-
 export const Section = styled.section`
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 15px;
-  @media(min-width: 630px) { margin-left: 120px; margin-right: 120px; }
-  @media(min-width: 1024px) { margin-left: 50px; margin-right: 50px; }
-  @media(min-width: 1300px) { margin-left: 100px; margin-right: 100px;  }
+  @media (min-width: 630px) {
+    margin-left: 120px;
+    margin-right: 120px;
+  }
+  @media (min-width: 1024px) {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  @media (min-width: 1300px) {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
 `;
 
 export const Homebutton = styled.button`
@@ -47,12 +63,12 @@ export const Homebutton = styled.button`
   }
   &:hover {
     z-index: 999;
-    transform: scale3d(1.02,1.02,1);
+    transform: scale3d(1.02, 1.02, 1);
   }
-`
+`;
 export const ShowMoreWrapper = FlexRow.extend`
   justify-content: center;
-`
+`;
 
 // export const HeaderText = styled.h2`
 //   font-size: 1.2rem;

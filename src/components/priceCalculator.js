@@ -1,5 +1,6 @@
-import React from 'react'
-import MakeOffer from '../components/makeOffer/makeOffer'
+import React from "react";
+import PropTypes from "prop-types";
+import MakeOffer from "./makeOffer/makeOffer";
 import {
   DropDown,
   PriceTitle,
@@ -9,17 +10,28 @@ import {
   Wrapper,
   DropDownSize,
   DropDownWrapper,
-} from '../styles/priceCalStyles'
+} from "../styles/priceCalStyles";
+
 class PriceCalculator extends React.PureComponent {
+  static propTypes = {
+    mattOnly: PropTypes.instanceOf(Array).isRequired,
+    setPrice: PropTypes.instanceOf(Array).isRequired,
+    mattOnlySale: PropTypes.instanceOf(Array).isRequired,
+    freeBoxSpring: PropTypes.string.isRequired,
+    mattress: PropTypes.string.isRequired,
+    boxPrice: PropTypes.instanceOf(Array).isRequired,
+    setPriceSale: PropTypes.instanceOf(Array).isRequired,
+  };
+
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      sizeSector: '0',
-      boxSector: '1',
+      sizeSector: "0",
+      boxSector: "1",
       totalMattOnlyPrice: 0,
       totalSetPrice: 0,
       boxPrice: 0,
-      name: '',
+      name: "",
       BoxAdded: false,
       opacityAddBox: 0,
       opacityIsNaN: 0,
@@ -28,135 +40,137 @@ class PriceCalculator extends React.PureComponent {
       isOnSale: false,
       boxDisabled: true,
       saleOpacity: 0,
-      mattOnlyPrices: null,
-      setPrices: null,
+      // mattOnlyPricessetPrices: null,
       isNaNBool: false,
-    }
-    this.mattSizeSector = this.mattSizeSector.bind(this)
-    this.AddBoxPrice = this.AddBoxPrice.bind(this)
+    };
+    this.mattSizeSector = this.mattSizeSector.bind(this);
+    this.AddBoxPrice = this.AddBoxPrice.bind(this);
   }
+
   mattSizeSector(e) {
     this.setState(
       {
         sizeSector: e.target.value,
       },
-      () => this.checkForSalePrice()
-    )
+      () => this.checkForSalePrice(),
+    );
   }
 
   checkForSalePrice() {
-    const SizeSector = Number(this.state.sizeSector)
+    const { sizeSector } = this.state;
+    const { mattOnlySale, mattOnly, setPrice, setPriceSale } = this.props;
+    const SizeSector = Number(sizeSector);
     if (
-      this.props.mattOnlySale === null ||
-      this.props.mattOnlySale[SizeSector] === undefined ||
-      this.props.mattOnlySale[SizeSector] === 0
+      mattOnlySale === null ||
+      mattOnlySale[SizeSector] === undefined ||
+      mattOnlySale[SizeSector] === 0
     ) {
       this.setState(
         {
           isOnSale: false,
-          mattOnlyPrices: this.props.mattOnly,
-          setPrices: this.props.setPrice,
+          mattOnlyPrices: mattOnly,
+          setPrices: setPrice,
         },
-        () => this.changePrice()
-      )
+        () => this.changePrice(),
+      );
     } else {
       this.setState(
         {
           isOnSale: true,
-          mattOnlyPrices: this.props.mattOnlySale,
-          setPrices: this.props.setPriceSale,
+          mattOnlyPrices: mattOnlySale,
+          setPrices: setPriceSale,
         },
-        () => this.changePrice()
-      )
+        () => this.changePrice(),
+      );
     }
   }
+
   changePrice() {
-    const { sizeSector } = this.state
+    const { sizeSector, mattOnlyPrices, setPrices } = this.state;
+    const { boxPrice } = this.props;
     switch (sizeSector) {
-      case '0':
+      case "0":
         this.setState(
           {
-            name: 'Twin',
-            totalMattOnlyPrice: this.state.mattOnlyPrices[0],
-            totalSetPrice: this.state.setPrices[0],
-            boxPrice: this.props.boxPrice[0],
+            name: "Twin",
+            totalMattOnlyPrice: mattOnlyPrices[0],
+            totalSetPrice: setPrices[0],
+            boxPrice: boxPrice[0],
             BoxAdded: false,
-            boxSector: '1',
+            boxSector: "1",
           },
-          () => this.PriceCheck()
-        )
-        break
-      case '1':
+          () => this.PriceCheck(),
+        );
+        break;
+      case "1":
         this.setState(
           {
-            name: 'TwinXL',
-            totalMattOnlyPrice: this.state.mattOnlyPrices[1],
-            totalSetPrice: this.state.setPrices[1],
-            boxPrice: this.props.boxPrice[1],
+            name: "TwinXL",
+            totalMattOnlyPrice: mattOnlyPrices[1],
+            totalSetPrice: setPrices[1],
+            boxPrice: boxPrice[1],
             BoxAdded: false,
-            boxSector: '1',
+            boxSector: "1",
           },
-          () => this.PriceCheck()
-        )
-        break
-      case '2':
+          () => this.PriceCheck(),
+        );
+        break;
+      case "2":
         this.setState(
           {
-            name: 'Full',
-            totalMattOnlyPrice: this.state.mattOnlyPrices[2],
-            totalSetPrice: this.state.setPrices[2],
-            boxPrice: this.props.boxPrice[3],
+            name: "Full",
+            totalMattOnlyPrice: mattOnlyPrices[2],
+            totalSetPrice: setPrices[2],
+            boxPrice: boxPrice[3],
             BoxAdded: false,
-            boxSector: '1',
+            boxSector: "1",
           },
-          () => this.PriceCheck()
-        )
-        break
-      case '3':
+          () => this.PriceCheck(),
+        );
+        break;
+      case "3":
         this.setState(
           {
-            name: 'Queen',
-            totalMattOnlyPrice: this.state.mattOnlyPrices[3],
-            totalSetPrice: this.state.setPrices[3],
-            boxPrice: this.props.boxPrice[3],
+            name: "Queen",
+            totalMattOnlyPrice: mattOnlyPrices[3],
+            totalSetPrice: setPrices[3],
+            boxPrice: boxPrice[3],
             BoxAdded: false,
-            boxSector: '1',
+            boxSector: "1",
           },
-          () => this.PriceCheck()
-        )
-        break
-      case '4':
+          () => this.PriceCheck(),
+        );
+        break;
+      case "4":
         this.setState(
           {
-            name: 'King/Cal. King',
-            totalMattOnlyPrice: this.state.mattOnlyPrices[4],
-            totalSetPrice: this.state.setPrices[4],
-            boxPrice: this.props.boxPrice[4],
+            name: "King/Cal. King",
+            totalMattOnlyPrice: mattOnlyPrices[4],
+            totalSetPrice: setPrices[4],
+            boxPrice: boxPrice[4],
             BoxAdded: false,
-            boxSector: '1',
+            boxSector: "1",
           },
-          () => this.PriceCheck()
-        )
-        break
+          () => this.PriceCheck(),
+        );
+        break;
       default:
         this.setState({
           opacityAddBox: 0,
           opacityTotal: 0,
           BoxAdded: false,
           opacityIsNaN: 0,
-          boxSector: '1',
-          name: '',
+          boxSector: "1",
+          name: "",
           boxDisabled: true,
           saleOpacity: 0,
-        })
+        });
     }
   }
 
   PriceCheck() {
-    if (
-      this.state.totalMattOnlyPrice === '-n/a-' ||
-      this.state.totalMattOnlyPrice === -1
-    ) {
+    const { totalMattOnlyPrice } = this.state;
+    if (totalMattOnlyPrice === "-n/a-" || totalMattOnlyPrice === -1) {
       this.setState(
         {
           opacityIsNaN: 1,
@@ -165,8 +179,8 @@ class PriceCalculator extends React.PureComponent {
           opacityTotal: 0,
           notFoundOrAddText: false,
         },
-        () => this.showSale()
-      )
+        () => this.showSale(),
+      );
     } else {
       this.setState(
         {
@@ -177,64 +191,87 @@ class PriceCalculator extends React.PureComponent {
           notFoundOrAddText: true,
           boxDisabled: false,
         },
-        () => this.showSale()
-      )
+        () => this.showSale(),
+      );
     }
   }
+
   showSale() {
-    if (this.state.isOnSale && !this.state.isNaNBool) {
+    const { isOnSale, isNaNBool } = this.state;
+    if (isOnSale && !isNaNBool) {
       this.setState({
         saleOpacity: 1,
-      })
+      });
     } else {
       this.setState({
         saleOpacity: 0,
-      })
+      });
     }
   }
+
   AddBoxPrice(e) {
-    if (this.state.BoxAdded) {
+    const { BoxAdded } = this.state;
+    if (BoxAdded) {
       this.setState({
         boxSector: e.target.value,
-        total: this.state.mattOnlyPrices[this.state.sizeSector],
+        // total: mattOnlyPrices[sizeSector],
         BoxAdded: false,
-      })
+      });
     } else {
       this.setState({
         boxSector: e.target.value,
-        total: this.state.setPrices[this.state.sizeSector],
+        // total: setPrices[sizeSector],
         BoxAdded: true,
-      })
+      });
     }
   }
+
   boxdropdown() {
+    const { opacityAddBox, boxSector, boxDisabled, boxPrice } = this.state;
+    const { freeBoxSpring } = this.props;
     return (
       <div
         style={{
-          opacity: this.state.opacityAddBox,
-          transition: 'opacity 350ms ease-in-out',
+          opacity: opacityAddBox,
+          transition: "opacity 350ms ease-in-out",
         }}
       >
         <DropDown
           onChange={this.AddBoxPrice}
-          value={this.state.boxSector}
-          disabled={this.state.boxDisabled}
+          value={boxSector}
+          disabled={boxDisabled}
         >
-          <option value={'1'}>[$0.00] No Box Spring</option>
-          <option value={'2'}>
-            {this.props.freeBoxSpring === 'False'
-              ? `[$${this.state.boxPrice}.00] Standard Foundation`
-              : '[ FREE ] Standard Foundation'}
+          <option value="1">[$0.00] No Box Spring</option>
+          <option value="2">
+            {freeBoxSpring === "False"
+              ? `[$${boxPrice}.00] Standard Foundation`
+              : "[ FREE ] Standard Foundation"}
           </option>
         </DropDown>
       </div>
-    )
+    );
   }
+
   render() {
+    const {
+      name,
+      opacityAddBox,
+      notFoundOrAddText,
+      opacityIsNaN,
+      saleOpacity,
+      isOnSale,
+      BoxAdded,
+      sizeSector,
+      opacityTotal,
+      boxDisabled,
+      totalSetPrice,
+      totalMattOnlyPrice,
+    } = this.state;
+    const { setPrice, mattOnly, mattress } = this.props;
     return (
       <Wrapper>
         <DropDownWrapper>
-          <PriceTitle>PRICE: {this.state.name}</PriceTitle>
+          <PriceTitle>{`PRICE: ${name}`}</PriceTitle>
           <div>
             <DropDownSize onChange={this.mattSizeSector}>
               <option value="10">Select Size</option>
@@ -247,11 +284,11 @@ class PriceCalculator extends React.PureComponent {
           </div>
         </DropDownWrapper>
         <DropDownWrapper>
-          {this.state.notFoundOrAddText ? (
+          {notFoundOrAddText ? (
             <AddBoxTitle
               style={{
-                opacity: this.state.opacityAddBox,
-                transition: 'opacity 250ms ease-in-out',
+                opacity: opacityAddBox,
+                transition: "opacity 250ms ease-in-out",
               }}
             >
               Add a Box Spring
@@ -259,8 +296,8 @@ class PriceCalculator extends React.PureComponent {
           ) : (
             <AddBoxTitle
               style={{
-                opacity: this.state.opacityIsNaN,
-                transition: 'opacity 250ms ease-in-out',
+                opacity: opacityIsNaN,
+                transition: "opacity 250ms ease-in-out",
               }}
             >
               Size is Unavailable
@@ -268,68 +305,62 @@ class PriceCalculator extends React.PureComponent {
           )}
           {this.boxdropdown()}
         </DropDownWrapper>
-        {this.state.isOnSale ? (
+        {isOnSale ? (
           <BeforeSalePrice
             style={{
-              opacity: this.state.saleOpacity,
-              transition: 'opacity 250ms ease-in-out',
+              opacity: saleOpacity,
+              transition: "opacity 250ms ease-in-out",
             }}
           >
             $
-            {this.state.BoxAdded
-              ? this.props.setPrice[this.state.sizeSector] === -1 ||
-                this.props.mattOnly[this.state.sizeSector] === '-n/a-'
-                ? ' '
-                : this.props.setPrice[this.state.sizeSector]
-              : this.props.mattOnly[this.state.sizeSector] === -1 ||
-                this.props.mattOnly[this.state.sizeSector] === '-n/a-'
-                ? ' '
-                : this.props.mattOnly[this.state.sizeSector]}
+            {BoxAdded
+              ? setPrice[sizeSector] === -1 || mattOnly[sizeSector] === "-n/a-"
+                ? " "
+                : setPrice[sizeSector]
+              : mattOnly[sizeSector] === -1 || mattOnly[sizeSector] === "-n/a-"
+              ? " "
+              : mattOnly[sizeSector]}
           </BeforeSalePrice>
         ) : (
           <BeforeSalePrice
             style={{
-              opacity: this.state.saleOpacity,
-              transition: 'opacity 250ms ease-in-out',
+              opacity: saleOpacity,
+              transition: "opacity 250ms ease-in-out",
             }}
           >
             $
-            {this.state.BoxAdded
-              ? this.props.setPrice[0] === -1 ||
-                this.props.setPrice[0] === '-n/a-'
-                ? ' '
-                : this.props.setPrice[0]
-              : this.props.mattOnly[0] === -1 ||
-                this.props.mattOnly[0] === '-n/a-'
-                ? ' '
-                : this.props.mattOnly[0]}
+            {BoxAdded
+              ? setPrice[0] === -1 || setPrice[0] === "-n/a-"
+                ? " "
+                : setPrice[0]
+              : mattOnly[0] === -1 || mattOnly[0] === "-n/a-"
+              ? " "
+              : mattOnly[0]}
           </BeforeSalePrice>
         )}
         <Total
           style={{
-            opacity: this.state.opacityTotal,
-            transition: 'opacity 250ms ease-in-out',
+            opacity: opacityTotal,
+            transition: "opacity 250ms ease-in-out",
           }}
         >
           TOTAL: $
-          {this.state.BoxAdded
-            ? this.state.totalSetPrice === -1 ||
-              this.state.totalSetPrice === '-n/a-'
-              ? ' '
-              : this.state.totalSetPrice
-            : this.state.totalMattOnlyPrice === -1 ||
-              this.state.totalMattOnlyPrice === '-n/a-'
-              ? ' '
-              : this.state.totalMattOnlyPrice}
+          {BoxAdded
+            ? totalSetPrice === -1 || totalSetPrice === "-n/a-"
+              ? " "
+              : totalSetPrice
+            : totalMattOnlyPrice === -1 || totalMattOnlyPrice === "-n/a-"
+            ? " "
+            : totalMattOnlyPrice}
         </Total>
         <MakeOffer
-          disabled={this.state.boxDisabled}
-          opacity={this.state.opacityTotal} // MakeOffer only shows when total is visiable
-          mattress={this.props.mattress} // from SingleMattres -> priceCalculator ->
-          size={this.state.name}
+          disabled={boxDisabled}
+          opacity={opacityTotal} // MakeOffer only shows when total is visiable
+          mattress={mattress} // from SingleMattres -> priceCalculator ->
+          size={name}
         />
       </Wrapper>
-    )
+    );
   }
 }
 
@@ -351,4 +382,4 @@ class PriceCalculator extends React.PureComponent {
 // setPrices: null,
 // isNaNBool: false
 
-export default PriceCalculator
+export default PriceCalculator;

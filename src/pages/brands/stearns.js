@@ -1,6 +1,7 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import React from "react";
+import Helmet from "react-helmet";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
 import {
   MainWrapper,
   Wrapper,
@@ -12,15 +13,15 @@ import {
   Name,
   PriceRange,
   Divy,
-} from '../../styles/mattListStyles.js'
-import Layout from '../../components/layout'
-import logo from '../../images/logo.png'
-import StearnsImg from '../../images/stearnsLogo.png'
-import BreadCrumbs, { BreadWrapper } from '../../components/breadCrumbs'
+} from "../../styles/mattListStyles";
+import Layout from "../../components/layout";
+import logo from "../../images/logo.png";
+import StearnsImg from "../../images/stearnsLogo.png";
+import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 
-const Stearns = props => {
-  const { edges } = props.data.allMattress
-  const title = 'stearns'
+const Stearns = ({ data }) => {
+  const { edges } = data.allMattress;
+  const title = "stearns";
   return (
     <Layout>
       <Helmet>
@@ -59,45 +60,47 @@ const Stearns = props => {
           />
         </MainTitle>
         <Wrapper>
-          {edges.map(mattress => {
-            return (
-              <LinkWrapper key={mattress.node.id}>
-                <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
-                  <Divy>
-                    <MattImg
-                      src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                        mattress.node.coverImg.handle
-                      }`}
-                      alt={`Image of a ${mattress.node.brandName} ${
-                        mattress.node.subBrand
-                      } ${mattress.node.subName} mattress`}
-                    />
-                    <PriceRange>
-                      ${mattress.node.priceRange[0]} - $
-                      {mattress.node.priceRange[1]}
-                    </PriceRange>
-                  </Divy>
-                  <Name>
-                    {mattress.node.brandName}
-                    <br />
-                    {mattress.node.subBrand}
-                    <br />
-                    {mattress.node.subName}
-                  </Name>
-                </StyledLink>
-              </LinkWrapper>
-            )
-          })}
+          {edges.map(mattress => (
+            <LinkWrapper key={mattress.node.id}>
+              <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
+                <Divy>
+                  <MattImg
+                    src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
+                      mattress.node.coverImg.handle
+                    }`}
+                    alt={`Image of a ${mattress.node.brandName} ${
+                      mattress.node.subBrand
+                    } ${mattress.node.subName} mattress`}
+                  />
+                  <PriceRange>
+                    {`$${mattress.node.priceRange[0]} 
+                    - $${mattress.node.priceRange[1]}`}
+                  </PriceRange>
+                </Divy>
+                <Name>
+                  {mattress.node.brandName}
+                  <br />
+                  {mattress.node.subBrand}
+                  <br />
+                  {mattress.node.subName}
+                </Name>
+              </StyledLink>
+            </LinkWrapper>
+          ))}
         </Wrapper>
         <BreadWrapper Brands Bottom>
           <BreadCrumbs next="Brands" here="stearns" />
         </BreadWrapper>
       </MainWrapper>
     </Layout>
-  )
-}
+  );
+};
 
-export default Stearns
+Stearns.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+
+export default Stearns;
 
 export const stearnsMattresses = graphql`
   query stearnsMattresses {
@@ -123,4 +126,4 @@ export const stearnsMattresses = graphql`
       }
     }
   }
-`
+`;
