@@ -1,11 +1,4 @@
 import styled from "styled-components";
-import {
-  Red,
-  Blue,
-  TextShadow,
-  MainFont2,
-  MainFont1,
-} from "../../../styles/mainStyles";
 
 export const Front = styled.div`
   position: absolute;
@@ -25,15 +18,15 @@ export const Front = styled.div`
     font-size: 0.9rem;
     text-align: justify;
     text-justify: inter-character;
-    font-family: ${MainFont2};
-    border-bottom: 4px solid ${Red};
+    font-family: ${props => props.theme.MainFont2};
+    border-bottom: 4px solid ${props => props.theme.mainColor2};
     @media (orientation: landscape) {
       padding: 2px 10px 2px 10px;
-      border-bottom: 2px solid ${Red};
+      border-bottom: 2px solid ${props => props.theme.mainColor2};
     }
     @media (orientation: landscape) and (min-width: 640px) {
       padding: 7px 10px 7px 10px;
-      border-bottom: 4px solid ${Red};
+      border-bottom: 4px solid ${props => props.theme.mainColor2};
     }
     @media (min-width: 768px) and (min-height: 823px) and (orientation: portrait) {
       font-size: 1.2rem;
@@ -51,15 +44,15 @@ export const Front = styled.div`
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
-  font-family: ${MainFont1};
-  background: ${Blue};
+  font-family: ${props => props.theme.MainFont1};
+  background: ${props => props.theme.mainColor1};
   color: white;
   & h3 {
     padding: 15px 15px 15px 15px;
     font-size: 1.2rem;
     letter-spacing: 0.2rem;
     margin: 0;
-    text-shadow: ${TextShadow};
+    text-shadow: ${props => props.theme.TextShadow};
     @media (min-width: 768px) and (min-height: 823px) and (orientation: portrait) {
       font-size: 1.7rem;
       letter-spacing: 0.3rem;
@@ -77,7 +70,7 @@ export const Header = styled.header`
     border: 0;
     color: white;
     outline: none;
-    background-color: ${Blue};
+    background-color: ${props => props.theme.mainColor1};
     top: 0.1rem;
     right: 0.3rem;
     padding: 0.3rem;
@@ -94,7 +87,7 @@ export const Header = styled.header`
       font-size: 2.8rem;
     }
     &:hover {
-      color: ${Red};
+      color: ${props => props.theme.mainColor2};
     }
     &::after {
       position: absolute;

@@ -1,19 +1,9 @@
 import styled from "styled-components";
-import {
-  Animation,
-  FadeIn,
-  FlexCol,
-  FlexRow,
-  MainFont1,
-  MainFont2,
-  Blue,
-  Red,
-  TextShadow,
-} from "./mainStyles";
+import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   margin-top: 15px;
   border: 2px solid black;
   box-shadow: 0 10px 6px -6px rgba(119, 119, 119, 0.9);
@@ -106,9 +96,9 @@ export const MapImg = styled.img`
 `;
 
 export const Address = styled.p`
-  font-family: ${MainFont2};
-  background: ${Red};
-  text-shadow: ${TextShadow};
+  font-family: ${props => props.theme.MainFont2};
+  background: ${props => props.theme.mainColor2};
+  text-shadow: ${props => props.theme.TextShadow};
   color: white;
   text-align: center;
   font-size: 0.9rem;
@@ -134,7 +124,7 @@ export const Span = styled.span`
 `;
 
 export const RegularParagraph = styled.p`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   padding-left: 12px;
   padding-right: 12px;
   line-height: 1.4rem;
@@ -159,7 +149,7 @@ export const RegularParagraph = styled.p`
 `;
 
 export const BlueWrapper = styled.div`
-  background-color: ${Blue};
+  background-color: ${props => props.theme.mainColor1};
   color: white;
   margin-top: 20px;
   @media (min-width: 1024px) {
@@ -168,8 +158,8 @@ export const BlueWrapper = styled.div`
 `;
 
 export const SecondP = styled.p`
-  text-shadow: ${TextShadow};
-  font-family: ${MainFont2};
+  text-shadow: ${props => props.theme.TextShadow};
+  font-family: ${props => props.theme.MainFont2};
   padding-left: 30px;
   padding-right: 30px;
   line-height: 1.6rem;
@@ -198,7 +188,7 @@ export const PopImg = styled.img`
 `;
 
 export const PopNameHolder = styled(FlexRow)`
-  font-family: ${MainFont1};
+  font-family: ${props => props.theme.MainFont1};
   justify-content: center;
   font-size: 1rem;
   @media (min-width: 700px) {

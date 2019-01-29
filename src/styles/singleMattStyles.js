@@ -1,31 +1,17 @@
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import styled from "styled-components";
 import Markdown from "react-markdown";
-import {
-  Red,
-  Blue,
-  FlexCol,
-  FlexRow,
-  MainFont1,
-  MainFont2,
-  TextShadow,
-  FadeIn,
-  Border,
-  BoxShadow,
-  Animation,
-  RedBorderBottom,
-  H2,
-} from "./mainStyles";
+import { FlexCol, FlexRow, FadeIn, H2 } from "./mainStyles";
 
 export const PriceList = styled.ul`
   font-size: 0.3rem;
 `;
 
 export const Wrapper = styled(FlexCol)`
-  border: ${Border};
-  box-shadow: ${BoxShadow};
+  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.BoxShadow};
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   justify-content: center;
   border-radius: 0.11rem;
   @media (min-width: 1300px) {
@@ -84,7 +70,7 @@ export const MainImg = styled.img`
 `;
 
 export const Warranty = styled.p`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   text-align: center;
   font-size: 0.5rem;
   padding-right: 5px;
@@ -100,7 +86,7 @@ export const Warranty = styled.p`
 `;
 
 export const Description = styled.p`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   align-self: center;
   border-radius: 0.11rem;
   margin-left: 0px;
@@ -132,9 +118,9 @@ export const Description = styled.p`
 `;
 
 export const Overview = styled.header`
-  font-family: ${MainFont1};
-  background-color: ${Red};
-  text-shadow: ${TextShadow};
+  font-family: ${props => props.theme.MainFont1};
+  background-color: ${props => props.theme.mainColor2};
+  text-shadow: ${props => props.theme.TextShadow};
   color: white;
   letter-spacing: 0.1rem;
   text-align: center;
@@ -161,7 +147,7 @@ export const Article = styled.article`
   padding-left: 0px;
 `;
 export const Profile = styled.p`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   margin-top: 0;
   font-size: 0.9rem;
   @media (min-width: 768px) {
@@ -176,14 +162,14 @@ export const Profile = styled.p`
 `;
 // 692px
 export const StyledMarkDown = styled(Markdown)`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   margin-left: 5px;
   padding: 0px;
   & p {
     font-size: 0.9rem;
     margin-top: 0;
     margin-bottom: 0;
-    border-bottom: ${RedBorderBottom};
+    border-bottom: 4px solid ${props => props.theme.mainColor2};
     padding-bottom: 2px;
   }
   & ul {
@@ -202,14 +188,14 @@ export const StyledMarkDown = styled(Markdown)`
     }
   }
   @media (min-width: 550px) {
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
     padding: 0px 0px 0px 10px;
 
     & p {
       font-size: 1.8rem;
       margin-top: 0;
       margin-bottom: 0;
-      border-bottom: ${RedBorderBottom};
+      border-bottom: 4px solid ${props => props.theme.mainColor2};
       padding-bottom: 2px;
     }
     & ul {
@@ -250,7 +236,7 @@ export const Price = styled(FlexCol)`
 `;
 
 export const PriceTitle = styled.p`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   padding-top: 0px;
   padding-bottom: 3px;
   margin-top: 0;
@@ -280,10 +266,10 @@ export const InfoAnchor = styled(AnchorLink)`
   margin-left: 5px;
   padding-left: 15px;
   font-size: 0.9rem;
-  font-family: ${MainFont2};
-  color: ${Red};
+  font-family: ${props => props.theme.MainFont2};
+  color: ${props => props.theme.mainColor2};
   &:hover {
-    color: ${Blue};
+    color: ${props => props.theme.mainColor1};
   }
   @media (orientation: landscape) {
     display: block;

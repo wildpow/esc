@@ -1,20 +1,9 @@
 import styled from "styled-components";
-import {
-  BoxShadow,
-  Animation,
-  FlexCol,
-  FadeIn,
-  Border,
-  FlexRow,
-  MainFont2,
-  Blue,
-  TextShadow,
-  MainFont1,
-} from "./mainStyles";
+import { FlexCol, FadeIn, FlexRow } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   margin-top: 15px;
   margin-left: 0px;
   margin-right: 0px;
@@ -25,8 +14,8 @@ export const Main = styled(FlexCol)`
 `;
 
 export const CompanyWrapper = styled.article`
-  box-shadow: ${BoxShadow};
-  border: ${Border};
+  box-shadow: ${props => props.theme.BoxShadow};
+  border: ${props => props.theme.Border};
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 15px;
@@ -51,9 +40,9 @@ export const CompanyWrapper2 = styled(CompanyWrapper)`
 `;
 
 export const H3 = styled.h3`
-  text-shadow: ${TextShadow};
-  font-family: ${MainFont1};
-  background-color: ${Blue};
+  text-shadow: ${props => props.theme.TextShadow};
+  font-family: ${props => props.theme.MainFont1};
+  background-color: ${props => props.theme.mainColor1};
   color: white;
   margin-top: 0;
   text-align: center;
@@ -119,7 +108,7 @@ export const P = styled.p`
   padding-left: 5px;
   padding-right: 5px;
   align-self: flex-start;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   @media (min-width: 360px) {
     padding-left: 7px;
     padding-right: 7px;
@@ -164,7 +153,7 @@ export const ApplyNow = styled.a`
   margin-bottom: 5px;
   padding: 10px 15px 10px 15px;
   background-color: #66ccff;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   color: white;
   border: none;
   cursor: pointer;
@@ -195,5 +184,5 @@ export const BottomP = styled.p`
   text-align: center;
   margin-bottom: 0;
   padding-bottom: 5px;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
 `;

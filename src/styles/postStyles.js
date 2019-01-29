@@ -1,18 +1,10 @@
 import styled from "styled-components";
 import Markdown from "react-markdown";
-import {
-  BoxShadow,
-  FadeIn,
-  Animation,
-  Border,
-  FlexCol,
-  Blue,
-  MainFont2,
-} from "./mainStyles";
+import { FadeIn, Animation, FlexCol } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
-  border: ${Border};
-  box-shadow: ${BoxShadow};
+  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.BoxShadow};
   animation-name: ${FadeIn};
   ${Animation}
   padding-bottom: 20px;
@@ -34,14 +26,14 @@ export const BottomImg = styled.img`
 
 export const Marker = styled(Markdown)`
   & ol {
-    background-color: ${Blue};
+    background-color: ${props => props.theme.mainColor1};
     list-style-position: inside;
     color: white;
     padding-top: 10px;
     padding-bottom: 20px;
   }
   & li {
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
     margin: auto;
     padding-left: 12px;
     padding-right: 12px;
@@ -51,7 +43,7 @@ export const Marker = styled(Markdown)`
     padding-bottom: 0px;
   }
   & p {
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
     padding-left: 12px;
     padding-right: 12px;
     line-height: 1.4rem;

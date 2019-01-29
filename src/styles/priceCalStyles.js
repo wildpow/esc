@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { Blue, MainFont2, FlexCol, Red, Border } from "./mainStyles";
+import { FlexCol } from "./mainStyles";
 
 export const DropDown = styled.select`
   color: white;
   cursor: pointer;
-  background-color: ${Blue};
-  font-family: ${MainFont2};
+  background-color: ${props => props.theme.mainColor1};
+  font-family: ${props => props.theme.MainFont2};
   width: 150px;
   @media (min-width: 360px) {
     width: 160px;
@@ -57,7 +57,7 @@ export const DropDownSize = styled(DropDown)`
 export const PriceTitle = styled.h4`
   margin-bottom: 2px;
   margin-top: 0px;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   font-size: 0.9rem;
   @media (min-width: 567px) {
     margin-top: 10px;
@@ -77,7 +77,7 @@ export const PriceTitle = styled.h4`
 
 export const AddBoxTitle = styled.h4`
   font-size: 0.9rem;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   margin-top: 4px;
   margin-bottom: 2px;
   @media (min-width: 567px) {
@@ -93,14 +93,14 @@ export const AddBoxTitle = styled.h4`
   }
 `;
 export const BeforeSalePrice = styled.h6`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   margin-top: 2px;
   margin-bottom: 0px;
   margin-right: 10px;
   text-decoration: line-through;
-  text-decoration-color: ${Red};
-  -webkit-text-decoration-color: ${Red};
-  -moz-text-decoration-color: ${Red};
+  text-decoration-color: ${props => props.theme.mainColor2};
+  -webkit-text-decoration-color: ${props => props.theme.mainColor2};
+  -moz-text-decoration-color: ${props => props.theme.mainColor2};
   text-align: right;
   @media (min-width: 360px) {
     margin-top: 4px;
@@ -129,7 +129,7 @@ export const BeforeSalePrice = styled.h6`
 export const Total = styled.h4`
   margin-top: 0px;
   margin-right: 10px;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   margin-bottom: 2px;
   font-size: 1rem;
   text-align: right;
@@ -157,7 +157,7 @@ export const Wrapper = styled(FlexCol)`
   @media (min-width: 1024px) {
     margin-left: 25px;
     margin-top: 10px;
-    border-left: ${Border};
+    border-left: ${props => props.theme.Border};
   }
   @media (min-width: 1300px) {
     margin-top: 0px;

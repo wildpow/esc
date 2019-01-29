@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { MainFont2, Blue, Red } from "../styles/mainStyles";
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -12,7 +11,7 @@ export const BreadWrapper = styled.div`
   margin-top: ${props => (props.Bottom ? "0px" : "12px")};
   margin-bottom: ${props => (props.Bottom ? "0px" : "10px")};
   font-size: 0.9rem;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   display: flex;
   margin-right: ${props => (props.Brands ? "15px" : "5px")};
   margin-left: ${props => (props.Brands ? "15px" : "5px")};
@@ -45,9 +44,9 @@ const Span = styled.span`
   }
 `;
 const Crumbs = styled(Link)`
-  color: ${Blue};
+  color: ${props => props.theme.mainColor1};
   &:hover {
-    color: ${Red};
+    color: ${props => props.theme.mainColor2};
   }
 `;
 const Location = styled.div`

@@ -2,8 +2,6 @@ import styled from "styled-components";
 // import { NavLink } from 'gatsby';
 import { Link } from "gatsby";
 
-import { Blue, Red, MainFont1, Border, BoxShadow } from "./mainStyles";
-
 export const Button = styled.button`
   float: right;
   cursor: pointer;
@@ -48,15 +46,15 @@ export const MenuLines = styled.span`
   }
   span:nth-child(1) {
     top: 0;
-    background: ${Red};
+    background: ${props => props.theme.mainColor2};
   }
   span:nth-child(2) {
     top: 10px;
-    background-color: ${Blue};
+    background-color: ${props => props.theme.mainColor1};
   }
   span:nth-child(3) {
     top: 20px;
-    background: ${Red};
+    background: ${props => props.theme.mainColor2};
   }
 
   @media (min-width: 768px) {
@@ -83,7 +81,7 @@ export const Bar = styled.span`
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  background-color: ${Blue};
+  background-color: ${props => props.theme.mainColor1};
   position: fixed;
   top: 0;
   left: 0;
@@ -128,14 +126,14 @@ export const LinkWrapper = styled.div`
 
 export const StyledLink = styled(Link)`
   z-index: 2000;
-  font-family: ${MainFont1};
+  font-family: ${props => props.theme.MainFont1};
   font-size: 1.7rem;
   font-variant: small-caps;
   letter-spacing: 0.22rem;
   color: white;
   text-decoration: none;
   transition: all 0.2s ease-in;
-  border-bottom: 8px solid ${Blue};
+  border-bottom: 8px solid ${props => props.theme.mainColor1};
   /* Still working on these */
   text-align: center;
   margin: auto;
@@ -145,7 +143,7 @@ export const StyledLink = styled(Link)`
     transform: scale3d(1.2, 1.3, 1);
   }
   &.active {
-    border-bottom: 8px solid ${Red};
+    border-bottom: 8px solid ${props => props.theme.mainColor2};
   }
   @media (min-width: 360px) {
     padding: 12px 28px 5px 28px;
@@ -232,8 +230,8 @@ export const Image = styled.img`
 
 export const BGcolorWrapper = styled.div`
   display: none;
-  border: ${Border};
-  box-shadow: ${BoxShadow};
+  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.BoxShadow};
   @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
     background-color: white;
     margin: auto;

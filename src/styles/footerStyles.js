@@ -1,14 +1,6 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import {
-  BoxShadow,
-  Border,
-  FlexRow,
-  FlexCol,
-  MainFont2,
-  Red,
-  Blue,
-} from "./mainStyles";
+import { FlexRow, FlexCol } from "./mainStyles";
 
 export const MainFooter = styled.footer`
   margin-top: 15px;
@@ -23,8 +15,8 @@ export const MainFooter = styled.footer`
 `;
 
 export const Wrapper = styled.div`
-  box-shadow: ${BoxShadow};
-  border: ${Border};
+  box-shadow: ${props => props.theme.BoxShadow};
+  border: ${props => props.theme.Border};
   margin: 0 auto;
   padding-top: 5px;
   background-color: white;
@@ -46,7 +38,7 @@ const ImgHover = styled.img`
 export const Social = styled(FlexRow)`
   justify-content: center;
   padding: 7px 7px 4px 7px;
-  background-color: ${props => (props.Red ? Red : "white")};
+  background-color: ${props => (props.Red ? props.theme.mainColor2 : "white")};
 `;
 
 export const FBimage = styled(ImgHover)`
@@ -121,7 +113,7 @@ export const Contact = styled(FlexRow)`
 `;
 
 export const Hours = styled(FlexCol)`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   text-align: center;
   font-size: 1rem;
   width: 160px;
@@ -153,9 +145,9 @@ export const MapLink = styled.a`
   text-decoration: none;
   &:hover {
     text-decoration: underline;
-    text-decoration-color: ${Red};
-    -webkit-text-decoration-color: ${Red};
-    -moz-text-decoration-color: ${Red};
+    text-decoration-color: ${props => props.theme.mainColor2};
+    -webkit-text-decoration-color: ${props => props.theme.mainColor2};
+    -moz-text-decoration-color: ${props => props.theme.mainColor2};
   }
 `;
 
@@ -168,7 +160,7 @@ export const Divy = styled(FlexRow)`
 `;
 
 export const BottomLinkWrapper = styled(FlexCol)`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   line-height: 1.7rem;
   justify-content: space-around;
   margin-bottom: 15px;
@@ -183,9 +175,9 @@ export const BottomLinkWrapper = styled(FlexCol)`
 `;
 
 export const BottomLinks = styled(Link)`
-  color: ${Blue};
+  color: ${props => props.theme.mainColor1};
   &:hover {
-    color: ${Red};
+    color: ${props => props.theme.mainColor2};
   }
 `;
 

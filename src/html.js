@@ -29,7 +29,7 @@ export default class HTML extends React.Component {
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           <div id="modal-root" />
-          <form
+          {/* <form
             name="contact"
             netlify="true"
             netlify-honeypot="bot-field"
@@ -52,7 +52,7 @@ export default class HTML extends React.Component {
             <textarea type="text" name="note" />
             <input type="text" name="mattress" />
             <input type="text" name="size" />
-          </form>
+          </form> */}
           {this.props.postBodyComponents}
         </body>
       </html>

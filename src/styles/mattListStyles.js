@@ -1,20 +1,11 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import {
-  Animation,
-  FadeIn,
-  H2,
-  FlexCol,
-  BoxShadow,
-  FlexRow,
-  Border,
-  MainFont2,
-} from "./mainStyles";
+import { FadeIn, H2, FlexCol, BoxShadow, FlexRow } from "./mainStyles";
 
 export const MainWrapper = styled(FlexCol)`
   /* box-shadow: ${BoxShadow};  */
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   justify-content: space-between;
   /* border-radius: .11rem;
   border: 1px solid #eee; */
@@ -36,7 +27,7 @@ export const SaleTitle = styled.header`
   display: flex;
   flex-direction: column;
   margin-top: 15px;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   padding-right: 5px;
   padding-left: 5px;
 `;
@@ -167,7 +158,7 @@ export const MattImg = styled.img`
 `;
 
 export const Name = styled.div`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   text-decoration: none;
   text-align: center;
   padding-left: 5px;
@@ -186,7 +177,7 @@ export const Name = styled.div`
 
 export const PriceRange = styled.div`
   color: black;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   font-size: 0.7rem;
   text-align: center;
   @media (min-width: 360px) {
@@ -204,14 +195,14 @@ export const Divy = styled.div`
 `;
 
 export const Wrapper2 = styled(FlexCol)`
-  border-top: ${Border};
-  border-right: ${Border};
-  border-left: ${Border};
+  border-top: ${props => props.theme.Border};
+  border-right: ${props => props.theme.Border};
+  border-left: ${props => props.theme.Border};
   margin-top: 10px;
   margin-bottom: 0px;
   margin-right: 0px;
   margin-left: 0px;
-  box-shadow: ${BoxShadow};
+  box-shadow: ${props => props.theme.BoxShadow};
   align-self: center;
   @media (min-width: 360px) {
     margin-right: 3px;
@@ -264,7 +255,7 @@ export const Headline = styled(H2)`
 `;
 
 export const P = styled.p`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   text-align: justify;
   text-justify: inter-character !important;
   margin-bottom: 0;

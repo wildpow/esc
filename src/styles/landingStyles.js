@@ -1,12 +1,5 @@
 import styled from "styled-components";
-import {
-  MainFont2,
-  MainFont1,
-  TextShadow,
-  Red,
-  Animation,
-  FadeIn,
-} from "./mainStyles";
+import { FadeIn } from "./mainStyles";
 
 export const Container = styled.div`
   display: flex;
@@ -88,7 +81,7 @@ export const Headline = styled.p`
   margin-top: 5px;
   color: #706259;
   word-break: break-word;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   &::first-letter {
     font-size: 140%;
   }
@@ -172,7 +165,7 @@ export const Label = styled.label`
   text-align: left;
   color: #706259;
   width: 70px;
-  font-family: ${MainFont1};
+  font-family: ${props => props.theme.MainFont1};
   margin-left: 5px;
   @media (min-width: 360px) {
     font-size: 1rem;
@@ -191,7 +184,7 @@ export const Button = styled.button`
   padding: 10px;
   background-color: #706259;
   border: 1px solid #ccc;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   letter-spacing: 0.25rem;
   color: #f6f5f2;
   text-align: center;
@@ -224,18 +217,18 @@ export const Button = styled.button`
 
 export const Input = styled.input`
   width: 70%;
-  font-family: ${MainFont2} !important;
+  font-family: ${props => props.theme.MainFont2} !important;
   &:focus {
     outline: none;
     border: 2px solid #706259;
   }
   ::-webkit-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
   }
   ::-moz-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
   }
 
   @media (min-width: 360px) {
@@ -287,7 +280,7 @@ export const Holder = styled.aside`
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     font-variant: small-caps;
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
     @media (min-width: 1024px) {
       font-size: 1.8rem;
     }
@@ -308,11 +301,11 @@ export const BottomWrapper = styled.article`
     padding-bottom: 10px;
     text-align: center;
     color: #706259;
-    text-shadow: ${TextShadow};
+    text-shadow: ${props => props.theme.TextShadow};
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     font-variant: small-caps;
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
     @media (min-width: 1024px) {
       font-size: 2.5rem;
     }
@@ -338,10 +331,10 @@ export const BottomImg = styled.img`
 
 export const RatingsWrap = styled.div`
   text-align: center;
-  text-shadow: ${TextShadow};
+  text-shadow: ${props => props.theme.TextShadow};
   color: #f6f5f2;
   background-color: #706259;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
 `;
 
 export const StarImg = styled.img`
@@ -384,7 +377,7 @@ export const FooterWraper = styled.div`
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     font-variant: small-caps;
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
   }
 `;
 
@@ -395,12 +388,12 @@ export const CallTOAction = styled.p`
   padding-right: 5px;
   padding-left: 5px;
   text-align: center;
-  text-shadow: ${TextShadow};
+  text-shadow: ${props => props.theme.TextShadow};
   color: #f6f5f2;
   background-color: #706259;
   margin-bottom: 0;
   line-height: 1.4rem;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   @media (min-width: 360px) {
     padding-top: 7px;
     padding-bottom: 7px;
@@ -427,7 +420,7 @@ export const MapInfo = styled.div`
   display: flex;
   flex-direction: column;
   font-variant: small-caps;
-  font-family: ${MainFont1};
+  font-family: ${props => props.theme.MainFont1};
   & h3 {
     margin-bottom: 1px;
     margin-top: 2px;
@@ -451,14 +444,14 @@ export const MapInfo = styled.div`
       letter-spacing: 0.2rem;
     }
     &:hover {
-      color: ${Red} !important;
+      color: ${props => props.theme.mainColor2} !important;
     }
   }
 `;
 
 export const ModalBox = styled.div`
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   align-self: center;
   display: flex;
   flex-direction: column;
@@ -473,7 +466,7 @@ export const ModalBox = styled.div`
   padding-top: 20px;
   background: #f6f5f2;
   color: #706259;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   @media (min-width: 768px) {
     padding: 40px;
   }

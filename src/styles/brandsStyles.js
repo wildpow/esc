@@ -1,18 +1,11 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import {
-  FlexCol,
-  Animation,
-  FadeIn,
-  MainFont1,
-  Blue,
-  MainFont2,
-} from "./mainStyles";
+import { FlexCol, FadeIn } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
   /* margin-top: 15px; */
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   text-align: center;
   @media (min-width: 1022px) {
     flex-direction: row;
@@ -89,8 +82,8 @@ export const MainText = styled.p`
 `;
 
 export const Footer = styled.p`
-  font-family: ${MainFont1};
-  background-color: ${Blue};
+  font-family: ${props => props.theme.MainFont1};
+  background-color: ${props => props.theme.mainColor1};
   margin-bottom: 0;
   padding: 10px 0 10px 0;
   color: white;
@@ -99,7 +92,7 @@ export const Footer = styled.p`
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 export const StyledLink = styled(Link)`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   text-decoration: none;
   flex-basis: 100%;
   color: black;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { MainFont2 } from "../../../styles/mainStyles";
 
 export const Back = styled.div`
   position: absolute;
@@ -26,7 +25,7 @@ export const Back = styled.div`
     font-size: 1.1rem;
     text-align: justify;
     text-justify: inter-character;
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
     @media (orientation: landscape) {
       padding: 2px 10px 2px 10px;
     }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Animation, FadeIn } from "../../../styles/mainStyles";
+import { FadeIn } from "../../../styles/mainStyles";
 
 export const ModalContainer = styled.div`
   position: fixed;
@@ -17,7 +17,7 @@ export const CardContainer = styled.div`
   width: 93vw;
   height: 87vh;
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   @media(orientation: landscape) and (max-width: 812px) and (max-height: 450px) {
     width: 92vw;
     height: 97vh;

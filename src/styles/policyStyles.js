@@ -1,22 +1,11 @@
 import styled from "styled-components";
-import {
-  FadeIn,
-  Border,
-  BoxShadow,
-  MainFont1,
-  MainFont2,
-  Blue,
-  TextShadow,
-  FlexCol,
-  Animation,
-  RedBorderBottom,
-} from "./mainStyles";
+import { FadeIn, FlexCol } from "./mainStyles";
 
 export const MainArticle = styled.article`
-  border: ${Border};
-  box-shadow: ${BoxShadow};
+  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.BoxShadow};
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   margin-top: 15px;
   @media (min-width: 1300px) {
     margin-left: 85px;
@@ -25,8 +14,8 @@ export const MainArticle = styled.article`
 `;
 
 export const WarranyName = styled.h4`
-  font-family: ${MainFont1};
-  border-bottom: ${RedBorderBottom};
+  font-family: ${props => props.theme.MainFont1};
+  border-bottom: 4px solid ${props => props.theme.mainColor2};
   text-align: center;
   margin: 0 auto;
   font-size: 1rem;
@@ -42,15 +31,15 @@ export const WarranyName = styled.h4`
 `;
 
 export const WarranyNumber = styled.a`
-  color: ${Blue};
-  font-family: ${MainFont2};
+  color: ${props => props.theme.mainColor1};
+  font-family: ${props => props.theme.MainFont2};
   margin-top: 10px;
   margin-bottom: 20px;
   text-align: center;
   font-size: 1.2rem;
   letter-spacing: 0.12rem;
   &:hover {
-    color: #eb1c24;
+    color: ${props => props.theme.mainColor2};
   }
   @media (min-width: 768px) {
     font-size: 1.8rem;
@@ -59,9 +48,9 @@ export const WarranyNumber = styled.a`
 `;
 
 export const WarrantyTopper = styled.h3`
-  font-family: ${MainFont1};
-  text-shadow: ${TextShadow};
-  background-color: ${Blue};
+  font-family: ${props => props.theme.MainFont1};
+  text-shadow: ${props => props.theme.TextShadow};
+  background-color: ${props => props.theme.mainColor1};
   padding: 20px;
   line-height: 1.2rem;
   letter-spacing: 0.1rem;
@@ -88,7 +77,7 @@ export const WarrantyWrapper = styled(FlexCol)`
 `;
 
 export const P = styled.p`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   text-indent: 25px;
   line-height: 1.35rem;
   padding-right: 8px;
@@ -112,8 +101,8 @@ export const P = styled.p`
 `;
 
 export const Heading = styled.h3`
-  font-family: ${MainFont2};
-  border-bottom: ${RedBorderBottom};
+  font-family: ${props => props.theme.MainFont2};
+  border-bottom: 4px solid ${props => props.theme.mainColor2};
   padding-bottom: 5px;
   padding-left: 10px;
   margin-bottom: 8px;
