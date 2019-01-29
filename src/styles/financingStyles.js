@@ -12,7 +12,7 @@ import {
   MainFont1,
 } from "./mainStyles";
 
-export const Main = FlexCol.extend`
+export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${Animation}
   margin-top: 15px;
@@ -46,7 +46,7 @@ export const CompanyWrapper = styled.article`
   }
 `;
 
-export const CompanyWrapper2 = CompanyWrapper.extend`
+export const CompanyWrapper2 = styled(CompanyWrapper)`
   margin-bottom: 0px;
 `;
 
@@ -99,7 +99,7 @@ export const Img = styled.img`
   }
 `;
 
-export const InfoWrapper = FlexRow.extend`
+export const InfoWrapper = styled(FlexRow)`
   flex-wrap: wrap;
   justify-content: space-around;
   @media (min-width: 768px) {

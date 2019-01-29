@@ -10,7 +10,7 @@ import {
   FlexRow,
 } from "./mainStyles";
 
-export const Main = FlexCol.extend`
+export const Main = styled(FlexCol)`
   font-family: ${MainFont2};
   border: ${Border};
   box-shadow: ${BoxShadow};
@@ -66,7 +66,7 @@ export const Homebutton = styled.button`
     transform: scale3d(1.02, 1.02, 1);
   }
 `;
-export const ShowMoreWrapper = FlexRow.extend`
+export const ShowMoreWrapper = styled(FlexRow)`
   justify-content: center;
 `;
 

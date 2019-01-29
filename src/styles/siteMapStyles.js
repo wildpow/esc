@@ -12,7 +12,7 @@ import {
   Animation,
 } from "./mainStyles";
 
-export const MattLinksWrapper = FlexRow.extend`
+export const MattLinksWrapper = styled(FlexRow)`
   animation-name: ${FadeIn};
   flex-wrap: wrap;
   justify-content: space-around;
@@ -61,7 +61,7 @@ export const SiteLinks = styled(Link)`
   }
 `;
 
-export const MainLinks = FlexCol.extend`
+export const MainLinks = styled(FlexCol)`
   animation-name: ${FadeIn};
   border: ${Border};
   box-shadow: ${BoxShadow};
@@ -100,7 +100,7 @@ export const UnList = styled.ul`
   padding-left: 0;
 `;
 
-export const BottomLinks = FlexRow.extend`
+export const BottomLinks = styled(FlexRow)`
   justify-content: space-evenly;
   flex-wrap: wrap;
   @media (min-width: 1300px) {

@@ -15,7 +15,7 @@ export const Promo = styled.p`
   text-align: center;
 `;
 
-export const BigPromo = Promo.extend`
+export const BigPromo = styled(Promo)`
   max-width: 160px;
   transition: all 0.25s ease-in;
   &:hover {

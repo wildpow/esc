@@ -42,7 +42,7 @@ export const DropDown = styled.select`
     margin-bottom: 10px;
   }
 `;
-export const DropDownSize = DropDown.extend`
+export const DropDownSize = styled(DropDown)`
   @media (min-width: 567px) {
     padding-right: 123px;
   }
@@ -151,7 +151,7 @@ export const Total = styled.h4`
   }
 `;
 
-export const Wrapper = FlexCol.extend`
+export const Wrapper = styled(FlexCol)`
   margin-left: 5px;
   justify-content: center;
   @media (min-width: 1024px) {

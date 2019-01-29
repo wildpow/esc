@@ -43,20 +43,20 @@ const ImgHover = styled.img`
     transform: scale3d(1.1, 1.1, 1);
   }
 `;
-export const Social = FlexRow.extend`
+export const Social = styled(FlexRow)`
   justify-content: center;
   padding: 7px 7px 4px 7px;
   background-color: ${props => (props.Red ? Red : "white")};
 `;
 
-export const FBimage = ImgHover.extend`
+export const FBimage = styled(ImgHover)`
   max-width: 3rem;
   @media (min-width: 360px) {
     max-width: 3.4rem;
   }
 `;
 
-export const Timage = ImgHover.extend`
+export const Timage = styled(ImgHover)`
   max-width: 3.7rem;
   padding-left: 10px;
   @media (min-width: 360px) {
@@ -64,7 +64,7 @@ export const Timage = ImgHover.extend`
   }
 `;
 
-export const InstaImg = ImgHover.extend`
+export const InstaImg = styled(ImgHover)`
   max-width: 3.2rem;
   margin-left: 10px;
   @media (min-width: 360px) {
@@ -72,7 +72,7 @@ export const InstaImg = ImgHover.extend`
   }
 `;
 
-export const MapsImg = ImgHover.extend`
+export const MapsImg = styled(ImgHover)`
   max-width: 3.2rem;
   margin-left: 10px;
   @media (min-width: 360px) {
@@ -80,7 +80,7 @@ export const MapsImg = ImgHover.extend`
   }
 `;
 
-export const GraphImg = ImgHover.extend`
+export const GraphImg = styled(ImgHover)`
   display: inline-block;
   margin-left: 10px;
 `;
@@ -113,14 +113,14 @@ export const GraphLink = styled.a`
   }
 `;
 
-export const Contact = FlexRow.extend`
+export const Contact = styled(FlexRow)`
   justify-content: space-around;
   justify-content: space-evenly;
   margin-top: 10px;
   margin-bottom: 10px;
 `;
 
-export const Hours = FlexCol.extend`
+export const Hours = styled(FlexCol)`
   font-family: ${MainFont2};
   text-align: center;
   font-size: 1rem;
@@ -159,7 +159,7 @@ export const MapLink = styled.a`
   }
 `;
 
-export const Divy = FlexRow.extend`
+export const Divy = styled(FlexRow)`
   justify-content: center;
   margin-top: 20px;
   @media (min-width: 768px) {
@@ -167,7 +167,7 @@ export const Divy = FlexRow.extend`
   }
 `;
 
-export const BottomLinkWrapper = FlexCol.extend`
+export const BottomLinkWrapper = styled(FlexCol)`
   font-family: ${MainFont2};
   line-height: 1.7rem;
   justify-content: space-around;

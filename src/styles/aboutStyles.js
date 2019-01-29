@@ -11,7 +11,7 @@ import {
   TextShadow,
 } from "./mainStyles";
 
-export const Main = FlexCol.extend`
+export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${Animation}
   margin-top: 15px;
@@ -23,7 +23,7 @@ export const Main = FlexCol.extend`
   }
 `;
 
-export const PicHolder = FlexRow.extend`
+export const PicHolder = styled(FlexRow)`
   justify-content: space-between;
   @media (min-width: 640px) {
     justify-content: space-around;
@@ -197,7 +197,7 @@ export const PopImg = styled.img`
   }
 `;
 
-export const PopNameHolder = FlexRow.extend`
+export const PopNameHolder = styled(FlexRow)`
   font-family: ${MainFont1};
   justify-content: center;
   font-size: 1rem;

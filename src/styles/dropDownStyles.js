@@ -8,7 +8,7 @@ import {
   FlexRow,
 } from "./mainStyles";
 
-export const Wrapper = FlexCol.extend`
+export const Wrapper = styled(FlexCol)`
   justify-content: center;
   margin: 0;
   padding: 0;
@@ -102,7 +102,7 @@ export const Button = styled.button`
   }
 `;
 
-export const DropDownWrapper = FlexCol.extend`
+export const DropDownWrapper = styled(FlexCol)`
   box-shadow: ${BoxShadow};
   outline: none;
   position: absolute;
@@ -170,7 +170,7 @@ export const Sale = styled.div`
   }
 `;
 
-export const Row = FlexRow.extend`
+export const Row = styled(FlexRow)`
   justify-content: space-around;
   width: 130px;
   @media (min-width: 1024px) {

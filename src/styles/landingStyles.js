@@ -108,7 +108,7 @@ export const Headline = styled.p`
   }
 `;
 
-export const MainHeadline = Headline.extend`
+export const MainHeadline = styled(Headline)`
   @media (min-width: 1024px) {
     line-height: 2rem;
     font-size: 1.4rem;
@@ -513,7 +513,7 @@ export const ModalContainer = styled.div`
   /* overflow: hidden; */
 `;
 
-export const ModalButton = Button.extend`
+export const ModalButton = styled(Button)`
   @media (min-width: 768px) {
     font-size: 2rem;
   }
