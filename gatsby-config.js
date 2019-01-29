@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: "E.S.C Mattress Center",
@@ -7,7 +11,7 @@ module.exports = {
     {
       resolve: `gatsby-source-graphcms`,
       options: {
-        endpoint: `https://api.graphcms.com/simple/v1/escMattressProPandaJoshbillwill`,
+        endpoint: process.env.GATSBY_API_URL,
         query: require("./gatsby/configQuery"),
       },
     },
