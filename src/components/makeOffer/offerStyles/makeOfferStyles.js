@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Blue, Red, MainFont2 } from "../../../styles/mainStyles";
 
 export const MakeOfferContainer = styled.div`
   display: flex;
@@ -8,12 +7,12 @@ export const MakeOfferContainer = styled.div`
 `;
 
 export const MakeOfferButton = styled.button`
-  background-color: ${Blue};
+  background-color: ${props => props.theme.mainColor1};
   border-radius: 4px;
   border: 1px solid #ccc;
   color: white;
   display: block;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -31,12 +30,12 @@ export const MakeOfferButton = styled.button`
     outline: none;
   }
   &:hover:enabled {
-    background-color: ${Red};
+    background-color: ${props => props.theme.mainColor2};
     color: white;
     cursor: pointer !important;
   }
   &:active:enabled {
-    background: ${Blue} !important;
+    background: ${props => props.theme.mainColor1} !important;
     box-shadow: inset 0px 0px 5px #c1c1c1 !important;
     outline: none;
   }

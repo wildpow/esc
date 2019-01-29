@@ -1,26 +1,14 @@
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import {
-  Animation,
-  FadeIn,
-  FlexCol,
-  BoxShadow,
-  Border,
-  TextShadow,
-  FlexRow,
-  RedBorderBottom,
-  MainFont2,
-  MainFont1,
-  Blue,
-} from "./mainStyles";
+import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
 export const AdjMarkdown = styled(ReactMarkdown)`
-  font-family: ${MainFont1};
+  font-family: ${props => props.theme.MainFont1};
   padding: 30px;
   display: none;
   & p {
-    border-bottom: ${RedBorderBottom};
+    border-bottom: 4px solid ${props => props.theme.mainColor2};
     font-size: 1.6rem;
     margin-top: 0;
     margin-bottom: 0;
@@ -35,12 +23,12 @@ export const AdjMarkdown = styled(ReactMarkdown)`
     padding-bottom: 2px;
   }
   @media (min-width: 568px) {
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
     display: block;
     padding: 30px;
 
     & p {
-      border-bottom: ${RedBorderBottom};
+      border-bottom: 4px solid ${props => props.theme.mainColor2};
       font-size: 1.6rem;
       margin-top: 0;
       margin-bottom: 0;
@@ -78,7 +66,7 @@ export const AdjMarkdown = styled(ReactMarkdown)`
 
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   margin-left: 0px;
   margin-right: 0px;
   @media (min-width: 1022px) {
@@ -91,8 +79,8 @@ export const Main = styled(FlexCol)`
 `;
 
 export const StyledLink = styled(Link)`
-  box-shadow: ${BoxShadow};
-  border: ${Border};
+  box-shadow: ${props => props.theme.BoxShadow};
+  border: ${props => props.theme.Border};
   text-decoration: none;
   margin-left: 2px;
   margin-right: 2px;
@@ -111,9 +99,9 @@ export const StyledLink = styled(Link)`
 `;
 
 export const H3 = styled.h3`
-  text-shadow: ${TextShadow};
-  font-family: ${MainFont1};
-  background-color: ${Blue};
+  text-shadow: ${props => props.theme.TextShadow};
+  font-family: ${props => props.theme.MainFont1};
+  background-color: ${props => props.theme.mainColor1};
   color: white;
   margin-top: 0;
   text-align: center;

@@ -1,23 +1,13 @@
 import { Link } from "gatsby";
 import styled from "styled-components";
-import {
-  FadeIn,
-  Border,
-  BoxShadow,
-  MainFont1,
-  MainFont2,
-  Blue,
-  FlexCol,
-  FlexRow,
-  Animation,
-} from "./mainStyles";
+import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
 export const MattLinksWrapper = styled(FlexRow)`
   animation-name: ${FadeIn};
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
-  ${Animation}
+  ${props => props.theme.Animation}
   @media(min-width: 1300px) {
     margin-left: 50px;
     margin-right: 50px;
@@ -25,8 +15,8 @@ export const MattLinksWrapper = styled(FlexRow)`
 `;
 
 export const Main = styled.div`
-  border: ${Border};
-  box-shadow: ${BoxShadow};
+  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.BoxShadow};
   margin-bottom: 20px;
   ul {
     padding-right: 20px;
@@ -35,11 +25,11 @@ export const Main = styled.div`
     line-height: 1.9rem;
   }
   li {
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
   }
   h3 {
-    font-family: ${MainFont1};
-    background-color: ${Blue};
+    font-family: ${props => props.theme.MainFont1};
+    background-color: ${props => props.theme.mainColor1};
     margin: 0;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -63,10 +53,10 @@ export const SiteLinks = styled(Link)`
 
 export const MainLinks = styled(FlexCol)`
   animation-name: ${FadeIn};
-  border: ${Border};
-  box-shadow: ${BoxShadow};
+  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.BoxShadow};
   margin-top: 15px;
-  ${Animation}
+  ${props => props.theme.Animation}
   @media(min-width: 1300px) {
     margin-left: 85px;
     margin-right: 85px;
@@ -74,7 +64,7 @@ export const MainLinks = styled(FlexCol)`
 `;
 
 export const Lilist = styled.li`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   font-size: 1rem;
   letter-spacing: 0.1rem;
   padding-left: 10px;

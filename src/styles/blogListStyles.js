@@ -1,21 +1,12 @@
 import styled from "styled-components";
-import {
-  Animation,
-  FadeIn,
-  FlexCol,
-  MainFont2,
-  BoxShadow,
-  Border,
-  Blue,
-  FlexRow,
-} from "./mainStyles";
+import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
-  font-family: ${MainFont2};
-  border: ${Border};
-  box-shadow: ${BoxShadow};
+  font-family: ${props => props.theme.MainFont2};
+  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.BoxShadow};
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   margin-top: 15px;
   border-radius: 0.11rem;
   transition: all 0.2s ease-in;
@@ -46,7 +37,7 @@ export const Section = styled.section`
 `;
 
 export const Homebutton = styled.button`
-  background: ${Blue};
+  background: ${props => props.theme.mainColor1};
   width: 100%;
   font-size: 16px;
   color: white;

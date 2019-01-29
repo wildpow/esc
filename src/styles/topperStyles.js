@@ -31,7 +31,7 @@ export const Top = styled.div`
   flex-direction: row;
   justify-content: space-between;
   color: #ffffff;
-  background-color: ${props => props.theme.main};
+  background-color: ${props => props.theme.mainColor2};
   font-variant: small-caps;
   padding: 10px 6px 10px 6px;
   transition: all 0.25s ease-in;
@@ -53,11 +53,6 @@ export const Top = styled.div`
     font-size: 1.5rem;
   }
 `;
-Top.defaultProps = {
-  theme: {
-    main: "#eb1c24",
-  },
-};
 
 export const Wrapper = styled.div`
   margin-top: 0;

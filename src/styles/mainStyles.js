@@ -1,15 +1,27 @@
 import styled, { keyframes } from "styled-components";
 // Site Wide default values and styles
 
-export const Blue = "#1565c0";
-export const Red = "#eb1c24";
-export const Border = "1px solid #eee";
-export const RedBorderBottom = "4px solid #eb1c24";
-export const TextShadow = "2px 2px 4px rgba(0, 0, 0, 0.2)";
-export const BoxShadow = "0 10px 6px -6px rgba(119, 119, 119, .6)";
-export const MainFont1 = `'Roboto', sans-serif`;
-export const MainFont2 = `'Open Sans', sans-serif`;
-export const Animation = `animation-duration: .5s; animation-fill-mode: both;`;
+// export const Blue = "#1565c0";
+// export const Red = "#eb1c24";
+// export const Border = "1px solid #eee";
+// export const RedBorderBottom = "4px solid #eb1c24";
+// export const TextShadow = "2px 2px 4px rgba(0, 0, 0, 0.2)";
+// export const BoxShadow = "0 10px 6px -6px rgba(119, 119, 119, .6)";
+// export const MainFont1 = `'Roboto', sans-serif`;
+// export const MainFont2 = `'Open Sans', sans-serif`;
+// export const Animation = `animation-duration: .5s; animation-fill-mode: both;`;
+
+export const theme = {
+  mainColor1: "#1565c0", // BLUE
+  mainColor2: "#eb1c24", // RED !
+  Border: "1px solid #eee",
+  RedBorderBottom: "4px solid purple",
+  TextShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
+  BoxShadow: "0 10px 6px -6px rgba(119, 119, 119, .6)",
+  MainFont1: "'Roboto', sans-serif",
+  MainFont2: "'Open Sans', sans-serif",
+  Animation: `animation-duration: .5s; animation-fill-mode: both;`,
+};
 
 export const FlexCol = styled.div`
   display: flex;
@@ -27,9 +39,10 @@ export const FadeIn = keyframes`
 `;
 
 export const H2 = styled.h2`
-  font-family: ${MainFont1};
-  text-shadow: ${TextShadow};
-  background-color: ${props => (props.red ? "#eb1c24" : "#1565c0")};
+  font-family: ${props => props.theme.MainFont1};
+  text-shadow: ${props => props.theme.TextShadow};
+  background-color: ${props =>
+    props.red ? props.theme.mainColor2 : props.theme.mainColor1};
 
   text-align: center;
   color: white;

@@ -1,21 +1,10 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import {
-  FadeIn,
-  Animation,
-  MainFont1,
-  TextShadow,
-  Border,
-  BoxShadow,
-  FlexCol,
-  MainFont2,
-  Blue,
-  Red,
-} from "./mainStyles";
+import { FadeIn, FlexCol } from "./mainStyles";
 
 export const Main = styled.div`
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   background-color: white;
   margin-right: auto;
   margin-left: auto;
@@ -36,10 +25,10 @@ export const OneImg = styled.img`
 `;
 
 export const Wrapper = styled(FlexCol)`
-  border-top: ${Border};
-  border-right: ${Border};
-  border-left: ${Border};
-  box-shadow: ${BoxShadow};
+  border-top: ${props => props.theme.Border};
+  border-right: ${props => props.theme.Border};
+  border-left: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.BoxShadow};
   justify-content: center;
   margin-top: 10px;
   margin-right: 0px;
@@ -53,10 +42,11 @@ export const Wrapper = styled(FlexCol)`
 `;
 
 export const Headline = styled.h2`
-  font-family: ${MainFont1};
-  text-shadow: ${TextShadow};
+  font-family: ${props => props.theme.MainFont1};
+  text-shadow: ${props => props.theme.TextShadow};
   text-align: center;
-  background-color: ${props => (props.red ? "#eb1c24" : "#1565c0")};
+  background-color: ${props =>
+    props.red ? props.theme.mainColor2 : props.theme.mainColor1};
   color: white;
   margin: 0;
   padding-top: 15px;
@@ -77,7 +67,7 @@ export const Headline = styled.h2`
 `;
 
 export const P = styled.p`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   text-align: justify;
   text-justify: inter-character !important;
   margin-bottom: 0;
@@ -102,8 +92,8 @@ export const P = styled.p`
 `;
 
 export const Links = styled(Link)`
-  color: ${Red};
+  color: ${props => props.theme.mainColor2};
   &:hover {
-    color: ${Blue};
+    color: ${props => props.theme.mainColor1};
   }
 `;

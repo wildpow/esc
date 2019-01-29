@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { Red, Blue, FlexCol, MainFont1, TextShadow } from "./mainStyles";
+import { FlexCol } from "./mainStyles";
 
 export const Wrapper = styled(FlexCol)`
   margin-top: -15px;
@@ -42,9 +42,9 @@ export const Image = styled.img`
 `;
 
 export const H1 = styled.h1`
-  font-family: ${MainFont1};
-  color: ${Red};
-  text-shadow: ${TextShadow};
+  font-family: ${props => props.theme.MainFont1};
+  color: ${props => props.theme.mainColor2};
+  text-shadow: ${props => props.theme.TextShadow};
   transition: all 0.25s ease-in;
   z-index: -1;
   align-self: center;
@@ -69,7 +69,7 @@ export const H1 = styled.h1`
   }
 `;
 export const Span = styled.span`
-  color: ${Blue};
+  color: ${props => props.theme.mainColor1};
   font-style: italic;
 `;
 

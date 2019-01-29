@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { MainFont2, Red, Blue } from "../../../styles/mainStyles";
 
 export const Form = styled.form`
   padding: 10px 15px 5px 15px;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -38,23 +37,23 @@ export const Input = styled.input`
   border: none;
   margin-bottom: 10px;
   border-bottom: 2px solid #ddd;
-  font-family: ${MainFont2} !important;
+  font-family: ${props => props.theme.MainFont2} !important;
   font-size: 1.2rem;
   padding: 7px;
   margin-bottom: 10px;
   &:focus {
-    border-bottom: 2px solid ${Blue};
+    border-bottom: 2px solid ${props => props.theme.mainColor1};
   }
   &:invalid {
-    color: ${Red};
+    color: ${props => props.theme.mainColor2};
   }
   ::-webkit-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
   }
   ::-moz-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
   }
   @media (orientation: landscape) {
     margin-bottom: 0px;
@@ -81,7 +80,7 @@ export const TextArea = styled.textarea`
   outline: none;
   background: transparent;
   border: none;
-  font-family: ${MainFont2} !important;
+  font-family: ${props => props.theme.MainFont2} !important;
   margin-bottom: 20px;
   font-size: 1.2rem;
   border-bottom: 2px solid #ddd;
@@ -89,18 +88,18 @@ export const TextArea = styled.textarea`
   resize: none;
   overflow: hidden;
   &:focus {
-    border-bottom: 2px solid ${Blue};
+    border-bottom: 2px solid ${props => props.theme.mainColor1};
   }
   &:invalid {
-    color: ${Red};
+    color: ${props => props.theme.mainColor2};
   }
   ::-webkit-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
   }
   ::-moz-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${MainFont2};
+    font-family: ${props => props.theme.MainFont2};
   }
   @media (orientation: landscape) {
     font-size: 1rem;
@@ -134,12 +133,12 @@ export const TextArea = styled.textarea`
 `;
 
 export const SubmitButton = styled.button`
-  background-color: ${Blue};
+  background-color: ${props => props.theme.mainColor1};
   border-radius: 4px;
   border: 1px solid #ccc;
   color: white;
   display: block;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -158,12 +157,12 @@ export const SubmitButton = styled.button`
     outline: none;
   }
   &:hover:enabled {
-    background-color: ${Red};
+    background-color: ${props => props.theme.mainColor2};
     color: white;
     cursor: pointer !important;
   }
   &:active:enabled {
-    background: ${Blue} !important;
+    background: ${props => props.theme.mainColor1} !important;
     box-shadow: inset 0px 0px 5px #c1c1c1 !important;
     outline: none;
   }

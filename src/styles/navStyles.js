@@ -1,8 +1,7 @@
 // import { NavLink } from 'gatsby';
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 
 import styled from "styled-components";
-import { MainFont2, Blue } from "./mainStyles";
 
 export const Header = styled.header`
   display: flex;
@@ -26,16 +25,16 @@ export const StyledLinkLeft = styled(Link)`
   padding-right: 10px;
   font-size: 1.3rem;
   text-decoration: none;
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   margin-left: 20px;
-  color: ${Blue};
+  color: ${props => props.theme.mainColor1};
   transition: all 0.2s ease-in;
   &:hover {
-    border-top: 8px solid #eb1c24;
+    border-top: 8px solid ${props => props.theme.mainColor2};
   }
   &.active {
-    border-bottom: 8px solid #eb1c24;
-    border-top: 0px solid #eb1c24;
+    border-bottom: 8px solid ${props => props.theme.mainColor2};
+    border-top: 0px solid ${props => props.theme.mainColor2};
   }
   @media (min-width: 1300px) {
     margin-left: 0;
@@ -46,8 +45,8 @@ export const StyledLinkLeft = styled(Link)`
 `;
 
 export const StyledLinkRight = styled(Link)`
-  font-family: ${MainFont2};
-  color: ${Blue};
+  font-family: ${props => props.theme.MainFont2};
+  color: ${props => props.theme.mainColor1};
   transition: all 0.2s ease-in;
   margin-right: 20px;
   padding-left: 10px;
@@ -55,11 +54,11 @@ export const StyledLinkRight = styled(Link)`
   font-size: 1.3rem;
   text-decoration: none;
   &:hover {
-    border-top: 8px solid #eb1c24;
+    border-top: 8px solid ${props => props.theme.mainColor2};
   }
   &.active {
-    border-bottom: 8px solid #eb1c24;
-    border-top: 0px solid #eb1c24;
+    border-bottom: 8px solid ${props => props.theme.mainColor2};
+    border-top: 0px solid ${props => props.theme.mainColor2};
   }
 
   @media (min-width: 1300px) {

@@ -1,12 +1,5 @@
 import styled from "styled-components";
-import {
-  FlexCol,
-  MainFont2,
-  Blue,
-  Red,
-  BoxShadow,
-  FlexRow,
-} from "./mainStyles";
+import { FlexCol, FlexRow } from "./mainStyles";
 
 export const Wrapper = styled(FlexCol)`
   justify-content: center;
@@ -37,8 +30,8 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const TopButton = styled.button`
-  background-color: ${Blue};
-  font-family: ${MainFont2};
+  background-color: ${props => props.theme.mainColor1};
+  font-family: ${props => props.theme.MainFont2};
   color: white;
   border: none;
   cursor: pointer;
@@ -63,17 +56,17 @@ export const TopButton = styled.button`
     width: 243px;
   }
   &:hover {
-    background-color: #eb1c24;
+    background-color: ${props => props.theme.mainColor2};
     outline: none !important;
   }
   &:focus {
-    background: #eb1c24;
+    background: ${props => props.theme.mainColor2};
   }
 `;
 
 export const Button = styled.button`
-  background-color: ${Blue};
-  font-family: ${MainFont2};
+  background-color: ${props => props.theme.mainColor1};
+  font-family: ${props => props.theme.MainFont2};
   color: white;
   border: none;
   cursor: pointer;
@@ -83,10 +76,10 @@ export const Button = styled.button`
   border-bottom: 2px solid white;
   border-radius: 0.11rem;
   &:hover {
-    background-color: ${Red};
+    background-color: ${props => props.theme.mainColor2};
   }
   &:focus {
-    background: ${Red};
+    background: ${props => props.theme.mainColor2};
   }
   @media (min-width: 360px) {
     padding: 8px;
@@ -103,10 +96,10 @@ export const Button = styled.button`
 `;
 
 export const DropDownWrapper = styled(FlexCol)`
-  box-shadow: ${BoxShadow};
+  box-shadow: ${props => props.theme.BoxShadow};
   outline: none;
   position: absolute;
-  background-color: #1565c0;
+  background-color: ${props => props.theme.mainColor1};
   min-width: 80px;
   z-index: 1;
   &:hover {
@@ -121,7 +114,7 @@ export const DropDownWrapper = styled(FlexCol)`
 `;
 
 export const Price = styled.div`
-  font-family: ${MainFont2};
+  font-family: ${props => props.theme.MainFont2};
   font-size: 0.8rem;
   padding: 0;
   padding-top: 5px;
@@ -157,9 +150,9 @@ export const Price = styled.div`
 
 export const Sale = styled.div`
   text-decoration: line-through;
-  text-decoration-color: ${Red};
-  -webkit-text-decoration-color: ${Red};
-  -moz-text-decoration-color: ${Red};
+  text-decoration-color: ${props => props.theme.mainColor2};
+  -webkit-text-decoration-color: ${props => props.theme.mainColor2};
+  -moz-text-decoration-color: ${props => props.theme.mainColor2};
   font-size: 0.5rem;
   @media (min-width: 1024px) {
     font-size: 1rem;
