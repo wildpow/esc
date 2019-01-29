@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 import { Red, Blue, FlexCol, MainFont1, TextShadow } from "./mainStyles";
 
-export const Wrapper = FlexCol.extend`
+export const Wrapper = styled(FlexCol)`
   margin-top: -15px;
   /* position: relative;
   z-index: 2; */

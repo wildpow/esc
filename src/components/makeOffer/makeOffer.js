@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 import {
   MakeOfferContainer,
   MakeOfferButton,
@@ -10,47 +10,8 @@ import { Front, Header } from "./offerStyles/frontCardStyles";
 import { Form, Input, TextArea, SubmitButton } from "./offerStyles/formStyles";
 import { Back } from "./offerStyles/backCardStyles";
 import Logo from "../../images/ezgif.com-optimize.gif";
+import Modal from "../adFormModal";
 
-let modalRoot;
-let mainRoot;
-if (typeof document !== "undefined") {
-  modalRoot = document.getElementById("modal-root");
-  mainRoot = document.getElementById("___gatsby");
-} else {
-  modalRoot = "";
-  mainRoot = "";
-}
-
-class Modal extends Component {
-  constructor(props) {
-    super(props);
-    this.el = document.createElement("div"); // holder for the portal
-  }
-
-  componentDidMount() {
-    modalRoot.appendChild(this.el);
-    document.body.style.overflow = "hidden"; // make backgroup not scrollable
-    mainRoot.style.position = "fixed";
-    mainRoot.style.filter = "blur(5px) grayscale(50%)";
-    mainRoot.style.width = "100%";
-    mainRoot.style.height = "100%";
-    mainRoot.style.transition = ".35s";
-  }
-
-  componentWillUnmount() {
-    modalRoot.removeChild(this.el);
-    document.body.style.overflow = "visible";
-    mainRoot.style.position = "static";
-    mainRoot.style.filter = "blur(0px) grayscale(0%)";
-    mainRoot.style.width = "auto";
-    mainRoot.style.height = "auto";
-  }
-
-  render() {
-    const { children } = this.props;
-    return ReactDOM.createPortal(children, this.el);
-  }
-}
 const encode = data => {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -58,6 +19,13 @@ const encode = data => {
 };
 
 class MakeOffer extends Component {
+  static propTypes = {
+    size: PropTypes.string.isRequired,
+    mattress: PropTypes.string.isRequired,
+    disabled: PropTypes.bool.isRequired,
+    opacity: PropTypes.number.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -96,7 +64,7 @@ class MakeOffer extends Component {
         }),
       )
       .then(() => this.handleFlip())
-      .catch(error => alert(error));
+      .catch(error => console.log(error));
 
     e.preventDefault();
   };
@@ -119,28 +87,41 @@ class MakeOffer extends Component {
   }
 
   render() {
-    const { name, email, tel, note, mattress, size } = this.state;
-    const modal = this.state.showModal ? (
-      <Modal size={this.props.size}>
+    const {
+      name,
+      email,
+      tel,
+      note,
+      mattress,
+      size,
+      showModal,
+      flipCard,
+      pointerEvents,
+    } = this.state;
+    const { disabled } = this.props;
+    const modal = showModal ? (
+      <Modal>
         <ModalContainer>
           <CardContainer>
             <Card
               style={{
-                transform: this.state.flipCard,
-                WebkitTransform: this.state.flipCard,
+                transform: flipCard,
+                WebkitTransform: flipCard,
               }}
             >
               <Front>
                 <Header>
                   <h3>Make an Offer</h3>
-                  <button onClick={this.handleHide}>close</button>
+                  <button type="button" onClick={this.handleHide}>
+                    close
+                  </button>
                 </Header>
                 <p>
                   We now are making it even easier to comparison shop with our
                   locally owned and operated mattress center. If you find a
                   lower price on the same mattress from a competitor, just let
-                  us know by filling out this form and we will help you "sleep
-                  like the experts do".
+                  us know by filling out this form and we will help you
+                  &quot;sleep like the experts do&quot;.
                 </p>
                 <Form
                   onSubmit={this.handleSubmit}
@@ -198,12 +179,15 @@ class MakeOffer extends Component {
               <Back onClick={this.handleHide}>
                 <Header>
                   <h3>Form submitted</h3>
-                  <button onClick={this.handleHide}>close</button>
+                  <button type="button" onClick={this.handleHide}>
+                    close
+                  </button>
                 </Header>
                 <p>
                   Thank you for reaching out to us and giving us the opportunity
                   to earn your business. We will get back to you with in 24
-                  hours and hopefully help you "sleep like the experts do".
+                  hours and hopefully help you &quot;sleep like the experts
+                  do&quot;.
                 </p>
                 <img src={Logo} alt="bla bla" />
               </Back>
@@ -219,11 +203,13 @@ class MakeOffer extends Component {
           style={{
             opacity: this.props.opacity,
             transition: "opacity 700ms ease-in-out",
-            pointerEvents: this.state.pointerEvents,
+            pointerEvents,
           }}
-          disabled={this.props.disabled}
+          disabled={disabled}
         >
-          Make <MakeOfferSpan>an</MakeOfferSpan> Offer
+          {`Make `}
+          <MakeOfferSpan>an</MakeOfferSpan>
+          {` Offer`}
         </MakeOfferButton>
         {modal}
       </MakeOfferContainer>

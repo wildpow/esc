@@ -11,7 +11,7 @@ import {
   MainFont2,
 } from "./mainStyles";
 
-export const MainWrapper = FlexCol.extend`
+export const MainWrapper = styled(FlexCol)`
   /* box-shadow: ${BoxShadow};  */
   animation-name: ${FadeIn};
   ${Animation}
@@ -72,7 +72,7 @@ export const Img = styled.img`
   }
 `;
 
-export const SealyImgPlace = Img.extend`
+export const SealyImgPlace = styled(Img)`
   max-height: 4rem;
   max-width: 4rem;
   @media (min-width: 768px) {
@@ -87,11 +87,11 @@ export const SealyImgPlace = Img.extend`
   }
 `;
 
-export const StearnsImgPlaceHolder = Img.extend`
+export const StearnsImgPlaceHolder = styled(Img)`
   padding: 10px;
 `;
 
-export const Wrapper = FlexRow.extend`
+export const Wrapper = styled(FlexRow)`
   flex-wrap: wrap;
   flex-basis: 100%;
   justify-content: center;
@@ -203,7 +203,7 @@ export const Divy = styled.div`
   flex-direction: column;
 `;
 
-export const Wrapper2 = FlexCol.extend`
+export const Wrapper2 = styled(FlexCol)`
   border-top: ${Border};
   border-right: ${Border};
   border-left: ${Border};
@@ -245,7 +245,7 @@ export const Wrapper2 = FlexCol.extend`
   }
 `;
 
-export const Headline = H2.extend`
+export const Headline = styled(H2)`
   line-height: 1.3rem;
   font-size: 1rem;
   padding-right: 4px;

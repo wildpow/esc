@@ -1,6 +1,5 @@
 import React from "react";
-import { StaticQuery, graphql } from "gatsby";
-import Link from "gatsby-link";
+import { StaticQuery, graphql, Link } from "gatsby";
 import {
   Image,
   H1,
@@ -13,7 +12,7 @@ import readersChoice from "../images/ReadersChoiceWinner300x.png";
 // test
 const Logo = () => (
   <Wrapper>
-    <Link to="blog/esc-mattress-center-wins-best-mattress-store-in-snohomish-county">
+    <Link to="/blog/esc-mattress-center-wins-best-mattress-store-in-snohomish-county">
       <ReadersChoice
         src={readersChoice}
         alt="ESC Mattress Center was voted SnoCo best mattress store in Snohomish County"

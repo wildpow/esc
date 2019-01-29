@@ -21,7 +21,7 @@ export const PriceList = styled.ul`
   font-size: 0.3rem;
 `;
 
-export const Wrapper = FlexCol.extend`
+export const Wrapper = styled(FlexCol)`
   border: ${Border};
   box-shadow: ${BoxShadow};
   animation-name: ${FadeIn};
@@ -34,7 +34,7 @@ export const Wrapper = FlexCol.extend`
   }
 `;
 
-export const Main = FlexRow.extend`
+export const Main = styled(FlexRow)`
   margin-top: 2px;
   justify-content: space-around;
   @media (min-width: 360px) {
@@ -50,11 +50,11 @@ export const Main = FlexRow.extend`
   }
 `;
 
-export const MainInfo = FlexCol.extend`
+export const MainInfo = styled(FlexCol)`
   justify-content: space-around;
 `;
 
-export const PriceWrapper = FlexCol.extend`
+export const PriceWrapper = styled(FlexCol)`
   justify-content: center;
   flex-wrap: wrap;
   @media (min-width: 1028px) {
@@ -63,7 +63,7 @@ export const PriceWrapper = FlexCol.extend`
   }
 `;
 
-export const MainTitle = H2.extend`
+export const MainTitle = styled(H2)`
   @media (min-width: 768px) {
     text-align: left;
     padding-left: 20px;
@@ -242,7 +242,7 @@ export const StyledMarkDown = styled(Markdown)`
   }
 `;
 
-export const Price = FlexCol.extend`
+export const Price = styled(FlexCol)`
   margin-left: 10px;
   justify-content: center;
   justify-items: center;

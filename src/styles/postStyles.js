@@ -10,7 +10,7 @@ import {
   MainFont2,
 } from "./mainStyles";
 
-export const Main = FlexCol.extend`
+export const Main = styled(FlexCol)`
   border: ${Border};
   box-shadow: ${BoxShadow};
   animation-name: ${FadeIn};

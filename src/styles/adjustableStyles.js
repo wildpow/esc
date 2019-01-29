@@ -76,7 +76,7 @@ export const AdjMarkdown = styled(ReactMarkdown)`
   }
 `;
 
-export const Main = FlexCol.extend`
+export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${Animation}
   margin-left: 0px;
@@ -132,7 +132,7 @@ export const H3 = styled.h3`
   }
 `;
 
-export const InfoWrapper = FlexRow.extend`
+export const InfoWrapper = styled(FlexRow)`
   justify-content: space-around;
   @media (min-width: 1024px) {
     justify-content: space-evenly;

@@ -16,6 +16,13 @@ export default class HTML extends React.Component {
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
+          <noscript>
+            This website requires JavaScript. To contact us, please send us an
+            email at:{" "}
+            <a href="mailto:info@escmattresscenter.com">
+              info@escmattresscenter.com
+            </a>
+          </noscript>
           <div
             key={`body`}
             id="___gatsby"

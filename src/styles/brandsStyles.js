@@ -9,7 +9,7 @@ import {
   MainFont2,
 } from "./mainStyles";
 
-export const Main = FlexCol.extend`
+export const Main = styled(FlexCol)`
   /* margin-top: 15px; */
   animation-name: ${FadeIn};
   ${Animation}
@@ -121,14 +121,14 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const BrandWrapper = FlexCol.extend`
+export const BrandWrapper = styled(FlexCol)`
   justify-content: space-around;
   @media (min-width: 1022px) {
     justify-content: space-between;
   }
 `;
 
-export const StearnsWrapper = StyledLink.extend`
+export const StearnsWrapper = styled(StyledLink)`
   @media (min-width: 1022px) {
     margin-right: 10px;
     margin-left: 10px;

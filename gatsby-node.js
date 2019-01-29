@@ -44,8 +44,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             },
           });
         });
-        // console.log(result.data.allAdjBasese)
-        // console.log(result.data.allMattress)
       }),
     );
   });

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FlexCol, FlexRow } from "./mainStyles";
 
-export const ImgWrapper = FlexCol.extend`
+export const ImgWrapper = styled(FlexCol)`
   margin: 10px 0 0 0;
   height: 200px;
   @media (min-width: 360px) {
@@ -20,7 +20,7 @@ export const ImgWrapper = FlexCol.extend`
   }
 `;
 
-export const SmallImgHolder = FlexRow.extend`
+export const SmallImgHolder = styled(FlexRow)`
   justify-content: center;
   margin-top: 10px;
   align-self: center;

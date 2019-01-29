@@ -83,7 +83,7 @@ export const WarrantyTopper = styled.h3`
   }
 `;
 
-export const WarrantyWrapper = FlexCol.extend`
+export const WarrantyWrapper = styled(FlexCol)`
   justify-content: center;
 `;
 

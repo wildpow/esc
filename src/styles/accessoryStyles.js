@@ -12,7 +12,7 @@ import {
   Animation,
 } from "./mainStyles";
 
-export const Main = FlexCol.extend`
+export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${Animation}
   margin-top: 15px;
@@ -93,7 +93,7 @@ export const AccWrapper = styled.article`
   }
 `;
 
-export const AccWrapper2 = AccWrapper.extend`
+export const AccWrapper2 = styled(AccWrapper)`
   margin-bottom: 0px;
 `;
 // 640
@@ -124,7 +124,7 @@ export const H3 = styled.h3`
   }
 `;
 
-export const InfoWrapper = FlexRow.extend`
+export const InfoWrapper = styled(FlexRow)`
   flex-wrap: wrap;
   justify-content: space-around;
   @media (min-width: 568px) {
@@ -136,7 +136,7 @@ export const InfoWrapper = FlexRow.extend`
   }
 `;
 
-export const InfoWrapperReversed = InfoWrapper.extend`
+export const InfoWrapperReversed = styled(InfoWrapper)`
   flex-direction: row-reverse;
 `;
 // 667
@@ -162,7 +162,7 @@ export const Img = styled.img`
   }
 `;
 
-export const Img2 = Img.extend`
+export const Img2 = styled(Img)`
   @media (min-width: 568px) {
     margin-left: 0px;
     margin-right: 20px;

@@ -90,7 +90,6 @@ const BreadCrumbs = props => {
           here
         )}
       </Location>
-      {console.log(props)}
     </Fragment>
   );
 };
@@ -99,13 +98,14 @@ BreadCrumbs.defaultProps = {
   next2: "",
   only2Links: "",
   only3Links: "",
+  error: "",
 };
 BreadCrumbs.propTypes = {
   only2Links: PropTypes.string,
   only3Links: PropTypes.string,
   next: PropTypes.string,
   next2: PropTypes.string,
-  error: PropTypes.string.isRequired,
+  error: PropTypes.string,
   here: PropTypes.string.isRequired,
 };
 export default BreadCrumbs;

@@ -165,7 +165,7 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const BottomLinks = StyledLink.extend`
+export const BottomLinks = styled(StyledLink)`
   @media (min-width: 768px) {
     margin-top: 0px;
     text-align: center;

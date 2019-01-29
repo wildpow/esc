@@ -35,7 +35,7 @@ export const OneImg = styled.img`
   // @media(min-width: 1024px) { max-width: 1000px; height: 600px; }
 `;
 
-export const Wrapper = FlexCol.extend`
+export const Wrapper = styled(FlexCol)`
   border-top: ${Border};
   border-right: ${Border};
   border-left: ${Border};

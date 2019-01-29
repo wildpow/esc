@@ -11,7 +11,7 @@ import {
   TextShadow,
 } from "./mainStyles";
 
-export const Main = FlexCol.extend`
+export const Main = styled(FlexCol)`
   font-family: ${MainFont2};
   border: ${Border};
   box-shadow: ${BoxShadow};
