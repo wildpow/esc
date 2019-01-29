@@ -9,3 +9,5 @@ yarn-error.log
 .env
 /cypress/videos
 *.mp4
+.env.development
+.env.production
