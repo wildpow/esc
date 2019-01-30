@@ -15,7 +15,7 @@ export const theme = {
   mainColor1: "#1565c0", // BLUE
   mainColor2: "#eb1c24", // RED !
   Border: "1px solid #eee",
-  RedBorderBottom: "4px solid purple",
+  RedBorderBottom: "4px solid green",
   TextShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
   BoxShadow: "0 10px 6px -6px rgba(119, 119, 119, .6)",
   MainFont1: "'Roboto', sans-serif",
