@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Markdown from "react-markdown";
-import { FadeIn, Animation, FlexCol } from "./mainStyles";
+import { FadeIn, FlexCol } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
   border: ${props => props.theme.Border};
   box-shadow: ${props => props.theme.BoxShadow};
   animation-name: ${FadeIn};
-  ${Animation}
+  ${props => props.theme.Animation}
   padding-bottom: 20px;
   @media (min-width: 1200px) {
     margin-left: 220px;

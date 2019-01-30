@@ -7,6 +7,7 @@ import Layout from "../components/layout";
 import { Main, Linky } from "../styles/homeStyles";
 import Front from "../components/front";
 import logo from "../images/logo.png";
+import TopThreeMatts from "../components/top3Mattresses";
 
 const IndexPage = ({ data }) => {
   const { edges } = data.allCarousel;
@@ -56,6 +57,7 @@ const IndexPage = ({ data }) => {
           ))}
         </Carousel>
         <Front />
+        <TopThreeMatts />
       </Main>
     </Layout>
   );
