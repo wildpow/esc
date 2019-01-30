@@ -1,4 +1,22 @@
 module.exports = `{
+  allFront3Mattresses {
+    id
+    footerURL
+    footertagline
+    headerTagLine
+    mattresses {
+      uri
+      uriBrandName
+      id
+      brandName
+      priceRange
+      subName
+      subBrand
+      coverImg {
+        handle
+      }
+    }
+  }
   allToppers(filter: {isPublished: true}) {
     isPublished
     id
