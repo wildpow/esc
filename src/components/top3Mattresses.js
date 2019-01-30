@@ -1,5 +1,6 @@
 import React from "react";
-import { StaticQuery, graphql } from "gatsby";
+import { StaticQuery, graphql, Link } from "gatsby";
+import styled from "styled-components";
 import {
   Wrapper,
   LinkWrapper,
@@ -10,8 +11,56 @@ import {
   Name,
   MainWrapper,
   Headline,
-  Wrapper2,
 } from "../styles/mattListStyles";
+import { P } from "../styles/homeStyles";
+
+const NewWrapper = styled(MainWrapper)`
+  margin-top: 15px;
+  @media (min-width: 1024px) {
+    box-shadow: ${props => props.theme.BoxShadow};
+    border-top: ${props => props.theme.Border};
+    border-right: ${props => props.theme.Border};
+    border-left: ${props => props.theme.Border};
+  }
+`;
+const NewP = styled(P)`
+  border-top: ${props => props.theme.Border};
+`;
+const ThreeMattWrapper = styled(Wrapper)`
+  margin-bottom: 10px;
+  @media (min-width: 375px) {
+    /* margin-bottom: 5px; */
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  @media (min-width: 411px) {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  @media (min-width: 568px) {
+    margin-bottom: 5px;
+  }
+  @media (min-width: 731px) {
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+  @media (min-width: 1024px) {
+    margin-bottom: 0px;
+  }
+  @media (min-width: 1300px) {
+    margin-top: 10px;
+    /* max-width: 900px; */
+  }
+`;
+
+const FooterLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+  :hover {
+    text-decoration: underline;
+    /* color: ${props => props.theme.mainColor1}; */
+  }
+`;
 
 const TopThreeMatts = () => {
   return (
@@ -43,13 +92,13 @@ const TopThreeMatts = () => {
         }
       `}
       render={data => (
-        <MainWrapper>
-          <Wrapper2>
-            <Headline>
-              {data.allFront3Mattress.edges[0].node.headerTagLine}
-            </Headline>
-          </Wrapper2>
-          <Wrapper>
+        <NewWrapper>
+          {/* <Wrapper2> */}
+          <Headline>
+            {data.allFront3Mattress.edges[0].node.headerTagLine}
+          </Headline>
+          {/* </Wrapper2> */}
+          <ThreeMattWrapper>
             {data.allFront3Mattress.edges[0].node.mattresses.map(mattress => (
               <LinkWrapper key={mattress.id}>
                 <StyledLink
@@ -80,8 +129,17 @@ const TopThreeMatts = () => {
                 </StyledLink>
               </LinkWrapper>
             ))}
-          </Wrapper>
-        </MainWrapper>
+          </ThreeMattWrapper>
+          <NewP>
+            We know i can be tough to find a mattress. If these don't fit you're
+            needs check out some other ones.
+          </NewP>
+          <Headline red>
+            <FooterLink to={data.allFront3Mattress.edges[0].node.footerURL}>
+              {data.allFront3Mattress.edges[0].node.footertagline}
+            </FooterLink>
+          </Headline>
+        </NewWrapper>
       )}
     />
   );
