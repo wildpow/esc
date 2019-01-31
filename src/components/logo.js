@@ -22,17 +22,15 @@ const Logo = () => (
       <StaticQuery
         query={graphql`
           query allThePandas {
-            allPandaLogo {
-              edges {
-                node {
+            gcms {
+              allPandaLogoes {
+                id
+                altText
+                logoImage {
+                  handle
                   id
-                  altText
-                  logoImage {
-                    handle
-                    id
-                    width
-                    height
-                  }
+                  width
+                  height
                 }
               }
             }

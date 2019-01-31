@@ -6,16 +6,11 @@ const BlogSiteMapData = () => (
   <StaticQuery
     query={graphql`
       query allblogSiteMap {
-        allPost(
-          sort: { fields: dateAndTime, order: DESC }
-          filter: { isPublished: { eq: true } }
-        ) {
-          edges {
-            node {
-              slug
-              title
-              id
-            }
+        gcms {
+          allPosts(orderBy: dateAndTime_DESC, filter: { isPublished: true }) {
+            slug
+            title
+            id
           }
         }
       }

@@ -67,24 +67,22 @@ const TopThreeMatts = () => {
     <StaticQuery
       query={graphql`
         query top3Matts {
-          allFront3Mattress {
-            edges {
-              node {
+          gcms {
+            allFront3Mattresses {
+              id
+              footerURL
+              footertagline
+              headerTagLine
+              mattresses {
+                uri
+                uriBrandName
                 id
-                footerURL
-                footertagline
-                headerTagLine
-                mattresses {
-                  uri
-                  uriBrandName
-                  id
-                  brandName
-                  priceRange
-                  subName
-                  subBrand
-                  coverImg {
-                    handle
-                  }
+                brandName
+                priceRange
+                subName
+                subBrand
+                coverImg {
+                  handle
                 }
               }
             }

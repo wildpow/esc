@@ -6,16 +6,11 @@ const AdjSiteMapData = () => (
   <StaticQuery
     query={graphql`
       query allAdjSiteMap {
-        allAdjBasese(
-          sort: { fields: value, order: ASC }
-          filter: { isPublished: { eq: true } }
-        ) {
-          edges {
-            node {
-              uri
-              fullName
-              id
-            }
+        gcms {
+          allAdjBaseses(filter: { isPublished: true }, orderBy: value_ASC) {
+            uri
+            fullName
+            id
           }
         }
       }

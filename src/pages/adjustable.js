@@ -71,21 +71,16 @@ export default Adjustables;
 
 export const allAdjustables = graphql`
   query allAdjustables {
-    allAdjBasese(
-      sort: { fields: value, order: ASC }
-      filter: { isPublished: { eq: true } }
-    ) {
-      edges {
-        node {
-          fullName
-          features
-          uri
-          id
-          coverImg {
-            handle
-            height
-            width
-          }
+    gcms {
+      allAdjBaseses(filter: { isPublished: true }, orderBy: value_ASC) {
+        fullName
+        features
+        uri
+        id
+        coverImg {
+          handle
+          height
+          width
         }
       }
     }

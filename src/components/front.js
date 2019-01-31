@@ -7,10 +7,12 @@ const Front = () => (
     <StaticQuery
       query={graphql`
         query front {
-          front {
-            id
-            title
-            textBlock
+          gcms {
+            allFronts {
+              id
+              title
+              textBlock
+            }
           }
         }
       `}
