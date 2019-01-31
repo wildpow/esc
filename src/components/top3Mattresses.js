@@ -131,8 +131,13 @@ const TopThreeMatts = () => {
             ))}
           </ThreeMattWrapper>
           <NewP>
-            We know i can be tough to find a mattress. If these don't fit you're
-            needs check out some other ones.
+            We believe that no mattress is a one-size-fits-all solution, which
+            is why we have over 50 mattresses to choose from at our Everett
+            location. If you’d like to browse our current sale mattresses you
+            can click below, or visit our showroom on Everett Mall Way. With a
+            combined 25 years of experience helping people find the right
+            mattress for their sleep needs we’re here to help you start sleeping
+            better.
           </NewP>
           <Headline red>
             <FooterLink to={data.allFront3Mattress.edges[0].node.footerURL}>
