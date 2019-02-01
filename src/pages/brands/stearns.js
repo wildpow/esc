@@ -104,24 +104,19 @@ export default Stearns;
 
 export const stearnsMattresses = graphql`
   query stearnsMattresses {
-    allMattress(
-      sort: { fields: orderByPrice, order: ASC }
-      filter: {
-        brandName: { in: "Stearns & Foster" }
-        isPublished: { eq: true }
-      }
-    ) {
-      edges {
-        node {
-          brandName
-          uri
-          id
-          subName
-          subBrand
-          priceRange
-          coverImg {
-            handle
-          }
+    gcms {
+      allMattresses(
+        orderBy: orderByPrice_ASC
+        filter: { brandName: "Stearns & Foster", isPublished: true }
+      ) {
+        brandName
+        uri
+        id
+        subName
+        subBrand
+        priceRange
+        coverImg {
+          handle
         }
       }
     }

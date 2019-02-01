@@ -39,9 +39,9 @@ const Logo = () => (
         render={data => (
           <Image
             src={`https://media.graphcms.com/resize=w:1905,h:1233,fit:clip/${
-              data.allPandaLogo.edges[0].node.logoImage.handle
+              data.gcms.allPandaLogoes[0].logoImage.handle
             }`}
-            alt={data.allPandaLogo.edges[0].node.altText}
+            alt={data.gcms.allPandaLogoes[0].logoImage.altText}
           />
         )}
       />

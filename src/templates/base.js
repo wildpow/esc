@@ -108,27 +108,29 @@ export default Base;
 
 export const query = graphql`
   query SingleAjustableQuery($uri: String!) {
-    adjBasese(uri: { eq: $uri }) {
-      id
-      uri
-      fullName
-      keyfeatures
-      features
-      price
-      salePrice
-      brandLine
-      brandName
-      baseDescription
-      height
-      warranty
-      coverImg {
-        handle
-      }
-      detail1 {
-        handle
-      }
-      detail2 {
-        handle
+    gcms {
+      AdjBases(uri: $uri) {
+        id
+        uri
+        fullName
+        keyfeatures
+        features
+        price
+        salePrice
+        brandLine
+        brandName
+        baseDescription
+        height
+        warranty
+        coverImg {
+          handle
+        }
+        detail1 {
+          handle
+        }
+        detail2 {
+          handle
+        }
       }
     }
   }

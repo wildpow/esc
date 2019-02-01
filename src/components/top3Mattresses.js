@@ -90,14 +90,12 @@ const TopThreeMatts = () => {
         }
       `}
       render={data => (
+        // <>{console.log(data.gcms.allFront3Mattresses[0])}</>
         <NewWrapper>
-          {/* <Wrapper2> */}
-          <Headline>
-            {data.allFront3Mattress.edges[0].node.headerTagLine}
-          </Headline>
-          {/* </Wrapper2> */}
+          <Headline>{data.gcms.allFront3Mattresses[0].headerTagLine}</Headline>
+
           <ThreeMattWrapper>
-            {data.allFront3Mattress.edges[0].node.mattresses.map(mattress => (
+            {data.gcms.allFront3Mattresses[0].mattresses.map(mattress => (
               <LinkWrapper key={mattress.id}>
                 <StyledLink
                   to={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
@@ -138,8 +136,8 @@ const TopThreeMatts = () => {
             better.
           </NewP>
           <Headline red>
-            <FooterLink to={data.allFront3Mattress.edges[0].node.footerURL}>
-              {data.allFront3Mattress.edges[0].node.footertagline}
+            <FooterLink to={data.gcms.allFront3Mattresses[0].footerURL}>
+              {data.gcms.allFront3Mattresses[0].footertagline}
             </FooterLink>
           </Headline>
         </NewWrapper>

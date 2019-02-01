@@ -154,15 +154,13 @@ export default SiteMap;
 
 export const allMattressesSiteMap = graphql`
   query allMattressesSiteMap {
-    allMattress(sort: { fields: orderByPrice, order: ASC }) {
-      edges {
-        node {
-          brandName
-          id
-          subBrand
-          subName
-          uri
-        }
+    gcms {
+      allMattresses(orderBy: orderByPrice_ASC, filter: { isPublished: true }) {
+        brandName
+        id
+        subBrand
+        subName
+        uri
       }
     }
   }

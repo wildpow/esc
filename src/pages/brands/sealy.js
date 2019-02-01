@@ -182,21 +182,19 @@ export default Sealy;
 
 export const allMattresses = graphql`
   query allMattresses {
-    allMattress(sort: { fields: orderByPrice, order: ASC }) {
-      edges {
-        node {
-          brandName
-          uri
-          id
-          subLine {
-            subLineName
-          }
-          subName
-          subBrand
-          priceRange
-          coverImg {
-            handle
-          }
+    gcms {
+      allMattresses(orderBy: orderByPrice_ASC, filter: { isPublished: true }) {
+        brandName
+        uri
+        id
+        subLine {
+          subLineName
+        }
+        subName
+        subBrand
+        priceRange
+        coverImg {
+          handle
         }
       }
     }

@@ -74,20 +74,22 @@ export default Post;
 
 export const postQuery = graphql`
   query SinglePost($slug: String!) {
-    post(slug: { eq: $slug }) {
-      id
-      slug
-      isPublished
-      title
-      dateAndTime
-      coverImage {
-        handle
-      }
-      content
-      bottomimg {
-        handle
-        width
-        height
+    gcms {
+      Post(slug: $slug) {
+        id
+        slug
+        isPublished
+        title
+        dateAndTime
+        coverImage {
+          handle
+        }
+        content
+        bottomimg {
+          handle
+          width
+          height
+        }
       }
     }
   }

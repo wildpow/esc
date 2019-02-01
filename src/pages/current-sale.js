@@ -93,25 +93,27 @@ export default CurrentSale;
 
 export const currentSaleQuery = graphql`
   query currentSaleQuery {
-    isOnSale {
-      id
-      description
-      tabTitle
-      saleName
-      currentSaleImg {
-        handle
-      }
-      mattresses {
+    gcms {
+      allIsOnSales {
         id
-        uriBrandName
-        brandName
-        orderByPrice
-        uri
-        subName
-        subBrand
-        priceRange
-        coverImg {
+        description
+        tabTitle
+        saleName
+        currentSaleImg {
           handle
+        }
+        mattresses {
+          id
+          uriBrandName
+          brandName
+          orderByPrice
+          uri
+          subName
+          subBrand
+          priceRange
+          coverImg {
+            handle
+          }
         }
       }
     }

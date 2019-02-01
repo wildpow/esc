@@ -6,17 +6,19 @@ const TopPromo = () => (
   <StaticQuery
     query={graphql`
       query toppers {
-        topper {
-          id
-          currentpromo
-          linkType
-          uRL
+        gcms {
+          allToppers {
+            id
+            currentpromo
+            linkType
+            uRL
+          }
         }
       }
     `}
     render={data => (
       <>
-        {data.topper.linkType[0] === "Inbound" ? (
+        {/* {data.topper.linkType[0] === "Inbound" ? (
           <InboundLink to={data.topper.uRL}>
             <BigPromo>{data.topper.currentpromo}</BigPromo>
           </InboundLink>
@@ -28,7 +30,7 @@ const TopPromo = () => (
           >
             <BigPromo>{data.topper.currentpromo}</BigPromo>
           </PromoLink>
-        )}
+        )} */}
       </>
     )}
   />
