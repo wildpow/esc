@@ -42,17 +42,17 @@ const Adjustables = ({ data }) => (
           content="E.S.C. Mattress Center carries many different Adjustable bases. Sometimes called Lifestyle bases or Movable bases. For instance we have the Tempur-Pedic Ergo Premier and Ergo Plus, the Stearns & Foster Reflection 7, and the Sealy Ease bases. Sleep in zero gravity, or read, game or watch tv in the lounge position."
         />
       </Helmet>
-      {data.allAdjBasese.edges.map(base => (
-        <StyledLink to={`/adjustable/${base.node.uri}`} key={base.node.id}>
-          <H3>{base.node.fullName}</H3>
+      {data.gcms.allAdjBaseses.map(base => (
+        <StyledLink to={`/adjustable/${base.uri}`} key={base.id}>
+          <H3>{base.fullName}</H3>
           <InfoWrapper>
             <Img
               src={`https://media.graphcms.com/resize=w:400,h:400,fit:clip/${
-                base.node.coverImg.handle
+                base.coverImg.handle
               }`}
-              alt={`${base.node.fullName} Ajustable base`}
+              alt={`${base.fullName} Ajustable base`}
             />
-            <AdjMarkdown source={base.node.features} escapeHtml={false} />
+            <AdjMarkdown source={base.features} escapeHtml={false} />
           </InfoWrapper>
         </StyledLink>
       ))}

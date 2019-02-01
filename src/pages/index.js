@@ -59,7 +59,6 @@ const IndexPage = ({ data }) => {
         <Front />
         <TopThreeMatts />
       </Main>
-      {console.log(data.gcms.allCarousels)}
     </Layout>
   );
 };

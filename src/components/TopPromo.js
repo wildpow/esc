@@ -18,9 +18,9 @@ const TopPromo = () => (
     `}
     render={data => (
       <>
-        {/* {data.topper.linkType[0] === "Inbound" ? (
-          <InboundLink to={data.topper.uRL}>
-            <BigPromo>{data.topper.currentpromo}</BigPromo>
+        {data.gcms.allToppers[0].linkType[0] === "Inbound" ? (
+          <InboundLink to={data.gcms.allToppers[0].uRL}>
+            <BigPromo>{data.gcms.allToppers[0].currentpromo}</BigPromo>
           </InboundLink>
         ) : (
           <PromoLink
@@ -30,7 +30,7 @@ const TopPromo = () => (
           >
             <BigPromo>{data.topper.currentpromo}</BigPromo>
           </PromoLink>
-        )} */}
+        )}
       </>
     )}
   />

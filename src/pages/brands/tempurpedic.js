@@ -20,7 +20,7 @@ import TempurImg from "../../images/tempurLogo2.png";
 import logo from "../../images/logo.png";
 
 const Tempurpedic = ({ data }) => {
-  const { edges } = data.allMattress;
+  const { allMattresses } = data.gcms;
   const title = "tempurpedic";
   return (
     <Layout>
@@ -60,29 +60,29 @@ const Tempurpedic = ({ data }) => {
           <Img src={TempurImg} alt="Logo of the Tempurpedic mattress company" />
         </MainTitle>
         <Wrapper>
-          {edges.map(mattress => (
-            <LinkWrapper key={mattress.node.id}>
-              <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
+          {allMattresses.map(mattress => (
+            <LinkWrapper key={mattress.id}>
+              <StyledLink to={`/brands/${title}/${mattress.uri}`}>
                 <Divy>
                   <MattImg
                     src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                      mattress.node.coverImg.handle
+                      mattress.coverImg.handle
                     }`}
-                    alt={`Image of a ${mattress.node.brandName} ${
-                      mattress.node.subBrand
-                    } ${mattress.node.subName} mattress`}
+                    alt={`Image of a ${mattress.brandName} ${
+                      mattress.subBrand
+                    } ${mattress.subName} mattress`}
                   />
                   <PriceRange>
-                    {`$${mattress.node.priceRange[0]}
-                     - $${mattress.node.priceRange[1]}`}
+                    {`$${mattress.priceRange[0]}
+                     - $${mattress.priceRange[1]}`}
                   </PriceRange>
                 </Divy>
                 <Name>
-                  {mattress.node.brandName}
+                  {mattress.brandName}
                   <br />
-                  {mattress.node.subBrand}
+                  {mattress.subBrand}
                   <br />
-                  {mattress.node.subName}
+                  {mattress.subName}
                 </Name>
               </StyledLink>
             </LinkWrapper>

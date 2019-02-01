@@ -25,7 +25,7 @@ class Blog extends React.Component {
   render() {
     const { data } = this.props;
     const { postsToShow } = this.state;
-    const items = data.allPost.edges;
+    const items = data.gcms.allPosts;
     return (
       <Layout>
         <Helmet>
