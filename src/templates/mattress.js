@@ -22,7 +22,7 @@ import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import PriceCalculator from "../components/priceCalculator";
 
 const Mattress = ({ data }) => {
-  const { mattress } = data;
+  const mattress = data.gcms.Mattress;
   const SealyBoxPrice = [125, 125, 150, 150, 250];
   const StearnsBoxPrice = [125, 125, 150, 150, 250];
   const TempurBoxPrice = [200, 200, 300, 300, 400];

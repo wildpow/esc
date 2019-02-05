@@ -65,7 +65,7 @@ const IndexPage = ({ data }) => {
 export const carouselQuery = graphql`
   query carousels {
     gcms {
-      allCarousels(orderBy: orderofImages_DESC) {
+      allCarousels(orderBy: orderofImages_ASC) {
         orderofImages
         altTextForImage
         url

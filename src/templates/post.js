@@ -9,7 +9,7 @@ import { Marker, BottomImg, Main } from "../styles/postStyles";
 import { H2 } from "../styles/mainStyles";
 
 const Post = ({ data }) => {
-  const { post } = data;
+  const post = data.gcms.Post;
 
   function makeTitle(slug) {
     const words = slug.split("-");

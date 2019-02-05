@@ -1,50 +1,116 @@
 const path = require("path");
-const slash = require("slash");
-const queryAll = require("./gatsby/queryAll");
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
-  return new Promise((resolve, reject) => {
-    const adjTemplate = path.resolve(`src/templates/base.js`);
-    const mattressTemplate = path.resolve(`src/templates/mattress.js`);
-    const postTemplate = path.resolve(`src/templates/post.js`);
-
-    resolve(
-      graphql(queryAll).then(result => {
-        if (result.errors) {
-          reject(result.errors);
+exports.createPages = async ({ actions, graphql }) => {
+  const { data } = await graphql(`
+    query {
+      gcms {
+        allPosts(orderBy: dateAndTime_DESC, filter: { isPublished: true }) {
+          id
+          slug
+          isPublished
+          title
+          dateAndTime
+          content
+          bottomimg {
+            handle
+            width
+            height
+          }
+          coverImage {
+            handle
+          }
         }
-        const adjustables = result.data.allAdjBasese.edges;
-        adjustables.map(({ node }) => {
-          createPage({
-            path: `/adjustable/${node.uri}`,
-            component: slash(adjTemplate),
-            context: {
-              uri: node.uri,
-            },
-          });
-        });
-        const mattresses = result.data.allMattress.edges;
-        mattresses.map(({ node }) => {
-          createPage({
-            path: `/brands/${node.uriBrandName}/${node.uri}`,
-            component: slash(mattressTemplate),
-            context: {
-              uri: node.uri,
-            },
-          });
-        });
-        const posts = result.data.allPost.edges;
-        posts.map(({ node }) => {
-          createPage({
-            path: `/blog/${node.slug}`,
-            component: slash(postTemplate),
-            context: {
-              slug: node.slug,
-            },
-          });
-        });
-      }),
-    );
+        allAdjBaseses(filter: { isPublished: true }) {
+          isPublished
+          id
+          brandName
+          warranty
+          brandLine
+          baseDescription
+          uri
+          value
+          height
+          features
+          fullName
+          keyfeatures
+          salePrice
+          price
+          coverImg {
+            height
+            handle
+            width
+          }
+          detail1 {
+            height
+            handle
+            width
+          }
+          detail2 {
+            height
+            handle
+            width
+          }
+        }
+        allMattresses(filter: { isPublished: true }) {
+          isOnSale {
+            saleName
+          }
+          id
+          freeBoxSpring
+          isPublished
+          uri
+          uriBrandName
+          brandName
+          subName
+          subBrand
+          name
+          discription
+          features
+          profile
+          contruction
+          mattOnly
+          mattOnlySale
+          setPrice
+          setPriceSale
+          warranty
+          coverImg {
+            handle
+          }
+          detail1 {
+            handle
+          }
+          detail2 {
+            handle
+          }
+        }
+      }
+    }
+  `);
+  data.gcms.allPosts.forEach(blog => {
+    actions.createPage({
+      path: `/blog/${blog.slug}`,
+      component: path.resolve(`./src/templates/post.js`),
+      context: {
+        slug: blog.slug,
+      },
+    });
+  });
+  data.gcms.allAdjBaseses.forEach(base => {
+    actions.createPage({
+      path: `/adjustable/${base.uri}`,
+      component: path.resolve(`./src/templates/base.js`),
+      context: {
+        uri: base.uri,
+      },
+    });
+  });
+  data.gcms.allMattresses.forEach(mattress => {
+    actions.createPage({
+      path: `/brands/${mattress.uriBrandName}/${mattress.uri}`,
+      component: path.resolve(`./src/templates/mattress.js`),
+      context: {
+        uri: mattress.uri,
+      },
+    });
   });
 };
