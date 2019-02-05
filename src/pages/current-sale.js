@@ -18,12 +18,12 @@ import {
 } from "../styles/mattListStyles";
 
 const CurrentSale = ({ data }) => {
-  const { isOnSale } = data;
+  const { allIsOnSales } = data.gcms;
   return (
     <Layout>
       <Helmet>
-        <title>{`ESC: ${isOnSale.tabTitle}`}</title>
-        <meta name="description" content={isOnSale.description} />
+        <title>{`ESC: ${allIsOnSales[0].tabTitle}`}</title>
+        <meta name="description" content={allIsOnSales[0].description} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="E.S.C. Mattress Center" />
         <meta
@@ -33,35 +33,34 @@ const CurrentSale = ({ data }) => {
         <meta
           property="og:image"
           content={`https://media.graphcms.com/resize=w:980,h:450,fit:clip/${
-            isOnSale.currentSaleImg.handle
+            allIsOnSales[0].currentSaleImg.handle
           }`}
         />
         <meta property="og:image:width" content="980" />
         <meta property="og:image:height" content="450" />
         <meta
           property="og:image:alt"
-          content={`E.S.C Mattress Center | ${isOnSale.saleName}`}
+          content={`E.S.C Mattress Center | ${allIsOnSales[0].saleName}`}
         />
         <meta property="og:title" content="E.S.C. Mattress Center" />
-        <meta property="og:description" content={isOnSale.description} />
+        <meta property="og:description" content={allIsOnSales[0].description} />
       </Helmet>
       <MainWrapper>
         <Wrapper2>
-          <Headline>{isOnSale.saleName}</Headline>
-          <P>{isOnSale.description}</P>
+          <Headline>{allIsOnSales[0].saleName}</Headline>
+          <P>{allIsOnSales[0].description}</P>
           <Headline red>“Sleep Like the Experts Do!”</Headline>
         </Wrapper2>
         <Wrapper>
-          {isOnSale.mattresses.map(mattress => (
+          {allIsOnSales[0].mattresses.map(mattress => (
             <LinkWrapper key={mattress.id}>
               <StyledLink
                 to={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
               >
                 <Divy>
                   <MattImg
-                    src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                      mattress.coverImg.handle
-                    }`}
+                    src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${mattress.coverImg &&
+                      mattress.coverImg.handle}`}
                     alt={`Image of a ${mattress.brandName} ${
                       mattress.subBrand
                     } ${mattress.subName} mattress`}
@@ -93,25 +92,27 @@ export default CurrentSale;
 
 export const currentSaleQuery = graphql`
   query currentSaleQuery {
-    isOnSale {
-      id
-      description
-      tabTitle
-      saleName
-      currentSaleImg {
-        handle
-      }
-      mattresses {
+    gcms {
+      allIsOnSales {
         id
-        uriBrandName
-        brandName
-        orderByPrice
-        uri
-        subName
-        subBrand
-        priceRange
-        coverImg {
+        description
+        tabTitle
+        saleName
+        currentSaleImg {
           handle
+        }
+        mattresses(filter: { isPublished: true }, orderBy: orderByPrice_ASC) {
+          id
+          uriBrandName
+          brandName
+          orderByPrice
+          uri
+          subName
+          subBrand
+          priceRange
+          coverImg {
+            handle
+          }
         }
       }
     }

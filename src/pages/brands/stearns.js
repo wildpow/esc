@@ -20,7 +20,7 @@ import StearnsImg from "../../images/stearnsLogo.png";
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 
 const Stearns = ({ data }) => {
-  const { edges } = data.allMattress;
+  const { allMattresses } = data.gcms;
   const title = "stearns";
   return (
     <Layout>
@@ -60,29 +60,29 @@ const Stearns = ({ data }) => {
           />
         </MainTitle>
         <Wrapper>
-          {edges.map(mattress => (
-            <LinkWrapper key={mattress.node.id}>
-              <StyledLink to={`/brands/${title}/${mattress.node.uri}`}>
+          {allMattresses.map(mattress => (
+            <LinkWrapper key={mattress.id}>
+              <StyledLink to={`/brands/${title}/${mattress.uri}`}>
                 <Divy>
                   <MattImg
                     src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                      mattress.node.coverImg.handle
+                      mattress.coverImg.handle
                     }`}
-                    alt={`Image of a ${mattress.node.brandName} ${
-                      mattress.node.subBrand
-                    } ${mattress.node.subName} mattress`}
+                    alt={`Image of a ${mattress.brandName} ${
+                      mattress.subBrand
+                    } ${mattress.subName} mattress`}
                   />
                   <PriceRange>
-                    {`$${mattress.node.priceRange[0]} 
-                    - $${mattress.node.priceRange[1]}`}
+                    {`$${mattress.priceRange[0]} 
+                    - $${mattress.priceRange[1]}`}
                   </PriceRange>
                 </Divy>
                 <Name>
-                  {mattress.node.brandName}
+                  {mattress.brandName}
                   <br />
-                  {mattress.node.subBrand}
+                  {mattress.subBrand}
                   <br />
-                  {mattress.node.subName}
+                  {mattress.subName}
                 </Name>
               </StyledLink>
             </LinkWrapper>
@@ -104,24 +104,19 @@ export default Stearns;
 
 export const stearnsMattresses = graphql`
   query stearnsMattresses {
-    allMattress(
-      sort: { fields: orderByPrice, order: ASC }
-      filter: {
-        brandName: { in: "Stearns & Foster" }
-        isPublished: { eq: true }
-      }
-    ) {
-      edges {
-        node {
-          brandName
-          uri
-          id
-          subName
-          subBrand
-          priceRange
-          coverImg {
-            handle
-          }
+    gcms {
+      allMattresses(
+        orderBy: orderByPrice_ASC
+        filter: { brandName: "Stearns & Foster", isPublished: true }
+      ) {
+        brandName
+        uri
+        id
+        subName
+        subBrand
+        priceRange
+        coverImg {
+          handle
         }
       }
     }

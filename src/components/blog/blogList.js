@@ -5,21 +5,21 @@ import { StyledLink, InfoWrapper, Img, H3 } from "./blogListStyles";
 const BlogList = ({ items, count }) => {
   if (count) items = items.slice(0, count);
   return (
-    <React.Fragment>
-      {items.map(({ node }) => (
-        <StyledLink to={`/blog/${node.slug}`} key={node.id}>
+    <>
+      {items.map(item => (
+        <StyledLink to={`/blog/${item.slug}`} key={item.id}>
           <InfoWrapper>
             <Img
               src={`https://media.graphcms.com/resize=w:150,h:150,fit:clip/${
-                node.coverImage.handle
+                item.coverImage.handle
               }`}
-              alt={`Small image for the blog post called ${node.title}`}
+              alt={`Small image for the blog post called ${item.title}`}
             />
           </InfoWrapper>
-          <H3>{node.title}</H3>
+          <H3>{item.title}</H3>
         </StyledLink>
       ))}
-    </React.Fragment>
+    </>
   );
 };
 BlogList.propTypes = {

@@ -22,7 +22,7 @@ import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import PriceCalculator from "../components/priceCalculator";
 
 const Mattress = ({ data }) => {
-  const { mattress } = data;
+  const mattress = data.gcms.Mattress;
   const SealyBoxPrice = [125, 125, 150, 150, 250];
   const StearnsBoxPrice = [125, 125, 150, 150, 250];
   const TempurBoxPrice = [200, 200, 300, 300, 400];
@@ -126,35 +126,37 @@ export default Mattress;
 
 export const query = graphql`
   query SingleMattress($uri: String!) {
-    mattress(uri: { eq: $uri }) {
-      id
-      isOnSale {
-        saleName
-      }
-      uri
-      brandName
-      subName
-      subBrand
-      name
-      freeBoxSpring
-      discription
-      features
-      profile
-      contruction
-      mattOnly
-      mattOnlySale
-      setPrice
-      setPriceSale
-      warranty
-      uriBrandName
-      coverImg {
-        handle
-      }
-      detail1 {
-        handle
-      }
-      detail2 {
-        handle
+    gcms {
+      Mattress(uri: $uri) {
+        id
+        isOnSale {
+          saleName
+        }
+        uri
+        brandName
+        subName
+        subBrand
+        name
+        freeBoxSpring
+        discription
+        features
+        profile
+        contruction
+        mattOnly
+        mattOnlySale
+        setPrice
+        setPriceSale
+        warranty
+        uriBrandName
+        coverImg {
+          handle
+        }
+        detail1 {
+          handle
+        }
+        detail2 {
+          handle
+        }
       }
     }
   }

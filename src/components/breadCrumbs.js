@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import styled from "styled-components";
@@ -61,7 +61,7 @@ const Location = styled.div`
 const BreadCrumbs = props => {
   const { next, only2Links, only3Links, next2, error, here } = props;
   return (
-    <Fragment>
+    <>
       <Crumbs to="/">Home</Crumbs>
       <Span>&gt;</Span>
       {next && (
@@ -89,7 +89,7 @@ const BreadCrumbs = props => {
           here
         )}
       </Location>
-    </Fragment>
+    </>
   );
 };
 BreadCrumbs.defaultProps = {

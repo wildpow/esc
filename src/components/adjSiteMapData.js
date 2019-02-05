@@ -6,30 +6,25 @@ const AdjSiteMapData = () => (
   <StaticQuery
     query={graphql`
       query allAdjSiteMap {
-        allAdjBasese(
-          sort: { fields: value, order: ASC }
-          filter: { isPublished: { eq: true } }
-        ) {
-          edges {
-            node {
-              uri
-              fullName
-              id
-            }
+        gcms {
+          allAdjBaseses(filter: { isPublished: true }, orderBy: value_ASC) {
+            uri
+            fullName
+            id
           }
         }
       }
     `}
     render={data => (
-      <React.Fragment>
-        {data.allAdjBasese.edges.map(base => (
-          <li key={base.node.id}>
-            <SiteLinks to={`/adjustable/${base.node.uri}`}>
-              {base.node.fullName}
+      <>
+        {data.gcms.allAdjBaseses.map(base => (
+          <li key={base.id}>
+            <SiteLinks to={`/adjustable/${base.uri}`}>
+              {base.fullName}
             </SiteLinks>
           </li>
         ))}
-      </React.Fragment>
+      </>
     )}
   />
 );

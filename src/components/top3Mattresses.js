@@ -67,24 +67,22 @@ const TopThreeMatts = () => {
     <StaticQuery
       query={graphql`
         query top3Matts {
-          allFront3Mattress {
-            edges {
-              node {
+          gcms {
+            allFront3Mattresses {
+              id
+              footerURL
+              footertagline
+              headerTagLine
+              mattresses {
+                uri
+                uriBrandName
                 id
-                footerURL
-                footertagline
-                headerTagLine
-                mattresses {
-                  uri
-                  uriBrandName
-                  id
-                  brandName
-                  priceRange
-                  subName
-                  subBrand
-                  coverImg {
-                    handle
-                  }
+                brandName
+                priceRange
+                subName
+                subBrand
+                coverImg {
+                  handle
                 }
               }
             }
@@ -93,13 +91,9 @@ const TopThreeMatts = () => {
       `}
       render={data => (
         <NewWrapper>
-          {/* <Wrapper2> */}
-          <Headline>
-            {data.allFront3Mattress.edges[0].node.headerTagLine}
-          </Headline>
-          {/* </Wrapper2> */}
+          <Headline>{data.gcms.allFront3Mattresses[0].headerTagLine}</Headline>
           <ThreeMattWrapper>
-            {data.allFront3Mattress.edges[0].node.mattresses.map(mattress => (
+            {data.gcms.allFront3Mattresses[0].mattresses.map(mattress => (
               <LinkWrapper key={mattress.id}>
                 <StyledLink
                   to={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
@@ -140,8 +134,8 @@ const TopThreeMatts = () => {
             better.
           </NewP>
           <Headline red>
-            <FooterLink to={data.allFront3Mattress.edges[0].node.footerURL}>
-              {data.allFront3Mattress.edges[0].node.footertagline}
+            <FooterLink to={data.gcms.allFront3Mattresses[0].footerURL}>
+              {data.gcms.allFront3Mattresses[0].footertagline}
             </FooterLink>
           </Headline>
         </NewWrapper>

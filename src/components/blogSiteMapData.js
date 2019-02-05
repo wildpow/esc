@@ -6,30 +6,23 @@ const BlogSiteMapData = () => (
   <StaticQuery
     query={graphql`
       query allblogSiteMap {
-        allPost(
-          sort: { fields: dateAndTime, order: DESC }
-          filter: { isPublished: { eq: true } }
-        ) {
-          edges {
-            node {
-              slug
-              title
-              id
-            }
+        gcms {
+          allPosts(orderBy: dateAndTime_DESC, filter: { isPublished: true }) {
+            slug
+            title
+            id
           }
         }
       }
     `}
     render={data => (
-      <React.Fragment>
-        {data.allPost.edges.map(base => (
-          <li key={base.node.id}>
-            <SiteLinks to={`/blog/${base.node.slug}`}>
-              {base.node.title}
-            </SiteLinks>
+      <>
+        {data.gcms.allPosts.map(base => (
+          <li key={base.id}>
+            <SiteLinks to={`/blog/${base.slug}`}>{base.title}</SiteLinks>
           </li>
         ))}
-      </React.Fragment>
+      </>
     )}
   />
 );

@@ -8,11 +8,22 @@ module.exports = {
     siteUrl: `https://www.escmattresscenter.com`,
   },
   plugins: [
+    // {
+    //   resolve: `gatsby-source-graphcms`,
+    //   options: {
+    //     endpoint: process.env.GATSBY_API_URL,
+    //     query: require("./gatsby/configQuery"),
+    //   },
+    // },
     {
-      resolve: `gatsby-source-graphcms`,
+      resolve: "gatsby-source-graphql",
       options: {
-        endpoint: process.env.GATSBY_API_URL,
-        query: require("./gatsby/configQuery"),
+        // The top level query type, can be anything you want!
+        typeName: "GCMS",
+        // The field you'll query against, can also be anything you want.
+        fieldName: "gcms",
+        // Your API endpoint, available from the dashboard and settings window.
+        url: process.env.GATSBY_API_URL,
       },
     },
     `gatsby-plugin-react-helmet`,

@@ -10,7 +10,7 @@ import logo from "../images/logo.png";
 import TopThreeMatts from "../components/top3Mattresses";
 
 const IndexPage = ({ data }) => {
-  const { edges } = data.allCarousel;
+  const { allCarousels } = data.gcms;
   return (
     <Layout>
       <Helmet>
@@ -45,13 +45,13 @@ const IndexPage = ({ data }) => {
           centerSlidePercentage={100}
           showStatus={false}
         >
-          {edges.map(car => (
-            <Linky key={car.node.id} to={`${car.node.url}`}>
+          {allCarousels.map(car => (
+            <Linky key={car.id} to={`${car.url}`}>
               <img
                 src={`https://media.graphcms.com/resize=w:980,h:450,fit:clip/${
-                  car.node.image.handle
+                  car.image.handle
                 }`}
-                alt={car.node.altTextForImage}
+                alt={car.altTextForImage}
               />
             </Linky>
           ))}
@@ -64,18 +64,16 @@ const IndexPage = ({ data }) => {
 };
 export const carouselQuery = graphql`
   query carousels {
-    allCarousel(sort: { fields: orderofImages }) {
-      edges {
-        node {
-          orderofImages
-          altTextForImage
-          url
-          id
-          image {
-            handle
-            width
-            height
-          }
+    gcms {
+      allCarousels(orderBy: orderofImages_ASC) {
+        orderofImages
+        altTextForImage
+        url
+        id
+        image {
+          handle
+          width
+          height
         }
       }
     }

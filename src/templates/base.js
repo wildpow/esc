@@ -25,62 +25,62 @@ import {
 } from "../styles/singleMattStyles";
 
 const Base = ({ data }) => {
-  const { adjBasese } = data;
+  const { AdjBases } = data.gcms;
   return (
     <Layout>
       <BreadWrapper>
-        <BreadCrumbs next="Adjustable" here={adjBasese.fullName} />
+        <BreadCrumbs next="Adjustable" here={AdjBases.fullName} />
       </BreadWrapper>
       <Wrapper>
         <Helmet>
-          <title>{`ESC: ${adjBasese.fullName}`}</title>
-          <meta name="description" content={adjBasese.baseDescription} />
+          <title>{`ESC: ${AdjBases.fullName}`}</title>
+          <meta name="description" content={AdjBases.baseDescription} />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="E.S.C. Mattress Center" />
           <meta
             property="og:url"
             content={`https://www.escmattresscenter.com/adjustable/${
-              adjBasese.uri
+              AdjBases.uri
             }`}
           />
           <meta
             property="og:image"
             content={`https://media.graphcms.com/resize=w:1200,h:627,fit:clip/${
-              adjBasese.coverImg.handle
+              AdjBases.coverImg.handle
             }`}
           />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="627" />
           <meta
             property="og:image:alt"
-            content={`E.S.C Mattress Center | ${adjBasese.fullName}`}
+            content={`E.S.C Mattress Center | ${AdjBases.fullName}`}
           />
           <meta property="og:title" content="E.S.C Mattress Center" />
           <meta
             property="og:description"
-            content={`${adjBasese.fullName} Adjustable Base`}
+            content={`${AdjBases.fullName} Adjustable Base`}
           />
         </Helmet>
         <header>
-          <MainTitle>{adjBasese.fullName}</MainTitle>
+          <MainTitle>{AdjBases.fullName}</MainTitle>
         </header>
         <Main>
           <ImageViewer
-            cover={adjBasese.coverImg.handle}
-            img1={adjBasese.detail1.handle}
-            img2={adjBasese.detail2.handle}
+            cover={AdjBases.coverImg.handle}
+            img1={AdjBases.detail1.handle}
+            img2={AdjBases.detail2.handle}
             type="adjustable base without mattress"
-            fullname={adjBasese.fullName}
+            fullname={AdjBases.fullName}
           />
           <MainInfo>
             <Stuff>
-              <StyledMarkDown source={adjBasese.features} escapeHtml={false} />
+              <StyledMarkDown source={AdjBases.features} escapeHtml={false} />
               <InfoAnchor href="#moreInfo">See more details</InfoAnchor>
             </Stuff>
             <PriceWrapper>
               <Price>
                 <PriceTitle>Base Price</PriceTitle>
-                <DropDown data={adjBasese.price} data2={adjBasese.salePrice} />
+                <DropDown data={AdjBases.price} data2={AdjBases.salePrice} />
               </Price>
             </PriceWrapper>
           </MainInfo>
@@ -89,14 +89,14 @@ const Base = ({ data }) => {
           <h2>OVERVIEW & SPECS</h2>
         </Overview>
         <Article>
-          <Description>{adjBasese.baseDescription}</Description>
-          <Profile>{`Profile: ${adjBasese.height}`}</Profile>
-          <StyledMarkDown source={adjBasese.keyfeatures} escapeHtml={false} />
-          <Warranty>{adjBasese.warranty}</Warranty>
+          <Description>{AdjBases.baseDescription}</Description>
+          <Profile>{`Profile: ${AdjBases.height}`}</Profile>
+          <StyledMarkDown source={AdjBases.keyfeatures} escapeHtml={false} />
+          <Warranty>{AdjBases.warranty}</Warranty>
         </Article>
       </Wrapper>
       <BreadWrapper>
-        <BreadCrumbs next="adjustable" here={adjBasese.fullName} />
+        <BreadCrumbs next="adjustable" here={AdjBases.fullName} />
       </BreadWrapper>
     </Layout>
   );
@@ -108,27 +108,29 @@ export default Base;
 
 export const query = graphql`
   query SingleAjustableQuery($uri: String!) {
-    adjBasese(uri: { eq: $uri }) {
-      id
-      uri
-      fullName
-      keyfeatures
-      features
-      price
-      salePrice
-      brandLine
-      brandName
-      baseDescription
-      height
-      warranty
-      coverImg {
-        handle
-      }
-      detail1 {
-        handle
-      }
-      detail2 {
-        handle
+    gcms {
+      AdjBases(uri: $uri) {
+        id
+        uri
+        fullName
+        keyfeatures
+        features
+        price
+        salePrice
+        brandLine
+        brandName
+        baseDescription
+        height
+        warranty
+        coverImg {
+          handle
+        }
+        detail1 {
+          handle
+        }
+        detail2 {
+          handle
+        }
       }
     }
   }

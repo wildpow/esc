@@ -25,7 +25,7 @@ class Blog extends React.Component {
   render() {
     const { data } = this.props;
     const { postsToShow } = this.state;
-    const items = data.allPost.edges;
+    const items = data.gcms.allPosts;
     return (
       <Layout>
         <Helmet>
@@ -82,20 +82,15 @@ export default Blog;
 
 export const blogList = graphql`
   query blogList {
-    allPost(
-      sort: { fields: dateAndTime, order: DESC }
-      filter: { isPublished: { eq: true } }
-    ) {
-      edges {
-        node {
-          slug
-          title
-          dateAndTime
-          coverImage {
-            handle
-          }
-          id
+    gcms {
+      allPosts(orderBy: dateAndTime_DESC, filter: { isPublished: true }) {
+        slug
+        title
+        dateAndTime
+        coverImage {
+          handle
         }
+        id
       }
     }
   }
