@@ -41,7 +41,7 @@ const Logo = () => (
             src={`https://media.graphcms.com/resize=w:1905,h:1233,fit:clip/${
               data.gcms.allPandaLogoes[0].logoImage.handle
             }`}
-            alt={data.gcms.allPandaLogoes[0].logoImage.altText}
+            alt={data.gcms.allPandaLogoes[0].altText}
           />
         )}
       />

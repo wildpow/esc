@@ -90,10 +90,8 @@ const TopThreeMatts = () => {
         }
       `}
       render={data => (
-        // <>{console.log(data.gcms.allFront3Mattresses[0])}</>
         <NewWrapper>
           <Headline>{data.gcms.allFront3Mattresses[0].headerTagLine}</Headline>
-
           <ThreeMattWrapper>
             {data.gcms.allFront3Mattresses[0].mattresses.map(mattress => (
               <LinkWrapper key={mattress.id}>

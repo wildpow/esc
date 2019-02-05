@@ -16,15 +16,13 @@ const BlogSiteMapData = () => (
       }
     `}
     render={data => (
-      <React.Fragment>
-        {data.allPost.edges.map(base => (
-          <li key={base.node.id}>
-            <SiteLinks to={`/blog/${base.node.slug}`}>
-              {base.node.title}
-            </SiteLinks>
+      <>
+        {data.gcms.allPosts.map(base => (
+          <li key={base.id}>
+            <SiteLinks to={`/blog/${base.slug}`}>{base.title}</SiteLinks>
           </li>
         ))}
-      </React.Fragment>
+      </>
     )}
   />
 );

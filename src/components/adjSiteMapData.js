@@ -16,15 +16,15 @@ const AdjSiteMapData = () => (
       }
     `}
     render={data => (
-      <React.Fragment>
-        {data.allAdjBasese.edges.map(base => (
-          <li key={base.node.id}>
-            <SiteLinks to={`/adjustable/${base.node.uri}`}>
-              {base.node.fullName}
+      <>
+        {data.gcms.allAdjBaseses.map(base => (
+          <li key={base.id}>
+            <SiteLinks to={`/adjustable/${base.uri}`}>
+              {base.fullName}
             </SiteLinks>
           </li>
         ))}
-      </React.Fragment>
+      </>
     )}
   />
 );
