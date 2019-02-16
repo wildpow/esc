@@ -12,6 +12,9 @@ export const MainFooter = styled.footer`
   @media (min-width: 1024px) {
     margin-top: 20px;
   }
+  @media (min-width: 1366px) {
+    width: 100%;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -26,6 +29,13 @@ export const Wrapper = styled.div`
     padding-left: 20px;
     margin-left: 220px;
     margin-right: 220px;
+  }
+  @media (min-width: 1366px) {
+    max-width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-left: 135px;
+    margin-right: 135px;
   }
 `;
 const ImgHover = styled.img`
@@ -110,6 +120,9 @@ export const Contact = styled(FlexRow)`
   justify-content: space-evenly;
   margin-top: 10px;
   margin-bottom: 10px;
+  @media (min-width: 1366px) {
+    line-height: 2.4em;
+  }
 `;
 
 export const Hours = styled(FlexCol)`
