@@ -6,6 +6,10 @@ const BirdLink = styled.a`
   text-decoration: none;
 `;
 const Wrapper = styled.div`
+  transition: all 0.15s ease-in;
+  &:hover {
+    transform: scale3d(1.05, 1.05, 1);
+  }
   display: flex;
   flex-direction: column;
   width: 270px;
@@ -15,6 +19,9 @@ const Wrapper = styled.div`
   font-weight: 100;
   box-shadow: ${props => props.theme.BoxShadow};
   background-color: ${props => props.theme.mainColor1};
+  @media (min-width: 1366px) {
+    margin-top: 10px;
+  }
 `;
 const Top = styled.div`
   display: flex;
@@ -41,7 +48,7 @@ const Rating = styled.div`
     margin: 0;
   }
 `;
-const Poop = styled.div`
+const AvgContainer = styled.div`
   margin-top: -6px;
   font-size: 1.3em;
   margin-left: 4px;
@@ -79,8 +86,10 @@ const BirdBig = props => {
           <img alt="BirdEye certified seal" src={CertifiedBig} />
         </Top>
         <Rating>
-          {Array(avg).fill(<img src={star} alt="start for rating" />)}
-          <Poop>{avg}</Poop>
+          {Array(Math.round(avg)).fill(
+            <img src={star} alt="start for rating" />,
+          )}
+          <AvgContainer>{Math.round(avg)}</AvgContainer>
         </Rating>
       </Wrapper>
     </BirdLink>

@@ -4,10 +4,6 @@ import Certified from "../images/badge.png";
 import star from "../images/star.png";
 import BirdBig from "./birdBig";
 
-// require("dotenv").config({
-//   path: `.env.${process.env.NODE_ENV}`,
-// });
-
 const average = list => list.reduce((prev, curr) => prev + curr) / list.length;
 
 const BirdLink = styled.a`
@@ -18,6 +14,10 @@ const BirdLink = styled.a`
 `;
 
 const CertReview = styled.div`
+  transition: all 0.15s ease-in;
+  &:hover {
+    transform: scale3d(1.05, 1.05, 1);
+  }
   width: 145px;
   height: 75px;
   /* width: 270px;
@@ -81,6 +81,17 @@ const BigWrapper = styled.div`
     display: initial;
   }
 `;
+
+const AvgContainer = styled.div`
+  margin-top: 2px;
+  font-size: 0.8em;
+  margin-left: 4px;
+  font-family: ${props => props.theme.MainFont1};
+  @media (min-width: 812px) {
+    margin-top: 0px;
+    font-size: 0.9em;
+  }
+`;
 class Bird extends Component {
   constructor() {
     super();
@@ -120,7 +131,10 @@ class Bird extends Component {
               <h4>Certified</h4>
               <h4>Reviews</h4>
               <Rating>
-                {Array(avg).fill(<img src={star} alt="start for rating" />)}
+                {Array(Math.round(avg)).fill(
+                  <img src={star} alt="start for rating" />,
+                )}
+                <AvgContainer>{Math.round(avg)}</AvgContainer>
               </Rating>
             </Words>
             <Cert alt="BirdEye certified seal" src={Certified} />

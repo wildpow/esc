@@ -82,10 +82,10 @@ export const MapsImg = styled(ImgHover)`
   }
 `;
 
-export const GraphImg = styled(ImgHover)`
-  display: inline-block;
-  margin-left: 10px;
-`;
+// export const GraphImg = styled(ImgHover)`
+//   display: inline-block;
+//   margin-left: 10px;
+// `;
 
 export const YelpHolder = styled.div`
   background-color: #d32323;
@@ -107,13 +107,13 @@ export const YelpImg = styled.img`
   }
 `;
 
-export const GraphLink = styled.a`
-  display: block;
-  padding-top: 5px;
-  @media (min-width: 500px) {
-    padding-top: 0px;
-  }
-`;
+// export const GraphLink = styled.a`
+//   display: block;
+//   padding-top: 5px;
+//   @media (min-width: 500px) {
+//     padding-top: 0px;
+//   }
+// `;
 
 export const Contact = styled(FlexRow)`
   justify-content: space-around;
@@ -164,13 +164,13 @@ export const MapLink = styled.a`
   }
 `;
 
-export const Divy = styled(FlexRow)`
-  justify-content: center;
-  margin-top: 20px;
-  @media (min-width: 768px) {
-    margin-top: 30px;
-  }
-`;
+// export const Divy = styled(FlexRow)`
+//   justify-content: center;
+//   margin-top: 20px;
+//   @media (min-width: 768px) {
+//     margin-top: 30px;
+//   }
+// `;
 
 export const BottomLinkWrapper = styled(FlexCol)`
   font-family: ${props => props.theme.MainFont2};
@@ -194,42 +194,42 @@ export const BottomLinks = styled(Link)`
   }
 `;
 
-export const BBBLink = styled.a`
-  display: none;
+// export const BBBLink = styled.a`
+//   display: none;
 
-  @media (orientation: landscape) {
-    display: flex;
-    justify-content: center;
-    width: 100px;
-  }
-  @media (min-width: 600px) {
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    transition: all 0.25s ease-in;
-    &:hover {
-      transform: scale3d(1.1, 1.1, 1);
-    }
-  }
-  & img {
-    max-width: 5rem;
-  }
-`;
-export const BottomBBLink = styled.a`
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  width: 300px;
-  @media (orientation: landscape) {
-    display: none;
-  }
-  @media (min-width: 600px) {
-    display: none;
-  }
-  & img {
-    max-width: 10rem;
-  }
-`;
+//   @media (orientation: landscape) {
+//     display: flex;
+//     justify-content: center;
+//     width: 100px;
+//   }
+//   @media (min-width: 600px) {
+//     width: 200px;
+//     display: flex;
+//     justify-content: center;
+//     transition: all 0.25s ease-in;
+//     &:hover {
+//       transform: scale3d(1.1, 1.1, 1);
+//     }
+//   }
+//   & img {
+//     max-width: 5rem;
+//   }
+// `;
+// export const BottomBBLink = styled.a`
+//   display: flex;
+//   justify-content: center;
+//   margin: auto;
+//   width: 300px;
+//   @media (orientation: landscape) {
+//     display: none;
+//   }
+//   @media (min-width: 600px) {
+//     display: none;
+//   }
+//   & img {
+//     max-width: 10rem;
+//   }
+// `;
 export const ContactWrapper = styled.div`
   display: flex;
   flex-direction: column;
