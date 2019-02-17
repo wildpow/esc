@@ -1,5 +1,15 @@
 const path = require("path");
 
+exports.onCreateWebpackConfig = ({ actions, stage }) => {
+  // If production JavaScript and CSS build
+  if (stage === "build-javascript") {
+    // Turn off source maps
+    actions.setWebpackConfig({
+      devtool: false,
+    });
+  }
+};
+
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import Certified from "../images/badge.png";
 import star from "../images/star.png";
 import BirdBig from "./birdBig";
+import Loading from "./loading";
 
 const average = list => list.reduce((prev, curr) => prev + curr) / list.length;
 
@@ -98,53 +100,75 @@ class Bird extends Component {
     this.state = {
       avg: "",
       count: 0,
+      errorState: false,
+      loading: true,
     };
   }
 
-  componentWillMount() {
-    fetch(process.env.GATSBY_REST, {
-      headers: { Accept: "application/json" },
-    })
-      .then(response => response.json())
-      .then(data => {
+  componentDidMount() {
+    axios
+      .get(process.env.GATSBY_REST)
+      .then(res => {
+        const { data } = res;
         const e = data.map(i => i.rating);
-        const p = e.filter(val => val !== 0);
-        this.setState({
-          count: data.length,
-          avg: average(p),
-        });
+        const p = e.filter(val => val !== 0 && val !== null);
+        this.setState({ count: data.length, avg: average(p), loading: false });
+      })
+      .catch(error => {
+        this.setState({ errorState: true, loading: false });
+        console.log(error);
       });
+    // fetch(process.env.GATSBY_REST, {
+    //   headers: { Accept: "application/json" },
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     const e = data.map(i => i.rating);
+    //     const p = e.filter(val => val !== 0);
+    //     this.setState({
+    //       count: data.length,
+    //       avg: average(p),
+    //     });
+    //   });
   }
 
   render() {
-    const { count, avg } = this.state;
-    return (
-      <>
-        <BirdLink
-          href="https://birdeye.com/esc-mattress-center-154743411347922"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <CertReview>
-            <Words>
-              <h4>{count}</h4>
-              <h4>Certified</h4>
-              <h4>Reviews</h4>
-              <Rating>
-                {Array(Math.round(avg)).fill(
-                  <img src={star} alt="start for rating" />,
-                )}
-                <AvgContainer>{Math.round(avg)}</AvgContainer>
-              </Rating>
-            </Words>
-            <Cert alt="BirdEye certified seal" src={Certified} />
-          </CertReview>
-        </BirdLink>
-        <BigWrapper>
-          <BirdBig avg={avg} count={count} star={star} />
-        </BigWrapper>
-      </>
-    );
+    let content;
+    const { count, avg, loading, errorState } = this.state;
+    if (loading) {
+      content = <Loading />;
+    } else if (errorState) {
+      content = <></>;
+    } else {
+      content = (
+        <>
+          <BirdLink
+            href="https://birdeye.com/esc-mattress-center-154743411347922"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <CertReview>
+              <Words>
+                <h4>{count}</h4>
+                <h4>Certified</h4>
+                <h4>Reviews</h4>
+                <Rating>
+                  {Array(Math.round(avg)).fill(
+                    <img src={star} alt="start for rating" />,
+                  )}
+                  <AvgContainer>{Math.round(avg)}</AvgContainer>
+                </Rating>
+              </Words>
+              <Cert alt="BirdEye certified seal" src={Certified} />
+            </CertReview>
+          </BirdLink>
+          <BigWrapper>
+            <BirdBig avg={avg} count={count} star={star} />
+          </BigWrapper>
+        </>
+      );
+    }
+    return <>{content}</>;
   }
 }
 
