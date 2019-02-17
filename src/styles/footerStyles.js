@@ -12,6 +12,9 @@ export const MainFooter = styled.footer`
   @media (min-width: 1024px) {
     margin-top: 20px;
   }
+  @media (min-width: 1366px) {
+    width: 100%;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -26,6 +29,13 @@ export const Wrapper = styled.div`
     padding-left: 20px;
     margin-left: 220px;
     margin-right: 220px;
+  }
+  @media (min-width: 1366px) {
+    max-width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-left: 135px;
+    margin-right: 135px;
   }
 `;
 const ImgHover = styled.img`
@@ -72,10 +82,10 @@ export const MapsImg = styled(ImgHover)`
   }
 `;
 
-export const GraphImg = styled(ImgHover)`
-  display: inline-block;
-  margin-left: 10px;
-`;
+// export const GraphImg = styled(ImgHover)`
+//   display: inline-block;
+//   margin-left: 10px;
+// `;
 
 export const YelpHolder = styled.div`
   background-color: #d32323;
@@ -97,19 +107,22 @@ export const YelpImg = styled.img`
   }
 `;
 
-export const GraphLink = styled.a`
-  display: block;
-  padding-top: 5px;
-  @media (min-width: 500px) {
-    padding-top: 0px;
-  }
-`;
+// export const GraphLink = styled.a`
+//   display: block;
+//   padding-top: 5px;
+//   @media (min-width: 500px) {
+//     padding-top: 0px;
+//   }
+// `;
 
 export const Contact = styled(FlexRow)`
   justify-content: space-around;
   justify-content: space-evenly;
   margin-top: 10px;
   margin-bottom: 10px;
+  @media (min-width: 1366px) {
+    line-height: 2.4em;
+  }
 `;
 
 export const Hours = styled(FlexCol)`
@@ -151,13 +164,13 @@ export const MapLink = styled.a`
   }
 `;
 
-export const Divy = styled(FlexRow)`
-  justify-content: center;
-  margin-top: 20px;
-  @media (min-width: 768px) {
-    margin-top: 30px;
-  }
-`;
+// export const Divy = styled(FlexRow)`
+//   justify-content: center;
+//   margin-top: 20px;
+//   @media (min-width: 768px) {
+//     margin-top: 30px;
+//   }
+// `;
 
 export const BottomLinkWrapper = styled(FlexCol)`
   font-family: ${props => props.theme.MainFont2};
@@ -181,42 +194,42 @@ export const BottomLinks = styled(Link)`
   }
 `;
 
-export const BBBLink = styled.a`
-  display: none;
+// export const BBBLink = styled.a`
+//   display: none;
 
-  @media (orientation: landscape) {
-    display: flex;
-    justify-content: center;
-    width: 100px;
-  }
-  @media (min-width: 600px) {
-    width: 200px;
-    display: flex;
-    justify-content: center;
-    transition: all 0.25s ease-in;
-    &:hover {
-      transform: scale3d(1.1, 1.1, 1);
-    }
-  }
-  & img {
-    max-width: 5rem;
-  }
-`;
-export const BottomBBLink = styled.a`
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  width: 300px;
-  @media (orientation: landscape) {
-    display: none;
-  }
-  @media (min-width: 600px) {
-    display: none;
-  }
-  & img {
-    max-width: 10rem;
-  }
-`;
+//   @media (orientation: landscape) {
+//     display: flex;
+//     justify-content: center;
+//     width: 100px;
+//   }
+//   @media (min-width: 600px) {
+//     width: 200px;
+//     display: flex;
+//     justify-content: center;
+//     transition: all 0.25s ease-in;
+//     &:hover {
+//       transform: scale3d(1.1, 1.1, 1);
+//     }
+//   }
+//   & img {
+//     max-width: 5rem;
+//   }
+// `;
+// export const BottomBBLink = styled.a`
+//   display: flex;
+//   justify-content: center;
+//   margin: auto;
+//   width: 300px;
+//   @media (orientation: landscape) {
+//     display: none;
+//   }
+//   @media (min-width: 600px) {
+//     display: none;
+//   }
+//   & img {
+//     max-width: 10rem;
+//   }
+// `;
 export const ContactWrapper = styled.div`
   display: flex;
   flex-direction: column;

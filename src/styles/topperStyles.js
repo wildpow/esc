@@ -60,6 +60,7 @@ export const Wrapper = styled.div`
   margin-left: ${props => (props.Left ? "5px" : "0px")};
   margin-bottom: 0;
   padding: 0;
+  align-self: center;
   text-align: cetner;
 
   @media (min-width: 375px) {

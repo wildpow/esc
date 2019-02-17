@@ -8,6 +8,7 @@ module.exports = {
     siteUrl: `https://www.escmattresscenter.com`,
   },
   plugins: [
+    `gatsby-plugin-webpack-size`,
     // {
     //   resolve: `gatsby-source-graphcms`,
     //   options: {
