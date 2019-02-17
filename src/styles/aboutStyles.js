@@ -25,13 +25,21 @@ export const PicHolder = styled(FlexRow)`
 
 export const StoreImg = styled.img`
   color: white;
-  width: 105px;
+  width: 100px;
   height: 100px;
+  @media (min-width: 360px) {
+    width: 105px;
+    height: 100px;
+  }
   @media (min-width: 375px) {
     width: 110px;
     height: 100px;
   }
-  @media (min-width: 412px) {
+  /* @media (min-width: 412px) {
+    width: 125px;
+    height: 100px;
+  } */
+  @media (min-width: 411px) {
     width: 125px;
     height: 100px;
   }
@@ -59,8 +67,8 @@ export const StoreImg = styled.img`
 
 export const MapImg = styled.img`
   color: white;
-  width: 120px;
-  height: 90px;
+  width: 105px;
+  height: 99px;
   @media (min-width: 360px) {
     width: 130px;
     height: 100px;
