@@ -121,7 +121,7 @@ class PriceCalculator extends React.PureComponent {
             name: "Full",
             totalMattOnlyPrice: mattOnlyPrices[2],
             totalSetPrice: setPrices[2],
-            boxPrice: boxPrice[3],
+            boxPrice: boxPrice[2],
             BoxAdded: false,
             boxSector: "1",
           },
