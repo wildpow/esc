@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { NodeGroup } from "react-move";
 import TruncateMarkup from "react-truncate-markup";
 import star from "../images/stars.svg";
-import { NodeGroup } from "./animation";
 import Loading from "./loading";
 
 const InsideWrapper = styled.div`
