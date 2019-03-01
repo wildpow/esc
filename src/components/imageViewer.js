@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { NodeGroup } from "./animation";
+import { NodeGroup } from "react-move";
 import {
   ImgWrapper,
   SmallImgHolder,

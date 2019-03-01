@@ -23,6 +23,7 @@ import map from "../images/storeMapRatio.png";
 import pop from "../images/funCo.png";
 import logo from "../images/logo.png";
 import Layout from "../components/layout";
+import Reviews from "../components/aboutReviews";
 
 export default () => (
   <Layout>
@@ -56,7 +57,7 @@ export default () => (
           wake up feeling better.
         </H2>
       </header>
-
+      <Reviews />
       <PicHolder>
         <StoreImg
           src={store1}

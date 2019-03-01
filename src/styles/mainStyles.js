@@ -43,7 +43,7 @@ export const H2 = styled.h2`
   text-shadow: ${props => props.theme.TextShadow};
   background-color: ${props =>
     props.red ? props.theme.mainColor2 : props.theme.mainColor1};
-
+  font-weight: 500;
   text-align: center;
   color: white;
   margin: 0;
@@ -61,6 +61,8 @@ export const H2 = styled.h2`
     font-size: 1.5rem;
     padding-bottom: 20px;
     padding-top: 20px;
+    /* font-weight: 500; */
+    line-height: 1.4em;
   }
   @media (min-width: 1300px) {
     font-size: 1.8rem;
@@ -69,6 +71,6 @@ export const H2 = styled.h2`
     padding-left: 1px;
     padding-top: 25px;
     padding-bottom: 25px;
-    line-height: 1.8rem;
+    line-height: 2.4rem;
   }
 `;

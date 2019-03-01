@@ -15,6 +15,9 @@ export const Main = styled(FlexCol)`
 
 export const PicHolder = styled(FlexRow)`
   justify-content: space-between;
+  @media (min-width: 568px) {
+    justify-content: space-evenly;
+  }
   @media (min-width: 640px) {
     justify-content: space-around;
   }
@@ -42,6 +45,14 @@ export const StoreImg = styled.img`
   @media (min-width: 411px) {
     width: 125px;
     height: 100px;
+  }
+  @media (min-width: 568px) {
+    width: 155px;
+    height: 120px;
+  }
+  @media (min-width: 731px) {
+    width: 200px;
+    height: 160px;
   }
   @media (min-width: 768px) {
     width: 218px;
@@ -80,6 +91,14 @@ export const MapImg = styled.img`
   @media (min-width: 412px) {
     width: 145px;
     height: 100px;
+  }
+  @media (min-width: 568px) {
+    width: 170px;
+    height: 120px;
+  }
+  @media (min-width: 731px) {
+    width: 220px;
+    height: 160px;
   }
   @media (min-width: 768px) {
     width: 250px;
