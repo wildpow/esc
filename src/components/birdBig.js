@@ -70,6 +70,10 @@ const Text = styled.div`
 `;
 const BirdBig = props => {
   const { avg, count, star } = props;
+  const starsArr = [];
+  for (let i = 0; i < Math.round(avg); i += 1) {
+    starsArr.push(<img src={star} alt="start for rating" key={i + 200} />);
+  }
   return (
     <BirdLink
       href="https://birdeye.com/esc-mattress-center-154743411347922"
@@ -86,9 +90,7 @@ const BirdBig = props => {
           <img alt="BirdEye certified seal" src={CertifiedBig} />
         </Top>
         <Rating>
-          {Array(Math.round(avg)).fill(
-            <img src={star} alt="start for rating" />,
-          )}
+          {starsArr}
           <AvgContainer>{Math.round(avg)}</AvgContainer>
         </Rating>
       </Wrapper>
