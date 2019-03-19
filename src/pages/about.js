@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import {
   Main,
   PicHolder,
@@ -21,35 +20,18 @@ import store1 from "../images/outsideNightRatio.jpg";
 import store2 from "../images/outsideDayRatio.jpg";
 import map from "../images/storeMapRatio.png";
 import pop from "../images/funCo.png";
-import logo from "../images/logo.png";
 import Layout from "../components/layout";
 import Reviews from "../components/aboutReviews";
+import SEO from "../components/seo";
 
 export default () => (
   <Layout>
     <Main>
-      <Helmet>
-        <title>ESC: About Us</title>
-        <meta
-          name="description"
-          content="Three of the best trained mattress sales people in Western Washington decided to open their own store; so that they could help people the way they believe they should be helped!  We are bringing back the service you are used to!"
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="E.S.C. Mattress Center" />
-        <meta property="og:url" content="https://www.escmattresscenter.com/" />
-        <meta property="og:image" content={logo} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="627" />
-        <meta
-          property="og:image:alt"
-          content="E.S.C Mattress Center's logo of a panda"
-        />
-        <meta property="og:title" content="E.S.C. Mattress Center" />
-        <meta
-          property="og:description"
-          content="Three of the best trained mattress sales people in Western Washington decided to open their own store; so that they could help people the way they believe they should be helped!  We are bringing back the service you are used to!"
-        />
-      </Helmet>
+      <SEO
+        title="ESC: About Us"
+        description="Three of the best trained mattress sales people in Western Washington decided to open their own store; so that they could help people the way they believe they should be helped!  We are bringing back the service you are used to!"
+        ogTitle="E.S.C. Mattress Center | About Us"
+      />
       <header>
         <H2>
           {" "}

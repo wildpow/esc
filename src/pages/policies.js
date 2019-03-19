@@ -1,38 +1,17 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { MainArticle, P, Heading } from "../styles/policyStyles";
 import { H2 } from "../styles/mainStyles";
 import Layout from "../components/layout";
-import logo from "../images/logo.png";
+import SEO from "../components/seo";
 
 export default () => (
   <Layout>
     <MainArticle>
-      <Helmet>
-        <title>ESC: Terms and Policies</title>
-        <meta
-          name="description"
-          content="Terms and Policies for E.S.C Mattress Center website"
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="E.S.C. Mattress Center" />
-        <meta property="og:url" content="https://www.escmattresscenter.com/" />
-        <meta property="og:image:secure_url" content={logo} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="627" />
-        <meta
-          property="og:image:alt"
-          content="E.S.C Mattress Center's logo of a panda"
-        />
-        <meta
-          property="og:title"
-          content="E.S.C. Mattress Center | Terms and Policies"
-        />
-        <meta
-          property="og:description"
-          content="A licensed mattress retailer for Sealy, Stearns and Foster, and Tempur-Pedic offering almost fifty mattresses with prices to fit every budget.  ESC Mattress Center is a locally owned company in Everett WA with more than twenty years of mattress industry experience between our non-commissioned staff."
-        />
-      </Helmet>
+      <SEO
+        title="ESC: Terms and Policies"
+        description="Terms and Policies for E.S.C Mattress Center website"
+        ogTitle="E.S.C. Mattress Center | Terms and Policies"
+      />
       <header>
         <H2>Terms and Policies</H2>
       </header>

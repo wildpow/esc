@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import {
   CompanyWrapper,
   H3,
@@ -15,33 +14,16 @@ import {
 import Synchrony from "../images/synchrony_Card_Image.jpg";
 import Acima from "../images/acima_Logo.png";
 import Layout from "../components/layout";
-import logo from "../images/logo.png";
+import SEO from "../components/seo";
 
 export default () => (
   <Layout>
     <Main>
-      <Helmet>
-        <title>ESC: Financing</title>
-        <meta
-          name="description"
-          content="Why spend your own money? We have 2 different financing options to suit your needs: Synchrony offers interest free financing, while Ascima offers a no credit needed option. Ask your local store for details."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="E.S.C. Mattress Center" />
-        <meta property="og:url" content="https://www.escmattresscenter.com/" />
-        <meta property="og:image" content={logo} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="627" />
-        <meta
-          property="og:image:alt"
-          content="E.S.C Mattress Center's logo of a panda"
-        />
-        <meta property="og:title" content="E.S.C. Mattress Center" />
-        <meta
-          property="og:description"
-          content="Why spend your own money? We have 2 different financing options to suit your needs: Synchrony offers interest free financing, while Ascima offers a no credit needed option. Ask your local store for details."
-        />
-      </Helmet>
+      <SEO
+        title="ESC: Financing"
+        description="Why spend your own money? We have 2 different financing options to suit your needs: Synchrony offers interest free financing, while Ascima offers a no credit needed option. Ask your local store for details."
+        ogTitle="E.S.C. Mattress Center | Financing"
+      />
       <CompanyWrapper>
         <H3>Synchrony Financing</H3>
         <InfoWrapper>

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Helmet from "react-helmet";
 import Layout from "../components/layout";
 import {
   MainWrapper,
@@ -11,35 +10,23 @@ import {
   Headline,
 } from "../styles/mattListStyles";
 import SingleMattress from "../components/singleMattress/singleMattress";
+import SEO from "../components/seo";
 
 const CurrentSale = ({ data }) => {
   const { allIsOnSales } = data.gcms;
   return (
     <Layout>
-      <Helmet>
-        <title>{`ESC: ${allIsOnSales[0].tabTitle}`}</title>
-        <meta name="description" content={allIsOnSales[0].description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="E.S.C. Mattress Center" />
-        <meta
-          property="og:url"
-          content="https://www.escmattresscenter.com/current-sale"
-        />
-        <meta
-          property="og:image"
-          content={`https://media.graphcms.com/resize=w:980,h:450,fit:clip/${
-            allIsOnSales[0].currentSaleImg.handle
-          }`}
-        />
-        <meta property="og:image:width" content="980" />
-        <meta property="og:image:height" content="450" />
-        <meta
-          property="og:image:alt"
-          content={`E.S.C Mattress Center | ${allIsOnSales[0].saleName}`}
-        />
-        <meta property="og:title" content="E.S.C. Mattress Center" />
-        <meta property="og:description" content={allIsOnSales[0].description} />
-      </Helmet>
+      <SEO
+        title={`ESC: ${allIsOnSales[0].tabTitle}`}
+        description={allIsOnSales[0].description}
+        ogTitle={`E.S.C. Mattress Center | ${allIsOnSales[0].saleName}`}
+        ogImageAlt={`E.S.C Mattress Center | ${allIsOnSales[0].saleName}`}
+        ogImage={`https://media.graphcms.com/resize=w:980,h:450,fit:clip/${
+          allIsOnSales[0].currentSaleImg.handle
+        }`}
+        ogImageHeight="450"
+        ogImageWidth="980"
+      />
       <MainWrapper>
         <Wrapper2>
           <Headline>{allIsOnSales[0].saleName}</Headline>

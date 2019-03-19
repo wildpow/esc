@@ -1,12 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Helmet from "react-helmet";
 import Layout from "../components/layout";
-import logo from "../images/logo.png";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import { Marker, BottomImg, Main } from "../styles/postStyles";
 import { H2 } from "../styles/mainStyles";
+import SEO from "../components/seo";
 
 const Post = ({ data }) => {
   const post = data.gcms.Post;
@@ -23,24 +22,11 @@ const Post = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>{makeTitle(post.slug)}</title>
-        <meta name="description" content={post.content} />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="E.S.C. Mattress Center" />
-        <meta property="og:image" content={logo} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="627" />
-        <meta
-          property="og:image:alt"
-          content="E.S.C Mattress Center's logo of a panda"
-        />
-        <meta
-          property="og:title"
-          content={`E.S.C. Mattress Center | ${post.title}`}
-        />
-        <meta property="og:description" content={post.title} />
-      </Helmet>
+      <SEO
+        title={makeTitle(post.slug)}
+        ogTitle={`E.S.C. Mattress Center | ${post.title}`}
+        description={post.content}
+      />
       <BreadWrapper Blog>
         <BreadCrumbs next="Blog" here={makeTitle(post.slug)} />
       </BreadWrapper>
