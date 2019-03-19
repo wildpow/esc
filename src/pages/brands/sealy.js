@@ -3,22 +3,16 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../../components/layout";
-
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 import {
   MainWrapper,
   Wrapper,
-  LinkWrapper,
   MainTitle,
   SealyImgPlace,
-  StyledLink,
-  MattImg,
-  Name,
-  PriceRange,
-  Divy,
 } from "../../styles/mattListStyles";
 import SealyImg from "../../images/sealyLogo.png";
 import logo from "../../images/logo.png";
+import SingleMattress from "../../components/singleMattress/singleMattress";
 
 const Sealy = ({ data }) => {
   const { allMattresses } = data.gcms;
@@ -65,31 +59,10 @@ const Sealy = ({ data }) => {
             if (mattress.subLine !== null) {
               if (mattress.subLine.subLineName === "Essentials") {
                 return (
-                  <LinkWrapper key={mattress.id}>
-                    <StyledLink to={`/brands/${title}/${mattress.uri}`}>
-                      <Divy>
-                        <MattImg
-                          src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                            mattress.coverImg.handle
-                          }`}
-                          alt={`Image of a ${mattress.brandName} ${
-                            mattress.subBrand
-                          } ${mattress.subName} mattress`}
-                        />
-                        <PriceRange>
-                          {`$${mattress.priceRange[0]} - 
-                          $${mattress.priceRange[1]}`}
-                        </PriceRange>
-                      </Divy>
-                      <Name>
-                        {mattress.brandName}
-                        <br />
-                        {mattress.subBrand}
-                        <br />
-                        {mattress.subName}
-                      </Name>
-                    </StyledLink>
-                  </LinkWrapper>
+                  <SingleMattress
+                    mattress={mattress}
+                    url={`/brands/${title}/${mattress.uri}`}
+                  />
                 );
               }
               return null;
@@ -100,31 +73,10 @@ const Sealy = ({ data }) => {
             if (mattress.subLine !== null) {
               if (mattress.subLine.subLineName === "Performance") {
                 return (
-                  <LinkWrapper key={mattress.id}>
-                    <StyledLink to={`/brands/${title}/${mattress.uri}`}>
-                      <Divy>
-                        <MattImg
-                          src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                            mattress.coverImg.handle
-                          }`}
-                          alt={`Image of a ${mattress.brandName} ${
-                            mattress.subBrand
-                          } ${mattress.subName} mattress`}
-                        />
-                        <PriceRange>
-                          {`$${mattress.priceRange[0]} - 
-                          $${mattress.priceRange[1]}`}
-                        </PriceRange>
-                      </Divy>
-                      <Name>
-                        {mattress.brandName}
-                        <br />
-                        {mattress.subBrand}
-                        <br />
-                        {mattress.subName}
-                      </Name>
-                    </StyledLink>
-                  </LinkWrapper>
+                  <SingleMattress
+                    mattress={mattress}
+                    url={`/brands/${title}/${mattress.uri}`}
+                  />
                 );
               }
               return null;
@@ -135,31 +87,10 @@ const Sealy = ({ data }) => {
             if (mattress.subLine !== null) {
               if (mattress.subLine.subLineName === "Premium ") {
                 return (
-                  <LinkWrapper key={mattress.id}>
-                    <StyledLink to={`/brands/${title}/${mattress.uri}`}>
-                      <Divy>
-                        <MattImg
-                          src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                            mattress.coverImg.handle
-                          }`}
-                          alt={`Image of a ${mattress.brandName} ${
-                            mattress.subBrand
-                          } ${mattress.subName} mattress`}
-                        />
-                        <PriceRange>
-                          {`$${mattress.priceRange[0]} - 
-                          $${mattress.priceRange[1]}`}
-                        </PriceRange>
-                      </Divy>
-                      <Name>
-                        {mattress.brandName}
-                        <br />
-                        {mattress.subBrand}
-                        <br />
-                        {mattress.subName}
-                      </Name>
-                    </StyledLink>
-                  </LinkWrapper>
+                  <SingleMattress
+                    mattress={mattress}
+                    url={`/brands/${title}/${mattress.uri}`}
+                  />
                 );
               }
               return null;

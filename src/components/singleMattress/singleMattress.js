@@ -39,7 +39,7 @@ const SingleMattress = ({ mattress, url }) => {
   );
 };
 
-SingleMattress.propTyles = {
+SingleMattress.propTypes = {
   mattress: PropTypes.instanceOf(Object).isRequired,
   url: PropTypes.string.isRequired,
 };

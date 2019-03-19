@@ -5,19 +5,14 @@ import { graphql } from "gatsby";
 import {
   MainWrapper,
   Wrapper,
-  LinkWrapper,
   MainTitle,
   StearnsImgPlaceHolder,
-  StyledLink,
-  MattImg,
-  Name,
-  PriceRange,
-  Divy,
 } from "../../styles/mattListStyles";
 import Layout from "../../components/layout";
 import logo from "../../images/logo.png";
 import StearnsImg from "../../images/stearnsLogo.png";
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
+import SingleMattress from "../../components/singleMattress/singleMattress";
 
 const Stearns = ({ data }) => {
   const { allMattresses } = data.gcms;
@@ -61,31 +56,10 @@ const Stearns = ({ data }) => {
         </MainTitle>
         <Wrapper>
           {allMattresses.map(mattress => (
-            <LinkWrapper key={mattress.id}>
-              <StyledLink to={`/brands/${title}/${mattress.uri}`}>
-                <Divy>
-                  <MattImg
-                    src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                      mattress.coverImg.handle
-                    }`}
-                    alt={`Image of a ${mattress.brandName} ${
-                      mattress.subBrand
-                    } ${mattress.subName} mattress`}
-                  />
-                  <PriceRange>
-                    {`$${mattress.priceRange[0]} 
-                    - $${mattress.priceRange[1]}`}
-                  </PriceRange>
-                </Divy>
-                <Name>
-                  {mattress.brandName}
-                  <br />
-                  {mattress.subBrand}
-                  <br />
-                  {mattress.subName}
-                </Name>
-              </StyledLink>
-            </LinkWrapper>
+            <SingleMattress
+              mattress={mattress}
+              url={`/brands/${title}/${mattress.uri}`}
+            />
           ))}
         </Wrapper>
         <BreadWrapper Brands Bottom>
