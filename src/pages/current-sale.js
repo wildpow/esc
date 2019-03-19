@@ -6,16 +6,11 @@ import Layout from "../components/layout";
 import {
   MainWrapper,
   Wrapper,
-  LinkWrapper,
   P,
   Wrapper2,
   Headline,
-  StyledLink,
-  MattImg,
-  Name,
-  PriceRange,
-  Divy,
 } from "../styles/mattListStyles";
+import SingleMattress from "../components/singleMattress/singleMattress";
 
 const CurrentSale = ({ data }) => {
   const { allIsOnSales } = data.gcms;
@@ -53,31 +48,11 @@ const CurrentSale = ({ data }) => {
         </Wrapper2>
         <Wrapper>
           {allIsOnSales[0].mattresses.map(mattress => (
-            <LinkWrapper key={mattress.id}>
-              <StyledLink
-                to={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
-              >
-                <Divy>
-                  <MattImg
-                    src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${mattress.coverImg &&
-                      mattress.coverImg.handle}`}
-                    alt={`Image of a ${mattress.brandName} ${
-                      mattress.subBrand
-                    } ${mattress.subName} mattress`}
-                  />
-                  <PriceRange>
-                    {`$${mattress.priceRange[0]} - $${mattress.priceRange[1]}`}
-                  </PriceRange>
-                </Divy>
-                <Name>
-                  {mattress.brandName}
-                  <br />
-                  {mattress.subBrand}
-                  <br />
-                  {mattress.subName}
-                </Name>
-              </StyledLink>
-            </LinkWrapper>
+            <SingleMattress
+              key={mattress.id}
+              mattress={mattress}
+              url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
+            />
           ))}
         </Wrapper>
       </MainWrapper>

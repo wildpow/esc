@@ -60,6 +60,7 @@ const Sealy = ({ data }) => {
               if (mattress.subLine.subLineName === "Essentials") {
                 return (
                   <SingleMattress
+                    key={mattress.id}
                     mattress={mattress}
                     url={`/brands/${title}/${mattress.uri}`}
                   />
@@ -74,6 +75,7 @@ const Sealy = ({ data }) => {
               if (mattress.subLine.subLineName === "Performance") {
                 return (
                   <SingleMattress
+                    key={mattress.id}
                     mattress={mattress}
                     url={`/brands/${title}/${mattress.uri}`}
                   />
@@ -88,6 +90,7 @@ const Sealy = ({ data }) => {
               if (mattress.subLine.subLineName === "Premium ") {
                 return (
                   <SingleMattress
+                    key={mattress.id}
                     mattress={mattress}
                     url={`/brands/${title}/${mattress.uri}`}
                   />

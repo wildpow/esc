@@ -5,7 +5,7 @@
   "author": "Aaron Wilder <element1028@gmail.com>",
   "dependencies": {
     "axios": "^0.18.0",
-    "gatsby": "^2.1.37",
+    "gatsby": "^2.2.1",
     "gatsby-plugin-manifest": "^2.0.24",
     "gatsby-plugin-netlify": "^2.0.13",
     "gatsby-plugin-offline": "^2.0.25",

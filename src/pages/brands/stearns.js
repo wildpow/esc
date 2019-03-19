@@ -57,6 +57,7 @@ const Stearns = ({ data }) => {
         <Wrapper>
           {allMattresses.map(mattress => (
             <SingleMattress
+              key={mattress.id}
               mattress={mattress}
               url={`/brands/${title}/${mattress.uri}`}
             />

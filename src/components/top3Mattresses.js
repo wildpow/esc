@@ -86,6 +86,7 @@ const TopThreeMatts = () => {
           <ThreeMattWrapper>
             {data.gcms.allFront3Mattresses[0].mattresses.map(mattress => (
               <SingleMattres
+                key={mattress.id}
                 mattress={mattress}
                 url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
               />

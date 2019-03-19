@@ -14,6 +14,7 @@ const Navigation = () => (
         <>
           <Nav>
             <StyledLinkLeft
+              partiallyActive
               activeStyle={{
                 borderBottom: `8px solid ${theme.mainColor2}`,
                 borderTop: `0px solid ${theme.mainColor2}`,
@@ -23,6 +24,7 @@ const Navigation = () => (
               Brands
             </StyledLinkLeft>
             <StyledLinkLeft
+              partiallyActive
               to="/adjustable"
               activeStyle={{
                 borderBottom: `8px solid ${theme.mainColor2}`,
@@ -32,6 +34,7 @@ const Navigation = () => (
               Adjustable
             </StyledLinkLeft>
             <StyledLinkLeft
+              partiallyActive
               to="/accessories"
               activeStyle={{
                 borderBottom: `8px solid ${theme.mainColor2}`,
@@ -43,6 +46,7 @@ const Navigation = () => (
           </Nav>
           <Nav>
             <StyledLinkRight
+              partiallyActive
               to="/financing"
               activeStyle={{
                 borderBottom: `8px solid ${theme.mainColor2}`,
@@ -52,6 +56,7 @@ const Navigation = () => (
               Financing
             </StyledLinkRight>
             <StyledLinkRight
+              partiallyActive
               to="/blog"
               activeStyle={{
                 borderBottom: `8px solid ${theme.mainColor2}`,
@@ -61,6 +66,7 @@ const Navigation = () => (
               Our Blog
             </StyledLinkRight>
             <StyledLinkRight
+              partiallyActive
               to="/about"
               activeStyle={{
                 borderBottom: `8px solid ${theme.mainColor2}`,
