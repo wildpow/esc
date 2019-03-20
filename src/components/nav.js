@@ -1,11 +1,6 @@
 import React from "react";
 import { ThemeConsumer } from "styled-components";
-import {
-  Header,
-  Nav,
-  StyledLinkLeft,
-  StyledLinkRight,
-} from "../styles/navStyles";
+import { Header, Nav, StyledLink } from "../styles/navStyles";
 
 const Navigation = () => (
   <Header>
@@ -13,68 +8,80 @@ const Navigation = () => (
       {theme => (
         <>
           <Nav>
-            <StyledLinkLeft
+            <StyledLink
+              left
               partiallyActive
               activeStyle={{
-                borderBottom: `8px solid ${theme.mainColor2}`,
+                borderRadius: "1px",
+                borderBottom: `5px solid ${theme.mainColor2}`,
                 borderTop: `0px solid ${theme.mainColor2}`,
               }}
               to="/brands"
             >
               Brands
-            </StyledLinkLeft>
-            <StyledLinkLeft
+            </StyledLink>
+            <StyledLink
+              left
               partiallyActive
               to="/adjustable"
               activeStyle={{
-                borderBottom: `8px solid ${theme.mainColor2}`,
+                borderRadius: "1px",
+                borderBottom: `5px solid ${theme.mainColor2}`,
                 borderTop: `0px solid ${theme.mainColor2}`,
               }}
             >
               Adjustable
-            </StyledLinkLeft>
-            <StyledLinkLeft
+            </StyledLink>
+            <StyledLink
+              left
               partiallyActive
               to="/accessories"
               activeStyle={{
-                borderBottom: `8px solid ${theme.mainColor2}`,
+                borderRadius: "1px",
+                borderBottom: `5px solid ${theme.mainColor2}`,
                 borderTop: `0px solid ${theme.mainColor2}`,
               }}
             >
               Accessories
-            </StyledLinkLeft>
+            </StyledLink>
           </Nav>
           <Nav>
-            <StyledLinkRight
+            <StyledLink
+              right
               partiallyActive
               to="/financing"
               activeStyle={{
-                borderBottom: `8px solid ${theme.mainColor2}`,
+                borderRadius: "1px",
+                borderBottom: `5px solid ${theme.mainColor2}`,
                 borderTop: `0px solid ${theme.mainColor2}`,
               }}
             >
               Financing
-            </StyledLinkRight>
-            <StyledLinkRight
+            </StyledLink>
+            <StyledLink
+              right
               partiallyActive
               to="/blog"
               activeStyle={{
-                borderBottom: `8px solid ${theme.mainColor2}`,
+                borderRadius: "1px",
+                borderBottom: `5px solid ${theme.mainColor2}`,
                 borderTop: `0px solid ${theme.mainColor2}`,
               }}
             >
               Our Blog
-            </StyledLinkRight>
-            <StyledLinkRight
+            </StyledLink>
+            <StyledLink
+              right
               partiallyActive
               to="/about"
               activeStyle={{
-                borderBottom: `8px solid ${theme.mainColor2}`,
+                borderRadius: "1px",
+                borderBottom: `5px solid ${theme.mainColor2}`,
                 borderTop: `0px solid ${theme.mainColor2}`,
               }}
             >
               About Us
-            </StyledLinkRight>
+            </StyledLink>
           </Nav>
         </>
       )}
