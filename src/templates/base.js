@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
@@ -23,6 +22,7 @@ import {
   InfoAnchor,
   Stuff,
 } from "../styles/singleMattStyles";
+import SEO from "../components/seo";
 
 const Base = ({ data }) => {
   const { AdjBases } = data.gcms;
@@ -32,35 +32,15 @@ const Base = ({ data }) => {
         <BreadCrumbs next="Adjustable" here={AdjBases.fullName} />
       </BreadWrapper>
       <Wrapper>
-        <Helmet>
-          <title>{`ESC: ${AdjBases.fullName}`}</title>
-          <meta name="description" content={AdjBases.baseDescription} />
-          <meta property="og:type" content="website" />
-          <meta property="og:site_name" content="E.S.C. Mattress Center" />
-          <meta
-            property="og:url"
-            content={`https://www.escmattresscenter.com/adjustable/${
-              AdjBases.uri
-            }`}
-          />
-          <meta
-            property="og:image"
-            content={`https://media.graphcms.com/resize=w:1200,h:627,fit:clip/${
-              AdjBases.coverImg.handle
-            }`}
-          />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="627" />
-          <meta
-            property="og:image:alt"
-            content={`E.S.C Mattress Center | ${AdjBases.fullName}`}
-          />
-          <meta property="og:title" content="E.S.C Mattress Center" />
-          <meta
-            property="og:description"
-            content={`${AdjBases.fullName} Adjustable Base`}
-          />
-        </Helmet>
+        <SEO
+          title={`ESC: ${AdjBases.fullName}`}
+          description={AdjBases.baseDescription}
+          ogURL={`https://www.escmattresscenter.com/adjustable/${AdjBases.uri}`}
+          ogImage={`https://media.graphcms.com/resize=w:1200,h:627,fit:clip/${
+            AdjBases.coverImg.handle
+          }`}
+          ogImageAlt={`E.S.C Mattress Center | ${AdjBases.fullName}`}
+        />
         <header>
           <MainTitle>{AdjBases.fullName}</MainTitle>
         </header>

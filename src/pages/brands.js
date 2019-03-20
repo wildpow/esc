@@ -1,5 +1,4 @@
 import React from "react";
-import { Helmet } from "react-helmet";
 import {
   Main,
   TempurImg,
@@ -16,33 +15,16 @@ import SealyLogo from "../images/sealyLogo.png";
 import StearnsLogo from "../images/stearnsLogo.png";
 import TempurLogo from "../images/tempurLogo2.png";
 import Layout from "../components/layout";
-import logo from "../images/logo.png";
+import SEO from "../components/seo";
 
 export default () => (
   <Layout>
     <Main MarginTop>
-      <Helmet>
-        <title>ESC: Brands</title>
-        <meta
-          name="description"
-          content="Come visit your locally owned, Everett based Sealy, Stearns and Foster & Tempur-Pedic dealer.  We have over 20 years of experience helping people sleep better on the brands we carry.  We carry 3 of the top 5 mattress brands in the US, so come see us, so we can help you sleep like the experts do!"
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="E.S.C. Mattress Center" />
-        <meta property="og:url" content="https://www.escmattresscenter.com/" />
-        <meta property="og:image" content={logo} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="627" />
-        <meta
-          property="og:image:alt"
-          content="E.S.C Mattress Center's logo of a panda"
-        />
-        <meta property="og:title" content="E.S.C. Mattress Center" />
-        <meta
-          property="og:description"
-          content="Come visit your locally owned, Everett based Sealy, Stearns and Foster & Tempur-Pedic dealer.  We have over 20 years of experience helping people sleep better on the brands we carry.  We carry 3 of the top 5 mattress brands in the US, so come see us, so we can help you sleep like the experts do!"
-        />
-      </Helmet>
+      <SEO
+        title="ESC: Brands"
+        description="Come visit your locally owned, Everett based Sealy, Stearns and Foster & Tempur-Pedic dealer.  We have over 20 years of experience helping people sleep better on the brands we carry.  We carry 3 of the top 5 mattress brands in the US, so come see us, so we can help you sleep like the experts do!"
+        ogTitle="E.S.C. Mattress Center | Brands"
+      />
       <BreadWrapper hidenLarge>
         <BreadCrumbs here="Brands" />
       </BreadWrapper>

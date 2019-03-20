@@ -1,7 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
-import { Helmet } from "react-helmet";
 import {
   Main,
   StyledLink,
@@ -11,8 +10,8 @@ import {
   AdjMarkdown,
 } from "../styles/adjustableStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import logo from "../images/logo.png";
 import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 const Adjustables = ({ data }) => (
   <Layout>
@@ -20,28 +19,11 @@ const Adjustables = ({ data }) => (
       <BreadWrapper hidenLarge>
         <BreadCrumbs here="Adjustable" />
       </BreadWrapper>
-      <Helmet>
-        <title>ESC: Ajustable Bases</title>
-        <meta
-          name="description"
-          content="E.S.C. Mattress Center carry 4 different Adjustable bases. Sometimes called Lifestyle bases or Movable bases. We have the Tempur-Pedic Ergo Premier and Ergo Plus, the Stearns & Foster Reflection 7, and the Sealy Ease bases. Sleep in zero gravity, or read, game or watch tv in the lounge position."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="E.S.C. Mattress Center" />
-        <meta property="og:url" content="https://www.escmattresscenter.com/" />
-        <meta property="og:image" content={logo} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="627" />
-        <meta
-          property="og:image:alt"
-          content="E.S.C Mattress Center's logo of a panda"
-        />
-        <meta property="og:title" content="E.S.C. Mattress Center" />
-        <meta
-          property="og:description"
-          content="E.S.C. Mattress Center carries many different Adjustable bases. Sometimes called Lifestyle bases or Movable bases. For instance we have the Tempur-Pedic Ergo Premier and Ergo Plus, the Stearns & Foster Reflection 7, and the Sealy Ease bases. Sleep in zero gravity, or read, game or watch tv in the lounge position."
-        />
-      </Helmet>
+      <SEO
+        title="ESC: Ajustable Bases"
+        description="E.S.C. Mattress Center carry many different Adjustable bases. Sometimes called Lifestyle bases or Movable bases. We have the Tempur-Pedic Ergo Premier and Ergo Plus, the Stearns & Foster Reflection 7, and the Sealy Ease bases. Sleep in zero gravity, or read, game or watch tv in the lounge position."
+        ogTitle="E.S.C. Mattress Center | Adjustable Bases"
+      />
       {data.gcms.allAdjBaseses.map(base => (
         <StyledLink to={`/adjustable/${base.uri}`} key={base.id}>
           <H3>{base.fullName}</H3>

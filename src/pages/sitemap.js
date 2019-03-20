@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Helmet from "react-helmet";
 import Layout from "../components/layout";
-import logo from "../images/logo.png";
 import {
   Main,
   SiteLinks,
@@ -17,28 +15,15 @@ import {
 import { H2 } from "../styles/mainStyles";
 import AdjSiteMapData from "../components/adjSiteMapData";
 import BlogSiteMapData from "../components/blogSiteMapData";
+import SEO from "../components/seo";
 
 const SiteMap = ({ data }) => (
   <Layout>
-    <Helmet>
-      <title>ESC: Site Map</title>
-      <meta
-        name="description"
-        content="Sitemap for E.S.C Mattress Center website"
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="E.S.C. Mattress Center" />
-      <meta property="og:url" content="https://www.escmattresscenter.com/" />
-      <meta property="og:image" content={logo} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="627" />
-      <meta
-        property="og:image:alt"
-        content="E.S.C Mattress Center's logo of a panda"
-      />
-      <meta property="og:title" content="E.S.C. Mattress Center" />
-      <meta property="og:description" content="Sleep like the experts do." />
-    </Helmet>
+    <SEO
+      title="ESC: Site Map"
+      description="Sitemap for E.S.C Mattress Center website"
+      ogTitle="E.S.C. Mattress Center | Site Map"
+    />
     <MainLinks>
       <H2>Main Site Links</H2>
       <UnList>

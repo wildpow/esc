@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import {
   Main,
   H3,
@@ -16,33 +15,16 @@ import Pillows from "../images/pillowCollage.jpg";
 import Protector from "../images/protector.jpg";
 import Sheets from "../images/sheetStack.jpg";
 import Layout from "../components/layout";
-import logo from "../images/logo.png";
+import SEO from "../components/seo";
 
 export default () => (
   <Layout>
     <Main>
-      <Helmet>
-        <title>ESC: Accessories</title>
-        <meta
-          name="description"
-          content="Sleep system means more than a mattress and box, let us help you find a Pillow, Sheets, and Protector that will help you sleep better. We carry Dream Fit Sheets, Protect a bed Pillows & Protectors, Tempurpedic pillows, and Thecnogel Pillows. We can help with cooling as well if needed."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="E.S.C. Mattress Center" />
-        <meta property="og:url" content="https://www.escmattresscenter.com/" />
-        <meta property="og:image" content={logo} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="627" />
-        <meta
-          property="og:image:alt"
-          content="E.S.C Mattress Center's logo of a panda"
-        />
-        <meta property="og:title" content="E.S.C. Mattress Center" />
-        <meta
-          property="og:description"
-          content="Sleep system means more than a mattress and box, let us help you find a Pillow, Sheets, and Protector that will help you sleep better. We carry Dream Fit Sheets, Protect a bed Pillows & Protectors, Tempurpedic pillows, and Thecnogel Pillows. We can help with cooling as well if needed."
-        />
-      </Helmet>
+      <SEO
+        title="ESC: Accessories"
+        description="Sleep system means more than a mattress and box, let us help you find a Pillow, Sheets, and Protector that will help you sleep better. We carry Dream Fit Sheets, Protect a bed Pillows & Protectors, Tempurpedic pillows, and Thecnogel Pillows. We can help with cooling as well if needed."
+        ogTitle="E.S.C. Mattress Center | Accessories"
+      />
       <AccWrapper>
         <H3>Pillows</H3>
         <InfoWrapper>

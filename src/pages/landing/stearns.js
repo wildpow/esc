@@ -1,5 +1,4 @@
 import React from "react";
-import { Helmet } from "react-helmet";
 import { Link } from "gatsby";
 import Layout from "../../components/layout";
 import GoogleMapContainer from "../../components/map/googleMap";
@@ -31,31 +30,17 @@ import {
   FooterWraper,
   LGWrapper,
 } from "../../styles/landingStyles";
+import SEO from "../../components/seo";
 
 const StearnsLanding = () => (
   <Layout>
-    <Helmet>
-      <title>ESC: Stearns & Foster</title>
-      <meta
-        name="description"
-        content="Experience the height of luxury with Stearns & Foster mattresses.  Learn more about the top rated luxury innerspring mattress collection from Stearns and Foster at ESC Mattress Center in Everett WA.  Our local non-commission staff will be happy to show you the Estate and Estate Lux collections."
-      />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="E.S.C. Mattress Center" />
-      <meta property="og:url" content="https://www.escmattresscenter.com/" />
-      <meta property="og:image" content={StearnsLogo} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="627" />
-      <meta property="og:image:alt" content="Stearns & Foster logo" />
-      <meta
-        property="og:title"
-        content="E.S.C. Mattress Center | Stearns and Foster"
-      />
-      <meta
-        property="og:description"
-        content="Experience the height of luxury with Stearns & Foster mattresses.  Learn more about the top rated luxury innerspring mattress collection from Stearns and Foster at ESC Mattress Center in Everett WA.  Our local non-commission staff will be happy to show you the Estate and Estate Lux collections."
-      />
-    </Helmet>
+    <SEO
+      title="ESC: Stearns & Foster"
+      description="Experience the height of luxury with Stearns & Foster mattresses.  Learn more about the top rated luxury innerspring mattress collection from Stearns and Foster at ESC Mattress Center in Everett WA.  Our local non-commission staff will be happy to show you the Estate and Estate Lux collections."
+      ogImage={StearnsLogo}
+      ogImageAlt="Stearns & Foster logo"
+      ogTitle="E.S.C. Mattress Center | Stearns and Foster"
+    />
     <Container>
       <Header>
         <MainLogo

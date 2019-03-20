@@ -1,18 +1,9 @@
 import React from "react";
 import { StaticQuery, graphql, Link } from "gatsby";
 import styled from "styled-components";
-import {
-  Wrapper,
-  LinkWrapper,
-  StyledLink,
-  Divy,
-  MattImg,
-  PriceRange,
-  Name,
-  MainWrapper,
-  Headline,
-} from "../styles/mattListStyles";
+import { Wrapper, MainWrapper, Headline } from "../styles/mattListStyles";
 import { P } from "../styles/homeStyles";
+import SingleMattres from "./singleMattress/singleMattress";
 
 const NewWrapper = styled(MainWrapper)`
   margin-top: 15px;
@@ -94,34 +85,11 @@ const TopThreeMatts = () => {
           <Headline>{data.gcms.allFront3Mattresses[0].headerTagLine}</Headline>
           <ThreeMattWrapper>
             {data.gcms.allFront3Mattresses[0].mattresses.map(mattress => (
-              <LinkWrapper key={mattress.id}>
-                <StyledLink
-                  to={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
-                >
-                  <Divy>
-                    <MattImg
-                      src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-                        mattress.coverImg.handle
-                      }`}
-                      alt={`Image of a ${mattress.brandName} ${
-                        mattress.subBrand
-                      } ${mattress.subName} mattress`}
-                    />
-                    <PriceRange>
-                      {`$${mattress.priceRange[0]} - $${
-                        mattress.priceRange[1]
-                      }`}
-                    </PriceRange>
-                  </Divy>
-                  <Name>
-                    {mattress.brandName}
-                    <br />
-                    {mattress.subBrand}
-                    <br />
-                    {mattress.subName}
-                  </Name>
-                </StyledLink>
-              </LinkWrapper>
+              <SingleMattres
+                key={mattress.id}
+                mattress={mattress}
+                url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
+              />
             ))}
           </ThreeMattWrapper>
           <NewP>

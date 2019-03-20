@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Certified from "../images/badge.png";
@@ -94,7 +94,7 @@ const AvgContainer = styled.div`
     font-size: 0.9em;
   }
 `;
-class Bird extends Component {
+class Bird extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -118,23 +118,15 @@ class Bird extends Component {
         this.setState({ errorState: true, loading: false });
         console.log(error);
       });
-    // fetch(process.env.GATSBY_REST, {
-    //   headers: { Accept: "application/json" },
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     const e = data.map(i => i.rating);
-    //     const p = e.filter(val => val !== 0);
-    //     this.setState({
-    //       count: data.length,
-    //       avg: average(p),
-    //     });
-    //   });
   }
 
   render() {
-    let content;
     const { count, avg, loading, errorState } = this.state;
+    let content;
+    const starsArr = [];
+    for (let i = 0; i < Math.round(avg); i += 1) {
+      starsArr.push(<img src={star} alt="start for rating" key={i + 200} />);
+    }
     if (loading) {
       content = <Loading />;
     } else if (errorState) {
@@ -153,9 +145,7 @@ class Bird extends Component {
                 <h4>Certified</h4>
                 <h4>Reviews</h4>
                 <Rating>
-                  {Array(Math.round(avg)).fill(
-                    <img src={star} alt="start for rating" />,
-                  )}
+                  {starsArr}
                   <AvgContainer>{Math.round(avg)}</AvgContainer>
                 </Rating>
               </Words>

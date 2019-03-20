@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { Helmet } from "react-helmet";
 import Layout from "../components/layout";
 import ImageViewer from "../components/imageViewer";
 import {
@@ -20,6 +19,7 @@ import {
 } from "../styles/singleMattStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import PriceCalculator from "../components/priceCalculator";
+import SEO from "../components/seo";
 
 const Mattress = ({ data }) => {
   const mattress = data.gcms.Mattress;
@@ -36,34 +36,18 @@ const Mattress = ({ data }) => {
   }
   return (
     <Layout>
-      <Helmet>
-        <title>
-          {`ESC: ${mattress.subBrand} ${mattress.subName} Mattress`}
-        </title>
-        <meta name="description" content={mattress.discription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="E.S.C. Mattress Center" />
-        <meta
-          property="og:url"
-          content={`https://www.escmattresscenter.com/brands/${
-            mattress.uriBrandName
-          }/${mattress.uri}`}
-        />
-        <meta
-          property="og:image"
-          content={`https://media.graphcms.com/resize=w:1200,h:627,fit:clip/${
-            mattress.coverImg.handle
-          }`}
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="627" />
-        <meta
-          property="og:image:alt"
-          content={`E.S.C Mattress Center | ${mattress.name}`}
-        />
-        <meta property="og:title" content="E.S.C. Mattress Center" />
-        <meta property="og:description" content={`${mattress.name} Mattress`} />
-      </Helmet>
+      <SEO
+        title={`ESC: ${mattress.subBrand} ${mattress.subName} Mattress`}
+        description={mattress.discription}
+        ogURL={`https://www.escmattresscenter.com/brands/${
+          mattress.uriBrandName
+        }/${mattress.uri}`}
+        ogImage={`https://media.graphcms.com/resize=w:1200,h:627,fit:clip/${
+          mattress.coverImg.handle
+        }`}
+        ogImageAlt={`E.S.C Mattress Center | ${mattress.name}`}
+        ogTitle={`E.S.C. Mattress Center | ${mattress.name}`}
+      />
       <BreadWrapper>
         <BreadCrumbs
           next="Brands"
