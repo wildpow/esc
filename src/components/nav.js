@@ -2,86 +2,55 @@ import React from "react";
 import { ThemeConsumer } from "styled-components";
 import { Header, Nav, StyledLink } from "../styles/navStyles";
 
+const menuLeft = [
+  { name: "Brands", url: "/brands" },
+  { name: "Adjustable", url: "/adjustable" },
+  { name: "Accessories", url: "/accessories" },
+];
+const menuRight = [
+  { name: "Financing", url: "/financing" },
+  { name: "Our Blog", url: "/blog" },
+  { name: "About Us", url: "/about" },
+];
+
 const Navigation = () => (
   <Header>
     <ThemeConsumer>
       {theme => (
         <>
           <Nav>
-            <StyledLink
-              left
-              partiallyActive
-              activeStyle={{
-                borderRadius: "1px",
-                borderBottom: `5px solid ${theme.mainColor2}`,
-                borderTop: `0px solid ${theme.mainColor2}`,
-              }}
-              to="/brands"
-            >
-              Brands
-            </StyledLink>
-            <StyledLink
-              left
-              partiallyActive
-              to="/adjustable"
-              activeStyle={{
-                borderRadius: "1px",
-                borderBottom: `5px solid ${theme.mainColor2}`,
-                borderTop: `0px solid ${theme.mainColor2}`,
-              }}
-            >
-              Adjustable
-            </StyledLink>
-            <StyledLink
-              left
-              partiallyActive
-              to="/accessories"
-              activeStyle={{
-                borderRadius: "1px",
-                borderBottom: `5px solid ${theme.mainColor2}`,
-                borderTop: `0px solid ${theme.mainColor2}`,
-              }}
-            >
-              Accessories
-            </StyledLink>
+            {menuLeft.map(item => (
+              <StyledLink
+                key={item.name}
+                left
+                partiallyActive
+                activeStyle={{
+                  borderRadius: "1px",
+                  borderBottom: `5px solid ${theme.mainColor2}`,
+                  borderTop: `0px solid ${theme.mainColor2}`,
+                }}
+                to={item.url}
+              >
+                {item.name}
+              </StyledLink>
+            ))}
           </Nav>
           <Nav>
-            <StyledLink
-              right
-              partiallyActive
-              to="/financing"
-              activeStyle={{
-                borderRadius: "1px",
-                borderBottom: `5px solid ${theme.mainColor2}`,
-                borderTop: `0px solid ${theme.mainColor2}`,
-              }}
-            >
-              Financing
-            </StyledLink>
-            <StyledLink
-              right
-              partiallyActive
-              to="/blog"
-              activeStyle={{
-                borderRadius: "1px",
-                borderBottom: `5px solid ${theme.mainColor2}`,
-                borderTop: `0px solid ${theme.mainColor2}`,
-              }}
-            >
-              Our Blog
-            </StyledLink>
-            <StyledLink
-              right
-              partiallyActive
-              to="/about"
-              activeStyle={{
-                borderRadius: "1px",
-                borderBottom: `5px solid ${theme.mainColor2}`,
-                borderTop: `0px solid ${theme.mainColor2}`,
-              }}
-            >
-              About Us
-            </StyledLink>
+            {menuRight.map(item => (
+              <StyledLink
+                key={item.name}
+                right
+                partiallyActive
+                to={item.url}
+                activeStyle={{
+                  borderRadius: "1px",
+                  borderBottom: `5px solid ${theme.mainColor2}`,
+                  borderTop: `0px solid ${theme.mainColor2}`,
+                }}
+              >
+                {item.name}
+              </StyledLink>
+            ))}
           </Nav>
         </>
       )}
