@@ -20,6 +20,7 @@ export const theme = {
   BoxShadow: "0 10px 6px -6px rgba(119, 119, 119, .6)",
   MainFont1: "'Roboto', sans-serif",
   MainFont2: "'Open Sans', sans-serif",
+  MainFont3: "'Roboto Slab', serif",
   Animation: `animation-duration: .5s; animation-fill-mode: both;`,
 };
 
