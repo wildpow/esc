@@ -1,6 +1,6 @@
 import React from "react";
 import TopPromo from "./TopPromo";
-import { Top, Wrapper, Phone, PhoneWrapper, BR } from "../styles/topperStyles";
+import { Top, Wrapper, OutBoundLink, BR } from "../styles/topperStyles";
 
 const Topper = () => (
   <Top>
@@ -8,14 +8,12 @@ const Topper = () => (
       <TopPromo />
     </Wrapper>
     <Wrapper Right>
-      <PhoneWrapper>
-        <Phone href="tel:1-425-512-0017">
-          Call:
-          <BR />
-          {` `}
-          (425)-512-0017
-        </Phone>
-      </PhoneWrapper>
+      <OutBoundLink href="tel:1-425-512-0017">
+        Call:
+        <BR />
+        {` `}
+        (425)-512-0017
+      </OutBoundLink>
     </Wrapper>
   </Top>
 );

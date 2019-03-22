@@ -1,41 +1,42 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "gatsby";
 
-export const PromoLink = styled.a`
-  color: white;
-  text-decoration: none;
-`;
-export const InboundLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-`;
-export const Promo = styled.p`
-  margin: 0;
-  padding: 0;
+const SharedLinkStyles = css`
+  color: ${props => props.theme.newColor1};
+  display: inline-block;
   text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all 0.25s ease-in;
+  overflow: hidden;
+  white-space: nowrap;
+  :hover {
+    color: ${props => props.theme.newColor2};
+    transform: scale(1.04);
+    text-decoration: underline;
+    text-decoration-color: ${props => props.theme.newColor1};
+  }
+`;
+export const OutBoundLink = styled.a`
+  ${SharedLinkStyles}
 `;
 
-export const BigPromo = styled(Promo)`
-  max-width: 160px;
-  transition: all 0.25s ease-in;
-  &:hover {
-    transform: scale(1.04);
-  }
-  @media (min-width: 415px) {
-    max-width: 2000px;
-  }
+export const InboundLink = styled(Link)`
+  ${SharedLinkStyles}
 `;
 
 export const Top = styled.div`
+  font-family: ${props => props.theme.MainFont1};
+  font-weight: 300;
+  background-color: ${props => props.theme.mainColor2};
+  box-shadow: ${props => props.theme.newBoxShadow};
+  text-shadow: ${props => props.theme.TextShadow};
+  color: ${props => props.theme.newColor1};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: #ffffff;
-  background-color: ${props => props.theme.mainColor2};
-  font-variant: small-caps;
   padding: 10px 6px 10px 6px;
   transition: all 0.25s ease-in;
-  font-family: "Roboto", sans-serif;
   font-size: 0.8rem;
   letter-spacing: 0.036rem;
   @media (min-width: 411px) {
@@ -46,11 +47,12 @@ export const Top = styled.div`
   }
   @media (min-width: 768px) {
     font-size: 1.4rem;
-    padding: 10px 12px 12px 12px;
-    letter-spacing: 0.1rem;
+    padding: 10px 12px;
+    letter-spacing: 0.15rem;
   }
   @media (min-width: 1024px) {
     font-size: 1.5rem;
+    letter-spacing: 0.19rem;
   }
 `;
 
@@ -61,7 +63,8 @@ export const Wrapper = styled.div`
   margin-bottom: 0;
   padding: 0;
   align-self: center;
-  text-align: cetner;
+  text-align: center;
+  display: flex;
 
   @media (min-width: 375px) {
     margin-right: ${props => (props.Right ? "1px" : "0px")};
@@ -74,23 +77,6 @@ export const Wrapper = styled.div`
   @media (min-width: 768px) {
     margin-right: ${props => (props.Right ? "10px" : "0px")};
     margin-left: ${props => (props.Left ? "10px" : "0px")};
-  }
-`;
-
-export const Phone = styled.a`
-  text-decoration: none;
-  color: #ffffff;
-  transition: all 0.25s ease-in;
-  text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
-`;
-
-export const PhoneWrapper = styled.div`
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  transition: all 0.25s ease-in;
-  &:hover {
-    transform: scale(1.04);
   }
 `;
 

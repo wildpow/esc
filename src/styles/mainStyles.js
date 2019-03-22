@@ -14,6 +14,9 @@ import styled, { keyframes } from "styled-components";
 export const theme = {
   mainColor1: "#1565c0", // BLUE
   mainColor2: "#eb1c24", // RED !
+  newColor1: "#fffaf0", // floralWhite
+  newColor2: "#343434", // Jet
+  newBoxShadow: "0px 6px 6px -6px rgba(52,52,52,0.41)",
   Border: "1px solid #eee",
   RedBorderBottom: "4px solid green",
   TextShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
