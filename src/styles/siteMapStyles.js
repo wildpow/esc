@@ -15,8 +15,9 @@ export const MattLinksWrapper = styled(FlexRow)`
 `;
 
 export const Main = styled.div`
-  border: ${props => props.theme.Border};
-  box-shadow: ${props => props.theme.BoxShadow};
+  /* border: ${props => props.theme.Border}; */
+  box-shadow: ${props => props.theme.newBoxShadow};
+  background-color: white;
   margin-bottom: 20px;
   ul {
     padding-right: 20px;
@@ -25,12 +26,14 @@ export const Main = styled.div`
     line-height: 1.9rem;
   }
   li {
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont1};
+    font-weight: 400;
   }
   h3 {
     font-family: ${props => props.theme.MainFont1};
     background-color: ${props => props.theme.mainColor1};
     margin: 0;
+    color: ${props => props.theme.newColor1};
     padding-top: 15px;
     padding-bottom: 15px;
     letter-spacing: 0.2rem;
@@ -39,9 +42,9 @@ export const Main = styled.div`
   }
 `;
 export const BrandLinks = styled(Link)`
-  color: white;
+  color: ${props => props.theme.newColor1};
   &:hover {
-    color: #eb1c24;
+    color: ${props => props.theme.newColor2};
   }
 `;
 export const SiteLinks = styled(Link)`

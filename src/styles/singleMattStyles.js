@@ -8,9 +8,10 @@ export const PriceList = styled.ul`
 `;
 
 export const Wrapper = styled(FlexCol)`
-  border: ${props => props.theme.Border};
-  box-shadow: ${props => props.theme.BoxShadow};
+  /* border: ${props => props.theme.Border}; */
+  box-shadow: ${props => props.theme.newBoxShadow};
   animation-name: ${FadeIn};
+  background-color: ${props => props.theme.newColor1};
   ${props => props.theme.Animation}
   justify-content: center;
   border-radius: 0.11rem;
@@ -22,6 +23,8 @@ export const Wrapper = styled(FlexCol)`
 
 export const Main = styled(FlexRow)`
   margin-top: 2px;
+  background-color: white;
+
   justify-content: space-around;
   @media (min-width: 360px) {
     margin-top: 4px;
@@ -86,7 +89,9 @@ export const Warranty = styled.p`
 `;
 
 export const Description = styled.p`
-  font-family: ${props => props.theme.MainFont2};
+  font-weight: 300;
+  color: ${props => props.theme.newColor2};
+  font-family: ${props => props.theme.MainFont3};
   align-self: center;
   border-radius: 0.11rem;
   margin-left: 0px;
@@ -98,7 +103,7 @@ export const Description = styled.p`
     font-size: 1.1rem;
     padding-right: 40px;
     padding-left: 40px;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
   }
   @media (min-width: 1022px) {
     font-size: 1.8rem;
@@ -162,11 +167,14 @@ export const Profile = styled.p`
 `;
 // 692px
 export const StyledMarkDown = styled(Markdown)`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
+  font-weight: 400;
   margin-left: 5px;
+  color: ${props => props.theme.newColor2};
   padding: 0px;
   & p {
     font-size: 0.9rem;
+
     margin-top: 0;
     margin-bottom: 0;
     border-bottom: 4px solid ${props => props.theme.mainColor2};
@@ -188,7 +196,7 @@ export const StyledMarkDown = styled(Markdown)`
     }
   }
   @media (min-width: 550px) {
-    font-family: ${props => props.theme.MainFont2};
+    /* font-family: ${props => props.theme.MainFont2}; */
     padding: 0px 0px 0px 10px;
 
     & p {
@@ -235,25 +243,25 @@ export const Price = styled(FlexCol)`
   align-content: center;
 `;
 
-export const PriceTitle = styled.p`
-  font-family: ${props => props.theme.MainFont2};
-  padding-top: 0px;
-  padding-bottom: 3px;
-  margin-top: 0;
-  margin-bottom: 0px;
-  font-size: 0.8rem;
-  @media (min-width: 768px) {
-    font-size: 1rem;
-    padding-top: 0px;
-    padding-bottom: 7px;
-  }
-  @media (min-width: 1022px) {
-    font-size: 1.7rem;
-    padding-left: 20px;
-    margin-bottom: 5px;
-    margin-top: 5px;
-  }
-`;
+// export const PriceTitle = styled.p`
+//   font-family: ${props => props.theme.MainFont2};
+//   padding-top: 0px;
+//   padding-bottom: 3px;
+//   margin-top: 0;
+//   margin-bottom: 0px;
+//   font-size: 0.8rem;
+//   @media (min-width: 768px) {
+//     font-size: 1rem;
+//     padding-top: 0px;
+//     padding-bottom: 7px;
+//   }
+//   @media (min-width: 1022px) {
+//     font-size: 1.7rem;
+//     padding-left: 20px;
+//     margin-bottom: 5px;
+//     margin-top: 5px;
+//   }
+// `;
 
 export const Stuff = styled.div`
   display: flex;
@@ -266,7 +274,9 @@ export const InfoAnchor = styled(AnchorLink)`
   margin-left: 5px;
   padding-left: 15px;
   font-size: 0.9rem;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
+  font-weight: 700;
+  letter-spacing: 0.05rem;
   color: ${props => props.theme.mainColor2};
   &:hover {
     color: ${props => props.theme.mainColor1};

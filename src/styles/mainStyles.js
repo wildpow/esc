@@ -14,12 +14,13 @@ import styled, { keyframes } from "styled-components";
 export const theme = {
   mainColor1: "#1565c0", // BLUE
   mainColor2: "#eb1c24", // RED !
-  newColor1: "#fffaf0", // floralWhite
+  newColor1: "#FFFAFA", // snow
   newColor2: "#343434", // Jet
   newBoxShadow: "0px 6px 6px -6px rgba(52,52,52,0.41)",
   Border: "1px solid #eee",
   RedBorderBottom: "4px solid green",
   TextShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
+  newTextShadow: "2px 2px 4px rgba(52, 52, 52, 0.4)",
   BoxShadow: "0 10px 6px -6px rgba(119, 119, 119, .6)",
   MainFont1: "'Roboto', sans-serif",
   MainFont2: "'Open Sans', sans-serif",
@@ -44,12 +45,12 @@ export const FadeIn = keyframes`
 
 export const H2 = styled.h2`
   font-family: ${props => props.theme.MainFont1};
-  text-shadow: ${props => props.theme.TextShadow};
+  text-shadow: ${props => props.theme.newTextShadow};
   background-color: ${props =>
     props.red ? props.theme.mainColor2 : props.theme.mainColor1};
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
-  color: white;
+  color: ${props => props.theme.newColor1};
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.1rem;

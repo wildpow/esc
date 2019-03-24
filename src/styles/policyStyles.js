@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { FadeIn, FlexCol } from "./mainStyles";
 
 export const MainArticle = styled.article`
-  border: ${props => props.theme.Border};
+  /* border: ${props => props.theme.Border}; */
   box-shadow: ${props => props.theme.BoxShadow};
+  background-color: white;
+  color: ${props => props.theme.newColor2};
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   margin-top: 15px;
@@ -49,7 +51,9 @@ export const WarranyNumber = styled.a`
 
 export const WarrantyTopper = styled.h3`
   font-family: ${props => props.theme.MainFont1};
-  text-shadow: ${props => props.theme.TextShadow};
+  font-weight: 400;
+  color: ${props => props.theme.newColor1};
+  text-shadow: ${props => props.theme.newTextShadow};
   background-color: ${props => props.theme.mainColor1};
   padding: 20px;
   line-height: 1.2rem;
@@ -77,7 +81,8 @@ export const WarrantyWrapper = styled(FlexCol)`
 `;
 
 export const P = styled.p`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
+  font-weight: 300;
   text-indent: 25px;
   line-height: 1.35rem;
   padding-right: 8px;
@@ -85,7 +90,7 @@ export const P = styled.p`
   margin-top: 10px;
   @media (min-width: 768px) {
     font-size: 1.5rem;
-    line-height: 1.8rem;
+    line-height: 1.9rem;
     padding-right: 17px;
     padding-left: 17px;
   }
@@ -100,19 +105,19 @@ export const P = styled.p`
   }
 `;
 
-export const Heading = styled.h3`
-  font-family: ${props => props.theme.MainFont2};
-  border-bottom: 4px solid ${props => props.theme.mainColor2};
-  padding-bottom: 5px;
-  padding-left: 10px;
-  margin-bottom: 8px;
-  @media (min-width: 768px) {
-    font-size: 1.7rem;
-    padding-bottom: 8px;
-  }
-  @media (min-width: 1024px) {
-    padding-top: 10px;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
-  }
-`;
+// export const Heading = styled.h3`
+//   font-family: ${props => props.theme.MainFont1};
+//   border-bottom: 4px solid ${props => props.theme.mainColor2};
+//   padding-bottom: 5px;
+//   padding-left: 10px;
+//   margin-bottom: 8px;
+//   @media (min-width: 768px) {
+//     font-size: 400.7rem;
+//     padding-bottom: 8px;
+//   }
+//   @media (min-width: 1024px) {
+//     padding-top: 10px;
+//     margin-bottom: 20px;
+//     font-size: 1.8rem;
+//   }
+// `;

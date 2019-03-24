@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
   html {
   box-sizing: border-box;
+  
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -23,6 +24,9 @@ const GlobalStyle = createGlobalStyle`
 `;
 // @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:300,400,500,700');
 
+const Body = styled.div`
+  background-color: #fffafa;
+`;
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -99,7 +103,7 @@ class Layout extends React.Component {
           }
         `}
         render={data => (
-          <>
+          <Body>
             <Helmet
               title={data.site.siteMetadata.title}
               meta={[
@@ -120,7 +124,7 @@ class Layout extends React.Component {
               {children}
               <Footer />
             </Container>
-          </>
+          </Body>
         )}
       />
     );

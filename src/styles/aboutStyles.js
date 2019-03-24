@@ -5,8 +5,9 @@ export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   margin-top: 15px;
-  border: 2px solid black;
-  box-shadow: 0 10px 6px -6px rgba(119, 119, 119, 0.9);
+  /* border: ${props => props.theme.Border}; */
+  background-color: white;
+  box-shadow: ${props => props.theme.newBoxShadow};
   @media (min-width: 1200px) {
     margin-left: 10px;
     margin-right: 10px;

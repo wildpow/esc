@@ -37,13 +37,13 @@ export const Top = styled.div`
   justify-content: space-between;
   padding: 10px 6px 10px 6px;
   transition: all 0.25s ease-in;
-  font-size: 0.8rem;
-  letter-spacing: 0.036rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.056rem;
   @media (min-width: 411px) {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   @media (min-width: 568px) {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   @media (min-width: 768px) {
     font-size: 1.4rem;

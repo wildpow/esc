@@ -37,6 +37,7 @@ export const StyledLink = styled(Link)`
     padding-left: 20px;
     padding-right: 20px;
     font-size: 1.45rem;
+    letter-spacing: 0.03rem;
     margin-right: ${props => (props.right ? "0px" : "20px")};
     margin-left: ${props => (props.left ? "0px" : "20px")};
   }

@@ -79,8 +79,8 @@ export const Main = styled(FlexCol)`
 `;
 
 export const StyledLink = styled(Link)`
-  box-shadow: ${props => props.theme.BoxShadow};
-  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.newBoxShadow};
+  /* border: ${props => props.theme.Border}; */
   text-decoration: none;
   margin-left: 2px;
   margin-right: 2px;
@@ -99,10 +99,10 @@ export const StyledLink = styled(Link)`
 `;
 
 export const H3 = styled.h3`
-  text-shadow: ${props => props.theme.TextShadow};
+  text-shadow: ${props => props.theme.newTextShadow};
   font-family: ${props => props.theme.MainFont1};
   background-color: ${props => props.theme.mainColor1};
-  color: white;
+  color: ${props => props.theme.newColor1};
   margin-top: 0;
   text-align: center;
   margin-bottom: 0;

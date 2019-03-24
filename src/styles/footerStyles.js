@@ -18,8 +18,8 @@ export const MainFooter = styled.footer`
 `;
 
 export const Wrapper = styled.div`
-  box-shadow: ${props => props.theme.BoxShadow};
-  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.newBoxShadow};
+  /* border: ${props => props.theme.Border}; */
   margin: 0 auto;
   padding-top: 5px;
   background-color: white;
@@ -126,7 +126,8 @@ export const Contact = styled(FlexRow)`
 `;
 
 export const Hours = styled(FlexCol)`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
+  font-weight: 300;
   text-align: center;
   font-size: 1rem;
   width: 160px;
@@ -145,7 +146,7 @@ export const Hours = styled(FlexCol)`
 export const HoursPara = styled.p`
   margin-top: 4px;
   margin: 0;
-  font-variant: small-caps;
+  /* font-variant: small-caps; */
 `;
 
 export const HoursSpan = styled.span`
@@ -173,7 +174,8 @@ export const MapLink = styled.a`
 // `;
 
 export const BottomLinkWrapper = styled(FlexCol)`
-  font-family: ${props => props.theme.MainFont2};
+  /* font-family: ${props => props.theme.MainFont1}; */
+  font-weight: 300;
   line-height: 1.7rem;
   justify-content: space-around;
   margin-bottom: 15px;
