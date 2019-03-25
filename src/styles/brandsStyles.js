@@ -100,7 +100,7 @@ export const StyledLink = styled(Link)`
   flex-basis: 100%;
   color: ${props => props.theme.newColor2};
   background-color: white;
-  border: ${props => props.theme.Border};
+  /* border: ${props => props.theme.Border}; */
   box-shadow: ${props => props.theme.newBoxShadow};
   border-radius: 0.11rem;
   margin-bottom: 20px;

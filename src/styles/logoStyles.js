@@ -84,6 +84,7 @@ export const ReadersChoice = styled.img`
   position: absolute;
   left: 9px;
   top: 39px;
+  z-index: 10;
   transition: all 0.25s ease-in;
   cursor: pointer;
   &:hover {
