@@ -14,8 +14,10 @@ import styled, { keyframes } from "styled-components";
 export const theme = {
   mainColor1: "#1565c0", // BLUE
   mainColor2: "#eb1c24", // RED !
-  newColor1: "#FFFAFA", // snow
+  newColor1: "#f8f8ff", // ghost white
+  // newColor1: "F8F8FF",
   newColor2: "#343434", // Jet
+  newColor3: "#fffafa", // snow white
   newBoxShadow: "0px 6px 6px -6px rgba(52,52,52,0.41)",
   Border: "1px solid #eee",
   RedBorderBottom: "4px solid green",

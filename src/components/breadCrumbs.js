@@ -11,7 +11,9 @@ export const BreadWrapper = styled.div`
   margin-top: ${props => (props.Bottom ? "0px" : "12px")};
   margin-bottom: ${props => (props.Bottom ? "0px" : "10px")};
   font-size: 0.9rem;
-  font-family: ${props => props.theme.MainFont2};
+  font-weight: 400;
+  color: ${props => props.theme.newColor2};
+  font-family: ${props => props.theme.MainFont1};
   display: flex;
   margin-right: ${props => (props.Brands ? "15px" : "5px")};
   margin-left: ${props => (props.Brands ? "15px" : "5px")};

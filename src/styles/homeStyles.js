@@ -60,12 +60,12 @@ export const Headline = styled.h2`
     font-size: 1.4rem;
   }
   @media (min-width: 768px) {
-    letter-spacing: 0.23rem;
+    letter-spacing: 0.13rem;
     font-size: 1.7rem;
   }
   @media (min-width: 1024px) {
     font-size: 1.8rem;
-    letter-spacing: 0.32rem;
+    letter-spacing: 0.22rem;
   }
 `;
 

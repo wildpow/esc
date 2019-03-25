@@ -104,20 +104,20 @@ export const P = styled.p`
     padding-top: 15px;
   }
 `;
-
-// export const Heading = styled.h3`
-//   font-family: ${props => props.theme.MainFont1};
-//   border-bottom: 4px solid ${props => props.theme.mainColor2};
-//   padding-bottom: 5px;
-//   padding-left: 10px;
-//   margin-bottom: 8px;
-//   @media (min-width: 768px) {
-//     font-size: 400.7rem;
-//     padding-bottom: 8px;
-//   }
-//   @media (min-width: 1024px) {
-//     padding-top: 10px;
-//     margin-bottom: 20px;
-//     font-size: 1.8rem;
-//   }
-// `;
+// where
+export const Heading = styled.h3`
+  font-family: ${props => props.theme.MainFont1};
+  border-bottom: 4px solid ${props => props.theme.mainColor2};
+  padding-bottom: 5px;
+  padding-left: 10px;
+  margin-bottom: 8px;
+  @media (min-width: 768px) {
+    font-size: 400.7rem;
+    padding-bottom: 8px;
+  }
+  @media (min-width: 1024px) {
+    padding-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+  }
+`;

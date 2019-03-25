@@ -11,7 +11,7 @@ export const Wrapper = styled(FlexCol)`
   /* border: ${props => props.theme.Border}; */
   box-shadow: ${props => props.theme.newBoxShadow};
   animation-name: ${FadeIn};
-  background-color: ${props => props.theme.newColor1};
+  background-color: white;
   ${props => props.theme.Animation}
   justify-content: center;
   border-radius: 0.11rem;
@@ -125,8 +125,8 @@ export const Description = styled.p`
 export const Overview = styled.header`
   font-family: ${props => props.theme.MainFont1};
   background-color: ${props => props.theme.mainColor2};
-  text-shadow: ${props => props.theme.TextShadow};
-  color: white;
+  text-shadow: ${props => props.theme.newTextShadow};
+  color: ${props => props.theme.newColor1};
   letter-spacing: 0.1rem;
   text-align: center;
   font-size: 0.5rem;
@@ -242,26 +242,26 @@ export const Price = styled(FlexCol)`
   justify-items: center;
   align-content: center;
 `;
-
-// export const PriceTitle = styled.p`
-//   font-family: ${props => props.theme.MainFont2};
-//   padding-top: 0px;
-//   padding-bottom: 3px;
-//   margin-top: 0;
-//   margin-bottom: 0px;
-//   font-size: 0.8rem;
-//   @media (min-width: 768px) {
-//     font-size: 1rem;
-//     padding-top: 0px;
-//     padding-bottom: 7px;
-//   }
-//   @media (min-width: 1022px) {
-//     font-size: 1.7rem;
-//     padding-left: 20px;
-//     margin-bottom: 5px;
-//     margin-top: 5px;
-//   }
-// `;
+// where ?
+export const PriceTitle = styled.p`
+  font-family: ${props => props.theme.MainFont1};
+  padding-top: 0px;
+  padding-bottom: 3px;
+  margin-top: 0;
+  margin-bottom: 0px;
+  font-size: 0.8rem;
+  @media (min-width: 768px) {
+    font-size: 1rem;
+    padding-top: 0px;
+    padding-bottom: 7px;
+  }
+  @media (min-width: 1022px) {
+    font-size: 1.7rem;
+    padding-left: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+`;
 
 export const Stuff = styled.div`
   display: flex;
