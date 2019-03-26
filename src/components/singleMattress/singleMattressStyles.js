@@ -38,16 +38,16 @@ export const LinkWrapper = styled.div`
     margin-right: 10px;
     margin-bottom: 20px;
   }
-  /* &:hover {
-    box-shadow: 0px 1px 2px rgba(46, 41, 51, 0.08), 0px 2px 4px rgba(71, 63, 79, 0.08);
+  &:hover {
+    /* box-shadow: 0px 1px 2px rgba(46, 41, 51, 0.08), 0px 2px 4px rgba(71, 63, 79, 0.08); */
     z-index: 999;
-    transform: scale3d(1.05, 1.05, 1);
-    box-shadow: 0px 2px 4px rgba(46, 41, 51, 0.08), 0px 4px 8px rgba(71, 63, 79, 0.16);
+    /* transform: scale3d(1.05, 1.05, 1); */
+    /* box-shadow: 0px 2px 4px rgba(46, 41, 51, 0.08), 0px 4px 8px rgba(71, 63, 79, 0.16); */
     box-shadow: 0px 4px 8px rgba(46, 41, 51, 0.08), 0px 8px 16px rgba(71, 63, 79, 0.16);
-    transform: translateY(-1 / 6)
+    /* transform: translateY(-1 / 6) */
     transform: translateY(-4px)
 
-  } */
+  }
 `;
 
 export const StyledLink = styled(Link)`

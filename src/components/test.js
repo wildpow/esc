@@ -100,10 +100,10 @@ const Stuff = styled.div`
   color: white;
   position: absolute;
   font-size: 1rem;
-  padding-top: 7px;
+  padding-top: 5px;
   padding-left: 5px;
   padding-right: 5px;
-  padding-bottom: 7px;
+  padding-bottom: 5px;
   width: 100%;
   letter-spacing: 0.085rem;
   /* @media (min-width: 1028px) {
@@ -127,7 +127,7 @@ const Stuff = styled.div`
     top: 0;
     left: 0;
     z-index: -1;
-    background: #ff0000;
+    background: ${props => props.theme.mainColor2};
     transform-origin: bottom left;
     /* -ms-transform: skew(-30deg, 0deg);
     -webkit-transform: skew(-30deg, 0deg); */
@@ -135,10 +135,12 @@ const Stuff = styled.div`
   }
 `;
 const Wraps = styled.div`
-  grid-column-start: 2;
+  margin-top: -5px;
+  z-index: 10;
+  /* grid-column-start: 2;
   grid-column-end: 6;
   grid-row-start: 3;
-  grid-row-end: 3;
+  grid-row-end: 3; */
   /* padding-bottom: 10px; */
   display: flex;
   flex-direction: column;
@@ -155,6 +157,7 @@ const Price = styled.div`
   font-family: ${props => props.theme.MainFont1};
   font-size: 0.7rem;
   text-align: center;
+  margin-bottom: 12px;
   @media (min-width: 360px) {
     font-size: 0.8rem;
   }
@@ -195,7 +198,7 @@ const Dude = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: 10px 230px 10px;
-  grid-template-rows: 10px 1fr 10px;
+  grid-template-rows: 17px 1fr 1px;
   margin: 0 auto;
 `;
 const Test = ({ mattress, url }) => {
