@@ -5,6 +5,7 @@ import { Wrapper, MainWrapper } from "../styles/mattListStyles";
 import { P, Headline } from "../styles/homeStyles";
 import SingleMattres from "./singleMattress/singleMattress";
 // import {Headline} from '../styles/homeStyles';
+import Test from "./test";
 
 const NewWrapper = styled(MainWrapper)`
   margin-top: 15px;
@@ -86,11 +87,18 @@ const TopThreeMatts = () => {
           <Headline>{data.gcms.allFront3Mattresses[0].headerTagLine}</Headline>
           <ThreeMattWrapper>
             {data.gcms.allFront3Mattresses[0].mattresses.map(mattress => (
-              <SingleMattres
-                key={mattress.id}
-                mattress={mattress}
-                url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
-              />
+              <>
+                <SingleMattres
+                  key={mattress.id}
+                  mattress={mattress}
+                  url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
+                />
+                <Test
+                  key={mattress.id}
+                  mattress={mattress}
+                  url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
+                />
+              </>
             ))}
           </ThreeMattWrapper>
           <NewP>
