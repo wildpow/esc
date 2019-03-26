@@ -3,8 +3,9 @@ import Markdown from "react-markdown";
 import { FadeIn, FlexCol } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
-  border: ${props => props.theme.Border};
-  box-shadow: ${props => props.theme.BoxShadow};
+background-color: white;
+  /* border: ${props => props.theme.Border}; */
+  box-shadow: ${props => props.theme.newBoxShadow};
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   padding-bottom: 20px;
@@ -43,7 +44,7 @@ export const Marker = styled(Markdown)`
     padding-bottom: 0px;
   }
   & p {
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont3};
     padding-left: 12px;
     padding-right: 12px;
     line-height: 1.4rem;

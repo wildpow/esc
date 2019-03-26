@@ -11,7 +11,7 @@ const NewWrapper = styled(MainWrapper)`
   margin-top: 15px;
   @media (min-width: 1024px) {
     box-shadow: ${props => props.theme.newBoxShadow};
-    border-top: ${props => props.theme.Border};
+    /* border-top: ${props => props.theme.Border}; */
     /* border-right: ${props => props.theme.Border};
     border-left: ${props => props.theme.Border}; */
   }

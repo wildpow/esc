@@ -25,9 +25,6 @@ export const OneImg = styled.img`
 `;
 
 export const Wrapper = styled(FlexCol)`
-  border-top: ${props => props.theme.Border};
-  /* border-right: ${props => props.theme.Border}; */
-  /* border-left: ${props => props.theme.Border}; */
   box-shadow: ${props => props.theme.newBoxShadow};
   justify-content: center;
   margin-top: 10px;

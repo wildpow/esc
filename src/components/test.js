@@ -57,8 +57,7 @@ const Linker = styled(Link)`
     transform: scale3d(1.05, 1.05, 1); */
     /* box-shadow: 0px 2px 4px rgba(46, 41, 51, 0.08), 0px 4px 8px rgba(71, 63, 79, 0.16); */
     box-shadow: 0px 4px 8px rgba(46, 41, 51, 0.08), 0px 8px 16px rgba(71, 63, 79, 0.16);
-    /* transform: translateY(-1 / 6) */
-    transform: translateY(-4px)
+    transform: translateY(-4px);
 
   }
 `;
@@ -206,7 +205,7 @@ const Test = ({ mattress, url }) => {
     <Linker to={url}>
       <Wrapper>
         <Dude>
-          <Stuff>GIFT WITH PURCHASE</Stuff>
+          {/* <Stuff>GIFT WITH PURCHASE</Stuff> */}
 
           <MattImg
             alt={`A ${mattress.brandName} ${mattress.subBrand} ${

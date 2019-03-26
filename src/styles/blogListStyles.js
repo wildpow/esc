@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
-  font-family: ${props => props.theme.MainFont2};
-  border: ${props => props.theme.Border};
-  box-shadow: ${props => props.theme.BoxShadow};
+  font-family: ${props => props.theme.MainFont1};
+  /* border: ${props => props.theme.Border}; */
+  box-shadow: ${props => props.theme.newBoxShadow};
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   margin-top: 15px;
@@ -12,6 +12,7 @@ export const Main = styled(FlexCol)`
   transition: all 0.2s ease-in;
   text-align: center;
   justify-content: center;
+  background-color: white;
   @media (min-width: 1200px) {
     margin-right: 220px;
     margin-left: 220px;
@@ -39,22 +40,25 @@ export const Section = styled.section`
 export const Homebutton = styled.button`
   background: ${props => props.theme.mainColor1};
   width: 100%;
+  box-shadow: ${props => props.theme.hoverBoxBefore};
   font-size: 16px;
   color: white;
-  font-weight: bold;
+  font-weight: 400;
   text-transform: uppercase;
   padding: 16px 24px;
-  border: none;
-  border-radius: 0;
+  border: ${props => props.theme.Border};
+  border-radius: 7px;
   cursor: pointer;
   margin-bottom: 10px;
+  letter-spacing: 0.1rem;
+  transition: ${props => props.theme.hoverTransition};
   &:disabled {
     background: grey;
     cursor: not-allowed;
   }
   &:hover {
-    z-index: 999;
-    transform: scale3d(1.02, 1.02, 1);
+    box-shadow: ${props => props.theme.hoverBoxAfter};
+    transform: ${props => props.theme.hoverTransform};
   }
 `;
 export const ShowMoreWrapper = styled(FlexRow)`

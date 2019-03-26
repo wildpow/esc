@@ -100,14 +100,18 @@ export const StyledLink = styled(Link)`
   flex-basis: 100%;
   color: ${props => props.theme.newColor2};
   background-color: white;
-  /* border: ${props => props.theme.Border}; */
-  box-shadow: ${props => props.theme.newBoxShadow};
-  border-radius: 0.11rem;
   margin-bottom: 20px;
   display: flex;
-  transition: all 0.25s ease-in-out;
+  /* border: ${props => props.theme.Border}; */
+  box-shadow: ${props => props.theme.hoverBoxBefore};
+  transition: ${props => props.theme.hoverTransition};
+  /* box-shadow: rgba(46, 41, 51, 0.08) 0px 1px 2px, rgba(71, 63, 79, 0.08) 0px 2px 4px;
+  transition: box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0s, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s; */
   &:hover {
-    transform: scale(1.01);
+    transform: ${props => props.theme.hoverTransform};
+    box-shadow: ${props => props.theme.hoverBoxAfter};
+    /* box-shadow: 0px 4px 8px rgba(46, 41, 51, 0.08), 0px 8px 16px rgba(71, 63, 79, 0.16);
+    transform: translateY(-4px); */
   }
   @media (min-width: 1022px) {
     margin: 0 auto;

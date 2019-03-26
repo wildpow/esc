@@ -14,10 +14,11 @@ import styled, { keyframes } from "styled-components";
 export const theme = {
   mainColor1: "#1565c0", // BLUE
   mainColor2: "#eb1c24", // RED !
-  newColor1: "#f8f8ff", // ghost white
+  // newColor1: "#fffafa", // snow white
+  newColor1: "#fcfcfc",
   // newColor1: "F8F8FF",
   newColor2: "#343434", // Jet
-  newColor3: "#fffafa", // snow white
+  newColor3: "#f8f8ff", // ghost white
   newBoxShadow: "0px 6px 6px -6px rgba(52,52,52,0.41)",
   Border: "1px solid #eee",
   RedBorderBottom: "4px solid green",
@@ -28,6 +29,11 @@ export const theme = {
   MainFont2: "'Open Sans', sans-serif",
   MainFont3: "'Roboto Slab', serif",
   Animation: `animation-duration: .5s; animation-fill-mode: both;`,
+  hoverTransition: `box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0s, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s`,
+  hoverBoxBefore:
+    "rgba(46, 41, 51, 0.08) 0px 1px 2px, rgba(71, 63, 79, 0.08) 0px 2px 4px",
+  hoverBoxAfter: `0px 4px 8px rgba(46, 41, 51, 0.08), 0px 8px 16px rgba(71, 63, 79, 0.16)`,
+  hoverTransform: `translateY(-4px)`,
 };
 
 export const FlexCol = styled.div`

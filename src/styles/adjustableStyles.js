@@ -23,7 +23,7 @@ export const AdjMarkdown = styled(ReactMarkdown)`
     padding-bottom: 2px;
   }
   @media (min-width: 568px) {
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont3};
     display: block;
     padding: 30px;
 
@@ -79,7 +79,7 @@ export const Main = styled(FlexCol)`
 `;
 
 export const StyledLink = styled(Link)`
-  box-shadow: ${props => props.theme.newBoxShadow};
+  /* box-shadow: ${props => props.theme.newBoxShadow}; */
   /* border: ${props => props.theme.Border}; */
   text-decoration: none;
   margin-left: 2px;
@@ -90,11 +90,15 @@ export const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: all 0.15s ease-in-out;
+  /* transition: all 0.15s ease-in-out; */
   background-color: white;
+  transition: ${props => props.theme.hoverTransition};
+  box-shadow: ${props => props.theme.hoverBoxBefore};
   &:hover {
-    z-index: 999;
-    transform: scale3d(1.02, 1.02, 1);
+    transform: ${props => props.theme.hoverTransform};
+  box-shadow: ${props => props.theme.hoverBoxAfter};
+    /* z-index: 999;
+    transform: scale3d(1.02, 1.02, 1); */
   }
 `;
 
