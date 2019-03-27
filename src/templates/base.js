@@ -40,6 +40,7 @@ const Base = ({ data }) => {
             AdjBases.coverImg.handle
           }`}
           ogImageAlt={`E.S.C Mattress Center | ${AdjBases.fullName}`}
+          ogTitle={`E.S.C Mattress Center | ${AdjBases.fullName}`}
         />
         <header>
           <MainTitle>{AdjBases.fullName}</MainTitle>
