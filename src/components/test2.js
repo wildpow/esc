@@ -1,21 +1,15 @@
+import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
 export const LinkWrapper = styled.div`
-  /* border: ${props => props.theme.Border}; */
-
   display: flex;
   justify-content: center;
   margin: 2px;
   width: 150px;
   height: 216px;
   margin-top: 15px;
-  border-bottom: medium none;
-  /* box-shadow: ${props => props.theme.newBoxShadow};
-  
-  border-radius: 0.14rem; */
   background-color: white;
-  /* transition: all 0.15s ease-in-out; */
   transition: ${props => props.theme.hoverTransition};
   box-shadow: ${props => props.theme.hoverBoxBefore};
   @media (min-width: 360px) {
@@ -39,15 +33,8 @@ export const LinkWrapper = styled.div`
     margin-bottom: 20px;
   }
   &:hover {
-    /* box-shadow: 0px 1px 2px rgba(46, 41, 51, 0.08), 0px 2px 4px rgba(71, 63, 79, 0.08); */
-    /* z-index: 999; */
-    /* transform: scale3d(1.05, 1.05, 1); */
-    /* box-shadow: 0px 2px 4px rgba(46, 41, 51, 0.08), 0px 4px 8px rgba(71, 63, 79, 0.16); */
-    /* box-shadow: 0px 4px 8px rgba(46, 41, 51, 0.08), 0px 8px 16px rgba(71, 63, 79, 0.16); */
-    /* transform: translateY(-1 / 6) */
-    /* transform: translateY(-4px) */
     transform: ${props => props.theme.hoverTransform};
-  box-shadow: ${props => props.theme.hoverBoxAfter};
+    box-shadow: ${props => props.theme.hoverBoxAfter};
   }
 `;
 
@@ -67,7 +54,7 @@ export const Divy = styled.div`
 
 export const MattImg = styled.img`
   color: white;
-  margin: 0 auto 0px auto;
+  margin: 0 auto;
   width: 110px;
   height: 110px;
   @media (min-width: 360px) {
@@ -116,7 +103,79 @@ export const Name = styled.div`
     font-size: 1.2rem;
     margin: 0;
     letter-spacing: 0.05rem;
-
-    /* letter-spacing: 0.05rem; */
   }
 `;
+const NewDiv = styled.div`
+  position: relative;
+  /* width: 100%; */
+  /* justify-content: center;
+  align-content: center; */
+
+  /* margin: 0 auto; */
+  display: flex;
+`;
+const Banner = styled.div`
+  font-family: ${props => props.theme.MainFont1};
+  font-weight: 400;
+  text-align: center;
+  z-index: 10;
+  /* width: 100%; */
+  background-color: ${props => props.theme.mainColor2};
+  color: white;
+  position: absolute;
+  font-size: 0.6rem;
+  padding-top: 3px;
+  /* padding-left: 5px;
+  padding-right: 5px; */
+  padding-bottom: 3px;
+  letter-spacing: 0.035rem;
+  margin-top: 8px;
+  /* margin-right: 10px; */
+  :after {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: ${props => props.theme.mainColor2};
+    transform-origin: bottom left;
+    transform: skew(-21deg, 0deg);
+  }
+`;
+const Test = ({ mattress, url }) => {
+  return (
+    <LinkWrapper key={mattress.id}>
+      <StyledLink to={url}>
+        <Divy>
+          <NewDiv>
+            <Banner>GIFT WITH PURCHASE</Banner>
+            <MattImg
+              src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
+                mattress.coverImg.handle
+              }`}
+              alt={`Image of a ${mattress.brandName} ${mattress.subBrand} ${
+                mattress.subName
+              } mattress`}
+            />
+          </NewDiv>
+          <PriceRange>
+            {`$${mattress.priceRange[0]} 
+          - $${mattress.priceRange[1]}`}
+          </PriceRange>
+        </Divy>
+        <Name>
+          {mattress.brandName}
+          <br />
+          {mattress.subBrand}
+          <br />
+          {mattress.subName}
+        </Name>
+      </StyledLink>
+    </LinkWrapper>
+  );
+};
+
+export default Test;

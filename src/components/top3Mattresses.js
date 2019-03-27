@@ -5,7 +5,7 @@ import { Wrapper, MainWrapper } from "../styles/mattListStyles";
 import { P, Headline } from "../styles/homeStyles";
 import SingleMattres from "./singleMattress/singleMattress";
 // import {Headline} from '../styles/homeStyles';
-import Test from "./test";
+import Test from "./test3";
 
 const NewWrapper = styled(MainWrapper)`
   margin-top: 15px;

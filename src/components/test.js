@@ -87,24 +87,36 @@ const MattImg = styled.img`
 // grid-template-columns: 10px 230px 10px;
 // grid-template-rows: 10px 1fr 10px;
 const Stuff = styled.div`
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 2;
   font-family: ${props => props.theme.MainFont1};
   font-weight: 400;
   text-align: center;
-  z-index: 1000;
+  z-index: 10;
   background-color: ${props => props.theme.mainColor2};
   color: white;
   position: absolute;
-  font-size: 1rem;
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-bottom: 5px;
+  font-size: 0.6rem;
+  padding-top: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-bottom: 2px;
+  letter-spacing: 0.035rem;
+  @media (min-width: 768px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    font-size: 1rem;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    letter-spacing: 0.085rem;
+  }
   width: 100%;
-  letter-spacing: 0.085rem;
   /* @media (min-width: 1028px) {
     grid-column-start: 2;
     grid-column-end: 21;
@@ -136,6 +148,8 @@ const Stuff = styled.div`
 const Wraps = styled.div`
   margin-top: -5px;
   z-index: 10;
+  width: 100%;
+  height: 100%;
   /* grid-column-start: 2;
   grid-column-end: 6;
   grid-row-start: 3;
@@ -143,7 +157,7 @@ const Wraps = styled.div`
   /* padding-bottom: 10px; */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: start;
 `;
 
 const Price = styled.div`
@@ -193,11 +207,18 @@ const Name = styled.div`
     /* letter-spacing: 0.05rem; */
   }
 `;
+
+// width: 150px;
+//   height: 216px;
 const Dude = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: 10px 230px 10px;
-  grid-template-rows: 17px 1fr 1px;
+  grid-template-columns: 5px 130px 5px;
+  grid-template-rows: 6px 1fr 11px;
+  @media (min-width: 768px) {
+    grid-template-columns: 10px 230px 10px;
+    grid-template-rows: 17px 1fr 1px;
+  }
   margin: 0 auto;
 `;
 const Test = ({ mattress, url }) => {
@@ -205,7 +226,7 @@ const Test = ({ mattress, url }) => {
     <Linker to={url}>
       <Wrapper>
         <Dude>
-          {/* <Stuff>GIFT WITH PURCHASE</Stuff> */}
+          <Stuff>GIFT WITH PURCHASE</Stuff>
 
           <MattImg
             alt={`A ${mattress.brandName} ${mattress.subBrand} ${
