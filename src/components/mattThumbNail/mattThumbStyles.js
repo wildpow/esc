@@ -50,7 +50,6 @@ export const BannerWrapper = styled.div`
   display: flex;
 `;
 export const Banner = styled.div`
-  margin-left: 20px;
   font-family: ${props => props.theme.MainFont1};
   font-weight: 400;
   text-align: center;
@@ -59,12 +58,17 @@ export const Banner = styled.div`
   color: white;
   position: absolute;
   font-size: 0.5rem;
+  /* padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 10px;
+  padding-left: 5px; */
   padding-top: 3px;
   padding-bottom: 3px;
   padding-right: 10px;
-  padding-left: 5px;
-  letter-spacing: 0.035rem;
-  margin-top: 8px;
+  padding-left: 10px;
+  margin-left: 5px;
+  letter-spacing: 0.015rem;
+  margin-top: 3px;
   :after {
     content: " ";
     position: absolute;
@@ -79,18 +83,23 @@ export const Banner = styled.div`
     transform: skew(-21deg, 0deg);
   }
   @media (min-width: 360px) {
+    margin-top: 8px;
     margin-left: 16px;
     padding-left: 6px;
     padding-right: 11px;
+    letter-spacing: 0.035rem;
   }
   @media (min-width: 375px) {
     margin-left: 16px;
   }
   @media (min-width: 411px) {
-    margin-left: 17px;
+    margin-left: 15px;
+    padding-right: 7px;
+    font-size: 0.6rem;
   }
   @media (min-width: 414px) {
     margin-left: 28px;
+    font-size: 0.6rem;
   }
   @media (min-width: 640px) {
     margin-left: 27px;
@@ -105,8 +114,13 @@ export const Banner = styled.div`
     padding-bottom: 4px;
   }
   @media (min-width: 1024px) {
-    margin-top: 18px;
+    margin-top: 14px;
     margin-left: 25px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 23px;
+    padding-left: 24px;
+    letter-spacing: 0.045rem;
   }
 `;
 

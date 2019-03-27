@@ -73,8 +73,8 @@ export const H2 = styled.h2`
   }
   @media (min-width: 1024px) {
     font-size: 1.5rem;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
     /* font-weight: 500; */
     line-height: 1.4em;
   }
@@ -83,8 +83,8 @@ export const H2 = styled.h2`
     letter-spacing: 0.1rem;
     padding-right: 1px;
     padding-left: 1px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     line-height: 2.4rem;
   }
 `;

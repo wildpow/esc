@@ -64,6 +64,8 @@ export const MainTitle = styled(H2)`
   }
   @media (min-width: 1300px) {
     padding-left: 80px;
+    /* padding-top: 15px;
+    padding-bottom: 15px; */
   }
 `;
 
