@@ -1,9 +1,7 @@
-import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { MattImg } from "./singleMattress/singleMattressStyles";
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${props => props.theme.mainColor1};
   display: flex;
@@ -41,16 +39,17 @@ const StyledLink = styled(Link)`
     box-shadow: ${props => props.theme.hoverBoxAfter};
   }
 `;
+
 export const Topper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
 `;
-const BannerWrapper = styled.div`
+export const BannerWrapper = styled.div`
   position: relative;
   display: flex;
 `;
-const Banner = styled.div`
+export const Banner = styled.div`
   margin-left: 20px;
   font-family: ${props => props.theme.MainFont1};
   font-weight: 400;
@@ -111,7 +110,7 @@ const Banner = styled.div`
   }
 `;
 
-const PriceRange = styled.div`
+export const PriceRange = styled.div`
   color: ${props => props.theme.newColor2};
   font-weight: 400;
   font-family: ${props => props.theme.MainFont1};
@@ -145,35 +144,22 @@ export const Name = styled.div`
     letter-spacing: 0.05rem;
   }
 `;
-const Test = ({ mattress, url }) => {
-  return (
-    <StyledLink to={url}>
-      <Topper>
-        <BannerWrapper>
-          <Banner>GIFT WITH PURCHASE</Banner>
-          <MattImg
-            src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
-              mattress.coverImg.handle
-            }`}
-            alt={`Image of a ${mattress.brandName} ${mattress.subBrand} ${
-              mattress.subName
-            } mattress`}
-          />
-        </BannerWrapper>
-        <PriceRange>
-          {`$${mattress.priceRange[0]} 
-          - $${mattress.priceRange[1]}`}
-        </PriceRange>
-      </Topper>
-      <Name>
-        {mattress.brandName}
-        <br />
-        {mattress.subBrand}
-        <br />
-        {mattress.subName}
-      </Name>
-    </StyledLink>
-  );
-};
 
-export default Test;
+export const MattImg = styled.img`
+  color: white;
+  margin: 0 auto 0px auto;
+  width: 110px;
+  height: 110px;
+  @media (min-width: 360px) {
+    width: 130px;
+    height: 130px;
+  }
+  @media (min-width: 768px) {
+    width: 250px;
+    height: 250px;
+  }
+  @media (min-width: 1022px) {
+    width: 250px;
+    margin-bottom: -10px;
+  }
+`;

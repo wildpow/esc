@@ -10,7 +10,7 @@ import {
 import Layout from "../../components/layout";
 import StearnsImg from "../../images/stearnsLogo.png";
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
-import SingleMattress from "../../components/singleMattress/singleMattress";
+import MattressThumb from "../../components/mattThumbNail/mattThumb";
 import SEO from "../../components/seo";
 
 const Stearns = ({ data }) => {
@@ -35,7 +35,7 @@ const Stearns = ({ data }) => {
         </MainTitle>
         <Wrapper>
           {allMattresses.map(mattress => (
-            <SingleMattress
+            <MattressThumb
               key={mattress.id}
               mattress={mattress}
               url={`/brands/${title}/${mattress.uri}`}
@@ -64,6 +64,7 @@ export const stearnsMattresses = graphql`
         filter: { brandName: "Stearns & Foster", isPublished: true }
       ) {
         brandName
+        saleBanner
         uri
         id
         subName

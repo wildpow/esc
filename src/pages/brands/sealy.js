@@ -10,8 +10,8 @@ import {
   SealyImgPlace,
 } from "../../styles/mattListStyles";
 import SealyImg from "../../images/sealyLogo.png";
-import SingleMattress from "../../components/singleMattress/singleMattress";
 import SEO from "../../components/seo";
+import MattressThumb from "../../components/mattThumbNail/mattThumb";
 
 const Sealy = ({ data }) => {
   const { allMattresses } = data.gcms;
@@ -38,7 +38,7 @@ const Sealy = ({ data }) => {
             if (mattress.subLine !== null) {
               if (mattress.subLine.subLineName === "Essentials") {
                 return (
-                  <SingleMattress
+                  <MattressThumb
                     key={mattress.id}
                     mattress={mattress}
                     url={`/brands/${title}/${mattress.uri}`}
@@ -53,7 +53,7 @@ const Sealy = ({ data }) => {
             if (mattress.subLine !== null) {
               if (mattress.subLine.subLineName === "Performance") {
                 return (
-                  <SingleMattress
+                  <MattressThumb
                     key={mattress.id}
                     mattress={mattress}
                     url={`/brands/${title}/${mattress.uri}`}
@@ -68,7 +68,7 @@ const Sealy = ({ data }) => {
             if (mattress.subLine !== null) {
               if (mattress.subLine.subLineName === "Premium ") {
                 return (
-                  <SingleMattress
+                  <MattressThumb
                     key={mattress.id}
                     mattress={mattress}
                     url={`/brands/${title}/${mattress.uri}`}
@@ -98,6 +98,7 @@ export const allMattresses = graphql`
     gcms {
       allMattresses(orderBy: orderByPrice_ASC, filter: { isPublished: true }) {
         brandName
+        saleBanner
         uri
         id
         subLine {

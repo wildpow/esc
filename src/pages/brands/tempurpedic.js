@@ -10,7 +10,7 @@ import {
 } from "../../styles/mattListStyles";
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 import TempurImg from "../../images/tempurLogo2.png";
-import SingleMattress from "../../components/singleMattress/singleMattress";
+import MattressThumb from "../../components/mattThumbNail/mattThumb";
 import SEO from "../../components/seo";
 
 const Tempurpedic = ({ data }) => {
@@ -32,7 +32,7 @@ const Tempurpedic = ({ data }) => {
         </MainTitle>
         <Wrapper>
           {allMattresses.map(mattress => (
-            <SingleMattress
+            <MattressThumb
               key={mattress.id}
               mattress={mattress}
               url={`/brands/${title}/${mattress.uri}`}
@@ -61,6 +61,7 @@ export const tempurMattresses = graphql`
       ) {
         brandName
         uri
+        saleBanner
         id
         subName
         subBrand

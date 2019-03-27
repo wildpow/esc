@@ -7,7 +7,7 @@ import {
   MattImg,
   PriceRange,
   Name,
-} from "./singleMattressStyles";
+} from "./singleMattressStylesOld";
 
 const SingleMattress = ({ mattress, url }) => {
   return (

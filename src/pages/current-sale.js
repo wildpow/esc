@@ -9,7 +9,7 @@ import {
   Wrapper2,
   Headline,
 } from "../styles/mattListStyles";
-import SingleMattress from "../components/singleMattress/singleMattress";
+import MattressThumb from "../components/mattThumbNail/mattThumb";
 import SEO from "../components/seo";
 
 const CurrentSale = ({ data }) => {
@@ -35,7 +35,7 @@ const CurrentSale = ({ data }) => {
         </Wrapper2>
         <Wrapper>
           {allIsOnSales[0].mattresses.map(mattress => (
-            <SingleMattress
+            <MattressThumb
               key={mattress.id}
               mattress={mattress}
               url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
@@ -65,6 +65,7 @@ export const currentSaleQuery = graphql`
         }
         mattresses(filter: { isPublished: true }, orderBy: orderByPrice_ASC) {
           id
+          saleBanner
           uriBrandName
           brandName
           orderByPrice

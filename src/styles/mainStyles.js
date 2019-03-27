@@ -16,7 +16,7 @@ export const theme = {
   mainColor2: "#eb1c24", // RED !
   // newColor1: "#fffafa", // snow white
   // newColor1: "#fcfcfc", // Try
-  newColor1: "#fdfdff", // New
+  newColor1: "#fcfcff", // New
   // newColor1: "F8F8FF",
   newColor2: "#343434", // Jet
   newColor3: "#f8f8ff", // ghost white

@@ -3,11 +3,11 @@ import { StaticQuery, graphql, Link } from "gatsby";
 import styled from "styled-components";
 import { Wrapper, MainWrapper } from "../styles/mattListStyles";
 import { P, Headline } from "../styles/homeStyles";
-import SingleMattres from "./singleMattress/singleMattress";
-// import {Headline} from '../styles/homeStyles';
-import Test from "./test3";
+import MattressThumb from "./mattThumbNail/mattThumb";
 
 const NewWrapper = styled(MainWrapper)`
+  background-color: ${props => props.theme.newColor1};
+
   margin-top: 15px;
   @media (min-width: 1024px) {
     box-shadow: ${props => props.theme.newBoxShadow};
@@ -74,6 +74,7 @@ const TopThreeMatts = () => {
                 priceRange
                 subName
                 subBrand
+                saleBanner
                 coverImg {
                   handle
                 }
@@ -87,18 +88,11 @@ const TopThreeMatts = () => {
           <Headline>{data.gcms.allFront3Mattresses[0].headerTagLine}</Headline>
           <ThreeMattWrapper>
             {data.gcms.allFront3Mattresses[0].mattresses.map(mattress => (
-              <>
-                <SingleMattres
-                  key={mattress.id}
-                  mattress={mattress}
-                  url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
-                />
-                <Test
-                  key={mattress.id}
-                  mattress={mattress}
-                  url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
-                />
-              </>
+              <MattressThumb
+                key={mattress.id}
+                mattress={mattress}
+                url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
+              />
             ))}
           </ThreeMattWrapper>
           <NewP>
