@@ -22,7 +22,7 @@ const Navigation = () => (
             {menuLeft.map(item => (
               <StyledLink
                 key={item.name}
-                left
+                left="left"
                 partiallyActive
                 activeStyle={{
                   borderRadius: "1px",
@@ -39,7 +39,7 @@ const Navigation = () => (
             {menuRight.map(item => (
               <StyledLink
                 key={item.name}
-                right
+                right="right"
                 partiallyActive
                 to={item.url}
                 activeStyle={{

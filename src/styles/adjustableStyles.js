@@ -23,7 +23,7 @@ export const AdjMarkdown = styled(ReactMarkdown)`
     padding-bottom: 2px;
   }
   @media (min-width: 568px) {
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont3};
     display: block;
     padding: 30px;
 
@@ -79,8 +79,8 @@ export const Main = styled(FlexCol)`
 `;
 
 export const StyledLink = styled(Link)`
-  box-shadow: ${props => props.theme.BoxShadow};
-  border: ${props => props.theme.Border};
+  /* box-shadow: ${props => props.theme.newBoxShadow}; */
+  /* border: ${props => props.theme.Border}; */
   text-decoration: none;
   margin-left: 2px;
   margin-right: 2px;
@@ -90,19 +90,23 @@ export const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: all 0.15s ease-in-out;
+  /* transition: all 0.15s ease-in-out; */
   background-color: white;
+  transition: ${props => props.theme.hoverTransition};
+  box-shadow: ${props => props.theme.hoverBoxBefore};
   &:hover {
-    z-index: 999;
-    transform: scale3d(1.02, 1.02, 1);
+    transform: ${props => props.theme.hoverTransform};
+  box-shadow: ${props => props.theme.hoverBoxAfter};
+    /* z-index: 999;
+    transform: scale3d(1.02, 1.02, 1); */
   }
 `;
 
 export const H3 = styled.h3`
-  text-shadow: ${props => props.theme.TextShadow};
+  text-shadow: ${props => props.theme.newTextShadow};
   font-family: ${props => props.theme.MainFont1};
   background-color: ${props => props.theme.mainColor1};
-  color: white;
+  color: ${props => props.theme.newColor1};
   margin-top: 0;
   text-align: center;
   margin-bottom: 0;

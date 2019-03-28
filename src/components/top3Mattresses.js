@@ -1,21 +1,23 @@
 import React from "react";
 import { StaticQuery, graphql, Link } from "gatsby";
 import styled from "styled-components";
-import { Wrapper, MainWrapper, Headline } from "../styles/mattListStyles";
-import { P } from "../styles/homeStyles";
-import SingleMattres from "./singleMattress/singleMattress";
+import { Wrapper, MainWrapper } from "../styles/mattListStyles";
+import { P, Headline } from "../styles/homeStyles";
+import MattressThumb from "./mattThumbNail/mattThumb";
 
 const NewWrapper = styled(MainWrapper)`
+  background-color: ${props => props.theme.newColor1};
+
   margin-top: 15px;
   @media (min-width: 1024px) {
-    box-shadow: ${props => props.theme.BoxShadow};
-    border-top: ${props => props.theme.Border};
-    border-right: ${props => props.theme.Border};
-    border-left: ${props => props.theme.Border};
+    box-shadow: ${props => props.theme.newBoxShadow};
+    /* border-top: ${props => props.theme.Border}; */
+    /* border-right: ${props => props.theme.Border};
+    border-left: ${props => props.theme.Border}; */
   }
 `;
 const NewP = styled(P)`
-  border-top: ${props => props.theme.Border};
+  /* border-top: ${props => props.theme.Border}; */
 `;
 const ThreeMattWrapper = styled(Wrapper)`
   margin-bottom: 10px;
@@ -72,6 +74,7 @@ const TopThreeMatts = () => {
                 priceRange
                 subName
                 subBrand
+                saleBanner
                 coverImg {
                   handle
                 }
@@ -85,7 +88,7 @@ const TopThreeMatts = () => {
           <Headline>{data.gcms.allFront3Mattresses[0].headerTagLine}</Headline>
           <ThreeMattWrapper>
             {data.gcms.allFront3Mattresses[0].mattresses.map(mattress => (
-              <SingleMattres
+              <MattressThumb
                 key={mattress.id}
                 mattress={mattress}
                 url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}

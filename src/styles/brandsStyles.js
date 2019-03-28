@@ -85,25 +85,33 @@ export const Footer = styled.p`
   font-family: ${props => props.theme.MainFont1};
   background-color: ${props => props.theme.mainColor1};
   margin-bottom: 0;
+
   padding: 10px 0 10px 0;
-  color: white;
-  border-top: 2px solid black;
+  color: ${props => props.theme.newColor1};
+  /* border-top: 2px solid black; */
   letter-spacing: 0.12rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  text-shadow: ${props => props.theme.newTextShadow};
 `;
 export const StyledLink = styled(Link)`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
+  font-weight: 300;
   text-decoration: none;
   flex-basis: 100%;
-  color: black;
-  border: 2px solid black;
-  box-shadow: 0 10px 6px -6px rgba(119, 119, 119, 0.9);
-  border-radius: 0.11rem;
+  color: ${props => props.theme.newColor2};
+  background-color: white;
   margin-bottom: 20px;
   display: flex;
-  transition: all 0.25s ease-in-out;
+  /* border: ${props => props.theme.Border}; */
+  box-shadow: ${props => props.theme.hoverBoxBefore};
+  transition: ${props => props.theme.hoverTransition};
+  /* box-shadow: rgba(46, 41, 51, 0.08) 0px 1px 2px, rgba(71, 63, 79, 0.08) 0px 2px 4px;
+  transition: box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0s, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s; */
   &:hover {
-    transform: scale(1.01);
+    transform: ${props => props.theme.hoverTransform};
+    box-shadow: ${props => props.theme.hoverBoxAfter};
+    /* box-shadow: 0px 4px 8px rgba(46, 41, 51, 0.08), 0px 8px 16px rgba(71, 63, 79, 0.16);
+    transform: translateY(-4px); */
   }
   @media (min-width: 1022px) {
     margin: 0 auto;

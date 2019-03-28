@@ -5,8 +5,9 @@ export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   margin-top: 15px;
-  border: 2px solid black;
-  box-shadow: 0 10px 6px -6px rgba(119, 119, 119, 0.9);
+  /* border: ${props => props.theme.Border}; */
+  background-color: white;
+  box-shadow: ${props => props.theme.newBoxShadow};
   @media (min-width: 1200px) {
     margin-left: 10px;
     margin-right: 10px;
@@ -123,16 +124,16 @@ export const MapImg = styled.img`
 `;
 
 export const Address = styled.p`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   background: ${props => props.theme.mainColor2};
-  text-shadow: ${props => props.theme.TextShadow};
-  color: white;
+  /* text-shadow: ${props => props.theme.newTextShadow}; */
+  color: ${props => props.theme.newColor1};
   text-align: center;
   font-size: 0.9rem;
   padding: 10px;
   line-height: 1.2rem;
   margin-top: 0;
-  font-variant: small-caps;
+  /* font-variant: small-caps; */
   margin-bottom: 0;
   @media (min-width: 768px) {
     font-size: 1.4rem;
@@ -140,6 +141,7 @@ export const Address = styled.p`
   }
   @media (min-width: 1200px) {
     line-height: 1.6rem;
+    line-height: 2rem;
   }
 `;
 
@@ -151,7 +153,8 @@ export const Span = styled.span`
 `;
 
 export const RegularParagraph = styled.p`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
+  font-weight: 300;
   padding-left: 12px;
   padding-right: 12px;
   line-height: 1.4rem;
@@ -177,7 +180,7 @@ export const RegularParagraph = styled.p`
 
 export const BlueWrapper = styled.div`
   background-color: ${props => props.theme.mainColor1};
-  color: white;
+  color: ${props => props.theme.newColor1};
   margin-top: 20px;
   @media (min-width: 1024px) {
     margin-top: 40px;
@@ -185,14 +188,15 @@ export const BlueWrapper = styled.div`
 `;
 
 export const SecondP = styled.p`
-  text-shadow: ${props => props.theme.TextShadow};
-  font-family: ${props => props.theme.MainFont2};
+  text-shadow: ${props => props.theme.newTextShadow};
+  font-family: ${props => props.theme.MainFont1};
   padding-left: 30px;
   padding-right: 30px;
   line-height: 1.6rem;
   font-size: 1.3rem;
   letter-spacing: 0.1rem;
-  font-variant: small-caps;
+  font-weight: 300;
+  /* font-variant: small-caps; */
   text-align: center;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -217,6 +221,7 @@ export const PopImg = styled.img`
 export const PopNameHolder = styled(FlexRow)`
   font-family: ${props => props.theme.MainFont1};
   justify-content: center;
+  font-weight: 700;
   font-size: 1rem;
   @media (min-width: 700px) {
     font-size: 2rem;

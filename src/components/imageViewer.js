@@ -31,13 +31,14 @@ class ImageViewer extends React.PureComponent {
   };
 
   render() {
-    const { cover, img1, img2, fullname, type } = this.props;
+    const { cover, img1, img2, fullname, type, base } = this.props;
     const { currentImageIndex } = this.state;
     const ImagesArray = [cover, img1, img2];
     return (
-      <ImgWrapper style={{ position: "relative" }}>
+      // style={{ position: "relative" }}
+      <ImgWrapper>
+        {/* style={{ position: "relative" }} */}
         <NodeGroup
-          style={{ position: "relative" }}
           data={[currentImageIndex]}
           keyAccessor={d => d}
           start={() => ({
@@ -72,7 +73,7 @@ class ImageViewer extends React.PureComponent {
             </div>
           )}
         </NodeGroup>
-        <SmallImgHolder style={{ position: "relative" }}>
+        <SmallImgHolder style={{ position: "relative" }} base={base}>
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
@@ -91,6 +92,7 @@ class ImageViewer extends React.PureComponent {
             data-id={1}
             alt={`Small image of ${fullname} ${type}`}
           />
+          {console.log()}
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}

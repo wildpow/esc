@@ -29,14 +29,14 @@ const InsideWrapper = styled.div`
   }
 `;
 const ReadMore = styled.a`
-  color: #1565c0;
+  color: ${props => props.theme.mainColor1};
   transition: all 250ms ease-in-out;
   text-decoration: none;
-  font-family: "Roboto";
-  font-weight: 300;
+  font-family: ${props => props.theme.MainFont1};
+  font-weight: 500;
   font-size: 0.9em;
   :hover {
-    color: #eb1c24;
+    color: ${props => props.theme.mainColor2};
   }
 `;
 const Wrap = styled.div`
@@ -54,23 +54,28 @@ const Wrap = styled.div`
 `;
 const Name = styled.span`
   font-family: ${props => props.theme.MainFont1};
-  font-weight: 300;
+  font-weight: 700;
   line-height: 21px;
   font-size: 12px;
-  color: #2d3e50;
+  color: ${props => props.theme.newColor2};
   text-align: center;
   justify-self: center;
 
   @media (min-width: 768px) {
     font-size: 15px;
+    letter-spacing: 0.05rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 21px;
+    letter-spacing: 0.05rem;
   }
   /* margin-top: 22px !important; */
 `;
 const Review = styled.p`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${props => props.theme.MainFont3};
   line-height: 1.3em;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 300;
   color: #2d3e50;
   /* text-align: center; */
   justify-self: center;
@@ -87,7 +92,7 @@ const Review = styled.p`
   @media (min-width: 1024px) {
     /* margin: 22px auto;
     font-size: 22px; */
-    line-height: 1.3em;
+    line-height: 1.4em;
   }
 `;
 const Content = styled.div`

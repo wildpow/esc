@@ -14,17 +14,23 @@ export const StyledLink = styled(Link)`
   flex-direction: row;
   align-items: center;
   margin-bottom: 16px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   text-decoration: none;
-  border: 2px solid black;
-  box-shadow: 0 10px 6px -6px rgba(119, 119, 119, 0.9);
-  border-radius: 0.14rem;
+  /* border: ${props => props.theme.Border}; */
+  /* box-shadow: ${props => props.theme.newBoxShadow}; */
+  box-shadow: rgba(46, 41, 51, 0.08) 0px 1px 2px, rgba(71, 63, 79, 0.08) 0px 2px 4px;
+  transition: box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0s, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  /* border-radius: 0.14rem; */
   background-color: white;
   color: #1565c0;
+  font-weight: 300;
   transition: all 0.15s ease-in-out;
   &:hover {
-    z-index: 999;
-    transform: scale3d(1.02, 1.02, 1);
+    /* z-index: 999;
+    transform: scale3d(1.02, 1.02, 1); */
+    box-shadow: 0px 4px 8px rgba(46, 41, 51, 0.08), 0px 8px 16px rgba(71, 63, 79, 0.16);
+   
+    transform: translateY(-4px);
   }
 `;
 
@@ -45,6 +51,7 @@ export const H3 = styled.h3`
   padding-right: 10px;
   overflow-wrap: break-word;
   font-size: 1rem;
+  font-weight: 400;
   @media (min-width: 765px) {
     font-size: 1.3rem;
   }

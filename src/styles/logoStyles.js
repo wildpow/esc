@@ -4,8 +4,6 @@ import { FlexCol } from "./mainStyles";
 
 export const Wrapper = styled(FlexCol)`
   margin-top: -15px;
-  /* position: relative;
-  z-index: 2; */
   @media (min-width: 768px) {
     margin-top: -22px;
   }
@@ -23,16 +21,17 @@ export const StyledLink = styled(Link)`
   margin-top: -15px;
   margin: auto;
   transition: all 0.2s ease-in;
-  &:hover {
-    transform: scale3d(1.05, 1.05, 1);
-  }
 `;
 
 export const Image = styled.img`
+  &:hover {
+    transform: scale3d(1.05, 1.05, 1);
+  }
   color: white;
   transition: all 0.25s ease-in;
   align-self: center;
   height: 6.5em;
+  z-index: 3;
   @media (min-width: 500px) {
     height: 8em;
   }
@@ -44,13 +43,15 @@ export const Image = styled.img`
 export const H1 = styled.h1`
   font-family: ${props => props.theme.MainFont1};
   color: ${props => props.theme.mainColor2};
-  text-shadow: ${props => props.theme.TextShadow};
+  text-shadow: ${props => props.theme.newTextShadow};
+  background-color: white;
   transition: all 0.25s ease-in;
-  z-index: -1;
+  z-index: 1;
   align-self: center;
   margin-bottom: 0;
-  border: 2px solid black;
-  box-shadow: 0 10px 6px -6px rgba(119, 119, 119, 0.9);
+  font-weight: 700;
+  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.newBoxShadow};
   border-top-left-radius: 0.11rem;
   border-top-right-radius: 0.11rem;
   padding: 5px 15px 5px 15px;
@@ -66,10 +67,14 @@ export const H1 = styled.h1`
   @media (min-width: 768px) {
     font-size: 4rem;
     margin-top: -44px;
+    letter-spacing: 0.05rem;
   }
 `;
 export const Span = styled.span`
   color: ${props => props.theme.mainColor1};
+  /* font-style: italic; */
+  font-family: ${props => props.theme.MainFont1};
+  font-weight: 700;
   font-style: italic;
 `;
 
@@ -79,6 +84,7 @@ export const ReadersChoice = styled.img`
   position: absolute;
   left: 9px;
   top: 39px;
+  z-index: 10;
   transition: all 0.25s ease-in;
   cursor: pointer;
   &:hover {

@@ -8,9 +8,10 @@ export const PriceList = styled.ul`
 `;
 
 export const Wrapper = styled(FlexCol)`
-  border: ${props => props.theme.Border};
-  box-shadow: ${props => props.theme.BoxShadow};
+  /* border: ${props => props.theme.Border}; */
+  box-shadow: ${props => props.theme.newBoxShadow};
   animation-name: ${FadeIn};
+  background-color: white;
   ${props => props.theme.Animation}
   justify-content: center;
   border-radius: 0.11rem;
@@ -22,6 +23,8 @@ export const Wrapper = styled(FlexCol)`
 
 export const Main = styled(FlexRow)`
   margin-top: 2px;
+  background-color: white;
+
   justify-content: space-around;
   @media (min-width: 360px) {
     margin-top: 4px;
@@ -50,12 +53,19 @@ export const PriceWrapper = styled(FlexCol)`
 `;
 
 export const MainTitle = styled(H2)`
+  background-color: ${props =>
+    props.red ? props.theme.mainColor2 : props.theme.mainColor1};
   @media (min-width: 768px) {
     text-align: left;
-    padding-left: 20px;
+    padding-left: 40px;
+  }
+  @media (min-width: 1022px) {
+    padding-left: 60px;
   }
   @media (min-width: 1300px) {
-    padding-left: 30px;
+    padding-left: 80px;
+    /* padding-top: 15px;
+    padding-bottom: 15px; */
   }
 `;
 
@@ -70,8 +80,9 @@ export const MainImg = styled.img`
 `;
 
 export const Warranty = styled.p`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   text-align: center;
+  font-weight: 300;
   font-size: 0.5rem;
   padding-right: 5px;
   padding-left: 5px;
@@ -82,58 +93,42 @@ export const Warranty = styled.p`
   }
   @media (min-width: 1024px) {
     font-size: 1rem;
+    line-height: 1.6rem;
   }
 `;
 
 export const Description = styled.p`
-  font-family: ${props => props.theme.MainFont2};
+  font-weight: 400;
+  color: black;
+  font-family: ${props => props.theme.MainFont3};
   align-self: center;
   border-radius: 0.11rem;
   margin-left: 0px;
   margin-right: 0px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   padding: 5px 14px 10px 14px;
-  line-height: 1.3rem;
+  line-height: 1.5rem;
+  margin: 0;
+
   @media (min-width: 768px) {
     font-size: 1.1rem;
     padding-right: 40px;
     padding-left: 40px;
-    line-height: 1.5rem;
+    line-height: 1.7rem;
   }
   @media (min-width: 1022px) {
-    font-size: 1.8rem;
+    font-size: 1.35rem;
     padding-right: 60px;
     padding-left: 60px;
     line-height: 2.3rem;
   }
   @media (min-width: 1300px) {
-    font-size: 1.7rem;
-    padding-top: 30px;
+    font-size: 1.4rem;
+    padding-top: 10px;
     padding-right: 80px;
     padding-left: 80px;
     line-height: 2.35rem;
-    margin: auto;
-    padding-bottom: 20px;
-  }
-`;
-
-export const Overview = styled.header`
-  font-family: ${props => props.theme.MainFont1};
-  background-color: ${props => props.theme.mainColor2};
-  text-shadow: ${props => props.theme.TextShadow};
-  color: white;
-  letter-spacing: 0.1rem;
-  text-align: center;
-  font-size: 0.5rem;
-  padding: 0px 12px 0px 12px;
-  @media (min-width: 768px) {
-    text-align: left;
-    font-size: 0.9rem;
-    padding: 0px 5px 0px 10px;
-  }
-  @media (min-width: 1024px) {
-    text-align: center;
-    font-size: 1.2rem;
+    padding-bottom: 10px;
   }
 `;
 
@@ -162,11 +157,14 @@ export const Profile = styled.p`
 `;
 // 692px
 export const StyledMarkDown = styled(Markdown)`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
+  font-weight: 400;
   margin-left: 5px;
+  color: ${props => props.theme.newColor2};
   padding: 0px;
   & p {
     font-size: 0.9rem;
+
     margin-top: 0;
     margin-bottom: 0;
     border-bottom: 4px solid ${props => props.theme.mainColor2};
@@ -188,7 +186,7 @@ export const StyledMarkDown = styled(Markdown)`
     }
   }
   @media (min-width: 550px) {
-    font-family: ${props => props.theme.MainFont2};
+    /* font-family: ${props => props.theme.MainFont2}; */
     padding: 0px 0px 0px 10px;
 
     & p {
@@ -234,9 +232,9 @@ export const Price = styled(FlexCol)`
   justify-items: center;
   align-content: center;
 `;
-
+// where ?
 export const PriceTitle = styled.p`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   padding-top: 0px;
   padding-bottom: 3px;
   margin-top: 0;
@@ -266,7 +264,9 @@ export const InfoAnchor = styled(AnchorLink)`
   margin-left: 5px;
   padding-left: 15px;
   font-size: 0.9rem;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
+  font-weight: 700;
+  letter-spacing: 0.05rem;
   color: ${props => props.theme.mainColor2};
   &:hover {
     color: ${props => props.theme.mainColor1};
@@ -285,5 +285,75 @@ export const InfoAnchor = styled(AnchorLink)`
   @media (min-width: 1024px) {
     padding-left: 55px;
     font-size: 1.6rem;
+  }
+`;
+
+export const Construction = styled(Markdown)`
+  font-family: ${props => props.theme.MainFont3};
+  font-weight: 400;
+  margin-left: 5px;
+  color: ${props => props.theme.newColor2};
+  padding: 0px;
+  & p {
+    font-size: 0.9rem;
+
+    margin-top: 0;
+    margin-bottom: 0;
+    border-bottom: 4px solid ${props => props.theme.mainColor2};
+    padding-bottom: 2px;
+  }
+  & ul {
+    list-style: square;
+    margin-top: 2px;
+    font-size: 0.7rem;
+    padding-left: 20px;
+    margin-bottom: 5px;
+  }
+  & li {
+    padding-bottom: 2px;
+  }
+  @media (min-width: 360px) {
+    & ul {
+      margin-top: 10px;
+    }
+  }
+  @media (min-width: 550px) {
+    /* font-family: ${props => props.theme.MainFont2}; */
+    padding: 0px 0px 0px 10px;
+
+    & p {
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      border-bottom: 4px solid ${props => props.theme.mainColor2};
+      padding-bottom: 2px;
+    }
+    & ul {
+      list-style: square;
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+    & li {
+      padding-bottom: 2px;
+      font-size: 1.1rem;
+    }
+  }
+  @media (min-width: 992px) {
+    padding: 0px 30px 10px 30px;
+
+    & p {
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-bottom: 2px;
+    }
+    & ul {
+      margin-top: 10px;
+      font-size: 1.6rem;
+    }
+    & li {
+      padding-bottom: 2px;
+      font-size: 1.4rem;
+    }
   }
 `;

@@ -5,12 +5,13 @@ export const MainWrapper = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   justify-content: space-between;
+  /* border: 0px solid green; */
 `;
 
 export const MainTitle = styled.header`
   display: flex;
   padding: 0px 10px 0px 10px;
-  background-color: white;
+  background-color: ${props => props.theme.newColor1};
 `;
 
 export const Title = styled.h2`
@@ -36,11 +37,11 @@ export const StearnTitle = styled.h2`
   padding-right: 5px;
   padding: 60px;
   font-size: 0.8rem;
+  color: ${props => props.theme.newColor1};
 `;
 export const Img = styled.img`
-  color: white;
-  background: white;
-  border: 2px solid bkack;
+  /* color: white; */
+  background: ${props => props.theme.newColor1};
   align-self: center;
   margin: auto;
   margin-top: 5px;
@@ -89,9 +90,9 @@ export const Wrapper = styled(FlexRow)`
 `;
 
 export const Wrapper2 = styled(FlexCol)`
-  border-top: ${props => props.theme.Border};
+  /* border-top: ${props => props.theme.Border};
   border-right: ${props => props.theme.Border};
-  border-left: ${props => props.theme.Border};
+  border-left: ${props => props.theme.Border}; */
   margin-top: 10px;
   margin-bottom: 0px;
   margin-right: 0px;

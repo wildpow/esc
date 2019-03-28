@@ -66,7 +66,8 @@ export const Wrap = styled.div`
 `;
 
 export const BottomLinkWrapper = styled.div`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
+  font-weight: 400;
   display: flex;
   width: 100%;
   margin-top: 12px;

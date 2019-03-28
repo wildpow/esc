@@ -14,8 +14,8 @@ export const Main = styled(FlexCol)`
 `;
 
 export const CompanyWrapper = styled.article`
-  box-shadow: ${props => props.theme.BoxShadow};
-  border: ${props => props.theme.Border};
+  box-shadow: ${props => props.theme.newBoxShadow};
+  /* border: ${props => props.theme.Border}; */
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 15px;
@@ -43,13 +43,14 @@ export const H3 = styled.h3`
   text-shadow: ${props => props.theme.TextShadow};
   font-family: ${props => props.theme.MainFont1};
   background-color: ${props => props.theme.mainColor1};
-  color: white;
+  color: ${props => props.theme.newColor1};
   margin-top: 0;
-  text-align: center;
+  /* text-align: center; */
   margin-bottom: 0;
   font-size: 1rem;
   padding: 10px 5px 10px 5px;
   letter-spacing: 0.12rem;
+  font-weight: 400;
   @media (min-width: 581px) {
     font-size: 1.2rem;
     padding: 10px 30px 10px 30px;
@@ -107,8 +108,9 @@ export const P = styled.p`
   line-height: 1.5rem;
   padding-left: 5px;
   padding-right: 5px;
+  font-weight: 300;
   align-self: flex-start;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
   @media (min-width: 360px) {
     padding-left: 7px;
     padding-right: 7px;
@@ -153,8 +155,8 @@ export const ApplyNow = styled.a`
   margin-bottom: 5px;
   padding: 10px 15px 10px 15px;
   background-color: #66ccff;
-  font-family: ${props => props.theme.MainFont2};
-  color: white;
+  font-family: ${props => props.theme.MainFont1};
+  color: ${props => props.theme.newColor1};
   border: none;
   cursor: pointer;
   border-radius: 0.17rem;
@@ -184,5 +186,6 @@ export const BottomP = styled.p`
   text-align: center;
   margin-bottom: 0;
   padding-bottom: 5px;
-  font-family: ${props => props.theme.MainFont2};
+  font-weight: 300;
+  font-family: ${props => props.theme.MainFont1};
 `;

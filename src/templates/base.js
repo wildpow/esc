@@ -14,13 +14,13 @@ import {
   PriceTitle,
   Warranty,
   Description,
-  Overview,
   Article,
   StyledMarkDown,
   Profile,
   MainTitle,
   InfoAnchor,
   Stuff,
+  Construction,
 } from "../styles/singleMattStyles";
 import SEO from "../components/seo";
 
@@ -40,6 +40,7 @@ const Base = ({ data }) => {
             AdjBases.coverImg.handle
           }`}
           ogImageAlt={`E.S.C Mattress Center | ${AdjBases.fullName}`}
+          ogTitle={`E.S.C Mattress Center | ${AdjBases.fullName}`}
         />
         <header>
           <MainTitle>{AdjBases.fullName}</MainTitle>
@@ -51,6 +52,7 @@ const Base = ({ data }) => {
             img2={AdjBases.detail2.handle}
             type="adjustable base without mattress"
             fullname={AdjBases.fullName}
+            base
           />
           <MainInfo>
             <Stuff>
@@ -65,13 +67,13 @@ const Base = ({ data }) => {
             </PriceWrapper>
           </MainInfo>
         </Main>
-        <Overview id="moreInfo">
-          <h2>OVERVIEW & SPECS</h2>
-        </Overview>
+        <header id="moreInfo">
+          <MainTitle red>OVERVIEW & SPECS</MainTitle>
+        </header>
         <Article>
           <Description>{AdjBases.baseDescription}</Description>
           <Profile>{`Profile: ${AdjBases.height}`}</Profile>
-          <StyledMarkDown source={AdjBases.keyfeatures} escapeHtml={false} />
+          <Construction source={AdjBases.keyfeatures} escapeHtml={false} />
           <Warranty>{AdjBases.warranty}</Warranty>
         </Article>
       </Wrapper>

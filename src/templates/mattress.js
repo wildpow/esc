@@ -9,13 +9,13 @@ import {
   Main,
   MainInfo,
   Article,
-  Overview,
   Warranty,
   Description,
   StyledMarkDown,
   Profile,
   InfoAnchor,
   Stuff,
+  Construction,
 } from "../styles/singleMattStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import PriceCalculator from "../components/priceCalculator";
@@ -83,13 +83,13 @@ const Mattress = ({ data }) => {
             />
           </MainInfo>
         </Main>
-        <Overview id="moreInfo">
-          <h2>OVERVIEW & SPECS</h2>
-        </Overview>
+        <header id="moreInfo">
+          <MainTitle red>OVERVIEW & SPECS</MainTitle>
+        </header>
         <Article>
           <Description>{mattress.discription}</Description>
           <Profile>{`Profile: ${mattress.profile}`}</Profile>
-          <StyledMarkDown source={mattress.contruction} escapeHtml={false} />
+          <Construction source={mattress.contruction} escapeHtml={false} />
           <Warranty>{mattress.warranty}</Warranty>
         </Article>
       </Wrapper>

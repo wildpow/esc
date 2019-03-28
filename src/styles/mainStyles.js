@@ -14,13 +14,27 @@ import styled, { keyframes } from "styled-components";
 export const theme = {
   mainColor1: "#1565c0", // BLUE
   mainColor2: "#eb1c24", // RED !
+  // newColor1: "#fffafa", // snow white
+  // newColor1: "#fcfcfc", // Try
+  newColor1: "#fcfcff", // New
+  // newColor1: "F8F8FF",
+  newColor2: "#343434", // Jet
+  newColor3: "#f8f8ff", // ghost white
+  newBoxShadow: "0px 6px 6px -6px rgba(52,52,52,0.41)",
   Border: "1px solid #eee",
   RedBorderBottom: "4px solid green",
   TextShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
+  newTextShadow: "2px 2px 4px rgba(52, 52, 52, 0.4)",
   BoxShadow: "0 10px 6px -6px rgba(119, 119, 119, .6)",
   MainFont1: "'Roboto', sans-serif",
   MainFont2: "'Open Sans', sans-serif",
+  MainFont3: "'Roboto Slab', serif",
   Animation: `animation-duration: .5s; animation-fill-mode: both;`,
+  hoverTransition: `box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0s, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s`,
+  hoverBoxBefore:
+    "rgba(46, 41, 51, 0.08) 0px 1px 2px, rgba(71, 63, 79, 0.08) 0px 2px 4px",
+  hoverBoxAfter: `0px 4px 8px rgba(46, 41, 51, 0.08), 0px 8px 16px rgba(71, 63, 79, 0.16)`,
+  hoverTransform: `translateY(-4px)`,
 };
 
 export const FlexCol = styled.div`
@@ -40,12 +54,12 @@ export const FadeIn = keyframes`
 
 export const H2 = styled.h2`
   font-family: ${props => props.theme.MainFont1};
-  text-shadow: ${props => props.theme.TextShadow};
+  text-shadow: ${props => props.theme.newTextShadow};
   background-color: ${props =>
     props.red ? props.theme.mainColor2 : props.theme.mainColor1};
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
-  color: white;
+  color: ${props => props.theme.newColor1};
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.1rem;
@@ -59,8 +73,8 @@ export const H2 = styled.h2`
   }
   @media (min-width: 1024px) {
     font-size: 1.5rem;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
     /* font-weight: 500; */
     line-height: 1.4em;
   }
@@ -69,8 +83,8 @@ export const H2 = styled.h2`
     letter-spacing: 0.1rem;
     padding-right: 1px;
     padding-left: 1px;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     line-height: 2.4rem;
   }
 `;

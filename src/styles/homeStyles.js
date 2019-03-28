@@ -25,10 +25,8 @@ export const OneImg = styled.img`
 `;
 
 export const Wrapper = styled(FlexCol)`
-  border-top: ${props => props.theme.Border};
-  border-right: ${props => props.theme.Border};
-  border-left: ${props => props.theme.Border};
-  box-shadow: ${props => props.theme.BoxShadow};
+  background-color: ${props => props.theme.newColor1};
+  box-shadow: ${props => props.theme.newBoxShadow};
   justify-content: center;
   margin-top: 10px;
   margin-right: 0px;
@@ -42,9 +40,11 @@ export const Wrapper = styled(FlexCol)`
 `;
 
 export const Headline = styled.h2`
+  color: ${props => props.theme.newColo1};
   font-family: ${props => props.theme.MainFont1};
-  text-shadow: ${props => props.theme.TextShadow};
+  text-shadow: ${props => props.theme.newTextShadow};
   text-align: center;
+  font-weight: 400;
   background-color: ${props =>
     props.red ? props.theme.mainColor2 : props.theme.mainColor1};
   color: white;
@@ -55,39 +55,44 @@ export const Headline = styled.h2`
   font-size: 1.2rem;
   @media (min-width: 412px) {
     letter-spacing: 0.25rem;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
   @media (min-width: 768px) {
-    letter-spacing: 0.23rem;
-    font-size: 2.2rem;
+    letter-spacing: 0.13rem;
+    font-size: 1.7rem;
   }
   @media (min-width: 1024px) {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+    letter-spacing: 0.22rem;
   }
 `;
 
 export const P = styled.p`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
   text-align: justify;
   text-justify: inter-character !important;
   margin-bottom: 0;
+  font-weight: 300;
   margin-top: 0;
-  padding: 15px 7px 15px 7px;
+  background-color: white;
+  padding: 5px 15px 5px 15px;
   font-size: 1rem;
   line-height: 1.55rem;
+  color: ${props => props.theme.newColor2};
+
   @media (min-width: 640px) {
-    padding: 20px 15px 20px 15px;
+    padding: 5px 15px 5px 15px;
     line-height: 1.8rem;
     font-size: 1.2rem;
   }
   @media (min-width: 768px) {
-    font-size: 1.5rem;
-    line-height: 2.2rem;
+    font-size: 1.3rem;
+    line-height: 2rem;
   }
   @media (min-width: 1024px) {
-    padding: 30px 65px 30px 65px;
-    font-size: 1.8rem;
-    line-height: 2.9rem;
+    padding: 5px 15px 5px 15px;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
   }
 `;
 

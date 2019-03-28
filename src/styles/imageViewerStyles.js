@@ -21,8 +21,9 @@ export const ImgWrapper = styled(FlexCol)`
 `;
 
 export const SmallImgHolder = styled(FlexRow)`
+  margin-top: ${props => (props.base ? "0px" : "10px")};
   justify-content: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   align-self: center;
   top: 150px;
   @media (min-width: 360px) {
