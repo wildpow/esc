@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import Helmet from "react-helmet";
 import styledNormalize from "styled-normalize";
+import { StaticQuery, graphql } from "gatsby";
 import styled, { createGlobalStyle } from "styled-components";
 import Logo from "./logo";
 import Navigation from "./nav";
 import Footer from "./footer";
 import Topper from "./Topper";
-import MenuButton from "./mobileMenu/menuButton";
-import MenuItem from "./mobileMenu/menuItems";
-import Menu from "./mobileMenu/menu";
-// import MenuButton from "./MenuButton";
-// import Menu from "./Menu";
+import MenuButton from "./MenuButton";
+import Menu from "./Menu";
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -27,14 +26,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Body = styled.div`
   background-color: ${props => props.theme.newColor1};
-  filter: ${props => (props.menuOpen ? "blur(10px)" : null)};
-  transition: filter 0.5s ease;
-  pointer-events: ${props => (props.menuOpen ? "none" : "auto")};
-  /* overflow: ${props => (props.menuOpen ? "hidden !important" : "initial")};
-  position: ${props => (props.menuOpen ? "fixed !important" : "initial")}; */
 `;
-// background-color: ${props => (props.menuOpen ? "rgba(0,0,0,.2)" : "initial")};
-// overflow: ${props => (props.menuOpen ? "hidden !important" : "initial")};
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -61,74 +53,83 @@ const Container = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
-  position: absolute;
-  top: 70px;
-  right: 20px;
-  z-index: 999;
-  opacity: 0.9;
-  /* display: flex;
-  align-items: center; */
-`;
+class Layout extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
+  }
 
-const Layout = ({ children }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menu = [
-    "Home",
-    "Sale",
-    "Brands",
-    "Adjustable",
-    "Financing",
-    "Our Blog",
-    "About Us",
-    "Warranty",
-    "Policies",
-    "Site Map",
-  ];
-  let indexCount = 0;
-  const menuItems = menu.map((val, index) => {
-    indexCount += 1;
-    return (
-      <MenuItem
-        key={indexCount * 255}
-        delay={`${index * 0.05}s`}
-        onClick={() => {
-          this.handleLinkClick();
-        }}
-      >
-        {val}
-      </MenuItem>
+  handleMouseDown(e) {
+    this.toggleMenu();
+    e.stopPropagation();
+  }
+
+  toggleMenu() {
+    const { visible } = this.state;
+
+    this.setState(
+      {
+        visible: !visible,
+      },
+      () => this.displayNone(),
     );
-  });
-  const OnClick = () => {
-    if (!menuOpen) {
-      document.body.style.overflow = "hidden";
+  }
 
-      setMenuOpen(!menuOpen);
+  displayNone() {
+    const { visible } = this.state;
+    if (visible) {
+      this.setState({ display: "none" });
     } else {
-      document.body.style.overflow = "visible";
-      setMenuOpen(!menuOpen);
+      this.setState({ display: "block" });
     }
-  };
-  return (
-    <>
-      <ButtonContainer>
-        <MenuButton open={menuOpen} onClick={() => OnClick()} />
-      </ButtonContainer>
-      <GlobalStyle />
-      <Menu open={menuOpen}>{menuItems}</Menu>
-      <Body menuOpen={menuOpen}>
-        <Topper />
-        <Navigation />
-        <Logo />
-        <Container menuOpen={menuOpen}>
-          {children}
-          <Footer />
-        </Container>
-      </Body>
-    </>
-  );
-};
+  }
+
+  render() {
+    const { visible, display } = this.state;
+    const { children } = this.props;
+    return (
+      <StaticQuery
+        query={graphql`
+          query SiteTitleQuery {
+            site {
+              siteMetadata {
+                title
+              }
+            }
+          }
+        `}
+        render={data => (
+          <Body>
+            <Helmet
+              title={data.site.siteMetadata.title}
+              meta={[
+                { name: "description", content: "Sample" },
+                { name: "keywords", content: "sample, something" },
+              ]}
+            />
+            <Topper />
+            <MenuButton handleMouseDown={this.handleMouseDown} />
+            <Menu
+              handleMouseDown={this.handleMouseDown}
+              menuVisibility={visible}
+            />
+            <Navigation />
+            <Logo />
+            <GlobalStyle />
+            <Container style={{ display }}>
+              {children}
+              <Footer />
+            </Container>
+          </Body>
+        )}
+      />
+    );
+  }
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
