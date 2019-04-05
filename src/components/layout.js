@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import styledNormalize from "styled-normalize";
 import styled, { createGlobalStyle } from "styled-components";
@@ -9,8 +9,36 @@ import Topper from "./Topper";
 import MenuButton from "./mobileMenu/menuButton";
 import MenuItem from "./mobileMenu/menuItems";
 import Menu from "./mobileMenu/menu";
-// import MenuButton from "./MenuButton";
-// import Menu from "./Menu";
+
+function useOnClickOutside(ref, handler) {
+  useEffect(
+    () => {
+      const listener = event => {
+        // Do nothing if clicking ref's element or descendent elements
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+
+        handler(event);
+      };
+
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    },
+    // Add ref and handler to effect dependencies
+    // It's worth noting that because passed in handler is a new ...
+    // ... function on every render that will cause this effect ...
+    // ... callback/cleanup to run every render. It's not a big deal ...
+    // ... but to optimize you can wrap handler in useCallback before ...
+    // ... passing it into this hook.
+    [ref, handler],
+  );
+}
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -30,11 +58,9 @@ const Body = styled.div`
   filter: ${props => (props.menuOpen ? "blur(10px)" : null)};
   transition: filter 0.5s ease;
   pointer-events: ${props => (props.menuOpen ? "none" : "auto")};
-  /* overflow: ${props => (props.menuOpen ? "hidden !important" : "initial")};
-  position: ${props => (props.menuOpen ? "fixed !important" : "initial")}; */
+  user-select: ${props => (props.menuOpen ? "none" : "auto")};
 `;
-// background-color: ${props => (props.menuOpen ? "rgba(0,0,0,.2)" : "initial")};
-// overflow: ${props => (props.menuOpen ? "hidden !important" : "initial")};
+
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -62,13 +88,12 @@ const Container = styled.div`
 `;
 
 const ButtonContainer = styled.div`
+  /* position: fixed; sticky option */
   position: absolute;
   top: 70px;
   right: 20px;
   z-index: 999;
   opacity: 0.9;
-  /* display: flex;
-  align-items: center; */
 `;
 
 const Layout = ({ children }) => {
@@ -100,7 +125,7 @@ const Layout = ({ children }) => {
       </MenuItem>
     );
   });
-  const OnClick = () => {
+  const menuButtonClick = () => {
     if (!menuOpen) {
       document.body.style.overflow = "hidden";
 
@@ -110,13 +135,25 @@ const Layout = ({ children }) => {
       setMenuOpen(!menuOpen);
     }
   };
+  const closeMenuOutside = () => {
+    if (menuOpen) {
+      document.body.style.overflow = "visible";
+      setMenuOpen(false);
+    }
+  };
+  const ref = useRef();
+  useOnClickOutside(ref, () => closeMenuOutside());
   return (
     <>
-      <ButtonContainer>
-        <MenuButton open={menuOpen} onClick={() => OnClick()} />
-      </ButtonContainer>
       <GlobalStyle />
-      <Menu open={menuOpen}>{menuItems}</Menu>
+      <div ref={ref}>
+        <ButtonContainer>
+          <MenuButton open={menuOpen} onClick={() => menuButtonClick()} />
+        </ButtonContainer>
+        <Menu open={menuOpen} closeMenuOutside={closeMenuOutside}>
+          {menuItems}
+        </Menu>
+      </div>
       <Body menuOpen={menuOpen}>
         <Topper />
         <Navigation />

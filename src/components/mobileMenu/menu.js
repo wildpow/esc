@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { keyframes, css } from "styled-components";
 import Logo from "../../images/logo.png";
+
+function useKeyboardEvent(key, callback) {
+  useEffect(() => {
+    const handler = event => {
+      if (event.key === key) {
+        callback();
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => {
+      window.removeEventListener("keydown", handler);
+    };
+  }, []);
+}
 
 export const Appear = keyframes`
   from { opacity: 0; }
@@ -21,6 +35,7 @@ const Panda = styled.img`
 `;
 
 const Container = styled.div`
+  /* position: fixed; sticky option*/
   position: absolute;
   top: 0;
   right: 0;
@@ -29,19 +44,28 @@ const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   background: #1565c0;
-  opacity: 0.95;
+  opacity: 1;
   color: #fafafa;
   transition: width 0.3s ease;
   z-index: 2;
   padding-top: 4.6rem;
 `;
 
-const Menu = ({ open, children }) => (
-  <Container open={open}>
-    {open ? children : null}
-    {open ? <Panda src={Logo} open={open} /> : null}
-  </Container>
-);
+const Menu = ({ open, children, closeMenuOutside }) => {
+  return (
+    <Container open={open}>
+      <div>{open ? children : null}</div>
+      <div style={{ margin: "0 auto" }}>
+        {open ? <Panda src={Logo} open={open} /> : null}
+      </div>
+      {open &&
+        useKeyboardEvent("Escape", () => {
+          closeMenuOutside();
+        })}
+    </Container>
+  );
+};
 
 export default Menu;
