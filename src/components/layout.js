@@ -9,6 +9,7 @@ import Topper from "./Topper";
 import MenuButton from "./mobileMenu/menuButton";
 import MenuItem from "./mobileMenu/menuItems";
 import Menu from "./mobileMenu/menu";
+import NewMenuItems from "./mobileMenu/newMenuItems";
 
 function useOnClickOutside(ref, handler) {
   useEffect(
@@ -125,7 +126,7 @@ const Layout = ({ children }) => {
       </MenuItem>
     );
   });
-  const menuButtonClick = () => {
+  const menuButtonToggle = () => {
     if (!menuOpen) {
       document.body.style.overflow = "hidden";
 
@@ -135,23 +136,23 @@ const Layout = ({ children }) => {
       setMenuOpen(!menuOpen);
     }
   };
-  const closeMenuOutside = () => {
-    if (menuOpen) {
-      document.body.style.overflow = "visible";
-      setMenuOpen(false);
-    }
-  };
+  // const closeMenuOutside = () => {
+  //   if (menuOpen) {
+  //     document.body.style.overflow = "visible";
+  //     setMenuOpen(false);
+  //   }
+  // };
   const ref = useRef();
-  useOnClickOutside(ref, () => closeMenuOutside());
+  useOnClickOutside(ref, () => menuButtonToggle());
   return (
     <>
       <GlobalStyle />
       <div ref={ref}>
         <ButtonContainer>
-          <MenuButton open={menuOpen} onClick={() => menuButtonClick()} />
+          <MenuButton open={menuOpen} onClick={() => menuButtonToggle()} />
         </ButtonContainer>
-        <Menu open={menuOpen} closeMenuOutside={closeMenuOutside}>
-          {menuItems}
+        <Menu open={menuOpen} closeMenuOutside={menuButtonToggle}>
+          <NewMenuItems />
         </Menu>
       </div>
       <Body menuOpen={menuOpen}>
