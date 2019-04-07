@@ -20,6 +20,7 @@ export const theme = {
   // newColor1: "F8F8FF",
   newColor2: "#343434", // Jet
   newColor3: "#f8f8ff", // ghost white
+  newColor4: "#fbfbff", // New
   newBoxShadow: "0px 6px 6px -6px rgba(52,52,52,0.41)",
   Border: "1px solid #eee",
   RedBorderBottom: "4px solid green",
@@ -61,25 +62,25 @@ export const H2 = styled.h2`
   text-align: center;
   color: ${props => props.theme.newColor1};
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   line-height: 1.1rem;
   letter-spacing: 0.08rem;
   padding: 12px 5px 12px 5px;
   @media (min-width: 768px) {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     padding-bottom: 16px;
     padding-top: 16px;
     line-height: 1.5rem;
   }
   @media (min-width: 1024px) {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     padding-bottom: 15px;
     padding-top: 15px;
     /* font-weight: 500; */
     line-height: 1.4em;
   }
   @media (min-width: 1300px) {
-    font-size: 1.8rem;
+    font-size: 2rem;
     letter-spacing: 0.1rem;
     padding-right: 1px;
     padding-left: 1px;

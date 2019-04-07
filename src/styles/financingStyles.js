@@ -40,7 +40,7 @@ export const CompanyWrapper2 = styled(CompanyWrapper)`
 `;
 
 export const H3 = styled.h3`
-  text-shadow: ${props => props.theme.TextShadow};
+  text-shadow: ${props => props.theme.newTextShadow};
   font-family: ${props => props.theme.MainFont1};
   background-color: ${props => props.theme.mainColor1};
   color: ${props => props.theme.newColor1};
@@ -50,7 +50,7 @@ export const H3 = styled.h3`
   font-size: 1rem;
   padding: 10px 5px 10px 5px;
   letter-spacing: 0.12rem;
-  font-weight: 400;
+  font-weight: 700;
   @media (min-width: 581px) {
     font-size: 1.2rem;
     padding: 10px 30px 10px 30px;

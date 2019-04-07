@@ -9,6 +9,10 @@ export const MainArticle = styled.article`
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   margin-top: 15px;
+  padding-bottom: 1px;
+  @media (min-width: 1024px) {
+    padding-bottom: 15px;
+  }
   @media (min-width: 1300px) {
     margin-left: 85px;
     margin-right: 85px;
@@ -23,11 +27,11 @@ export const WarranyName = styled.h4`
   font-size: 1rem;
   letter-spacing: 0.09rem;
   @media (min-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     letter-spacing: 0.12rem;
   }
   @media (min-width: 1022px) {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     letter-spacing: 0.2rem;
   }
 `;
@@ -44,7 +48,7 @@ export const WarranyNumber = styled.a`
     color: ${props => props.theme.mainColor2};
   }
   @media (min-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     letter-spacing: 0.15rem;
   }
 `;
@@ -63,14 +67,14 @@ export const WarrantyTopper = styled.h3`
   @media (min-width: 768px) {
     line-height: 1.8rem;
     letter-spacing: 0.18rem;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     padding-left: 100px;
     padding-right: 100px;
   }
   @media (min-width: 1024px) {
     padding-left: 140px;
     padding-right: 140px;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     line-height: 2.4rem;
     letter-spacing: 0.22rem;
   }
@@ -89,19 +93,24 @@ export const P = styled.p`
   padding-left: 8px;
   margin-top: 10px;
   @media (min-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 1.9rem;
     padding-right: 17px;
     padding-left: 17px;
   }
   @media (min-width: 1024px) {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     line-height: 2.1rem;
     margin-bottom: 10px;
-    padding-right: 25px;
+    /* padding-right: 25px;
     padding-left: 25px;
     padding-bottom: 15px;
-    padding-top: 15px;
+    padding-top: 15px; */
+    padding: 5px 25px;
+  }
+  @media (min-width: 1300px) {
+    font-size: 1.4rem;
+    padding: 0px 25px;
   }
 `;
 // where
@@ -111,8 +120,9 @@ export const Heading = styled.h3`
   padding-bottom: 5px;
   padding-left: 10px;
   margin-bottom: 8px;
+  font-size: 1rem;
   @media (min-width: 768px) {
-    font-size: 400.7rem;
+    font-size: 1.4rem;
     padding-bottom: 8px;
   }
   @media (min-width: 1024px) {

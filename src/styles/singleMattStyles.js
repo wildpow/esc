@@ -53,6 +53,7 @@ export const PriceWrapper = styled(FlexCol)`
 `;
 
 export const MainTitle = styled(H2)`
+  font-weight: 700;
   background-color: ${props =>
     props.red ? props.theme.mainColor2 : props.theme.mainColor1};
   @media (min-width: 768px) {
@@ -222,6 +223,12 @@ export const StyledMarkDown = styled(Markdown)`
     & li {
       padding-bottom: 2px;
       font-size: 1.8rem;
+    }
+  }
+  @media (min-width: 1300px) {
+    & p {
+      font-weight: 700;
+      font-size: 2.1rem;
     }
   }
 `;

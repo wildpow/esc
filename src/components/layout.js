@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
 // @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:300,400,500,700');
 
 const Body = styled.div`
-  background-color: ${props => props.theme.newColor1};
+  background-color: ${props => props.theme.newColor4};
 `;
 const Container = styled.div`
   margin-left: auto;
