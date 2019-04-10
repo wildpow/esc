@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import styledNormalize from "styled-normalize";
 import styled, { createGlobalStyle } from "styled-components";
@@ -6,12 +6,40 @@ import Logo from "./logo";
 import Navigation from "./nav";
 import Footer from "./footer";
 import Topper from "./Topper";
-import MenuButton from "./newMobileNav/menuButton";
-import Menu from "./newMobileNav/menu";
-import MenuItem from "./newMobileNav/menuItem";
-import "./newMobileNav/css.css";
-// import MenuButton from "./MenuButton";
-// import Menu from "./Menu";
+import MenuButton from "./mobileMenu/menuButton";
+import MenuItem from "./mobileMenu/menuItems";
+import Menu from "./mobileMenu/menu";
+import NewMenuItems from "./mobileMenu/newMenuItems";
+
+function useOnClickOutside(ref, handler) {
+  useEffect(
+    () => {
+      const listener = event => {
+        // Do nothing if clicking ref's element or descendent elements
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+
+        handler(event);
+      };
+
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    },
+    // Add ref and handler to effect dependencies
+    // It's worth noting that because passed in handler is a new ...
+    // ... function on every render that will cause this effect ...
+    // ... callback/cleanup to run every render. It's not a big deal ...
+    // ... but to optimize you can wrap handler in useCallback before ...
+    // ... passing it into this hook.
+    [ref, handler],
+  );
+}
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -28,7 +56,12 @@ const GlobalStyle = createGlobalStyle`
 
 const Body = styled.div`
   background-color: ${props => props.theme.newColor1};
+  filter: ${props => (props.menuOpen ? "blur(10px)" : null)};
+  transition: filter 0.5s ease;
+  pointer-events: ${props => (props.menuOpen ? "none" : "auto")};
+  user-select: ${props => (props.menuOpen ? "none" : "auto")};
 `;
+
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -54,109 +87,87 @@ const Container = styled.div`
     width: 1370px;
   }
 `;
+
 const ButtonContainer = styled.div`
+  /* position: fixed; sticky option */
   position: absolute;
-  top: 20px;
-  right: 0px;
-  z-index: 99;
+  top: 70px;
+  right: 20px;
+  z-index: 999;
   opacity: 0.9;
-  display: flex;
-  align-items: center;
-  top: 20;
-  right: 20;
 `;
-class Layout extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      visible: false,
-      menuOpen: false,
-    };
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.toggleMenu = this.toggleMenu.bind(this);
-  }
 
-  handleMouseDown(e) {
-    this.toggleMenu();
-    e.stopPropagation();
-  }
-
-  toggleMenu() {
-    const { visible } = this.state;
-
-    this.setState(
-      {
-        visible: !visible,
-      },
-      () => this.displayNone(),
-    );
-  }
-
-  displayNone() {
-    const { visible } = this.state;
-    if (visible) {
-      this.setState({ display: "none" });
-    } else {
-      this.setState({ display: "block" });
-    }
-  }
-
-  handleMenuClick() {
-    this.setState({ menuOpen: !this.state.menuOpen });
-  }
-
-  handleLinkClick() {
-    this.setState({ menuOpen: false });
-  }
-
-  render() {
-    const { menuOpen, display } = this.state;
-    const { children } = this.props;
-    const menu = [
-      "Home",
-      "Sale",
-      "Brands",
-      "Adjustable",
-      "Financing",
-      "Our Blog",
-      "About Us",
-      "Warranty",
-      "Policies",
-      "Site Map",
-    ];
-    const menuItems = menu.map((val, index) => {
-      return (
-        <MenuItem
-          key={index}
-          delay={`${index * 0.05}s`}
-          onClick={() => {
-            this.handleLinkClick();
-          }}
-        >
-          {val}
-        </MenuItem>
-      );
-    });
+const Layout = ({ children }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menu = [
+    "Home",
+    "Sale",
+    "Brands",
+    "Adjustable",
+    "Financing",
+    "Our Blog",
+    "About Us",
+    "Warranty",
+    "Policies",
+    "Site Map",
+  ];
+  let indexCount = 0;
+  const menuItems = menu.map((val, index) => {
+    indexCount += 1;
     return (
-      <Body>
-        <Topper />
+      <MenuItem
+        key={indexCount * 255}
+        delay={`${index * 0.05}s`}
+        onClick={() => {
+          this.handleLinkClick();
+        }}
+      >
+        {val}
+      </MenuItem>
+    );
+  });
+  const menuButtonToggle = () => {
+    if (!menuOpen) {
+      document.body.style.overflow = "hidden";
+
+      setMenuOpen(!menuOpen);
+    } else {
+      document.body.style.overflow = "visible";
+      setMenuOpen(!menuOpen);
+    }
+  };
+  // const closeMenuOutside = () => {
+  //   if (menuOpen) {
+  //     document.body.style.overflow = "visible";
+  //     setMenuOpen(false);
+  //   }
+  // };
+  const ref = useRef();
+  useOnClickOutside(ref, () => menuButtonToggle());
+  return (
+    <>
+      <GlobalStyle />
+      <div ref={ref}>
         <ButtonContainer>
-          <MenuButton open={menuOpen} onClick={() => this.handleMenuClick()} />
+          <MenuButton open={menuOpen} onClick={() => menuButtonToggle()} />
         </ButtonContainer>
-        <Menu open={menuOpen}>{menuItems}</Menu>
-        {/* <MenuButton handleMouseDown={this.handleMouseDown} />
-        <Menu handleMouseDown={this.handleMouseDown} menuVisibility={visible} /> */}
+        <Menu open={menuOpen} closeMenuOutside={menuButtonToggle}>
+          <NewMenuItems />
+        </Menu>
+      </div>
+      <Body menuOpen={menuOpen}>
+        <Topper />
         <Navigation />
         <Logo />
-        <GlobalStyle />
-        <Container style={{ display }}>
+        <Container menuOpen={menuOpen}>
           {children}
           <Footer />
         </Container>
       </Body>
-    );
-  }
-}
+    </>
+  );
+};
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
