@@ -70,48 +70,18 @@ class Layout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
-      menuOpen: false,
+      menuToggle: false,
     };
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.toggleMenu = this.toggleMenu.bind(this);
+    this.handleMenuToggle = this.handleMenuToggle.bind(this);
   }
 
-  handleMouseDown(e) {
-    this.toggleMenu();
-    e.stopPropagation();
-  }
-
-  toggleMenu() {
-    const { visible } = this.state;
-
-    this.setState(
-      {
-        visible: !visible,
-      },
-      () => this.displayNone(),
-    );
-  }
-
-  displayNone() {
-    const { visible } = this.state;
-    if (visible) {
-      this.setState({ display: "none" });
-    } else {
-      this.setState({ display: "block" });
-    }
-  }
-
-  handleMenuClick() {
-    this.setState({ menuOpen: !this.state.menuOpen });
-  }
-
-  handleLinkClick() {
-    this.setState({ menuOpen: false });
+  handleMenuToggle() {
+    const { menuToggle } = this.state;
+    this.setState({ menuToggle: !menuToggle });
   }
 
   render() {
-    const { menuOpen, display } = this.state;
+    const { menuToggle } = this.state;
     const { children } = this.props;
     const menu = [
       "Home",
@@ -131,7 +101,7 @@ class Layout extends React.Component {
           key={index}
           delay={`${index * 0.05}s`}
           onClick={() => {
-            this.handleLinkClick();
+            this.handleMenuToggle();
           }}
         >
           {val}
@@ -142,13 +112,16 @@ class Layout extends React.Component {
       <Body>
         <Topper />
         <ButtonContainer>
-          <MenuButton open={menuOpen} onClick={() => this.handleMenuClick()} />
+          <MenuButton
+            open={menuToggle}
+            onClick={() => this.handleMenuToggle()}
+          />
         </ButtonContainer>
-        <Menu open={menuOpen}>{menuItems}</Menu>
+        <Menu menuToggle={menuToggle}>{menuItems}</Menu>
         <Navigation />
         <Logo />
         <GlobalStyle />
-        <Container style={{ display }}>
+        <Container>
           {children}
           <Footer />
         </Container>
