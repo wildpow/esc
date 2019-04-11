@@ -26,6 +26,8 @@ const GlobalStyle = createGlobalStyle`
 
 const Body = styled.div`
   background-color: ${props => props.theme.newColor1};
+  pointer-events: ${props => (props.menuToggle ? "none" : "auto")};
+  user-select: ${props => (props.menuToggle ? "none" : "auto")};
 `;
 const Container = styled.div`
   margin-left: auto;
@@ -79,9 +81,14 @@ class Layout extends React.Component {
   }
 
   handleMenuToggle() {
-    this.setState(prevState => {
-      return { menuToggle: !prevState.menuToggle };
-    });
+    const { menuToggle } = this.state;
+    if (!menuToggle) {
+      document.body.style.overflow = "hidden";
+      this.setState({ menuToggle: true });
+    } else {
+      document.body.style.overflow = "visible";
+      this.setState({ menuToggle: false });
+    }
   }
 
   render() {
@@ -104,29 +111,29 @@ class Layout extends React.Component {
         <MenuItem
           key={index}
           delay={`${index * 0.05}s`}
-          onClick={() => {
-            this.handleMenuToggle();
-          }}
+          onClick={this.handleMenuToggle}
         >
           {val}
         </MenuItem>
       );
     });
     return (
-      <Body>
-        <Topper />
+      <>
+        <GlobalStyle />
         <ButtonContainer>
-          <MenuButton open={menuToggle} onClick={this.handleMenuToggle} />
+          <MenuButton menuToggle={menuToggle} onClick={this.handleMenuToggle} />
         </ButtonContainer>
         <Menu menuToggle={menuToggle}>{menuItems}</Menu>
-        <Navigation />
-        <Logo />
-        <GlobalStyle />
-        <Container>
-          {children}
-          <Footer />
-        </Container>
-      </Body>
+        <Body menuToggle={menuToggle}>
+          <Topper />
+          <Navigation />
+          <Logo />
+          <Container>
+            {children}
+            <Footer />
+          </Container>
+        </Body>
+      </>
     );
   }
 }

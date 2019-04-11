@@ -16,7 +16,7 @@ const Container = styled.div`
   color: #fafafa;
   z-index: 20;
   padding-top: 3rem;
-  width: 100%;
+  width: 70%;
   transition: transform 0.4s ease;
   transform: ${props =>
     props.menuToggle ? "translate3d(0vw, 0, 0)" : "translate3d(100vw, 0, 0)"};

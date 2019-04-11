@@ -17,10 +17,10 @@ const HoverCircle = styled.div`
   border-radius: 50%;
   transition: all 0.15s linear;
   border: ${props =>
-    props.open ? "1px solid rgba(0,0,0,.2)" : "1px solid transparent"};
+    props.menuToggle ? "1px solid rgba(0,0,0,.2)" : "1px solid transparent"};
 
   background-color: ${props =>
-    props.hover && !props.open ? "rgba(0, 0, 0, 0.1)" : "initial"};
+    props.hover && !props.menuToggle ? "rgba(0, 0, 0, 0.1)" : "initial"};
 
   width: 90px;
   height: 90px;
@@ -59,36 +59,36 @@ const Line = styled.div`
 const LineTop = styled(Line)`
   top: 0;
   transform: ${props =>
-    props.hover && !props.open ? "translateY(-4px)" : "translateY(0)"};
-  ${props => props.open && Line1Active};
-  background-color: ${props => (props.open ? "white" : "#eb1c24")};
+    props.hover && !props.menuToggle ? "translateY(-4px)" : "translateY(0)"};
+  ${props => props.menuToggle && Line1Active};
+  background-color: ${props => (props.menuToggle ? "white" : "#eb1c24")};
 `;
 
 const LineMiddle = styled(Line)`
   top: 50%;
-  opacity: ${props => (props.open ? 0 : 1)};
-  transform: ${props => (props.open ? "translateX(-16px)" : "none")};
-  background-color: ${props => (props.open ? "white" : "#1565c0")};
+  opacity: ${props => (props.menuToggle ? 0 : 1)};
+  transform: ${props => (props.menuToggle ? "translateX(-16px)" : "none")};
+  background-color: ${props => (props.menuToggle ? "white" : "#1565c0")};
 `;
 
 const LineBottom = styled(Line)`
   top: 100%;
   transform: ${props =>
-    props.hover && !props.open ? "translateY(4px)" : "translateY(0)"};
-  ${props => props.open && Line2Active};
-  background-color: ${props => (props.open ? "white" : "#eb1c24")};
+    props.hover && !props.menuToggle ? "translateY(4px)" : "translateY(0)"};
+  ${props => props.menuToggle && Line2Active};
+  background-color: ${props => (props.menuToggle ? "white" : "#eb1c24")};
 `;
-const MenuButton = ({ open, onClick }) => {
+const MenuButton = ({ menuToggle, onClick }) => {
   const [hover, setHover] = useState(false);
   const handleMenu = () => {
     setHover(false);
     onClick();
   };
   return (
-    <HoverCircle hover={hover} open={open}>
+    <HoverCircle hover={hover} menuToggle={menuToggle}>
       <Container
         hover={hover}
-        open={open}
+        menuToggle={menuToggle}
         onClick={handleMenu}
         onMouseEnter={() => {
           setHover(true);
@@ -97,9 +97,9 @@ const MenuButton = ({ open, onClick }) => {
           setHover(false);
         }}
       >
-        <LineTop open={open} hover={hover} />
-        <LineMiddle open={open} hover={hover} />
-        <LineBottom open={open} hover={hover} />
+        <LineTop menuToggle={menuToggle} hover={hover} />
+        <LineMiddle menuToggle={menuToggle} hover={hover} />
+        <LineBottom menuToggle={menuToggle} hover={hover} />
       </Container>
     </HoverCircle>
   );
