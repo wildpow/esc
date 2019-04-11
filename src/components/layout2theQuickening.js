@@ -7,9 +7,11 @@ import Navigation from "./nav";
 import Footer from "./footer";
 import Topper from "./Topper";
 import MenuButton from "./newMobileNav/menuButton";
-import Menu from "./mobileMenu2/menu";
+import Menu from "./newMobileNav/menu";
 import MenuItem from "./newMobileNav/menuItem";
 import "./newMobileNav/css.css";
+// import MenuButton from "./MenuButton";
+// import Menu from "./Menu";
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -62,9 +64,6 @@ const ButtonContainer = styled.div`
   align-items: center;
   top: 20;
   right: 20;
-  @media (min-width: 1022px) {
-    display: none;
-  }
 `;
 class Layout extends React.Component {
   constructor(props) {
@@ -145,6 +144,8 @@ class Layout extends React.Component {
           <MenuButton open={menuOpen} onClick={() => this.handleMenuClick()} />
         </ButtonContainer>
         <Menu open={menuOpen}>{menuItems}</Menu>
+        {/* <MenuButton handleMouseDown={this.handleMouseDown} />
+        <Menu handleMouseDown={this.handleMouseDown} menuVisibility={visible} /> */}
         <Navigation />
         <Logo />
         <GlobalStyle />
