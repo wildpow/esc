@@ -58,10 +58,13 @@ const ButtonContainer = styled.div`
   right: 15px;
   z-index: 99;
   opacity: 0.9;
-  display: flex;
-  align-items: center;
-  top: 20;
-  right: 20;
+
+  @media (min-width: 768px) {
+    top: 55px;
+    right: 25px;
+    z-index: 99;
+    opacity: 0.9;
+  }
   @media (min-width: 1022px) {
     display: none;
   }

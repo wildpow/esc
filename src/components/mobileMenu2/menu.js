@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Container = styled.div`
+  box-shadow: 0 0 10px #85888c;
   visibility: ${props => (props.menuToggle ? "visible" : "hidden")};
   position: fixed;
   top: 0;
@@ -19,6 +20,9 @@ const Container = styled.div`
   transition: transform 0.4s ease;
   transform: ${props =>
     props.menuToggle ? "translate3d(0vw, 0, 0)" : "translate3d(100vw, 0, 0)"};
+  @media (min-width: 768px) {
+    width: 50%;
+  }
   @media (min-width: 1022px) {
     display: none;
   }

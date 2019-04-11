@@ -24,6 +24,10 @@ const HoverCircle = styled.div`
 
   width: 90px;
   height: 90px;
+  @media (min-width: 768px) {
+    width: 90px;
+    height: 90px;
+  }
 `;
 const Container = styled.div`
   justify-self: center;
@@ -33,6 +37,11 @@ const Container = styled.div`
   width: 70px;
   height: 40px;
   margin-bottom: 9px;
+  @media (min-width: 768px) {
+    margin-bottom: 9px;
+    width: 70px;
+    height: 40px;
+  }
 `;
 
 const Line = styled.div`
@@ -42,6 +51,10 @@ const Line = styled.div`
   position: absolute;
   width: 70px;
   height: 8px;
+  @media (min-width: 768px) {
+    width: 70px;
+    height: 8px;
+  }
 `;
 const LineTop = styled(Line)`
   top: 0;

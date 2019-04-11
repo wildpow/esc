@@ -30,7 +30,7 @@ export const Top = styled.div`
   font-weight: 300;
   background-color: ${props => props.theme.mainColor2};
   box-shadow: ${props => props.theme.newBoxShadow};
-  text-shadow: ${props => props.theme.TextShadow};
+  text-shadow: ${props => props.theme.newTextShadow};
   color: ${props => props.theme.newColor1};
   display: flex;
   flex-direction: row;
@@ -39,6 +39,8 @@ export const Top = styled.div`
   transition: all 0.25s ease-in;
   font-size: 0.9rem;
   letter-spacing: 0.056rem;
+  position: relative;
+  z-index: 25;
   @media (min-width: 411px) {
     font-size: 1rem;
   }
