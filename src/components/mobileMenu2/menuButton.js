@@ -10,7 +10,7 @@ const Line1Active = css`
 const Line2Active = css`
   transform: translateY(-14px) translateX(0) rotate(-45deg);
   @media (min-width: 768px) {
-    transform: translateY(20px) translateX(0) rotate(45deg);
+    transform: translateY(-20px) translateX(0) rotate(-45deg);
   }
 `;
 

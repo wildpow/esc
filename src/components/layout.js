@@ -74,10 +74,35 @@ const ButtonContainer = styled.div`
 class Layout extends React.Component {
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();
+
     this.state = {
       menuToggle: false,
     };
+    this.closeonEsc = this.closeonEsc.bind(this);
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+    document.addEventListener("touchstart", this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClickOutside);
+    document.removeEventListener("touchstart", this.handleClickOutside);
+  }
+
+  handleClickOutside = e => {
+    if (!this.myRef.current.contains(e.target)) {
+      document.body.style.overflow = "visible";
+      this.setState({ menuToggle: false });
+    }
+  };
+
+  closeonEsc() {
+    document.body.style.overflow = "visible";
+    this.setState({ menuToggle: false });
   }
 
   handleMenuToggle() {
@@ -120,10 +145,17 @@ class Layout extends React.Component {
     return (
       <>
         <GlobalStyle />
-        <ButtonContainer>
-          <MenuButton menuToggle={menuToggle} onClick={this.handleMenuToggle} />
-        </ButtonContainer>
-        <Menu menuToggle={menuToggle}>{menuItems}</Menu>
+        <div ref={this.myRef}>
+          <ButtonContainer>
+            <MenuButton
+              menuToggle={menuToggle}
+              onClick={this.handleMenuToggle}
+            />
+          </ButtonContainer>
+          <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc}>
+            {menuItems}
+          </Menu>
+        </div>
         <Body menuToggle={menuToggle}>
           <Topper />
           <Navigation />
