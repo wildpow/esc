@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
 const Line1Active = css`
-  transform: translateY(20px) translateX(0) rotate(45deg);
+  transform: translateY(12px) translateX(0) rotate(45deg);
+  @media (min-width: 768px) {
+    transform: translateY(20px) translateX(0) rotate(45deg);
+  }
 `;
 const Line2Active = css`
-  transform: translateY(-20px) translateX(0) rotate(-45deg);
+  transform: translateY(-14px) translateX(0) rotate(-45deg);
+  @media (min-width: 768px) {
+    transform: translateY(20px) translateX(0) rotate(45deg);
+  }
 `;
 
 const HoverCircle = styled.div`
@@ -17,13 +23,15 @@ const HoverCircle = styled.div`
   border-radius: 50%;
   transition: all 0.15s linear;
   border: ${props =>
-    props.menuToggle ? "1px solid rgba(0,0,0,.2)" : "1px solid transparent"};
+    props.menuToggle
+      ? "1px solid rgba(255,255,255,.2)"
+      : "1px solid transparent"};
 
   background-color: ${props =>
     props.hover && !props.menuToggle ? "rgba(0, 0, 0, 0.1)" : "initial"};
 
-  width: 90px;
-  height: 90px;
+  width: 57px;
+  height: 57px;
   @media (min-width: 768px) {
     width: 90px;
     height: 90px;
@@ -34,9 +42,9 @@ const Container = styled.div`
   position: relative;
   display: block;
   cursor: pointer;
-  width: 70px;
-  height: 40px;
-  margin-bottom: 9px;
+  width: 45px;
+  height: 25px;
+  margin-bottom: 3px;
   @media (min-width: 768px) {
     margin-bottom: 9px;
     width: 70px;
@@ -49,8 +57,8 @@ const Line = styled.div`
   border-radius: 4px;
   display: block;
   position: absolute;
-  width: 70px;
-  height: 8px;
+  width: 45px;
+  height: 5px;
   @media (min-width: 768px) {
     width: 70px;
     height: 8px;

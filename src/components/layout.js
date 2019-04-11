@@ -56,8 +56,8 @@ const Container = styled.div`
 `;
 const ButtonContainer = styled.div`
   position: absolute;
-  top: 56px;
-  right: 15px;
+  top: 55px;
+  right: 7px;
   z-index: 99;
   opacity: 0.9;
 
