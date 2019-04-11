@@ -6,7 +6,7 @@ import Logo from "./logo";
 import Navigation from "./nav";
 import Footer from "./footer";
 import Topper from "./Topper";
-import MenuButton from "./newMobileNav/menuButton";
+import MenuButton from "./mobileMenu2/menuButton";
 import Menu from "./mobileMenu2/menu";
 import MenuItem from "./newMobileNav/menuItem";
 import "./newMobileNav/css.css";
@@ -54,8 +54,8 @@ const Container = styled.div`
 `;
 const ButtonContainer = styled.div`
   position: absolute;
-  top: 20px;
-  right: 0px;
+  top: 56px;
+  right: 15px;
   z-index: 99;
   opacity: 0.9;
   display: flex;
@@ -76,8 +76,9 @@ class Layout extends React.Component {
   }
 
   handleMenuToggle() {
-    const { menuToggle } = this.state;
-    this.setState({ menuToggle: !menuToggle });
+    this.setState(prevState => {
+      return { menuToggle: !prevState.menuToggle };
+    });
   }
 
   render() {
@@ -112,10 +113,7 @@ class Layout extends React.Component {
       <Body>
         <Topper />
         <ButtonContainer>
-          <MenuButton
-            open={menuToggle}
-            onClick={() => this.handleMenuToggle()}
-          />
+          <MenuButton open={menuToggle} onClick={this.handleMenuToggle} />
         </ButtonContainer>
         <Menu menuToggle={menuToggle}>{menuItems}</Menu>
         <Navigation />

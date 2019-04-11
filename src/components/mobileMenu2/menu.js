@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const Container = styled.div`
   visibility: ${props => (props.menuToggle ? "visible" : "hidden")};
@@ -22,27 +23,17 @@ const Container = styled.div`
     display: none;
   }
 `;
-class Menu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      menuToggle: this.props.menuToggle ? this.props.menuToggle : false,
-    };
-  }
+const Menu = ({ menuToggle, children }) => {
+  return (
+    <Container menuToggle={menuToggle}>
+      {menuToggle ? children : null}
+    </Container>
+  );
+};
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.menuToggle !== this.state.menuToggle) {
-      this.setState({ menuToggle: nextProps.menuToggle });
-    }
-  }
-
-  render() {
-    return (
-      <Container menuToggle={this.state.menuToggle}>
-        {this.state.menuToggle ? this.props.children : null}
-      </Container>
-    );
-  }
-}
+Menu.propTypes = {
+  menuToggle: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export default Menu;
