@@ -5,21 +5,15 @@ export const set1 = [
     delay: 0,
     key: 1,
   },
-  {
-    to: "/current-sale",
-    label: "Sale",
-    delay: 0.05,
-    key: 2,
-  },
+];
+
+export const set2 = [
   {
     to: "/brands",
     label: "Brands",
     delay: 0.1,
     key: 3,
   },
-];
-
-export const set2 = [
   {
     to: "/adjustable",
     label: "Adjustable",
@@ -32,15 +26,15 @@ export const set2 = [
     delay: 0.2,
     key: 5,
   },
+];
+
+export const set3 = [
   {
     to: "/financing",
     label: "Financing",
     delay: 0.25,
     key: 6,
   },
-];
-
-export const set3 = [
   {
     to: "/blog",
     label: "Our Blog",
@@ -53,15 +47,15 @@ export const set3 = [
     delay: 0.35,
     key: 8,
   },
+];
+
+export const set4 = [
   {
     to: "/warranty",
     label: "Warranty",
     delay: 0.4,
     key: 9,
   },
-];
-
-export const set4 = [
   {
     to: "/policies",
     label: "Policies",
