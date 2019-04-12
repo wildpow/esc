@@ -140,29 +140,6 @@ class Layout extends React.Component {
   render() {
     const { menuToggle, outsideMenuEvents } = this.state;
     const { children } = this.props;
-    const menu = [
-      "Home",
-      "Sale",
-      "Brands",
-      "Adjustable",
-      "Financing",
-      "Our Blog",
-      "About Us",
-      "Warranty",
-      "Policies",
-      "Site Map",
-    ];
-    const menuItems = menu.map((val, index) => {
-      return (
-        <MenuItem
-          key={index}
-          delay={`${index * 0.05}s`}
-          onClick={this.handleMenuToggle}
-        >
-          {val}
-        </MenuItem>
-      );
-    });
     return (
       <>
         <GlobalStyle />
@@ -173,9 +150,7 @@ class Layout extends React.Component {
               onClick={this.handleMenuToggle}
             />
           </ButtonContainer>
-          <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc}>
-            {menuItems}
-          </Menu>
+          <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc} />
         </div>
         <Topper />
         <Body outsideMenuEvents={outsideMenuEvents} menuToggle={menuToggle}>
