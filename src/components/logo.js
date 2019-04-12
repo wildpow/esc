@@ -10,10 +10,11 @@ import {
 } from "../styles/logoStyles";
 import readersChoice from "../images/ReadersChoiceWinner300x.png";
 // test
-const Logo = () => (
+const Logo = ({ menuToggle }) => (
   <Wrapper>
     <Link to="/blog/esc-mattress-center-wins-best-mattress-store-in-snohomish-county">
       <ReadersChoice
+        menuToggle={menuToggle}
         src={readersChoice}
         alt="ESC Mattress Center was voted SnoCo best mattress store in Snohomish County"
       />

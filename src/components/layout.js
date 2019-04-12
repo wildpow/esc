@@ -8,7 +8,7 @@ import Footer from "./footer";
 import Topper from "./Topper";
 import MenuButton from "./mobileMenu2/menuButton";
 import Menu from "./mobileMenu2/menu";
-import MenuItem from "./newMobileNav/menuItem";
+import MenuItem from "./mobileMenu2/menuItem";
 import "./newMobileNav/css.css";
 
 const GlobalStyle = createGlobalStyle`
@@ -26,8 +26,10 @@ const GlobalStyle = createGlobalStyle`
 
 const Body = styled.div`
   background-color: ${props => props.theme.newColor1};
-  pointer-events: ${props => (props.menuToggle ? "none" : "auto")};
-  user-select: ${props => (props.menuToggle ? "none" : "auto")};
+  pointer-events: ${props => (props.outsideMenuEvents ? "none" : "auto")};
+  user-select: ${props => (props.outsideMenuEvents ? "none" : "auto")};
+  transition: opacity 0.4s ease;
+  opacity: ${props => (props.menuToggle ? 0.3 : 1)};
 `;
 const Container = styled.div`
   margin-left: auto;
@@ -78,9 +80,11 @@ class Layout extends React.Component {
 
     this.state = {
       menuToggle: false,
+      outsideMenuEvents: false,
     };
     this.closeonEsc = this.closeonEsc.bind(this);
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
+    this.afterAnimation = this.afterAnimation.bind(this);
   }
 
   componentDidMount() {
@@ -88,12 +92,21 @@ class Layout extends React.Component {
     document.addEventListener("touchstart", this.handleClickOutside);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.menuToggle === true && this.state.menuToggle === false) {
+      this.afterAnimation();
+    }
+    return null;
+  }
+
   componentWillUnmount() {
     document.removeEventListener("mousedown", this.handleClickOutside);
     document.removeEventListener("touchstart", this.handleClickOutside);
+    // clearTimeout(this.afterAnimation);
   }
 
   handleClickOutside = e => {
+    e.stopPropagation();
     if (!this.myRef.current.contains(e.target)) {
       document.body.style.overflow = "visible";
       this.setState({ menuToggle: false });
@@ -102,22 +115,30 @@ class Layout extends React.Component {
 
   closeonEsc() {
     document.body.style.overflow = "visible";
-    this.setState({ menuToggle: false });
+    this.setState({ menuToggle: false, outsideMenuEvents: false });
+  }
+
+  afterAnimation() {
+    setTimeout(() => {
+      this.setState({ outsideMenuEvents: false });
+    }, 400);
+
+    return null;
   }
 
   handleMenuToggle() {
     const { menuToggle } = this.state;
     if (!menuToggle) {
       document.body.style.overflow = "hidden";
-      this.setState({ menuToggle: true });
+      this.setState({ menuToggle: true, outsideMenuEvents: true });
     } else {
       document.body.style.overflow = "visible";
-      this.setState({ menuToggle: false });
+      this.setState({ menuToggle: false, outsideMenuEvents: false });
     }
   }
 
   render() {
-    const { menuToggle } = this.state;
+    const { menuToggle, outsideMenuEvents } = this.state;
     const { children } = this.props;
     const menu = [
       "Home",
@@ -156,10 +177,10 @@ class Layout extends React.Component {
             {menuItems}
           </Menu>
         </div>
-        <Body menuToggle={menuToggle}>
-          <Topper />
+        <Topper />
+        <Body outsideMenuEvents={outsideMenuEvents} menuToggle={menuToggle}>
           <Navigation />
-          <Logo />
+          <Logo menuToggle={menuToggle} />
           <Container>
             {children}
             <Footer />

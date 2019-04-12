@@ -20,6 +20,12 @@ const Container = styled.div`
   transition: all 0.4s ease;
   transform: ${props =>
     props.menuToggle ? "translate3d(0vw, 0, 0)" : "translate3d(100vw, 0, 0)"};
+  @media(orientation: landscape) {
+    width: 100%;
+  }
+  @media(orientation: landscape) and (min-width: 736px) {
+    width: 80%;
+  }
   @media (min-width: 768px) {
     width: 50%;
   }
@@ -43,19 +49,19 @@ function useKeyboardEvent(key, callback) {
 }
 
 const Menu = ({ menuToggle, children, closeonEsc }) => {
+  useKeyboardEvent("Escape", () => {
+    closeonEsc();
+  });
   return (
     <Container menuToggle={menuToggle}>
       {menuToggle ? children : null}
-      {open &&
-        useKeyboardEvent("Escape", () => {
-          closeonEsc();
-        })}
     </Container>
   );
 };
 
 Menu.propTypes = {
   menuToggle: PropTypes.bool.isRequired,
+  closeonEsc: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };
 

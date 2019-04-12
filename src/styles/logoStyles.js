@@ -84,7 +84,9 @@ export const ReadersChoice = styled.img`
   position: absolute;
   left: 9px;
   top: 39px;
-  z-index: 10;
+  z-index: 51;
+  /* z-index: ${props => (props.menuToggle ? 0 : 51)}; */
+  opacity: ${props => (props.menuToggle ? 0.2 : 1)};
   transition: all 0.25s ease-in;
   cursor: pointer;
   &:hover {
