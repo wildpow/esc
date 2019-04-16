@@ -8,7 +8,7 @@ import Footer from "./footer";
 import Topper from "./Topper";
 import MenuButton from "./mobileMenu2/menuButton";
 import Menu from "./mobileMenu2/menu";
-import MenuItem from "./mobileMenu2/menuItem";
+// import MenuItem from "./mobileMenu2/menuItem";
 import "./newMobileNav/css.css";
 
 const GlobalStyle = createGlobalStyle`
@@ -81,29 +81,46 @@ class Layout extends React.Component {
     this.state = {
       menuToggle: false,
       outsideMenuEvents: false,
+      width: 0,
+      height: 0,
     };
     this.closeonEsc = this.closeonEsc.bind(this);
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
     this.afterAnimation = this.afterAnimation.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
   componentDidMount() {
+    window.addEventListener("resize", this.updateWindowDimensions);
     document.addEventListener("mousedown", this.handleClickOutside);
     document.addEventListener("touchstart", this.handleClickOutside);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.menuToggle === true && this.state.menuToggle === false) {
+    const { menuToggle, width } = this.state;
+    if (prevState.menuToggle === true && menuToggle === false) {
       this.afterAnimation();
+    }
+    if (width >= 1022 && prevState.width <= 1022) {
+      this.onUpdate();
     }
     return null;
   }
 
   componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions);
     document.removeEventListener("mousedown", this.handleClickOutside);
     document.removeEventListener("touchstart", this.handleClickOutside);
     // clearTimeout(this.afterAnimation);
   }
+
+  onUpdate = () => {
+    const { width } = this.state;
+    if (width >= 1022) {
+      document.body.style.overflow = "visible";
+      this.setState({ menuToggle: false, outsideMenuEvents: false });
+    }
+  };
 
   handleClickOutside = e => {
     e.stopPropagation();
@@ -135,6 +152,10 @@ class Layout extends React.Component {
       document.body.style.overflow = "visible";
       this.setState({ menuToggle: false, outsideMenuEvents: false });
     }
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   render() {

@@ -17,10 +17,16 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  @media (orientation: landscape) {
+  @media (orientation: landscape) and (max-width: 568px) {
     flex-direction: column;
     flex-wrap: wrap;
     padding-top: 50px;
+  }
+  @media (min-width: 768px) {
+    padding-top: 180px;
+  }
+  @media (min-width: 780px) {
+    padding-top: 160px;
   }
 `;
 const FadeIn = styled.div`
@@ -78,7 +84,7 @@ const Line = styled.div`
   margin: 0 auto;
   animation: 0.9s ${ShrinkKeyframe} forwards;
   animation-delay: ${props => props.delay};
-  @media (orientation: landscape) {
+  @media (orientation: landscape) and (max-width: 568px) {
     display: none;
   }
 `;
@@ -108,7 +114,7 @@ const ShiftTextOnHover = styled.div`
 const Flex = styled.div`
   display: flex;
   flex-direction: column;
-  @media (orientation: landscape) {
+  @media (orientation: landscape) and (max-width: 568px) {
     flex-direction: row;
   }
 `;
