@@ -58,10 +58,25 @@ const Container = styled.div`
 `;
 const ButtonContainer = styled.div`
   position: absolute;
-  top: 55px;
+  top: 57px;
   right: 7px;
   z-index: 99;
   opacity: 0.9;
+  @media (orientation: portrait) and (min-width: 375px) {
+    top: 65px;
+    right: 15px;
+  }
+  @media (orientation: landscape) and (min-width: 568px) {
+    top: 46px;
+    right: 12px;
+  }
+  @media (orientation: landscape) and (min-width: 667px) {
+    top: 52px;
+    right: 20px;
+  }
+  @media (orientation: landscape) and (max-width: 736px) {
+    top: 57px;
+  }
 
   @media (min-width: 768px) {
     top: 55px;

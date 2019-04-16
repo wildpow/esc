@@ -1,11 +1,41 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import PropTypes from "prop-types";
 import NewStuff from "./new";
+import logo from "../../images/logo.png";
+
+export const Appear = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+export const SlideIn = keyframes`
+  from { transform: translateX(80%); }
+  to { transform: translateX(0); }
+`;
+const LogoAnimate = css`
+  animation: 1s ${SlideIn} forwards, 2.2s ${Appear} forwards;
+`;
+const Panda = styled.img`
+  width: 150px;
+  margin-right: 25px;
+  /* margin: 0 auto; */
+  margin-top: 10px;
+  justify-self: center;
+  align-self: center;
+  ${props => props.menuToggle && LogoAnimate}
+  @media (orientation: landscape) {
+    display: none;
+  }
+`;
 
 const Container = styled.div`
   box-shadow: 0 0 10px #85888c;
+  display: flex;
+  flex-direction: column;
   position: fixed;
+  justify-content: space-between;
+  /* justify-content: center;
+  align-content: center; */
   top: 0;
   right: 0;
   height: 100vh;
@@ -20,10 +50,17 @@ const Container = styled.div`
   @media (orientation: landscape) {
     width: 100%;
   }
-  @media (orientation: landscape) and (min-width: 736px) {
+  /* @media (orientation: landscape) and (min-width: 568px) {
     width: 80%;
   }
-  @media (min-width: 768px) {
+  @media (orientation: landscape) and (min-width: 667px) {
+    width: 80%;
+  } */
+
+  /* @media (orientation: landscape) and (min-width: 736px) {
+    width: 80%;
+  } */
+  @media (min-width: 768px) and (orientation: portrait) {
     width: 50%;
   }
   @media (min-width: 1022px) {
@@ -50,7 +87,10 @@ const Menu = ({ menuToggle, closeonEsc }) => {
     closeonEsc();
   });
   return (
-    <Container menuToggle={menuToggle}>{menuToggle && <NewStuff />}</Container>
+    <Container menuToggle={menuToggle}>
+      {menuToggle && <NewStuff />}
+      {menuToggle && <Panda src={logo} menuToggle={menuToggle} />}
+    </Container>
   );
 };
 

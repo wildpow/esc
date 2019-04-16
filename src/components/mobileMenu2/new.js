@@ -17,10 +17,17 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  @media (orientation: landscape) and (max-width: 568px) {
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding-top: 50px;
+  @media (orientation: landscape) and (min-width: 568px) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding-top: 100px;
+  }
+  @media (orientation: portrait) and (min-width: 375px) {
+    padding-top: 140px;
+  }
+  @media (orientation: landscape) and (min-width: 570px) {
+    margin: 0 auto;
+    padding-top: 140px;
   }
   @media (min-width: 768px) {
     padding-top: 180px;
@@ -55,6 +62,12 @@ const StyledLink = styled(Link)`
   padding-left: 10px;
   background-color: inital;
   transition: background-color 0.2s ease-in-out;
+  @media (orientation: portrait) and (min-width: 375px) {
+    font-size: 1.2rem;
+  }
+  @media (orientation: landscape) and (min-width: 736px) {
+    font-size: 1.3rem;
+  }
   @media (min-width: 768px) {
     font-size: 1.4rem;
   }
@@ -65,12 +78,24 @@ const StyledLink = styled(Link)`
   &:active {
     background-color: rgba(235, 28, 26, 0.8);
   }
+  @media (orientation: landscape) and (min-width: 568px) {
+    border: 1px dotted rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    margin: 5px;
+  }
 `;
+
 const HiddenOnSmallLink = styled(StyledLink)`
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 568px) and (orientation: landscape) {
     display: initial;
   }
+  @media (orientation: portrait) and (min-height: 800px) {
+    display: initial;
+  }
+  /* @media (orientation: portrait) and (min-width: 375px) {
+    display: initial;
+  } */
 `;
 
 export const ShrinkKeyframe = keyframes`
@@ -84,8 +109,11 @@ const Line = styled.div`
   margin: 0 auto;
   animation: 0.9s ${ShrinkKeyframe} forwards;
   animation-delay: ${props => props.delay};
-  @media (orientation: landscape) and (max-width: 568px) {
+  @media (orientation: landscape) and (min-width: 568px) {
     display: none;
+  }
+  @media (orientation: portrait) and (min-height: 800px) {
+    display: initial;
   }
 `;
 const HiddenLineOnSmall = styled(Line)`
@@ -103,6 +131,10 @@ const ShiftTextOnHover = styled.div`
   @media (orientation: landscape) {
     padding: 20px;
   }
+  @media (orientation: landscape) and (max-width: 568px) {
+    padding: 20px;
+    text-align: center;
+  }
   @media (min-width: 768px) {
     padding: 25px;
   }
@@ -115,13 +147,83 @@ const Flex = styled.div`
   display: flex;
   flex-direction: column;
   @media (orientation: landscape) and (max-width: 568px) {
-    flex-direction: row;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    padding: 5px;
+    justify-content: space-evenly;
+  }
+  @media (orientation: landscape) and (min-width: 667px) {
+    text-align: center;
   }
 `;
+const HomeFlex = styled(Flex)`
+  /* @media (orientation: landscape) and (max-width: 736px) {
+    display: none;
+  } */
+  @media (orientation: landscape) and (max-width: 820px) {
+    display: none;
+  }
+  @media (orientation: portrait) and (min-height: 800px) {
+    display: inherit;
+  }
+`;
+const HomeSmallSlide = styled.div`
+  animation: 0.5s ${SlideInKeyframe} forwards;
+  animation-delay: 0.2s;
+`;
+
+const HomeSmall = styled(Link)`
+  display: none;
+  opacity: 0;
+  animation: 0.7s ${AppearKeyframe} forwards;
+  animation-delay: 0.2s;
+  transition: all 0.5s ease-in-out;
+  @media (orientation: landscape) and (min-width: 568px) {
+    display: initial;
+    position: absolute;
+    top: 55px;
+    text-align: center;
+    width: 174px;
+    border-bottom: 1px solid #eb1c24;
+    border-top: 1px solid #eb1c24;
+    /* border: 1px solid red; */
+    border-radius: 2px;
+    /* border: 1px dotted rgba(255, 255, 255, 0.4); */
+    left: 12px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+  }
+  @media (orientation: landscape) and (min-width: 667px) {
+    left: 25px;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+  }
+  @media (orientation: landscape) and (max-width: 736px) {
+    left: 24px;
+    width: 194px;
+    top: 60px;
+    font-size: 1.4rem;
+  }
+`;
+
 const NewStuff = () => {
   return (
     <Container>
-      <Flex>
+      <HomeSmall
+        activeStyle={{
+          backgroundColor: "rgba(17, 75, 95, 0.2)",
+        }}
+        to={set1[0].to}
+      >
+        <HomeSmallSlide>{set1[0].label}</HomeSmallSlide>
+      </HomeSmall>
+      <HomeFlex>
         {set1.map(item => (
           <>
             <StyledLink
@@ -140,7 +242,7 @@ const NewStuff = () => {
             <Line delay={`${item.delay}s`} />
           </>
         ))}
-      </Flex>
+      </HomeFlex>
       <Flex>
         {set2.map(item => (
           <>
