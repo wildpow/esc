@@ -20,7 +20,9 @@ const Container = styled.div`
   @media (orientation: landscape) and (min-width: 568px) {
     flex-direction: row;
     flex-wrap: nowrap;
-    padding-top: 100px;
+    padding-top: 110px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   @media (orientation: portrait) and (min-width: 375px) {
     padding-top: 140px;
@@ -35,10 +37,13 @@ const Container = styled.div`
   @media (min-width: 780px) {
     padding-top: 160px;
   }
+
   @media (min-width: 900px) and (orientation: landscape) {
     padding-top: 150px;
     flex-direction: column;
     margin: 0;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 `;
 const FadeIn = styled.div`
@@ -70,23 +75,29 @@ const StyledLink = styled(Link)`
   @media (orientation: portrait) and (min-width: 375px) {
     font-size: 1.2rem;
   }
-  @media (orientation: landscape) and (min-width: 736px) {
-    font-size: 1.3rem;
-  }
-  @media (min-width: 768px) {
+  @media (orientation: portrait) and (min-width: 414px) {
     font-size: 1.4rem;
-  }
-  &:hover {
-    cursor: pointer;
-    background-color: rgba(17, 75, 95, 0.4);
-  }
-  &:active {
-    background-color: rgba(235, 28, 26, 0.8);
   }
   @media (orientation: landscape) and (min-width: 568px) {
     border: 1px dotted rgba(255, 255, 255, 0.4);
     border-radius: 4px;
     margin: 5px;
+    padding-left: 0px;
+  }
+  @media (orientation: landscape) and (min-width: 667px) {
+    font-size: 1.4rem;
+    width: 200px;
+  }
+
+  @media (orientation: landscape) and (min-width: 736px) {
+    width: 220px;
+    margin: 10px;
+  }
+  /* @media (min-width: 812px) and (max-height: 375px) {
+    width: 180px;
+  } */
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
   }
 
   @media (min-width: 900px) and (orientation: landscape) {
@@ -94,6 +105,14 @@ const StyledLink = styled(Link)`
     margin: 0px;
     font-size: 1.5rem;
     border-radius: 0px;
+    width: 100%;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(17, 75, 95, 0.4);
+  }
+  &:active {
+    background-color: rgba(235, 28, 26, 0.8);
   }
 `;
 
@@ -136,10 +155,16 @@ const HiddenLineOnSmall = styled(Line)`
   @media (min-width: 768px) {
     display: initial;
   }
+  @media (min-width: 812px) and (max-height: 375px) {
+    display: none;
+  }
 `;
 const HiddenLineAgain = styled(Line)`
-  @media (max-width: 375px) {
+  @media (max-width: 414px) {
     display: none;
+  }
+  @media (min-width: 375px) and (min-height: 812px) {
+    display: initial;
   }
 `;
 
@@ -152,11 +177,17 @@ const ShiftTextOnHover = styled.div`
   @media (orientation: landscape) {
     padding: 20px;
   }
-  @media (orientation: landscape) and (max-width: 568px) {
+  @media (min-width: 375px) and (orientation: portrait) {
     padding: 20px;
+  }
+  @media (orientation: landscape) and (max-width: 568px) {
+    padding: 17px;
     text-align: center;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 812px) and (max-height: 375px) {
+    padding: 17px;
+  }
+  @media (min-width: 768px) and (orientation: portrait) {
     padding: 25px;
   }
   @media (min-width: 900px) and (orientation: landscape) {
@@ -175,7 +206,7 @@ const Flex = styled.div`
     flex-direction: column;
     align-self: center;
     width: 100%;
-    padding: 5px;
+    padding: 0px;
     justify-content: space-evenly;
   }
   @media (orientation: landscape) and (min-width: 667px) {
@@ -228,11 +259,12 @@ const HomeSmall = styled(Link)`
     left: 25px;
     padding: 15px 20px;
     font-size: 1.2rem;
+    width: 200px;
   }
   @media (orientation: landscape) and (min-width: 736px) {
-    left: 24px;
-    width: 194px;
+    left: 20px;
     top: 60px;
+    width: 220px;
     font-size: 1.4rem;
   }
   @media (min-width: 900px) and (orientation: landscape) {

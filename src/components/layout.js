@@ -75,7 +75,8 @@ const ButtonContainer = styled.div`
     right: 20px;
   }
   @media (orientation: landscape) and (min-width: 736px) {
-    top: 57px;
+    top: 60px;
+    right: 20px;
   }
 
   @media (min-width: 768px) {

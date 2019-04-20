@@ -22,8 +22,10 @@ const Panda = styled.img`
   margin-top: 0px;
   justify-self: center;
   align-self: center;
-  ${props => props.menuToggle && LogoAnimate}
-  @media (orientation: landscape) and (max-width: 568px) {
+  @media (orientation: landscape) and (min-width: 568px) {
+    display: none;
+  }
+  @media (min-width: 375px) and (min-height: 812px) {
     display: none;
   }
   @media (min-width: 900px) and (orientation: landscape) {
@@ -31,6 +33,7 @@ const Panda = styled.img`
     width: 220px;
     margin-top: 2px;
   }
+  ${props => props.menuToggle && LogoAnimate}
 `;
 
 const Container = styled.div`
