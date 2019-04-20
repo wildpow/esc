@@ -16,15 +16,20 @@ const LogoAnimate = css`
   animation: 1s ${SlideIn} forwards, 2.2s ${Appear} forwards;
 `;
 const Panda = styled.img`
-  width: 150px;
+  width: 145px;
   margin-right: 25px;
   /* margin: 0 auto; */
-  margin-top: 10px;
+  margin-top: 0px;
   justify-self: center;
   align-self: center;
   ${props => props.menuToggle && LogoAnimate}
-  @media (orientation: landscape) {
+  @media (orientation: landscape) and (max-width: 568px) {
     display: none;
+  }
+  @media (min-width: 900px) and (orientation: landscape) {
+    display: initial;
+    width: 220px;
+    margin-top: 2px;
   }
 `;
 
@@ -47,7 +52,7 @@ const Container = styled.div`
   transition: all 0.4s ease;
   transform: ${props =>
     props.menuToggle ? "translate3d(0vw, 0, 0)" : "translate3d(100vw, 0, 0)"};
-  @media (orientation: landscape) {
+  @media (orientation: landscape) and (max-width: 812px) {
     width: 100%;
   }
   /* @media (orientation: landscape) and (min-width: 568px) {
@@ -62,6 +67,9 @@ const Container = styled.div`
   } */
   @media (min-width: 768px) and (orientation: portrait) {
     width: 50%;
+  }
+  @media (min-width: 900px) and (orientation: landscape) {
+    width: 40%;
   }
   @media (min-width: 1022px) {
     display: none;

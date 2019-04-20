@@ -35,6 +35,11 @@ const Container = styled.div`
   @media (min-width: 780px) {
     padding-top: 160px;
   }
+  @media (min-width: 900px) and (orientation: landscape) {
+    padding-top: 150px;
+    flex-direction: column;
+    margin: 0;
+  }
 `;
 const FadeIn = styled.div`
   opacity: 0;
@@ -52,7 +57,7 @@ const SlideIn = styled.div`
 `;
 const StyledLink = styled(Link)`
   font-family: Roboto, sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.2rem;
@@ -83,6 +88,13 @@ const StyledLink = styled(Link)`
     border-radius: 4px;
     margin: 5px;
   }
+
+  @media (min-width: 900px) and (orientation: landscape) {
+    border: none;
+    margin: 0px;
+    font-size: 1.5rem;
+    border-radius: 0px;
+  }
 `;
 
 const HiddenOnSmallLink = styled(StyledLink)`
@@ -100,12 +112,12 @@ const HiddenOnSmallLink = styled(StyledLink)`
 
 export const ShrinkKeyframe = keyframes`
   0% {width: 0%; }
-  100% { width: 95%; }
+  100% { width: 100%; }
 `;
 const Line = styled.div`
   width: 0%;
   height: 1px;
-  background: gray;
+  background: white;
   margin: 0 auto;
   animation: 0.9s ${ShrinkKeyframe} forwards;
   animation-delay: ${props => props.delay};
@@ -115,6 +127,9 @@ const Line = styled.div`
   @media (orientation: portrait) and (min-height: 800px) {
     display: initial;
   }
+  @media (min-width: 900px) and (orientation: landscape) {
+    display: initial;
+  }
 `;
 const HiddenLineOnSmall = styled(Line)`
   display: none;
@@ -122,6 +137,12 @@ const HiddenLineOnSmall = styled(Line)`
     display: initial;
   }
 `;
+const HiddenLineAgain = styled(Line)`
+  @media (max-width: 375px) {
+    display: none;
+  }
+`;
+
 const ShiftTextOnHover = styled.div`
   transition: all 0.5s ease-in-out;
   transform: none;
@@ -137,6 +158,10 @@ const ShiftTextOnHover = styled.div`
   }
   @media (min-width: 768px) {
     padding: 25px;
+  }
+  @media (min-width: 900px) and (orientation: landscape) {
+    text-align: left;
+    padding: 20px;
   }
   &:hover {
     transform: translateX(10px);
@@ -204,11 +229,15 @@ const HomeSmall = styled(Link)`
     padding: 15px 20px;
     font-size: 1.2rem;
   }
-  @media (orientation: landscape) and (max-width: 736px) {
+  @media (orientation: landscape) and (min-width: 736px) {
     left: 24px;
     width: 194px;
     top: 60px;
     font-size: 1.4rem;
+  }
+  @media (min-width: 900px) and (orientation: landscape) {
+    display: none;
+    border-radius: 0;
   }
 `;
 
@@ -281,7 +310,11 @@ const NewStuff = () => {
                 </FadeIn>
               </SlideIn>
             </StyledLink>
-            <Line delay={`${item.delay}s`} />
+            {item.key !== 8 ? (
+              <Line delay={`${item.delay}s`} />
+            ) : (
+              <HiddenLineAgain delay={`${item.delay}s`} />
+            )}
           </>
         ))}
       </Flex>
