@@ -8,8 +8,6 @@ import Footer from "./footer";
 import Topper from "./Topper";
 import MenuButton from "./mobileMenu2/menuButton";
 import Menu from "./mobileMenu2/menu";
-// import MenuItem from "./mobileMenu2/menuItem";
-import "./newMobileNav/css.css";
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -63,27 +61,60 @@ const ButtonContainer = styled.div`
   z-index: 99;
   opacity: 0.9;
   @media (orientation: portrait) and (min-width: 375px) {
-    top: 65px;
+    top: 55px;
+    right: 15px;
+  }
+  @media (orientation: portrait) and (min-width: 411px) {
+    top: 60px;
+  }
+  @media (min-height: 915px) and (min-width: 375px) {
+    top: 60px;
+    right: 15px;
+  }
+  @media (min-height: 915px) and (min-width: 415px) {
+    top: 40px;
+    right: 15px;
+  }
+  @media (min-height: 915px) and (min-width: 500px) {
+    top: 55px;
+    right: 15px;
+  }
+  @media (min-height: 915px) and (min-width: 550px) {
+    top: 40px;
     right: 15px;
   }
   @media (orientation: landscape) and (min-width: 568px) {
     top: 46px;
     right: 12px;
   }
+  @media (min-width: 640px) and (min-height: 360px) {
+    top: 50px;
+  }
   @media (orientation: landscape) and (min-width: 667px) {
     top: 52px;
     right: 20px;
+  }
+  @media (min-width: 731px) and (min-height: 411px) {
+    top: 52px;
+    right: 54px;
   }
   @media (orientation: landscape) and (min-width: 736px) {
     top: 60px;
     right: 20px;
   }
-
   @media (min-width: 768px) {
     top: 55px;
     right: 25px;
     z-index: 99;
     opacity: 0.9;
+  }
+  @media (min-width: 812px) and (min-height: 375px) and (orientation: landscape) {
+    top: 60px;
+    right: 50px;
+  }
+  @media (min-width: 823px) and (min-height: 411px) and (orientation: landscape) {
+    top: 60px;
+    right: 60px;
   }
   @media (min-width: 1022px) {
     display: none;

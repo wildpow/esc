@@ -17,6 +17,10 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+  @media (min-width: 360px) and (min-height: 640px) {
+    padding-top: 130px;
+  }
+
   @media (orientation: landscape) and (min-width: 568px) {
     flex-direction: row;
     flex-wrap: nowrap;
@@ -27,16 +31,40 @@ const Container = styled.div`
   @media (orientation: portrait) and (min-width: 375px) {
     padding-top: 140px;
   }
+  @media (orientation: portrait) and (min-width: 384px) {
+    padding-top: 120px;
+  }
+  @media (orientation: portrait) and (min-width: 411px) {
+    padding-top: 150px;
+  }
   @media (orientation: landscape) and (min-width: 570px) {
     margin: 0 auto;
     padding-top: 140px;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 640px) and (min-height: 360px) {
+    padding-top: 120px;
+  }
+  @media (min-width: 731px) and (min-height: 411px) and (orientation: landscape) {
+    padding-top: 140px;
+  }
+  /* @media (min-width: 768px) {
     padding-top: 180px;
+  } */
+  @media (min-width: 812px) and (min-height: 375px) {
+    padding-top: 140px;
   }
-  @media (min-width: 780px) {
+  @media (min-width: 600px) and (min-height: 915px) {
+    padding-top: 150px;
+  }
+  @media (min-width: 768px) and (min-height: 1024px) {
+    padding-top: 200px;
+  }
+  /* @media (min-width: 600px) and (min-height: 940px) {
+    width: 50%;
+  } */
+  /* @media (min-width: 780px) {
     padding-top: 160px;
-  }
+  } */
 
   @media (min-width: 900px) and (orientation: landscape) {
     padding-top: 150px;
@@ -84,14 +112,22 @@ const StyledLink = styled(Link)`
     margin: 5px;
     padding-left: 0px;
   }
+  @media (min-width: 640px) and (min-height: 360px) {
+    width: 200px;
+  }
+  @media (min-height: 915px) and (min-width: 375px) {
+    width: 100%;
+  }
   @media (orientation: landscape) and (min-width: 667px) {
     font-size: 1.4rem;
     width: 200px;
   }
-
   @media (orientation: landscape) and (min-width: 736px) {
     width: 220px;
     margin: 10px;
+  }
+  @media (min-width: 812px) and (max-height: 375px) {
+    width: 220px;
   }
   /* @media (min-width: 812px) and (max-height: 375px) {
     width: 180px;
@@ -103,8 +139,12 @@ const StyledLink = styled(Link)`
   @media (min-width: 900px) and (orientation: landscape) {
     border: none;
     margin: 0px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border-radius: 0px;
+    width: 100%;
+  }
+  @media (min-width: 768px) and (min-height: 1024px) {
+    font-size: 1.5rem;
     width: 100%;
   }
   &:hover {
@@ -152,7 +192,7 @@ const Line = styled.div`
 `;
 const HiddenLineOnSmall = styled(Line)`
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (orientation: portrait) {
     display: initial;
   }
   @media (min-width: 812px) and (max-height: 375px) {
@@ -184,11 +224,23 @@ const ShiftTextOnHover = styled.div`
     padding: 17px;
     text-align: center;
   }
+  @media (min-width: 640px) and (min-height: 360px) {
+    text-align: center;
+  }
   @media (min-width: 812px) and (max-height: 375px) {
-    padding: 17px;
+    padding: 15px;
   }
   @media (min-width: 768px) and (orientation: portrait) {
     padding: 25px;
+  }
+  @media (min-width: 600px) and (min-height: 915px) {
+    padding: 20px;
+  }
+  @media (min-height: 915px) and (min-width: 375px) {
+    text-align: left;
+  }
+  @media (min-width: 768px) and (min-height: 1024px) {
+    text-align: left;
   }
   @media (min-width: 900px) and (orientation: landscape) {
     text-align: left;
@@ -217,7 +269,8 @@ const HomeFlex = styled(Flex)`
   /* @media (orientation: landscape) and (max-width: 736px) {
     display: none;
   } */
-  @media (orientation: landscape) and (max-width: 820px) {
+
+  @media (orientation: landscape) and (max-width: 823px) {
     display: none;
   }
   @media (orientation: portrait) and (min-height: 800px) {
@@ -255,11 +308,21 @@ const HomeSmall = styled(Link)`
     font-weight: 700;
     letter-spacing: 0.2rem;
   }
+  /* NEW!!!!!!!!!! */
+  @media (min-width: 640px) and (min-height: 360px) {
+    left: 13px;
+    padding: 15px;
+    width: 200px;
+  }
+  /* NEW!!!!! */
   @media (orientation: landscape) and (min-width: 667px) {
     left: 25px;
     padding: 15px 20px;
     font-size: 1.2rem;
     width: 200px;
+  }
+  @media (min-width: 731px) and (min-height: 411px) {
+    left: 58px;
   }
   @media (orientation: landscape) and (min-width: 736px) {
     left: 20px;
@@ -267,6 +330,16 @@ const HomeSmall = styled(Link)`
     width: 220px;
     font-size: 1.4rem;
   }
+
+  @media (min-width: 812px) and (min-height: 375px) and (orientation: landscape) {
+    width: 220px;
+    left: 55px;
+    top: 65px;
+  }
+  @media (min-width: 823px) and (min-height: 411px) and (orientation: landscape) {
+    left: 61px;
+  }
+
   @media (min-width: 900px) and (orientation: landscape) {
     display: none;
     border-radius: 0;

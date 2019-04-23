@@ -28,10 +28,18 @@ const Panda = styled.img`
   @media (min-width: 375px) and (min-height: 812px) {
     display: none;
   }
+  @media (min-width: 600px) and (min-height: 915px) {
+    width: 160px;
+  }
+  @media (min-width: 375px) and (min-height: 915px) {
+    display: initial;
+    width: 220px;
+    /* margin-top: 2px; */
+  }
   @media (min-width: 900px) and (orientation: landscape) {
     display: initial;
     width: 220px;
-    margin-top: 2px;
+    /* margin-top: 2px; */
   }
   ${props => props.menuToggle && LogoAnimate}
 `;
@@ -55,8 +63,16 @@ const Container = styled.div`
   transition: all 0.4s ease;
   transform: ${props =>
     props.menuToggle ? "translate3d(0vw, 0, 0)" : "translate3d(100vw, 0, 0)"};
+  @media (min-width: 810px) and (max-width: 823px) and (min-height: 410px) and (max-height: 411px) {
+    width: 100%;
+    /* margin-top: 2px; */
+  }
   @media (orientation: landscape) and (max-width: 812px) {
     width: 100%;
+  }
+  @media (min-width: 600px) and (min-height: 915px) {
+    width: 50%;
+    /* margin-top: 2px; */
   }
   /* @media (orientation: landscape) and (min-width: 568px) {
     width: 80%;

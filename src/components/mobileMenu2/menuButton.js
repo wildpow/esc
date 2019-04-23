@@ -3,13 +3,13 @@ import styled, { css } from "styled-components";
 
 const Line1Active = css`
   transform: translateY(12px) translateX(0) rotate(45deg);
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (min-height: 900px) {
     transform: translateY(20px) translateX(0) rotate(45deg);
   }
 `;
 const Line2Active = css`
   transform: translateY(-14px) translateX(0) rotate(-45deg);
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (min-height: 900px) {
     transform: translateY(-20px) translateX(0) rotate(-45deg);
   }
 `;
@@ -32,7 +32,7 @@ const HoverCircle = styled.div`
 
   width: 57px;
   height: 57px;
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (min-height: 900px) {
     width: 90px;
     height: 90px;
   }
@@ -45,7 +45,7 @@ const Container = styled.div`
   width: 45px;
   height: 25px;
   margin-bottom: 3px;
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (min-height: 900px) {
     margin-bottom: 9px;
     width: 70px;
     height: 40px;
@@ -59,7 +59,7 @@ const Line = styled.div`
   position: absolute;
   width: 45px;
   height: 5px;
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (min-height: 900px) {
     width: 70px;
     height: 8px;
   }
