@@ -14,10 +14,16 @@ const ButtonContainer = styled.div`
   right: 15px;
   z-index: 99;
   opacity: 0.9;
-  @media (orientation: landscape) and (max-width: 667px) {
-    top: 46px;
-    right: 12px;
+
+  @media (orientation: landscape) and (max-width: 600px) {
+    top: 52px;
+    right: 20px;
   }
+  @media (orientation: landscape) and (min-width: 601px) {
+    right: 20px;
+    top: 56px;
+  }
+
   /* desktop button posistion */
   @media (min-height: 900px) and (min-width: 350px) and (max-width: 450px) {
     top: 61px;

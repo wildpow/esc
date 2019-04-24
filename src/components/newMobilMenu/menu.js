@@ -30,7 +30,7 @@ const Panda = styled.img`
   @media (min-height: 750px) and (orientation: portrait) {
     width: 190px;
   }
-  @media (min-height: 900px) and (orientation: portrait) {
+  @media (min-height: 900px) {
     width: 220px;
   }
 `;
@@ -57,6 +57,9 @@ const Container = styled.div`
   }
   @media (min-height: 900px) and (min-width: 600px) {
     width: 45%;
+  }
+  @media (min-height: 940px) and (min-width: 940px) {
+    width: 35%;
   }
 `;
 
