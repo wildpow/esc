@@ -11,11 +11,15 @@ import {
 } from "./mobileItemsStyles";
 
 const Container = styled.div`
-  padding-top: 110px;
-  /* position: relative; */
+  padding-top: 120px;
+  position: relative;
   display: flex;
   /* height: 100vh; */
+  justify-content: center;
   flex-direction: column;
+  /* @media (min-width: 330px) and (max-width: 400px) and (orientation: portrait) {
+    padding-top: 80px;
+  } */
   @media (orientation: landscape) and (max-width: 1000px) and (max-height: 600px) {
     flex-direction: row;
   }
