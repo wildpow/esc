@@ -17,6 +17,9 @@ const Container = styled.div`
   @media (orientation: landscape) and (max-width: 1000px) and (max-height: 600px) {
     flex-direction: row;
   }
+  @media (min-width: 850px) and (max-width: 1022px) and (max-height: 650px) {
+    flex-direction: row;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -66,6 +69,12 @@ const StyledLink = styled(Link)`
     margin: 8px;
     padding: 0;
   }
+  @media (min-width: 850px) and (max-width: 1022px) and (max-height: 650px) {
+    border: 1px dotted rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    margin: 8px;
+    padding: 0;
+  }
 `;
 
 const HiddenOnSmallLink = styled(StyledLink)`
@@ -86,6 +95,9 @@ const HiddenOnSmallLink = styled(StyledLink)`
     display: initial;
   }
   @media (max-height: 411px) and (orientation: landscape) and (min-width: 731px) {
+    display: initial;
+  }
+  @media (min-width: 850px) and (max-width: 1022px) and (max-height: 650px) {
     display: initial;
   }
 `;
@@ -115,6 +127,9 @@ const Line = styled.div`
   @media (max-height: 411px) and (orientation: landscape) and (min-width: 731px) {
     display: none;
   }
+  @media (min-width: 850px) and (max-width: 1022px) and (max-height: 650px) {
+    display: none;
+  }
 `;
 const HiddenLineOnSmall = styled(Line)`
   display: none;
@@ -124,6 +139,9 @@ const HiddenLineOnSmall = styled(Line)`
   @media (min-width: 812px) and (max-height: 375px) {
     display: none;
   }
+  @media (min-width: 850px) and (max-width: 1022px) and (min-height: 651px) {
+    display: none;
+  }
 `;
 const HiddenLineAgain = styled(Line)`
   @media (max-width: 414px) {
@@ -131,6 +149,9 @@ const HiddenLineAgain = styled(Line)`
   }
   @media (min-height: 700px) and (orientation: portrait) {
     display: initial;
+  }
+  @media (min-width: 850px) and (max-width: 1022px) and (min-height: 651px) {
+    display: none;
   }
 `;
 
@@ -196,6 +217,9 @@ const HomeFlex = styled(Flex)`
   @media (orientation: portrait) and (min-height: 800px) {
     display: inherit;
   }
+  @media (min-width: 850px) and (max-width: 1022px) and (max-height: 650px) {
+    display: none;
+  }
 `;
 
 const HomeSmall = styled(Link)`
@@ -255,6 +279,9 @@ const HomeSmall = styled(Link)`
   @media (max-height: 375px) and (orientation: landscape) and (min-width: 812px) {
     padding: 20px;
     top: 60px;
+  }
+  @media (min-width: 850px) and (max-width: 1022px) and (max-height: 650px) {
+    width: 320px;
   }
 `;
 
