@@ -42,11 +42,29 @@ const StyledLink = styled(Link)`
     margin: 8px;
     padding: 0;
   }
+  @media (orientation: landscape) and (max-width: 736px) {
+    border: 1px dotted rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    margin: 8px;
+    padding: 0;
+  }
   @media (min-height: 800px) and (orientation: portrait) {
     font-size: 1.2rem;
   }
   @media (min-height: 900px) {
     font-size: 1.5rem;
+  }
+  @media (max-height: 380px) and (orientation: landscape) and (min-width: 800px) {
+    border: 1px dotted rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    margin: 8px;
+    padding: 0;
+  }
+  @media (max-height: 411px) and (orientation: landscape) and (min-width: 731px) {
+    border: 1px dotted rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    margin: 8px;
+    padding: 0;
   }
 `;
 
@@ -55,10 +73,19 @@ const HiddenOnSmallLink = styled(StyledLink)`
   @media (orientation: landscape) and (max-width: 667px) {
     display: initial;
   }
+  @media (orientation: landscape) and (max-width: 736px) {
+    display: initial;
+  }
   @media (min-height: 700px) and (orientation: portrait) {
     display: initial;
   }
   @media (min-height: 900px) {
+    display: initial;
+  }
+  @media (max-height: 380px) and (orientation: landscape) and (min-width: 800px) {
+    display: initial;
+  }
+  @media (max-height: 411px) and (orientation: landscape) and (min-width: 731px) {
     display: initial;
   }
 `;
@@ -73,11 +100,20 @@ const Line = styled.div`
   @media (orientation: landscape) and (max-width: 667px) {
     display: none;
   }
+  @media (orientation: landscape) and (max-width: 736px) {
+    display: none;
+  }
   @media (orientation: portrait) and (min-height: 800px) {
     display: initial;
   }
   @media (min-width: 900px) and (orientation: landscape) {
     display: initial;
+  }
+  @media (max-height: 380px) and (orientation: landscape) and (min-width: 800px) {
+    display: none;
+  }
+  @media (max-height: 411px) and (orientation: landscape) and (min-width: 731px) {
+    display: none;
   }
 `;
 const HiddenLineOnSmall = styled(Line)`
@@ -108,7 +144,19 @@ const ShiftTextOnHover = styled.div`
   @media (orientation: landscape) and (min-width: 667px) {
     padding: 20px;
   }
+  @media (orientation: landscape) and (min-width: 736px) {
+    padding: 25px;
+  }
   @media (min-height: 900px) {
+    padding: 20px;
+  }
+  @media (max-height: 380px) and (orientation: landscape) and (min-width: 800px) {
+    padding: 20px;
+  }
+  @media (max-height: 411px) and (orientation: landscape) and (min-width: 731px) {
+    padding: 25px;
+  }
+  @media (max-height: 375px) and (orientation: landscape) and (min-width: 812px) {
     padding: 20px;
   }
 `;
@@ -125,8 +173,14 @@ const Flex = styled.div`
     justify-content: space-evenly;
   }
   @media (orientation: landscape) and (min-width: 667px) {
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    padding: 0px;
     text-align: center;
+    justify-content: space-evenly;
   }
+
   @media (min-height: 900px) {
     text-align: left;
   }
@@ -174,10 +228,36 @@ const HomeSmall = styled(Link)`
     width: 200px;
     padding: 18px 20px;
   }
+  @media (orientation: landscape) and (min-width: 639px) and (max-width: 641px) {
+    width: 191px;
+    padding: 15px;
+  }
+  @media (orientation: landscape) and (min-width: 736px) {
+    width: 225px;
+    padding: 25px;
+  }
+  @media (max-height: 380px) and (orientation: landscape) and (min-width: 800px) {
+    width: 250px;
+    padding: 20px;
+  }
+  @media (max-height: 411px) and (orientation: landscape) and (min-width: 731px) {
+    width: 224px;
+    padding: 25px;
+    top: 55px;
+  }
+  @media (max-height: 411px) and (orientation: landscape) and (min-width: 810px) {
+    width: 252px;
+    left: 10px;
+  }
+  @media (max-height: 411px) and (orientation: landscape) and (min-width: 820px) {
+    width: 255px;
+  }
+  @media (max-height: 375px) and (orientation: landscape) and (min-width: 812px) {
+    padding: 20px;
+    top: 60px;
+  }
 `;
-const Homer = styled.div`
-  position: relative;
-`;
+
 const NewStuff = () => {
   return (
     <Container>
