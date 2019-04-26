@@ -11,8 +11,10 @@ import {
 } from "./mobileItemsStyles";
 
 const Container = styled.div`
-  padding-top: 120px;
+  padding-top: 110px;
+  /* position: relative; */
   display: flex;
+  /* height: 100vh; */
   flex-direction: column;
   @media (orientation: landscape) and (max-width: 1000px) and (max-height: 600px) {
     flex-direction: row;
@@ -118,9 +120,10 @@ const Line = styled.div`
   @media (orientation: portrait) and (min-height: 800px) {
     display: initial;
   }
-  @media (min-width: 900px) and (orientation: landscape) {
+  @media (min-width: 900px) and (orientation: landscape) and (max-height: 500px) {
     display: initial;
   }
+
   @media (max-height: 380px) and (orientation: landscape) and (min-width: 800px) {
     display: none;
   }
@@ -132,25 +135,39 @@ const Line = styled.div`
   }
 `;
 const HiddenLineOnSmall = styled(Line)`
-  display: none;
+  @media (max-width: 400px) and (orientation: portrait) {
+    display: none;
+  }
   @media (min-height: 700px) and (orientation: portrait) {
     display: initial;
   }
   @media (min-width: 812px) and (max-height: 375px) {
     display: none;
   }
-  @media (min-width: 850px) and (max-width: 1022px) and (min-height: 651px) {
+  @media (min-width: 850px) and (max-width: 1022px) and (max-height: 651px) {
+    display: none;
+  }
+  @media (min-width: 850px) and (max-width: 1022px) and (max-height: 700px) {
+    display: none;
+  }
+  @media (min-width: 850px) and (max-width: 1022px) and (min-height: 701px) and(max-height: 850px) {
     display: none;
   }
 `;
 const HiddenLineAgain = styled(Line)`
+  @media (min-width: 850px) and (max-width: 1022px) and (min-height: 701px) and (max-height: 850px) {
+    display: none;
+  }
   @media (max-width: 414px) {
     display: none;
   }
   @media (min-height: 700px) and (orientation: portrait) {
     display: initial;
   }
-  @media (min-width: 850px) and (max-width: 1022px) and (min-height: 651px) {
+  @media (min-width: 850px) and (max-width: 1022px) and (max-height: 651px) {
+    display: none;
+  }
+  @media (min-width: 850px) and (max-width: 1022px) and (max-height: 700px) {
     display: none;
   }
 `;

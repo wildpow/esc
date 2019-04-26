@@ -100,6 +100,7 @@ class Layout extends React.Component {
     const { width } = this.state;
     if (width >= 1022) {
       document.body.style.overflow = "visible";
+      document.body.style.position = "initial";
       this.setState({ menuToggle: false, outsideMenuEvents: false });
     }
   };
@@ -108,6 +109,7 @@ class Layout extends React.Component {
     e.stopPropagation();
     if (!this.myRef.current.contains(e.target)) {
       document.body.style.overflow = "visible";
+      document.body.style.position = "initial";
       this.setState({ menuToggle: false });
     }
   };
@@ -129,9 +131,12 @@ class Layout extends React.Component {
     const { menuToggle } = this.state;
     if (!menuToggle) {
       document.body.style.overflow = "hidden";
+      document.body.style.position = "relative";
       this.setState({ menuToggle: true, outsideMenuEvents: true });
     } else {
       document.body.style.overflow = "visible";
+      document.body.style.position = "initial";
+
       this.setState({ menuToggle: false, outsideMenuEvents: false });
     }
   }
