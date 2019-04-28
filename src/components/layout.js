@@ -97,8 +97,8 @@ class Layout extends React.Component {
   }
 
   onUpdate = () => {
-    const { width } = this.state;
-    if (width >= 1022) {
+    const { width, menuToggle } = this.state;
+    if (width >= 1022 && menuToggle) {
       document.body.style.overflow = "visible";
       document.body.style.position = "initial";
       this.setState({ menuToggle: false, outsideMenuEvents: false });
@@ -131,7 +131,7 @@ class Layout extends React.Component {
     const { menuToggle } = this.state;
     if (!menuToggle) {
       document.body.style.overflow = "hidden";
-      document.body.style.position = "relative";
+      document.body.style.position = "fixed";
       this.setState({ menuToggle: true, outsideMenuEvents: true });
     } else {
       document.body.style.overflow = "visible";
