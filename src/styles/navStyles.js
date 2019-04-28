@@ -25,7 +25,7 @@ export const StyledLink = styled(Link)`
   font-size: 1.3rem;
   color: ${props => props.theme.mainColor1};
   text-decoration: none;
-  transition: all 0.2s ease-in;
+  transition: border-top 0.2s ease-in;
   padding-left: 10px;
   padding-right: 10px;
   margin-right: ${props => (props.right ? "20px" : "0px")};

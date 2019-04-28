@@ -160,7 +160,7 @@ export const ApplyNow = styled.a`
   border: none;
   cursor: pointer;
   border-radius: 0.17rem;
-  transition: all 0.25s ease-in;
+  transition: transform 0.25s ease-in;
   &:hover {
     transform: scale3d(1.1, 1.1, 1);
   }

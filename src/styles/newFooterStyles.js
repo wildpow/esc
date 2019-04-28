@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 const ImgHover = styled.img`
   color: white;
-  transition: all 0.25s ease-in;
+  transition: transform 0.25s ease-in;
   &:hover {
     transform: scale3d(1.1, 1.1, 1);
   }
@@ -41,7 +41,7 @@ export const BottomIconWrapper = styled.div`
 // export const BBBIcon = styled.img``;
 
 export const BBLink = styled.a`
-  transition: all 0.25s ease-in;
+  transition: transform 0.25s ease-in;
   &:hover {
     transform: scale3d(1.1, 1.1, 1);
   }
