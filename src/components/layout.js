@@ -6,8 +6,8 @@ import Logo from "./logo";
 import Navigation from "./nav";
 import Footer from "./footer";
 import Topper from "./Topper";
-import MenuButton from "./newMobilMenu/mobileButton";
-import Menu from "./newMobilMenu/menu";
+import MenuButton from "./mobileMenu/mobileButton";
+import Menu from "./mobileMenu/menu";
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
