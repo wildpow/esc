@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import {
   Main,
   PicHolder,
@@ -24,6 +25,18 @@ import Layout from "../components/layout";
 import Reviews from "../components/aboutReviews";
 import SEO from "../components/seo";
 
+const AboutH2 = styled(H2)`
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.5rem;
+  }
+  @media (min-width: 1300px) {
+    font-size: 1.8rem;
+  }
+`;
 export default () => (
   <Layout>
     <Main>
@@ -33,11 +46,10 @@ export default () => (
         ogTitle="E.S.C. Mattress Center | About Us"
       />
       <header>
-        <H2>
-          {" "}
+        <AboutH2>
           Our goal is to help Snohomish County sleep like the experts do and
           wake up feeling better.
-        </H2>
+        </AboutH2>
       </header>
       <Reviews />
       <PicHolder>

@@ -62,6 +62,12 @@ export const AdjMarkdown = styled(ReactMarkdown)`
       font-size: 1.4rem;
     }
   }
+  @media (min-width: 1300px) {
+    & p {
+      font-weight: 700;
+      font-size: 2rem;
+    }
+  }
 `;
 
 export const Main = styled(FlexCol)`
@@ -120,6 +126,13 @@ export const H3 = styled.h3`
     text-align: left;
     word-spacing: 0.18rem;
     letter-spacing: 0.17rem;
+  }
+  @media (min-width: 1024px) {
+    letter-spacing: 0.19rem;
+    font-size: 1.3rem;
+  }
+  @media (min-width: 1300px) {
+    font-size: 1.8rem;
   }
 `;
 

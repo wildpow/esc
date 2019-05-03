@@ -92,6 +92,10 @@ export const Footer = styled.p`
   letter-spacing: 0.12rem;
   font-weight: 400;
   text-shadow: ${props => props.theme.newTextShadow};
+  @media (min-width: 1300px) {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
 `;
 export const StyledLink = styled(Link)`
   font-family: ${props => props.theme.MainFont3};

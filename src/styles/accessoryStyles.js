@@ -54,7 +54,7 @@ export const P = styled.p`
   }
   @media (min-width: 1300px) {
     margin-right: 60px;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     line-height: 2rem;
   }
 `;
@@ -89,12 +89,12 @@ export const AccWrapper2 = styled(AccWrapper)`
 `;
 // 640
 export const H3 = styled.h3`
-  text-shadow: ${props => props.theme.TextShadow};
+  text-shadow: ${props => props.theme.newTextShadow};
   font-family: ${props => props.theme.MainFont1};
   background-color: ${props => props.theme.mainColor1};
   color: ${props => props.theme.newColor1};
   margin-top: 0;
-  font-weight: 400;
+  font-weight: 700;
   text-align: center;
   margin-bottom: 0;
   font-size: 1rem;
@@ -112,7 +112,7 @@ export const H3 = styled.h3`
   @media (min-width: 1028px) {
     letter-spacing: 0.2rem;
     word-spacing: 0.17rem;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 `;
 
