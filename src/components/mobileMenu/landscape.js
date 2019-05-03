@@ -167,6 +167,10 @@ const Landscape = () => {
     <>
       <Div>
         <Home
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
           activeStyle={{
             backgroundColor: "rgba(235, 28, 26, 0.9)",
           }}
@@ -178,6 +182,10 @@ const Landscape = () => {
       <Wrapper>
         <Holder>
           <StyledLink
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
+            }}
             partiallyActive
             activeStyle={{
               backgroundColor: "rgba(235, 28, 26, 0.9)",
@@ -187,6 +195,10 @@ const Landscape = () => {
             Brands
           </StyledLink>
           <StyledLink
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
+            }}
             partiallyActive
             activeStyle={{
               backgroundColor: "rgba(235, 28, 26, 0.9)",
@@ -196,6 +208,10 @@ const Landscape = () => {
             Ajustable
           </StyledLink>
           <StyledLink
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
+            }}
             partiallyActive
             activeStyle={{
               backgroundColor: "rgba(235, 28, 26, 0.9)",
@@ -207,6 +223,10 @@ const Landscape = () => {
         </Holder>
         <Holder>
           <StyledLink
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
+            }}
             partiallyActive
             activeStyle={{
               backgroundColor: "rgba(235, 28, 26, 0.9)",
@@ -216,6 +236,10 @@ const Landscape = () => {
             Financing
           </StyledLink>
           <StyledLink
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
+            }}
             partiallyActive
             activeStyle={{
               backgroundColor: "rgba(235, 28, 26, 0.9)",
@@ -225,6 +249,10 @@ const Landscape = () => {
             Our Blog
           </StyledLink>
           <StyledLink
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
+            }}
             partiallyActive
             activeStyle={{
               backgroundColor: "rgba(235, 28, 26, 0.9)",
@@ -236,6 +264,10 @@ const Landscape = () => {
         </Holder>
         <Holder>
           <StyledLink
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
+            }}
             partiallyActive
             activeStyle={{
               backgroundColor: "rgba(235, 28, 26, 0.9)",
@@ -245,6 +277,10 @@ const Landscape = () => {
             Warranty
           </StyledLink>
           <StyledLink
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
+            }}
             partiallyActive
             activeStyle={{
               backgroundColor: "rgba(235, 28, 26, 0.9)",
@@ -254,6 +290,10 @@ const Landscape = () => {
             Policies
           </StyledLink>
           <StyledLink
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
+            }}
             partiallyActive
             activeStyle={{
               backgroundColor: "rgba(235, 28, 26, 0.9)",

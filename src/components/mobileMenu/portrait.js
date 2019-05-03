@@ -169,22 +169,35 @@ const Portrait = () => {
       </div>
       <div>
         <SmallItemsContainer>
-          <StyledLink
-            to="/"
-            activeStyle={{
-              backgroundColor: "rgba(17, 75, 95, 0.2)",
+          <Container
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
           >
-            <SlideIn delay={`${0}s`}>
-              <FadeIn delay={`${0}s`}>
-                <ShiftTextOnHover>Home</ShiftTextOnHover>
-              </FadeIn>
-            </SlideIn>
-          </StyledLink>
+            <StyledLink
+              to="/"
+              activeStyle={{
+                backgroundColor: "rgba(17, 75, 95, 0.2)",
+              }}
+            >
+              <SlideIn delay={`${0}s`}>
+                <FadeIn delay={`${0}s`}>
+                  <ShiftTextOnHover>Home</ShiftTextOnHover>
+                </FadeIn>
+              </SlideIn>
+            </StyledLink>
+          </Container>
           <Line delay="0s" />
 
           {firstSet.map(item => (
-            <Container key={item.key}>
+            <Container
+              key={item.key}
+              onClick={() => {
+                document.body.style.overflow = "visible";
+                document.body.style.position = "initial";
+              }}
+            >
               <StyledLink
                 to={item.to}
                 partiallyActive
@@ -210,7 +223,13 @@ const Portrait = () => {
         </SmallItemsContainer>
         <LargeItemsContainer>
           {secondSet.map(item => (
-            <Container key={item.key}>
+            <Container
+              key={item.key}
+              onClick={() => {
+                document.body.style.overflow = "visible";
+                document.body.style.position = "initial";
+              }}
+            >
               <StyledLink
                 to={item.to}
                 partiallyActive
