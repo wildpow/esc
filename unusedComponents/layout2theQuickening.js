@@ -6,8 +6,12 @@ import Logo from "./logo";
 import Navigation from "./nav";
 import Footer from "./footer";
 import Topper from "./Topper";
-import MenuButton from "./mobileMenu/mobileButton";
-import Menu from "./mobileMenu/menu";
+import MenuButton from "./newMobileNav/menuButton";
+import Menu from "./newMobileNav/menu";
+import MenuItem from "./newMobileNav/menuItem";
+import "./newMobileNav/css.css";
+// import MenuButton from "./MenuButton";
+// import Menu from "./Menu";
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -24,10 +28,6 @@ const GlobalStyle = createGlobalStyle`
 
 const Body = styled.div`
   background-color: ${props => props.theme.newColor1};
-  pointer-events: ${props => (props.outsideMenuEvents ? "none" : "auto")};
-  user-select: ${props => (props.outsideMenuEvents ? "none" : "auto")};
-  transition: opacity 0.4s ease;
-  opacity: ${props => (props.menuToggle ? 0.3 : 1)};
 `;
 const Container = styled.div`
   margin-left: auto;
@@ -54,118 +54,106 @@ const Container = styled.div`
     width: 1370px;
   }
 `;
-
+const ButtonContainer = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  z-index: 99;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  top: 20;
+  right: 20;
+`;
 class Layout extends React.Component {
   constructor(props) {
     super(props);
-    this.myRef = React.createRef();
-
     this.state = {
-      menuToggle: false,
-      outsideMenuEvents: false,
-      width: 0,
-      // height: 0,
+      visible: false,
+      menuOpen: false,
     };
-    this.closeonEsc = this.closeonEsc.bind(this);
-    this.handleMenuToggle = this.handleMenuToggle.bind(this);
-    this.afterAnimation = this.afterAnimation.bind(this);
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-  componentDidMount() {
-    window.addEventListener("resize", this.updateWindowDimensions);
-    document.addEventListener("mousedown", this.handleClickOutside);
-    document.addEventListener("touchstart", this.handleClickOutside);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { menuToggle, width } = this.state;
-    if (prevState.menuToggle === true && menuToggle === false) {
-      this.afterAnimation();
-    }
-    if (width >= 1022 && prevState.width <= 1022) {
-      this.onUpdate();
-    }
-    return null;
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-    document.removeEventListener("mousedown", this.handleClickOutside);
-    document.removeEventListener("touchstart", this.handleClickOutside);
-    // clearTimeout(this.afterAnimation);
-  }
-
-  onUpdate = () => {
-    const { width, menuToggle } = this.state;
-    if (width >= 1022 && menuToggle) {
-      document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
-      this.setState({ menuToggle: false, outsideMenuEvents: false });
-    }
-  };
-
-  handleClickOutside = e => {
+  handleMouseDown(e) {
+    this.toggleMenu();
     e.stopPropagation();
-    if (!this.myRef.current.contains(e.target)) {
-      document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
-      this.setState({ menuToggle: false });
-    }
-  };
-
-  closeonEsc() {
-    document.body.style.overflow = "visible";
-    this.setState({ menuToggle: false, outsideMenuEvents: false });
   }
 
-  afterAnimation() {
-    setTimeout(() => {
-      this.setState({ outsideMenuEvents: false });
-    }, 400);
+  toggleMenu() {
+    const { visible } = this.state;
 
-    return null;
+    this.setState(
+      {
+        visible: !visible,
+      },
+      () => this.displayNone(),
+    );
   }
 
-  handleMenuToggle() {
-    const { menuToggle } = this.state;
-    if (!menuToggle) {
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      this.setState({ menuToggle: true, outsideMenuEvents: true });
+  displayNone() {
+    const { visible } = this.state;
+    if (visible) {
+      this.setState({ display: "none" });
     } else {
-      document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
-
-      this.setState({ menuToggle: false, outsideMenuEvents: false });
+      this.setState({ display: "block" });
     }
   }
 
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth });
-    // , height: window.innerHeight
+  handleMenuClick() {
+    this.setState({ menuOpen: !this.state.menuOpen });
+  }
+
+  handleLinkClick() {
+    this.setState({ menuOpen: false });
   }
 
   render() {
-    const { menuToggle, outsideMenuEvents } = this.state;
+    const { menuOpen, display } = this.state;
     const { children } = this.props;
+    const menu = [
+      "Home",
+      "Sale",
+      "Brands",
+      "Adjustable",
+      "Financing",
+      "Our Blog",
+      "About Us",
+      "Warranty",
+      "Policies",
+      "Site Map",
+    ];
+    const menuItems = menu.map((val, index) => {
+      return (
+        <MenuItem
+          key={index}
+          delay={`${index * 0.05}s`}
+          onClick={() => {
+            this.handleLinkClick();
+          }}
+        >
+          {val}
+        </MenuItem>
+      );
+    });
     return (
-      <>
-        <GlobalStyle />
-        <div ref={this.myRef}>
-          <MenuButton menuToggle={menuToggle} onClick={this.handleMenuToggle} />
-          <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc} />
-        </div>
+      <Body>
         <Topper />
-        <Body outsideMenuEvents={outsideMenuEvents} menuToggle={menuToggle}>
-          <Navigation />
-          <Logo menuToggle={menuToggle} />
-          <Container>
-            {children}
-            <Footer />
-          </Container>
-        </Body>
-      </>
+        <ButtonContainer>
+          <MenuButton open={menuOpen} onClick={() => this.handleMenuClick()} />
+        </ButtonContainer>
+        <Menu open={menuOpen}>{menuItems}</Menu>
+        {/* <MenuButton handleMouseDown={this.handleMouseDown} />
+        <Menu handleMouseDown={this.handleMouseDown} menuVisibility={visible} /> */}
+        <Navigation />
+        <Logo />
+        <GlobalStyle />
+        <Container style={{ display }}>
+          {children}
+          <Footer />
+        </Container>
+      </Body>
     );
   }
 }

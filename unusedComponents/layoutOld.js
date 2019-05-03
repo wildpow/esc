@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Helmet from "react-helmet";
 import styledNormalize from "styled-normalize";
+import { StaticQuery, graphql } from "gatsby";
 import styled, { createGlobalStyle } from "styled-components";
 import Logo from "./logo";
 import Navigation from "./nav";
 import Footer from "./footer";
 import Topper from "./Topper";
-import MenuButton from "./mobileMenu/mobileButton";
-import Menu from "./mobileMenu/menu";
+import MenuButton from "./MenuButton";
+import Menu from "./Menu";
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -24,10 +26,6 @@ const GlobalStyle = createGlobalStyle`
 
 const Body = styled.div`
   background-color: ${props => props.theme.newColor1};
-  pointer-events: ${props => (props.outsideMenuEvents ? "none" : "auto")};
-  user-select: ${props => (props.outsideMenuEvents ? "none" : "auto")};
-  transition: opacity 0.4s ease;
-  opacity: ${props => (props.menuToggle ? 0.3 : 1)};
 `;
 const Container = styled.div`
   margin-left: auto;
@@ -58,117 +56,81 @@ const Container = styled.div`
 class Layout extends React.Component {
   constructor(props) {
     super(props);
-    this.myRef = React.createRef();
-
     this.state = {
-      menuToggle: false,
-      outsideMenuEvents: false,
-      width: 0,
-      // height: 0,
+      visible: false,
     };
-    this.closeonEsc = this.closeonEsc.bind(this);
-    this.handleMenuToggle = this.handleMenuToggle.bind(this);
-    this.afterAnimation = this.afterAnimation.bind(this);
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.handleMouseDown = this.handleMouseDown.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-  componentDidMount() {
-    window.addEventListener("resize", this.updateWindowDimensions);
-    document.addEventListener("mousedown", this.handleClickOutside);
-    document.addEventListener("touchstart", this.handleClickOutside);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { menuToggle, width } = this.state;
-    if (prevState.menuToggle === true && menuToggle === false) {
-      this.afterAnimation();
-    }
-    if (width >= 1022 && prevState.width <= 1022) {
-      this.onUpdate();
-    }
-    return null;
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-    document.removeEventListener("mousedown", this.handleClickOutside);
-    document.removeEventListener("touchstart", this.handleClickOutside);
-    // clearTimeout(this.afterAnimation);
-  }
-
-  onUpdate = () => {
-    const { width, menuToggle } = this.state;
-    if (width >= 1022 && menuToggle) {
-      document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
-      this.setState({ menuToggle: false, outsideMenuEvents: false });
-    }
-  };
-
-  handleClickOutside = e => {
+  handleMouseDown(e) {
+    this.toggleMenu();
     e.stopPropagation();
-    if (!this.myRef.current.contains(e.target)) {
-      document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
-      this.setState({ menuToggle: false });
-    }
-  };
-
-  closeonEsc() {
-    document.body.style.overflow = "visible";
-    this.setState({ menuToggle: false, outsideMenuEvents: false });
   }
 
-  afterAnimation() {
-    setTimeout(() => {
-      this.setState({ outsideMenuEvents: false });
-    }, 400);
+  toggleMenu() {
+    const { visible } = this.state;
 
-    return null;
+    this.setState(
+      {
+        visible: !visible,
+      },
+      () => this.displayNone(),
+    );
   }
 
-  handleMenuToggle() {
-    const { menuToggle } = this.state;
-    if (!menuToggle) {
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      this.setState({ menuToggle: true, outsideMenuEvents: true });
+  displayNone() {
+    const { visible } = this.state;
+    if (visible) {
+      this.setState({ display: "none" });
     } else {
-      document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
-
-      this.setState({ menuToggle: false, outsideMenuEvents: false });
+      this.setState({ display: "block" });
     }
-  }
-
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth });
-    // , height: window.innerHeight
   }
 
   render() {
-    const { menuToggle, outsideMenuEvents } = this.state;
+    const { visible, display } = this.state;
     const { children } = this.props;
     return (
-      <>
-        <GlobalStyle />
-        <div ref={this.myRef}>
-          <MenuButton menuToggle={menuToggle} onClick={this.handleMenuToggle} />
-          <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc} />
-        </div>
-        <Topper />
-        <Body outsideMenuEvents={outsideMenuEvents} menuToggle={menuToggle}>
-          <Navigation />
-          <Logo menuToggle={menuToggle} />
-          <Container>
-            {children}
-            <Footer />
-          </Container>
-        </Body>
-      </>
+      <StaticQuery
+        query={graphql`
+          query SiteTitleQuery {
+            site {
+              siteMetadata {
+                title
+              }
+            }
+          }
+        `}
+        render={data => (
+          <Body>
+            <Helmet
+              title={data.site.siteMetadata.title}
+              meta={[
+                { name: "description", content: "Sample" },
+                { name: "keywords", content: "sample, something" },
+              ]}
+            />
+            <Topper />
+            <MenuButton handleMouseDown={this.handleMouseDown} />
+            <Menu
+              handleMouseDown={this.handleMouseDown}
+              menuVisibility={visible}
+            />
+            <Navigation />
+            <Logo />
+            <GlobalStyle />
+            <Container style={{ display }}>
+              {children}
+              <Footer />
+            </Container>
+          </Body>
+        )}
+      />
     );
   }
 }
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };

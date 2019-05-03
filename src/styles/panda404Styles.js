@@ -8,7 +8,7 @@ export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   border-radius: .11rem;
-  transition: all 0.2s ease-in;
+  /* transition: all 0.2s ease-in; */
   text-align: center;
   justify-content: center;
   @media (min-width: 1300px) {
@@ -21,7 +21,7 @@ export const Img = styled.img`
   color: white;
   margin: auto;
   max-width: 20rem;
-  transition: all 0.2s ease-in;
+  /* transition: all 0.2s ease-in; */
   @media (min-width: 800px) {
     max-width: 40rem;
   }

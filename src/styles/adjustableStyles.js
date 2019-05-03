@@ -96,7 +96,6 @@ export const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* transition: all 0.15s ease-in-out; */
   background-color: white;
   transition: ${props => props.theme.hoverTransition};
   box-shadow: ${props => props.theme.hoverBoxBefore};

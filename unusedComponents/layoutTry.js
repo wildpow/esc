@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import styledNormalize from "styled-normalize";
 import styled, { createGlobalStyle } from "styled-components";
@@ -6,8 +6,40 @@ import Logo from "./logo";
 import Navigation from "./nav";
 import Footer from "./footer";
 import Topper from "./Topper";
-import MenuButton from "./mobileMenu/mobileButton";
+import MenuButton from "./mobileMenu/menuButton";
+import MenuItem from "./mobileMenu/menuItems";
 import Menu from "./mobileMenu/menu";
+import NewMenuItems from "./mobileMenu/newMenuItems";
+
+function useOnClickOutside(ref, handler) {
+  useEffect(
+    () => {
+      const listener = event => {
+        // Do nothing if clicking ref's element or descendent elements
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+
+        handler(event);
+      };
+
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    },
+    // Add ref and handler to effect dependencies
+    // It's worth noting that because passed in handler is a new ...
+    // ... function on every render that will cause this effect ...
+    // ... callback/cleanup to run every render. It's not a big deal ...
+    // ... but to optimize you can wrap handler in useCallback before ...
+    // ... passing it into this hook.
+    [ref, handler],
+  );
+}
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -24,11 +56,12 @@ const GlobalStyle = createGlobalStyle`
 
 const Body = styled.div`
   background-color: ${props => props.theme.newColor1};
-  pointer-events: ${props => (props.outsideMenuEvents ? "none" : "auto")};
-  user-select: ${props => (props.outsideMenuEvents ? "none" : "auto")};
-  transition: opacity 0.4s ease;
-  opacity: ${props => (props.menuToggle ? 0.3 : 1)};
+  filter: ${props => (props.menuOpen ? "blur(10px)" : null)};
+  transition: filter 0.5s ease;
+  pointer-events: ${props => (props.menuOpen ? "none" : "auto")};
+  user-select: ${props => (props.menuOpen ? "none" : "auto")};
 `;
+
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -55,120 +88,86 @@ const Container = styled.div`
   }
 `;
 
-class Layout extends React.Component {
-  constructor(props) {
-    super(props);
-    this.myRef = React.createRef();
+const ButtonContainer = styled.div`
+  /* position: fixed; sticky option */
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  z-index: 999;
+  opacity: 0.9;
+`;
 
-    this.state = {
-      menuToggle: false,
-      outsideMenuEvents: false,
-      width: 0,
-      // height: 0,
-    };
-    this.closeonEsc = this.closeonEsc.bind(this);
-    this.handleMenuToggle = this.handleMenuToggle.bind(this);
-    this.afterAnimation = this.afterAnimation.bind(this);
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener("resize", this.updateWindowDimensions);
-    document.addEventListener("mousedown", this.handleClickOutside);
-    document.addEventListener("touchstart", this.handleClickOutside);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { menuToggle, width } = this.state;
-    if (prevState.menuToggle === true && menuToggle === false) {
-      this.afterAnimation();
-    }
-    if (width >= 1022 && prevState.width <= 1022) {
-      this.onUpdate();
-    }
-    return null;
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateWindowDimensions);
-    document.removeEventListener("mousedown", this.handleClickOutside);
-    document.removeEventListener("touchstart", this.handleClickOutside);
-    // clearTimeout(this.afterAnimation);
-  }
-
-  onUpdate = () => {
-    const { width, menuToggle } = this.state;
-    if (width >= 1022 && menuToggle) {
-      document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
-      this.setState({ menuToggle: false, outsideMenuEvents: false });
-    }
-  };
-
-  handleClickOutside = e => {
-    e.stopPropagation();
-    if (!this.myRef.current.contains(e.target)) {
-      document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
-      this.setState({ menuToggle: false });
-    }
-  };
-
-  closeonEsc() {
-    document.body.style.overflow = "visible";
-    this.setState({ menuToggle: false, outsideMenuEvents: false });
-  }
-
-  afterAnimation() {
-    setTimeout(() => {
-      this.setState({ outsideMenuEvents: false });
-    }, 400);
-
-    return null;
-  }
-
-  handleMenuToggle() {
-    const { menuToggle } = this.state;
-    if (!menuToggle) {
+const Layout = ({ children }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menu = [
+    "Home",
+    "Sale",
+    "Brands",
+    "Adjustable",
+    "Financing",
+    "Our Blog",
+    "About Us",
+    "Warranty",
+    "Policies",
+    "Site Map",
+  ];
+  let indexCount = 0;
+  const menuItems = menu.map((val, index) => {
+    indexCount += 1;
+    return (
+      <MenuItem
+        key={indexCount * 255}
+        delay={`${index * 0.05}s`}
+        onClick={() => {
+          this.handleLinkClick();
+        }}
+      >
+        {val}
+      </MenuItem>
+    );
+  });
+  const menuButtonToggle = () => {
+    if (!menuOpen) {
       document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      this.setState({ menuToggle: true, outsideMenuEvents: true });
+
+      setMenuOpen(!menuOpen);
     } else {
       document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
-
-      this.setState({ menuToggle: false, outsideMenuEvents: false });
+      setMenuOpen(!menuOpen);
     }
-  }
-
-  updateWindowDimensions() {
-    this.setState({ width: window.innerWidth });
-    // , height: window.innerHeight
-  }
-
-  render() {
-    const { menuToggle, outsideMenuEvents } = this.state;
-    const { children } = this.props;
-    return (
-      <>
-        <GlobalStyle />
-        <div ref={this.myRef}>
-          <MenuButton menuToggle={menuToggle} onClick={this.handleMenuToggle} />
-          <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc} />
-        </div>
+  };
+  // const closeMenuOutside = () => {
+  //   if (menuOpen) {
+  //     document.body.style.overflow = "visible";
+  //     setMenuOpen(false);
+  //   }
+  // };
+  const ref = useRef();
+  useOnClickOutside(ref, () => menuButtonToggle());
+  return (
+    <>
+      <GlobalStyle />
+      <div ref={ref}>
+        <ButtonContainer>
+          <MenuButton open={menuOpen} onClick={() => menuButtonToggle()} />
+        </ButtonContainer>
+        <Menu open={menuOpen} closeMenuOutside={menuButtonToggle}>
+          <NewMenuItems />
+        </Menu>
+      </div>
+      <Body menuOpen={menuOpen}>
         <Topper />
-        <Body outsideMenuEvents={outsideMenuEvents} menuToggle={menuToggle}>
-          <Navigation />
-          <Logo menuToggle={menuToggle} />
-          <Container>
-            {children}
-            <Footer />
-          </Container>
-        </Body>
-      </>
-    );
-  }
-}
+        <Navigation />
+        <Logo />
+        <Container menuOpen={menuOpen}>
+          {children}
+          <Footer />
+        </Container>
+      </Body>
+    </>
+  );
+};
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };

@@ -26,19 +26,22 @@ export const InboundLink = styled(Link)`
 `;
 
 export const Top = styled.div`
+  width: 100vw;
   font-family: ${props => props.theme.MainFont1};
   font-weight: 300;
   background-color: ${props => props.theme.mainColor2};
   box-shadow: ${props => props.theme.newBoxShadow};
-  text-shadow: ${props => props.theme.TextShadow};
+  text-shadow: ${props => props.theme.newTextShadow};
   color: ${props => props.theme.newColor1};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 6px 10px 6px;
-  transition: all 0.25s ease-in;
+  /* transition: all 0.25s ease-in; */
   font-size: 0.9rem;
   letter-spacing: 0.056rem;
+  position: relative;
+  z-index: 26;
   @media (min-width: 411px) {
     font-size: 1rem;
   }

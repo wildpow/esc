@@ -40,7 +40,7 @@ export const Wrapper = styled.div`
 `;
 const ImgHover = styled.img`
   color: white;
-  transition: all 0.25s ease-in;
+  transition: transform 0.25s ease-in;
   &:hover {
     transform: scale3d(1.1, 1.1, 1);
   }
@@ -91,7 +91,7 @@ export const YelpHolder = styled.div`
   background-color: #d32323;
   margin-left: 10px;
   border-radius: 0.2rem;
-  transition: all 0.25s ease-in;
+  transition: transform 0.25s ease-in;
   &:hover {
     transform: scale3d(1.1, 1.1, 1);
   }

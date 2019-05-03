@@ -6,8 +6,8 @@ import Logo from "./logo";
 import Navigation from "./nav";
 import Footer from "./footer";
 import Topper from "./Topper";
-import MenuButton from "./mobileMenu/mobileButton";
-import Menu from "./mobileMenu/menu";
+import MenuButton from "./mobileMenu2/menuButton";
+import Menu from "./mobileMenu2/menu";
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -54,7 +54,72 @@ const Container = styled.div`
     width: 1370px;
   }
 `;
-
+const ButtonContainer = styled.div`
+  position: absolute;
+  top: 57px;
+  right: 7px;
+  z-index: 99;
+  opacity: 0.9;
+  @media (orientation: portrait) and (min-width: 375px) {
+    top: 55px;
+    right: 15px;
+  }
+  @media (orientation: portrait) and (min-width: 411px) {
+    top: 60px;
+  }
+  @media (min-height: 915px) and (min-width: 375px) {
+    top: 60px;
+    right: 15px;
+  }
+  @media (min-height: 915px) and (min-width: 415px) {
+    top: 40px;
+    right: 15px;
+  }
+  @media (min-height: 915px) and (min-width: 500px) {
+    top: 55px;
+    right: 15px;
+  }
+  @media (min-height: 915px) and (min-width: 550px) {
+    top: 40px;
+    right: 15px;
+  }
+  @media (orientation: landscape) and (min-width: 568px) {
+    top: 46px;
+    right: 12px;
+  }
+  @media (min-width: 640px) and (min-height: 360px) {
+    top: 50px;
+  }
+  @media (orientation: landscape) and (min-width: 667px) {
+    top: 52px;
+    right: 20px;
+  }
+  @media (min-width: 731px) and (min-height: 411px) {
+    top: 52px;
+    right: 54px;
+  }
+  @media (orientation: landscape) and (min-width: 736px) {
+    top: 60px;
+    right: 20px;
+  }
+  @media (min-width: 768px) {
+    top: 55px;
+    right: 25px;
+    z-index: 99;
+    opacity: 0.9;
+  }
+  @media (min-width: 812px) and (min-height: 375px) and (orientation: landscape) {
+    top: 60px;
+    right: 50px;
+  }
+  @media (min-width: 823px) and (min-height: 411px) and (orientation: landscape) {
+    top: 60px;
+    right: 60px;
+  }
+  @media (min-width: 1022px) {
+    display: none;
+  }
+`;
 class Layout extends React.Component {
   constructor(props) {
     super(props);
@@ -64,7 +129,7 @@ class Layout extends React.Component {
       menuToggle: false,
       outsideMenuEvents: false,
       width: 0,
-      // height: 0,
+      height: 0,
     };
     this.closeonEsc = this.closeonEsc.bind(this);
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
@@ -97,10 +162,9 @@ class Layout extends React.Component {
   }
 
   onUpdate = () => {
-    const { width, menuToggle } = this.state;
-    if (width >= 1022 && menuToggle) {
+    const { width } = this.state;
+    if (width >= 1022) {
       document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
       this.setState({ menuToggle: false, outsideMenuEvents: false });
     }
   };
@@ -109,7 +173,6 @@ class Layout extends React.Component {
     e.stopPropagation();
     if (!this.myRef.current.contains(e.target)) {
       document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
       this.setState({ menuToggle: false });
     }
   };
@@ -131,19 +194,15 @@ class Layout extends React.Component {
     const { menuToggle } = this.state;
     if (!menuToggle) {
       document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
       this.setState({ menuToggle: true, outsideMenuEvents: true });
     } else {
       document.body.style.overflow = "visible";
-      document.body.style.position = "initial";
-
       this.setState({ menuToggle: false, outsideMenuEvents: false });
     }
   }
 
   updateWindowDimensions() {
-    this.setState({ width: window.innerWidth });
-    // , height: window.innerHeight
+    this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
   render() {
@@ -153,7 +212,12 @@ class Layout extends React.Component {
       <>
         <GlobalStyle />
         <div ref={this.myRef}>
-          <MenuButton menuToggle={menuToggle} onClick={this.handleMenuToggle} />
+          <ButtonContainer>
+            <MenuButton
+              menuToggle={menuToggle}
+              onClick={this.handleMenuToggle}
+            />
+          </ButtonContainer>
           <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc} />
         </div>
         <Topper />
