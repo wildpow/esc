@@ -24,6 +24,10 @@ const StyledLink = styled(Link)`
   &:active {
     background-color: rgba(235, 28, 26, 0.8);
   }
+  @media (min-height: 200px) and (max-height: 280px) {
+    padding: 10px;
+    margin: 6px;
+  }
   @media (min-width: 640px) and (min-height: 360px) {
     margin: 8px;
     padding: 17px;
@@ -51,6 +55,10 @@ const StyledLink = styled(Link)`
 
 const Wrapper = styled.div`
   display: none;
+  /* @media (min-height: 200px) and (max-height: 280px) {
+    width: 98%;
+    height: 100%;
+  } */
 
   @media (orientation: landscape) and (max-height: 600px) {
     display: flex;
@@ -74,11 +82,18 @@ const Holder = styled.div`
   padding: 0px;
   text-align: center;
   justify-content: space-evenly;
+  @media (min-height: 200px) and (max-height: 280px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const Div = styled.div`
   height: 140px;
   position: relative;
+  @media (min-height: 200px) and (max-height: 280px) {
+    display: initial;
+    height: 1px;
+  }
 
   @media (orientation: portrait) {
     display: none;
@@ -109,8 +124,19 @@ const Home = styled(StyledLink)`
   padding: 15px;
   width: 30.5%;
   text-align: center;
+  /* @media (min-height: 200px) and (max-height: 280px) and (min-width: 610px) {
+
+  } */
+  @media (min-height: 200px) and (max-height: 280px) {
+    top: 20px;
+    width: 31%;
+  }
   @media (max-height: 315px) {
     display: none;
+  }
+  @media (min-height: 200px) and (max-height: 280px) {
+    display: initial;
+    padding: 10px;
   }
   @media (orientation: portrait) {
     display: none;

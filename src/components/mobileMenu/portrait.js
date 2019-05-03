@@ -97,6 +97,9 @@ const Wrapper = styled.div`
   padding: 0;
   height: 100%;
   justify-content: space-between;
+  @media (min-width: 300px) and (max-width: 360px) {
+    height: 90%;
+  }
   @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
     display: flex;
     flex-direction: column;
@@ -140,13 +143,15 @@ const HideLine = styled(Line)`
 const Space = styled.div`
   width: 100%;
   height: 110px;
+
   @media (max-width: 350px) {
-    height: 120px;
+    height: 110px;
   }
   @media (min-width: 414px) and (min-height: 736px) {
     height: 125px;
     width: 100%;
   }
+
   @media (max-height: 480px) {
     display: none;
   }
