@@ -121,6 +121,7 @@ class Layout extends React.Component {
 
   closeonEsc() {
     document.body.style.overflow = "visible";
+    document.body.style.position = "initial";
     this.setState({ menuToggle: false, outsideMenuEvents: false });
   }
 
