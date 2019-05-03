@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 
 const Line1Active = css`
   transform: translateY(12px) translateX(0) rotate(45deg);
@@ -126,6 +127,11 @@ const MenuButton = ({ menuToggle, onClick }) => {
       </HoverCircle>
     </ButtonContainer>
   );
+};
+
+MenuButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  menuToggle: PropTypes.bool.isRequired,
 };
 
 export default MenuButton;

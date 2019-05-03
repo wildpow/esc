@@ -64,7 +64,7 @@ class Layout extends React.Component {
       menuToggle: false,
       outsideMenuEvents: false,
       width: 0,
-      height: 0,
+      // height: 0,
     };
     this.closeonEsc = this.closeonEsc.bind(this);
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
@@ -142,7 +142,8 @@ class Layout extends React.Component {
   }
 
   updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
+    this.setState({ width: window.innerWidth });
+    // , height: window.innerHeight
   }
 
   render() {

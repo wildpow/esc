@@ -3,11 +3,10 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 import Logo from "../../images/logo.png";
 import {
-  AppearKeyframe,
   FadeIn,
   SlideIn,
   ShrinkKeyframe,
-  HomeSmallSlide,
+  LogoAnimate,
 } from "./mobileMenuStyles";
 import { firstSet, secondSet } from "./items";
 
@@ -15,6 +14,7 @@ const Panda = styled.img`
   width: 140px;
   margin-right: 15px;
   align-self: center;
+  ${LogoAnimate}
   @media (orientation: portrait) and (min-height: 800px) {
     width: 200px;
   }
@@ -129,10 +129,11 @@ const HideLine = styled(Line)`
   }
 `;
 const Space = styled.div`
+  width: 100%;
+  height: 110px;
   @media (max-width: 350px) {
     height: 120px;
   }
-  height: 110px;
   @media (min-width: 414px) and (min-height: 736px) {
     height: 125px;
     width: 100%;
@@ -146,10 +147,18 @@ const ShiftTextOnHover = styled.div`
     transform: translateX(10px);
   }
 `;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Portrait = () => {
   return (
     <Wrapper>
-      <Space />
+      <div>
+        <Space />
+      </div>
       <div>
         <SmallItemsContainer>
           <StyledLink
@@ -167,9 +176,8 @@ const Portrait = () => {
           <Line delay="0s" />
 
           {firstSet.map(item => (
-            <>
+            <Container key={item.key}>
               <StyledLink
-                key={item.key}
                 to={item.to}
                 partiallyActive
                 activeStyle={{
@@ -189,14 +197,13 @@ const Portrait = () => {
                   <Line delay={`${item.delay}s`} />
                 </LargeItemsContainer>
               )}
-            </>
+            </Container>
           ))}
         </SmallItemsContainer>
         <LargeItemsContainer>
           {secondSet.map(item => (
-            <>
+            <Container key={item.key}>
               <StyledLink
-                key={item.key}
                 to={item.to}
                 partiallyActive
                 activeStyle={{
@@ -214,7 +221,7 @@ const Portrait = () => {
               ) : (
                 <HideLine delay={`${item.delay}s`} />
               )}
-            </>
+            </Container>
           ))}
         </LargeItemsContainer>
       </div>
