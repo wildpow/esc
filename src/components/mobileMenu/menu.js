@@ -21,6 +21,9 @@ const Container = styled.div`
   transition: all 0.4s ease;
   transform: ${props =>
     props.menuToggle ? "translate3d(0vw, 0, 0)" : "translate3d(100vw, 0, 0)"};
+  @media (max-width: 300px) {
+    width: 100%;
+  }
   @media (min-width: 600px) and (min-height: 700px) {
     width: 45%;
   }

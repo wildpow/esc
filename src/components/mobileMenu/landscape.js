@@ -79,6 +79,28 @@ const Holder = styled.div`
 const Div = styled.div`
   height: 140px;
   position: relative;
+
+  @media (orientation: portrait) {
+    display: none;
+  }
+  @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
+    display: none;
+  }
+  @media (max-width: 400px) and (max-height: 400px) {
+    display: none;
+  }
+  @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
+    display: none;
+  }
+  @media (orientation: portrait) {
+    display: none;
+  }
+  @media (max-width: 400px) and (max-height: 450px) {
+    display: none;
+  }
+  @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
+    display: none;
+  }
 `;
 const Home = styled(StyledLink)`
   position: absolute;
@@ -87,6 +109,9 @@ const Home = styled(StyledLink)`
   padding: 15px;
   width: 30.5%;
   text-align: center;
+  @media (max-height: 315px) {
+    display: none;
+  }
   @media (orientation: portrait) {
     display: none;
   }
@@ -98,6 +123,18 @@ const Home = styled(StyledLink)`
   }
   @media (min-width: 800px) and (min-height: 375px) {
     width: 31%;
+  }
+  @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
+    display: none;
+  }
+  @media (orientation: portrait) {
+    display: none;
+  }
+  @media (max-width: 400px) and (max-height: 450px) {
+    display: none;
+  }
+  @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
+    display: none;
   }
 `;
 const Landscape = () => {

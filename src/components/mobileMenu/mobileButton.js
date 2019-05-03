@@ -15,7 +15,9 @@ const ButtonContainer = styled.div`
   right: 15px;
   z-index: 99;
   opacity: 0.9;
-
+  @media (max-width: 300px) {
+    right: 15%;
+  }
   @media (orientation: landscape) and (max-width: 600px) {
     /* top: 52px;
     right: 15px; */

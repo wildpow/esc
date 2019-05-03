@@ -21,6 +21,9 @@ const Panda = styled.img`
   @media (min-width: 500px) and (min-height: 850px) {
     width: 200px;
   }
+  @media (max-height: 480px) {
+    display: none;
+  }
 `;
 const StyledLink = styled(Link)`
   font-family: Roboto, sans-serif;
@@ -42,6 +45,12 @@ const StyledLink = styled(Link)`
   /* @media (min-width: 500px) and (min-height: 850px) {
     font-size: 2.5rem;
   } */
+  @media (max-width: 300px) {
+    text-align: center;
+  }
+  @media (max-height: 499px) {
+    text-align: center;
+  }
   @media (min-width: 375px) {
     font-size: 1.4rem;
   }
@@ -137,6 +146,9 @@ const Space = styled.div`
   @media (min-width: 414px) and (min-height: 736px) {
     height: 125px;
     width: 100%;
+  }
+  @media (max-height: 480px) {
+    display: none;
   }
 `;
 const ShiftTextOnHover = styled.div`
