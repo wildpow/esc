@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 const StyledLink = styled(Link)`
-  font-family: Roboto, sans-serif;
+  font-family: ${props => props.theme.MainFont1};
   font-size: 1.1rem;
   text-decoration: none;
   font-weight: 700;
@@ -16,7 +16,6 @@ const StyledLink = styled(Link)`
   margin: 6px;
   padding: 15px;
   text-align: center;
-  /* box-shadow: 0 10px 6px -6px rgba(255, 255, 255, 0.1); */
   &:hover {
     cursor: pointer;
     background-color: rgba(17, 75, 95, 0.4);

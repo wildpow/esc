@@ -13,7 +13,7 @@ const Container = styled.div`
   top: 0;
   right: 0;
   height: 100vh;
-  background: #1565c0;
+  background: ${props => props.theme.mainColor1};
   opacity: ${props => (props.menuToggle ? 1 : 0)};
   color: #fafafa;
   z-index: 20;
@@ -42,25 +42,6 @@ const Container = styled.div`
   @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
     width: 40%;
   }
-
-  /* @media (min-width: 850px) and (max-width: 1022px) and (max-height: 650px) {
-    width: 100%;
-  }
-  @media (min-width: 850px) and (max-width: 1022px) and (min-height: 651px) {
-    width: 35%;
-  }
-  @media (orientation: landscape) and (max-width: 850px) {
-    width: 100%;
-  }
-  @media (min-width: 700px) and (max-width: 850px) and (min-height: 750px) and (max-height: 850px) {
-    width: 35%;
-  }
-  @media (min-height: 900px) and (min-width: 600px) {
-    width: 45%;
-  }
-  @media (min-height: 940px) and (min-width: 940px) {
-    width: 35%;
-  } */
 `;
 
 function useKeyboardEvent(key, callback) {

@@ -26,12 +26,12 @@ const Panda = styled.img`
   }
 `;
 const StyledLink = styled(Link)`
-  font-family: Roboto, sans-serif;
+  font-family: ${props => props.theme.MainFont1};
   font-size: 1.1rem;
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.2rem;
-  color: #fafafa;
+  color: white;
   padding-left: 10px;
   background-color: inital;
   transition: background-color 0.2s ease-in-out;
@@ -42,9 +42,6 @@ const StyledLink = styled(Link)`
   &:active {
     background-color: rgba(235, 28, 26, 0.8);
   }
-  /* @media (min-width: 500px) and (min-height: 850px) {
-    font-size: 2.5rem;
-  } */
   @media (max-width: 300px) {
     text-align: center;
   }
@@ -63,12 +60,6 @@ const StyledLink = styled(Link)`
   @media (orientation: portrait) and (min-height: 800px) {
     font-size: 1.4rem;
   }
-  /* @media (orientation: portrait) and (min-height: 800px) and (min-width: 800px) {
-    font-size: 1rem;
-  } */
-  /* @media (min-width: 600px) and (min-height: 700px) {
-    font-size: 1.5rem;
-  } */
   @media (min-height: 600px) and (min-width: 900px) and (max-width: 1022px) {
     font-size: 1.5rem;
   }
