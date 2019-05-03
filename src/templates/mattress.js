@@ -66,6 +66,7 @@ const Mattress = ({ data }) => {
             img2={mattress.detail2.handle}
             fullname={mattress.name}
             type="mattress"
+            saleBanner={mattress.saleBanner}
           />
           <MainInfo>
             <Stuff>
@@ -121,6 +122,7 @@ export const query = graphql`
         subName
         subBrand
         name
+        saleBanner
         freeBoxSpring
         discription
         features
