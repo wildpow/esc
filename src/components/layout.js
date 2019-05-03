@@ -83,7 +83,12 @@ class Layout extends React.Component {
     if (prevState.menuToggle === true && menuToggle === false) {
       this.afterAnimation();
     }
-    if (width >= 1022 && prevState.width <= 1022) {
+    if (
+      width >= 1022 &&
+      prevState.width <= 1022 &&
+      prevState.menuToggle === true &&
+      menuToggle === true
+    ) {
       this.onUpdate();
     }
     return null;
@@ -116,6 +121,7 @@ class Layout extends React.Component {
 
   closeonEsc() {
     document.body.style.overflow = "visible";
+    document.body.style.position = "initial";
     this.setState({ menuToggle: false, outsideMenuEvents: false });
   }
 
