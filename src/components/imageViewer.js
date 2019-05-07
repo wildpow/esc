@@ -11,11 +11,45 @@ import {
 import { Banner } from "./mattThumbNail/mattThumbStyles";
 
 const BigBanner = styled(Banner)`
-  @media (min-width: 1024px) {
-    /* font-size: 1.5rem;
+  font-size: 0.6rem;
+  @media (min-width: 360px) and (orientation: portrait) {
+    font-size: 0.7rem;
+    margin-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    /* padding-right: 5px; */
+    text-align: left;
+  }
+
+  @media (max-width: 736px) and (orientation: landscape) {
+    font-size: 0.8rem;
+    margin-left: 0px;
+    width: 80%;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+  @media (min-width: 810px) and (orientation: landscape) {
+    margin-left: 0;
+  }
+  @media (min-width: 768px) and (orientation: portrait) {
+    font-size: 1.1rem;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 0px;
+    width: 75%;
+  }
+  @media (min-width: 1024px) and (orientation: landscape) {
+    font-size: 1.3rem;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 20px;
     width: 70%;
     text-align: left;
-    padding-left: 8%; */
   }
 `;
 class ImageViewer extends React.PureComponent {
@@ -45,10 +79,7 @@ class ImageViewer extends React.PureComponent {
     const { currentImageIndex } = this.state;
     const ImagesArray = [cover, img1, img2];
     return (
-      // style={{ position: "relative" }}
       <ImgWrapper>
-        {console.log(saleBanner)}
-        {/* style={{ position: "relative" }} */}
         <NodeGroup
           data={[currentImageIndex]}
           keyAccessor={d => d}
@@ -106,7 +137,6 @@ class ImageViewer extends React.PureComponent {
             data-id={1}
             alt={`Small image of ${fullname} ${type}`}
           />
-          {console.log()}
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
