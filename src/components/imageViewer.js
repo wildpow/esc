@@ -19,14 +19,14 @@ const BigBanner = styled(Banner)`
     padding-bottom: 5px;
     padding-left: 10px;
     /* padding-right: 5px; */
-    text-align: left;
+    /* text-align: left; */
   }
 
   @media (max-width: 736px) and (orientation: landscape) {
     font-size: 0.8rem;
     margin-left: 0px;
     width: 80%;
-    text-align: left;
+    /* text-align: left; */
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -49,7 +49,7 @@ const BigBanner = styled(Banner)`
     padding-bottom: 7px;
     padding-left: 20px;
     width: 70%;
-    text-align: left;
+    /* text-align: left; */
   }
 `;
 class ImageViewer extends React.PureComponent {
