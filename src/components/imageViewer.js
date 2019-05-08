@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import PropTypes from "prop-types";
 import { NodeGroup } from "react-move";
 import {
@@ -7,7 +8,50 @@ import {
   SmImg,
   LargeImg,
 } from "../styles/imageViewerStyles";
+import { Banner } from "./mattThumbNail/mattThumbStyles";
 
+const BigBanner = styled(Banner)`
+  font-size: 0.6rem;
+  @media (min-width: 360px) and (orientation: portrait) {
+    font-size: 0.7rem;
+    margin-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    /* padding-right: 5px; */
+    /* text-align: left; */
+  }
+
+  @media (max-width: 736px) and (orientation: landscape) {
+    font-size: 0.8rem;
+    margin-left: 0px;
+    width: 80%;
+    /* text-align: left; */
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+  @media (min-width: 810px) and (orientation: landscape) {
+    margin-left: 0;
+  }
+  @media (min-width: 768px) and (orientation: portrait) {
+    font-size: 1.1rem;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 0px;
+    width: 75%;
+  }
+  @media (min-width: 1024px) and (orientation: landscape) {
+    font-size: 1.3rem;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 20px;
+    width: 70%;
+    /* text-align: left; */
+  }
+`;
 class ImageViewer extends React.PureComponent {
   static propTypes = {
     cover: PropTypes.string.isRequired,
@@ -31,13 +75,11 @@ class ImageViewer extends React.PureComponent {
   };
 
   render() {
-    const { cover, img1, img2, fullname, type, base } = this.props;
+    const { cover, img1, img2, fullname, type, base, saleBanner } = this.props;
     const { currentImageIndex } = this.state;
     const ImagesArray = [cover, img1, img2];
     return (
-      // style={{ position: "relative" }}
       <ImgWrapper>
-        {/* style={{ position: "relative" }} */}
         <NodeGroup
           data={[currentImageIndex]}
           keyAccessor={d => d}
@@ -61,6 +103,9 @@ class ImageViewer extends React.PureComponent {
             <div style={{ position: "relative" }}>
               {nodes.map(({ key, data, state: { opacity } }) => (
                 <div key={key} style={{ opacity, position: "relative" }}>
+                  {data === 0 && saleBanner && (
+                    <BigBanner>{saleBanner}</BigBanner>
+                  )}
                   <LargeImg
                     src={`https://media.graphcms.com/resize=w:500,h:500,fit:clip/${
                       ImagesArray[data]
@@ -92,7 +137,6 @@ class ImageViewer extends React.PureComponent {
             data-id={1}
             alt={`Small image of ${fullname} ${type}`}
           />
-          {console.log()}
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
