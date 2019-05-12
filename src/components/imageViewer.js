@@ -18,6 +18,7 @@ const BigBanner = styled(Banner)`
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
+    width: 75%;
     /* padding-right: 5px; */
     /* text-align: left; */
   }
@@ -34,6 +35,7 @@ const BigBanner = styled(Banner)`
   }
   @media (min-width: 810px) and (orientation: landscape) {
     margin-left: 0;
+    width: 75%;
   }
   @media (min-width: 768px) and (orientation: portrait) {
     font-size: 1.1rem;

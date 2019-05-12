@@ -4,68 +4,81 @@ import { Link } from "gatsby";
 import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
 export const AdjMarkdown = styled(ReactMarkdown)`
-  font-family: ${props => props.theme.MainFont1};
-  padding: 30px;
+  font-family: ${props => props.theme.MainFont3};
+  padding: 0px;
+  margin-top: 7%;
+  width: 50%;
   display: none;
-  & p {
+  p {
     border-bottom: 4px solid ${props => props.theme.mainColor2};
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     margin-top: 0;
     margin-bottom: 0;
     padding-bottom: 2px;
+    padding-left: 20px;
+    margin-left: 20px;
   }
-  & ul {
+  ul {
     list-style: square;
     margin-top: 10px;
+    padding-right: 10px;
     font-size: 1rem;
   }
-  & li {
+  li {
+    line-height: 1.35rem;
     padding-bottom: 2px;
+    font-size: 0.9rem;
   }
   @media (min-width: 568px) {
-    font-family: ${props => props.theme.MainFont3};
     display: block;
-    padding: 30px;
-
-    & p {
-      border-bottom: 4px solid ${props => props.theme.mainColor2};
-      font-size: 1.6rem;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding-bottom: 2px;
-    }
-    & ul {
-      list-style: square;
-      margin-top: 10px;
-      font-size: 1rem;
-    }
-    & li {
-      padding-bottom: 2px;
-      font-size: 0.9rem;
-    }
   }
-  @media (min-width: 992px) {
-    padding: 30px;
-
-    & p {
-      font-size: 2.4rem;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding-bottom: 2px;
-    }
-    & ul {
-      margin-top: 10px;
-      font-size: 1.8rem;
-    }
-    & li {
-      padding-bottom: 2px;
+  @media (min-width: 640px) {
+    p {
       font-size: 1.4rem;
     }
   }
-  @media (min-width: 1300px) {
-    & p {
-      font-weight: 700;
+  @media (min-width: 731px) {
+    margin-top: 5%;
+    p {
+      padding-bottom: 3px;
+      font-size: 1.6rem;
+    }
+    li {
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+    }
+  }
+  @media (min-width: 992px) {
+    p {
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-bottom: 2px;
+    }
+    ul {
+      margin-top: 10px;
+    }
+    li {
+      padding-bottom: 2px;
+      font-size: 1.2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    p {
       font-size: 2rem;
+      padding-bottom: 4px;
+      font-weight: 700;
+    }
+    li {
+      font-size: 1.4rem;
+      line-height: 2.1rem;
+      letter-spacing: 0.03rem;
+    }
+  }
+  @media (min-width: 1300px) {
+    p {
+      font-size: 2rem;
+      padding-left: 7%;
     }
   }
 `;
@@ -85,8 +98,6 @@ export const Main = styled(FlexCol)`
 `;
 
 export const StyledLink = styled(Link)`
-  /* box-shadow: ${props => props.theme.newBoxShadow}; */
-  /* border: ${props => props.theme.Border}; */
   text-decoration: none;
   margin-left: 2px;
   margin-right: 2px;
@@ -101,9 +112,7 @@ export const StyledLink = styled(Link)`
   box-shadow: ${props => props.theme.hoverBoxBefore};
   &:hover {
     transform: ${props => props.theme.hoverTransform};
-  box-shadow: ${props => props.theme.hoverBoxAfter};
-    /* z-index: 999;
-    transform: scale3d(1.02, 1.02, 1); */
+    box-shadow: ${props => props.theme.hoverBoxAfter};
   }
 `;
 
@@ -118,21 +127,24 @@ export const H3 = styled.h3`
   font-size: 1rem;
   padding: 10px 5px 10px 5px;
   letter-spacing: 0.12rem;
-  @media (min-width: 581px) {
-    font-size: 1.2rem;
+  @media (min-width: 560px) {
+    font-size: 1.4rem;
     padding: 10px 30px 10px 30px;
   }
   @media (min-width: 692px) {
-    text-align: left;
     word-spacing: 0.18rem;
     letter-spacing: 0.17rem;
   }
+  @media (min-width: 731px) {
+    font-size: 1.5rem;
+  }
   @media (min-width: 1024px) {
     letter-spacing: 0.19rem;
-    font-size: 1.3rem;
+    font-size: 1.75rem;
   }
   @media (min-width: 1300px) {
     font-size: 1.8rem;
+    text-align: left;
   }
 `;
 
@@ -147,11 +159,10 @@ export const Img = styled.img`
   color: white;
   width: 240px;
   height: 240px;
-  align-self: center;
+  margin: 0 auto;
   @media (min-width: 991px) {
     width: 350px;
     height: 350px;
     align-self: center;
-    margin-left: 20px;
   }
 `;

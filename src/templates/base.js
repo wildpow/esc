@@ -47,6 +47,7 @@ const Base = ({ data }) => {
         </header>
         <Main>
           <ImageViewer
+            saleBanner={AdjBases.saleBanner}
             cover={AdjBases.coverImg.handle}
             img1={AdjBases.detail1.handle}
             img2={AdjBases.detail2.handle}
@@ -92,6 +93,7 @@ export const query = graphql`
   query SingleAjustableQuery($uri: String!) {
     gcms {
       AdjBases(uri: $uri) {
+        saleBanner
         id
         uri
         fullName
