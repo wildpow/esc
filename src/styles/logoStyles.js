@@ -44,7 +44,6 @@ export const H1 = styled.h1`
   color: ${props => props.theme.mainColor2};
   text-shadow: ${props => props.theme.newTextShadow};
   background-color: white;
-  /* transition: all 0.25s ease-in; */
   z-index: 1;
   align-self: center;
   margin-bottom: 0;
@@ -86,7 +85,7 @@ export const ReadersChoice = styled.img`
   z-index: 51;
   /* z-index: ${props => (props.menuToggle ? 0 : 51)}; */
   opacity: ${props => (props.menuToggle ? 0.2 : 1)};
-  transition: scale3d 0.25s ease-in;
+  transition: transform 0.25s ease-in;
   cursor: pointer;
   &:hover {
     transform: scale3d(1.1, 1.1, 1);

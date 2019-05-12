@@ -89,6 +89,7 @@ export const BottomLinkWrapper = styled.div`
 
 export const BottomLinks = styled(Link)`
   color: ${props => props.theme.mainColor1};
+  transition: color 0.2s ease-in;
   &:hover {
     color: ${props => props.theme.mainColor2};
   }

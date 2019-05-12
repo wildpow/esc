@@ -16,7 +16,7 @@ const BirdLink = styled.a`
 `;
 
 const CertReview = styled.div`
-  transition: all 0.15s ease-in;
+  transition: all 0.25s ease-in;
   &:hover {
     transform: scale3d(1.05, 1.05, 1);
   }
