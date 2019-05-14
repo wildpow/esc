@@ -25,9 +25,11 @@ const Navigation = () => (
                 left="left"
                 partiallyActive
                 activeStyle={{
+                  color: "#0d469b",
+                  transform: "scale3d(1.05, 1.05, 1)",
+                  transition: "all 0.3s ease-in-out",
                   borderRadius: "1px",
-                  borderBottom: `5px solid ${theme.mainColor2}`,
-                  borderTop: `0px solid ${theme.mainColor2}`,
+                  borderColor: `${theme.mainColor2}`,
                 }}
                 to={item.url}
               >
@@ -43,9 +45,11 @@ const Navigation = () => (
                 partiallyActive
                 to={item.url}
                 activeStyle={{
+                  color: "#0d469b",
+                  transform: "scale3d(1.05, 1.05, 1)",
+                  transition: "all 0.3s ease-in-out",
                   borderRadius: "1px",
-                  borderBottom: `5px solid ${theme.mainColor2}`,
-                  borderTop: `0px solid ${theme.mainColor2}`,
+                  borderColor: `${theme.mainColor2}`,
                 }}
               >
                 {item.name}

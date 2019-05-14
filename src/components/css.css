@@ -1,0 +1,21 @@
+.active {
+  content: "";
+  position: relative;
+  width: 100%;
+  height: 1px;
+  bottom: 0px;
+  left: 0;
+  color: rgb(247, 7, 7);
+  border-bottom: 5px solid rgb(247, 7, 7);
+  transition: all 0.3s ease-in-out 0s;
+  visibility: visible;
+}
+
+keyframes progress-bar {
+  0% {
+    width: 0;
+  }
+}
+.progress-bar {
+  animation: progress-bar 2s;
+}
