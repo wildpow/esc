@@ -60,29 +60,30 @@ export const StyledLink = styled(Link)`
   /* &:hover {
     border-top: 4px solid ${props => props.theme.mainColor2};
   } */
+  /* transition: all .2s ease-in-out !important; */
   position: relative;
-  border-bottom: 5px solid transparent;
+  border-bottom: 6px solid transparent;
   text-decoration: none;
   :hover{
     color: ${props => props.theme.mainColor1};
   }
-  :enabled {
+  /* :enabled {
     transform: translateY(-4px);
-  }
+  } */
   :before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 5px;
-  bottom: -5px;
+  height: 6px;
+  bottom: -6px;
   left: 0;
-  border-radius: 10px;
+  /* border-radius: 5px; */
   background-color: ${props => props.theme.mainColor2};
   visibility: hidden;
   /* -webkit-transform: scaleX(0); */
   transform: scaleX(0);
   /* -webkit-transition: all 0.3s ease-in-out 0s; */
-  transition: all .4s ease-in-out 0s;
+  transition: all .3s ease-in-out 0s;
 }
 :hover:before {
   visibility: visible;

@@ -26,12 +26,13 @@ const Navigation = () => (
                 partiallyActive
                 activeStyle={{
                   color: "#0d469b",
-                  transform: "scale3d(1.05, 1.05, 1)",
-                  transition: "all 0.3s ease-in-out",
-                  borderRadius: "1px",
+                  transition: "all .5s ease-in-out",
+                  textShadow: "2px 2px 4px rgba(52, 52, 52, 0.2)",
                   borderColor: `${theme.mainColor2}`,
+                  boxShadow: `0px 6px 6px -6px rgba(52,52,52,0.41)`,
                 }}
                 to={item.url}
+                styles={{ transition: "all .5s ease-in-out" }}
               >
                 {item.name}
               </StyledLink>
@@ -46,10 +47,10 @@ const Navigation = () => (
                 to={item.url}
                 activeStyle={{
                   color: "#0d469b",
-                  transform: "scale3d(1.05, 1.05, 1)",
-                  transition: "all 0.3s ease-in-out",
-                  borderRadius: "1px",
+                  transition: "all .5s ease-in-out",
+                  textShadow: "2px 2px 4px rgba(52, 52, 52, 0.2)",
                   borderColor: `${theme.mainColor2}`,
+                  boxShadow: `0px 6px 6px -6px rgba(52,52,52,0.41)`,
                 }}
               >
                 {item.name}
