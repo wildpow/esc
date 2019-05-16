@@ -27,9 +27,9 @@ const Navigation = () => (
                 activeStyle={{
                   color: "#0d469b",
                   transition: "all .5s ease-in-out",
-                  textShadow: "2px 2px 4px rgba(52, 52, 52, 0.2)",
+                  // textShadow: "2px 2px 4px rgba(52, 52, 52, 0.2)",
                   borderColor: `${theme.mainColor2}`,
-                  boxShadow: `0px 6px 6px -6px rgba(52,52,52,0.41)`,
+                  boxShadow: `0px 6px 6px -6px rgba(52,52,52,0.51)`,
                 }}
                 to={item.url}
                 styles={{ transition: "all .5s ease-in-out" }}
@@ -48,9 +48,9 @@ const Navigation = () => (
                 activeStyle={{
                   color: "#0d469b",
                   transition: "all .5s ease-in-out",
-                  textShadow: "2px 2px 4px rgba(52, 52, 52, 0.2)",
+                  // textShadow: "2px 2px 4px rgba(52, 52, 52, 0.2)",
                   borderColor: `${theme.mainColor2}`,
-                  boxShadow: `0px 6px 6px -6px rgba(52,52,52,0.41)`,
+                  boxShadow: `0px 6px 6px -6px rgba(52,52,52,0.51)`,
                 }}
               >
                 {item.name}

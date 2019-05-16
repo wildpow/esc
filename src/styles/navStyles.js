@@ -83,7 +83,7 @@ export const StyledLink = styled(Link)`
   /* -webkit-transform: scaleX(0); */
   transform: scaleX(0);
   /* -webkit-transition: all 0.3s ease-in-out 0s; */
-  transition: all .3s ease-in-out 0s;
+  transition: all .2s ease-in-out 0s;
 }
 :hover:before {
   visibility: visible;
