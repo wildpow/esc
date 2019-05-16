@@ -36,6 +36,23 @@ const Sealy = ({ data }) => {
         <Wrapper>
           {allMattresses.map(mattress => {
             if (mattress.subLine !== null) {
+              if (mattress.subLine.subLineName === "Golden Elegance") {
+                return (
+                  <>
+                    <MattressThumb
+                      key={mattress.id}
+                      mattress={mattress}
+                      url={`/brands/${title}/${mattress.uri}`}
+                    />
+                  </>
+                );
+              }
+              return null;
+            }
+            return null;
+          })}
+          {allMattresses.map(mattress => {
+            if (mattress.subLine !== null) {
               if (mattress.subLine.subLineName === "Essentials") {
                 return (
                   <MattressThumb

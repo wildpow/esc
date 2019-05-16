@@ -25,11 +25,14 @@ const Navigation = () => (
                 left="left"
                 partiallyActive
                 activeStyle={{
-                  borderRadius: "1px",
-                  borderBottom: `5px solid ${theme.mainColor2}`,
-                  borderTop: `0px solid ${theme.mainColor2}`,
+                  color: "#0d469b",
+                  transition: "all .5s ease-in-out",
+                  // textShadow: "2px 2px 4px rgba(52, 52, 52, 0.2)",
+                  borderColor: `${theme.mainColor2}`,
+                  boxShadow: `0px 6px 6px -6px rgba(52,52,52,0.51)`,
                 }}
                 to={item.url}
+                styles={{ transition: "all .5s ease-in-out" }}
               >
                 {item.name}
               </StyledLink>
@@ -43,9 +46,11 @@ const Navigation = () => (
                 partiallyActive
                 to={item.url}
                 activeStyle={{
-                  borderRadius: "1px",
-                  borderBottom: `5px solid ${theme.mainColor2}`,
-                  borderTop: `0px solid ${theme.mainColor2}`,
+                  color: "#0d469b",
+                  transition: "all .5s ease-in-out",
+                  // textShadow: "2px 2px 4px rgba(52, 52, 52, 0.2)",
+                  borderColor: `${theme.mainColor2}`,
+                  boxShadow: `0px 6px 6px -6px rgba(52,52,52,0.51)`,
                 }}
               >
                 {item.name}
