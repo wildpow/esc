@@ -71,7 +71,8 @@ export const MainTitle = styled(H2)`
   @media print {
     color: black;
     text-shadow: none;
-    border: 1px solid grey;
+    border-bottom: 1px solid ${props => props.theme.mainColor1};
+    text-align: left;
   }
 `;
 
@@ -297,6 +298,9 @@ export const InfoAnchor = styled(AnchorLink)`
   @media (min-width: 1024px) {
     padding-left: 55px;
     font-size: 1.6rem;
+  }
+  @media print {
+    display: none;
   }
 `;
 

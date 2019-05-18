@@ -19,10 +19,19 @@ const SharedLinkStyles = css`
 `;
 export const OutBoundLink = styled.a`
   ${SharedLinkStyles}
+  @media print {
+    position: absolute;
+    color: black;
+    text-shadow: none;
+    display: block;
+  }
 `;
 
 export const InboundLink = styled(Link)`
   ${SharedLinkStyles}
+  @media print {
+    display: none;
+  }
 `;
 
 export const Top = styled.div`
@@ -56,6 +65,9 @@ export const Top = styled.div`
   @media (min-width: 1024px) {
     font-size: 1.5rem;
     letter-spacing: 0.19rem;
+  }
+  @media print {
+    box-shadow: none;
   }
 `;
 
