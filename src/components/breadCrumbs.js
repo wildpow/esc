@@ -36,6 +36,9 @@ export const BreadWrapper = styled.div`
     margin-right: ${props => (props.Blog ? "220px" : "85px")};
     margin-left: ${props => (props.Blog ? "220px" : "85px")};
   }
+  @media print {
+    display: none;
+  }
 `;
 const Span = styled.span`
   padding-right: 5px;

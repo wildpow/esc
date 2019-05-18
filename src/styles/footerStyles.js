@@ -49,6 +49,9 @@ export const Social = styled(FlexRow)`
   justify-content: center;
   padding: 7px 7px 4px 7px;
   background-color: ${props => (props.Red ? props.theme.mainColor2 : "white")};
+  @media print {
+    display: none;
+  }
 `;
 
 export const FBimage = styled(ImgHover)`
