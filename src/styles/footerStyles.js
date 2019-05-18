@@ -190,6 +190,7 @@ export const BottomLinkWrapper = styled(FlexCol)`
   @media (min-width: 1024px) {
     font-size: 1.3rem;
   }
+ 
 `;
 
 export const BottomLinks = styled(Link)`

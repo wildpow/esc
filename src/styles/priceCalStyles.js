@@ -41,6 +41,10 @@ export const DropDown = styled.select`
   @media (min-width: 1300px) {
     margin-bottom: 10px;
   }
+  @media print {
+    border-color: black;
+    color: black;
+  }
 `;
 export const DropDownSize = styled(DropDown)`
   @media (min-width: 567px) {

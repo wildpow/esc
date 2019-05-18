@@ -85,6 +85,9 @@ export const BottomLinkWrapper = styled.div`
     font-size: 1.3em;
     margin-bottom: 12px;
   }
+  @media print {
+    display: none;
+  }
 `;
 
 export const BottomLinks = styled(Link)`

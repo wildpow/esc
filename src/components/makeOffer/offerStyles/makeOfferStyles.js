@@ -4,6 +4,9 @@ export const MakeOfferContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  @media print {
+    display: none;
+  }
 `;
 
 export const MakeOfferButton = styled.button`

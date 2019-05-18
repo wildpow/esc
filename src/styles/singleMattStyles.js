@@ -68,6 +68,11 @@ export const MainTitle = styled(H2)`
     /* padding-top: 15px;
     padding-bottom: 15px; */
   }
+  @media print {
+    color: black;
+    text-shadow: none;
+    border: 1px solid grey;
+  }
 `;
 
 export const MainImg = styled.img`
