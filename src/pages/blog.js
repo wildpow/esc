@@ -61,6 +61,7 @@ export const blogList = graphql`
       allPosts(orderBy: dateAndTime_DESC, filter: { isPublished: true }) {
         slug
         title
+        content
         dateAndTime
         coverImage {
           handle
