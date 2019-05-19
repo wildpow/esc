@@ -13,9 +13,9 @@ export const Wrapper = styled(FlexCol)`
   @media (min-width: 1300px) {
     margin-top: -90px;
   }
-  /* @media print {
-    margin-top: -100px;
-  } */
+  @media print {
+    margin-top: -20px;
+  }
 `;
 
 export const StyledLink = styled(Link)`

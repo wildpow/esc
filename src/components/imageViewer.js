@@ -53,6 +53,12 @@ const BigBanner = styled(Banner)`
     width: 70%;
     /* text-align: left; */
   }
+  @media print {
+    font-size: 1.4rem;
+    border-bottom: 4px solid ${props => props.theme.mainColor2};
+    color: black;
+    text-align: left;
+  }
 `;
 class ImageViewer extends React.PureComponent {
   static propTypes = {

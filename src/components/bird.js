@@ -45,6 +45,11 @@ const CertReview = styled.div`
       font-size: 0.9rem;
     }
   }
+  @media print {
+    color: black;
+    box-shadow: none;
+    text-shadow: none;
+  }
 `;
 
 const Words = styled.div`

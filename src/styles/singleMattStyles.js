@@ -19,6 +19,9 @@ export const Wrapper = styled(FlexCol)`
     margin-right: 85px;
     margin-left: 85px;
   }
+  @media print {
+    box-shadow: none;
+  }
 `;
 
 export const Main = styled(FlexRow)`
@@ -71,7 +74,7 @@ export const MainTitle = styled(H2)`
   @media print {
     color: black;
     text-shadow: none;
-    border-bottom: 1px solid ${props => props.theme.mainColor1};
+    border-bottom: 4px solid ${props => props.theme.mainColor1};
     text-align: left;
   }
 `;
@@ -136,6 +139,9 @@ export const Description = styled.p`
     padding-left: 80px;
     line-height: 2.35rem;
     padding-bottom: 10px;
+  }
+  @media print {
+    font-size: 1rem;
   }
 `;
 
@@ -370,6 +376,14 @@ export const Construction = styled(Markdown)`
     & li {
       padding-bottom: 2px;
       font-size: 1.4rem;
+    }
+  }
+  @media print {
+    p {
+      font-size: 1.3rem;
+    }
+    li {
+      font-size: 1rem;
     }
   }
 `;

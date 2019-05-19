@@ -15,6 +15,9 @@ export const MainFooter = styled.footer`
   @media (min-width: 1366px) {
     width: 100%;
   }
+  @media print {
+    margin-top: 0;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -36,6 +39,11 @@ export const Wrapper = styled.div`
     padding-left: 0px;
     margin-left: 135px;
     margin-right: 135px;
+  }
+  @media print {
+    border-top: 2px solid ${props => props.theme.mainColor1};
+
+    box-shadow: none;
   }
 `;
 const ImgHover = styled.img`
