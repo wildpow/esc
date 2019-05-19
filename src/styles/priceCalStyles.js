@@ -41,6 +41,12 @@ export const DropDown = styled.select`
   @media (min-width: 1300px) {
     margin-bottom: 10px;
   }
+  @media print {
+    border-color: black;
+    color: black;
+    font-size: 1.2rem;
+    width: 220px;
+  }
 `;
 export const DropDownSize = styled(DropDown)`
   @media (min-width: 567px) {
@@ -72,6 +78,9 @@ export const PriceTitle = styled.h4`
   }
   @media (min-width: 1300px) {
     margin-top: 2px;
+  }
+  @media print {
+    font-size: 1.2rem;
   }
 `;
 
@@ -124,6 +133,11 @@ export const BeforeSalePrice = styled.h6`
   @media (min-width: 1300px) {
     margin-right: 35px;
   }
+  @media print {
+    font-size: 1.3rem;
+
+    margin-top: 20px;
+  }
 `;
 
 export const Total = styled.h4`
@@ -149,6 +163,9 @@ export const Total = styled.h4`
   @media (min-width: 1300px) {
     margin-right: 35px;
   }
+  @media print {
+    font-size: 1.7rem;
+  }
 `;
 
 export const Wrapper = styled(FlexCol)`
@@ -166,4 +183,8 @@ export const Wrapper = styled(FlexCol)`
 
 export const DropDownWrapper = styled.div`
   align-self: center;
+  @media print {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 `;

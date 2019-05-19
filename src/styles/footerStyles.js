@@ -15,6 +15,9 @@ export const MainFooter = styled.footer`
   @media (min-width: 1366px) {
     width: 100%;
   }
+  @media print {
+    margin-top: 0;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -37,6 +40,11 @@ export const Wrapper = styled.div`
     margin-left: 135px;
     margin-right: 135px;
   }
+  @media print {
+    border-top: 2px solid ${props => props.theme.mainColor1};
+
+    box-shadow: none;
+  }
 `;
 const ImgHover = styled.img`
   color: white;
@@ -49,6 +57,9 @@ export const Social = styled(FlexRow)`
   justify-content: center;
   padding: 7px 7px 4px 7px;
   background-color: ${props => (props.Red ? props.theme.mainColor2 : "white")};
+  @media print {
+    display: none;
+  }
 `;
 
 export const FBimage = styled(ImgHover)`
@@ -187,6 +198,7 @@ export const BottomLinkWrapper = styled(FlexCol)`
   @media (min-width: 1024px) {
     font-size: 1.3rem;
   }
+ 
 `;
 
 export const BottomLinks = styled(Link)`

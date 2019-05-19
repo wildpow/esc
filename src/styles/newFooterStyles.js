@@ -36,6 +36,9 @@ export const BottomIconWrapper = styled.div`
   @media (min-width: 1024px) {
     justify-content: space-evenly;
   }
+  @media print {
+    display: none;
+  }
 `;
 
 // export const BBBIcon = styled.img``;
@@ -85,6 +88,9 @@ export const BottomLinkWrapper = styled.div`
     font-size: 1.3em;
     margin-bottom: 12px;
   }
+  @media print {
+    display: none;
+  }
 `;
 
 export const BottomLinks = styled(Link)`
@@ -110,11 +116,17 @@ export const Bird667Container = styled.div`
   @media (min-width: 1366px) {
     padding-top: 5px;
   }
+  @media print {
+    display: block;
+  }
 `;
 
 export const BirdContainerSmall = styled.div`
   display: block;
   @media (min-width: 667px) {
+    display: none;
+  }
+  @media print {
     display: none;
   }
 `;

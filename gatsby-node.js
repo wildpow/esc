@@ -116,7 +116,7 @@ exports.createPages = async ({ actions, graphql }) => {
   });
   data.gcms.allMattresses.forEach(mattress => {
     actions.createPage({
-      path: `/brands/${mattress.uriBrandName}/${mattress.uri}`,
+      path: `/brands/${mattress.uriBrandName.toLowerCase()}/${mattress.uri}`,
       component: path.resolve(`./src/templates/mattress.js`),
       context: {
         uri: mattress.uri,
