@@ -24,6 +24,10 @@ export const OutBoundLink = styled.a`
     color: black;
     text-shadow: none;
     display: block;
+    text-shadow: none;
+    font-weight: 700;
+    border-bottom: 2px solid ${props => props.theme.mainColor2};
+    font-size: 1.3rem;
   }
 `;
 
