@@ -1,62 +1,58 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
+import styled from "styled-components";
 import { graphql } from "gatsby";
-import {
-  Section,
-  Homebutton,
-  ShowMoreWrapper,
-  Main,
-} from "../styles/blogListStyles";
-import { H2 } from "../styles/mainStyles";
 import Layout from "../components/layout";
-import BlogList from "../components/blog/blogList";
-import SEO from "../components/seo";
+import PostThumbnail from "../components/blog/postThumbnail";
 
-class Blog extends React.Component {
-  static propTypes = {
-    data: PropTypes.instanceOf(Object).isRequired,
-  };
+const PostsContainer = styled.div`
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-area: posts;
+`;
 
-  state = {
-    postsToShow: 4,
-  };
+const BlogContainer = styled.div`
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas:
+    "header"
+    "posts"
+    "footer";
+`;
+const Button = styled.button`
+  grid-area: "footer";
+`;
+const Header = styled.header`
+  grid-area: header;
+`;
+const Blog = ({ data }) => {
+  const { allPosts } = data.gcms;
+  const [numberOfPosts, setNumberOfPosts] = useState(4);
+  return (
+    <Layout>
+      <BlogContainer>
+        <Header>
+          Come read about ways to achieve better sleep, and live healthier from
+          people who have been helping people sleep better for 20+ years. Check
+          here to see our schedule of professional speakers speaking on sleep
+          topics.
+        </Header>
+        <PostsContainer>
+          <PostThumbnail allPosts={allPosts} numberOfPosts={numberOfPosts} />
+        </PostsContainer>
+        {numberOfPosts < allPosts.length && (
+          <Button
+            onClick={() => setNumberOfPosts(numberOfPosts + 4)}
+            type="button"
+          >
+            Show More Posts
+          </Button>
+        )}
+      </BlogContainer>
+    </Layout>
+  );
+};
 
-  render() {
-    const { data } = this.props;
-    const { postsToShow } = this.state;
-    const items = data.gcms.allPosts;
-    return (
-      <Layout>
-        <SEO
-          title="ESC: Blog"
-          description="Come read about ways to achieve better sleep, and live healthier from people who have been helping people sleep better for 20+ years. Check here to see our schedule of professional speakers speaking on sleep topics."
-          ogTitle="E.S.C. Mattress Center | Blog"
-        />
-        <Main>
-          <header>
-            <H2>Our Blog</H2>
-          </header>
-          <Section>
-            <BlogList items={items} count={postsToShow} />
-            <ShowMoreWrapper>
-              {postsToShow < items.length && (
-                <Homebutton
-                  onClick={() => {
-                    this.setState({
-                      postsToShow: postsToShow + 4,
-                    });
-                  }}
-                >
-                  Show More Posts
-                </Homebutton>
-              )}
-            </ShowMoreWrapper>
-          </Section>
-        </Main>
-      </Layout>
-    );
-  }
-}
 export default Blog;
 
 export const blogList = graphql`

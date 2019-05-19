@@ -18,7 +18,8 @@ const TopPromo = () => (
     `}
     render={data => (
       <>
-        {data.gcms.allToppers[0].linkType[0] === "Inbound" ? (
+        {data.gcms.allToppers &&
+        data.gcms.allToppers[0].linkType[0] === "Inbound" ? (
           <InboundLink to={data.gcms.allToppers[0].uRL}>
             {data.gcms.allToppers[0].currentpromo}
           </InboundLink>
