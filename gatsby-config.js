@@ -9,21 +9,17 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-webpack-size`,
-    // {
-    //   resolve: `gatsby-source-graphcms`,
-    //   options: {
-    //     endpoint: process.env.GATSBY_API_URL,
-    //     query: require("./gatsby/configQuery"),
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GATSBY_GOOGLE_ANALYTICS,
+      },
+    },
     {
       resolve: "gatsby-source-graphql",
       options: {
-        // The top level query type, can be anything you want!
         typeName: "GCMS",
-        // The field you'll query against, can also be anything you want.
         fieldName: "gcms",
-        // Your API endpoint, available from the dashboard and settings window.
         url: process.env.GATSBY_API_URL,
       },
     },
