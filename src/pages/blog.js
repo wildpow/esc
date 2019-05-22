@@ -7,7 +7,7 @@ import PostThumbnail from "../components/blog/postThumbnail";
 const PostsContainer = styled.div`
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-area: posts;
 `;
 
@@ -20,7 +20,7 @@ const BlogContainer = styled.div`
     "footer";
 `;
 const Button = styled.button`
-  grid-area: "footer";
+  grid-area: footer;
 `;
 const Header = styled.header`
   grid-area: header;
@@ -63,6 +63,7 @@ export const blogList = graphql`
         title
         content
         dateAndTime
+        description
         coverImage {
           handle
         }
