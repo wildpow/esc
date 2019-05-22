@@ -2,7 +2,7 @@
   <img width="306" height="200" style="margin-top: -50px;"src="https://github.com/wildpow/new-esc-gatsby/raw/master/src/images/logo.png">
 </p>
 
-<h1 style="text-align: center; margin-top: -30px;"><a hfref="https://www.escmattresscenter.com/">E.S.C Mattress Center</a></h1>
+<h1 align="center" style="text-align: center; margin-top: -30px;"><a hfref="https://www.escmattresscenter.com/">E.S.C Mattress Center</a></h1>
 
 Project uses [Gatsby](https://www.gatsbyjs.org/) for the front-end, [GraphCMS](https://graphcms.com/) for the back-end and is deployeed on [Netlify](https://www.netlify.com/).
 
