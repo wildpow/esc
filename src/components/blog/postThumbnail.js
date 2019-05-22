@@ -22,24 +22,16 @@ const DIV = styled.div`
   grid-template-areas:
     "title title"
     "image description";
-  /* grid-auto-flow: column; */
   img {
     align-self: center;
-    /* padding-top: 10px;
-    margin-bottom: 10px; */
     grid-area: image;
-    width: 145px;
+    width: 105px;
     justify-self: center;
   }
   h3 {
     text-shadow: ${props => props.theme.newTextShadow};
     font-weight: 900;
-    /* width: 400px; */
-    /* text-align: center;
-    align-items: center;
-    align-self: center; */
     display: grid;
-    /* justify-content: center; */
     align-content: center;
     grid-area: title;
     white-space: nowrap;
@@ -52,25 +44,6 @@ const DIV = styled.div`
     padding-left: 15px;
     padding-top: 15px;
     padding-bottom: 15px;
-    /* letter-spacing: .10rem; */
-    /* position: relative;
-    z-index: 10;
-    :after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 6px;
-      top: 20px;
-      z-index: 1;
-      left: 0;
-      border-radius: 5px;
-      background-color: ${props => props.theme.mainColor2};
-      visibility: visible;
-      -webkit-transform: scaleX(0);
-      transform: scaleX(1);
-      -webkit-transition: all 0.3s ease-in-out 0s;
-      transition: all 0.2s ease-in-out 0s;
-    } */
     color: white;
   }
 `;

@@ -14,16 +14,49 @@ const PostsContainer = styled.div`
 const BlogContainer = styled.div`
   display: grid;
   grid-gap: 20px;
+  margin-top: 20px;
   grid-template-areas:
     "header"
     "posts"
     "footer";
 `;
 const Button = styled.button`
+  font-family: ${props => props.theme.MainFont1};
   grid-area: footer;
+  background: ${props => props.theme.mainColor1};
+  width: 100%;
+  box-shadow: ${props => props.theme.hoverBoxBefore};
+  font-size: 16px;
+  color: white;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  border: ${props => props.theme.Border};
+  /* border-radius: 7px; */
+  cursor: pointer;
+  margin-bottom: 10px;
+  letter-spacing: 0.2rem;
+  transition: ${props => props.theme.hoverTransition};
+  &:disabled {
+    background: grey;
+    cursor: not-allowed;
+  }
+  &:hover {
+    box-shadow: ${props => props.theme.hoverBoxAfter};
+    transform: ${props => props.theme.hoverTransform};
+  }
 `;
 const Header = styled.header`
   grid-area: header;
+  background: ${props => props.theme.mainColor2};
+  color: white;
+  font-family: ${props => props.theme.MainFont1};
+  padding: 15px;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-shadow: ${props => props.theme.newTextShadow};
+  text-align: center;
+  box-shadow: ${props => props.theme.newBoxShadow};
 `;
 const Blog = ({ data }) => {
   const { allPosts } = data.gcms;
