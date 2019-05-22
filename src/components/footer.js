@@ -1,4 +1,6 @@
 import React from "react";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
+
 import {
   MainFooter,
   Wrapper,
@@ -105,9 +107,13 @@ const Footer = () => (
       </Wrap>
     </Wrapper>
     <BottomIconWrapper>
-      <a href="https://graphcms.com/" target="_blank" rel="noopener noreferrer">
+      <OutboundLink
+        href="https://graphcms.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <GraphIcon src={GraphCMS} alt="GraphCMS Company logo" />
-      </a>
+      </OutboundLink>
       <BBLink
         href="https://www.bbb.org/northwest/customer-reviews/mattress/esc-mattress-center-in-everett-wa-1000056497/add/"
         target="_blank"
