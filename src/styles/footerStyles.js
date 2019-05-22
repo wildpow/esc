@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { Link } from "gatsby";
 import { FlexRow, FlexCol } from "./mainStyles";
 
@@ -165,7 +166,7 @@ export const HoursSpan = styled.span`
   padding-bottom: 5px;
 `;
 
-export const MapLink = styled.a`
+export const MapLink = styled(OutboundLink)`
   color: black;
   text-decoration: none;
   &:hover {

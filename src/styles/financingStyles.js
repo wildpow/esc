@@ -1,3 +1,4 @@
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "styled-components";
 import { FlexCol, FadeIn, FlexRow } from "./mainStyles";
 
@@ -147,7 +148,7 @@ export const Footer = styled.footer`
   justify-content: center;
 `;
 
-export const ApplyNow = styled.a`
+export const ApplyNow = styled(OutboundLink)`
   font-size: 1rem;
   float: right;
   margin-top: -30px;

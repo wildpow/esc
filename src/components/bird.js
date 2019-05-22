@@ -1,4 +1,5 @@
 import React, { PureComponent } from "react";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 import axios from "axios";
 import styled from "styled-components";
 import Certified from "../images/badge.png";
@@ -8,7 +9,7 @@ import Loading from "./loading";
 
 const average = list => list.reduce((prev, curr) => prev + curr) / list.length;
 
-const BirdLink = styled.a`
+const BirdLink = styled(OutboundLink)`
   text-decoration: none;
   @media (min-width: 1366px) {
     display: none;

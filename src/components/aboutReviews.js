@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 import axios from "axios";
 import styled from "styled-components";
 import { NodeGroup } from "react-move";
@@ -28,7 +29,7 @@ const InsideWrapper = styled.div`
     max-width: 1100px;
   }
 `;
-const ReadMore = styled.a`
+const ReadMore = styled(OutboundLink)`
   color: ${props => props.theme.mainColor1};
   transition: all 250ms ease-in-out;
   text-decoration: none;

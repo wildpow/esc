@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { FadeIn, FlexCol } from "./mainStyles";
 
 export const MainArticle = styled.article`
@@ -36,7 +37,7 @@ export const WarranyName = styled.h4`
   }
 `;
 
-export const WarranyNumber = styled.a`
+export const WarranyNumber = styled(OutboundLink)`
   color: ${props => props.theme.mainColor1};
   font-family: ${props => props.theme.MainFont2};
   margin-top: 10px;

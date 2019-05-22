@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { Link } from "gatsby";
 
 const ImgHover = styled.img`
@@ -43,7 +44,7 @@ export const BottomIconWrapper = styled.div`
 
 // export const BBBIcon = styled.img``;
 
-export const BBLink = styled.a`
+export const BBLink = styled(OutboundLink)`
   transition: transform 0.25s ease-in;
   &:hover {
     transform: scale3d(1.1, 1.1, 1);

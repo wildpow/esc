@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { Link } from "gatsby";
+import { OutboundLink as GoogleAnalytics } from "gatsby-plugin-google-analytics";
 
 const SharedLinkStyles = css`
   color: ${props => props.theme.newColor1};
@@ -17,7 +18,7 @@ const SharedLinkStyles = css`
     text-decoration-color: ${props => props.theme.newColor1};
   }
 `;
-export const OutBoundLink = styled.a`
+export const OutBoundLink = styled(GoogleAnalytics)`
   ${SharedLinkStyles}
   @media print {
     position: absolute;
