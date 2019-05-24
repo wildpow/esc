@@ -6,8 +6,8 @@ import PostThumbnail from "../components/blog/postThumbnail";
 
 const PostsContainer = styled.div`
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-gap: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-area: posts;
 `;
 
@@ -60,7 +60,7 @@ const Header = styled.header`
 `;
 const Blog = ({ data }) => {
   const { allPosts } = data.gcms;
-  const [numberOfPosts, setNumberOfPosts] = useState(4);
+  const [numberOfPosts, setNumberOfPosts] = useState(6);
   return (
     <Layout>
       <BlogContainer>

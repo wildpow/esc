@@ -1,70 +1,60 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import TruncateMarkup from "react-truncate-markup";
+// import TruncateMarkup from "react-truncate-markup";
 
 const StyledLink = styled(Link)`
+  grid-template-columns: 80px 1fr;
+  grid-template-rows: 100px 1fr;
   text-decoration: none;
-  /* padding: 10px; */
-  font-family: ${props => props.theme.MainFont1};
-  color: black;
-  background-color: white;
-  transition: ${props => props.theme.hoverTransition};
-  box-shadow: ${props => props.theme.hoverBoxBefore};
-  &:hover {
-    transform: ${props => props.theme.hoverTransform};
-    box-shadow: ${props => props.theme.hoverBoxAfter};
-  }
-`;
-const DIV = styled.div`
-  display: grid;
-  grid-template-columns: 150px 1fr;
   grid-template-areas:
-    "title title"
-    "image description";
+    "img title"
+    "descrip descrip";
+  display: grid;
+  position: relative;
+  /* border: 2px solid black; */
   img {
+    grid-area: img;
+    width: 70px;
     align-self: center;
-    grid-area: image;
-    width: 105px;
     justify-self: center;
+    z-index: 10;
   }
   h3 {
-    text-shadow: ${props => props.theme.newTextShadow};
-    font-weight: 900;
-    display: grid;
-    align-content: center;
-    grid-area: title;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    align-self: center;
+    justify-self: start;
+    justify-items: start;
     margin: 0;
     padding: 0;
+    font-size: 1.4rem;
+    grid-area: title;
+    font-family: ${props => props.theme.MainFont1};
+    color: black;
+    z-index: 10;
+
+    /* text-decoration: underline; */
+  }
+  span {
+    top: 65px;
+    position: absolute;
     background: ${props => props.theme.mainColor1};
-    font-size: 1.5rem;
-    padding-left: 15px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    color: white;
+    height: 20px;
+    width: 100%;
+    border-radius: 4px;
+    opacity: 0.3;
+    grid-column: span 2;
   }
 `;
+
 const Description = styled.p`
   font-family: ${props => props.theme.MainFont3};
-  grid-area: description;
-  overflow: hidden;
+  /* border-top: 2px solid blue; */
+  grid-area: descrip;
   margin: 0;
   padding: 0;
-  padding-left: 7px;
-  padding-right: 15px;
-  width: 100%;
-  height: 100%;
   font-size: 1.1rem;
-  font-weight: 300;
-  margin-left: 5px;
   line-height: 1.6rem;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  justify-self: center;
-  align-self: center;
+  color: black;
 `;
 const PostThumbnail = ({ numberOfPosts, allPosts }) => {
   const posts = allPosts.slice(0, numberOfPosts);
@@ -72,18 +62,17 @@ const PostThumbnail = ({ numberOfPosts, allPosts }) => {
     <>
       {posts.map(post => (
         <StyledLink to={`/blog/${post.slug}`} key={postMessage.id}>
-          <DIV>
-            <img
-              src={`https://media.graphcms.com/resize=w:150,h:150,fit:clip/${
-                post.coverImage.handle
-              }`}
-              alt={`The blog post called ${post.title}`}
-            />
-            <h3>{post.title}</h3>
-            <TruncateMarkup lines={6}>
-              <Description>{post.description}</Description>
-            </TruncateMarkup>
-          </DIV>
+          <img
+            src={`https://media.graphcms.com/resize=w:150,h:150,fit:clip/${
+              post.coverImage.handle
+            }`}
+            alt={`The blog post called ${post.title}`}
+          />
+          <h3>{post.title}</h3>
+          <span />
+          {/* <TruncateMarkup lines={4}> */}
+          <Description>{post.description}</Description>
+          {/* </TruncateMarkup> */}
         </StyledLink>
       ))}
     </>
