@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import { FadeIn } from "../../styles/mainStyles";
 // import TruncateMarkup from "react-truncate-markup";
 
 const StyledLink = styled(Link)`
+  animation-name: ${FadeIn};
+  ${props => props.theme.Animation}
   grid-template-columns: 80px 1fr;
   grid-template-rows: 100px 1fr;
   text-decoration: none;
@@ -35,7 +38,7 @@ const StyledLink = styled(Link)`
     /* text-decoration: underline; */
   }
   span {
-    top: 65px;
+    top: 73px;
     position: absolute;
     background: ${props => props.theme.mainColor1};
     height: 20px;

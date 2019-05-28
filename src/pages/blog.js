@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import PostThumbnail from "../components/blog/postThumbnail";
+import { FadeIn } from "../styles/mainStyles";
 
 const PostsContainer = styled.div`
   display: grid;
@@ -12,6 +13,8 @@ const PostsContainer = styled.div`
 `;
 
 const BlogContainer = styled.div`
+  animation-name: ${FadeIn};
+  ${props => props.theme.Animation}
   display: grid;
   grid-gap: 20px;
   margin-top: 20px;
@@ -48,7 +51,7 @@ const Button = styled.button`
 `;
 const Header = styled.header`
   grid-area: header;
-  background: ${props => props.theme.mainColor2};
+  background: ${props => props.theme.mainColor1};
   color: white;
   font-family: ${props => props.theme.MainFont1};
   padding: 15px;
