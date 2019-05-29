@@ -1,10 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { FadeIn } from "../../styles/mainStyles";
-// import TruncateMarkup from "react-truncate-markup";
 
 const StyledLink = styled(Link)`
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 5px;
+  background: white;
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   grid-template-columns: 80px 1fr;
@@ -15,14 +19,6 @@ const StyledLink = styled(Link)`
     "descrip descrip";
   display: grid;
   position: relative;
-  /* border: 2px solid black; */
-  img {
-    grid-area: img;
-    width: 70px;
-    align-self: center;
-    justify-self: center;
-    z-index: 10;
-  }
   h3 {
     align-self: center;
     justify-self: start;
@@ -34,8 +30,6 @@ const StyledLink = styled(Link)`
     font-family: ${props => props.theme.MainFont1};
     color: black;
     z-index: 10;
-
-    /* text-decoration: underline; */
   }
   span {
     top: 73px;
@@ -43,43 +37,63 @@ const StyledLink = styled(Link)`
     background: ${props => props.theme.mainColor1};
     height: 20px;
     width: 100%;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     opacity: 0.3;
     grid-column: span 2;
   }
 `;
-
+const Img = styled.img`
+  grid-area: img;
+  width: 70px;
+  align-self: center;
+  justify-self: center;
+  z-index: 10;
+  transition: transform 0.25s ease-in;
+  transform: ${props =>
+    props.isHovering ? "scale3d(1.1, 1.1, 1)" : "scale3d(1, 1, 1)"};
+`;
 const Description = styled.p`
   font-family: ${props => props.theme.MainFont3};
-  /* border-top: 2px solid blue; */
   grid-area: descrip;
   margin: 0;
   padding: 0;
   font-size: 1.1rem;
   line-height: 1.6rem;
   color: black;
+  text-decoration: ${props => (props.isHovering ? "underline" : "none")};
+  text-decoration-color: ${props =>
+    props.isHovering ? props.theme.mainColor2 : "none"};
+  text-underline-position: under;
 `;
-const PostThumbnail = ({ numberOfPosts, allPosts }) => {
-  const posts = allPosts.slice(0, numberOfPosts);
+
+const PostThumbnail = ({ post, isHovering, onMouseEnter, onMouseLeave }) => {
   return (
-    <>
-      {posts.map(post => (
-        <StyledLink to={`/blog/${post.slug}`} key={postMessage.id}>
-          <img
-            src={`https://media.graphcms.com/resize=w:150,h:150,fit:clip/${
-              post.coverImage.handle
-            }`}
-            alt={`The blog post called ${post.title}`}
-          />
-          <h3>{post.title}</h3>
-          <span />
-          {/* <TruncateMarkup lines={4}> */}
-          <Description>{post.description}</Description>
-          {/* </TruncateMarkup> */}
-        </StyledLink>
-      ))}
-    </>
+    <StyledLink
+      to={`/blog/${post.slug}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <Img
+        src={`https://media.graphcms.com/resize=w:150,h:150,fit:clip/${
+          post.coverImage.handle
+        }`}
+        alt={`The blog post called ${post.title}`}
+        isHovering={isHovering}
+      />
+      <h3>{post.title}</h3>
+      <span />
+      <Description isHovering={isHovering}>{post.description}</Description>
+    </StyledLink>
   );
 };
 
+PostThumbnail.defaultProps = {
+  isHovering: false,
+};
+PostThumbnail.propTypes = {
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
+  isHovering: PropTypes.bool,
+  post: PropTypes.instanceOf(Object).isRequired,
+};
 export default PostThumbnail;

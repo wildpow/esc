@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import PostThumbnail from "../components/blog/postThumbnail";
 import { FadeIn } from "../styles/mainStyles";
+import SEO from "../components/seo";
 
 const PostsContainer = styled.div`
   display: grid;
-  grid-gap: 35px;
+  grid-gap: 25px;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-area: posts;
 `;
@@ -61,33 +63,76 @@ const Header = styled.header`
   text-align: center;
   box-shadow: ${props => props.theme.newBoxShadow};
 `;
-const Blog = ({ data }) => {
-  const { allPosts } = data.gcms;
-  const [numberOfPosts, setNumberOfPosts] = useState(6);
-  return (
-    <Layout>
-      <BlogContainer>
-        <Header>
-          Come read about ways to achieve better sleep, and live healthier from
-          people who have been helping people sleep better for 20+ years. Check
-          here to see our schedule of professional speakers speaking on sleep
-          topics.
-        </Header>
-        <PostsContainer>
-          <PostThumbnail allPosts={allPosts} numberOfPosts={numberOfPosts} />
-        </PostsContainer>
-        {numberOfPosts < allPosts.length && (
-          <Button
-            onClick={() => setNumberOfPosts(numberOfPosts + 4)}
-            type="button"
-          >
-            Show More Posts
-          </Button>
-        )}
-      </BlogContainer>
-    </Layout>
-  );
-};
+class Blog extends React.Component {
+  static propTypes = {
+    data: PropTypes.instanceOf(Object).isRequired,
+  };
+
+  constructor(...args) {
+    super(...args);
+    this.state = {
+      numberOfPosts: 6,
+      isHovered: {},
+    };
+  }
+
+  setNumberOfPosts = () => {
+    const { numberOfPosts } = this.state;
+    this.setState({ numberOfPosts: numberOfPosts + 4 });
+  };
+
+  handleMouseEnter = index => {
+    this.setState(prevState => {
+      return { isHovered: { ...prevState.isHovered, [index]: true } };
+    });
+  };
+
+  handleMouseLeave = index => {
+    this.setState(prevState => {
+      return { isHovered: { ...prevState.isHovered, [index]: false } };
+    });
+  };
+
+  render() {
+    const { data } = this.props;
+    const { isHovered, numberOfPosts } = this.state;
+    const posts = data.gcms.allPosts.slice(0, numberOfPosts);
+
+    return (
+      <Layout>
+        <SEO
+          title="ESC: Blog"
+          description="Come read about ways to achieve better sleep, and live healthier from people who have been helping people sleep better for 20+ years. Check here to see our schedule of professional speakers speaking on sleep topics."
+          ogTitle="E.S.C. Mattress Center | Blog"
+        />
+        <BlogContainer>
+          <Header>
+            Come read about ways to achieve better sleep, and live healthier
+            from people who have been helping people sleep better for 20+ years.
+            Check here to see our schedule of professional speakers speaking on
+            sleep topics.
+          </Header>
+          <PostsContainer>
+            {posts.map((post, index) => (
+              <PostThumbnail
+                onMouseEnter={() => this.handleMouseEnter(index)}
+                onMouseLeave={() => this.handleMouseLeave(index)}
+                isHovering={isHovered[index]}
+                key={post.id}
+                post={post}
+              />
+            ))}
+          </PostsContainer>
+          {numberOfPosts < data.gcms.allPosts.length && (
+            <Button onClick={() => this.setNumberOfPosts()} type="button">
+              Show More Posts
+            </Button>
+          )}
+        </BlogContainer>
+      </Layout>
+    );
+  }
+}
 
 export default Blog;
 
