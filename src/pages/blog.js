@@ -9,21 +9,29 @@ import SEO from "../components/seo";
 
 const PostsContainer = styled.div`
   display: grid;
-  grid-gap: 25px;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-area: posts;
+  @media (min-width: 768px) {
+    grid-gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
 `;
 
 const BlogContainer = styled.div`
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   display: grid;
-  grid-gap: 20px;
-  margin-top: 20px;
+  grid-gap: 10px;
+  margin-top: 10px;
   grid-template-areas:
     "header"
     "posts"
     "footer";
+  @media (min-width: 768px) {
+    grid-gap: 20px;
+    margin-top: 20px;
+  }
 `;
 const Button = styled.button`
   font-family: ${props => props.theme.MainFont1};
@@ -56,12 +64,22 @@ const Header = styled.header`
   background: ${props => props.theme.mainColor1};
   color: white;
   font-family: ${props => props.theme.MainFont1};
-  padding: 15px;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  text-shadow: ${props => props.theme.newTextShadow};
+  padding: 5px;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  /* text-shadow: ${props => props.theme.newTextShadow}; */
   text-align: center;
-  box-shadow: ${props => props.theme.newBoxShadow};
+  @media (min-width: 568px) {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    text-shadow: ${props => props.theme.newTextShadow};
+  }
+  @media (min-width: 768px) {
+    box-shadow: ${props => props.theme.newBoxShadow};
+    padding: 15px;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 `;
 class Blog extends React.Component {
   static propTypes = {
