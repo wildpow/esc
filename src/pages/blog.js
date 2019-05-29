@@ -77,8 +77,8 @@ const Header = styled.header`
   @media (min-width: 768px) {
     box-shadow: ${props => props.theme.newBoxShadow};
     padding: 15px;
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.3rem;
+    line-height: 1.7rem;
   }
 `;
 class Blog extends React.Component {

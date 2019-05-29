@@ -51,6 +51,10 @@ const StyledLink = styled(Link)`
     @media (min-width: 768px) {
       font-size: 1.4rem;
     }
+    /* @media (min-width: 1024px) {
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+    } */
   }
   span {
     top: 73px;
@@ -92,6 +96,11 @@ const Description = styled.p`
   }
   @media (min-width: 768px) {
     font-size: 1.1rem;
+    line-height: 1.6rem;
+  }
+  @media (min-width: 1028px) {
+    font-size: 1.2rem;
+    font-weight: 500;
     line-height: 1.6rem;
   }
 `;
