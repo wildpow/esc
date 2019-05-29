@@ -101,8 +101,8 @@ export const query = graphql`
         features
         price
         salePrice
-        brandLine
-        brandName
+        # brandLine
+        # brandName
         baseDescription
         height
         warranty

@@ -25,7 +25,7 @@ const Post = ({ data }) => {
       <SEO
         title={makeTitle(post.slug)}
         ogTitle={`E.S.C. Mattress Center | ${post.title}`}
-        description={post.content}
+        description={post.description}
       />
       <BreadWrapper Blog>
         <BreadCrumbs next="Blog" here={makeTitle(post.slug)} />
@@ -62,6 +62,7 @@ export const postQuery = graphql`
   query SinglePost($slug: String!) {
     gcms {
       Post(slug: $slug) {
+        description
         id
         slug
         isPublished
