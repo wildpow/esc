@@ -102,15 +102,18 @@ class Blog extends React.Component {
       <Layout>
         <SEO
           title="ESC: Blog"
-          description="Come read about ways to achieve better sleep, and live healthier from people who have been helping people sleep better for 20+ years. Check here to see our schedule of professional speakers speaking on sleep topics."
+          description="Thank you for checking out our sleep blog. Below are some mattress
+            and sleep-related posts to help you research your better night’s
+            sleep; all brought to you from our team of local sleep experts with
+            over twenty years of mattress industry experience."
           ogTitle="E.S.C. Mattress Center | Blog"
         />
         <BlogContainer>
           <Header>
-            Come read about ways to achieve better sleep, and live healthier
-            from people who have been helping people sleep better for 20+ years.
-            Check here to see our schedule of professional speakers speaking on
-            sleep topics.
+            Thank you for checking out our sleep blog. Below are some mattress
+            and sleep-related posts to help you research your better night’s
+            sleep; all brought to you from our team of local sleep experts with
+            over twenty years of mattress industry experience.
           </Header>
           <PostsContainer>
             {posts.map((post, index) => (
