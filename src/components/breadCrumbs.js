@@ -17,7 +17,6 @@ export const BreadWrapper = styled.div`
   display: flex;
   margin-right: ${props => (props.Brands ? "15px" : "5px")};
   margin-left: ${props => (props.Brands ? "15px" : "5px")};
-
   @media (min-width: 568px) {
     font-size: 1rem;
     margin-right: ${props => (props.Brands ? "45px" : "5px")};
@@ -33,8 +32,6 @@ export const BreadWrapper = styled.div`
   @media (min-width: 1300px) {
     margin-right: ${props => (props.Brands ? "55px" : "85px")};
     margin-left: ${props => (props.Brands ? "55px" : "85px")};
-    margin-right: ${props => (props.Blog ? "220px" : "85px")};
-    margin-left: ${props => (props.Blog ? "220px" : "85px")};
   }
   @media print {
     display: none;

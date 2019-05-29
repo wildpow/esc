@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
@@ -7,6 +8,31 @@ import { Marker, BottomImg, Main } from "../styles/postStyles";
 import { H2 } from "../styles/mainStyles";
 import SEO from "../components/seo";
 
+const PostBread = styled(BreadWrapper)`
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  @media (min-width: 568px) {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media (min-width: 768px) {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media (min-width: 1022px) {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media (min-width: 1300px) {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+`;
 const Post = ({ data }) => {
   const post = data.gcms.Post;
 
@@ -27,9 +53,9 @@ const Post = ({ data }) => {
         ogTitle={`E.S.C. Mattress Center | ${post.title}`}
         description={post.description}
       />
-      <BreadWrapper Blog>
+      <PostBread>
         <BreadCrumbs next="Blog" here={makeTitle(post.slug)} />
-      </BreadWrapper>
+      </PostBread>
       <Main>
         <header>
           <H2>{post.title}</H2>
@@ -46,9 +72,9 @@ const Post = ({ data }) => {
           />
         ) : null}
       </Main>
-      <BreadWrapper Blog>
+      <PostBread>
         <BreadCrumbs next="Blog" here={post.title} />
-      </BreadWrapper>
+      </PostBread>
     </Layout>
   );
 };
