@@ -51,10 +51,6 @@ const StyledLink = styled(Link)`
     @media (min-width: 768px) {
       font-size: 1.4rem;
     }
-    /* @media (min-width: 1024px) {
-      font-size: 1.5rem;
-      line-height: 1.5rem;
-    } */
   }
   span {
     top: 73px;
