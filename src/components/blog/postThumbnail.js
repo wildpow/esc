@@ -8,6 +8,8 @@ const PostThumbnail = ({ post, isHovering, onMouseEnter, onMouseLeave }) => {
       to={`/blog/${post.slug}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onTouchStart={onMouseEnter}
+      onTouchEnd={onMouseLeave}
     >
       <ThumbImg
         src={`https://media.graphcms.com/resize=w:150,h:150,fit:clip/${

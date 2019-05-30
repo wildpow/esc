@@ -9,33 +9,45 @@ background-color: white;
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   padding-bottom: 20px;
-  @media (min-width: 1200px) {
+  /* @media (min-width: 1200px) {
     margin-left: 220px;
     margin-right: 220px;
-  }
+  } */
 `;
-
+// w: 800 h: 325
 export const BottomImg = styled.img`
   margin: auto;
   margin-top: 20px;
   max-width: 100%;
   @media (min-width: 1022px) {
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
+    max-height: 325px;
+    max-width: 800px;
   }
 `;
 
 export const Marker = styled(Markdown)`
+  h2 {
+    font-family: ${props => props.theme.MainFont1};
+    margin-top: 0px;
+    margin-bottom: 0px;
+    /* text-align: center; */
+    padding: 10px 20px;
+    background-color: ${props => props.theme.mainColor1};
+    color: white;
+  }
   & ol {
     background-color: ${props => props.theme.mainColor1};
     list-style-position: inside;
     color: white;
     padding-top: 10px;
     padding-bottom: 20px;
+    /* text-align: center; */
   }
   & li {
     font-family: ${props => props.theme.MainFont2};
-    margin: auto;
+    /* margin: auto; */
     padding-left: 12px;
     padding-right: 12px;
     line-height: 1.4rem;
@@ -44,57 +56,61 @@ export const Marker = styled(Markdown)`
     padding-bottom: 0px;
   }
   & p {
+    font-weight: 300;
     font-family: ${props => props.theme.MainFont3};
-    padding-left: 12px;
-    padding-right: 12px;
-    line-height: 1.4rem;
+    padding-left: 7px;
+    padding-right: 7px;
+    line-height: 1.5rem;
     font-size: 1rem;
     text-indent: 30px;
-    padding-top: 10px;
+    margin-top: 7px;
+    /* padding-top: 10px; */
     padding-bottom: 0px;
   }
   & img {
     margin: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     max-width: 100%;
+    margin-bottom: 10px;
+    display: block;
   }
   @media (min-width: 768px) {
     & p {
       margin-bottom: 0;
-      padding-right: 60px;
-      padding-left: 60px;
-      font-size: 1.2rem;
-      line-height: 1.5rem;
+      padding-right: 10px;
+      padding-left: 10px;
+      font-size: 1.25rem;
+      line-height: 1.7rem;
     }
     & li {
-      text-align: center;
+      /* text-align: center; */
       margin-bottom: 0;
-      padding-right: 60px;
-      padding-left: 60px;
+      /* padding-right: 60px;
+      padding-left: 60px; */
       font-size: 1.2rem;
       line-height: 1.5rem;
     }
   }
   @media (min-width: 1024px) {
     & ol {
-      padding-top: 30px;
-      padding-bottom: 30px;
+      /* padding-top: 30px;
+      padding-bottom: 30px; */
     }
     & li {
       margin-bottom: 0;
-      padding-right: 60px;
-      padding-left: 60px;
+      /* padding-right: 60px;
+      padding-left: 60px; */
       font-size: 1.6rem;
       line-height: 1.85rem;
       padding-bottom: 10px;
     }
     & p {
       margin-bottom: 0;
-      margin-top: 10px;
-      padding-right: 60px;
-      padding-left: 60px;
-      font-size: 1.6rem;
-      line-height: 2.1rem;
+      /* margin-top: 10px; */
+      padding-right: 15px;
+      padding-left: 15px;
+      font-size: 1.4rem;
+      line-height: 2rem;
       padding-bottom: 20px;
     }
     & img {
