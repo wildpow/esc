@@ -25,7 +25,7 @@ export const StyledLink = styled(Link)`
   @media (min-width: 768px) {
     padding-right: 20px;
     padding-left: 20px;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
   }
   h3 {
     grid-area: Title;
@@ -96,7 +96,8 @@ export const Description = styled.p`
   }
   @media (min-width: 1028px) {
     font-size: 1.2rem;
-    font-weight: 500;
+    /* font-weight: 500; */
     line-height: 1.6rem;
+    /* padding-bottom: 10px; */
   }
 `;
