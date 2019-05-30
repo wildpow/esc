@@ -58,26 +58,29 @@ export const Marker = styled(Markdown)`
   & p {
     font-weight: 300;
     font-family: ${props => props.theme.MainFont3};
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 7px;
+    padding-right: 7px;
     line-height: 1.5rem;
     font-size: 1rem;
     text-indent: 30px;
+    margin-top: 7px;
     /* padding-top: 10px; */
     padding-bottom: 0px;
   }
   & img {
     margin: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     max-width: 100%;
+    margin-bottom: 10px;
+    display: block;
   }
   @media (min-width: 768px) {
     & p {
       margin-bottom: 0;
-      /* padding-right: 20px;
-      padding-left: 20px; */
-      font-size: 1.2rem;
-      line-height: 1.5rem;
+      padding-right: 10px;
+      padding-left: 10px;
+      font-size: 1.25rem;
+      line-height: 1.7rem;
     }
     & li {
       /* text-align: center; */
@@ -104,8 +107,8 @@ export const Marker = styled(Markdown)`
     & p {
       margin-bottom: 0;
       /* margin-top: 10px; */
-      /* padding-right: 20px;
-      padding-left: 20px; */
+      padding-right: 15px;
+      padding-left: 15px;
       font-size: 1.4rem;
       line-height: 2rem;
       padding-bottom: 20px;
