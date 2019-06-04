@@ -4,7 +4,6 @@ export const Front = styled.div`
   position: absolute;
   z-index: 1;
   width: 100%;
-  height: 100%;
   backface-visibility: hidden;
   background: #ffffff;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
@@ -95,7 +94,7 @@ export const Header = styled.header`
       top: 0.45em;
       left: 0.5em;
       text-indent: 0;
-      content: "\00D7";
+      content: "\u00D7";
       @media (min-width: 768px) and (min-height: 823px) and (orientation: portrait) {
         top: 0.35em;
         left: 0.45em;
