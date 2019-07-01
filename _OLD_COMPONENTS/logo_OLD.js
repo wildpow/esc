@@ -22,19 +22,29 @@ const Logo = ({ menuToggle }) => (
     <StyledLink to="/">
       <StaticQuery
         query={graphql`
-          query pandaLogo {
-            datoCmsFrontPage {
-              pandaLogo {
-                url
-                alt
+          query allThePandas {
+            gcms {
+              allPandaLogoes {
+                id
+                altText
+                logoImage {
+                  handle
+                  id
+                  width
+                  height
+                }
               }
             }
           }
         `}
-        render={data => {
-          const { pandaLogo } = data.datoCmsFrontPage;
-          return <Image src={pandaLogo.url} alt={pandaLogo.alt} />;
-        }}
+        render={data => (
+          <Image
+            src={`https://media.graphcms.com/resize=w:1905,h:1233,fit:clip/${
+              data.gcms.allPandaLogoes[0].logoImage.handle
+            }`}
+            alt={data.gcms.allPandaLogoes[0].altText}
+          />
+        )}
       />
     </StyledLink>
     <H1>
