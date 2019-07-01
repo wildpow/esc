@@ -7,16 +7,19 @@ const Front = () => (
     <StaticQuery
       query={graphql`
         query front {
-          datoCmsFrontPage {
-            frontPageTitle
-            frontPageTextBlock
+          gcms {
+            allFronts {
+              id
+              title
+              textBlock
+            }
           }
         }
       `}
       render={data => (
         <>
-          <Headline>{data.datoCmsFrontPage.frontPageTitle}</Headline>
-          <P>{data.datoCmsFrontPage.frontPageTextBlock}</P>
+          <Headline>{data.gcms.allFronts[0].title}</Headline>
+          <P>{data.gcms.allFronts[0].textBlock}</P>
         </>
       )}
     />
