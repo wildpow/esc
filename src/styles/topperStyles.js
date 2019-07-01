@@ -40,7 +40,6 @@ export const InboundLink = styled(Link)`
 `;
 
 export const Top = styled.div`
-  width: 100vw;
   font-family: ${props => props.theme.MainFont1};
   font-weight: 300;
   background-color: ${props => props.theme.mainColor2};
