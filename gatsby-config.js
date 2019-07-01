@@ -16,6 +16,14 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: `cf537d13c51a0ed5bb810d068581e0`,
+        preview: false,
+        disableLiveReload: false,
+      },
+    },
+    {
       resolve: "gatsby-source-graphql",
       options: {
         typeName: "GCMS",
