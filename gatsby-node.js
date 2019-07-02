@@ -13,7 +13,7 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {
-      allDatoCmsAdjustableBase(sort: { fields: meta___status, order: DESC }) {
+      allDatoCmsAdjustableBase {
         edges {
           node {
             uri
@@ -21,7 +21,7 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
-      allDatoCmsMattress(sort: { fields: meta___status }) {
+      allDatoCmsMattress {
         edges {
           node {
             slug

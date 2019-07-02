@@ -43,6 +43,7 @@ const List = styled.div`
     margin-bottom: 0;
     border-bottom: 4px solid ${props => props.theme.mainColor2};
     padding-bottom: 2px;
+    padding-left: 20px;
   }
   ul {
     list-style: square;
@@ -56,7 +57,7 @@ const List = styled.div`
   }
 
   @media (min-width: 360px) {
-    & ul {
+    ul {
       margin-top: 10px;
     }
   }
@@ -69,6 +70,7 @@ const List = styled.div`
       margin-bottom: 0;
       border-bottom: 4px solid ${props => props.theme.mainColor2};
       padding-bottom: 2px;
+      padding-left: 20px;
     }
     ul {
       list-style: square;
@@ -85,6 +87,7 @@ const List = styled.div`
     padding: 0px 30px 10px 30px;
 
     h3 {
+      padding-left: 20px;
       font-size: 2.4rem;
       margin-top: 0;
       margin-bottom: 0;
@@ -102,13 +105,14 @@ const List = styled.div`
 
   @media (min-width: 1300px) {
     h3 {
+      padding-left: 20px;
       font-weight: 700;
       font-size: 2.1rem;
     }
   }
 
   @media print {
-    p {
+    h3 {
       font-size: 1.3rem;
     }
     li {
@@ -142,8 +146,6 @@ const Info = styled.li`
   list-style: none;
   a {
     display: none;
-    /* margin-left: 5px;
-    padding-left: 15px; */
     font-size: 0.9rem;
     font-family: ${props => props.theme.MainFont1};
     font-weight: 700;
@@ -156,7 +158,6 @@ const Info = styled.li`
       display: block;
     }
     @media (min-width: 568px) {
-      /* padding-left: 30px; */
       font-size: 1rem;
     }
     @media (min-width: 768px) {
@@ -164,7 +165,6 @@ const Info = styled.li`
       font-size: 1.2rem;
     }
     @media (min-width: 1024px) {
-      /* padding-left: 55px; */
       font-size: 1.6rem;
     }
     @media print {
@@ -196,7 +196,7 @@ const Base = ({ data }) => {
           />
           <MainInfo>
             <List>
-              <h3>Features:</h3>
+              <h3>Features</h3>
               <ul>
                 {adjBase.smallFeatureList.map(item => (
                   <li key={item.feature}>{item.feature}</li>
@@ -206,17 +206,10 @@ const Base = ({ data }) => {
                 </Info>
               </ul>
             </List>
-            {/* <PriceWrapper> */}
-            {/* <Price> */}
-            {/* <PriceTitle>PRICE:</PriceTitle> */}
-            {/* {console.log(adjBase.price[0])}
-                {console.log(adjBase.sale[0])} */}
             <PriceDropDown
               price={adjBase.price[0]}
               discount={adjBase.sale[0].discount}
             />
-            {/* </Price> */}
-            {/* </PriceWrapper> */}
           </MainInfo>
         </Main>
         <header id="moreInfo">
