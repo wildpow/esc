@@ -14,11 +14,6 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsFrontPage.seoMetaTags} />
-      {/* <SEO
-        title="E.S.C. Mattress Center"
-        description="A licensed mattress retailer for Sealy, Stearns and Foster, and Tempur-Pedic offering almost fifty mattresses with prices to fit every budget.  ESC Mattress Center is a locally owned company in Everett WA with more than twenty years of mattress industry experience between our non-commissioned staff."
-        ogTitle="E.S.C. Mattress Center"
-      /> */}
       <Main>
         <Carousel
           infiniteLoop
