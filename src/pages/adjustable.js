@@ -197,8 +197,6 @@ const Adjustables = ({ data }) => (
       {data.allDatoCmsAdjustableBase.edges.map(base => (
         <StyledLink to={`/adjustable/${base.node.uri}`} key={base.node.id}>
           <H3>{base.node.fullName}</H3>
-          {console.log(base.node.images3[0])}
-
           <InfoWrapper>
             <ImageWrapper>
               <BannerWrapper>

@@ -187,11 +187,9 @@ const Base = ({ data }) => {
         <Main>
           <ImageViewer
             saleBanner={adjBase.sale[0].saleBanner}
-            cover={adjBase.images3[0].url}
-            img1={adjBase.images3[1].url}
-            img2={adjBase.images3[2].url}
-            type="adjustable base without mattress"
-            fullname={adjBase.fullName}
+            cover={adjBase.images3[0]}
+            img1={adjBase.images3[1]}
+            img2={adjBase.images3[2]}
             base
           />
           <MainInfo>
@@ -247,6 +245,7 @@ export const query = graphql`
       description
       images3 {
         url
+        alt
       }
       warranty
       height

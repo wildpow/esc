@@ -65,8 +65,6 @@ class ImageViewer extends React.PureComponent {
     cover: PropTypes.string.isRequired,
     img1: PropTypes.string.isRequired,
     img2: PropTypes.string.isRequired,
-    fullname: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -83,7 +81,7 @@ class ImageViewer extends React.PureComponent {
   };
 
   render() {
-    const { cover, img1, img2, fullname, type, base, saleBanner } = this.props;
+    const { cover, img1, img2, base, saleBanner } = this.props;
     const { currentImageIndex } = this.state;
     const ImagesArray = [cover, img1, img2];
     return (
@@ -115,8 +113,8 @@ class ImageViewer extends React.PureComponent {
                     <BigBanner>{saleBanner}</BigBanner>
                   )}
                   <LargeImg
-                    src={ImagesArray[data]}
-                    alt={`Large image of ${fullname} ${type}`}
+                    src={ImagesArray[data].url}
+                    alt={ImagesArray[data].alt}
                     style={{ position: "absolute" }}
                   />
                 </div>
@@ -128,23 +126,23 @@ class ImageViewer extends React.PureComponent {
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={ImagesArray[0]}
+            src={ImagesArray[0].url}
             data-id={0}
-            alt={`Small image of ${fullname} ${type}`}
+            alt={ImagesArray[0].alt}
           />
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={ImagesArray[1]}
+            src={ImagesArray[1].url}
             data-id={1}
-            alt={`Small image of ${fullname} ${type}`}
+            alt={ImagesArray[1].alt}
           />
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={ImagesArray[2]}
+            src={ImagesArray[2].url}
             data-id={2}
-            alt={`Small image of ${fullname} ${type}`}
+            alt={ImagesArray[2].alt}
           />
         </SmallImgHolder>
       </ImgWrapper>
