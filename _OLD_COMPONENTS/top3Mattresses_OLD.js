@@ -3,7 +3,7 @@ import { StaticQuery, graphql, Link } from "gatsby";
 import styled from "styled-components";
 import { Wrapper, MainWrapper } from "../styles/mattListStyles";
 import { P, Headline } from "../styles/homeStyles";
-import MattressThumb from "./mattThumbNail/mattThumb_NEW";
+import MattressThumb from "./mattThumbNail/mattThumb";
 
 const NewWrapper = styled(MainWrapper)`
   background-color: ${props => props.theme.newColor1};
@@ -51,32 +51,23 @@ const TopThreeMatts = () => {
     <StaticQuery
       query={graphql`
         query top3Matts {
-          datoCmsFrontPage {
-            top3Mattress {
-              footer
-              footerUrl
-              header
+          gcms {
+            allFront3Mattresses {
+              id
+              footerURL
+              footertagline
+              headerTagLine
               mattresses {
-                id
-                name
-                images {
-                  coverImage {
-                    url
-                    alt
-                  }
-                }
                 uri
-                priceLow
-                priceHigh
-                saleInfo {
-                  saleBanner
-                }
-                subline {
-                  name
-                }
-                brand {
-                  urlName
-                  displayName
+                uriBrandName
+                id
+                brandName
+                priceRange
+                subName
+                subBrand
+                saleBanner
+                coverImg {
+                  handle
                 }
               }
             }
@@ -85,13 +76,13 @@ const TopThreeMatts = () => {
       `}
       render={data => (
         <NewWrapper>
-          <Headline>{data.datoCmsFrontPage.top3Mattress[0].header}</Headline>
+          <Headline>{data.gcms.allFront3Mattresses[0].headerTagLine}</Headline>
           <ThreeMattWrapper>
-            {data.datoCmsFrontPage.top3Mattress[0].mattresses.map(mattress => (
+            {data.gcms.allFront3Mattresses[0].mattresses.map(mattress => (
               <MattressThumb
                 key={mattress.id}
                 mattress={mattress}
-                url={`/brands/${mattress.brand.urlName}/${mattress.uri}`}
+                url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
               />
             ))}
           </ThreeMattWrapper>
@@ -105,8 +96,8 @@ const TopThreeMatts = () => {
             better.
           </P>
           <Headline red>
-            <FooterLink to={data.datoCmsFrontPage.top3Mattress[0].footerUrl}>
-              {data.datoCmsFrontPage.top3Mattress[0].footer}
+            <FooterLink to={data.gcms.allFront3Mattresses[0].footerURL}>
+              {data.gcms.allFront3Mattresses[0].footertagline}
             </FooterLink>
           </Headline>
         </NewWrapper>
