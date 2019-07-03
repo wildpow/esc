@@ -217,7 +217,6 @@ const Adjustables = ({ data }) => (
                 ))}
               </ul>
             </AdjMarkdown>
-            {/* <AdjMarkdown source={base.features} escapeHtml={false} /> */}
           </InfoWrapper>
         </StyledLink>
       ))}

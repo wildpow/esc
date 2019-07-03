@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import ImageViewer from "../components/imageViewer_NEW";
+import ImageViewer from "../components/imageViewer";
 // import DropDown from "../components/dropDown_NEW";
 import PriceDropDown from "../components/priceDropDown_NEW";
 import {

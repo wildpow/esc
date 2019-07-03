@@ -65,6 +65,8 @@ class ImageViewer extends React.PureComponent {
     cover: PropTypes.string.isRequired,
     img1: PropTypes.string.isRequired,
     img2: PropTypes.string.isRequired,
+    fullname: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -81,7 +83,7 @@ class ImageViewer extends React.PureComponent {
   };
 
   render() {
-    const { cover, img1, img2, base, saleBanner } = this.props;
+    const { cover, img1, img2, fullname, type, base, saleBanner } = this.props;
     const { currentImageIndex } = this.state;
     const ImagesArray = [cover, img1, img2];
     return (
@@ -113,8 +115,10 @@ class ImageViewer extends React.PureComponent {
                     <BigBanner>{saleBanner}</BigBanner>
                   )}
                   <LargeImg
-                    src={ImagesArray[data].url}
-                    alt={ImagesArray[data].alt}
+                    src={`https://media.graphcms.com/resize=w:500,h:500,fit:clip/${
+                      ImagesArray[data]
+                    }`}
+                    alt={`Large image of ${fullname} ${type}`}
                     style={{ position: "absolute" }}
                   />
                 </div>
@@ -126,23 +130,29 @@ class ImageViewer extends React.PureComponent {
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={ImagesArray[0].url}
+            src={`https://media.graphcms.com/resize=w:500,h:500,fit:clip/${
+              ImagesArray[0]
+            }`}
             data-id={0}
-            alt={ImagesArray[0].alt}
+            alt={`Small image of ${fullname} ${type}`}
           />
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={ImagesArray[1].url}
+            src={`https://media.graphcms.com/resize=w:500,h:500,fit:clip/${
+              ImagesArray[1]
+            }`}
             data-id={1}
-            alt={ImagesArray[1].alt}
+            alt={`Small image of ${fullname} ${type}`}
           />
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={ImagesArray[2].url}
+            src={`https://media.graphcms.com/resize=w:500,h:500,fit:clip/${
+              ImagesArray[2]
+            }`}
             data-id={2}
-            alt={ImagesArray[2].alt}
+            alt={`Small image of ${fullname} ${type}`}
           />
         </SmallImgHolder>
       </ImgWrapper>
