@@ -98,7 +98,7 @@ const SiteMap = ({ data }) => (
             if (mattress.brandName === "Stearns & Foster") {
               return (
                 <li key={mattress.id}>
-                  <SiteLinks to={`/brands/tempurpedic/${mattress.uri}`}>
+                  <SiteLinks to={`/brands/stearns/${mattress.uri}`}>
                     {`${mattress.subBrand} ${mattress.subName}`}
                   </SiteLinks>
                 </li>
