@@ -40,6 +40,7 @@ export const InboundLink = styled(Link)`
 `;
 
 export const Top = styled.div`
+  width: ${props => (props.menuToggle ? "100vw" : "initial")};
   font-family: ${props => props.theme.MainFont1};
   font-weight: 300;
   background-color: ${props => props.theme.mainColor2};

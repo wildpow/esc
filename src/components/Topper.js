@@ -2,8 +2,8 @@ import React from "react";
 import TopPromo from "./TopPromo";
 import { Top, Wrapper, OutBoundLink, BR } from "../styles/topperStyles";
 
-const Topper = () => (
-  <Top>
+const Topper = ({ menuToggle }) => (
+  <Top menuToggle={menuToggle}>
     <Wrapper Left>
       <TopPromo />
     </Wrapper>

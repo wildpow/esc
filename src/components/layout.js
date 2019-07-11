@@ -163,7 +163,7 @@ class Layout extends React.Component {
           <MenuButton menuToggle={menuToggle} onClick={this.handleMenuToggle} />
           <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc} />
         </div>
-        <Topper />
+        <Topper menuToggle={menuToggle} />
         <Body outsideMenuEvents={outsideMenuEvents} menuToggle={menuToggle}>
           <Navigation />
           <Logo menuToggle={menuToggle} />
