@@ -12,6 +12,8 @@ import Layout from "../../components/layout";
 import StearnsImg from "../../images/stearnsLogo.png";
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 import MattressThumb from "../../components/mattThumbNail/mattThumb_NEW";
+// eslint-disable-next-line no-unused-vars
+import mattressParts from "../../fragments/allMattresses";
 
 const Stearns = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;
@@ -63,26 +65,7 @@ export const stearnsMattresses = graphql`
       sort: { fields: priceHigh, order: ASC }
     ) {
       nodes {
-        brand {
-          urlName
-          displayName
-        }
-        uri
-        name
-        id
-        priceLow
-        priceHigh
-        images {
-          coverImage {
-            url
-          }
-        }
-        saleInfo {
-          saleBanner
-        }
-        subline {
-          name
-        }
+        ...mattressParts
       }
     }
   }

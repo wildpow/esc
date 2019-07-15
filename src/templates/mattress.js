@@ -22,7 +22,6 @@ import {
 } from "../styles/singleMattStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import PriceCalculator from "../components/priceCalculator";
-import SEO from "../components/seo";
 
 const List = styled.div`
   display: flex;
@@ -171,23 +170,9 @@ const Info = styled.li`
 
 const Mattress = ({ data }) => {
   const { datoCmsMattress: mattress } = data;
-  // const mattress = data.gcms.Mattress;
-  // const SealyBoxPrice = [125, 125, 150, 150, 250];
-  // const StearnsBoxPrice = [125, 125, 150, 150, 250];
-  // const TempurBoxPrice = [200, 200, 300, 300, 400];
-  // let BoxspringPrice;
-  // if (mattress.uriBrandName === "tempurpedic") {
-  //   BoxspringPrice = TempurBoxPrice;
-  // } else if (mattress.uriBrandName === "sealy") {
-  //   BoxspringPrice = SealyBoxPrice;
-  // } else {
-  //   BoxspringPrice = StearnsBoxPrice;
-  // }
   return (
     <Layout>
-      {console.log(mattress)}
       <HelmetDatoCms seo={mattress.seoMetaTags} />
-
       <BreadWrapper>
         <BreadCrumbs
           next="Brands"

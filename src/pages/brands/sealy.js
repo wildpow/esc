@@ -11,21 +11,15 @@ import {
   SealyImgPlace,
 } from "../../styles/mattListStyles";
 import SealyImg from "../../images/sealyLogo.png";
-// import SEO from "../../components/seo";
 import MattressThumb from "../../components/mattThumbNail/mattThumb_NEW";
+// eslint-disable-next-line no-unused-vars
+import mattressParts from "../../fragments/allMattresses";
 
 const Sealy = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;
-  // const title = "sealy";
   return (
     <Layout>
-      {console.log(allDatoCmsMattress.nodes)}
       <MainWrapper>
-        {/* <SEO
-          title="ESC: Sealy Mattresses"
-          description="One of the worlds most recognized brands, Sealy offers all three styles of mattresses: Traditional innerspring, Hybrid, a mix of traditional and all foam, and all foam option. The Sealy line up offers a little something for everyone."
-          ogTitle="E.S.C. Mattress Center | Sealy"
-        /> */}
         <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
         <BreadWrapper Brands>
           <BreadCrumbs next="Brands" here="Sealy" />
@@ -112,26 +106,7 @@ export const allSealyMattresses = graphql`
       sort: { fields: priceLow, order: ASC }
     ) {
       nodes {
-        name
-        id
-        uri
-        brand {
-          urlName
-          displayName
-        }
-        priceLow
-        priceHigh
-        images {
-          coverImage {
-            url
-          }
-        }
-        saleInfo {
-          saleBanner
-        }
-        subline {
-          name
-        }
+        ...mattressParts
       }
     }
   }
