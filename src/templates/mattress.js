@@ -21,7 +21,7 @@ import {
   // Construction,
 } from "../styles/singleMattStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import PriceCalculator from "../components/priceCalculator";
+import DropDown from "../components/priceDropDown_NEWMATT";
 
 const List = styled.div`
   display: flex;
@@ -196,14 +196,19 @@ const Mattress = ({ data }) => {
               <h3>Features</h3>
               <ul>
                 {mattress.listFeature.map(item => (
-                  <li key={item.feature}>{item.feature}</li>
+                  <li key={item.id}>{item.feature}</li>
                 ))}
                 <Info>
                   <AnchorLink href="#moreInfo">See more details</AnchorLink>
                 </Info>
               </ul>
             </List>
-
+            <DropDown
+              freeBoxSpring={mattress.freeBox}
+              discount={mattress.saleInfo.discount}
+              prices={mattress.price[0]}
+              boxPrices={mattress.brand.boxPrice}
+            />
             {/* <PriceCalculator
               freeBoxSpring={mattress.freeBoxSpring}
               mattress={mattress.name} // For MakeOffer Component
@@ -225,7 +230,7 @@ const Mattress = ({ data }) => {
             <h3>Key Features:</h3>
             <ul>
               {mattress.construction.map(item => (
-                <li key={item.feature}>{item.feature}</li>
+                <li key={item.id}>{item.feature}</li>
               ))}
             </ul>
           </Construction>
@@ -258,9 +263,11 @@ export const query = graphql`
       warranty
       listFeature {
         feature
+        id
       }
       construction {
         feature
+        id
       }
       saleInfo {
         saleBanner

@@ -213,7 +213,7 @@ const Adjustables = ({ data }) => (
               <h3>Features</h3>
               <ul>
                 {base.node.smallFeatureList.map(item => (
-                  <li key={item.feature}>{item.feature}</li>
+                  <li key={item.id}>{item.feature}</li>
                 ))}
               </ul>
             </AdjMarkdown>
@@ -242,6 +242,7 @@ export const allAdjustables = graphql`
           fullName
           smallFeatureList {
             feature
+            id
           }
           uri
           sale {

@@ -197,7 +197,7 @@ const Base = ({ data }) => {
               <h3>Features</h3>
               <ul>
                 {adjBase.smallFeatureList.map(item => (
-                  <li key={item.feature}>{item.feature}</li>
+                  <li key={item.id}>{item.feature}</li>
                 ))}
                 <Info>
                   <AnchorLink href="#moreInfo">See more details</AnchorLink>
@@ -220,7 +220,7 @@ const Base = ({ data }) => {
             <h3>Key Features:</h3>
             <ul>
               {adjBase.fullFeatureList.map(item => (
-                <li key={item.feature}>{item.feature}</li>
+                <li key={item.id}>{item.feature}</li>
               ))}
             </ul>
           </Construction>
@@ -265,9 +265,11 @@ export const query = graphql`
       }
       smallFeatureList {
         feature
+        id
       }
       fullFeatureList {
         feature
+        id
       }
     }
   }
