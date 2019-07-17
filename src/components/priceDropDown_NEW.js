@@ -121,7 +121,10 @@ const Wrap = styled.div`
 `;
 
 const BeforeSalePrice = styled.h6`
-  opacity: ${props => (props.discount > 1 && props.price !== 0 ? 1 : 0)};
+  opacity: ${props =>
+    props.discount > 1 && props.price !== 0 && props.price !== undefined
+      ? 1
+      : 0};
   font-family: ${props => props.theme.MainFont2};
   margin-top: 2px;
   margin-bottom: 0px;

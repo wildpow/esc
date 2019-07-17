@@ -203,11 +203,13 @@ const Mattress = ({ data }) => {
                 </Info>
               </ul>
             </List>
+            {console.log(mattress)}
             <DropDown
               freeBoxSpring={mattress.freeBox}
-              discount={mattress.saleInfo.discount}
+              discount={mattress.saleInfo[0].discount}
               prices={mattress.price[0]}
-              boxPrices={mattress.brand.boxPrice}
+              boxPrices={mattress.brand.boxPrice[0]}
+              mattress={mattress.name}
             />
             {/* <PriceCalculator
               freeBoxSpring={mattress.freeBoxSpring}
