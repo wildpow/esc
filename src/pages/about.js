@@ -22,8 +22,9 @@ import store2 from "../images/outsideDayRatio.jpg";
 import map from "../images/storeMapRatio.png";
 import pop from "../images/funCo.png";
 import Layout from "../components/layout";
-import Reviews from "../components/aboutReviews";
+// import Reviews from "../components/aboutReviews/aboutReviews";
 import SEO from "../components/seo";
+import ReviewContainer from "../components/aboutReviews/ReviewContainer";
 
 const AboutH2 = styled(H2)`
   @media (min-width: 768px) {
@@ -51,7 +52,7 @@ export default () => (
           wake up feeling better.
         </AboutH2>
       </header>
-      <Reviews />
+      <ReviewContainer />
       <PicHolder>
         <StoreImg
           src={store1}
