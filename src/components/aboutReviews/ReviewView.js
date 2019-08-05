@@ -204,7 +204,6 @@ class Reviews extends React.Component {
             )}
           </NodeGroup>
         </Content>
-        {/* {console.log(this.state)} */}
       </Wrap>
     );
   }
