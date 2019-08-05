@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
-import axios from "axios";
 import styled from "styled-components";
 import { NodeGroup } from "react-move";
 import TruncateMarkup from "react-truncate-markup";
-import star from "../images/stars.svg";
-import Loading from "./loading";
+import star from "../../images/stars.svg";
 
 const InsideWrapper = styled.div`
   position: absolute;
@@ -48,10 +46,6 @@ const Wrap = styled.div`
     margin-bottom: 170px;
     margin-top: 20px;
   }
-  /* @media (min-width: 1024px) {
-    margin-bottom: 170px;
-    margin-top: 20px;
-  } */
 `;
 const Name = styled.span`
   font-family: ${props => props.theme.MainFont1};
@@ -70,7 +64,6 @@ const Name = styled.span`
     font-size: 21px;
     letter-spacing: 0.05rem;
   }
-  /* margin-top: 22px !important; */
 `;
 const Review = styled.p`
   font-family: ${props => props.theme.MainFont3};
@@ -91,8 +84,6 @@ const Review = styled.p`
     line-height: 1.2em;
   }
   @media (min-width: 1024px) {
-    /* margin: 22px auto;
-    font-size: 22px; */
     line-height: 1.4em;
   }
 `;
@@ -115,62 +106,37 @@ const Img = styled.img`
     height: 45px;
   }
 `;
-class Reviews extends Component {
-  constructor() {
-    super();
+
+class Reviews extends React.Component {
+  constructor(...args) {
+    super(...args);
     this.state = {
-      loading: true,
-      error: false,
-      currentIndex: 1,
+      currentIndex: Math.floor(Math.random() * this.props.maxIndex - 1) + 1,
       pause: false,
-      content: [],
-      maxIndex: 0,
     };
-    this.loop = this.loop.bind(this);
   }
 
   componentDidMount() {
-    axios
-      .get(process.env.GATSBY_REST)
-      .then(res => {
-        const { data } = res;
-        const filteredData = data.filter(val => val.comments !== null);
-        const maxIndex = filteredData.length - 1;
-        this.setState({
-          content: filteredData,
-          loading: false,
-          maxIndex,
-        });
-      })
-      .catch(error => {
-        this.setState({ error: true, loading: false });
-      });
-    this.loop();
-  }
-
-  componentDidUpdate() {
-    if (
-      this.state.maxIndex === this.state.currentIndex &&
-      this.state.pause === false
-    ) {
-      this.setState({ currentIndex: 0 });
-    }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.loop);
-  }
-
-  loop() {
-    setInterval(() => {
+    this.interval = setInterval(() => {
+      if (
+        this.props.maxIndex === this.state.currentIndex &&
+        this.state.pause === false
+      ) {
+        this.setState({ currentIndex: 0 });
+      }
       if (!this.state.pause) {
         this.setState({ currentIndex: this.state.currentIndex + 1 });
       }
-    }, 5000);
+    }, 4000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
-    const { content, error, loading, currentIndex } = this.state;
+    const { content } = this.props;
+    const { currentIndex } = this.state;
     const readMore = (
       <span>
         {`  ...`}
@@ -189,8 +155,6 @@ class Reviews extends Component {
         </ReadMore>
       </span>
     );
-    if (loading) return <Loading />;
-    if (error) return null;
     return (
       <Wrap
         onMouseEnter={() => this.setState({ pause: true })}
@@ -240,6 +204,7 @@ class Reviews extends Component {
             )}
           </NodeGroup>
         </Content>
+        {/* {console.log(this.state)} */}
       </Wrap>
     );
   }

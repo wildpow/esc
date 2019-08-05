@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Certified from "../images/badge.png";
 import star from "../images/star.png";
 import BirdBig from "./birdBig";
-import Loading from "./loading";
+// import Loading from "./loading";
 
 const average = list => list.reduce((prev, curr) => prev + curr) / list.length;
 
@@ -101,70 +101,80 @@ const AvgContainer = styled.div`
   }
 `;
 class Bird extends PureComponent {
+  _isMounted = false;
+
   constructor() {
     super();
     this.state = {
-      avg: "",
-      count: 0,
-      errorState: false,
-      loading: true,
+      avg: 4.980392156862745,
+      count: 129,
     };
   }
 
+  componentWillMount() {
+    const avg = localStorage.getItem("avg");
+    const count = localStorage.getItem("count");
+    if (avg === null && count === null) {
+      return null;
+    }
+    return this.setState({ avg, count });
+  }
+
   componentDidMount() {
+    this._isMounted = true;
     axios
       .get(process.env.GATSBY_REST)
       .then(res => {
-        const { data } = res;
-        const e = data.map(i => i.rating);
-        const p = e.filter(val => val !== 0 && val !== null);
-        this.setState({ count: data.length, avg: average(p), loading: false });
+        if (this._isMounted) {
+          const { data } = res;
+          const e = data.map(i => i.rating);
+          const p = e.filter(val => val !== 0 && val !== null);
+          localStorage.setItem("count", data.length);
+          localStorage.setItem("avg", average(p));
+          this.setState({ count: data.length, avg: average(p) });
+        }
       })
       .catch(error => {
-        this.setState({ errorState: true, loading: false });
+        // this.setState({ errorState: true, loading: false });
         console.log(error);
       });
   }
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
-    const { count, avg, loading, errorState } = this.state;
-    let content;
+    const { count, avg } = this.state;
     const starsArr = [];
     for (let i = 0; i < Math.round(avg); i += 1) {
       starsArr.push(<img src={star} alt="start for rating" key={i + 200} />);
     }
-    if (loading) {
-      content = <Loading />;
-    } else if (errorState) {
-      content = <></>;
-    } else {
-      content = (
-        <>
-          <BirdLink
-            href="https://birdeye.com/esc-mattress-center-154743411347922"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <CertReview>
-              <Words>
-                <h4>{count}</h4>
-                <h4>Certified</h4>
-                <h4>Reviews</h4>
-                <Rating>
-                  {starsArr}
-                  <AvgContainer>{Math.round(avg)}</AvgContainer>
-                </Rating>
-              </Words>
-              <Cert alt="BirdEye certified seal" src={Certified} />
-            </CertReview>
-          </BirdLink>
-          <BigWrapper>
-            <BirdBig avg={avg} count={count} star={star} />
-          </BigWrapper>
-        </>
-      );
-    }
-    return <>{content}</>;
+    return (
+      <>
+        <BirdLink
+          href="https://birdeye.com/esc-mattress-center-154743411347922"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <CertReview>
+            <Words>
+              <h4>{count}</h4>
+              <h4>Certified</h4>
+              <h4>Reviews</h4>
+              <Rating>
+                {starsArr}
+                <AvgContainer>{Math.round(avg)}</AvgContainer>
+              </Rating>
+            </Words>
+            <Cert alt="BirdEye certified seal" src={Certified} />
+          </CertReview>
+        </BirdLink>
+        <BigWrapper>
+          <BirdBig avg={avg} count={count} star={star} />
+        </BigWrapper>
+      </>
+    );
   }
 }
 
