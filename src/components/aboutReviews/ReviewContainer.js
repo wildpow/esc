@@ -18,8 +18,12 @@ class ReviewContainer extends Component {
   }
 
   componentWillMount() {
-    const content = JSON.parse(localStorage.getItem("content"));
-    const maxIndex = localStorage.getItem("maxIndex");
+    let content = null;
+    let maxIndex = null;
+    if (typeof window !== "undefined" && window) {
+      content = JSON.parse(localStorage.getItem("content"));
+      maxIndex = localStorage.getItem("maxIndex");
+    }
     if (content === null || maxIndex === null) {
       return null;
     }

@@ -112,9 +112,13 @@ class Bird extends PureComponent {
   }
 
   componentWillMount() {
-    const avg = localStorage.getItem("avg");
-    const count = localStorage.getItem("count");
-    if (avg === null && count === null) {
+    let avg = null;
+    let count = null;
+    if (typeof window !== "undefined" && window) {
+      avg = localStorage.getItem("avg");
+      count = localStorage.getItem("count");
+    }
+    if (avg === null || count === null) {
       return null;
     }
     return this.setState({ avg, count });
