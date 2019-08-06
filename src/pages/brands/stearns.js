@@ -62,7 +62,7 @@ export const stearnsMattresses = graphql`
     }
     allDatoCmsMattress(
       filter: { brand: { urlName: { eq: "stearns" } } }
-      sort: { fields: priceHigh, order: ASC }
+      sort: { fields: priceLow, order: ASC }
     ) {
       nodes {
         ...mattressParts
