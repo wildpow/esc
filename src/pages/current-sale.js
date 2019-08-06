@@ -11,7 +11,6 @@ import {
   Headline,
 } from "../styles/mattListStyles";
 import MattressThumb from "../components/mattThumbNail/mattThumb_NEW";
-// import SEO from "../components/seo";
 
 const CurrentSale = ({ data }) => {
   const { datoCmsCurrentSale } = data;

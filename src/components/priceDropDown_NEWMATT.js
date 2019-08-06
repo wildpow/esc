@@ -280,14 +280,12 @@ class DropDown extends React.Component {
           >
             <option value="noBox">[$0.00] No Box Spring</option>
             <option value="addBox">
-              {console.log("boxDropDisabled!!!", boxDropDisabled)}
               {freeBoxSpring === false
                 ? `[$${boxPrices[selectedIndex]}.00] Standard Foundation`
                 : "[ FREE ] Standard Foundation"}
             </option>
           </BoxSelect>
         </DropDownWrapper>
-        {console.log("discount", discount, "price", prices[selectedIndex])}
         <BeforeSalePrice discount={discount} price={prices[selectedIndex]}>
           {discount > 1 && prices[selectedIndex] !== 0
             ? `$${prices[selectedIndex] + boxPrice}`

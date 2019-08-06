@@ -1,5 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import {
   Main,
   PicHolder,
@@ -23,7 +26,7 @@ import map from "../images/storeMapRatio.png";
 import pop from "../images/funCo.png";
 import Layout from "../components/layout";
 import Reviews from "../components/aboutReviews";
-import SEO from "../components/seo";
+// import SEO from "../components/seo";
 
 const AboutH2 = styled(H2)`
   @media (min-width: 768px) {
@@ -37,14 +40,10 @@ const AboutH2 = styled(H2)`
     font-size: 1.8rem;
   }
 `;
-export default () => (
+const About = ({ data }) => (
   <Layout>
     <Main>
-      <SEO
-        title="ESC: About Us"
-        description="Three of the best trained mattress sales people in Western Washington decided to open their own store; so that they could help people the way they believe they should be helped!  We are bringing back the service you are used to!"
-        ogTitle="E.S.C. Mattress Center | About Us"
-      />
+      <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <header>
         <AboutH2>
           Our goal is to help Snohomish County sleep like the experts do and
@@ -130,3 +129,18 @@ export default () => (
     </Main>
   </Layout>
 );
+
+About.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+export const aboutSEO = graphql`
+  query aboutSEO {
+    datoCmsSeo(pageName: { eq: "ESC: About Us" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+  }
+`;
+
+export default About;

@@ -203,7 +203,6 @@ const Mattress = ({ data }) => {
                 </Info>
               </ul>
             </List>
-            {console.log(mattress)}
             <DropDown
               freeBoxSpring={mattress.freeBox}
               discount={mattress.saleInfo[0].discount}
