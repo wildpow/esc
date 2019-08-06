@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "styled-components";
 import { NodeGroup } from "react-move";
@@ -108,15 +109,23 @@ const Img = styled.img`
 `;
 
 class Reviews extends React.Component {
+  static propTypes = {
+    maxIndex: PropTypes.number.isRequired,
+    content: PropTypes.instanceOf(Object).isRequired,
+  };
+
   constructor(...args) {
     super(...args);
+    const { maxIndex } = this.props;
     this.state = {
-      currentIndex: Math.floor(Math.random() * this.props.maxIndex - 1) + 1,
+      currentIndex: Math.floor(Math.random() * maxIndex - 1) + 1,
       pause: false,
     };
   }
 
   componentDidMount() {
+    // const { pause, currentIndex } = this.state;
+    // const { maxIndex } = this.props;
     this.interval = setInterval(() => {
       if (
         this.props.maxIndex === this.state.currentIndex &&
@@ -125,7 +134,9 @@ class Reviews extends React.Component {
         this.setState({ currentIndex: 0 });
       }
       if (!this.state.pause) {
-        this.setState({ currentIndex: this.state.currentIndex + 1 });
+        this.setState(prevState => ({
+          currentIndex: prevState.currentIndex + 1,
+        }));
       }
     }, 4000);
   }
@@ -145,9 +156,7 @@ class Reviews extends React.Component {
           rel="noopener noreferrer"
           href={
             content[currentIndex]
-              ? `https://birdeye.com/esc-mattress-center-154743411347922/review/${
-                  content[currentIndex].reviewId
-                }`
+              ? `https://birdeye.com/esc-mattress-center-154743411347922/review/${content[currentIndex].reviewId}`
               : "https://birdeye.com/esc-mattress-center-154743411347922"
           }
         >
@@ -160,6 +169,8 @@ class Reviews extends React.Component {
         onMouseEnter={() => this.setState({ pause: true })}
         onMouseLeave={() => this.setState({ pause: false })}
       >
+        {console.log("props", this.props)}
+        {console.log("state", this.state)}
         <Content>
           <Img
             src={star}
