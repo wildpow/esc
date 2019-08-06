@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "styled-components";
 import { NodeGroup } from "react-move";
@@ -108,10 +109,16 @@ const Img = styled.img`
 `;
 
 class Reviews extends React.Component {
+  static propTypes = {
+    maxIndex: PropTypes.number.isRequired,
+    content: PropTypes.instanceOf(Object).isRequired,
+  };
+
   constructor(...args) {
     super(...args);
+    const { maxIndex } = this.props;
     this.state = {
-      currentIndex: Math.floor(Math.random() * this.props.maxIndex - 1) + 1,
+      currentIndex: Math.floor(Math.random() * maxIndex - 1) + 1,
       pause: false,
     };
   }
@@ -119,13 +126,18 @@ class Reviews extends React.Component {
   componentDidMount() {
     this.interval = setInterval(() => {
       if (
+        // eslint-disable-next-line react/destructuring-assignment
         this.props.maxIndex === this.state.currentIndex &&
+        // eslint-disable-next-line react/destructuring-assignment
         this.state.pause === false
       ) {
         this.setState({ currentIndex: 0 });
       }
+      // eslint-disable-next-line react/destructuring-assignment
       if (!this.state.pause) {
-        this.setState({ currentIndex: this.state.currentIndex + 1 });
+        this.setState(prevState => ({
+          currentIndex: prevState.currentIndex + 1,
+        }));
       }
     }, 4000);
   }
@@ -145,9 +157,7 @@ class Reviews extends React.Component {
           rel="noopener noreferrer"
           href={
             content[currentIndex]
-              ? `https://birdeye.com/esc-mattress-center-154743411347922/review/${
-                  content[currentIndex].reviewId
-                }`
+              ? `https://birdeye.com/esc-mattress-center-154743411347922/review/${content[currentIndex].reviewId}`
               : "https://birdeye.com/esc-mattress-center-154743411347922"
           }
         >

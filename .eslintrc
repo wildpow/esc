@@ -20,7 +20,7 @@
     "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",
     "react/prop-types": 1,
-    "trailingComma": "all",
+    // "trailingComma": 1,
     "react/jsx-filename-extension": [
       "error",
       {
