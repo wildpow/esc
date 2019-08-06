@@ -124,15 +124,16 @@ class Reviews extends React.Component {
   }
 
   componentDidMount() {
-    // const { pause, currentIndex } = this.state;
-    // const { maxIndex } = this.props;
     this.interval = setInterval(() => {
       if (
+        // eslint-disable-next-line react/destructuring-assignment
         this.props.maxIndex === this.state.currentIndex &&
+        // eslint-disable-next-line react/destructuring-assignment
         this.state.pause === false
       ) {
         this.setState({ currentIndex: 0 });
       }
+      // eslint-disable-next-line react/destructuring-assignment
       if (!this.state.pause) {
         this.setState(prevState => ({
           currentIndex: prevState.currentIndex + 1,
@@ -169,8 +170,6 @@ class Reviews extends React.Component {
         onMouseEnter={() => this.setState({ pause: true })}
         onMouseLeave={() => this.setState({ pause: false })}
       >
-        {console.log("props", this.props)}
-        {console.log("state", this.state)}
         <Content>
           <Img
             src={star}
