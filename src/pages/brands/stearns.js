@@ -12,8 +12,6 @@ import Layout from "../../components/layout";
 import StearnsImg from "../../images/stearnsLogo.png";
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 import MattressThumb from "../../components/mattThumbNail/mattThumb_NEW";
-// eslint-disable-next-line no-unused-vars
-import mattressParts from "../../fragments/allMattresses";
 
 const Stearns = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;
@@ -55,7 +53,7 @@ export default Stearns;
 
 export const stearnsMattresses = graphql`
   query stearnsMattresses {
-    datoCmsSeo(pageName: { eq: "ESC: Stearns & Foster Mattresses" }) {
+    datoCmsSeo(name: { eq: "stearns mattresses" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }

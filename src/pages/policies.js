@@ -1,17 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import { MainArticle, P, Heading } from "../styles/policyStyles";
 import { H2 } from "../styles/mainStyles";
 import Layout from "../components/layout";
-import SEO from "../components/seo";
 
-export default () => (
+const Policies = ({ data }) => (
   <Layout>
     <MainArticle>
-      <SEO
-        title="ESC: Terms and Policies"
-        description="Terms and Policies for E.S.C Mattress Center website"
-        ogTitle="E.S.C. Mattress Center | Terms and Policies"
-      />
+      <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <header>
         <H2>Terms and Policies</H2>
       </header>
@@ -66,3 +64,17 @@ export default () => (
     </MainArticle>
   </Layout>
 );
+
+Policies.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+export const policiesSEO = graphql`
+  query policiesSEO {
+    datoCmsSeo(name: { eq: "terms and policies" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+  }
+`;
+export default Policies;

@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import {
   MainArticle,
   P,
@@ -9,16 +12,11 @@ import {
 } from "../styles/policyStyles";
 import { H2 } from "../styles/mainStyles";
 import Layout from "../components/layout";
-import SEO from "../components/seo";
 
-export default () => (
+const Warranty = ({ data }) => (
   <Layout>
     <MainArticle>
-      <SEO
-        title="ESC: Mattress Warranty Information"
-        description="Mattress Warranty Information for E.S.C Mattress Center website"
-        ogTitle="E.S.C. Mattress Center | Warranty"
-      />
+      <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <header>
         <H2>Mattress Warranty Information</H2>
       </header>
@@ -55,3 +53,18 @@ export default () => (
     </MainArticle>
   </Layout>
 );
+
+Warranty.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+export const warrantySEO = graphql`
+  query warrantySEO {
+    datoCmsSeo(name: { eq: "warranty" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+  }
+`;
+
+export default Warranty;

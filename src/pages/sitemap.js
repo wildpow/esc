@@ -14,7 +14,6 @@ import {
   BottomLinks,
 } from "../styles/siteMapStyles";
 import { H2 } from "../styles/mainStyles";
-import SEO from "../components/seo";
 
 const SiteMap = ({ data }) => {
   const {
@@ -25,11 +24,6 @@ const SiteMap = ({ data }) => {
   } = data;
   return (
     <Layout>
-      <SEO
-        title="ESC: Site Map"
-        description="Sitemap for E.S.C Mattress Center website"
-        ogTitle="E.S.C. Mattress Center | Site Map"
-      />
       <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
       <MainLinks>
         <H2>Main Site Links</H2>
@@ -167,7 +161,7 @@ export const allMattressesSiteMap = graphql`
         }
       }
     }
-    datoCmsSeo(seo: { title: { eq: "ESC: Site Map" } }) {
+    datoCmsSeo(name: { eq: "siteMap" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }

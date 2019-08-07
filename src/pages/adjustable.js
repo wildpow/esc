@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import {
@@ -12,7 +13,6 @@ import {
 } from "../styles/adjustableStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import Layout from "../components/layout";
-import SEO from "../components/seo";
 
 export const AdjMarkdown = styled.div`
   font-family: ${props => props.theme.MainFont3};
@@ -107,18 +107,11 @@ export const Banner = styled.div`
   color: white;
   position: absolute;
   font-size: 0.8rem;
-  /* padding-top: 3px;
-  padding-bottom: 3px;
-  padding-right: 10px;
-  padding-left: 5px; */
   padding-top: 5px;
   padding-bottom: 5px;
-  /* padding-right: 15px;
-  padding-left: 15px; */
   width: 60%;
   margin-left: 0px;
   letter-spacing: 0.105rem;
-  /* margin-top: 10px; */
   top: 6%;
   :after {
     content: " ";
@@ -143,8 +136,6 @@ export const Banner = styled.div`
     width: 85%;
     padding-top: 5px;
     padding-bottom: 5px;
-    /* text-align: left;
-    padding-left: 10%; */
   }
   @media (min-width: 768px) and (orientation: portrait) {
     font-size: 1rem;
@@ -189,11 +180,7 @@ const Adjustables = ({ data }) => (
       <BreadWrapper hidenLarge>
         <BreadCrumbs here="Adjustable" />
       </BreadWrapper>
-      <SEO
-        title="ESC: Ajustable Bases"
-        description="E.S.C. Mattress Center carry many different Adjustable bases. Sometimes called Lifestyle bases or Movable bases. We have the Tempur-Pedic Ergo Premier and Ergo Plus, the Stearns & Foster Reflection 7, and the Sealy Ease bases. Sleep in zero gravity, or read, game or watch tv in the lounge position."
-        ogTitle="E.S.C. Mattress Center | Adjustable Bases"
-      />
+      <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       {data.allDatoCmsAdjustableBase.edges.map(base => (
         <StyledLink to={`/adjustable/${base.node.uri}`} key={base.node.id}>
           <H3>{base.node.fullName}</H3>
@@ -235,6 +222,11 @@ export default Adjustables;
 
 export const allAdjustables = graphql`
   query allAjustables {
+    datoCmsSeo(name: { eq: "adjustable" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
     allDatoCmsAdjustableBase(sort: { fields: position }) {
       edges {
         node {

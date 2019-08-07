@@ -12,8 +12,6 @@ import {
 } from "../../styles/mattListStyles";
 import SealyImg from "../../images/sealyLogo.png";
 import MattressThumb from "../../components/mattThumbNail/mattThumb_NEW";
-// eslint-disable-next-line no-unused-vars
-import mattressParts from "../../fragments/allMattresses";
 
 const Sealy = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;
@@ -95,7 +93,7 @@ export default Sealy;
 
 export const allSealyMattresses = graphql`
   query allSealyMattresses {
-    datoCmsSeo(pageName: { eq: "ESC: Sealy Mattresses" }) {
+    datoCmsSeo(name: { eq: "sealy mattresses" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }

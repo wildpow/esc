@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import { HelmetDatoCms } from "gatsby-source-datocms";
+import { Link, graphql } from "gatsby";
 import Layout from "../../components/layout";
 import GoogleMapContainer from "../../components/map/googleMap";
 import AdForm from "../../components/adForm";
@@ -30,17 +32,10 @@ import {
   FooterWraper,
   LGWrapper,
 } from "../../styles/landingStyles";
-import SEO from "../../components/seo";
 
-const StearnsLanding = () => (
+const StearnsLanding = ({ data }) => (
   <Layout>
-    <SEO
-      title="ESC: Stearns & Foster"
-      description="Experience the height of luxury with Stearns & Foster mattresses.  Learn more about the top rated luxury innerspring mattress collection from Stearns and Foster at ESC Mattress Center in Everett WA.  Our local non-commission staff will be happy to show you the Estate and Estate Lux collections."
-      ogImage={StearnsLogo}
-      ogImageAlt="Stearns & Foster logo"
-      ogTitle="E.S.C. Mattress Center | Stearns and Foster"
-    />
+    <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
     <Container>
       <Header>
         <MainLogo
@@ -152,5 +147,18 @@ const StearnsLanding = () => (
     </Container>
   </Layout>
 );
+
+StearnsLanding.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+export const stearnsLandingSEO = graphql`
+  query stearnsLandingSEO {
+    datoCmsSeo(name: { eq: "stearns landing" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+  }
+`;
 
 export default StearnsLanding;

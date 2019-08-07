@@ -80,7 +80,7 @@ Accessories.propTypes = {
 };
 export const accessoriesSEO = graphql`
   query accessoriesSEO {
-    datoCmsSeo(pageName: { eq: "ESC: Accessories" }) {
+    datoCmsSeo(name: { eq: "accessories" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }

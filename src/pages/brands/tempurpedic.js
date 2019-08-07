@@ -49,7 +49,7 @@ export default Tempurpedic;
 
 export const tempurpedicMatt = graphql`
   query tempurpedic {
-    datoCmsSeo(pageName: { eq: "ESC: Tempur-Pedic Mattresses" }) {
+    datoCmsSeo(name: { eq: "tempurpedic mattresses" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }

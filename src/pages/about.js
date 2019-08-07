@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
+import styled from "styled-components";
 import {
   Main,
   PicHolder,
@@ -26,7 +26,6 @@ import map from "../images/storeMapRatio.png";
 import pop from "../images/funCo.png";
 import Layout from "../components/layout";
 import Reviews from "../components/aboutReviews";
-// import SEO from "../components/seo";
 
 const AboutH2 = styled(H2)`
   @media (min-width: 768px) {
@@ -135,7 +134,7 @@ About.propTypes = {
 };
 export const aboutSEO = graphql`
   query aboutSEO {
-    datoCmsSeo(pageName: { eq: "ESC: About Us" }) {
+    datoCmsSeo(name: { eq: "about" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }

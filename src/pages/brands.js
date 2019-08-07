@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import {
   Main,
   TempurImg,
@@ -15,16 +18,11 @@ import SealyLogo from "../images/sealyLogo.png";
 import StearnsLogo from "../images/stearnsLogo.png";
 import TempurLogo from "../images/tempurLogo2.png";
 import Layout from "../components/layout";
-import SEO from "../components/seo";
 
-export default () => (
+const Brands = ({ data }) => (
   <Layout>
     <Main MarginTop>
-      <SEO
-        title="ESC: Brands"
-        description="Come visit your locally owned, Everett based Sealy, Stearns and Foster & Tempur-Pedic dealer.  We have over 20 years of experience helping people sleep better on the brands we carry.  We carry 3 of the top 5 mattress brands in the US, so come see us, so we can help you sleep like the experts do!"
-        ogTitle="E.S.C. Mattress Center | Brands"
-      />
+      <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <BreadWrapper hidenLarge>
         <BreadCrumbs here="Brands" />
       </BreadWrapper>
@@ -88,3 +86,19 @@ export default () => (
     </Main>
   </Layout>
 );
+
+Brands.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+
+export const brandsSEO = graphql`
+  query brandsSEO {
+    datoCmsSeo(name: { eq: "brands" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+  }
+`;
+
+export default Brands;
