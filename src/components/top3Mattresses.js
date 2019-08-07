@@ -3,7 +3,7 @@ import { StaticQuery, graphql, Link } from "gatsby";
 import styled from "styled-components";
 import { Wrapper, MainWrapper } from "../styles/mattListStyles";
 import { P, Headline } from "../styles/homeStyles";
-import MattressThumb from "./mattThumbNail/mattThumb_NEW";
+import MattressThumb from "./mattThumbNail/mattThumb";
 
 const NewWrapper = styled(MainWrapper)`
   background-color: ${props => props.theme.newColor1};

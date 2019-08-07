@@ -185,6 +185,7 @@ class DropDown extends React.Component {
       selectedName: "",
       boxDropDisabled: true,
       boxPrice: 0,
+      makeOfferOpacity: 0,
     };
     this.sizeSelect = this.sizeSelect.bind(this);
   }
@@ -196,6 +197,7 @@ class DropDown extends React.Component {
           selectedName: "Twin",
           selectedIndex: e.target.value,
           boxDropDisabled: false,
+          makeOfferOpacity: 1,
         });
         break;
       case "twinxl":
@@ -203,6 +205,7 @@ class DropDown extends React.Component {
           selectedName: "TwinXL",
           selectedIndex: e.target.value,
           boxDropDisabled: false,
+          makeOfferOpacity: 1,
         });
         break;
       case "full":
@@ -210,6 +213,7 @@ class DropDown extends React.Component {
           selectedName: "Full",
           selectedIndex: e.target.value,
           boxDropDisabled: false,
+          makeOfferOpacity: 1,
         });
         break;
       case "queen":
@@ -217,6 +221,7 @@ class DropDown extends React.Component {
           selectedName: "Queen",
           selectedIndex: e.target.value,
           boxDropDisabled: false,
+          makeOfferOpacity: 1,
         });
         break;
       case "king":
@@ -224,6 +229,7 @@ class DropDown extends React.Component {
           selectedName: "King/Cal. King",
           selectedIndex: e.target.value,
           boxDropDisabled: false,
+          makeOfferOpacity: 1,
         });
         break;
       case "noBox":
@@ -242,6 +248,7 @@ class DropDown extends React.Component {
           selectedIndex: "",
           boxDropDisabled: true,
           boxPrice: 0,
+          makeOfferOpacity: 0,
         });
     }
   };
@@ -253,6 +260,7 @@ class DropDown extends React.Component {
       selectedIndex,
       boxDropDisabled,
       boxPrice,
+      makeOfferOpacity,
     } = this.state;
     return (
       <Wrapper>
@@ -293,15 +301,32 @@ class DropDown extends React.Component {
         </BeforeSalePrice>
         <Total price={Number(prices[selectedIndex])}>
           {discount > 1
-            ? `TOTAL: $${prices[selectedIndex] - discount + boxPrice}`
-            : `TOTAL: $${prices[selectedIndex] + boxPrice}`}
+            ? `TOTAL: $${
+                freeBoxSpring
+                  ? prices[selectedIndex] - discount
+                  : prices[selectedIndex] - discount + boxPrice
+              }`
+            : `TOTAL: $${
+                freeBoxSpring
+                  ? prices[selectedIndex]
+                  : prices[selectedIndex] + boxPrice
+              }`}
         </Total>
-        <MakeOffer
-          // disabled={boxDisabled}
-          // opacity={opacityTotal} // MakeOffer only shows when total is visiable
-          mattress={mattress} // from SingleMattres -> priceCalculator ->
-          // size={name}
-        />
+        {prices[selectedIndex] !== 0 ? (
+          <MakeOffer
+            disabled={boxDropDisabled}
+            opacity={makeOfferOpacity} // MakeOffer only shows when total is visiable
+            mattress={mattress} // from SingleMattres -> priceCalculator ->
+            // size={name}
+          />
+        ) : (
+          <MakeOffer
+            disabled
+            opacity={0} // MakeOffer only shows when total is visiable
+            mattress={mattress} // from SingleMattres -> priceCalculator ->
+            // size={name}
+          />
+        )}
       </Wrapper>
     );
   }

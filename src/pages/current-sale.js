@@ -10,7 +10,7 @@ import {
   Wrapper2,
   Headline,
 } from "../styles/mattListStyles";
-import MattressThumb from "../components/mattThumbNail/mattThumb_NEW";
+import MattressThumb from "../components/mattThumbNail/mattThumb";
 
 const CurrentSale = ({ data }) => {
   const { datoCmsCurrentSale } = data;
