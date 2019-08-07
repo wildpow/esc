@@ -177,7 +177,7 @@ const Mattress = ({ data }) => {
         <BreadCrumbs
           next="Brands"
           next2={mattress.brand.urlName}
-          here={mattress.name}
+          here={`${mattress.brand.displayName} ${mattress.name}`}
         />
       </BreadWrapper>
       <Wrapper>

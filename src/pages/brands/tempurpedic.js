@@ -11,7 +11,7 @@ import {
 } from "../../styles/mattListStyles";
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 import TempurImg from "../../images/tempurLogo2.png";
-import MattressThumb from "../../components/mattThumbNail/mattThumb_NEW";
+import MattressThumb from "../../components/mattThumbNail/mattThumb";
 
 const Tempurpedic = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;

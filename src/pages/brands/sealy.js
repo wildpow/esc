@@ -11,7 +11,7 @@ import {
   SealyImgPlace,
 } from "../../styles/mattListStyles";
 import SealyImg from "../../images/sealyLogo.png";
-import MattressThumb from "../../components/mattThumbNail/mattThumb_NEW";
+import MattressThumb from "../../components/mattThumbNail/mattThumb";
 
 const Sealy = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;

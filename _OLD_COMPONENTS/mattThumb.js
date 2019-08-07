@@ -15,26 +15,34 @@ const MattressThumb = ({ mattress, url }) => {
     <StyledLink to={url}>
       <Topper>
         <BannerWrapper>
-          {mattress.saleInfo[0].saleBanner.length > 3 && (
-            <Banner>{mattress.saleInfo[0].saleBanner}</Banner>
-          )}
+          {mattress.saleBanner !== null ? (
+            <>
+              {mattress.saleBanner.length > 3 && (
+                <Banner>{mattress.saleBanner}</Banner>
+              )}
+            </>
+          ) : null}
 
           <MattImg
-            src={mattress.images[0].coverImage.url}
-            alt={mattress.images[0].coverImage.alt}
+            src={`https://media.graphcms.com/resize=w:250,h:250,fit:clip/${
+              mattress.coverImg.handle
+            }`}
+            alt={`Image of a ${mattress.brandName} ${mattress.subBrand} ${
+              mattress.subName
+            } mattress`}
           />
         </BannerWrapper>
         <PriceRange>
-          {`$${mattress.priceLow}
-          - $${mattress.priceHigh}`}
+          {`$${mattress.priceRange[0]} 
+          - $${mattress.priceRange[1]}`}
         </PriceRange>
       </Topper>
       <Name>
-        {mattress.brand.displayName}
+        {mattress.brandName}
         <br />
-        {mattress.subline.name}
+        {mattress.subBrand}
         <br />
-        {mattress.name}
+        {mattress.subName}
       </Name>
     </StyledLink>
   );
