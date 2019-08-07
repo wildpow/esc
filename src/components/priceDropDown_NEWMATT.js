@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { FlexCol } from "../styles/mainStyles";
 import MakeOffer from "./makeOffer/makeOffer_NEW";
@@ -21,6 +22,7 @@ const Wrapper = styled(FlexCol)`
 `;
 // Exact duplicate
 const DropDownWrapper = styled.div`
+  width: 100%; /* new */
   align-self: flex-end;
   @media print {
     margin-bottom: 10px;
@@ -91,14 +93,14 @@ const Select = styled.select`
   cursor: pointer;
   background-color: ${props => props.theme.mainColor1};
   font-family: ${props => props.theme.MainFont2};
-
-  width: 150px;
-  @media (min-width: 360px) {
+  width: 100%;
+  /* width: 150px; */
+  /* @media (min-width: 360px) {
     width: 160px;
   }
   @media (min-width: 411px) {
     width: 180px;
-  }
+  } */
   @media (min-width: 567px) {
     /* width: auto; */
     -moz-appearance: none;
@@ -132,7 +134,7 @@ const Select = styled.select`
     border-color: black;
     color: black;
     font-size: 1.2rem;
-    width: 220px;
+    /* width: 220px; */
   }
 `;
 const BoxSelect = styled(Select)`
@@ -173,7 +175,22 @@ export const Total = styled.h4`
     font-size: 1.7rem;
   }
 `;
+const sizeObj = {
+  twin: PropTypes.number,
+  twinxl: PropTypes.number,
+  full: PropTypes.number,
+  queen: PropTypes.number,
+  king: PropTypes.number,
+};
 class DropDown extends React.Component {
+  static propTypes = {
+    boxPrices: PropTypes.shape(sizeObj).isRequired,
+    prices: PropTypes.shape(sizeObj).isRequired,
+    discount: PropTypes.number,
+    freeBoxSpring: PropTypes.bool.isRequired,
+    mattress: PropTypes.string.isRequired,
+  };
+
   static defaultProps = {
     discount: 0,
   };
@@ -324,7 +341,7 @@ class DropDown extends React.Component {
             disabled
             opacity={0} // MakeOffer only shows when total is visiable
             mattress={mattress} // from SingleMattres -> priceCalculator ->
-            // size={name}
+            size={selectedName}
           />
         )}
       </Wrapper>

@@ -60,11 +60,21 @@ const BigBanner = styled(Banner)`
     text-align: left;
   }
 `;
+const objShape = {
+  alt: PropTypes.string,
+  url: PropTypes.string,
+};
 class ImageViewer extends React.PureComponent {
+  static defaultProps = {
+    base: false,
+  };
+
   static propTypes = {
-    cover: PropTypes.string.isRequired,
-    img1: PropTypes.string.isRequired,
-    img2: PropTypes.string.isRequired,
+    cover: PropTypes.shape(objShape).isRequired,
+    img1: PropTypes.shape(objShape).isRequired,
+    img2: PropTypes.shape(objShape).isRequired,
+    saleBanner: PropTypes.string.isRequired,
+    base: PropTypes.bool,
   };
 
   constructor(props) {

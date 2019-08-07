@@ -25,7 +25,7 @@ export const MakeOfferButton = styled.button`
   letter-spacing: 0.18rem;
   font-size: 0.8rem;
   width: 120px;
-  margin: 0px 5px 1px 0px;
+  margin: 0px 0px 1px 0px;
   padding: 5px;
   &:active {
     box-shadow: 0 3px 0 #ccc;
@@ -68,11 +68,11 @@ export const MakeOfferButton = styled.button`
   }
   @media (min-width: 1024px) {
     align-self: center;
-    margin: 5px 35px 5px 5px;
+    margin: 5px 0px 5px 5px;
   }
   @media (min-width: 1300px) {
     font-size: 1.7rem;
-    margin: 5px 35px 5px 5px;
+    margin: 5px 0px 5px 5px;
     width: 300px;
   }
 `;
