@@ -1,4 +1,7 @@
 import React from "react";
+import { graphql } from "gatsby";
+import PropTypes from "prop-types";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import {
   Main,
   H3,
@@ -15,16 +18,11 @@ import Pillows from "../images/pillowCollage.jpg";
 import Protector from "../images/protector.jpg";
 import Sheets from "../images/sheetStack.jpg";
 import Layout from "../components/layout";
-import SEO from "../components/seo";
 
-export default () => (
+const Accessories = ({ data }) => (
   <Layout>
     <Main>
-      <SEO
-        title="ESC: Accessories"
-        description="Sleep system means more than a mattress and box, let us help you find a Pillow, Sheets, and Protector that will help you sleep better. We carry Dream Fit Sheets, Protect a bed Pillows & Protectors, Tempurpedic pillows, and Thecnogel Pillows. We can help with cooling as well if needed."
-        ogTitle="E.S.C. Mattress Center | Accessories"
-      />
+      <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <AccWrapper>
         <H3>Pillows</H3>
         <InfoWrapper>
@@ -76,3 +74,18 @@ export default () => (
     </Main>
   </Layout>
 );
+
+Accessories.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+export const accessoriesSEO = graphql`
+  query accessoriesSEO {
+    datoCmsSeo(pageName: { eq: "ESC: Accessories" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+  }
+`;
+
+export default Accessories;
