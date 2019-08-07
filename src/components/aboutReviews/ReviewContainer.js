@@ -27,7 +27,7 @@ class ReviewContainer extends Component {
     if (content === null || maxIndex === null) {
       return null;
     }
-    return this.setState({ content, maxIndex, local: true });
+    return this.setState({ content, maxIndex: Number(maxIndex), local: true });
   }
 
   componentDidMount() {

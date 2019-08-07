@@ -218,56 +218,56 @@ export const PopImg = styled.img`
   }
 `;
 
-export const PopNameHolder = styled(FlexRow)`
-  font-family: ${props => props.theme.MainFont1};
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
-  @media (min-width: 700px) {
-    font-size: 2rem;
-  }
-`;
+// export const PopNameHolder = styled(FlexRow)`
+//   font-family: ${props => props.theme.MainFont1};
+//   justify-content: center;
+//   font-weight: 700;
+//   font-size: 1rem;
+//   @media (min-width: 700px) {
+//     font-size: 2rem;
+//   }
+// `;
 
-export const Josh = styled.h4`
-  text-align: center;
-  padding-right: 26px;
-  padding-left: 20px;
-  margin-bottom: 10px;
-  @media (min-width: 768px) {
-    padding-right: 50px;
-    padding-left: 100px;
-  }
-  @media (min-width: 1024px) {
-    padding-right: 50px;
-    padding-left: 100px;
-  }
-`;
+// export const Josh = styled.h4`
+//   text-align: center;
+//   padding-right: 26px;
+//   padding-left: 20px;
+//   margin-bottom: 10px;
+//   @media (min-width: 768px) {
+//     padding-right: 50px;
+//     padding-left: 100px;
+//   }
+//   @media (min-width: 1024px) {
+//     padding-right: 50px;
+//     padding-left: 100px;
+//   }
+// `;
 
-export const Bill = styled.h4`
-  margin-bottom: 10px;
-  text-align: center;
-  padding-right: 40px;
-  padding-left: 33px;
-  @media (min-width: 768px) {
-    padding-right: 20px;
-    padding-left: 60px;
-  }
-  @media (min-width: 1024px) {
-    padding-right: 20px;
-    padding-left: 60px;
-  }
-`;
-export const Will = styled.h4`
-  text-align: center;
-  padding-right: 20px;
-  padding-left: 20px;
-  margin-bottom: 10px;
-  @media (min-width: 768px) {
-    padding-right: 50px;
-    padding-left: 50px;
-  }
-  @media (min-width: 1024px) {
-    padding-right: 50px;
-    padding-left: 50px;
-  }
-`;
+// export const Bill = styled.h4`
+//   margin-bottom: 10px;
+//   text-align: center;
+//   padding-right: 40px;
+//   padding-left: 33px;
+//   @media (min-width: 768px) {
+//     padding-right: 20px;
+//     padding-left: 60px;
+//   }
+//   @media (min-width: 1024px) {
+//     padding-right: 20px;
+//     padding-left: 60px;
+//   }
+// `;
+// export const Will = styled.h4`
+//   text-align: center;
+//   padding-right: 20px;
+//   padding-left: 20px;
+//   margin-bottom: 10px;
+//   @media (min-width: 768px) {
+//     padding-right: 50px;
+//     padding-left: 50px;
+//   }
+//   @media (min-width: 1024px) {
+//     padding-right: 50px;
+//     padding-left: 50px;
+//   }
+// `;
