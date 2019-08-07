@@ -11,20 +11,15 @@ import {
   BlueWrapper,
   SecondP,
   PopImg,
-  PopNameHolder,
-  Bill,
-  Josh,
-  Will,
 } from "../styles/aboutStyles";
-import { FlexCol, H2 } from "../styles/mainStyles";
+import { H2 } from "../styles/mainStyles";
 import store1 from "../images/outsideNightRatio.jpg";
 import store2 from "../images/outsideDayRatio.jpg";
 import map from "../images/storeMapRatio.png";
-import pop from "../images/funCo.png";
 import Layout from "../components/layout";
-// import Reviews from "../components/aboutReviews/aboutReviews";
 import SEO from "../components/seo";
 import ReviewContainer from "../components/aboutReviews/ReviewContainer";
+import pop from "../images/funkoWithoutBillWithText.png";
 
 const AboutH2 = styled(H2)`
   @media (min-width: 768px) {
@@ -106,28 +101,18 @@ export default () => (
       </BlueWrapper>
 
       <RegularParagraph>
-        We are locally owned and operated, and use a highly rated local delivery
-        service for our white glove delivery. While our main area of focus is
-        our local community, we can arrange delivery to most of Western
-        Washington, so if you’re willing to make the trip we’re probably willing
-        to find a way to get your bed to you (but you can always call ahead and
-        check). Come on down and visit us so we can help you start waking up
-        feeling great and “sleep like the experts do”.
+        We are locally owned and operated, and even do most of our own delivery
+        service ourselves to save you money. While our main area of focus is our
+        local community, we can arrange delivery to most of Western Washington,
+        so if you’re willing to make the trip we’re probably willing to find a
+        way to get your bed to you (but you can always call ahead and check).
+        Come on down and visit us so we can help you start waking up feeling
+        great and “sleep like the experts do”.
       </RegularParagraph>
-
-      <FlexCol>
-        <FlexCol>
-          <PopNameHolder>
-            <Bill>Bill</Bill>
-            <Josh>Joshua</Josh>
-            <Will>William</Will>
-          </PopNameHolder>
-          <PopImg
-            src={pop}
-            alt="FunCo toys of E.S.C Mattress Centers co-founders Bill, Joshua and William"
-          />
-        </FlexCol>
-      </FlexCol>
+      <PopImg
+        src={pop}
+        alt="FunCo toys of E.S.C Mattress Centers co-founders Joshua and William"
+      />
     </Main>
   </Layout>
 );
