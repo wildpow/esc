@@ -192,6 +192,7 @@ const Mattress = ({ data }) => {
             img1={mattress.images[0].image2}
             img2={mattress.images[0].image3}
             saleBanner={mattress.saleInfo[0].saleBanner}
+            mattName={`${mattress.brand.displayName} ${mattress.name}`}
           />
           <MainInfo>
             <List>
@@ -212,15 +213,6 @@ const Mattress = ({ data }) => {
               boxPrices={mattress.brand.boxPrice[0]}
               mattress={mattress.name}
             />
-            {/* <PriceCalculator
-              freeBoxSpring={mattress.freeBoxSpring}
-              mattress={mattress.name} // For MakeOffer Component
-              mattOnly={mattress.mattOnly}
-              mattOnlySale={mattress.mattOnlySale}
-              setPrice={mattress.setPrice}
-              setPriceSale={mattress.setPriceSale}
-              boxPrice={BoxspringPrice}
-            /> */}
           </MainInfo>
         </Main>
         <header id="moreInfo">

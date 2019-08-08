@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { StaticQuery, graphql, Link } from "gatsby";
 import {
   Image,
@@ -33,7 +34,16 @@ const Logo = ({ menuToggle }) => (
         `}
         render={data => {
           const { pandaLogo } = data.datoCmsFrontPage;
-          return <Image src={pandaLogo.url} alt={pandaLogo.alt} />;
+          return (
+            <Image
+              src={pandaLogo.url}
+              alt={
+                pandaLogo.alt === null
+                  ? "E.S.C Mattress Center Panda logo"
+                  : pandaLogo.alt
+              }
+            />
+          );
         }}
       />
     </StyledLink>
@@ -43,5 +53,9 @@ const Logo = ({ menuToggle }) => (
     </H1>
   </Wrapper>
 );
+
+Logo.propTypes = {
+  menuToggle: PropTypes.bool.isRequired,
+};
 
 export default Logo;

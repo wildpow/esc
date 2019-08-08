@@ -75,6 +75,7 @@ class ImageViewer extends React.PureComponent {
     img2: PropTypes.shape(objShape).isRequired,
     saleBanner: PropTypes.string.isRequired,
     base: PropTypes.bool,
+    mattName: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -91,7 +92,7 @@ class ImageViewer extends React.PureComponent {
   };
 
   render() {
-    const { cover, img1, img2, base, saleBanner } = this.props;
+    const { cover, img1, img2, base, saleBanner, mattName } = this.props;
     const { currentImageIndex } = this.state;
     const ImagesArray = [cover, img1, img2];
     return (
@@ -124,7 +125,11 @@ class ImageViewer extends React.PureComponent {
                   )}
                   <LargeImg
                     src={ImagesArray[data].url}
-                    alt={ImagesArray[data].alt}
+                    alt={
+                      ImagesArray[data].alt === null
+                        ? mattName
+                        : ImagesArray[data].alt
+                    }
                     style={{ position: "absolute" }}
                   />
                 </div>
@@ -138,21 +143,21 @@ class ImageViewer extends React.PureComponent {
             onFocus={this.changeActiveImage}
             src={ImagesArray[0].url}
             data-id={0}
-            alt={ImagesArray[0].alt}
+            alt={ImagesArray[0].alt === null ? mattName : ImagesArray[0].alt}
           />
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
             src={ImagesArray[1].url}
             data-id={1}
-            alt={ImagesArray[1].alt}
+            alt={ImagesArray[1].alt === null ? mattName : ImagesArray[0].alt}
           />
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
             src={ImagesArray[2].url}
             data-id={2}
-            alt={ImagesArray[2].alt}
+            alt={ImagesArray[2].alt === null ? mattName : ImagesArray[0].alt}
           />
         </SmallImgHolder>
       </ImgWrapper>

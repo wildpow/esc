@@ -1,12 +1,11 @@
 import React from "react";
-import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import PostThumbnail from "../components/blog/postThumbnail_NEW";
+import PostThumbnail from "../components/blog/postThumbnail";
 import { FadeIn } from "../styles/mainStyles";
-// import SEO from "../components/seo";
+import SEO from "../components/seo";
 
 const PostsContainer = styled.div`
   display: grid;
@@ -115,10 +114,18 @@ class Blog extends React.Component {
   render() {
     const { data } = this.props;
     const { isHovered, numberOfPosts } = this.state;
-    const posts = data.allDatoCmsBlog.nodes.slice(0, numberOfPosts);
+    const posts = data.gcms.allPosts.slice(0, numberOfPosts);
+
     return (
       <Layout>
-        <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
+        <SEO
+          title="ESC: Blog"
+          description="Thank you for checking out our sleep blog. Below are some mattress
+            and sleep-related posts to help you research your better night’s
+            sleep; all brought to you from our team of local sleep experts with
+            over twenty years of mattress industry experience."
+          ogTitle="E.S.C. Mattress Center | Blog"
+        />
         <BlogContainer>
           <Header>
             Thank you for checking out our sleep blog. Below are some mattress
@@ -137,7 +144,7 @@ class Blog extends React.Component {
               />
             ))}
           </PostsContainer>
-          {numberOfPosts < data.allDatoCmsBlog.nodes.length && (
+          {numberOfPosts < data.gcms.allPosts.length && (
             <Button onClick={() => this.setNumberOfPosts()} type="button">
               Show More Posts
             </Button>
@@ -152,26 +159,17 @@ export default Blog;
 
 export const blogList = graphql`
   query blogList {
-    datoCmsSeo(name: { eq: "blog" }) {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-    }
-    allDatoCmsBlog {
-      nodes {
-        id
+    gcms {
+      allPosts(orderBy: dateAndTime_DESC, filter: { isPublished: true }) {
         slug
         title
-        postDate
+        content
+        dateAndTime
         description
-        postContent
-        bottomImage {
-          url
+        coverImage {
+          handle
         }
-        blogListImage {
-          alt
-          url
-        }
+        id
       }
     }
   }
