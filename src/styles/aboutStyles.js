@@ -167,7 +167,7 @@ export const RegularParagraph = styled.p`
     padding-right: 60px;
     padding-left: 60px;
     font-size: 1.2rem;
-    line-height: 1.5rem;
+    line-height: 1.6rem;
   }
   @media (min-width: 1024px) {
     margin-bottom: 0;
