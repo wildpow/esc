@@ -1,8 +1,8 @@
 import React from "react";
-import { StaticQuery, graphql, Link } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import { Wrapper, MainWrapper } from "../styles/mattListStyles";
-import { P, Headline } from "../styles/homeStyles";
+import { P, Headline, FooterLink } from "../styles/homeStyles";
 import MattressThumb from "./mattThumbNail/mattThumb";
 
 const NewWrapper = styled(MainWrapper)`
@@ -16,9 +16,7 @@ const NewWrapper = styled(MainWrapper)`
     border-left: ${props => props.theme.Border}; */
   }
 `;
-const NewP = styled(P)`
-  /* border-top: ${props => props.theme.Border}; */
-`;
+
 const ThreeMattWrapper = styled(Wrapper)`
   margin-bottom: 10px;
   @media (min-width: 375px) {
@@ -43,15 +41,6 @@ const ThreeMattWrapper = styled(Wrapper)`
   @media (min-width: 1300px) {
     margin-top: 10px;
     /* max-width: 900px; */
-  }
-`;
-
-const FooterLink = styled(Link)`
-  text-decoration: none;
-  color: white;
-  :hover {
-    text-decoration: underline;
-    /* color: ${props => props.theme.mainColor1}; */
   }
 `;
 
@@ -95,7 +84,7 @@ const TopThreeMatts = () => {
               />
             ))}
           </ThreeMattWrapper>
-          <NewP>
+          <P>
             We believe that no mattress is a one-size-fits-all solution, which
             is why we have over 50 mattresses to choose from at our Everett
             location. If you’d like to browse our current sale mattresses you
@@ -103,7 +92,7 @@ const TopThreeMatts = () => {
             combined 25 years of experience helping people find the right
             mattress for their sleep needs we’re here to help you start sleeping
             better.
-          </NewP>
+          </P>
           <Headline red>
             <FooterLink to={data.gcms.allFront3Mattresses[0].footerURL}>
               {data.gcms.allFront3Mattresses[0].footertagline}
