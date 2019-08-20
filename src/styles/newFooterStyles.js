@@ -23,11 +23,7 @@ export const BottomIconWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-
-  /* flex-direction: column; */
-
   align-items: center;
-
   @media (min-width: 375px) {
     justify-content: space-around;
   }
@@ -41,8 +37,6 @@ export const BottomIconWrapper = styled.div`
     display: none;
   }
 `;
-
-// export const BBBIcon = styled.img``;
 
 export const BBLink = styled(OutboundLink)`
   transition: transform 0.25s ease-in;
@@ -75,18 +69,13 @@ export const BottomLinkWrapper = styled.div`
   display: flex;
   width: 100%;
   margin-top: 12px;
-  /* justify-content: space-evenly; */
-  /* align-content: center;
-  justify-items: center;
-  align-items: center;
-  align-self: center;
-  justify-self: center; */
   font-size: 0.9em;
   justify-content: space-around;
   text-align: cetner;
   margin-bottom: 8px;
   @media (min-width: 768px) {
     font-size: 1.3em;
+    margin-top: 22px;
     margin-bottom: 12px;
   }
   @media print {
@@ -106,16 +95,6 @@ export const Bird667Container = styled.div`
   display: none;
   @media (min-width: 667px) {
     display: block;
-    padding-top: 10px;
-  }
-  @media (min-width: 768px) {
-    padding-top: 15px;
-  }
-  @media (min-width: 1024px) {
-    padding-top: 30px;
-  }
-  @media (min-width: 1366px) {
-    padding-top: 5px;
   }
   @media print {
     display: block;
