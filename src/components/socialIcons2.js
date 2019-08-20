@@ -18,7 +18,7 @@ const DIVY = styled.div`
   display: flex;
   margin-top: 17px;
   margin-bottom: 17px;
-  @media (min-width: 360px) {
+  @media (min-width: 510px) {
     width: 60%;
   }
 `;

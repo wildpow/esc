@@ -33,7 +33,6 @@ const Front = () => (
           </>
         )}
       />
-      {/* <Headline red>“Sleep Like the Experts Do!”</Headline> */}
     </Wrapper>
     <Wrapper>
       <Headline red>ESC = Expert Sleep Center</Headline>
@@ -45,9 +44,6 @@ const Front = () => (
         satisfied with your purchase.{" "}
         <BottomLinks to="/about">Learn more</BottomLinks>
       </P>
-      {/* <Headline red>
-        <FooterLink to="/about">Read More</FooterLink>
-      </Headline> */}
       <Container>
         <SocialIcons />
       </Container>
