@@ -1,6 +1,8 @@
 import React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "styled-components";
+import { Location } from "@reach/router";
+import SocialIcons from "./socialIcons";
 import {
   MainFooter,
   Wrapper,
@@ -57,6 +59,12 @@ const Icons = styled.div`
 `;
 const Footer = () => (
   <MainFooter>
+    <Location>
+      {({ location }) => {
+        if (location.pathname !== "/") return <SocialIcons />;
+        return null;
+      }}
+    </Location>
     <Wrapper>
       <Icons>
         <OutboundLink
