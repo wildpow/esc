@@ -180,9 +180,7 @@ class Reviews extends Component {
           rel="noopener noreferrer"
           href={
             content[currentIndex]
-              ? `https://birdeye.com/esc-mattress-center-154743411347922/review/${
-                  content[currentIndex].reviewId
-                }`
+              ? `https://birdeye.com/esc-mattress-center-154743411347922/review/${content[currentIndex].reviewId}`
               : "https://birdeye.com/esc-mattress-center-154743411347922"
           }
         >

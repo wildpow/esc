@@ -20,7 +20,8 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 // import ReviewContainer from "../components/aboutReviews/ReviewContainer";
 import pop from "../images/funkoWithoutBillWithText.png";
-import Reviews from "../components/aboutReviews/aboutReviews_OLD";
+// import Reviews from "../components/aboutReviews/aboutReviews_OLD";
+import AboutReviewNew from "../components/aboutReviews/AboutReviewNew";
 
 const AboutH2 = styled(H2)`
   @media (min-width: 768px) {
@@ -48,7 +49,7 @@ export default () => (
           wake up feeling better.
         </AboutH2>
       </header>
-      <Reviews />
+      <AboutReviewNew />
       <PicHolder>
         <StoreImg
           src={store1}

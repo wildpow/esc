@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { NodeGroup } from "react-move";
 import TruncateMarkup from "react-truncate-markup";
 import star from "../../images/stars.svg";
+import { FadeIn } from "../../styles/mainStyles";
 
 const InsideWrapper = styled.div`
   position: absolute;
@@ -40,7 +41,8 @@ const ReadMore = styled(OutboundLink)`
   }
 `;
 const Wrap = styled.div`
-  /* margin: 50px auto; */
+  animation-name: ${FadeIn};
+  ${props => props.theme.Animation}
   margin-bottom: 120px;
   margin-top: 10px;
   @media (min-width: 768px) {
