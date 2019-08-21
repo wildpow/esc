@@ -33,7 +33,7 @@ const Base = styled.div`
   display: inline-block;
   animation: ${Animate} 1.2s infinite ease-in-out;
   animation-delay: ${props => (props.delay ? props.delay : "")};
-  @media (min-width: 700px) {
+  @media (min-width: 768px) {
     height: 225px;
   }
 `;
