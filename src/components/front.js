@@ -1,30 +1,54 @@
 import React from "react";
+import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
 import { Headline, Wrapper, P } from "../styles/homeStyles";
+// FooterLink
+import SocialIcons from "./socialIcons";
+import { BottomLinks } from "../styles/newFooterStyles";
+
+const Container = styled.div`
+  border-top: 2px solid ${props => props.theme.newColor3};
+  background-color: white;
+`;
 
 const Front = () => (
-  <Wrapper>
-    <StaticQuery
-      query={graphql`
-        query front {
-          gcms {
-            allFronts {
-              id
-              title
-              textBlock
+  <>
+    <Wrapper>
+      <StaticQuery
+        query={graphql`
+          query front {
+            gcms {
+              allFronts {
+                id
+                title
+                textBlock
+              }
             }
           }
-        }
-      `}
-      render={data => (
-        <>
-          <Headline>{data.gcms.allFronts[0].title}</Headline>
-          <P>{data.gcms.allFronts[0].textBlock}</P>
-        </>
-      )}
-    />
-    <Headline red>“Sleep Like the Experts Do!”</Headline>
-  </Wrapper>
+        `}
+        render={data => (
+          <>
+            <Headline>{data.gcms.allFronts[0].title}</Headline>
+            <P>{data.gcms.allFronts[0].textBlock}</P>
+          </>
+        )}
+      />
+    </Wrapper>
+    <Wrapper>
+      <Headline red>ESC = Expert Sleep Center</Headline>
+      <P>
+        At ESC Mattress Center we have over twenty years industry experience --
+        we are the sleep experts and we want to help educate you so you can get
+        the great sleep you deserve. With our customer-friendly 90 day comfort
+        guarantee we&apos;ve got your back in case you&apos;re not 100%
+        satisfied with your purchase.{" "}
+        <BottomLinks to="/about">Learn more</BottomLinks>
+      </P>
+      <Container>
+        <SocialIcons />
+      </Container>
+    </Wrapper>
+  </>
 );
 
 export default Front;

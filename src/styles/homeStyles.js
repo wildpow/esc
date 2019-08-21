@@ -102,3 +102,15 @@ export const Links = styled(Link)`
     color: ${props => props.theme.mainColor1};
   }
 `;
+
+export const FooterLink = styled(Link)`
+  /* text-decoration: none; */
+  text-decoration-color: white;
+  transition: all 0.25s ease-in;
+  color: white;
+  :hover {
+    transform: scale(1.04);
+    text-decoration-color: ${props => props.theme.newColor2};
+    /* color: ${props => props.theme.mainColor1}; */
+  }
+`;

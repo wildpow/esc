@@ -1,6 +1,8 @@
 import React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
-
+import styled from "styled-components";
+import { Location } from "@reach/router";
+import SocialIcons from "./socialIcons";
 import {
   MainFooter,
   Wrapper,
@@ -26,17 +28,71 @@ import {
   BirdContainerSmall,
 } from "../styles/newFooterStyles";
 import GraphCMS from "../images/powered_by_graphcms.svg";
-import SocialIcons from "./socialIcons";
-// import BBB from "../images/accredited_Business_Seal_in_Black.jpg";
-// import BBBWebp from "../images/accredited_Business_Seal_in_Black.webp";
 import BBBHor from "../images/ab_seal_horizontal_black_large.jpg";
 import BBBWebpHor from "../images/ab_seal_horizontal_black_large.webp";
 import Bird from "./bird";
+import ClothesForKids from "../images/clothes_for_kids_blue.png";
+import AquasoxPartner from "../images/aquasox_partner_blue.png";
 
+const PartnerImg = styled.img`
+  border-radius: 5px;
+  box-shadow: ${props => props.theme.BoxShadow};
+  transition: all 0.25s ease-in;
+  &:hover {
+    transform: scale3d(1.05, 1.05, 1);
+  }
+  width: 145px;
+  height: 75px;
+  @media (min-width: 768px) {
+    width: 145px;
+    height: 90px;
+  }
+  @media (min-width: 1366px) {
+    width: auto;
+    height: auto;
+  }
+`;
+const Icons = styled.div`
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: space-evenly;
+`;
 const Footer = () => (
   <MainFooter>
+    <Location>
+      {({ location }) => {
+        if (location.pathname !== "/") return <SocialIcons bottom />;
+        return null;
+      }}
+    </Location>
     <Wrapper>
-      <SocialIcons />
+      <Icons>
+        <OutboundLink
+          href="https://www.milb.com/everett"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          <PartnerImg src={AquasoxPartner} />
+        </OutboundLink>
+        <Bird667Container>
+          <Bird />
+        </Bird667Container>
+        <OutboundLink
+          href="https://clothesforkids.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <PartnerImg src={ClothesForKids} />
+        </OutboundLink>
+      </Icons>
+
+      <Wrap>
+        <BirdContainerSmall>
+          <Bird />
+        </BirdContainerSmall>
+      </Wrap>
       <Contact>
         <Hours>
           <HoursSpan>Hours</HoursSpan>
@@ -48,22 +104,6 @@ const Footer = () => (
             Sunday 10am - 6pm
           </HoursPara>
         </Hours>
-        <Bird667Container>
-          <Bird />
-        </Bird667Container>
-        {/* <BBBLink
-          href="https://www.bbb.org/northwest/customer-reviews/mattress/esc-mattress-center-in-everett-wa-1000056497/add/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <picture>
-            <source type="image/webp" srcSet={BBBWebp} />
-            <img
-              src={BBB}
-              alt="Better Business Bureau seal of approvel, click to leave review"
-            />
-          </picture>
-        </BBBLink> */}
         <Hours>
           <HoursSpan>Address</HoursSpan>
           <HoursPara>
@@ -81,30 +121,13 @@ const Footer = () => (
           </HoursPara>
         </Hours>
       </Contact>
-      {/* <BottomBBLink
-        href="https://www.bbb.org/northwest/customer-reviews/mattress/esc-mattress-center-in-everett-wa-1000056497/add/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <picture>
-          <source type="image/webp" srcSet={BBBWebpHor} />
-          <img
-            src={BBBHor}
-            alt="Better Business Bureau seal of approvel, click to leave review"
-          />
-        </picture>
-      </BottomBBLink> */}
-      <Wrap>
-        <BirdContainerSmall>
-          <Bird />
-        </BirdContainerSmall>
-        <BottomLinkWrapper>
-          {/* <BottomLinks to="/current-sale">Sale</BottomLinks> */}
-          <BottomLinks to="/warranty">Warranty Info</BottomLinks>
-          <BottomLinks to="/sitemap">Site Map</BottomLinks>
-          <BottomLinks to="/policies">Terms/Policies</BottomLinks>
-        </BottomLinkWrapper>
-      </Wrap>
+
+      <BottomLinkWrapper>
+        {/* <BottomLinks to="/current-sale">Current Sale</BottomLinks> */}
+        <BottomLinks to="/warranty">Warranty Info</BottomLinks>
+        <BottomLinks to="/sitemap">Site Map</BottomLinks>
+        <BottomLinks to="/policies">Terms/Policies</BottomLinks>
+      </BottomLinkWrapper>
     </Wrapper>
     <BottomIconWrapper>
       <OutboundLink
