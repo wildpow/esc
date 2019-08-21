@@ -31,10 +31,11 @@ import GraphCMS from "../images/powered_by_graphcms.svg";
 import BBBHor from "../images/ab_seal_horizontal_black_large.jpg";
 import BBBWebpHor from "../images/ab_seal_horizontal_black_large.webp";
 import Bird from "./bird";
-import ClothesForKids from "../images/clothes_for_kids.png";
-import AquasoxPartner from "../images/aquasox_partner.png";
+import ClothesForKids from "../images/clothes_for_kids_blue.png";
+import AquasoxPartner from "../images/aquasox_partner_blue.png";
 
 const PartnerImg = styled.img`
+  border-radius: 5px;
   box-shadow: ${props => props.theme.BoxShadow};
   transition: all 0.25s ease-in;
   &:hover {
@@ -61,7 +62,7 @@ const Footer = () => (
   <MainFooter>
     <Location>
       {({ location }) => {
-        if (location.pathname !== "/") return <SocialIcons />;
+        if (location.pathname !== "/") return <SocialIcons bottom />;
         return null;
       }}
     </Location>
@@ -71,6 +72,7 @@ const Footer = () => (
           href="https://www.milb.com/everett"
           target="_blank"
           rel="noopener noreferrer"
+          style={{ textDecoration: "none" }}
         >
           <PartnerImg src={AquasoxPartner} />
         </OutboundLink>

@@ -24,6 +24,7 @@ export const MainFooter = styled.footer`
 export const Wrapper = styled.div`
   box-shadow: ${props => props.theme.newBoxShadow};
   margin: 0 auto;
+  padding-top: 5px;
   padding-bottom: 5px;
   background-color: white;
   @media (min-width: 1200px) {

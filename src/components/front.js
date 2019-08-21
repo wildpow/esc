@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
 import { Headline, Wrapper, P } from "../styles/homeStyles";
 // FooterLink
-import SocialIcons from "./socialIcons2";
+import SocialIcons from "./socialIcons";
 import { BottomLinks } from "../styles/newFooterStyles";
 
 const Container = styled.div`
