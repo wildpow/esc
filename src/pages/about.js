@@ -14,18 +14,14 @@ import {
   BlueWrapper,
   SecondP,
   PopImg,
-  PopNameHolder,
-  Bill,
-  Josh,
-  Will,
 } from "../styles/aboutStyles";
-import { FlexCol, H2 } from "../styles/mainStyles";
+import { H2 } from "../styles/mainStyles";
 import store1 from "../images/outsideNightRatio.jpg";
 import store2 from "../images/outsideDayRatio.jpg";
 import map from "../images/storeMapRatio.png";
-import pop from "../images/funCo.png";
 import Layout from "../components/layout";
-import Reviews from "../components/aboutReviews";
+import pop from "../images/funkoWithoutBillWithText.png";
+import AboutReviewNew from "../components/aboutReviews/AboutReviewNew";
 
 const AboutH2 = styled(H2)`
   @media (min-width: 768px) {
@@ -49,7 +45,7 @@ const About = ({ data }) => (
           wake up feeling better.
         </AboutH2>
       </header>
-      <Reviews />
+      <AboutReviewNew />
       <PicHolder>
         <StoreImg
           src={store1}
@@ -86,8 +82,10 @@ const About = ({ data }) => (
       <RegularParagraph>
         We’re here to help advise you by having our non-commissioned staff ask
         you some questions and listen to your answers to help recommend products
-        that suit your needs. We believe sleep is an important part of
-        everyone’s day, and people have a better life when they’re waking up
+        that suit your needs. “ESC” stands for Expert Sleep Centers, and with
+        over twenty years of industry experience we know all about sleep and
+        mattresses so you don’t have to. We believe sleep is an important part
+        of everyone’s day, and people have a better life when they’re waking up
         every morning feeling rested, rejuvenated and refreshed.
       </RegularParagraph>
 
@@ -103,28 +101,16 @@ const About = ({ data }) => (
       </BlueWrapper>
 
       <RegularParagraph>
-        We are locally owned and operated, and use a highly rated local delivery
-        service for our white glove delivery. While our main area of focus is
-        our local community, we can arrange delivery to most of Western
-        Washington, so if you’re willing to make the trip we’re probably willing
-        to find a way to get your bed to you (but you can always call ahead and
-        check). Come on down and visit us so we can help you start waking up
-        feeling great and “sleep like the experts do”.
+        We are locally owned and operated, and even do most of our own delivery
+        service ourselves to save you money. If you live outside Snohomish
+        County, Skagit County, or King County and want us to deliver just call
+        ahead and we’ll do everything we can to make it happen (we go to Whidbey
+        Island all the time).
       </RegularParagraph>
-
-      <FlexCol>
-        <FlexCol>
-          <PopNameHolder>
-            <Bill>Bill</Bill>
-            <Josh>Joshua</Josh>
-            <Will>William</Will>
-          </PopNameHolder>
-          <PopImg
-            src={pop}
-            alt="FunCo toys of E.S.C Mattress Centers co-founders Bill, Joshua and William"
-          />
-        </FlexCol>
-      </FlexCol>
+      <PopImg
+        src={pop}
+        alt="FunCo toys of E.S.C Mattress Centers co-founders Joshua and William"
+      />
     </Main>
   </Layout>
 );

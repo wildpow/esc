@@ -1,12 +1,13 @@
 import React from "react";
-import { StaticQuery, graphql, Link } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import { Wrapper, MainWrapper } from "../styles/mattListStyles";
-import { P, Headline } from "../styles/homeStyles";
+import { P, Headline, FooterLink } from "../styles/homeStyles";
 import MattressThumb from "./mattThumbNail/mattThumb";
 
 const NewWrapper = styled(MainWrapper)`
   background-color: ${props => props.theme.newColor1};
+
   margin-top: 15px;
   @media (min-width: 1024px) {
     box-shadow: ${props => props.theme.newBoxShadow};
@@ -35,14 +36,6 @@ const ThreeMattWrapper = styled(Wrapper)`
   }
   @media (min-width: 1300px) {
     margin-top: 10px;
-  }
-`;
-
-const FooterLink = styled(Link)`
-  text-decoration: none;
-  color: white;
-  :hover {
-    text-decoration: underline;
   }
 `;
 

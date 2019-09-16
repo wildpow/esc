@@ -4,8 +4,8 @@ import axios from "axios";
 import styled from "styled-components";
 import { NodeGroup } from "react-move";
 import TruncateMarkup from "react-truncate-markup";
-import star from "../images/stars.svg";
-import Loading from "./loading";
+import star from "../../images/stars.svg";
+import Loading from "../loading";
 
 const InsideWrapper = styled.div`
   position: absolute;
@@ -179,9 +179,7 @@ class Reviews extends Component {
           rel="noopener noreferrer"
           href={
             content[currentIndex]
-              ? `https://birdeye.com/esc-mattress-center-154743411347922/review/${
-                  content[currentIndex].reviewId
-                }`
+              ? `https://birdeye.com/esc-mattress-center-154743411347922/review/${content[currentIndex].reviewId}`
               : "https://birdeye.com/esc-mattress-center-154743411347922"
           }
         >

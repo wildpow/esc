@@ -20,9 +20,9 @@ const Wrapper = styled.div`
   font-weight: 100;
   box-shadow: ${props => props.theme.BoxShadow};
   background-color: ${props => props.theme.mainColor1};
-  @media (min-width: 1366px) {
+  /* @media (min-width: 1366px) {
     margin-top: 10px;
-  }
+  } */
 `;
 const Top = styled.div`
   display: flex;
@@ -50,7 +50,7 @@ const Rating = styled.div`
   }
 `;
 const AvgContainer = styled.div`
-  margin-top: -6px;
+  /* margin-top: -6px; */
   font-size: 1.3em;
   margin-left: 4px;
   font-family: ${props => props.theme.MainFont1};

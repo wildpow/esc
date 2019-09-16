@@ -23,9 +23,9 @@ export const MainFooter = styled.footer`
 
 export const Wrapper = styled.div`
   box-shadow: ${props => props.theme.newBoxShadow};
-  /* border: ${props => props.theme.Border}; */
   margin: 0 auto;
   padding-top: 5px;
+  padding-bottom: 5px;
   background-color: white;
   @media (min-width: 1200px) {
     max-width: 100%;
@@ -94,11 +94,6 @@ export const MapsImg = styled(ImgHover)`
   }
 `;
 
-// export const GraphImg = styled(ImgHover)`
-//   display: inline-block;
-//   margin-left: 10px;
-// `;
-
 export const YelpHolder = styled.div`
   background-color: #d32323;
   margin-left: 10px;
@@ -119,18 +114,10 @@ export const YelpImg = styled.img`
   }
 `;
 
-// export const GraphLink = styled.a`
-//   display: block;
-//   padding-top: 5px;
-//   @media (min-width: 500px) {
-//     padding-top: 0px;
-//   }
-// `;
-
 export const Contact = styled(FlexRow)`
   justify-content: space-around;
   justify-content: space-evenly;
-  margin-top: 10px;
+  margin-top: 25px;
   margin-bottom: 10px;
   @media (min-width: 1366px) {
     line-height: 2.4em;
@@ -141,7 +128,7 @@ export const Hours = styled(FlexCol)`
   font-family: ${props => props.theme.MainFont1};
   font-weight: 300;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
   width: 160px;
   @media (orientation: landscape) {
     width: 200px;
@@ -149,16 +136,17 @@ export const Hours = styled(FlexCol)`
   @media (min-width: 768px) {
     font-size: 1.3rem;
     width: 250px;
+    line-height: 2rem;
   }
   @media (min-width: 1024px) {
     font-size: 1.5rem;
+    line-height: 2.2rem;
   }
 `;
 
 export const HoursPara = styled.p`
   margin-top: 4px;
   margin: 0;
-  /* font-variant: small-caps; */
 `;
 
 export const HoursSpan = styled.span`
@@ -177,16 +165,7 @@ export const MapLink = styled(OutboundLink)`
   }
 `;
 
-// export const Divy = styled(FlexRow)`
-//   justify-content: center;
-//   margin-top: 20px;
-//   @media (min-width: 768px) {
-//     margin-top: 30px;
-//   }
-// `;
-
 export const BottomLinkWrapper = styled(FlexCol)`
-  /* font-family: ${props => props.theme.MainFont1}; */
   font-weight: 300;
   line-height: 1.7rem;
   justify-content: space-around;
@@ -199,7 +178,6 @@ export const BottomLinkWrapper = styled(FlexCol)`
   @media (min-width: 1024px) {
     font-size: 1.3rem;
   }
- 
 `;
 
 export const BottomLinks = styled(Link)`
@@ -209,42 +187,6 @@ export const BottomLinks = styled(Link)`
   }
 `;
 
-// export const BBBLink = styled.a`
-//   display: none;
-
-//   @media (orientation: landscape) {
-//     display: flex;
-//     justify-content: center;
-//     width: 100px;
-//   }
-//   @media (min-width: 600px) {
-//     width: 200px;
-//     display: flex;
-//     justify-content: center;
-//     transition: all 0.25s ease-in;
-//     &:hover {
-//       transform: scale3d(1.1, 1.1, 1);
-//     }
-//   }
-//   & img {
-//     max-width: 5rem;
-//   }
-// `;
-// export const BottomBBLink = styled.a`
-//   display: flex;
-//   justify-content: center;
-//   margin: auto;
-//   width: 300px;
-//   @media (orientation: landscape) {
-//     display: none;
-//   }
-//   @media (min-width: 600px) {
-//     display: none;
-//   }
-//   & img {
-//     max-width: 10rem;
-//   }
-// `;
 export const ContactWrapper = styled.div`
   display: flex;
   flex-direction: column;
