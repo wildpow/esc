@@ -13,18 +13,18 @@ import {
 import MattressThumb from "../components/mattThumbNail/mattThumb";
 
 const CurrentSale = ({ data }) => {
-  const { datoCmsCurrentSale } = data;
+  const { node } = data.allDatoCmsCurrentSale.edges[0];
   return (
     <Layout>
-      <HelmetDatoCms seo={datoCmsCurrentSale.seoMetaTags} />
+      <HelmetDatoCms seo={node.seoMetaTags} />
       <MainWrapper>
         <Wrapper2>
-          <Headline>{datoCmsCurrentSale.title}</Headline>
-          <P>{datoCmsCurrentSale.description}</P>
+          <Headline>{node.title}</Headline>
+          <P>{node.description}</P>
           <Headline red>“Sleep Like the Experts Do!”</Headline>
         </Wrapper2>
         <Wrapper>
-          {datoCmsCurrentSale.saleMattresses.map(mattress => (
+          {node.saleMattresses.map(mattress => (
             <MattressThumb
               key={mattress.id}
               mattress={mattress}
@@ -42,16 +42,35 @@ CurrentSale.propTypes = {
 };
 export default CurrentSale;
 
+// export const currentSaleQuery = graphql`
+//   query currentSaleQuery {
+//     datoCmsCurrentSale {
+//       title
+//       description
+//       seoMetaTags {
+//         ...GatsbyDatoCmsSeoMetaTags
+//       }
+//       saleMattresses {
+//         ...mattressParts
+//       }
+//     }
+//   }
+// `;
+
 export const currentSaleQuery = graphql`
   query currentSaleQuery {
-    datoCmsCurrentSale {
-      title
-      description
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-      saleMattresses {
-        ...mattressParts
+    allDatoCmsCurrentSale(sort: { fields: saleMattresses___priceLow }) {
+      edges {
+        node {
+          title
+          description
+          seoMetaTags {
+            ...GatsbyDatoCmsSeoMetaTags
+          }
+          saleMattresses {
+            ...mattressParts
+          }
+        }
       }
     }
   }

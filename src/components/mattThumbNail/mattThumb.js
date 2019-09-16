@@ -23,9 +23,7 @@ const MattressThumb = ({ mattress, url }) => {
             src={mattress.images[0].coverImage.url}
             alt={
               mattress.images[0].coverImage.alt === null
-                ? `${mattress.brand.displayName} ${mattress.subline.name} ${
-                    mattress.name
-                  } mattress`
+                ? `${mattress.brand.displayName} ${mattress.subline.name} ${mattress.name} mattress`
                 : mattress.images[0].coverImage.alt
             }
           />
