@@ -9,6 +9,7 @@ export const mattressParts = graphql`
     priceHigh
     images {
       coverImage {
+        alt
         url
       }
     }

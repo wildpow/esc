@@ -13,18 +13,19 @@ import {
 import MattressThumb from "../components/mattThumbNail/mattThumb";
 
 const CurrentSale = ({ data }) => {
-  const { node } = data.allDatoCmsCurrentSale.edges[0];
+  const { allDatoCmsMattress, datoCmsCurrentSale } = data;
   return (
     <Layout>
-      <HelmetDatoCms seo={node.seoMetaTags} />
+      <HelmetDatoCms seo={datoCmsCurrentSale.seoMetaTags} />
       <MainWrapper>
         <Wrapper2>
-          <Headline>{node.title}</Headline>
-          <P>{node.description}</P>
+          <Headline>{datoCmsCurrentSale.title}</Headline>
+          <P>{datoCmsCurrentSale.description}</P>
           <Headline red>“Sleep Like the Experts Do!”</Headline>
         </Wrapper2>
+
         <Wrapper>
-          {node.saleMattresses.map(mattress => (
+          {allDatoCmsMattress.nodes.map(mattress => (
             <MattressThumb
               key={mattress.id}
               mattress={mattress}
@@ -59,19 +60,58 @@ export default CurrentSale;
 
 export const currentSaleQuery = graphql`
   query currentSaleQuery {
-    allDatoCmsCurrentSale(sort: { fields: saleMattresses___priceLow }) {
-      edges {
-        node {
-          title
-          description
-          seoMetaTags {
-            ...GatsbyDatoCmsSeoMetaTags
-          }
-          saleMattresses {
-            ...mattressParts
-          }
-        }
+    allDatoCmsMattress(
+      filter: {
+        meta: { status: { eq: "published" } }
+        saleInfo: { elemMatch: { saleBanner: { ne: "" } } }
+      }
+      sort: { fields: priceLow, order: ASC }
+    ) {
+      nodes {
+        ...mattressParts
+      }
+    }
+    datoCmsCurrentSale {
+      title
+      description
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
       }
     }
   }
 `;
+
+// export const currentSaleQuery2 = graphql`
+//   query currentSaleQuery {
+//     allDatoCmsMattress(
+//       filter: {
+//         meta: { status: { eq: "published" } }
+//         saleInfo: { elemMatch: { saleBanner: { ne: "" } } }
+//       }
+//       sort: { fields: priceLow, order: ASC }
+//     ) {
+//       nodes {
+//         uri
+//         name
+//         id
+//         priceLow
+//         priceHigh
+//         images {
+//           coverImage {
+//             url
+//           }
+//         }
+//         saleInfo {
+//           saleBanner
+//         }
+//         subline {
+//           name
+//         }
+//         brand {
+//           urlName
+//           displayName
+//         }
+//       }
+//     }
+//   }
+// `;
