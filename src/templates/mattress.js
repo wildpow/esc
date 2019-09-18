@@ -207,6 +207,7 @@ const Mattress = ({ data }) => {
               </ul>
             </List>
             <DropDown
+              typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}
               freeBoxSpring={mattress.freeBox}
               discount={mattress.saleInfo[0].discount}
               prices={mattress.price[0]}
@@ -267,6 +268,7 @@ export const query = graphql`
       saleInfo {
         saleBanner
         discount
+        typeOfDiscount
       }
       price {
         twin

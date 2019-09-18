@@ -24,6 +24,8 @@ const Wrapper = styled(FlexCol)`
 const DropDownWrapper = styled.div`
   width: 100%; /* new */
   align-self: flex-end;
+  /* max-width: 345px; */
+
   @media print {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -270,8 +272,24 @@ class DropDown extends React.Component {
     }
   };
 
+  discountCalculator = (price, discount, typeOfDiscount) => {
+    let percentage;
+    if (typeOfDiscount) {
+      percentage = (discount / 100).toFixed(1);
+      return (price - price * percentage).toFixed(0);
+    }
+    return price - discount;
+  };
+
   render() {
-    const { discount, prices, freeBoxSpring, boxPrices, mattress } = this.props;
+    const {
+      discount,
+      prices,
+      freeBoxSpring,
+      boxPrices,
+      mattress,
+      typeOfDiscount,
+    } = this.props;
     const {
       selectedName,
       selectedIndex,
@@ -281,6 +299,13 @@ class DropDown extends React.Component {
     } = this.state;
     return (
       <Wrapper>
+        {console.log(
+          typeof this.discountCalculator(
+            prices[selectedIndex],
+            discount,
+            typeOfDiscount,
+          ),
+        )}
         <DropDownWrapper>
           <h4>{`PRICE: ${selectedName}`}</h4>
           <Select onChange={e => this.sizeSelect(e)}>
@@ -320,8 +345,16 @@ class DropDown extends React.Component {
           {discount > 1
             ? `TOTAL: $${
                 freeBoxSpring
-                  ? prices[selectedIndex] - discount
-                  : prices[selectedIndex] - discount + boxPrice
+                  ? this.discountCalculator(
+                      prices[selectedIndex],
+                      discount,
+                      typeOfDiscount,
+                    )
+                  : this.discountCalculator(
+                      prices[selectedIndex],
+                      discount,
+                      typeOfDiscount,
+                    ) + boxPrice
               }`
             : `TOTAL: $${
                 freeBoxSpring
