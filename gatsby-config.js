@@ -8,7 +8,6 @@ module.exports = {
     siteUrl: `https://www.escmattresscenter.com`,
   },
   plugins: [
-    `gatsby-plugin-webpack-size`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -21,14 +20,6 @@ module.exports = {
         apiToken: `cf537d13c51a0ed5bb810d068581e0`,
         preview: false,
         disableLiveReload: false,
-      },
-    },
-    {
-      resolve: "gatsby-source-graphql",
-      options: {
-        typeName: "GCMS",
-        fieldName: "gcms",
-        url: process.env.GATSBY_API_URL,
       },
     },
     `gatsby-plugin-react-helmet`,
