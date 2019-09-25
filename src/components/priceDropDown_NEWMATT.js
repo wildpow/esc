@@ -24,6 +24,7 @@ const Wrapper = styled(FlexCol)`
 // Exact duplicate
 const DropDownWrapper = styled.div`
   width: 100%; /* new */
+  max-width: 346px;
   align-self: flex-end;
   @media print {
     margin-bottom: 10px;
@@ -138,6 +139,9 @@ const Select = styled.select`
     font-size: 1.2rem;
     /* width: 220px; */
   }
+  /* option {
+    max-width: 100px;
+  } */
 `;
 const BoxSelect = styled(Select)`
   opacity: ${props => (props.index !== "" && props.price !== 0 ? 1 : 0)};
@@ -331,10 +335,15 @@ class DropDown extends React.Component {
             disabled={boxDropDisabled}
             onChange={e => this.sizeSelect(e)}
           >
+            {/* `[$${boxPrices[selectedIndex]}.00] Standard Foundation` */}
             <option value="noBox">[$0.00] No Box Spring</option>
             <option value="addBox">
               {freeBoxSpring === false
-                ? `[$${boxPrices[selectedIndex]}.00] Standard Foundation`
+                ? `[$${
+                    boxPrices[selectedIndex] !== undefined
+                      ? boxPrices[selectedIndex]
+                      : "000"
+                  }.00] Standard Foundation`
                 : "[ FREE ] Standard Foundation"}
             </option>
           </BoxSelect>
