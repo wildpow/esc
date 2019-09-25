@@ -6,6 +6,7 @@ import MakeOffer from "./makeOffer/makeOffer_NEW";
 
 const Wrapper = styled(FlexCol)`
   margin-left: 5px;
+  /* max-width: 366px; */
   justify-content: center;
   @media (min-width: 1024px) {
     margin-left: 25px;
@@ -24,8 +25,6 @@ const Wrapper = styled(FlexCol)`
 const DropDownWrapper = styled.div`
   width: 100%; /* new */
   align-self: flex-end;
-  /* max-width: 345px; */
-
   @media print {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -96,6 +95,7 @@ const Select = styled.select`
   background-color: ${props => props.theme.mainColor1};
   font-family: ${props => props.theme.MainFont2};
   width: 100%;
+  /* max-width: 326px; */
   /* width: 150px; */
   /* @media (min-width: 360px) {
     width: 160px;
@@ -274,10 +274,13 @@ class DropDown extends React.Component {
 
   discountCalculator = (price, discount, typeOfDiscount) => {
     let percentage;
+    let total;
     if (typeOfDiscount) {
-      percentage = (discount / 100).toFixed(1);
-      return (price - price * percentage).toFixed(0);
+      percentage = Number((discount / 100).toFixed(1));
+      total = Number((price - price * percentage).toFixed(0));
+      return total;
     }
+
     return price - discount;
   };
 
@@ -299,13 +302,13 @@ class DropDown extends React.Component {
     } = this.state;
     return (
       <Wrapper>
-        {console.log(
-          typeof this.discountCalculator(
+        {/* {console.log(
+          this.discountCalculator(
             prices[selectedIndex],
             discount,
             typeOfDiscount,
           ),
-        )}
+        )} */}
         <DropDownWrapper>
           <h4>{`PRICE: ${selectedName}`}</h4>
           <Select onChange={e => this.sizeSelect(e)}>

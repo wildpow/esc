@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const MakeOfferContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-self: flex-end;
   align-items: center;
   @media print {
     display: none;
@@ -64,7 +65,7 @@ export const MakeOfferButton = styled.button`
     margin: 5px auto;
     padding: 10px;
     align-self: flex-end;
-    margin-right: 5px;
+    /* margin-right: 5px; */
   }
   @media (min-width: 1024px) {
     align-self: center;
