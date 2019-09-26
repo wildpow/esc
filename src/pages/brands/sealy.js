@@ -30,7 +30,10 @@ const Sealy = ({ data }) => {
         </MainTitle>
         <Wrapper>
           {allDatoCmsMattress.nodes.map(mattress => {
-            if (mattress.subline.name === "Golden Elegance") {
+            if (
+              mattress.subline.name === "Golden Elegance" &&
+              mattress.brand.urlName === "sealy"
+            ) {
               return (
                 <MattressThumb
                   key={mattress.id}
@@ -42,7 +45,10 @@ const Sealy = ({ data }) => {
             return null;
           })}
           {allDatoCmsMattress.nodes.map(mattress => {
-            if (mattress.subline.name === "Essentials") {
+            if (
+              mattress.subline.name.includes("Essentials") &&
+              mattress.brand.urlName === "sealy"
+            ) {
               return (
                 <MattressThumb
                   key={mattress.id}
@@ -54,7 +60,10 @@ const Sealy = ({ data }) => {
             return null;
           })}
           {allDatoCmsMattress.nodes.map(mattress => {
-            if (mattress.subline.name === "Performance") {
+            if (
+              mattress.subline.name.includes("Performance") &&
+              mattress.brand.urlName === "sealy"
+            ) {
               return (
                 <MattressThumb
                   key={mattress.id}
@@ -66,7 +75,10 @@ const Sealy = ({ data }) => {
             return null;
           })}
           {allDatoCmsMattress.nodes.map(mattress => {
-            if (mattress.subline.name === "Premium") {
+            if (
+              mattress.subline.name.includes("Premium") &&
+              mattress.brand.urlName === "sealy"
+            ) {
               return (
                 <MattressThumb
                   key={mattress.id}
