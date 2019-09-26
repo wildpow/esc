@@ -23,11 +23,11 @@ import {
   BBLink,
   Wrap,
   BottomIconWrapper,
-  GraphIcon,
+  // GraphIcon,
   Bird667Container,
   BirdContainerSmall,
 } from "../styles/newFooterStyles";
-import GraphCMS from "../images/powered_by_graphcms.svg";
+// import GraphCMS from "../images/powered_by_graphcms.svg";
 import BBBHor from "../images/ab_seal_horizontal_black_large.jpg";
 import BBBWebpHor from "../images/ab_seal_horizontal_black_large.webp";
 import Bird from "./bird";
@@ -130,13 +130,13 @@ const Footer = () => (
       </BottomLinkWrapper>
     </Wrapper>
     <BottomIconWrapper>
-      <OutboundLink
+      {/* <OutboundLink
         href="https://graphcms.com/"
         target="_blank"
         rel="noopener noreferrer"
       >
         <GraphIcon src={GraphCMS} alt="GraphCMS Company logo" />
-      </OutboundLink>
+      </OutboundLink> */}
       <BBLink
         href="https://www.bbb.org/northwest/customer-reviews/mattress/esc-mattress-center-in-everett-wa-1000056497/add/"
         target="_blank"
