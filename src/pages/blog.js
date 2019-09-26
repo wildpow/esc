@@ -157,7 +157,7 @@ export const blogList = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    allDatoCmsBlog {
+    allDatoCmsBlog(sort: { fields: postDate, order: DESC }) {
       nodes {
         id
         slug
@@ -167,6 +167,7 @@ export const blogList = graphql`
         postContent
         bottomImage {
           url
+          alt
         }
         blogListImage {
           alt
