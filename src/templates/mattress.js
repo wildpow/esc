@@ -208,7 +208,7 @@ const Mattress = ({ data }) => {
             </List>
             <DropDown
               typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}
-              freeBoxSpring={mattress.freeBox}
+              freeBoxSpring={mattress.saleInfo[0].freeBox}
               discount={mattress.saleInfo[0].discount}
               prices={mattress.price[0]}
               boxPrices={mattress.brand.boxPrice[0]}
@@ -253,7 +253,6 @@ export const query = graphql`
     datoCmsMattress(uri: { eq: $uri }) {
       name
       id
-      freeBox
       description
       profile
       warranty
@@ -269,6 +268,7 @@ export const query = graphql`
         saleBanner
         discount
         typeOfDiscount
+        freeBox
       }
       price {
         twin

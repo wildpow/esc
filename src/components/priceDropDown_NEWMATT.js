@@ -335,7 +335,6 @@ class DropDown extends React.Component {
             disabled={boxDropDisabled}
             onChange={e => this.sizeSelect(e)}
           >
-            {/* `[$${boxPrices[selectedIndex]}.00] Standard Foundation` */}
             <option value="noBox">[$0.00] No Box Spring</option>
             <option value="addBox">
               {freeBoxSpring === false
