@@ -29,7 +29,7 @@ const CurrentSale = ({ data }) => {
             <MattressThumb
               key={mattress.id}
               mattress={mattress}
-              url={`/brands/${mattress.brand.urlName}/${mattress.uri}`}
+              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
             />
           ))}
         </Wrapper>

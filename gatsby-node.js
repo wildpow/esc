@@ -44,19 +44,24 @@ exports.createPages = async ({ actions, graphql }) => {
   data.allDatoCmsAdjustableBase.edges.forEach(base => {
     // const reg = `/(${base.node.slug})/gi`;
     actions.createPage({
-      path: `/adjustable/${base.node.uri}`,
+      // path: `/adjustable/${base.node.uri}`,
+      path: `/adjustable/${base.node.slug}`,
+
       component: path.resolve(`./src/templates/base.js`),
       context: {
-        uri: base.node.uri,
+        // uri: base.node.uri,
+        slug: base.node.slug,
       },
     });
   });
   data.allDatoCmsMattress.edges.forEach(mattress => {
     actions.createPage({
-      path: `/brands/${mattress.node.brand.urlName}/${mattress.node.uri}`,
+      // path: `/brands/${mattress.node.brand.urlName}/${mattress.node.uri}`,
+      path: `/brands/${mattress.node.brand.urlName}/${mattress.node.slug}`,
       component: path.resolve(`./src/templates/mattress.js`),
       context: {
-        uri: mattress.node.uri,
+        // uri: mattress.node.uri,
+        slug: mattress.node.slug,
       },
     });
   });

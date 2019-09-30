@@ -249,8 +249,9 @@ Mattress.propTypes = {
 export default Mattress;
 
 export const query = graphql`
-  query SingleMattress($uri: String!) {
-    datoCmsMattress(uri: { eq: $uri }) {
+  query SingleMattress($slug: String!) {
+    datoCmsMattress(slug: { eq: $slug }) {
+      slug
       name
       id
       description

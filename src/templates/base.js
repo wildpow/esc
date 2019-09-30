@@ -239,8 +239,9 @@ Base.propTypes = {
 export default Base;
 
 export const query = graphql`
-  query singleAdjustable($uri: String!) {
-    datoCmsAdjustableBase(uri: { eq: $uri }) {
+  query singleAdjustable($slug: String!) {
+    datoCmsAdjustableBase(slug: { eq: $slug }) {
+      slug
       fullName
       description
       images3 {
