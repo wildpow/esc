@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { Link } from "gatsby";
 import { OutboundLink as GoogleAnalytics } from "gatsby-plugin-google-analytics";
+import { DisplayNonePrint } from "./_pr1nt/main";
 
 const SharedLinkStyles = css`
   color: ${props => props.theme.newColor1};
@@ -20,23 +21,10 @@ const SharedLinkStyles = css`
 `;
 export const OutBoundLink = styled(GoogleAnalytics)`
   ${SharedLinkStyles}
-  @media print {
-    position: absolute;
-    color: black;
-    text-shadow: none;
-    display: block;
-    text-shadow: none;
-    font-weight: 700;
-    border-bottom: 2px solid ${props => props.theme.mainColor2};
-    font-size: 1.3rem;
-  }
 `;
 
 export const InboundLink = styled(Link)`
   ${SharedLinkStyles}
-  @media print {
-    display: none;
-  }
 `;
 
 export const Top = styled.div`
@@ -51,7 +39,6 @@ export const Top = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 6px 10px 6px;
-  /* transition: all 0.25s ease-in; */
   font-size: 0.9rem;
   letter-spacing: 0.056rem;
   position: relative;
@@ -71,9 +58,7 @@ export const Top = styled.div`
     font-size: 1.5rem;
     letter-spacing: 0.19rem;
   }
-  @media print {
-    box-shadow: none;
-  }
+  ${DisplayNonePrint}
 `;
 
 export const Wrapper = styled.div`

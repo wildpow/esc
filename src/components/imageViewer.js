@@ -9,6 +9,7 @@ import {
   LargeImg,
 } from "../styles/imageViewerStyles";
 import { Banner } from "./mattThumbNail/mattThumbStyles";
+import { BigBannerPrint } from "../styles/_pr1nt/main";
 
 const BigBanner = styled(Banner)`
   font-size: 0.6rem;
@@ -19,15 +20,11 @@ const BigBanner = styled(Banner)`
     padding-bottom: 5px;
     padding-left: 10px;
     width: 75%;
-    /* padding-right: 5px; */
-    /* text-align: left; */
   }
-
   @media (max-width: 736px) and (orientation: landscape) {
     font-size: 0.8rem;
     margin-left: 0px;
     width: 80%;
-    /* text-align: left; */
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -51,14 +48,8 @@ const BigBanner = styled(Banner)`
     padding-bottom: 7px;
     padding-left: 20px;
     width: 70%;
-    /* text-align: left; */
   }
-  @media print {
-    font-size: 1.4rem;
-    border-bottom: 4px solid ${props => props.theme.mainColor2};
-    color: black;
-    text-align: left;
-  }
+  ${BigBannerPrint}
 `;
 const objShape = {
   alt: PropTypes.string,

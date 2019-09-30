@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import { DisplayNonePrint } from "../styles/_pr1nt/main";
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -33,9 +34,7 @@ export const BreadWrapper = styled.div`
     margin-right: ${props => (props.Brands ? "55px" : "85px")};
     margin-left: ${props => (props.Brands ? "55px" : "85px")};
   }
-  @media print {
-    display: none;
-  }
+  ${DisplayNonePrint}
 `;
 const Span = styled.span`
   padding-right: 5px;

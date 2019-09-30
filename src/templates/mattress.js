@@ -7,21 +7,18 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import ImageViewer from "../components/imageViewer";
 import {
-  Wrapper,
-  MainTitle,
+  Article,
+  Description,
   Main,
   MainInfo,
-  Article,
-  Warranty,
-  Description,
-  // StyledMarkDown,
+  MainTitle,
   Profile,
-  // InfoAnchor,
-  // Stuff,
-  // Construction,
+  Warranty,
+  Wrapper,
 } from "../styles/singleMattStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import DropDown from "../components/priceDropDown_NEWMATT";
+import { DisplayNonePrint, ListPrint } from "../styles/_pr1nt/main";
 
 const List = styled.div`
   display: flex;
@@ -105,15 +102,7 @@ const List = styled.div`
       font-size: 2.1rem;
     }
   }
-
-  @media print {
-    h3 {
-      font-size: 1.3rem;
-    }
-    li {
-      font-size: 1rem;
-    }
-  }
+  ${ListPrint}
 `;
 
 const Construction = styled(List)`
@@ -162,9 +151,7 @@ const Info = styled.li`
     @media (min-width: 1024px) {
       font-size: 1.6rem;
     }
-    @media print {
-      display: none;
-    }
+    ${DisplayNonePrint}
   }
 `;
 

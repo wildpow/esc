@@ -26,7 +26,6 @@ import {
   // Stuff,
   // Construction,
 } from "../styles/singleMattStyles";
-// import SEO from "../components/seo";
 
 const List = styled.div`
   display: flex;
