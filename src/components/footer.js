@@ -57,6 +57,9 @@ const Icons = styled.div`
   margin-top: 10px;
   margin-bottom: 10px;
   justify-content: space-evenly;
+  @media print {
+    display: none;
+  }
 `;
 const Footer = () => (
   <MainFooter>

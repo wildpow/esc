@@ -10,6 +10,9 @@ import Google from "../images/google_Maps_App_3.png";
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
+  @media print {
+    display: none;
+  }
 `;
 
 const DIVY = styled.div`

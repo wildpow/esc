@@ -142,6 +142,9 @@ export const Hours = styled(FlexCol)`
     font-size: 1.5rem;
     line-height: 2.2rem;
   }
+  @media print {
+    font-size: 1rem;
+  }
 `;
 
 export const HoursPara = styled.p`
@@ -152,6 +155,10 @@ export const HoursPara = styled.p`
 export const HoursSpan = styled.span`
   text-decoration: underline;
   padding-bottom: 5px;
+  @media print {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 `;
 
 export const MapLink = styled(OutboundLink)`

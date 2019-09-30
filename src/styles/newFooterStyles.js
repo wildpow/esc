@@ -61,6 +61,9 @@ export const Wrap = styled.div`
   align-content: center;
   justify-content: center;
   align-items: center;
+  @media print {
+    display: none;
+  }
 `;
 
 export const BottomLinkWrapper = styled.div`
