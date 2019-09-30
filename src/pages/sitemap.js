@@ -61,7 +61,7 @@ const SiteMap = ({ data }) => {
               if (mattress.brand.urlName === "sealy") {
                 return (
                   <li key={mattress.id}>
-                    <SiteLinks to={`/brands/sealy/${mattress.uri}`}>
+                    <SiteLinks to={`/brands/sealy/${mattress.slug}`}>
                       {mattress.name}
                     </SiteLinks>
                   </li>
@@ -80,7 +80,7 @@ const SiteMap = ({ data }) => {
               if (mattress.brand.urlName === "tempurpedic") {
                 return (
                   <li key={mattress.id}>
-                    <SiteLinks to={`/brands/tempurpedic/${mattress.uri}`}>
+                    <SiteLinks to={`/brands/tempurpedic/${mattress.slug}`}>
                       {mattress.name}
                     </SiteLinks>
                   </li>
@@ -99,7 +99,7 @@ const SiteMap = ({ data }) => {
               if (mattress.brand.urlName === "stearns") {
                 return (
                   <li key={mattress.id}>
-                    <SiteLinks to={`/brands/stearns/${mattress.uri}`}>
+                    <SiteLinks to={`/brands/stearns/${mattress.slug}`}>
                       {mattress.name}
                     </SiteLinks>
                   </li>
@@ -118,7 +118,7 @@ const SiteMap = ({ data }) => {
           <ul>
             {allDatoCmsAdjustableBase.nodes.map(base => (
               <li key={base.id}>
-                <SiteLinks to={`/adjustable/${base.uri}`}>
+                <SiteLinks to={`/adjustable/${base.slug}`}>
                   {base.fullName}
                 </SiteLinks>
               </li>
@@ -151,7 +151,7 @@ export const allMattressesSiteMap = graphql`
   query sitmap {
     allDatoCmsMattress(sort: { fields: priceHigh }) {
       nodes {
-        uri
+        slug
         name
         id
         priceLow
@@ -168,7 +168,7 @@ export const allMattressesSiteMap = graphql`
     }
     allDatoCmsAdjustableBase {
       nodes {
-        uri
+        slug
         fullName
         id
       }

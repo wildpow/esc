@@ -182,7 +182,7 @@ const Adjustables = ({ data }) => (
       </BreadWrapper>
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       {data.allDatoCmsAdjustableBase.edges.map(base => (
-        <StyledLink to={`/adjustable/${base.node.uri}`} key={base.node.id}>
+        <StyledLink to={`/adjustable/${base.node.slug}`} key={base.node.id}>
           <H3>{base.node.fullName}</H3>
           <InfoWrapper>
             <ImageWrapper>
@@ -236,7 +236,7 @@ export const allAdjustables = graphql`
             feature
             id
           }
-          uri
+          slug
           sale {
             saleBanner
           }
