@@ -80,38 +80,3 @@ export const currentSaleQuery = graphql`
     }
   }
 `;
-
-// export const currentSaleQuery2 = graphql`
-//   query currentSaleQuery {
-//     allDatoCmsMattress(
-//       filter: {
-//         meta: { status: { eq: "published" } }
-//         saleInfo: { elemMatch: { saleBanner: { ne: "" } } }
-//       }
-//       sort: { fields: priceLow, order: ASC }
-//     ) {
-//       nodes {
-//         uri
-//         name
-//         id
-//         priceLow
-//         priceHigh
-//         images {
-//           coverImage {
-//             url
-//           }
-//         }
-//         saleInfo {
-//           saleBanner
-//         }
-//         subline {
-//           name
-//         }
-//         brand {
-//           urlName
-//           displayName
-//         }
-//       }
-//     }
-//   }
-// `;

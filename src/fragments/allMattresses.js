@@ -3,7 +3,6 @@ import { graphql } from "gatsby";
 export const mattressParts = graphql`
   fragment mattressParts on DatoCmsMattress {
     slug
-    uri
     name
     id
     priceLow
