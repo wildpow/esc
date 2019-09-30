@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
 import {
   MainWrapper,
@@ -10,37 +11,25 @@ import {
   Headline,
 } from "../styles/mattListStyles";
 import MattressThumb from "../components/mattThumbNail/mattThumb";
-import SEO from "../components/seo";
 
 const CurrentSale = ({ data }) => {
-  const { allIsOnSales } = data.gcms;
+  const { allDatoCmsMattress, datoCmsCurrentSale } = data;
   return (
     <Layout>
-      <SEO
-        title={`ESC: ${allIsOnSales[0].tabTitle}`}
-        description={allIsOnSales[0].description}
-        ogTitle={`E.S.C. Mattress Center | ${allIsOnSales[0].saleName}`}
-        ogImageAlt={`E.S.C Mattress Center | ${allIsOnSales[0].saleName}`}
-        ogImage={`https://media.graphcms.com/resize=w:980,h:450,fit:clip/${
-          allIsOnSales[0].currentSaleImg.handle
-        }`}
-        ogImageHeight="450"
-        ogImageWidth="980"
-      />
+      <HelmetDatoCms seo={datoCmsCurrentSale.seoMetaTags} />
       <MainWrapper>
         <Wrapper2>
-          <Headline>{allIsOnSales[0].saleName}</Headline>
-          <P>{allIsOnSales[0].description}</P>
+          <Headline>{datoCmsCurrentSale.title}</Headline>
+          <P>{datoCmsCurrentSale.description}</P>
           <Headline red>“Sleep Like the Experts Do!”</Headline>
         </Wrapper2>
+
         <Wrapper>
-          {allIsOnSales[0].mattresses.map(mattress => (
+          {allDatoCmsMattress.nodes.map(mattress => (
             <MattressThumb
               key={mattress.id}
               mattress={mattress}
-              url={`/brands/${mattress.uriBrandName.toLowerCase()}/${
-                mattress.uri
-              }`}
+              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
             />
           ))}
         </Wrapper>
@@ -54,32 +43,75 @@ CurrentSale.propTypes = {
 };
 export default CurrentSale;
 
+// export const currentSaleQuery = graphql`
+//   query currentSaleQuery {
+//     datoCmsCurrentSale {
+//       title
+//       description
+//       seoMetaTags {
+//         ...GatsbyDatoCmsSeoMetaTags
+//       }
+//       saleMattresses {
+//         ...mattressParts
+//       }
+//     }
+//   }
+// `;
+
 export const currentSaleQuery = graphql`
   query currentSaleQuery {
-    gcms {
-      allIsOnSales {
-        id
-        description
-        tabTitle
-        saleName
-        currentSaleImg {
-          handle
-        }
-        mattresses(filter: { isPublished: true }, orderBy: orderByPrice_ASC) {
-          id
-          saleBanner
-          uriBrandName
-          brandName
-          orderByPrice
-          uri
-          subName
-          subBrand
-          priceRange
-          coverImg {
-            handle
-          }
-        }
+    allDatoCmsMattress(
+      filter: {
+        meta: { status: { eq: "published" } }
+        saleInfo: { elemMatch: { saleBanner: { ne: "" } } }
+      }
+      sort: { fields: priceLow, order: ASC }
+    ) {
+      nodes {
+        ...mattressParts
+      }
+    }
+    datoCmsCurrentSale {
+      title
+      description
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
       }
     }
   }
 `;
+
+// export const currentSaleQuery2 = graphql`
+//   query currentSaleQuery {
+//     allDatoCmsMattress(
+//       filter: {
+//         meta: { status: { eq: "published" } }
+//         saleInfo: { elemMatch: { saleBanner: { ne: "" } } }
+//       }
+//       sort: { fields: priceLow, order: ASC }
+//     ) {
+//       nodes {
+//         uri
+//         name
+//         id
+//         priceLow
+//         priceHigh
+//         images {
+//           coverImage {
+//             url
+//           }
+//         }
+//         saleInfo {
+//           saleBanner
+//         }
+//         subline {
+//           name
+//         }
+//         brand {
+//           urlName
+//           displayName
+//         }
+//       }
+//     }
+//   }
+// `;

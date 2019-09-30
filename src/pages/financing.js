@@ -1,4 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import {
   CompanyWrapper,
   H3,
@@ -14,16 +17,11 @@ import {
 import Synchrony from "../images/synchrony_Card_Image.jpg";
 import Acima from "../images/acima_Logo.png";
 import Layout from "../components/layout";
-import SEO from "../components/seo";
 
-export default () => (
+const Financing = ({ data }) => (
   <Layout>
     <Main>
-      <SEO
-        title="ESC: Financing"
-        description="Why spend your own money? We have 2 different financing options to suit your needs: Synchrony offers interest free financing, while Ascima offers a no credit needed option. Ask your local store for details."
-        ogTitle="E.S.C. Mattress Center | Financing"
-      />
+      <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <CompanyWrapper>
         <H3>Synchrony Financing</H3>
         <InfoWrapper>
@@ -73,3 +71,19 @@ export default () => (
     </Main>
   </Layout>
 );
+
+Financing.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+
+export const financingSEO = graphql`
+  query financingSEO {
+    datoCmsSeo(name: { eq: "financing" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+  }
+`;
+
+export default Financing;

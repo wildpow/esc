@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../../components/layout";
 import {
   MainWrapper,
@@ -11,19 +12,13 @@ import {
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 import TempurImg from "../../images/tempurLogo2.png";
 import MattressThumb from "../../components/mattThumbNail/mattThumb";
-import SEO from "../../components/seo";
 
 const Tempurpedic = ({ data }) => {
-  const { allMattresses } = data.gcms;
-  const title = "tempurpedic";
+  const { datoCmsSeo, allDatoCmsMattress } = data;
   return (
     <Layout>
       <MainWrapper>
-        <SEO
-          title="ESC: Tempur-Pedic Mattresses"
-          description="Tempurpedic is the most recommended brand in the US. They offer a memory foam mattress as well as their flex line, and innovative hybrid from the brand you know and love. Come see JD Power’s Consumers choice award winner for 2017."
-          ogTitle="E.S.C. Mattress Center | Tempurpedic"
-        />
+        <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
         <BreadWrapper Brands>
           <BreadCrumbs next="Brands" here="Tempurpedic" />
         </BreadWrapper>
@@ -31,11 +26,11 @@ const Tempurpedic = ({ data }) => {
           <Img src={TempurImg} alt="Logo of the Tempurpedic mattress company" />
         </MainTitle>
         <Wrapper>
-          {allMattresses.map(mattress => (
+          {allDatoCmsMattress.nodes.map(mattress => (
             <MattressThumb
               key={mattress.id}
               mattress={mattress}
-              url={`/brands/${title}/${mattress.uri}`}
+              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
             />
           ))}
         </Wrapper>
@@ -52,23 +47,19 @@ Tempurpedic.propTypes = {
 };
 export default Tempurpedic;
 
-export const tempurMattresses = graphql`
-  query tempurMattresses {
-    gcms {
-      allMattresses(
-        orderBy: orderByPrice_ASC
-        filter: { isPublished: true, brandName: "Tempur-PEDIC" }
-      ) {
-        brandName
-        uri
-        saleBanner
-        id
-        subName
-        subBrand
-        priceRange
-        coverImg {
-          handle
-        }
+export const tempurpedicMatt = graphql`
+  query tempurpedic {
+    datoCmsSeo(name: { eq: "tempurpedic mattresses" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+    allDatoCmsMattress(
+      filter: { brand: { urlName: { eq: "tempurpedic" } } }
+      sort: { fields: priceLow, order: ASC }
+    ) {
+      nodes {
+        ...mattressParts
       }
     }
   }

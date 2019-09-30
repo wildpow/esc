@@ -11,16 +11,12 @@ const NewWrapper = styled(MainWrapper)`
   margin-top: 15px;
   @media (min-width: 1024px) {
     box-shadow: ${props => props.theme.newBoxShadow};
-    /* border-top: ${props => props.theme.Border}; */
-    /* border-right: ${props => props.theme.Border};
-    border-left: ${props => props.theme.Border}; */
   }
 `;
 
 const ThreeMattWrapper = styled(Wrapper)`
   margin-bottom: 10px;
   @media (min-width: 375px) {
-    /* margin-bottom: 5px; */
     margin-top: 5px;
     margin-bottom: 10px;
   }
@@ -40,7 +36,6 @@ const ThreeMattWrapper = styled(Wrapper)`
   }
   @media (min-width: 1300px) {
     margin-top: 10px;
-    /* max-width: 900px; */
   }
 `;
 
@@ -49,23 +44,32 @@ const TopThreeMatts = () => {
     <StaticQuery
       query={graphql`
         query top3Matts {
-          gcms {
-            allFront3Mattresses {
-              id
-              footerURL
-              footertagline
-              headerTagLine
+          datoCmsFrontPage {
+            top3Mattress {
+              footer
+              footerUrl
+              header
               mattresses {
-                uri
-                uriBrandName
                 id
-                brandName
-                priceRange
-                subName
-                subBrand
-                saleBanner
-                coverImg {
-                  handle
+                name
+                images {
+                  coverImage {
+                    url
+                    alt
+                  }
+                }
+                uri
+                priceLow
+                priceHigh
+                saleInfo {
+                  saleBanner
+                }
+                subline {
+                  name
+                }
+                brand {
+                  urlName
+                  displayName
                 }
               }
             }
@@ -74,13 +78,13 @@ const TopThreeMatts = () => {
       `}
       render={data => (
         <NewWrapper>
-          <Headline>{data.gcms.allFront3Mattresses[0].headerTagLine}</Headline>
+          <Headline>{data.datoCmsFrontPage.top3Mattress[0].header}</Headline>
           <ThreeMattWrapper>
-            {data.gcms.allFront3Mattresses[0].mattresses.map(mattress => (
+            {data.datoCmsFrontPage.top3Mattress[0].mattresses.map(mattress => (
               <MattressThumb
                 key={mattress.id}
                 mattress={mattress}
-                url={`/brands/${mattress.uriBrandName}/${mattress.uri}`}
+                url={`/brands/${mattress.brand.urlName}/${mattress.uri}`}
               />
             ))}
           </ThreeMattWrapper>
@@ -94,8 +98,8 @@ const TopThreeMatts = () => {
             better.
           </P>
           <Headline red>
-            <FooterLink to={data.gcms.allFront3Mattresses[0].footerURL}>
-              {data.gcms.allFront3Mattresses[0].footertagline}
+            <FooterLink to={data.datoCmsFrontPage.top3Mattress[0].footerUrl}>
+              {data.datoCmsFrontPage.top3Mattress[0].footer}
             </FooterLink>
           </Headline>
         </NewWrapper>

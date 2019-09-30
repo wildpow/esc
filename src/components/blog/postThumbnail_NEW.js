@@ -12,10 +12,12 @@ const PostThumbnail = ({ post, isHovering, onMouseEnter, onMouseLeave }) => {
       onTouchEnd={onMouseLeave}
     >
       <ThumbImg
-        src={`https://media.graphcms.com/resize=w:150,h:150,fit:clip/${
-          post.coverImage.handle
-        }`}
-        alt={`The blog post called ${post.title}`}
+        src={post.blogListImage.url}
+        alt={
+          post.blogListImage.alt === null
+            ? `The blog post called ${post.title}`
+            : post.blogListImage.alt
+        }
         isHovering={isHovering}
       />
       <h3>{post.title}</h3>

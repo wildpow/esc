@@ -6,34 +6,33 @@ const TopPromo = () => (
   <StaticQuery
     query={graphql`
       query toppers {
-        gcms {
-          allToppers {
-            id
-            currentpromo
-            linkType
-            uRL
+        datoCmsFrontPage {
+          topper {
+            url
+            urlText
+            internalLink
           }
         }
       }
     `}
-    render={data => (
-      <>
-        {data.gcms.allToppers &&
-        data.gcms.allToppers[0].linkType[0] === "Inbound" ? (
-          <InboundLink to={data.gcms.allToppers[0].uRL}>
-            {data.gcms.allToppers[0].currentpromo}
-          </InboundLink>
-        ) : (
-          <OutBoundLink
-            href="https://subscribe.mainstreethub.com/email/b1278150-e6a6-4cd5-8708-d72ade6c099a"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {data.topper.currentpromo}
-          </OutBoundLink>
-        )}
-      </>
-    )}
+    render={data => {
+      const { topper } = data.datoCmsFrontPage;
+      return (
+        <>
+          {topper[0].internalLink ? (
+            <InboundLink to={topper[0].url}>{topper[0].urlText}</InboundLink>
+          ) : (
+            <OutBoundLink
+              href="https://subscribe.mainstreethub.com/email/b1278150-e6a6-4cd5-8708-d72ade6c099a"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {topper[0].urlText}
+            </OutBoundLink>
+          )}
+        </>
+      );
+    }}
   />
 );
 

@@ -60,13 +60,22 @@ const BigBanner = styled(Banner)`
     text-align: left;
   }
 `;
+const objShape = {
+  alt: PropTypes.string,
+  url: PropTypes.string,
+};
 class ImageViewer extends React.PureComponent {
+  static defaultProps = {
+    base: false,
+  };
+
   static propTypes = {
-    cover: PropTypes.string.isRequired,
-    img1: PropTypes.string.isRequired,
-    img2: PropTypes.string.isRequired,
-    fullname: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
+    cover: PropTypes.shape(objShape).isRequired,
+    img1: PropTypes.shape(objShape).isRequired,
+    img2: PropTypes.shape(objShape).isRequired,
+    saleBanner: PropTypes.string.isRequired,
+    base: PropTypes.bool,
+    mattName: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -83,7 +92,7 @@ class ImageViewer extends React.PureComponent {
   };
 
   render() {
-    const { cover, img1, img2, fullname, type, base, saleBanner } = this.props;
+    const { cover, img1, img2, base, saleBanner, mattName } = this.props;
     const { currentImageIndex } = this.state;
     const ImagesArray = [cover, img1, img2];
     return (
@@ -115,10 +124,12 @@ class ImageViewer extends React.PureComponent {
                     <BigBanner>{saleBanner}</BigBanner>
                   )}
                   <LargeImg
-                    src={`https://media.graphcms.com/resize=w:500,h:500,fit:clip/${
-                      ImagesArray[data]
-                    }`}
-                    alt={`Large image of ${fullname} ${type}`}
+                    src={ImagesArray[data].url}
+                    alt={
+                      ImagesArray[data].alt === null
+                        ? mattName
+                        : ImagesArray[data].alt
+                    }
                     style={{ position: "absolute" }}
                   />
                 </div>
@@ -130,29 +141,23 @@ class ImageViewer extends React.PureComponent {
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={`https://media.graphcms.com/resize=w:500,h:500,fit:clip/${
-              ImagesArray[0]
-            }`}
+            src={ImagesArray[0].url}
             data-id={0}
-            alt={`Small image of ${fullname} ${type}`}
+            alt={ImagesArray[0].alt === null ? mattName : ImagesArray[0].alt}
           />
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={`https://media.graphcms.com/resize=w:500,h:500,fit:clip/${
-              ImagesArray[1]
-            }`}
+            src={ImagesArray[1].url}
             data-id={1}
-            alt={`Small image of ${fullname} ${type}`}
+            alt={ImagesArray[1].alt === null ? mattName : ImagesArray[0].alt}
           />
           <SmImg
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={`https://media.graphcms.com/resize=w:500,h:500,fit:clip/${
-              ImagesArray[2]
-            }`}
+            src={ImagesArray[2].url}
             data-id={2}
-            alt={`Small image of ${fullname} ${type}`}
+            alt={ImagesArray[2].alt === null ? mattName : ImagesArray[0].alt}
           />
         </SmallImgHolder>
       </ImgWrapper>

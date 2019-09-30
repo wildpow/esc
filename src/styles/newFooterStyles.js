@@ -2,21 +2,21 @@ import styled from "styled-components";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { Link } from "gatsby";
 
-const ImgHover = styled.img`
-  color: white;
-  transition: transform 0.25s ease-in;
-  &:hover {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-`;
+// const ImgHover = styled.img`
+//   color: white;
+//   transition: transform 0.25s ease-in;
+//   &:hover {
+//     transform: scale3d(1.1, 1.1, 1);
+//   }
+// `;
 
-export const GraphIcon = styled(ImgHover)`
-  max-width: 10em;
-  padding-right: 12px;
-  @media (min-width: 768px) {
-    max-width: 13em;
-  }
-`;
+// export const GraphIcon = styled(ImgHover)`
+//   max-width: 10em;
+//   padding-right: 12px;
+//   @media (min-width: 768px) {
+//     max-width: 13em;
+//   }
+// `;
 
 export const BottomIconWrapper = styled.div`
   margin-top: 15px;

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import {
   MainWrapper,
   Wrapper,
@@ -11,18 +12,12 @@ import Layout from "../../components/layout";
 import StearnsImg from "../../images/stearnsLogo.png";
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 import MattressThumb from "../../components/mattThumbNail/mattThumb";
-import SEO from "../../components/seo";
 
 const Stearns = ({ data }) => {
-  const { allMattresses } = data.gcms;
-  const title = "stearns";
+  const { datoCmsSeo, allDatoCmsMattress } = data;
   return (
     <Layout>
-      <SEO
-        title="ESC: Stearns & Foster Mattresses"
-        description="One of the oldest mattress manufactures in in the US, Stearns and Foster offers traditional luxury that you deserve. Come feel the luxury your body deserves on the new Stearns and Foster lines.  Raise your expectations with an adjustable base for the ultimate in comfort."
-        ogTitle="E.S.C. Mattress Center | Stearns and Foster"
-      />
+      <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
       <MainWrapper>
         <BreadWrapper Brands>
           <BreadCrumbs next="Brands" here="Stearns" />
@@ -34,11 +29,11 @@ const Stearns = ({ data }) => {
           />
         </MainTitle>
         <Wrapper>
-          {allMattresses.map(mattress => (
+          {allDatoCmsMattress.nodes.map(mattress => (
             <MattressThumb
               key={mattress.id}
               mattress={mattress}
-              url={`/brands/${title}/${mattress.uri}`}
+              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
             />
           ))}
         </Wrapper>
@@ -58,21 +53,17 @@ export default Stearns;
 
 export const stearnsMattresses = graphql`
   query stearnsMattresses {
-    gcms {
-      allMattresses(
-        orderBy: orderByPrice_ASC
-        filter: { brandName: "Stearns & Foster", isPublished: true }
-      ) {
-        brandName
-        saleBanner
-        uri
-        id
-        subName
-        subBrand
-        priceRange
-        coverImg {
-          handle
-        }
+    datoCmsSeo(name: { eq: "stearns mattresses" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+    allDatoCmsMattress(
+      filter: { brand: { urlName: { eq: "stearns" } } }
+      sort: { fields: priceLow, order: ASC }
+    ) {
+      nodes {
+        ...mattressParts
       }
     }
   }

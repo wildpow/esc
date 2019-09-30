@@ -17,19 +17,16 @@ const Front = () => (
       <StaticQuery
         query={graphql`
           query front {
-            gcms {
-              allFronts {
-                id
-                title
-                textBlock
-              }
+            datoCmsFrontPage {
+              frontPageTitle
+              frontPageTextBlock
             }
           }
         `}
         render={data => (
           <>
-            <Headline>{data.gcms.allFronts[0].title}</Headline>
-            <P>{data.gcms.allFronts[0].textBlock}</P>
+            <Headline>{data.datoCmsFrontPage.frontPageTitle}</Headline>
+            <P>{data.datoCmsFrontPage.frontPageTextBlock}</P>
           </>
         )}
       />

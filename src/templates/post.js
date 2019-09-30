@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import { Marker, BottomImg, Main } from "../styles/postStyles";
 import { H2 } from "../styles/mainStyles";
-import SEO from "../components/seo";
 
 const PostBread = styled(BreadWrapper)`
   padding: 0;
@@ -34,40 +34,23 @@ const PostBread = styled(BreadWrapper)`
   }
 `;
 const Post = ({ data }) => {
-  const post = data.gcms.Post;
-
-  function makeTitle(slug) {
-    const words = slug.split("-");
-
-    for (let i = 0; i < words.length; i += 1) {
-      const word = words[i];
-      words[i] = word.charAt(0).toUpperCase() + word.slice(1);
-    }
-    return words.join(" ");
-  }
-
+  const post = data.datoCmsBlog;
   return (
     <Layout>
-      <SEO
-        title={makeTitle(post.slug)}
-        ogTitle={`E.S.C. Mattress Center | ${post.title}`}
-        description={post.description}
-      />
+      <HelmetDatoCms seo={post.seoMetaTags} />
       <PostBread>
-        <BreadCrumbs next="Blog" here={makeTitle(post.slug)} />
+        <BreadCrumbs next="Blog" here={post.title} />
       </PostBread>
       <Main>
         <header>
           <H2>{post.title}</H2>
         </header>
         <article>
-          <Marker source={post.content} escapeHtml={false} />
+          <Marker source={post.postContent} escapeHtml={false} />
         </article>
-        {post.bottomimg ? (
+        {post.bottomImage ? (
           <BottomImg
-            src={`https://media.graphcms.com/resize=w:${
-              post.bottomimg.width
-            },h:${post.bottomimg.height},fit:clip/${post.bottomimg.handle}`}
+            src={post.bottomImage.url}
             alt={`Image related to ${post.title}`}
           />
         ) : null}
@@ -85,24 +68,24 @@ Post.propTypes = {
 export default Post;
 
 export const postQuery = graphql`
-  query SinglePost($slug: String!) {
-    gcms {
-      Post(slug: $slug) {
-        description
-        id
-        slug
-        isPublished
-        title
-        dateAndTime
-        coverImage {
-          handle
-        }
-        content
-        bottomimg {
-          handle
-          width
-          height
-        }
+  query singlePost($slug: String!) {
+    datoCmsBlog(slug: { eq: $slug }) {
+      description
+      id
+      slug
+      title
+      postDate
+      blogListImage {
+        alt
+        url
+      }
+      postContent
+      bottomImage {
+        alt
+        url
+      }
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
       }
     }
   }
