@@ -306,13 +306,6 @@ class DropDown extends React.Component {
     } = this.state;
     return (
       <Wrapper>
-        {/* {console.log(
-          this.discountCalculator(
-            prices[selectedIndex],
-            discount,
-            typeOfDiscount,
-          ),
-        )} */}
         <DropDownWrapper>
           <h4>{`PRICE: ${selectedName}`}</h4>
           <Select onChange={e => this.sizeSelect(e)}>
@@ -323,7 +316,6 @@ class DropDown extends React.Component {
             <option value="queen">Queen</option>
             <option value="king">King/Cal. King</option>
           </Select>
-
           <H4 index={selectedIndex}>
             {prices[selectedIndex] !== 0
               ? "Add a Box Spring"
@@ -338,12 +330,12 @@ class DropDown extends React.Component {
             <option value="noBox">[$0.00] No Box Spring</option>
             <option value="addBox">
               {freeBoxSpring === false
-                ? `[$${
+                ? `[ ${" "}$${
                     boxPrices[selectedIndex] !== undefined
                       ? boxPrices[selectedIndex]
                       : "000"
-                  }.00] Standard Foundation`
-                : "[ FREE ] Standard Foundation"}
+                  }.00 ${" "} ] Standard Foundation`
+                : `[  FREE!  ] Standard Foundation `}
             </option>
           </BoxSelect>
         </DropDownWrapper>

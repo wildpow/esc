@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Link } from "gatsby";
 import { OutboundLink as GoogleAnalytics } from "gatsby-plugin-google-analytics";
-import { DisplayNonePrint } from "./_pr1nt/main";
+import { DisplayNonePr1nt } from "./_pr1nt/main";
 
 const SharedLinkStyles = css`
   color: ${props => props.theme.newColor1};
@@ -58,7 +58,7 @@ export const Top = styled.div`
     font-size: 1.5rem;
     letter-spacing: 0.19rem;
   }
-  ${DisplayNonePrint}
+  ${DisplayNonePr1nt}
 `;
 
 export const Wrapper = styled.div`

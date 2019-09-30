@@ -86,7 +86,6 @@ export const ReadersChoice = styled.img`
   left: 9px;
   top: 39px;
   z-index: 51;
-  /* z-index: ${props => (props.menuToggle ? 0 : 51)}; */
   opacity: ${props => (props.menuToggle ? 0.2 : 1)};
   transition: transform 0.25s ease-in;
   cursor: pointer;
@@ -102,7 +101,6 @@ export const ReadersChoice = styled.img`
     max-width: 138px;
     top: 38px;
     left: 21px;
-    /* left: 56px; */
   }
   @media (min-width: 1024px) {
     float: right;
@@ -126,7 +124,6 @@ export const ReadersChoice = styled.img`
   }
   @media (min-width: 1600px) {
     right: 256px;
-    /* z-index: 2; */
   }
   @media (min-width: 1800px) {
     right: 300px;

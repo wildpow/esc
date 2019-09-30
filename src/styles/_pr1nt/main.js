@@ -1,19 +1,12 @@
 import styled, { css } from "styled-components";
 
-// Display NONE Print Styled
-// STYLES THAT USE THIS
-// topperStyles.js: Top
-// breadCrumbs.js:  BreadWrapper
-// mattress.js: Info , List
-// imageView.js: BigBanner
-
-export const DisplayNonePrint = css`
+export const DisplayNonePr1nt = css`
   @media print {
     display: none;
   }
 `;
 
-// Topper Print Styles //
+// Topper Styles //
 export const TopperNumber = styled.div`
   display: none;
   @media print {
@@ -30,7 +23,7 @@ export const TopperNumber = styled.div`
 `;
 // /////////////////////////////////////////////
 
-// Logo Print Styles
+// Logo Styles
 
 export const ImagePrint = css`
   @media print {
@@ -57,7 +50,15 @@ export const ReadersPrint = css`
 // ////////////////////////////////
 
 // Mattress Templete
-export const ListPrint = css`
+
+export const DescriptionPr1nt = css`
+  @media print {
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+  }
+`;
+
+export const ListPr1nt = css`
   @media print {
     margin-top: 5px;
     h3 {
@@ -90,7 +91,7 @@ export const WrapperSingleMattPr1nt = css`
 
 // Image View
 
-export const BigBannerPrint = css`
+export const BigBannerPr1nt = css`
   @media print {
     font-size: 1rem;
     border-bottom: 4px solid ${props => props.theme.mainColor2};

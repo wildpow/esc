@@ -1,8 +1,12 @@
-// import AnchorLink from "react-anchor-link-smooth-scroll";
 import styled from "styled-components";
-// import Markdown from "react-markdown";
 import { FlexCol, FlexRow, FadeIn, H2 } from "./mainStyles";
-import { MainTitlePr1nt, WrapperSingleMattPr1nt } from "./_pr1nt/main";
+import {
+  MainTitlePr1nt,
+  WrapperSingleMattPr1nt,
+  ListPr1nt,
+  DisplayNonePr1nt,
+  DescriptionPr1nt,
+} from "./_pr1nt/main";
 
 export const Article = styled.article`
   display: flex;
@@ -47,9 +51,111 @@ export const Description = styled.p`
     line-height: 2.35rem;
     padding-bottom: 10px;
   }
-  @media print {
+  ${DescriptionPr1nt}
+`;
+
+export const List = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: ${props => props.theme.MainFont3};
+  font-weight: 400;
+  margin-left: 5px;
+  color: ${props => props.theme.newColor2};
+  padding: 0px;
+  h3 {
     font-size: 0.9rem;
-    line-height: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-bottom: 4px solid ${props => props.theme.mainColor2};
+    padding-bottom: 2px;
+    padding-left: 20px;
+  }
+  ul {
+    list-style: square;
+    margin-top: 2px;
+    font-size: 0.7rem;
+    padding-left: 20px;
+    margin-bottom: 5px;
+  }
+  ul li {
+    padding-bottom: 2px;
+  }
+
+  @media (min-width: 360px) {
+    ul {
+      margin-top: 10px;
+    }
+  }
+
+  @media (min-width: 550px) {
+    padding: 0px 0px 0px 10px;
+    h3 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      border-bottom: 4px solid ${props => props.theme.mainColor2};
+      padding-bottom: 2px;
+      padding-left: 20px;
+    }
+    ul {
+      list-style: square;
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+    ul li {
+      padding-bottom: 2px;
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (min-width: 992px) {
+    padding: 0px 30px 10px 30px;
+
+    h3 {
+      padding-left: 20px;
+      font-size: 2.4rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-bottom: 2px;
+    }
+    ul {
+      margin-top: 10px;
+      font-size: 1.8rem;
+    }
+    ul li {
+      padding-bottom: 2px;
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (min-width: 1300px) {
+    h3 {
+      padding-left: 20px;
+      font-weight: 700;
+      font-size: 2.1rem;
+    }
+  }
+  ${ListPr1nt}
+`;
+
+export const Construction = styled(List)`
+  @media (min-width: 992px) {
+    h3 {
+      font-size: 1.8rem;
+    }
+    ul {
+      font-size: 1.6rem;
+    }
+    ul li {
+      font-size: 1.4rem;
+    }
+  }
+  @media (min-width: 1300px) {
+    h3 {
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
   }
 `;
 
@@ -68,6 +174,36 @@ export const Main = styled(FlexRow)`
     justify-content: space-evenly;
     margin-left: 5px;
     margin-bottom: 10px;
+  }
+`;
+
+export const Info = styled.li`
+  padding-top: 10px;
+  list-style: none;
+  a {
+    display: none;
+    font-size: 0.9rem;
+    font-family: ${props => props.theme.MainFont1};
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    color: ${props => props.theme.mainColor2};
+    &:hover {
+      color: ${props => props.theme.mainColor1};
+    }
+    @media (orientation: landscape) {
+      display: block;
+    }
+    @media (min-width: 568px) {
+      font-size: 1rem;
+    }
+    @media (min-width: 768px) {
+      display: block;
+      font-size: 1.2rem;
+    }
+    @media (min-width: 1024px) {
+      font-size: 1.6rem;
+    }
+    ${DisplayNonePr1nt}
   }
 `;
 
@@ -135,56 +271,6 @@ export const Wrapper = styled(FlexCol)`
   ${WrapperSingleMattPr1nt}
 `;
 
-// /////////////
-// export const PriceList = styled.ul`
-//   font-size: 0.3rem;
-// `;
-
 export const MainInfo = styled(FlexCol)`
   justify-content: space-around;
 `;
-
-// export const PriceWrapper = styled(FlexCol)`
-//   justify-content: center;
-//   flex-wrap: wrap;
-//   @media (min-width: 1028px) {
-//     flex-direction: row;
-//     justify-content: center;
-//   }
-// `;
-
-// export const MainImg = styled.img`
-//   max-width: 7rem;
-//   @media (min-width: 768px) {
-//     max-width: 14rem;
-//   }
-//   @media (min-width: 1024px) {
-//     max-width: 17rem;
-//   }
-// `;
-
-// export const Price = styled(FlexCol)`
-//   margin-left: 10px;
-//   justify-content: center;
-//   justify-items: center;
-//   align-content: center;
-// `;
-// export const PriceTitle = styled.p`
-//   font-family: ${props => props.theme.MainFont1};
-//   padding-top: 0px;
-//   padding-bottom: 3px;
-//   margin-top: 0;
-//   margin-bottom: 0px;
-//   font-size: 0.8rem;
-//   @media (min-width: 768px) {
-//     font-size: 1rem;
-//     padding-top: 0px;
-//     padding-bottom: 7px;
-//   }
-//   @media (min-width: 1022px) {
-//     font-size: 1.7rem;
-//     padding-left: 20px;
-//     margin-bottom: 5px;
-//     margin-top: 5px;
-//   }
-// `;

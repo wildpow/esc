@@ -9,7 +9,7 @@ import {
   LargeImg,
 } from "../styles/imageViewerStyles";
 import { Banner } from "./mattThumbNail/mattThumbStyles";
-import { BigBannerPrint } from "../styles/_pr1nt/main";
+import { BigBannerPr1nt } from "../styles/_pr1nt/main";
 
 const BigBanner = styled(Banner)`
   font-size: 0.6rem;
@@ -49,7 +49,7 @@ const BigBanner = styled(Banner)`
     padding-left: 20px;
     width: 70%;
   }
-  ${BigBannerPrint}
+  ${BigBannerPr1nt}
 `;
 const objShape = {
   alt: PropTypes.string,
