@@ -50,6 +50,7 @@ const DropDownWrapper = styled.div`
       margin-top: 2px;
     }
     @media print {
+      border-bottom: 2px solid ${props => props.theme.mainColor1};
       font-size: 1.2rem;
     }
   }
@@ -137,6 +138,9 @@ const Select = styled.select`
     border-color: black;
     color: black;
     font-size: 1.2rem;
+    border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
     /* width: 220px; */
   }
   /* option {
@@ -330,11 +334,11 @@ class DropDown extends React.Component {
             <option value="noBox">[$0.00] No Box Spring</option>
             <option value="addBox">
               {freeBoxSpring === false
-                ? `[ ${" "}$${
+                ? `[$${
                     boxPrices[selectedIndex] !== undefined
                       ? boxPrices[selectedIndex]
                       : "000"
-                  }.00 ${" "} ] Standard Foundation`
+                  }.00] Standard Foundation`
                 : `[  FREE!  ] Standard Foundation `}
             </option>
           </BoxSelect>

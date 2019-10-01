@@ -1,7 +1,16 @@
 import styled from "styled-components";
-import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { Link } from "gatsby";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { FlexRow, FlexCol } from "./mainStyles";
+import {
+  DisplayNonePr1nt,
+  MainFooterPr1nt,
+  FWrapPr1nt,
+  FContactPr1nt,
+  FHoursPr1nt,
+  FHoursParaPr1nt,
+  FHoursSpan,
+} from "./_pr1nt/main";
 
 export const MainFooter = styled.footer`
   margin-top: 15px;
@@ -16,9 +25,7 @@ export const MainFooter = styled.footer`
   @media (min-width: 1366px) {
     width: 100%;
   }
-  @media print {
-    margin-top: 0;
-  }
+  ${MainFooterPr1nt}
 `;
 
 export const Wrapper = styled.div`
@@ -41,77 +48,7 @@ export const Wrapper = styled.div`
     margin-left: 135px;
     margin-right: 135px;
   }
-  @media print {
-    border-top: 2px solid ${props => props.theme.mainColor1};
-
-    box-shadow: none;
-  }
-`;
-const ImgHover = styled.img`
-  color: white;
-  transition: transform 0.25s ease-in;
-  &:hover {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-`;
-export const Social = styled(FlexRow)`
-  justify-content: center;
-  padding: 7px 7px 4px 7px;
-  background-color: ${props => (props.Red ? props.theme.mainColor2 : "white")};
-  @media print {
-    display: none;
-  }
-`;
-
-export const FBimage = styled(ImgHover)`
-  max-width: 3rem;
-  @media (min-width: 360px) {
-    max-width: 3.4rem;
-  }
-`;
-
-export const Timage = styled(ImgHover)`
-  max-width: 3.7rem;
-  padding-left: 10px;
-  @media (min-width: 360px) {
-    max-width: 4rem;
-  }
-`;
-
-export const InstaImg = styled(ImgHover)`
-  max-width: 3.2rem;
-  margin-left: 10px;
-  @media (min-width: 360px) {
-    max-width: 3.5rem;
-  }
-`;
-
-export const MapsImg = styled(ImgHover)`
-  max-width: 3.2rem;
-  margin-left: 10px;
-  @media (min-width: 360px) {
-    max-width: 3.5rem;
-  }
-`;
-
-export const YelpHolder = styled.div`
-  background-color: #d32323;
-  margin-left: 10px;
-  border-radius: 0.2rem;
-  transition: transform 0.25s ease-in;
-  &:hover {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-`;
-
-export const YelpImg = styled.img`
-  color: white;
-  width: 3.3rem;
-  max-height: 2.9rem;
-  @media (min-width: 360px) {
-    width: 3.54rem;
-    max-height: 3.15rem;
-  }
+  ${FWrapPr1nt}
 `;
 
 export const Contact = styled(FlexRow)`
@@ -122,6 +59,7 @@ export const Contact = styled(FlexRow)`
   @media (min-width: 1366px) {
     line-height: 2.4em;
   }
+  ${FContactPr1nt}
 `;
 
 export const Hours = styled(FlexCol)`
@@ -142,23 +80,19 @@ export const Hours = styled(FlexCol)`
     font-size: 1.5rem;
     line-height: 2.2rem;
   }
-  @media print {
-    font-size: 1rem;
-  }
+  ${FHoursPr1nt}
 `;
 
 export const HoursPara = styled.p`
   margin-top: 4px;
   margin: 0;
+  ${FHoursParaPr1nt}
 `;
 
 export const HoursSpan = styled.span`
   text-decoration: underline;
   padding-bottom: 5px;
-  @media print {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
+  ${FHoursSpan}
 `;
 
 export const MapLink = styled(OutboundLink)`
@@ -172,29 +106,87 @@ export const MapLink = styled(OutboundLink)`
   }
 `;
 
-export const BottomLinkWrapper = styled(FlexCol)`
-  font-weight: 300;
-  line-height: 1.7rem;
-  justify-content: space-around;
-  margin-bottom: 15px;
-  margin-top: 5px;
-  text-align: center;
-  @media (min-width: 640px) {
-    flex-direction: row;
+export const BottomIconWrapper = styled.div`
+  margin-top: 15px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 375px) {
+    justify-content: space-around;
+  }
+  @media (min-width: 667px) {
+    justify-content: space-evenly;
   }
   @media (min-width: 1024px) {
-    font-size: 1.3rem;
+    justify-content: space-evenly;
   }
+  ${DisplayNonePr1nt}
+`;
+
+export const BBLink = styled(OutboundLink)`
+  transition: transform 0.25s ease-in;
+  &:hover {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+  img {
+    max-width: 9.2rem;
+    height: 3.5em;
+  }
+  @media (min-width: 768px) {
+    img {
+      max-width: 14rem;
+      height: 4.1em;
+    }
+  }
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  ${DisplayNonePr1nt}
+`;
+
+export const BottomLinkWrapper = styled.div`
+  font-family: ${props => props.theme.MainFont1};
+  font-weight: 400;
+  display: flex;
+  width: 100%;
+  margin-top: 12px;
+  font-size: 0.9em;
+  justify-content: space-around;
+  text-align: cetner;
+  margin-bottom: 8px;
+  @media (min-width: 768px) {
+    font-size: 1.3em;
+    margin-top: 22px;
+    margin-bottom: 12px;
+  }
+  ${DisplayNonePr1nt}
 `;
 
 export const BottomLinks = styled(Link)`
   color: ${props => props.theme.mainColor1};
+  transition: color 0.2s ease-in;
   &:hover {
     color: ${props => props.theme.mainColor2};
   }
 `;
 
-export const ContactWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+export const Bird667Container = styled.div`
+  display: none;
+  @media (min-width: 667px) {
+    display: block;
+  }
+`;
+
+export const BirdContainerSmall = styled.div`
+  display: block;
+  @media (min-width: 667px) {
+    display: none;
+  }
+  ${DisplayNonePr1nt}
 `;

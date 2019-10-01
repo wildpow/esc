@@ -1,5 +1,11 @@
 import styled from "styled-components";
 import { FlexCol, FlexRow } from "./mainStyles";
+import {
+  ImgWrapperPr1nt,
+  SmallImgHolderPr1nt,
+  SmImgPr1nt,
+  LargeImgPr1nt,
+} from "./_pr1nt/main";
 
 export const ImgWrapper = styled(FlexCol)`
   margin: 10px 0 0 0;
@@ -18,6 +24,7 @@ export const ImgWrapper = styled(FlexCol)`
     height: 660px;
     margin-right: 10px;
   }
+  ${ImgWrapperPr1nt}
 `;
 
 export const SmallImgHolder = styled(FlexRow)`
@@ -39,6 +46,7 @@ export const SmallImgHolder = styled(FlexRow)`
   @media (min-width: 1024px) {
     top: 500px;
   }
+  ${SmallImgHolderPr1nt}
 `;
 
 export const SmImg = styled.img`
@@ -65,6 +73,7 @@ export const SmImg = styled.img`
   &:hover {
     border: 2px solid black;
   }
+  ${SmImgPr1nt}
 `;
 
 export const LargeImg = styled.img`
@@ -87,4 +96,5 @@ export const LargeImg = styled.img`
     width: 500px;
     height: 500px;
   }
+  ${LargeImgPr1nt}
 `;

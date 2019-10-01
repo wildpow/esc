@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { FlexCol } from "./mainStyles";
-import { ImagePrint, H1Print, ReadersPrint } from "./_pr1nt/main";
+import { ImagePr1nt, H1Pr1nt, ReadersPr1nt } from "./_pr1nt/main";
 
 export const Wrapper = styled(FlexCol)`
   margin-top: -15px;
@@ -38,7 +38,7 @@ export const Image = styled.img`
   @media (min-width: 768px) {
     height: 11em;
   }
-  ${ImagePrint}
+  ${ImagePr1nt}
 `;
 
 export const H1 = styled.h1`
@@ -69,7 +69,7 @@ export const H1 = styled.h1`
     margin-top: -44px;
     letter-spacing: 0.05rem;
   }
-  ${H1Print}
+  ${H1Pr1nt}
 `;
 export const Span = styled.span`
   color: ${props => props.theme.mainColor1};
@@ -128,5 +128,5 @@ export const ReadersChoice = styled.img`
   @media (min-width: 1800px) {
     right: 300px;
   }
-  ${ReadersPrint}
+  ${ReadersPr1nt}
 `;

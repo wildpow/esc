@@ -18,20 +18,20 @@ export const TopperNumber = styled.div`
     top: 0;
     font-weight: 700;
     border-bottom: 2px solid ${props => props.theme.mainColor2};
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 `;
 // /////////////////////////////////////////////
 
 // Logo Styles
 
-export const ImagePrint = css`
+export const ImagePr1nt = css`
   @media print {
     height: 6.5em;
   }
 `;
 
-export const H1Print = css`
+export const H1Pr1nt = css`
   @media print {
     font-size: 2rem;
     text-shadow: none;
@@ -40,7 +40,7 @@ export const H1Print = css`
   }
 `;
 
-export const ReadersPrint = css`
+export const ReadersPr1nt = css`
   @media print {
     max-width: 75px;
     top: 22px;
@@ -62,10 +62,10 @@ export const ListPr1nt = css`
   @media print {
     margin-top: 5px;
     h3 {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
-    li {
-      font-size: 1rem;
+    ul li {
+      font-size: 0.9rem;
     }
   }
 `;
@@ -93,10 +93,116 @@ export const WrapperSingleMattPr1nt = css`
 
 export const BigBannerPr1nt = css`
   @media print {
+    width: 100%;
+    padding-top: 0;
     font-size: 1rem;
     border-bottom: 4px solid ${props => props.theme.mainColor2};
     color: black;
     text-align: left;
-    padding-bottom: 0px;
+    padding-bottom: 2px;
+    font-weight: bold;
+  }
+`;
+
+export const ImgWrapperPr1nt = css`
+  @media print {
+    height: 240px;
+    margin: 0px;
+  }
+`;
+
+export const SmallImgHolderPr1nt = css`
+  @media print {
+    top: 220px;
+    margin-top: 0px;
+  }
+`;
+export const SmImgPr1nt = css`
+  @media print {
+    width: 83px;
+    height: 83px;
+  }
+`;
+export const LargeImgPr1nt = css`
+  @media print {
+    width: 250px;
+    height: 250px;
+  }
+`;
+// Footer
+
+export const MainFooterPr1nt = css`
+  @media print {
+    margin-top: 0;
+  }
+`;
+
+export const FWrapPr1nt = css`
+  @media print {
+    border-top: 2px solid ${props => props.theme.mainColor1};
+
+    box-shadow: none;
+  }
+`;
+
+export const FContactPr1nt = css`
+  @media print {
+    margin-top: 5px;
+  }
+`;
+
+export const FHoursPr1nt = css`
+  @media print {
+    font-size: 1rem;
+  }
+`;
+
+export const FHoursParaPr1nt = css`
+  @media print {
+    font-size: 0.8rem;
+  }
+`;
+
+export const FHoursSpan = css`
+  @media print {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+`;
+
+// drop down
+
+export const DropDownPr1nt = css`
+  @media print {
+    border-color: black;
+    color: black;
+    font-size: 1.2rem;
+    width: 220px;
+  }
+`;
+
+export const PriceTitlePr1nt = css`
+  @media print {
+    font-size: 1.2rem;
+  }
+`;
+
+export const BeforeSalePricePr1nt = css`
+  @media print {
+    font-size: 1.3rem;
+    margin-top: 20px;
+  }
+`;
+
+export const TotalPr1nt = css`
+  @media print {
+    font-size: 1.7rem;
+  }
+`;
+
+export const DropDownWrapperPr1nt = css`
+  @media print {
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
 `;

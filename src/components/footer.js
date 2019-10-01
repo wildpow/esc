@@ -10,24 +10,15 @@ import {
   HoursSpan,
   HoursPara,
   Contact,
-  // GraphImg,
-  // GraphLink,
   MapLink,
-  // Divy,
-  // BBBLink,
-  // BottomBBLink,
-} from "../styles/footerStyles";
-import {
   BottomLinkWrapper,
   BottomLinks,
   BBLink,
   Wrap,
   BottomIconWrapper,
-  // GraphIcon,
   Bird667Container,
   BirdContainerSmall,
-} from "../styles/newFooterStyles";
-// import GraphCMS from "../images/powered_by_graphcms.svg";
+} from "../styles/footerStyles";
 import BBBHor from "../images/ab_seal_horizontal_black_large.jpg";
 import BBBWebpHor from "../images/ab_seal_horizontal_black_large.webp";
 import Bird from "./bird";
