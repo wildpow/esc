@@ -27,15 +27,16 @@ export const TopperNumber = styled.div`
 
 export const ImagePr1nt = css`
   @media print {
-    height: 6.5em;
+    padding-top: 4px;
+    height: 5em;
   }
 `;
 
 export const H1Pr1nt = css`
   @media print {
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-shadow: none;
-    margin-top: -28px;
+    margin-top: -20px;
     box-shadow: none;
   }
 `;
