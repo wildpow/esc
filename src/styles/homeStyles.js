@@ -12,9 +12,9 @@ export const Main = styled.div`
   max-width: 980px;
 `;
 
-export const Linky = styled(Link)`
-  margin: auto !important;
-`;
+// export const Linky = styled(Link)`
+//   margin: auto !important;
+// `;
 export const OneImg = styled.img`
   color: white;
   background-color: white;
