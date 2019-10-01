@@ -161,7 +161,11 @@ class Layout extends React.Component {
         <GlobalStyle />
         <div ref={this.myRef}>
           <MenuButton menuToggle={menuToggle} onClick={this.handleMenuToggle} />
-          <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc} />
+          <Menu
+            menuToggle={menuToggle}
+            closeonEsc={this.closeonEsc}
+            handleMenuToggle={this.handleMenuToggle}
+          />
         </div>
         <Topper menuToggle={menuToggle} />
         <Body outsideMenuEvents={outsideMenuEvents} menuToggle={menuToggle}>
