@@ -49,9 +49,9 @@ export const carouselQuery = graphql`
         image {
           fluid(
             maxWidth: 980
-            imgixParams: { fm: "jpg", auto: "format", lossless: true }
+            imgixParams: { auto: "compress", lossless: true }
           ) {
-            ...GatsbyDatoCmsFluid
+            ...GatsbyDatoCmsFluid_tracedSVG
           }
           alt
         }
@@ -63,3 +63,4 @@ IndexPage.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
 };
 export default IndexPage;
+// imgixParams: { fm: "jpg", auto: "format", lossless: true }
