@@ -155,7 +155,7 @@ export const InfoWrapper = styled(FlexRow)`
   }
 `;
 
-export const Img = styled.img`
+export const ImageContainer = styled.div`
   color: white;
   width: 240px;
   height: 240px;

@@ -11,6 +11,12 @@ export const mattressParts = graphql`
       coverImage {
         alt
         url
+        fluid(
+          maxWidth: 250
+          imgixParams: { auto: "compress", lossless: true }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
       }
     }
     saleInfo {

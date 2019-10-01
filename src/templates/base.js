@@ -94,6 +94,12 @@ export const query = graphql`
       fullName
       description
       images3 {
+        fluid(
+          maxWidth: 500
+          imgixParams: { auto: "compress", lossless: true }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
         url
         alt
       }

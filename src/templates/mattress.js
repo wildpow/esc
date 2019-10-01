@@ -133,14 +133,32 @@ export const query = graphql`
       }
       images {
         coverImage {
+          fluid(
+            maxWidth: 500
+            imgixParams: { auto: "compress", lossless: true }
+          ) {
+            ...GatsbyDatoCmsFluid
+          }
           alt
           url
         }
         image2 {
+          fluid(
+            maxWidth: 500
+            imgixParams: { auto: "compress", lossless: true }
+          ) {
+            ...GatsbyDatoCmsFluid
+          }
           alt
           url
         }
         image3 {
+          fluid(
+            maxWidth: 500
+            imgixParams: { auto: "compress", lossless: true }
+          ) {
+            ...GatsbyDatoCmsFluid
+          }
           alt
           url
         }

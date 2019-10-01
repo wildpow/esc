@@ -1,4 +1,5 @@
 import React from "react";
+import Img from "gatsby-image";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import styled from "styled-components";
@@ -8,7 +9,7 @@ import {
   StyledLink,
   H3,
   InfoWrapper,
-  Img,
+  ImageContainer,
   // AdjMarkdown,
 } from "../styles/adjustableStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
@@ -190,10 +191,12 @@ const Adjustables = ({ data }) => (
                 {base.node.sale[0].saleBanner.length > 3 && (
                   <Banner>{base.node.sale[0].saleBanner}</Banner>
                 )}
-                <Img
-                  src={base.node.images3[0].url}
-                  alt={base.node.images3[0].alt}
-                />
+                <ImageContainer>
+                  <Img
+                    fluid={base.node.images3[0].fluid}
+                    alt={base.node.images3[0].alt}
+                  />
+                </ImageContainer>
               </BannerWrapper>
             </ImageWrapper>
             <AdjMarkdown>
@@ -241,7 +244,12 @@ export const allAdjustables = graphql`
             saleBanner
           }
           images3 {
-            url
+            fluid(
+              maxWidth: 350
+              imgixParams: { auto: "compress", lossless: true }
+            ) {
+              ...GatsbyDatoCmsFluid
+            }
             alt
           }
         }

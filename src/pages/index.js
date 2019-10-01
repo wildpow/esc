@@ -1,7 +1,8 @@
 import React from "react";
+import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { Carousel } from "react-responsive-carousel";
 import Layout from "../components/layout";
 import { Main, Linky } from "../styles/homeStyles";
@@ -24,9 +25,9 @@ const IndexPage = ({ data }) => {
           showStatus={false}
         >
           {carousel.map(car => (
-            <Linky key={car.id} to={`${car.url}`}>
-              <img src={car.image.url} alt={car.image.alt} />
-            </Linky>
+            <Link key={car.id} to={`${car.url}`}>
+              <Img fluid={car.image.fluid} alt={car.image.alt} />
+            </Link>
           ))}
         </Carousel>
         <Front />
@@ -46,7 +47,12 @@ export const carouselQuery = graphql`
         url
         id
         image {
-          url
+          fluid(
+            maxWidth: 980
+            imgixParams: { auto: "compress", lossless: true }
+          ) {
+            ...GatsbyDatoCmsFluid_tracedSVG
+          }
           alt
         }
       }
@@ -57,3 +63,4 @@ IndexPage.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
 };
 export default IndexPage;
+// imgixParams: { fm: "jpg", auto: "format", lossless: true }

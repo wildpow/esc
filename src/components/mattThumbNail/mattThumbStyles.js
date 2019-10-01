@@ -159,7 +159,7 @@ export const Name = styled.div`
   }
 `;
 
-export const MattImg = styled.img`
+export const MattImgContainer = styled.div`
   color: white;
   margin: 0 auto 0px auto;
   width: 110px;
