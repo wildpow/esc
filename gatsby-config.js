@@ -22,6 +22,7 @@ module.exports = {
         disableLiveReload: false,
       },
     },
+    // `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
