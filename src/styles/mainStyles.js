@@ -88,4 +88,7 @@ export const H2 = styled.h2`
     padding-bottom: 12px;
     line-height: 2.4rem;
   }
+  @media print {
+    font-size: 1rem;
+  }
 `;

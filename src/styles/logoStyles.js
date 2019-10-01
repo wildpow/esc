@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { FlexCol } from "./mainStyles";
+import { ImagePr1nt, H1Pr1nt, ReadersPr1nt } from "./_pr1nt/main";
 
 export const Wrapper = styled(FlexCol)`
   margin-top: -15px;
@@ -12,9 +13,6 @@ export const Wrapper = styled(FlexCol)`
   }
   @media (min-width: 1300px) {
     margin-top: -90px;
-  }
-  @media print {
-    margin-top: -20px;
   }
 `;
 
@@ -40,6 +38,7 @@ export const Image = styled.img`
   @media (min-width: 768px) {
     height: 11em;
   }
+  ${ImagePr1nt}
 `;
 
 export const H1 = styled.h1`
@@ -70,6 +69,7 @@ export const H1 = styled.h1`
     margin-top: -44px;
     letter-spacing: 0.05rem;
   }
+  ${H1Pr1nt}
 `;
 export const Span = styled.span`
   color: ${props => props.theme.mainColor1};
@@ -86,7 +86,6 @@ export const ReadersChoice = styled.img`
   left: 9px;
   top: 39px;
   z-index: 51;
-  /* z-index: ${props => (props.menuToggle ? 0 : 51)}; */
   opacity: ${props => (props.menuToggle ? 0.2 : 1)};
   transition: transform 0.25s ease-in;
   cursor: pointer;
@@ -102,7 +101,6 @@ export const ReadersChoice = styled.img`
     max-width: 138px;
     top: 38px;
     left: 21px;
-    /* left: 56px; */
   }
   @media (min-width: 1024px) {
     float: right;
@@ -126,9 +124,9 @@ export const ReadersChoice = styled.img`
   }
   @media (min-width: 1600px) {
     right: 256px;
-    /* z-index: 2; */
   }
   @media (min-width: 1800px) {
     right: 300px;
   }
+  ${ReadersPr1nt}
 `;

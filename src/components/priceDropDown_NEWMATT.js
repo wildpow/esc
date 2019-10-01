@@ -50,6 +50,7 @@ const DropDownWrapper = styled.div`
       margin-top: 2px;
     }
     @media print {
+      border-bottom: 2px solid ${props => props.theme.mainColor1};
       font-size: 1.2rem;
     }
   }
@@ -137,6 +138,9 @@ const Select = styled.select`
     border-color: black;
     color: black;
     font-size: 1.2rem;
+    border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
     /* width: 220px; */
   }
   /* option {
@@ -306,13 +310,6 @@ class DropDown extends React.Component {
     } = this.state;
     return (
       <Wrapper>
-        {/* {console.log(
-          this.discountCalculator(
-            prices[selectedIndex],
-            discount,
-            typeOfDiscount,
-          ),
-        )} */}
         <DropDownWrapper>
           <h4>{`PRICE: ${selectedName}`}</h4>
           <Select onChange={e => this.sizeSelect(e)}>
@@ -323,7 +320,6 @@ class DropDown extends React.Component {
             <option value="queen">Queen</option>
             <option value="king">King/Cal. King</option>
           </Select>
-
           <H4 index={selectedIndex}>
             {prices[selectedIndex] !== 0
               ? "Add a Box Spring"
@@ -343,7 +339,7 @@ class DropDown extends React.Component {
                       ? boxPrices[selectedIndex]
                       : "000"
                   }.00] Standard Foundation`
-                : "[ FREE ] Standard Foundation"}
+                : `[  FREE!  ] Standard Foundation `}
             </option>
           </BoxSelect>
         </DropDownWrapper>

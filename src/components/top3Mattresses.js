@@ -50,6 +50,7 @@ const TopThreeMatts = () => {
               footerUrl
               header
               mattresses {
+                slug
                 id
                 name
                 images {

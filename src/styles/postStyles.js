@@ -3,16 +3,11 @@ import Markdown from "react-markdown";
 import { FadeIn, FlexCol } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
-background-color: white;
-  /* border: ${props => props.theme.Border}; */
+  background-color: white;
   box-shadow: ${props => props.theme.newBoxShadow};
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   padding-bottom: 20px;
-  /* @media (min-width: 1200px) {
-    margin-left: 220px;
-    margin-right: 220px;
-  } */
 `;
 // w: 800 h: 325
 export const BottomImg = styled.img`
@@ -20,7 +15,6 @@ export const BottomImg = styled.img`
   margin-top: 20px;
   max-width: 100%;
   @media (min-width: 1022px) {
-    /* width: 100%; */
     height: 100%;
     max-height: 325px;
     max-width: 800px;
@@ -32,7 +26,6 @@ export const Marker = styled(Markdown)`
     font-family: ${props => props.theme.MainFont1};
     margin-top: 0px;
     margin-bottom: 0px;
-    /* text-align: center; */
     padding: 10px 20px;
     background-color: ${props => props.theme.mainColor1};
     color: white;
@@ -43,11 +36,9 @@ export const Marker = styled(Markdown)`
     color: white;
     padding-top: 10px;
     padding-bottom: 20px;
-    /* text-align: center; */
   }
   & li {
     font-family: ${props => props.theme.MainFont2};
-    /* margin: auto; */
     padding-left: 12px;
     padding-right: 12px;
     line-height: 1.4rem;
@@ -64,7 +55,6 @@ export const Marker = styled(Markdown)`
     font-size: 1rem;
     text-indent: 30px;
     margin-top: 7px;
-    /* padding-top: 10px; */
     padding-bottom: 0px;
   }
   & img {
@@ -83,10 +73,7 @@ export const Marker = styled(Markdown)`
       line-height: 1.7rem;
     }
     & li {
-      /* text-align: center; */
       margin-bottom: 0;
-      /* padding-right: 60px;
-      padding-left: 60px; */
       font-size: 1.2rem;
       line-height: 1.5rem;
     }

@@ -8,7 +8,6 @@ export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   border-radius: .11rem;
-  /* transition: all 0.2s ease-in; */
   text-align: center;
   justify-content: center;
   @media (min-width: 1300px) {
@@ -35,23 +34,3 @@ export const Header = styled.header`
   padding: 0px 30px 0px 30px;
   color: white;
 `;
-
-// export const Title = styled.h2`
-//   background-color: ${Blue};
-//   font-family: ${MainFont1};
-//   text-shadow: ${TextShadow};
-//   color: white;
-//   margin: 0;
-//   font-size: 1rem;
-//   letter-spacing: .22rem;
-//   padding: 12px 8px 12px 8px;
-//   line-height: 1.3rem;
-//   @media(min-width: 768px) {
-//     font-size: 1.3rem;
-//   }
-//   @media(min-width: 1024px) {
-//     font-size: 1.5rem;
-//     letter-spacing: .25rem;
-//     padding: 25px 30px 25px 30px;
-//   }
-// `;

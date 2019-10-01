@@ -3,7 +3,6 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { FadeIn, FlexCol } from "./mainStyles";
 
 export const MainArticle = styled.article`
-  /* border: ${props => props.theme.Border}; */
   box-shadow: ${props => props.theme.BoxShadow};
   background-color: white;
   color: ${props => props.theme.newColor2};
@@ -103,10 +102,6 @@ export const P = styled.p`
     font-size: 1.3rem;
     line-height: 2.1rem;
     margin-bottom: 10px;
-    /* padding-right: 25px;
-    padding-left: 25px;
-    padding-bottom: 15px;
-    padding-top: 15px; */
     padding: 5px 25px;
   }
   @media (min-width: 1300px) {
