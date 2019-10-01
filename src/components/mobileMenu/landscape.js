@@ -162,13 +162,14 @@ const Home = styled(StyledLink)`
     display: none;
   }
 `;
-const Landscape = ({ handleMenuToggle }) => {
+const Landscape = () => {
   return (
     <>
       <Div>
         <Home
           onClick={() => {
-            handleMenuToggle();
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
           }}
           activeStyle={{
             backgroundColor: "rgba(235, 28, 26, 0.9)",
@@ -182,7 +183,8 @@ const Landscape = ({ handleMenuToggle }) => {
         <Holder>
           <StyledLink
             onClick={() => {
-              handleMenuToggle();
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
             partiallyActive
             activeStyle={{
@@ -194,7 +196,8 @@ const Landscape = ({ handleMenuToggle }) => {
           </StyledLink>
           <StyledLink
             onClick={() => {
-              handleMenuToggle();
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
             partiallyActive
             activeStyle={{
@@ -206,7 +209,8 @@ const Landscape = ({ handleMenuToggle }) => {
           </StyledLink>
           <StyledLink
             onClick={() => {
-              handleMenuToggle();
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
             partiallyActive
             activeStyle={{
@@ -220,7 +224,8 @@ const Landscape = ({ handleMenuToggle }) => {
         <Holder>
           <StyledLink
             onClick={() => {
-              handleMenuToggle();
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
             partiallyActive
             activeStyle={{
@@ -232,7 +237,8 @@ const Landscape = ({ handleMenuToggle }) => {
           </StyledLink>
           <StyledLink
             onClick={() => {
-              handleMenuToggle();
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
             partiallyActive
             activeStyle={{
@@ -244,7 +250,8 @@ const Landscape = ({ handleMenuToggle }) => {
           </StyledLink>
           <StyledLink
             onClick={() => {
-              handleMenuToggle();
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
             partiallyActive
             activeStyle={{
@@ -258,7 +265,8 @@ const Landscape = ({ handleMenuToggle }) => {
         <Holder>
           <StyledLink
             onClick={() => {
-              handleMenuToggle();
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
             partiallyActive
             activeStyle={{
@@ -270,7 +278,8 @@ const Landscape = ({ handleMenuToggle }) => {
           </StyledLink>
           <StyledLink
             onClick={() => {
-              handleMenuToggle();
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
             partiallyActive
             activeStyle={{
@@ -282,7 +291,8 @@ const Landscape = ({ handleMenuToggle }) => {
           </StyledLink>
           <StyledLink
             onClick={() => {
-              handleMenuToggle();
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
             partiallyActive
             activeStyle={{

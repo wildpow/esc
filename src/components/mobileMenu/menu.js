@@ -58,14 +58,14 @@ function useKeyboardEvent(key, callback) {
   }, []);
 }
 
-const Menu = ({ menuToggle, closeonEsc, handleMenuToggle }) => {
+const Menu = ({ menuToggle, closeonEsc }) => {
   useKeyboardEvent("Escape", () => {
     closeonEsc();
   });
   return (
     <Container menuToggle={menuToggle}>
-      {menuToggle && <Portrait handleMenuToggle={handleMenuToggle} />}
-      <Landscape handleMenuToggle={handleMenuToggle} />
+      {menuToggle && <Portrait />}
+      <Landscape />
     </Container>
   );
 };

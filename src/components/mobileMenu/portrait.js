@@ -161,7 +161,7 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Portrait = ({ handleMenuToggle }) => {
+const Portrait = () => {
   return (
     <Wrapper>
       <div>
@@ -171,7 +171,8 @@ const Portrait = ({ handleMenuToggle }) => {
         <SmallItemsContainer>
           <Container
             onClick={() => {
-              handleMenuToggle();
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
             }}
           >
             <StyledLink
@@ -193,7 +194,8 @@ const Portrait = ({ handleMenuToggle }) => {
             <Container
               key={item.key}
               onClick={() => {
-                handleMenuToggle();
+                document.body.style.overflow = "visible";
+                document.body.style.position = "initial";
               }}
             >
               <StyledLink
@@ -224,7 +226,8 @@ const Portrait = ({ handleMenuToggle }) => {
             <Container
               key={item.key}
               onClick={() => {
-                handleMenuToggle();
+                document.body.style.overflow = "visible";
+                document.body.style.position = "initial";
               }}
             >
               <StyledLink
