@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import Layout from "../../components/layout";
 import {
   MainWrapper,
   Wrapper,
@@ -16,29 +15,27 @@ import MattressThumb from "../../components/mattThumbNail/mattThumb";
 const Tempurpedic = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;
   return (
-    <Layout>
-      <MainWrapper>
-        <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
-        <BreadWrapper Brands>
-          <BreadCrumbs next="Brands" here="Tempurpedic" />
-        </BreadWrapper>
-        <MainTitle>
-          <Img src={TempurImg} alt="Logo of the Tempurpedic mattress company" />
-        </MainTitle>
-        <Wrapper>
-          {allDatoCmsMattress.nodes.map(mattress => (
-            <MattressThumb
-              key={mattress.id}
-              mattress={mattress}
-              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-            />
-          ))}
-        </Wrapper>
-        <BreadWrapper Brands Bottom>
-          <BreadCrumbs next="Brands" here="Tempurpedic" />
-        </BreadWrapper>
-      </MainWrapper>
-    </Layout>
+    <MainWrapper>
+      <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
+      <BreadWrapper Brands>
+        <BreadCrumbs next="Brands" here="Tempurpedic" />
+      </BreadWrapper>
+      <MainTitle>
+        <Img src={TempurImg} alt="Logo of the Tempurpedic mattress company" />
+      </MainTitle>
+      <Wrapper>
+        {allDatoCmsMattress.nodes.map(mattress => (
+          <MattressThumb
+            key={mattress.id}
+            mattress={mattress}
+            url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
+          />
+        ))}
+      </Wrapper>
+      <BreadWrapper Brands Bottom>
+        <BreadCrumbs next="Brands" here="Tempurpedic" />
+      </BreadWrapper>
+    </MainWrapper>
   );
 };
 

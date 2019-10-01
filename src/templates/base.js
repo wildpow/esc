@@ -3,7 +3,6 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import ImageViewer from "../components/imageViewer";
 import PriceDropDown from "../components/priceDropDown_NEW";
@@ -24,7 +23,7 @@ import {
 const Base = ({ data }) => {
   const { datoCmsAdjustableBase: adjBase } = data;
   return (
-    <Layout>
+    <>
       <BreadWrapper>
         <BreadCrumbs next="Adjustable" here={adjBase.fullName} />
       </BreadWrapper>
@@ -79,7 +78,7 @@ const Base = ({ data }) => {
       <BreadWrapper>
         <BreadCrumbs next="adjustable" here={adjBase.fullName} />
       </BreadWrapper>
-    </Layout>
+    </>
   );
 };
 Base.propTypes = {

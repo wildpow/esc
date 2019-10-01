@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
 import ImageViewer from "../components/imageViewer";
 import {
   Article,
@@ -24,7 +23,7 @@ import DropDown from "../components/priceDropDown_NEWMATT";
 const Mattress = ({ data }) => {
   const { datoCmsMattress: mattress } = data;
   return (
-    <Layout>
+    <>
       <HelmetDatoCms seo={mattress.seoMetaTags} />
       <BreadWrapper>
         <BreadCrumbs
@@ -93,7 +92,7 @@ const Mattress = ({ data }) => {
           here={`${mattress.subline.name} ${mattress.name}`}
         />
       </BreadWrapper>
-    </Layout>
+    </>
   );
 };
 Mattress.propTypes = {

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 import { FlexCol } from "./mainStyles";
 import { ImagePr1nt, H1Pr1nt, ReadersPr1nt } from "./_pr1nt/main";
+// import Img from "gatsby-image";
 
 export const Wrapper = styled(FlexCol)`
   margin-top: -15px;
@@ -23,20 +24,23 @@ export const StyledLink = styled(Link)`
   margin: auto;
 `;
 
-export const Image = styled.img`
+export const Image = styled.div`
   color: white;
   transition: transform 0.25s ease-in;
   align-self: center;
-  height: 6.5em;
+  height: 104px;
+  width: 160px;
   z-index: 3;
   &:hover {
     transform: scale3d(1.05, 1.05, 1);
   }
   @media (min-width: 500px) {
-    height: 8em;
+    height: 128px;
+    width: 197px;
   }
   @media (min-width: 768px) {
     height: 11em;
+    width: 271px;
   }
   ${ImagePr1nt}
 `;

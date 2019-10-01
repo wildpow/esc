@@ -3,7 +3,6 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import Layout from "../components/layout";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import { Marker, BottomImg, Main } from "../styles/postStyles";
 import { H2 } from "../styles/mainStyles";
@@ -36,7 +35,7 @@ const PostBread = styled(BreadWrapper)`
 const Post = ({ data }) => {
   const post = data.datoCmsBlog;
   return (
-    <Layout>
+    <>
       <HelmetDatoCms seo={post.seoMetaTags} />
       <PostBread>
         <BreadCrumbs next="Blog" here={post.title} />
@@ -58,7 +57,7 @@ const Post = ({ data }) => {
       <PostBread>
         <BreadCrumbs next="Blog" here={post.title} />
       </PostBread>
-    </Layout>
+    </>
   );
 };
 

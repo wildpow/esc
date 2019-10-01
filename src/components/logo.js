@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "gatsby-image";
 import { StaticQuery, graphql, Link } from "gatsby";
 import {
   Image,
@@ -26,6 +27,12 @@ const Logo = ({ menuToggle }) => (
           query pandaLogo {
             datoCmsFrontPage {
               pandaLogo {
+                fluid(
+                  maxWidth: 176
+                  imgixParams: { auto: "compress", fm: "png" }
+                ) {
+                  ...GatsbyDatoCmsFluid
+                }
                 url
                 alt
               }
@@ -35,14 +42,16 @@ const Logo = ({ menuToggle }) => (
         render={data => {
           const { pandaLogo } = data.datoCmsFrontPage;
           return (
-            <Image
-              src={pandaLogo.url}
-              alt={
-                pandaLogo.alt === null
-                  ? "E.S.C Mattress Center Panda logo"
-                  : pandaLogo.alt
-              }
-            />
+            <Image>
+              <Img
+                fluid={pandaLogo.fluid}
+                alt={
+                  pandaLogo.alt === null
+                    ? "E.S.C Mattress Center Panda logo"
+                    : pandaLogo.alt
+                }
+              />
+            </Image>
           );
         }}
       />

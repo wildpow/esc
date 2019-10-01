@@ -175,43 +175,41 @@ const ImageWrapper = styled.div`
   }
 `;
 const Adjustables = ({ data }) => (
-  <Layout>
-    <Main MarginTop>
-      <BreadWrapper hidenLarge>
-        <BreadCrumbs here="Adjustable" />
-      </BreadWrapper>
-      <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
-      {data.allDatoCmsAdjustableBase.edges.map(base => (
-        <StyledLink to={`/adjustable/${base.node.slug}`} key={base.node.id}>
-          <H3>{base.node.fullName}</H3>
-          <InfoWrapper>
-            <ImageWrapper>
-              <BannerWrapper>
-                {base.node.sale[0].saleBanner.length > 3 && (
-                  <Banner>{base.node.sale[0].saleBanner}</Banner>
-                )}
-                <Img
-                  src={base.node.images3[0].url}
-                  alt={base.node.images3[0].alt}
-                />
-              </BannerWrapper>
-            </ImageWrapper>
-            <AdjMarkdown>
-              <h3>Features</h3>
-              <ul>
-                {base.node.smallFeatureList.map(item => (
-                  <li key={item.id}>{item.feature}</li>
-                ))}
-              </ul>
-            </AdjMarkdown>
-          </InfoWrapper>
-        </StyledLink>
-      ))}
-      <BreadWrapper hidenLarge Bottom>
-        <BreadCrumbs here="Adjustable" />
-      </BreadWrapper>
-    </Main>
-  </Layout>
+  <Main MarginTop>
+    <BreadWrapper hidenLarge>
+      <BreadCrumbs here="Adjustable" />
+    </BreadWrapper>
+    <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
+    {data.allDatoCmsAdjustableBase.edges.map(base => (
+      <StyledLink to={`/adjustable/${base.node.slug}`} key={base.node.id}>
+        <H3>{base.node.fullName}</H3>
+        <InfoWrapper>
+          <ImageWrapper>
+            <BannerWrapper>
+              {base.node.sale[0].saleBanner.length > 3 && (
+                <Banner>{base.node.sale[0].saleBanner}</Banner>
+              )}
+              <Img
+                src={base.node.images3[0].url}
+                alt={base.node.images3[0].alt}
+              />
+            </BannerWrapper>
+          </ImageWrapper>
+          <AdjMarkdown>
+            <h3>Features</h3>
+            <ul>
+              {base.node.smallFeatureList.map(item => (
+                <li key={item.id}>{item.feature}</li>
+              ))}
+            </ul>
+          </AdjMarkdown>
+        </InfoWrapper>
+      </StyledLink>
+    ))}
+    <BreadWrapper hidenLarge Bottom>
+      <BreadCrumbs here="Adjustable" />
+    </BreadWrapper>
+  </Main>
 );
 
 Adjustables.propTypes = {

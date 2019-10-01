@@ -16,32 +16,30 @@ import MattressThumb from "../../components/mattThumbNail/mattThumb";
 const Stearns = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;
   return (
-    <Layout>
+    <MainWrapper>
       <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
-      <MainWrapper>
-        <BreadWrapper Brands>
-          <BreadCrumbs next="Brands" here="Stearns" />
-        </BreadWrapper>
-        <MainTitle>
-          <StearnsImgPlaceHolder
-            src={StearnsImg}
-            alt="Logo of the Stearns and Foster mattress company"
+      <BreadWrapper Brands>
+        <BreadCrumbs next="Brands" here="Stearns" />
+      </BreadWrapper>
+      <MainTitle>
+        <StearnsImgPlaceHolder
+          src={StearnsImg}
+          alt="Logo of the Stearns and Foster mattress company"
+        />
+      </MainTitle>
+      <Wrapper>
+        {allDatoCmsMattress.nodes.map(mattress => (
+          <MattressThumb
+            key={mattress.id}
+            mattress={mattress}
+            url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
           />
-        </MainTitle>
-        <Wrapper>
-          {allDatoCmsMattress.nodes.map(mattress => (
-            <MattressThumb
-              key={mattress.id}
-              mattress={mattress}
-              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-            />
-          ))}
-        </Wrapper>
-        <BreadWrapper Brands Bottom>
-          <BreadCrumbs next="Brands" here="stearns" />
-        </BreadWrapper>
-      </MainWrapper>
-    </Layout>
+        ))}
+      </Wrapper>
+      <BreadWrapper Brands Bottom>
+        <BreadCrumbs next="Brands" here="stearns" />
+      </BreadWrapper>
+    </MainWrapper>
   );
 };
 
