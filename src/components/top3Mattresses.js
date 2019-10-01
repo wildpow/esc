@@ -55,7 +55,12 @@ const TopThreeMatts = () => {
                 name
                 images {
                   coverImage {
-                    url
+                    fluid(
+                      maxWidth: 250
+                      imgixParams: { auto: "compress", lossless: true }
+                    ) {
+                      ...GatsbyDatoCmsFluid
+                    }
                     alt
                   }
                 }

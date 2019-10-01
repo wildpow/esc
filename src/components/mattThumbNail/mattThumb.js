@@ -1,8 +1,9 @@
 import React from "react";
+import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import {
   StyledLink,
-  MattImg,
+  MattImgContainer,
   Topper,
   BannerWrapper,
   Banner,
@@ -18,15 +19,16 @@ const MattressThumb = ({ mattress, url }) => {
           {mattress.saleInfo[0].saleBanner.length > 3 && (
             <Banner>{mattress.saleInfo[0].saleBanner}</Banner>
           )}
-
-          <MattImg
-            src={mattress.images[0].coverImage.url}
-            alt={
-              mattress.images[0].coverImage.alt === null
-                ? `${mattress.brand.displayName} ${mattress.subline.name} ${mattress.name} mattress`
-                : mattress.images[0].coverImage.alt
-            }
-          />
+          <MattImgContainer>
+            <Img
+              fluid={mattress.images[0].coverImage.fluid}
+              alt={
+                mattress.images[0].coverImage.alt === null
+                  ? `${mattress.brand.displayName} ${mattress.subline.name} ${mattress.name} mattress`
+                  : mattress.images[0].coverImage.alt
+              }
+            />
+          </MattImgContainer>
         </BannerWrapper>
         <PriceRange>
           {`$${mattress.priceLow}
