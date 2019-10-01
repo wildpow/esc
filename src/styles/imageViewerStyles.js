@@ -49,7 +49,7 @@ export const SmallImgHolder = styled(FlexRow)`
   ${SmallImgHolderPr1nt}
 `;
 
-export const SmImg = styled.img`
+export const SmImgWrap = styled.div`
   color: white;
   width: 50px;
   height: 50px;
@@ -76,7 +76,7 @@ export const SmImg = styled.img`
   ${SmImgPr1nt}
 `;
 
-export const LargeImg = styled.img`
+export const LargeImgWrap = styled.div`
   color: white;
   width: 150px;
   height: 150px;

@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import { NodeGroup } from "react-move";
 import {
   ImgWrapper,
   SmallImgHolder,
-  SmImg,
-  LargeImg,
+  SmImgWrap,
+  LargeImgWrap,
 } from "../styles/imageViewerStyles";
 import { Banner } from "./mattThumbNail/mattThumbStyles";
 import { BigBannerPr1nt } from "../styles/_pr1nt/main";
@@ -114,42 +115,52 @@ class ImageViewer extends React.PureComponent {
                   {data === 0 && saleBanner && (
                     <BigBanner>{saleBanner}</BigBanner>
                   )}
-                  <LargeImg
-                    src={ImagesArray[data].url}
-                    alt={
-                      ImagesArray[data].alt === null
-                        ? mattName
-                        : ImagesArray[data].alt
-                    }
-                    style={{ position: "absolute" }}
-                  />
+                  <LargeImgWrap style={{ position: "absolute" }}>
+                    <Img
+                      fluid={ImagesArray[data].fluid}
+                      alt={
+                        ImagesArray[data].alt === null
+                          ? mattName
+                          : ImagesArray[data].alt
+                      }
+                    />
+                  </LargeImgWrap>
                 </div>
               ))}
             </div>
           )}
         </NodeGroup>
         <SmallImgHolder style={{ position: "relative" }} base={base}>
-          <SmImg
+          <SmImgWrap
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={ImagesArray[0].url}
             data-id={0}
-            alt={ImagesArray[0].alt === null ? mattName : ImagesArray[0].alt}
-          />
-          <SmImg
+          >
+            <Img
+              fluid={ImagesArray[0].fluid}
+              alt={ImagesArray[0].alt === null ? mattName : ImagesArray[0].alt}
+            />
+          </SmImgWrap>
+          <SmImgWrap
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={ImagesArray[1].url}
             data-id={1}
-            alt={ImagesArray[1].alt === null ? mattName : ImagesArray[0].alt}
-          />
-          <SmImg
+          >
+            <Img
+              fluid={ImagesArray[1].fluid}
+              alt={ImagesArray[1].alt === null ? mattName : ImagesArray[0].alt}
+            />
+          </SmImgWrap>
+          <SmImgWrap
             onMouseOver={this.changeActiveImage}
             onFocus={this.changeActiveImage}
-            src={ImagesArray[2].url}
             data-id={2}
-            alt={ImagesArray[2].alt === null ? mattName : ImagesArray[0].alt}
-          />
+          >
+            <Img
+              fluid={ImagesArray[2].fluid}
+              alt={ImagesArray[2].alt === null ? mattName : ImagesArray[0].alt}
+            />
+          </SmImgWrap>
         </SmallImgHolder>
       </ImgWrapper>
     );
