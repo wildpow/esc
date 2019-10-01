@@ -4,34 +4,36 @@ import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql, Link } from "gatsby";
 import { Carousel } from "react-responsive-carousel";
-// import Layout from "../components/layout";
-import { Main } from "../styles/homeStyles";
+import Layout from "../components/layout";
+import { Main, Linky } from "../styles/homeStyles";
 import Front from "../components/front";
 import TopThreeMatts from "../components/top3Mattresses";
 
 const IndexPage = ({ data }) => {
   const { carousel } = data.datoCmsFrontPage;
   return (
-    <Main>
+    <Layout>
       <HelmetDatoCms seo={data.datoCmsFrontPage.seoMetaTags} />
-      <Carousel
-        infiniteLoop
-        autoPlay
-        showThumbs={false}
-        interval={6000}
-        centerMode
-        centerSlidePercentage={100}
-        showStatus={false}
-      >
-        {carousel.map(car => (
-          <Link key={car.id} to={`${car.url}`}>
-            <Img fluid={car.image.fluid} alt={car.image.alt} />
-          </Link>
-        ))}
-      </Carousel>
-      <Front />
-      <TopThreeMatts />
-    </Main>
+      <Main>
+        <Carousel
+          infiniteLoop
+          autoPlay
+          showThumbs={false}
+          interval={6000}
+          centerMode
+          centerSlidePercentage={100}
+          showStatus={false}
+        >
+          {carousel.map(car => (
+            <Link key={car.id} to={`${car.url}`}>
+              <Img fluid={car.image.fluid} alt={car.image.alt} />
+            </Link>
+          ))}
+        </Carousel>
+        <Front />
+        <TopThreeMatts />
+      </Main>
+    </Layout>
   );
 };
 

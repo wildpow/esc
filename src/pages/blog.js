@@ -3,6 +3,7 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { graphql } from "gatsby";
+import Layout from "../components/layout";
 import PostThumbnail from "../components/blog/postThumbnail_NEW";
 import { FadeIn } from "../styles/mainStyles";
 // import SEO from "../components/seo";
@@ -116,31 +117,33 @@ class Blog extends React.Component {
     const { isHovered, numberOfPosts } = this.state;
     const posts = data.allDatoCmsBlog.nodes.slice(0, numberOfPosts);
     return (
-      <BlogContainer>
+      <Layout>
         <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
-        <Header>
-          Thank you for checking out our sleep blog. Below are some mattress and
-          sleep-related posts to help you research your better night’s sleep;
-          all brought to you from our team of local sleep experts with over
-          twenty years of mattress industry experience.
-        </Header>
-        <PostsContainer>
-          {posts.map((post, index) => (
-            <PostThumbnail
-              onMouseEnter={() => this.handleMouseEnter(index)}
-              onMouseLeave={() => this.handleMouseLeave(index)}
-              isHovering={isHovered[index]}
-              key={post.id}
-              post={post}
-            />
-          ))}
-        </PostsContainer>
-        {numberOfPosts < data.allDatoCmsBlog.nodes.length && (
-          <Button onClick={() => this.setNumberOfPosts()} type="button">
-            Show More Posts
-          </Button>
-        )}
-      </BlogContainer>
+        <BlogContainer>
+          <Header>
+            Thank you for checking out our sleep blog. Below are some mattress
+            and sleep-related posts to help you research your better night’s
+            sleep; all brought to you from our team of local sleep experts with
+            over twenty years of mattress industry experience.
+          </Header>
+          <PostsContainer>
+            {posts.map((post, index) => (
+              <PostThumbnail
+                onMouseEnter={() => this.handleMouseEnter(index)}
+                onMouseLeave={() => this.handleMouseLeave(index)}
+                isHovering={isHovered[index]}
+                key={post.id}
+                post={post}
+              />
+            ))}
+          </PostsContainer>
+          {numberOfPosts < data.allDatoCmsBlog.nodes.length && (
+            <Button onClick={() => this.setNumberOfPosts()} type="button">
+              Show More Posts
+            </Button>
+          )}
+        </BlogContainer>
+      </Layout>
     );
   }
 }

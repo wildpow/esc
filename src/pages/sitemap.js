@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
+import Layout from "../components/layout";
 import {
   Main,
   SiteLinks,
@@ -22,7 +23,7 @@ const SiteMap = ({ data }) => {
     allDatoCmsBlog,
   } = data;
   return (
-    <>
+    <Layout>
       <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
       <MainLinks>
         <H2>Main Site Links</H2>
@@ -137,7 +138,7 @@ const SiteMap = ({ data }) => {
           </ul>
         </Main>
       </BottomLinks>
-    </>
+    </Layout>
   );
 };
 

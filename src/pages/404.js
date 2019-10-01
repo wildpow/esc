@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import Layout from "../components/layout";
 import { Main, Img } from "../styles/panda404Styles";
 import { H2 } from "../styles/mainStyles";
 import image from "../images/ezgif.com-optimize.gif";
@@ -13,7 +14,7 @@ const NotFoundPage = () => {
     uri = [""];
   }
   return (
-    <>
+    <Layout>
       <BreadWrapper>
         <BreadCrumbs here={uri[uri.length - 1]} />
       </BreadWrapper>
@@ -31,7 +32,7 @@ const NotFoundPage = () => {
       <BreadWrapper>
         <BreadCrumbs here={uri[uri.length - 1]} />
       </BreadWrapper>
-    </>
+    </Layout>
   );
 };
 
