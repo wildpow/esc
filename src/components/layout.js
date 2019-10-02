@@ -167,10 +167,16 @@ class Layout extends React.Component {
   "@type": "Store",
   "name": "E.S.C Mattress Center",
   "url": "https://www.escmattresscenter.com",
+  reviews
   "sameAs": [
     "https://escmattresscenter.com",
     "http://escmattresscenter.com"
   ],
+  "aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingCount": "4.9",
+		"reviewCount": "133"
+	},
   "logo": "https://www.datocms-assets.com/10836/1557349329-logo.png",
   "image": "https://www.datocms-assets.com/10836/1569974792-storeatnight.jpg",
   "description": "Locally owned mattress retailer for Sealy, Stearns and Foster, and Tempur-Pedic in Everett WA. We have twenty years of experience and non-commissioned staff.",
