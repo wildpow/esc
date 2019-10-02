@@ -25,7 +25,7 @@ const CertReview = styled.div`
   height: 75px;
   /* width: 270px;
   height: 180px; */
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   font-weight: 100;
   box-shadow: ${props => props.theme.BoxShadow};
   background-color: ${props => props.theme.mainColor1};

@@ -38,7 +38,7 @@ export const WarranyName = styled.h4`
 
 export const WarranyNumber = styled(OutboundLink)`
   color: ${props => props.theme.mainColor1};
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   margin-top: 10px;
   margin-bottom: 20px;
   text-align: center;

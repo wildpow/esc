@@ -225,7 +225,7 @@ export const MainTitle = styled(H2)`
 `;
 
 export const Profile = styled.p`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   margin-top: 0;
   font-size: 0.9rem;
   @media (min-width: 768px) {

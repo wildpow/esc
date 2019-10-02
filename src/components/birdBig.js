@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   width: 270px;
   height: 180px;
   border-radius: 5px;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   font-weight: 100;
   box-shadow: ${props => props.theme.BoxShadow};
   background-color: ${props => props.theme.mainColor1};
@@ -37,7 +37,7 @@ const Rating = styled.div`
   margin-left: 20px;
   color: white;
   display: flex;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   justify-content: start;
   img {
     margin-right: 5px;

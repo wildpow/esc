@@ -38,7 +38,7 @@ export const Marker = styled(Markdown)`
     padding-bottom: 20px;
   }
   & li {
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont1};
     padding-left: 12px;
     padding-right: 12px;
     line-height: 1.4rem;

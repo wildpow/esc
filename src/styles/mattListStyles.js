@@ -14,31 +14,6 @@ export const MainTitle = styled.header`
   background-color: ${props => props.theme.newColor1};
 `;
 
-export const Title = styled.h2`
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 4rem;
-`;
-export const SaleTitle = styled.header`
-  line-height: 1.15rem;
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
-  font-family: ${props => props.theme.MainFont2};
-  padding-right: 5px;
-  padding-left: 5px;
-`;
-export const SaleBlurb = styled.p`
-  margin: 0;
-`;
-
-export const StearnTitle = styled.h2`
-  padding-left: 5px;
-  padding-right: 5px;
-  padding: 60px;
-  font-size: 0.8rem;
-  color: ${props => props.theme.newColor1};
-`;
 export const Img = styled.img`
   /* color: white; */
   background: ${props => props.theme.newColor1};
@@ -90,9 +65,6 @@ export const Wrapper = styled(FlexRow)`
 `;
 
 export const Wrapper2 = styled(FlexCol)`
-  /* border-top: ${props => props.theme.Border};
-  border-right: ${props => props.theme.Border};
-  border-left: ${props => props.theme.Border}; */
   margin-top: 10px;
   margin-bottom: 0px;
   margin-right: 0px;
@@ -150,7 +122,7 @@ export const Headline = styled(H2)`
 `;
 
 export const P = styled.p`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
   text-align: justify;
   text-justify: inter-character !important;
   margin-bottom: 0;

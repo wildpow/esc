@@ -16,7 +16,7 @@ export const MakeOfferButton = styled.button`
   border: 1px solid #ccc;
   color: white;
   display: block;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   position: relative;
   text-align: center;
   text-decoration: none;
