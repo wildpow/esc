@@ -21,7 +21,7 @@ export const Nav = styled.nav`
 `;
 
 export const StyledLink = styled(Link)`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   font-weight: 700;
   font-size: 1.3rem;
   color: ${props => props.theme.mainColor1};

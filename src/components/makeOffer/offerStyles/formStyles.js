@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Form = styled.form`
   padding: 10px 15px 5px 15px;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -37,7 +37,7 @@ export const Input = styled.input`
   border: none;
   margin-bottom: 10px;
   border-bottom: 2px solid #ddd;
-  font-family: ${props => props.theme.MainFont2} !important;
+  font-family: ${props => props.theme.MainFont1} !important;
   font-size: 1.2rem;
   padding: 7px;
   margin-bottom: 10px;
@@ -49,11 +49,11 @@ export const Input = styled.input`
   }
   ::-webkit-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont1};
   }
   ::-moz-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont1};
   }
   @media (orientation: landscape) {
     margin-bottom: 0px;
@@ -80,7 +80,7 @@ export const TextArea = styled.textarea`
   outline: none;
   background: transparent;
   border: none;
-  font-family: ${props => props.theme.MainFont2} !important;
+  font-family: ${props => props.theme.MainFont1} !important;
   margin-bottom: 20px;
   font-size: 1.2rem;
   border-bottom: 2px solid #ddd;
@@ -95,11 +95,11 @@ export const TextArea = styled.textarea`
   }
   ::-webkit-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont1};
   }
   ::-moz-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont1};
   }
   @media (orientation: landscape) {
     font-size: 1rem;
@@ -138,7 +138,7 @@ export const SubmitButton = styled.button`
   border: 1px solid #ccc;
   color: white;
   display: block;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   position: relative;
   text-align: center;
   text-decoration: none;

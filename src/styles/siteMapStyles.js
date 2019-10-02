@@ -67,7 +67,7 @@ export const MainLinks = styled(FlexCol)`
 `;
 
 export const Lilist = styled.li`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   font-size: 1rem;
   letter-spacing: 0.1rem;
   padding-left: 10px;

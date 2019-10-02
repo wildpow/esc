@@ -17,7 +17,8 @@ export const Front = styled.div`
     font-size: 0.9rem;
     text-align: justify;
     text-justify: inter-character;
-    font-family: ${props => props.theme.MainFont2};
+    font-weight: 300;
+    font-family: ${props => props.theme.MainFont3};
     border-bottom: 4px solid ${props => props.theme.mainColor2};
     @media (orientation: landscape) {
       padding: 2px 10px 2px 10px;

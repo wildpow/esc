@@ -27,7 +27,9 @@
     "react-responsive-carousel": "^3.1.50",
     "react-truncate-markup": "^4.1.0",
     "styled-components": "^4.4.0",
-    "styled-normalize": "^8.0.6"
+    "styled-normalize": "^8.0.6",
+    "typeface-roboto": "^0.0.75",
+    "typeface-roboto-slab": "^0.0.72"
   },
   "keywords": [
     "gatsby"

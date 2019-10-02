@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FlexCol, FadeIn } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   border: ${props => props.theme.Border};
   box-shadow: ${props => props.theme.BoxShadow};
   animation-name: ${FadeIn};

@@ -5,7 +5,7 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql, Link } from "gatsby";
 import { Carousel } from "react-responsive-carousel";
 import Layout from "../components/layout";
-import { Main, Linky } from "../styles/homeStyles";
+import { Main } from "../styles/homeStyles";
 import Front from "../components/front";
 import TopThreeMatts from "../components/top3Mattresses";
 

@@ -28,7 +28,7 @@ const DropDownWrapper = styled.div`
   h4 {
     margin-bottom: 2px;
     margin-top: 0px;
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont1};
     font-size: 0.9rem;
     @media (min-width: 567px) {
       margin-top: 10px;
@@ -53,7 +53,7 @@ export const DropDown = styled.select`
   color: white;
   cursor: pointer;
   background-color: ${props => props.theme.mainColor1};
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   width: 150px;
   @media (min-width: 360px) {
     width: 160px;
@@ -125,7 +125,7 @@ const BeforeSalePrice = styled.h6`
     props.discount > 1 && props.price !== 0 && props.price !== undefined
       ? 1
       : 0};
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   margin-top: 2px;
   margin-bottom: 0px;
   text-decoration: line-through;
@@ -161,7 +161,7 @@ export const Total = styled.h4`
       : `opacity 250ms ease-in-out`};
   opacity: ${props => (props.price === 0 ? 0 : 1)};
   margin-top: 0px;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   margin-bottom: 2px;
   font-size: 1rem;
   text-align: right;

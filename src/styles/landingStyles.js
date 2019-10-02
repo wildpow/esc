@@ -81,7 +81,8 @@ export const Headline = styled.p`
   margin-top: 5px;
   color: #706259;
   word-break: break-word;
-  font-family: ${props => props.theme.MainFont2};
+  font-weight: 300;
+  font-family: ${props => props.theme.MainFont3};
   &::first-letter {
     font-size: 140%;
   }
@@ -184,7 +185,7 @@ export const Button = styled.button`
   padding: 10px;
   background-color: #706259;
   border: 1px solid #ccc;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont1};
   letter-spacing: 0.25rem;
   color: #f6f5f2;
   text-align: center;
@@ -217,18 +218,18 @@ export const Button = styled.button`
 
 export const Input = styled.input`
   width: 70%;
-  font-family: ${props => props.theme.MainFont2} !important;
+  font-family: ${props => props.theme.MainFont3} !important;
   &:focus {
     outline: none;
     border: 2px solid #706259;
   }
   ::-webkit-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont3};
   }
   ::-moz-input-placeholder {
     color: rgba(112, 98, 89, 0.25);
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont3};
   }
 
   @media (min-width: 360px) {
@@ -280,7 +281,7 @@ export const Holder = styled.aside`
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     font-variant: small-caps;
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont1};
     @media (min-width: 1024px) {
       font-size: 1.8rem;
     }
@@ -305,7 +306,7 @@ export const BottomWrapper = styled.article`
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     font-variant: small-caps;
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont1};
     @media (min-width: 1024px) {
       font-size: 2.5rem;
     }
@@ -334,7 +335,8 @@ export const RatingsWrap = styled.div`
   text-shadow: ${props => props.theme.TextShadow};
   color: #f6f5f2;
   background-color: #706259;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
+  font-weight: 300;
 `;
 
 export const StarImg = styled.img`
@@ -377,7 +379,7 @@ export const FooterWraper = styled.div`
     font-size: 1.3rem;
     letter-spacing: 0.1rem;
     font-variant: small-caps;
-    font-family: ${props => props.theme.MainFont2};
+    font-family: ${props => props.theme.MainFont1};
   }
 `;
 
@@ -393,7 +395,7 @@ export const CallTOAction = styled.p`
   background-color: #706259;
   margin-bottom: 0;
   line-height: 1.4rem;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
   @media (min-width: 360px) {
     padding-top: 7px;
     padding-bottom: 7px;
@@ -466,7 +468,7 @@ export const ModalBox = styled.div`
   padding-top: 20px;
   background: #f6f5f2;
   color: #706259;
-  font-family: ${props => props.theme.MainFont2};
+  font-family: ${props => props.theme.MainFont3};
   @media (min-width: 768px) {
     padding: 40px;
   }
