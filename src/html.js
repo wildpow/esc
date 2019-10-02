@@ -12,11 +12,6 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <link
-            href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700,700i&display=swap"
-            rel="stylesheet"
-          />
-
           <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
