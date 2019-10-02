@@ -12,12 +12,12 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          {/* <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+          <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
           <link
             rel="preconnect"
             href="https://fonts.gstatic.com"
             crossorigin="anonymous"
-          /> */}
+          />
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>
