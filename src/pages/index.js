@@ -14,7 +14,6 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsFrontPage.seoMetaTags} />
-
       <Main>
         <Carousel
           infiniteLoop
