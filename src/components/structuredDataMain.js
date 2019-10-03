@@ -8,7 +8,7 @@ const StructuredDataMain = () => (
             {
   "@context": "http://www.schema.org",
   "@type": "Store",
-  "name": "E.S.C Mattress Center",
+  "name": "E.S.C. Mattress Center",
   "url": "https://www.escmattresscenter.com",
   "sameAs": [
     "https://escmattresscenter.com",
