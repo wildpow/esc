@@ -48,7 +48,7 @@ const Base = ({ data }) => {
         "@type": "Brand",
         "name": "${adjBase.brand}"
     },
-    "sku": "ESC${adjBase.brand.toUpperCase()}.${adjBase.name}",
+    "sku": "ESC${adjBase.brand.toUpperCase()}.${adjBase.slug}",
     "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
