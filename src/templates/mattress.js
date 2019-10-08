@@ -23,9 +23,54 @@ import DropDown from "../components/priceDropDown_NEWMATT";
 
 const Mattress = ({ data }) => {
   const { datoCmsMattress: mattress } = data;
+  const dateSEO = () => {
+    const today = new Date();
+    const dd = today.getDate();
+    let y = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    if (mm + 1 === 13) {
+      y += 1;
+      mm = 1;
+    } else {
+      mm += 1;
+    }
+
+    return `${y}-${mm}-${dd}`;
+  };
   return (
     <Layout>
-      <HelmetDatoCms seo={mattress.seoMetaTags} />
+      <HelmetDatoCms seo={mattress.seoMetaTags}>
+        <script type="application/ld+json">
+          {`
+
+        {
+    "@context": "http://schema.org/",
+    "@type": "Product",
+    "name": "${mattress.brand.displayName} ${mattress.subline.name} ${
+            mattress.name
+          }",
+    "url": "https://www.escmattresscenter.com/brands/${
+      mattress.brand.urlName
+    }/${mattress.slug}",
+    "image": "${mattress.images[0].coverImage.url}",
+    "description": "${mattress.description}",
+    "brand": {
+        "@type": "Brand",
+        "name": "${mattress.brand.displayName}"
+    },
+    "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "highPrice": "${mattress.priceHigh}",
+        "lowPrice": "${mattress.priceLow}",
+        "priceValidUntil": "${dateSEO()}",
+        "itemCondition": "New",
+        "availability": "InStock"
+    }
+}
+        `}
+        </script>
+      </HelmetDatoCms>
       <BreadWrapper>
         <BreadCrumbs
           next="Brands"
@@ -104,6 +149,8 @@ export default Mattress;
 export const query = graphql`
   query SingleMattress($slug: String!) {
     datoCmsMattress(slug: { eq: $slug }) {
+      priceLow
+      priceHigh
       slug
       name
       id
