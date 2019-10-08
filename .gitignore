@@ -11,3 +11,4 @@ yarn-error.log
 *.mp4
 .env.development
 .env.production
+.vscode/settings.json
