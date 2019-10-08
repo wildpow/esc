@@ -20,23 +20,10 @@ import {
 } from "../styles/singleMattStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import DropDown from "../components/priceDropDown_NEWMATT";
+import dateSEO from "../functions/dateSEO";
 
 const Mattress = ({ data }) => {
   const { datoCmsMattress: mattress } = data;
-  const dateSEO = () => {
-    const today = new Date();
-    const dd = today.getDate();
-    let y = today.getFullYear();
-    let mm = today.getMonth() + 1;
-    if (mm + 1 === 13) {
-      y += 1;
-      mm = 1;
-    } else {
-      mm += 1;
-    }
-
-    return `${y}-${mm}-${dd}`;
-  };
   return (
     <Layout>
       <HelmetDatoCms seo={mattress.seoMetaTags}>
