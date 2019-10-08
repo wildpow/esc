@@ -58,6 +58,7 @@ const Mattress = ({ data }) => {
         "@type": "Brand",
         "name": "${mattress.brand.displayName}"
     },
+    "sku": "ESC${mattress.brand.urlName.toUpperCase()}.${mattress.name}",
     "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
@@ -66,7 +67,6 @@ const Mattress = ({ data }) => {
         "priceValidUntil": "${dateSEO()}",
         "itemCondition": "New",
         "availability": "InStock",
-        "sku": "ESC${mattress.brand.urlName.toUpperCase()}.${mattress.name}",
         "offerCount": "${
           Object.values(mattress.price[0]).filter(value => value !== 0).length
         }"
