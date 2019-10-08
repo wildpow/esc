@@ -2,18 +2,12 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-module.exports = {
+const cfg = {
   siteMetadata: {
     title: "E.S.C Mattress Center",
     siteUrl: `https://www.escmattresscenter.com`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: process.env.GATSBY_GOOGLE_ANALYTICS,
-      },
-    },
     {
       resolve: `gatsby-source-datocms`,
       options: {
@@ -42,3 +36,15 @@ module.exports = {
     `gatsby-plugin-netlify`,
   ],
 };
+
+if (process.env.CONTEXT === "production") {
+  const googleAnalyticsCfg = {
+    resolve: "gatsby-plugin-google-analytics",
+    options: {
+      trackingId: process.env.GATSBY_GOOGLE_ANALYTICS,
+    },
+  };
+  cfg.plugins.push(googleAnalyticsCfg);
+}
+
+module.exports = cfg;
