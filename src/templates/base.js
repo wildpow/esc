@@ -20,16 +20,50 @@ import {
   Construction,
   Info,
 } from "../styles/singleMattStyles";
+import dateSEO from "../functions/dateSEO";
 
 const Base = ({ data }) => {
   const { datoCmsAdjustableBase: adjBase } = data;
+  const removeZeroPrices = Object.values(adjBase.price[0]).filter(
+    value => value !== 0,
+  );
   return (
     <Layout>
       <BreadWrapper>
         <BreadCrumbs next="Adjustable" here={adjBase.fullName} />
       </BreadWrapper>
       <Wrapper>
-        <HelmetDatoCms seo={adjBase.seoMetaTags} />
+        <HelmetDatoCms seo={adjBase.seoMetaTags}>
+          <script type="application/ld+json">
+            {`
+
+        {
+    "@context": "http://schema.org/",
+    "@type": "Product",
+    "name": "${adjBase.fullName}",
+    "url": "https://www.escmattresscenter.com/adjustable/${adjBase.slug}",
+    "image": "${adjBase.images3[0].url}",
+    "description": "${adjBase.description}",
+    "brand": {
+        "@type": "Brand",
+        "name": "${adjBase.brand}"
+    },
+    "sku": "ESC${adjBase.brand.toUpperCase()}.${adjBase.slug}",
+    "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "highPrice": "${removeZeroPrices[0]}",
+        "lowPrice": "${removeZeroPrices[removeZeroPrices.length - 1]}",
+        "priceValidUntil": "${dateSEO()}",
+        "itemCondition": "New",
+        "availability": "InStock",
+        "offerCount": "${removeZeroPrices.length}"
+
+    }
+}
+        `}
+          </script>
+        </HelmetDatoCms>
         <header>
           <MainTitle>{adjBase.fullName}</MainTitle>
         </header>
@@ -90,6 +124,7 @@ export default Base;
 export const query = graphql`
   query singleAdjustable($slug: String!) {
     datoCmsAdjustableBase(slug: { eq: $slug }) {
+      brand
       slug
       fullName
       description
