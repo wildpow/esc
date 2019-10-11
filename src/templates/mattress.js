@@ -49,8 +49,8 @@ const Mattress = ({ data }) => {
     "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
-        "highPrice": "${mattress.priceHigh}",
-        "lowPrice": "${mattress.priceLow}",
+        "highPrice": ${mattress.priceHigh},
+        "lowPrice": ${mattress.priceLow},
         "priceValidUntil": "${dateSEO()}",
         "itemCondition": "New",
         "availability": "InStock",
