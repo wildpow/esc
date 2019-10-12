@@ -1,11 +1,6 @@
 import React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "styled-components";
-import fbIcon from "../images/fB.png";
-import twitterIcon from "../images/twitter.png";
-import Yelp from "../images/yelp_burst_negative_RGB.png";
-import Insta from "../images/glyph-logo_May2016.png";
-import Google from "../images/google_Maps_App_3.png";
 
 const Wrapper = styled.div`
   display: flex;
@@ -72,7 +67,7 @@ const SocialIcons = ({ bottom }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src={fbIcon} alt="FaceBook logo" />
+        <SocImg src={`/facebook.png`} alt="FaceBook logo" />
       </OutboundLink>
       <OutboundLink
         href="https://twitter.com/CenterEsc?ref_src=twsrc%5Etfw"
@@ -80,14 +75,14 @@ const SocialIcons = ({ bottom }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src={twitterIcon} alt="twitter logo" />
+        <SocImg src={`/twitter.png`} alt="twitter logo" />
       </OutboundLink>
       <OutboundLink
         href="https://www.instagram.com/centeresc/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src={Insta} alt="Instagram logo" />
+        <SocImg src={`/instagram.png`} alt="Instagram logo" />
       </OutboundLink>
       <OutboundLink
         href="https://www.yelp.com/biz/esc-mattress-center-everett-3"
@@ -95,7 +90,7 @@ const SocialIcons = ({ bottom }) => (
         rel="noopener noreferrer"
       >
         <YelpHolder>
-          <YelpImg src={Yelp} alt="yelp logo" />
+          <YelpImg src={`/yelp.png`} alt="yelp logo" />
         </YelpHolder>
       </OutboundLink>
       <OutboundLink
@@ -103,7 +98,7 @@ const SocialIcons = ({ bottom }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src={Google} alt="google maps logo" />
+        <SocImg src={`/gmaps.png`} alt="google maps logo" />
       </OutboundLink>
     </DIVY>
   </Wrapper>

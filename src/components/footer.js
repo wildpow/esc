@@ -19,11 +19,11 @@ import {
   Bird667Container,
   BirdContainerSmall,
 } from "../styles/footerStyles";
-import BBBHor from "../images/ab_seal_horizontal_black_large.jpg";
-import BBBWebpHor from "../images/ab_seal_horizontal_black_large.webp";
+// import BBBHor from "../images/ab_seal_horizontal_black_large.jpg";
+// import BBBWebpHor from "../images/ab_seal_horizontal_black_large.webp";
 import Bird from "./bird";
-import ClothesForKids from "../images/clothes_for_kids_blue.png";
-import AquasoxPartner from "../images/aquasox_partner_blue.png";
+// import ClothesForKids from "../images/clothes_for_kids_blue.png";
+// import AquasoxPartner from "../images/aquasox_partner_blue.png";
 
 const PartnerImg = styled.img`
   border-radius: 5px;
@@ -68,7 +68,7 @@ const Footer = () => (
           rel="noopener noreferrer"
           style={{ textDecoration: "none" }}
         >
-          <PartnerImg src={AquasoxPartner} />
+          <PartnerImg src={`/aquasox_partner_blue.png`} />
         </OutboundLink>
         <Bird667Container>
           <Bird />
@@ -78,7 +78,7 @@ const Footer = () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <PartnerImg src={ClothesForKids} />
+          <PartnerImg src={`/clothes_for_kids_blue.png`} />
         </OutboundLink>
       </Icons>
 
@@ -137,9 +137,9 @@ const Footer = () => (
         rel="noopener noreferrer"
       >
         <picture>
-          <source type="image/webp" srcSet={BBBWebpHor} />
+          <source type="image/webp" srcSet={`/bbb.webp`} />
           <img
-            src={BBBHor}
+            src={`/bbb.jpg`}
             alt="Better Business Bureau seal of approvel, click to leave review"
           />
         </picture>
