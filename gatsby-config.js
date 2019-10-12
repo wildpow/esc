@@ -65,7 +65,7 @@ const cfg = {
         entitiesArray: [
           {
             url: process.env.GATSBY_REST2,
-            method: "get",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
               accept: "application/json",
@@ -74,7 +74,7 @@ const cfg = {
           },
           {
             url: process.env.GATSBY_REST,
-            method: "get",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
               accept: "application/json",

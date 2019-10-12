@@ -114,7 +114,7 @@ const Bird = () => {
         const { avgRating, reviewCount } = data.internalWidget;
         for (let i = 0; i < avgRating; i += 1) {
           starsArr.push(
-            <img src={star} alt="start for rating" key={i + 200} />,
+            <img src={`/star.png`} alt="start for rating" key={i + 200} />,
           );
         }
         return (
@@ -138,11 +138,7 @@ const Bird = () => {
               </CertReview>
             </BirdLink>
             <BigWrapper>
-              <BirdBig
-                avgRating={avgRating}
-                reviewCount={reviewCount}
-                star={star}
-              />
+              <BirdBig avgRating={avgRating} reviewCount={reviewCount} />
             </BigWrapper>
           </>
         );
