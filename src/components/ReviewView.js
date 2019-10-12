@@ -4,8 +4,8 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "styled-components";
 import { NodeGroup } from "react-move";
 import TruncateMarkup from "react-truncate-markup";
-import star from "../../images/stars.svg";
-import { FadeIn } from "../../styles/mainStyles";
+import star from "../images/stars.svg";
+import { FadeIn } from "../styles/mainStyles";
 
 const InsideWrapper = styled.div`
   position: absolute;
