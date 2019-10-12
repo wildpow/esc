@@ -2,11 +2,6 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-// const ReviewType = {
-//   comments: "String",
-//   reviewer: { fistName: "String", lastName: "String" },
-// };
-
 const cfg = {
   siteMetadata: {
     title: "E.S.C Mattress Center",
@@ -77,16 +72,15 @@ const cfg = {
             },
             name: `widget`,
           },
-          // {
-          //   url: process.env.GATSBY_REST,
-          //   method: "get",
-          //   headers: {
-          //     "Content-Type": "application/json",
-          //     accept: "application/json",
-          //   },
-          //   schemaType: ReviewType,
-          //   name: `aboutReviews`,
-          // },
+          {
+            url: process.env.GATSBY_REST,
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+              accept: "application/json",
+            },
+            name: `aboutReviews`,
+          },
         ],
       },
     },
