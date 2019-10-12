@@ -5,9 +5,6 @@ import styled from "styled-components";
 import Certified from "../images/badge.png";
 import star from "../images/star.png";
 import BirdBig from "./birdBig";
-// import Loading from "./loading";
-
-const average = list => list.reduce((prev, curr) => prev + curr) / list.length;
 
 const BirdLink = styled(OutboundLink)`
   text-decoration: none;
@@ -100,42 +97,41 @@ const AvgContainer = styled.div`
     font-size: 0.9em;
   }
 `;
+
 class Bird extends PureComponent {
   _isMounted = false;
 
   constructor() {
     super();
     this.state = {
-      avg: 4.980392156862745,
-      count: 129,
+      avgRating: 0,
+      reviewCount: 0,
     };
   }
 
   componentWillMount() {
-    let avg = null;
-    let count = null;
+    let avgRating = null;
+    let reviewCount = null;
     if (typeof window !== "undefined" && window) {
-      avg = localStorage.getItem("avg");
-      count = localStorage.getItem("count");
+      avgRating = localStorage.getItem("avg");
+      reviewCount = localStorage.getItem("count");
     }
-    if (avg === null || count === null) {
+    if (avgRating === null || reviewCount === null) {
       return null;
     }
-    return this.setState({ avg, count });
+    return this.setState({ avgRating, reviewCount });
   }
 
   componentDidMount() {
     this._isMounted = true;
     axios
-      .get(process.env.GATSBY_REST)
+      .get(process.env.GATSBY_REST2)
       .then(res => {
         if (this._isMounted) {
-          const { data } = res;
-          const e = data.map(i => i.rating);
-          const p = e.filter(val => val !== 0 && val !== null);
-          localStorage.setItem("count", data.length);
-          localStorage.setItem("avg", average(p));
-          this.setState({ count: data.length, avg: average(p) });
+          const { reviewCount, avgRating } = res.data;
+          localStorage.setItem("reviewCount", reviewCount);
+          localStorage.setItem("avg", avgRating);
+          this.setState({ reviewCount, avgRating });
         }
       })
       .catch(error => {
@@ -149,9 +145,9 @@ class Bird extends PureComponent {
   }
 
   render() {
-    const { count, avg } = this.state;
+    const { avgRating, reviewCount } = this.state;
     const starsArr = [];
-    for (let i = 0; i < Math.round(avg); i += 1) {
+    for (let i = 0; i < avgRating; i += 1) {
       starsArr.push(<img src={star} alt="start for rating" key={i + 200} />);
     }
     return (
@@ -163,19 +159,23 @@ class Bird extends PureComponent {
         >
           <CertReview>
             <Words>
-              <h4>{count}</h4>
+              <h4>{reviewCount}</h4>
               <h4>Certified</h4>
               <h4>Reviews</h4>
               <Rating>
                 {starsArr}
-                <AvgContainer>{Math.round(avg)}</AvgContainer>
+                <AvgContainer>{avgRating}</AvgContainer>
               </Rating>
             </Words>
             <Cert alt="BirdEye certified seal" src={Certified} />
           </CertReview>
         </BirdLink>
         <BigWrapper>
-          <BirdBig avg={avg} count={count} star={star} />
+          <BirdBig
+            avgRating={avgRating}
+            reviewCount={reviewCount}
+            star={star}
+          />
         </BigWrapper>
       </>
     );
