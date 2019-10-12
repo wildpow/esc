@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
-import axios from "axios";
+import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Certified from "../images/badge.png";
 import star from "../images/star.png";
@@ -98,88 +98,57 @@ const AvgContainer = styled.div`
   }
 `;
 
-class Bird extends PureComponent {
-  _isMounted = false;
-
-  constructor() {
-    super();
-    this.state = {
-      avgRating: 0,
-      reviewCount: 0,
-    };
-  }
-
-  componentWillMount() {
-    let avgRating = null;
-    let reviewCount = null;
-    if (typeof window !== "undefined" && window) {
-      avgRating = localStorage.getItem("avg");
-      reviewCount = localStorage.getItem("count");
-    }
-    if (avgRating === null || reviewCount === null) {
-      return null;
-    }
-    return this.setState({ avgRating, reviewCount });
-  }
-
-  componentDidMount() {
-    this._isMounted = true;
-    axios
-      .get(process.env.GATSBY_REST2)
-      .then(res => {
-        if (this._isMounted) {
-          const { reviewCount, avgRating } = res.data;
-          localStorage.setItem("reviewCount", reviewCount);
-          localStorage.setItem("avg", avgRating);
-          this.setState({ reviewCount, avgRating });
+const Bird = () => {
+  const starsArr = [];
+  return (
+    <StaticQuery
+      query={graphql`
+        query birdeye {
+          internalWidget {
+            reviewCount
+            avgRating
+          }
         }
-      })
-      .catch(error => {
-        // this.setState({ errorState: true, loading: false });
-        console.log(error);
-      });
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
-  render() {
-    const { avgRating, reviewCount } = this.state;
-    const starsArr = [];
-    for (let i = 0; i < avgRating; i += 1) {
-      starsArr.push(<img src={star} alt="start for rating" key={i + 200} />);
-    }
-    return (
-      <>
-        <BirdLink
-          href="https://birdeye.com/esc-mattress-center-154743411347922"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <CertReview>
-            <Words>
-              <h4>{reviewCount}</h4>
-              <h4>Certified</h4>
-              <h4>Reviews</h4>
-              <Rating>
-                {starsArr}
-                <AvgContainer>{avgRating}</AvgContainer>
-              </Rating>
-            </Words>
-            <Cert alt="BirdEye certified seal" src={Certified} />
-          </CertReview>
-        </BirdLink>
-        <BigWrapper>
-          <BirdBig
-            avgRating={avgRating}
-            reviewCount={reviewCount}
-            star={star}
-          />
-        </BigWrapper>
-      </>
-    );
-  }
-}
+      `}
+      render={data => {
+        const { avgRating, reviewCount } = data.internalWidget;
+        for (let i = 0; i < avgRating; i += 1) {
+          starsArr.push(
+            <img src={star} alt="start for rating" key={i + 200} />,
+          );
+        }
+        return (
+          <>
+            <BirdLink
+              href="https://birdeye.com/esc-mattress-center-154743411347922"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CertReview>
+                <Words>
+                  <h4>{reviewCount}</h4>
+                  <h4>Certified</h4>
+                  <h4>Reviews</h4>
+                  <Rating>
+                    {starsArr}
+                    <AvgContainer>{avgRating}</AvgContainer>
+                  </Rating>
+                </Words>
+                <Cert alt="BirdEye certified seal" src={Certified} />
+              </CertReview>
+            </BirdLink>
+            <BigWrapper>
+              <BirdBig
+                avgRating={avgRating}
+                reviewCount={reviewCount}
+                star={star}
+              />
+            </BigWrapper>
+          </>
+        );
+      }}
+    />
+  );
+};
 
 export default Bird;

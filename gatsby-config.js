@@ -2,6 +2,11 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+// const ReviewType = {
+//   comments: "String",
+//   reviewer: { fistName: "String", lastName: "String" },
+// };
+
 const cfg = {
   siteMetadata: {
     title: "E.S.C Mattress Center",
@@ -34,6 +39,57 @@ const cfg = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
+    {
+      resolve: "gatsby-source-apiserver",
+      options: {
+        // Type prefix of entities from server
+        typePrefix: "internal__",
+
+        // The url, this should be the endpoint you are attempting to pull data from
+        // url: process.env.GATSBY_REST2,
+
+        // method: "post",
+
+        // headers: {
+        //   "Content-Type": "application/json",
+        //   accept: "application/json",
+        // },
+
+        // Request body
+        data: {},
+
+        // Name of the data to be downloaded.  Will show in graphQL or be saved to a file
+        // using this name. i.e. posts.json
+        // name: `birdeye`,
+        // Pass an array containing any number of the entity configuration properties (except verbose, auth0Config),
+        // any not specified are defaulted to the general properties that are specified
+        // Only available from version 2.1.0
+        // Define schemaType to normalize blank values
+        // example:
+
+        entitiesArray: [
+          {
+            url: process.env.GATSBY_REST2,
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+              accept: "application/json",
+            },
+            name: `widget`,
+          },
+          // {
+          //   url: process.env.GATSBY_REST,
+          //   method: "get",
+          //   headers: {
+          //     "Content-Type": "application/json",
+          //     accept: "application/json",
+          //   },
+          //   schemaType: ReviewType,
+          //   name: `aboutReviews`,
+          // },
+        ],
+      },
+    },
   ],
 };
 
