@@ -38,7 +38,7 @@ const cfg = {
       resolve: "gatsby-source-apiserver",
       options: {
         // Type prefix of entities from server
-        typePrefix: "internal__",
+        // typePrefix: "internal__",
 
         // The url, this should be the endpoint you are attempting to pull data from
         // url: process.env.GATSBY_REST2,
@@ -51,7 +51,7 @@ const cfg = {
         // },
 
         // Request body
-        data: {},
+        // data: {},
 
         // Name of the data to be downloaded.  Will show in graphQL or be saved to a file
         // using this name. i.e. posts.json

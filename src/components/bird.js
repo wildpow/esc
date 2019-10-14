@@ -102,14 +102,17 @@ const Bird = () => {
     <StaticQuery
       query={graphql`
         query birdeye {
-          internalWidget {
-            reviewCount
-            avgRating
+          allWidget(filter: { id: { ne: "dummy" } }) {
+            nodes {
+              id
+              avgRating
+              reviewCount
+            }
           }
         }
       `}
       render={data => {
-        const { avgRating, reviewCount } = data.internalWidget;
+        const { avgRating, reviewCount } = data.allWidget.nodes[0];
         for (let i = 0; i < avgRating; i += 1) {
           starsArr.push(
             <img src="/star.png" alt="start for rating" key={i + 200} />,
