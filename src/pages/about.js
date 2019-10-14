@@ -36,7 +36,7 @@ const AboutH2 = styled(H2)`
   }
 `;
 const About = ({ data }) => {
-  const content = data.allInternalAboutReviews.nodes.filter(
+  const content = data.allAboutReviews.nodes.filter(
     val => val.comments !== null,
   );
   const maxIndex = content.length - 1;
@@ -132,7 +132,7 @@ export const aboutSEO = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    allInternalAboutReviews {
+    allAboutReviews {
       nodes {
         comments
         reviewId

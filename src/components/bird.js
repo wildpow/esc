@@ -3,7 +3,6 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Certified from "../images/badge.png";
-import star from "../images/star.png";
 import BirdBig from "./birdBig";
 
 const BirdLink = styled(OutboundLink)`
@@ -19,11 +18,10 @@ const CertReview = styled.div`
     transform: scale3d(1.05, 1.05, 1);
   }
   width: 145px;
-  height: 75px;
+  height: 96.656px;
   /* width: 270px;
   height: 180px; */
   font-family: ${props => props.theme.MainFont1};
-  font-weight: 100;
   box-shadow: ${props => props.theme.BoxShadow};
   background-color: ${props => props.theme.mainColor1};
   display: flex;
@@ -31,14 +29,14 @@ const CertReview = styled.div`
   border-radius: 5px;
   justify-content: space-between;
   div h4 {
+    font-weight: 400;
     margin: 0;
     padding: 0;
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   @media (min-width: 768px) {
     line-height: 1.1em;
     letter-spacing: 0.14em;
-    height: 90px;
     div h4 {
       font-size: 0.9rem;
     }
@@ -69,7 +67,7 @@ const Cert = styled.img`
 `;
 
 const Rating = styled.div`
-  padding-top: 3px;
+  padding-top: 10px;
   display: flex;
   img {
     width: 15px;
@@ -104,17 +102,20 @@ const Bird = () => {
     <StaticQuery
       query={graphql`
         query birdeye {
-          internalWidget {
-            reviewCount
-            avgRating
+          allWidget(filter: { id: { ne: "dummy" } }) {
+            nodes {
+              id
+              avgRating
+              reviewCount
+            }
           }
         }
       `}
       render={data => {
-        const { avgRating, reviewCount } = data.internalWidget;
+        const { avgRating, reviewCount } = data.allWidget.nodes[0];
         for (let i = 0; i < avgRating; i += 1) {
           starsArr.push(
-            <img src={star} alt="start for rating" key={i + 200} />,
+            <img src="/star.png" alt="start for rating" key={i + 200} />,
           );
         }
         return (
@@ -138,11 +139,7 @@ const Bird = () => {
               </CertReview>
             </BirdLink>
             <BigWrapper>
-              <BirdBig
-                avgRating={avgRating}
-                reviewCount={reviewCount}
-                star={star}
-              />
+              <BirdBig avgRating={avgRating} reviewCount={reviewCount} />
             </BigWrapper>
           </>
         );

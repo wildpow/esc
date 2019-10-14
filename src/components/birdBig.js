@@ -35,23 +35,21 @@ const Top = styled.div`
 `;
 const Rating = styled.div`
   margin-left: 20px;
+  padding-top: 10px;
   color: white;
   display: flex;
   font-family: ${props => props.theme.MainFont1};
   justify-content: start;
   img {
     margin-right: 5px;
-    width: 22px;
-    height: 22px;
-  }
-  h6 {
-    font-size: 1.2em;
-    margin: 0;
+    width: 25px;
+    height: 25px;
   }
 `;
 const AvgContainer = styled.div`
   /* margin-top: -6px; */
-  font-size: 1.3em;
+  font-size: 1.8em;
+  font-weight: 700;
   margin-left: 4px;
   font-family: ${props => props.theme.MainFont1};
 `;
@@ -70,10 +68,12 @@ const Text = styled.div`
   }
 `;
 const BirdBig = props => {
-  const { avgRating, reviewCount, star } = props;
+  const { avgRating, reviewCount } = props;
   const starsArr = [];
   for (let i = 0; i < Math.round(avgRating); i += 1) {
-    starsArr.push(<img src={star} alt="start for rating" key={i + 200} />);
+    starsArr.push(
+      <img src="./star.png" alt="start for rating" key={i + 200} />,
+    );
   }
   return (
     <BirdLink
