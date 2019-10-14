@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { DisplayNonePr1nt } from "../styles/_pr1nt/main";
 
 function capitalizeFirstLetter(string) {

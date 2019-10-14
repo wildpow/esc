@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { FadeIn, FlexCol } from "./mainStyles";
 
@@ -20,7 +20,7 @@ export const MainArticle = styled.article`
 `;
 
 export const WarranyName = styled.h4`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${props => props.theme.fonts.heading};
   border-bottom: 4px solid ${props => props.theme.mainColor2};
   text-align: center;
   margin: 0 auto;
@@ -38,7 +38,7 @@ export const WarranyName = styled.h4`
 
 export const WarranyNumber = styled(OutboundLink)`
   color: ${props => props.theme.mainColor1};
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${props => props.theme.fonts.heading};
   margin-top: 10px;
   margin-bottom: 20px;
   text-align: center;
@@ -54,7 +54,7 @@ export const WarranyNumber = styled(OutboundLink)`
 `;
 
 export const WarrantyTopper = styled.h3`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${props => props.theme.fonts.heading};
   font-weight: 400;
   color: ${props => props.theme.newColor1};
   text-shadow: ${props => props.theme.newTextShadow};
@@ -111,7 +111,7 @@ export const P = styled.p`
 `;
 // where
 export const Heading = styled.h3`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${props => props.theme.fonts.heading};
   border-bottom: 4px solid ${props => props.theme.mainColor2};
   padding-bottom: 5px;
   padding-left: 10px;

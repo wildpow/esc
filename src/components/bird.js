@@ -1,7 +1,7 @@
 import React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { StaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Certified from "../images/badge.png";
 import BirdBig from "./birdBig";
 

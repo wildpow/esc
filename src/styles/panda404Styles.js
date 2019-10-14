@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { FlexCol, FadeIn } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${props => props.theme.fonts.heading};
   border: ${props => props.theme.Border};
   box-shadow: ${props => props.theme.BoxShadow};
   animation-name: ${FadeIn};

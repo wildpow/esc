@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { FlexCol } from "../styles/mainStyles";
 
 const Wrapper = styled(FlexCol)`

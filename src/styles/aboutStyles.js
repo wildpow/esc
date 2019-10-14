@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
 export const Main = styled(FlexCol)`

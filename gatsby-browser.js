@@ -7,8 +7,8 @@
 // You can delete this file if you're not using it
 
 import React from "react";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./src/styles/mainStyles";
+import { ThemeProvider } from "emotion-theming";
+import theme from "./src/theme";
 
 require("typeface-roboto-slab");
 require("typeface-roboto");

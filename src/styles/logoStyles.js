@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Link } from "gatsby";
 import { FlexCol } from "./mainStyles";
 import { ImagePr1nt, H1Pr1nt, ReadersPr1nt } from "./_pr1nt/main";

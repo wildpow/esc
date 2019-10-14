@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { FlexCol, FlexRow, FadeIn, H2 } from "./mainStyles";
 import {
   MainTitlePr1nt,
@@ -183,7 +183,7 @@ export const Info = styled.li`
   a {
     display: none;
     font-size: 0.9rem;
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${props => props.theme.fonts.heading};
     font-weight: 700;
     letter-spacing: 0.05rem;
     color: ${props => props.theme.mainColor2};
@@ -225,7 +225,7 @@ export const MainTitle = styled(H2)`
 `;
 
 export const Profile = styled.p`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${props => props.theme.fonts.heading};
   margin-top: 0;
   font-size: 0.9rem;
   @media (min-width: 768px) {
@@ -240,7 +240,7 @@ export const Profile = styled.p`
 `;
 
 export const Warranty = styled.p`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${props => props.theme.fonts.heading};
   text-align: center;
   font-weight: 300;
   font-size: 0.5rem;

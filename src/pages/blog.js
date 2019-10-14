@@ -1,7 +1,7 @@
 import React from "react";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import PostThumbnail from "../components/blog/postThumbnail_NEW";

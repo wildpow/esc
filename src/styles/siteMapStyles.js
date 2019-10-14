@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
 export const MattLinksWrapper = styled(FlexRow)`
@@ -26,11 +26,11 @@ export const Main = styled.div`
     line-height: 1.9rem;
   }
   li {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${props => props.theme.fonts.heading};
     font-weight: 400;
   }
   h3 {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${props => props.theme.fonts.heading};
     background-color: ${props => props.theme.mainColor1};
     margin: 0;
     color: ${props => props.theme.newColor1};
@@ -67,7 +67,7 @@ export const MainLinks = styled(FlexCol)`
 `;
 
 export const Lilist = styled.li`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${props => props.theme.fonts.heading};
   font-size: 1rem;
   letter-spacing: 0.1rem;
   padding-left: 10px;
@@ -101,19 +101,3 @@ export const BottomLinks = styled(FlexRow)`
     margin-right: 85px;
   }
 `;
-
-// export const TheNew2 = styled.h2`
-//     font-family: ${MainFont1};
-//     background-color: ${Blue};
-//     text-shadow: ${TextShadow};
-//     text-align: center;
-//     color: white;
-//     margin: 0;
-//     padding-top: 15px;
-//     padding-bottom: 15px;
-//     letter-spacing: .25rem;
-//     font-size: 1.2rem;
-//     @media(min-width: 768px) {
-//       font-size: 2rem;
-//     }
-// `;

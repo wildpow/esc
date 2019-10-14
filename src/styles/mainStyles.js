@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components";
-// Site Wide default values and styles
+import { keyframes } from "@emotion/core";
+import styled from "@emotion/styled";
 
 // export const Blue = "#1565c0";
 // export const Red = "#eb1c24";

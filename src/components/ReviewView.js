@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { NodeGroup } from "react-move";
 import TruncateMarkup from "react-truncate-markup";
 import star from "../images/stars.svg";

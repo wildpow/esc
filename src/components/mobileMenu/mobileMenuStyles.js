@@ -1,5 +1,5 @@
-import styled, { keyframes, css } from "styled-components";
-
+import styled from "@emotion/styled";
+import { css, keyframes } from "@emotion/core";
 export const SlideInKeyframe = keyframes`
   from { transform: translateX(60%); }
   to { transform: translateX(0); }

@@ -1,5 +1,5 @@
 import { OutboundLink } from "gatsby-plugin-google-analytics";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { FlexCol, FadeIn, FlexRow } from "./mainStyles";
 
 export const Main = styled(FlexCol)`

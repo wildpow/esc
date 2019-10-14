@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Markdown from "react-markdown";
 import { FadeIn, FlexCol } from "./mainStyles";
 
@@ -23,7 +23,7 @@ export const BottomImg = styled.img`
 
 export const Marker = styled(Markdown)`
   h2 {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${props => props.theme.fonts.heading};
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 10px 20px;
@@ -38,7 +38,7 @@ export const Marker = styled(Markdown)`
     padding-bottom: 20px;
   }
   & li {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${props => props.theme.fonts.heading};
     padding-left: 12px;
     padding-right: 12px;
     line-height: 1.4rem;

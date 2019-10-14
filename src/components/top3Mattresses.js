@@ -1,6 +1,6 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Wrapper, MainWrapper } from "../styles/mattListStyles";
 import { P, Headline, FooterLink } from "../styles/homeStyles";
 import MattressThumb from "./mattThumbNail/mattThumb";

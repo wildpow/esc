@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { FlexCol } from "../styles/mainStyles";
 import MakeOffer from "./makeOffer/makeOffer_NEW";
 

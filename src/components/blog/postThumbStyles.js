@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { FadeIn } from "../../styles/mainStyles";
 
 export const StyledLink = styled(Link)`

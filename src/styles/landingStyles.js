@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { FadeIn } from "./mainStyles";
 
 export const Container = styled.div`

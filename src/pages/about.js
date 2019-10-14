@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import {
   Main,
   PicHolder,

@@ -1,7 +1,7 @@
 // import { NavLink } from 'gatsby';
 import { Link } from "gatsby";
 
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const Header = styled.header`
   display: flex;

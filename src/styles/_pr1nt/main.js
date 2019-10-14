@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 
 export const DisplayNonePr1nt = css`
   @media print {
