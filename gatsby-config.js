@@ -69,6 +69,9 @@ const cfg = {
             headers: {
               "Content-Type": "application/json",
               accept: "application/json",
+              Connection: "keep-alive",
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Max-Age": 3600,
             },
             name: `widget`,
           },

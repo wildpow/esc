@@ -67,7 +67,7 @@ const SocialIcons = ({ bottom }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src={`/facebook.png`} alt="FaceBook logo" />
+        <SocImg src="/facebook.png" alt="FaceBook logo" />
       </OutboundLink>
       <OutboundLink
         href="https://twitter.com/CenterEsc?ref_src=twsrc%5Etfw"
@@ -75,14 +75,14 @@ const SocialIcons = ({ bottom }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src={`/twitter.png`} alt="twitter logo" />
+        <SocImg src="/twitter.png" alt="twitter logo" />
       </OutboundLink>
       <OutboundLink
         href="https://www.instagram.com/centeresc/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src={`/instagram.png`} alt="Instagram logo" />
+        <SocImg src="/instagram.png" alt="Instagram logo" />
       </OutboundLink>
       <OutboundLink
         href="https://www.yelp.com/biz/esc-mattress-center-everett-3"
@@ -90,7 +90,7 @@ const SocialIcons = ({ bottom }) => (
         rel="noopener noreferrer"
       >
         <YelpHolder>
-          <YelpImg src={`/yelp.png`} alt="yelp logo" />
+          <YelpImg src="/yelp.png" alt="yelp logo" />
         </YelpHolder>
       </OutboundLink>
       <OutboundLink
@@ -98,7 +98,7 @@ const SocialIcons = ({ bottom }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src={`/gmaps.png`} alt="google maps logo" />
+        <SocImg src="/gmaps.png" alt="google maps logo" />
       </OutboundLink>
     </DIVY>
   </Wrapper>
