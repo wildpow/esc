@@ -1,20 +1,12 @@
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
-import { H1Pr1nt, ReadersPr1nt } from "../../styles/_pr1nt/main";
+import { ReadersPr1nt } from "../../styles/_pr1nt/main";
 
 export const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   margin-top: -15px;
   margin: auto;
-`;
-
-export const Span = styled.span`
-  color: ${props => props.theme.mainColor1};
-  /* font-style: italic; */
-  font-family: ${props => props.theme.MainFont1};
-  font-weight: 700;
-  font-style: italic;
 `;
 
 export const ReadersChoice = styled.img`
