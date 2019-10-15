@@ -32,7 +32,7 @@ export const preset = {
     background: "#fff",
     primary: "#07c",
     brandBlue: "#1565c0",
-    BrandRed: "#eb1c24",
+    brandRed: "#eb1c24",
     offWhite: "#fcfcff",
     jet: "#343434",
     secondary: "#30c",

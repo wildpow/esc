@@ -12,7 +12,7 @@ import {
   LinkWrapper,
   LastLinkWrapper,
 } from "../styles/menuStyles";
-import Topper from "./Topper";
+import Topper from "./Topper/Topper";
 import logo from "../images/logo.png";
 import SocialIcons from "./socialIcons";
 

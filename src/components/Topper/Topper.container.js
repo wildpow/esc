@@ -1,21 +1,20 @@
 import React from "react";
 import { Flex } from "rebass";
-import TopPromo from "./TopPromo";
-import { OutBoundLink, BR } from "../styles/topperStyles";
-import { TopperNumber } from "../styles/_pr1nt/main";
+import PropTypes from "prop-types";
 
-const Topper = ({ menuToggle }) => (
-  <>
-    <TopperNumber />
+const TopperContainer = props => {
+  const { menuToggle } = props;
+  return (
     <Flex
+      {...props}
       justifyContent="space-between"
       sx={{
         width: menuToggle ? "100vw" : "initial",
         zIndex: 23,
         position: "relative",
         fontSize: [2, 3, 4],
-        fontWeight: 300,
-        backgroundColor: "BrandRed",
+        fontWeight: "body",
+        backgroundColor: "brandRed",
         fontFamily: "heading",
         boxShadow: "box",
         textShadow: "text",
@@ -26,15 +25,12 @@ const Topper = ({ menuToggle }) => (
       }}
       px={[3, 4]}
       py={[2]}
-    >
-      <TopPromo />
-      <OutBoundLink href="tel:1-425-512-0017">
-        Call:
-        <BR />
-        (425)-512-0017
-      </OutBoundLink>
-    </Flex>
-  </>
-);
+    />
+  );
+};
 
-export default Topper;
+TopperContainer.propTypes = {
+  menuToggle: PropTypes.bool.isRequired,
+};
+
+export default TopperContainer;
