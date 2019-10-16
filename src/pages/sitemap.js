@@ -62,7 +62,7 @@ const SiteMap = ({ data }) => {
                 return (
                   <li key={mattress.id}>
                     <SiteLinks to={`/brands/sealy/${mattress.slug}`}>
-                      {mattress.name}
+                      {`${mattress.subline.name} ${mattress.name}`}
                     </SiteLinks>
                   </li>
                 );
@@ -81,7 +81,7 @@ const SiteMap = ({ data }) => {
                 return (
                   <li key={mattress.id}>
                     <SiteLinks to={`/brands/tempurpedic/${mattress.slug}`}>
-                      {mattress.name}
+                      {`${mattress.subline.name} ${mattress.name}`}
                     </SiteLinks>
                   </li>
                 );
@@ -100,7 +100,7 @@ const SiteMap = ({ data }) => {
                 return (
                   <li key={mattress.id}>
                     <SiteLinks to={`/brands/stearns/${mattress.slug}`}>
-                      {mattress.name}
+                      {`${mattress.subline.name} ${mattress.name}`}
                     </SiteLinks>
                   </li>
                 );
@@ -155,6 +155,9 @@ export const allMattressesSiteMap = graphql`
         name
         id
         priceLow
+        subline {
+          name
+        }
         brand {
           urlName
           displayName
