@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Certified from "../images/badge.png";
 import BirdBig from "./birdBig";
+import star from "../images/star.png";
 
 const BirdLink = styled(OutboundLink)`
   text-decoration: none;
@@ -115,7 +116,7 @@ const Bird = () => {
         const { avgRating, reviewCount } = data.allWidget.nodes[0];
         for (let i = 0; i < avgRating; i += 1) {
           starsArr.push(
-            <img src="/star.png" alt="start for rating" key={i + 200} />,
+            <img src={star} alt="start for rating" key={i + 200} />,
           );
         }
         return (
@@ -139,7 +140,11 @@ const Bird = () => {
               </CertReview>
             </BirdLink>
             <BigWrapper>
-              <BirdBig avgRating={avgRating} reviewCount={reviewCount} />
+              <BirdBig
+                avgRating={avgRating}
+                reviewCount={reviewCount}
+                star={star}
+              />
             </BigWrapper>
           </>
         );
