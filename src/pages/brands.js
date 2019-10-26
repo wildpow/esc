@@ -23,13 +23,28 @@ const SectionContainer = styled.div`
   margin-top: 40px;
   scroll-behavior: smooth;
   display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(220px, 228px));
+  /* grid-template-rows: repeat(auto-fit, minmax(220px, 228px));
   grid-template-columns: repeat(auto-fit, minmax(300px, 486px));
   grid-gap: 40px;
   justify-items: center;
+  justify-content: center; */
+  grid-template-rows: repeat(auto-fill, 1fr 1fr 1fr);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 486px) minmax(300px, 486px)
+  );
+  grid-gap: 30px;
+  justify-items: center;
   justify-content: center;
+  align-content: flex-start;
   img {
-    margin: 5px;
+    max-width: 100%;
+    height: auto;
+  }
+  @media screen and (max-width: 650px) {
+    grid-gap: 20px;
+    grid-template-rows: repeat(auto-fit, minmax(220px, 228px));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 486px));
   }
 `;
 const Brands = ({ data }) => {

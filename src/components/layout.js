@@ -39,13 +39,9 @@ const Container = styled.div`
   padding-right: 5px;
   @media (min-width: 768px) {
     width: 750px;
-    /* padding-left: 10px;
-    padding-right: 10px; */
   }
   @media (min-width: 992px) {
     width: 970px;
-    /* padding-left: 5px;
-    padding-right: 5px; */
   }
   @media (min-width: 1200px) {
     width: 1170px;
