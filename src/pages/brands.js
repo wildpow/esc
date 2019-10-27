@@ -10,6 +10,8 @@ import tempur from "../images/New Images/TempurPedicBrandImage486x228.jpg";
 import bedTech from "../images/New Images/BedTechBrandImage486x228.jpg";
 import nectar from "../images/New Images/NectarBrandImage486x228.jpg";
 import malouf from "../images/New Images/WellsvilleMaloufBrandImage486x228.jpg";
+import BrandItem from "../components/brands/brand.item";
+import sealylogo from "../images/New Images/SealyLogo245x100.png";
 
 const SectionContainer = styled.div`
   min-height: 100vh;
@@ -52,7 +54,7 @@ const Brands = ({ data }) => {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <SectionContainer>
-        <img src={sealy} alt="stuff" />
+        <BrandItem cover={sealy} brand={sealylogo} route="/brands/sealy" />
         <img src={stearn} alt="stuff" />
         <img src={tempur} alt="stuff" />
         <img src={bedTech} alt="stuff" />
