@@ -102,7 +102,9 @@ const BgImage = ({
         mobileHeight={mobileHeight}
       />
       <Brand src={brand} className="brand" />
-      <Content className="overlay">{children}</Content>
+      <Content className="overlay">
+        <h4 style={{ color: "white", fontWeight: "300" }}>{children}</h4>
+      </Content>
     </Parent>
   </StyledLink>
 );

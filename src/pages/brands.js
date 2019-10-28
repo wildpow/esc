@@ -64,10 +64,8 @@ const Brands = ({ data }) => {
           overlayColor="#04040454"
           brand={sealylogo}
         >
-          <h4 style={{ color: "white", fontWeight: "300" }}>
-            Designed to deliver support where you need it most, Sealy supports
-            you.
-          </h4>
+          Designed to deliver support where you need it most, Sealy supports
+          you.
         </BgImage>
         <BgImage
           title="stearns"
@@ -75,10 +73,8 @@ const Brands = ({ data }) => {
           overlayColor="#04040454"
           brand={stearnLogo}
         >
-          <h4 style={{ color: "white", fontWeight: "300" }}>
-            Artfully crafted with a purposeful design. Stearns & Foster -
-            uncover exceptional.
-          </h4>
+          Artfully crafted with a purposeful design. Stearns & Foster - uncover
+          exceptional.
         </BgImage>
         <BgImage
           title="tempur"
@@ -86,10 +82,8 @@ const Brands = ({ data }) => {
           overlayColor="#04040454"
           brand={tempurLogo}
         >
-          <h4 style={{ color: "white", fontWeight: "300" }}>
-            Tempur-Pedic is the most highly recommended bed in America, feel the
-            difference.
-          </h4>
+          Tempur-Pedic is the most highly recommended bed in America, feel the
+          difference.
         </BgImage>
         <BgImage
           title="bedTech"
@@ -97,10 +91,7 @@ const Brands = ({ data }) => {
           overlayColor="#04040454"
           brand={bedTechLogo}
         >
-          <h4 style={{ color: "white", fontWeight: "300" }}>
-            Making a commitment to better sleep, BedTech is constantly
-            innovating.
-          </h4>
+          Making a commitment to better sleep, BedTech is constantly innovating.
         </BgImage>
         <BgImage
           title="malouf"
@@ -108,10 +99,7 @@ const Brands = ({ data }) => {
           overlayColor="#04040454"
           brand={maloufLogo}
         >
-          <h4 style={{ color: "white", fontWeight: "300" }}>
-            Making a commitment to better sleep, BedTech is constantly
-            innovating.
-          </h4>
+          Making a commitment to better sleep, BedTech is constantly innovating.
         </BgImage>
         <BgImage
           title="nectar"
@@ -119,10 +107,8 @@ const Brands = ({ data }) => {
           overlayColor="#04040454"
           brand={nectarLogo}
         >
-          <h4 style={{ color: "white", fontWeight: "300" }}>
-            Inspired by sleepers like you, the Nectar mattress is like sleeping
-            on a cloud.
-          </h4>
+          Inspired by sleepers like you, the Nectar mattress is like sleeping on
+          a cloud.
         </BgImage>
       </SectionContainer>
     </Layout>
