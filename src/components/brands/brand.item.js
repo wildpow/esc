@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import Img from "gatsby-image";
 
 const StyledLink = styled(Link)`
   position: relative;
@@ -14,7 +15,7 @@ const StyledLink = styled(Link)`
     transform: translate(-50%, -80%);
   }
 `;
-const Cover = styled.img`
+const Cover = styled(Img)`
   max-width: 100%;
   height: auto;
 `;
@@ -51,7 +52,7 @@ const Text = styled.p`
 `;
 const BrandItem = ({ cover, brand, route }) => (
   <StyledLink to={route}>
-    <Cover src={cover} alt="wefwef" />
+    <Cover fluid={cover} alt="wefwef" />
     <Brand src={brand} alt="wefwef" className="brand" />
     <Text className="overlay">
       Designed to deliver support where you need it most, Sealy supports you.

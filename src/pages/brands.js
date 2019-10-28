@@ -4,14 +4,13 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
-import sealy from "../images/New Images/SealyBrandImage486x228.jpg";
-import stearn from "../images/New Images/StearnsBrandImage486x228.jpg";
-import tempur from "../images/New Images/TempurPedicBrandImage486x228.jpg";
-import bedTech from "../images/New Images/BedTechBrandImage486x228.jpg";
-import nectar from "../images/New Images/NectarBrandImage486x228.jpg";
-import malouf from "../images/New Images/WellsvilleMaloufBrandImage486x228.jpg";
-import BrandItem from "../components/brands/brand.item";
-import sealylogo from "../images/New Images/SealyLogo245x100.png";
+import sealylogo from "../images/new/SealyLogo245x100.png";
+import BgImage from "../components/brands/bgImg";
+import stearnLogo from "../images/new/StearnsLogo245x100.png";
+import tempurLogo from "../images/new/TempurPedicLogo245x100.png";
+import bedTechLogo from "../images/new/BedTechLogo245x100.png";
+import maloufLogo from "../images/new/MaloufLogo245x100.png";
+import nectarLogo from "../images/new/NectarLogo245x100.png";
 
 const SectionContainer = styled.div`
   min-height: 100vh;
@@ -33,7 +32,7 @@ const SectionContainer = styled.div`
   grid-template-rows: repeat(auto-fill, 1fr 1fr 1fr);
   grid-template-columns: repeat(
     auto-fit,
-    minmax(300px, 486px) minmax(300px, 486px)
+    minmax(300px, 560px) minmax(300px, 560px)
   );
   grid-gap: 30px;
   justify-items: center;
@@ -54,12 +53,77 @@ const Brands = ({ data }) => {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <SectionContainer>
-        <BrandItem cover={sealy} brand={sealylogo} route="/brands/sealy" />
-        <img src={stearn} alt="stuff" />
-        <img src={tempur} alt="stuff" />
-        <img src={bedTech} alt="stuff" />
-        <img src={malouf} alt="t" />
-        <img src={nectar} alt="st" />
+        {/* <BrandItem
+          cover={data.sealy.childImageSharp.fluid}
+          brand={sealylogo}
+          route="/brands/sealy"
+        /> */}
+        <BgImage
+          title="sealy"
+          fluid={data.sealy.childImageSharp.fluid}
+          overlayColor="#04040454"
+          brand={sealylogo}
+        >
+          <h4 style={{ color: "white", fontWeight: "300" }}>
+            Designed to deliver support where you need it most, Sealy supports
+            you.
+          </h4>
+        </BgImage>
+        <BgImage
+          title="stearns"
+          fluid={data.stearns.childImageSharp.fluid}
+          overlayColor="#04040454"
+          brand={stearnLogo}
+        >
+          <h4 style={{ color: "white", fontWeight: "300" }}>
+            Artfully crafted with a purposeful design. Stearns & Foster -
+            uncover exceptional.
+          </h4>
+        </BgImage>
+        <BgImage
+          title="tempur"
+          fluid={data.tempur.childImageSharp.fluid}
+          overlayColor="#04040454"
+          brand={tempurLogo}
+        >
+          <h4 style={{ color: "white", fontWeight: "300" }}>
+            Tempur-Pedic is the most highly recommended bed in America, feel the
+            difference.
+          </h4>
+        </BgImage>
+        <BgImage
+          title="bedTech"
+          fluid={data.bedTech.childImageSharp.fluid}
+          overlayColor="#04040454"
+          brand={bedTechLogo}
+        >
+          <h4 style={{ color: "white", fontWeight: "300" }}>
+            Making a commitment to better sleep, BedTech is constantly
+            innovating.
+          </h4>
+        </BgImage>
+        <BgImage
+          title="malouf"
+          fluid={data.malouf.childImageSharp.fluid}
+          overlayColor="#04040454"
+          brand={maloufLogo}
+        >
+          <h4 style={{ color: "white", fontWeight: "300" }}>
+            Making a commitment to better sleep, BedTech is constantly
+            innovating.
+          </h4>
+        </BgImage>
+        <BgImage
+          title="nectar"
+          fluid={data.nectar.childImageSharp.fluid}
+          overlayColor="#04040454"
+          brand={nectarLogo}
+        >
+          <h4 style={{ color: "white", fontWeight: "300" }}>
+            Inspired by sleepers like you, the Nectar mattress is like sleeping
+            on a cloud.
+          </h4>
+        </BgImage>
       </SectionContainer>
     </Layout>
   );
@@ -70,6 +134,50 @@ export const brandsSEO = graphql`
     datoCmsSeo(name: { eq: "brands" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+    sealy: file(relativePath: { eq: "SealyBrandImage560x228.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 560, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    stearns: file(relativePath: { eq: "StearnsBrandImage560x228.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 560, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    tempur: file(relativePath: { eq: "TempurPedicBrandImage560x228.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 560, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    bedTech: file(relativePath: { eq: "BedTechBrandImage560x228.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 560, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    malouf: file(
+      relativePath: { eq: "WellsvilleMaloufBrandImage560x228.jpg" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 560, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    nectar: file(relativePath: { eq: "NectarBrandImage560x228.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 560, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
   }
