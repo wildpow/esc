@@ -10,6 +10,8 @@ export const Main = styled.div`
   margin-left: auto;
   margin-top: 15px;
   max-width: 980px;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 
 // export const Linky = styled(Link)`

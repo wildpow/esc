@@ -88,6 +88,8 @@ export const Main = styled(FlexCol)`
   ${props => props.theme.Animation}
   margin-left: 0px;
   margin-right: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
   @media (min-width: 1022px) {
     margin-top: ${props => (props.MarginTop ? "15px" : "0")};
   }

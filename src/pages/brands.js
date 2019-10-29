@@ -38,6 +38,8 @@ const SectionContainer = styled.div`
     grid-template-rows: repeat(auto-fit, minmax(220px, 228px));
     grid-template-columns: repeat(auto-fit, minmax(300px, 486px));
     margin-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 `;
 const Brands = ({ data }) => {
@@ -51,6 +53,7 @@ const Brands = ({ data }) => {
           title="sealy"
           fluid={data.sealy.childImageSharp.fluid}
           brand={sealylogo}
+          url="/brands/sealy"
         >
           Designed to deliver support where you need it most, Sealy supports
           you.
@@ -61,6 +64,7 @@ const Brands = ({ data }) => {
           title="stearns"
           fluid={data.stearns.childImageSharp.fluid}
           brand={stearnLogo}
+          url="/brands/stearns"
         >
           Artfully crafted with a purposeful design. Stearns & Foster - uncover
           exceptional.
@@ -71,6 +75,7 @@ const Brands = ({ data }) => {
           title="tempur"
           fluid={data.tempur.childImageSharp.fluid}
           brand={tempurLogo}
+          url="/brands/tempurpedic"
         >
           Tempur-Pedic is the most highly recommended bed in America, feel the
           difference.
@@ -81,6 +86,7 @@ const Brands = ({ data }) => {
           title="bedTech"
           fluid={data.bedTech.childImageSharp.fluid}
           brand={bedTechLogo}
+          url="/brands/bedtech"
         >
           Making a commitment to better sleep, BedTech is constantly innovating.
         </BgImage>
@@ -90,6 +96,7 @@ const Brands = ({ data }) => {
           title="malouf"
           fluid={data.malouf.childImageSharp.fluid}
           brand={maloufLogo}
+          url="/brands/malouf"
         >
           Making a commitment to better sleep, BedTech is constantly innovating.
         </BgImage>
@@ -99,6 +106,7 @@ const Brands = ({ data }) => {
           title="nectar"
           fluid={data.nectar.childImageSharp.fluid}
           brand={nectarLogo}
+          url="/brands/nectar"
         >
           Inspired by sleepers like you, the Nectar mattress is like sleeping on
           a cloud.

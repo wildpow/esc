@@ -35,8 +35,8 @@ const Body = styled.div`
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
-  padding-left: 5px;
-  padding-right: 5px;
+  /* padding-left: 5px;
+  padding-right: 5px; */
   @media (min-width: 768px) {
     width: 750px;
   }

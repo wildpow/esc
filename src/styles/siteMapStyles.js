@@ -59,6 +59,8 @@ export const MainLinks = styled(FlexCol)`
   border: ${props => props.theme.Border};
   box-shadow: ${props => props.theme.BoxShadow};
   margin-top: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
   ${props => props.theme.Animation}
   @media(min-width: 1300px) {
     margin-left: 85px;

@@ -98,8 +98,9 @@ const BgImage = ({
   children,
   className,
   brand,
+  url,
 }) => (
-  <StyledLink to="/bands/sealy">
+  <StyledLink to={url}>
     <Parent bc={overlayColor}>
       <FakeBgImage
         fluid={fluid}

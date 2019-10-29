@@ -25,6 +25,8 @@ const BlogContainer = styled.div`
   display: grid;
   grid-gap: 10px;
   margin-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   grid-template-areas:
     "header"
     "posts"

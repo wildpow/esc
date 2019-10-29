@@ -10,6 +10,8 @@ export const MainArticle = styled.article`
   ${props => props.theme.Animation}
   margin-top: 15px;
   padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
   @media (min-width: 1024px) {
     padding-bottom: 15px;
   }
