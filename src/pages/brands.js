@@ -17,18 +17,9 @@ const SectionContainer = styled.div`
   min-width: 320px;
   max-width: 1366px;
   margin: auto;
-  /* flex: 0 1 auto;
-  flex-direction: column;
-  justify-content: center; */
-  /* padding: 5em 1em; */
   margin-top: 40px;
   scroll-behavior: smooth;
   display: grid;
-  /* grid-template-rows: repeat(auto-fit, minmax(220px, 228px));
-  grid-template-columns: repeat(auto-fit, minmax(300px, 486px));
-  grid-gap: 40px;
-  justify-items: center;
-  justify-content: center; */
   grid-template-rows: repeat(auto-fill, 1fr 1fr 1fr);
   grid-template-columns: repeat(
     auto-fit,
@@ -46,6 +37,7 @@ const SectionContainer = styled.div`
     grid-gap: 20px;
     grid-template-rows: repeat(auto-fit, minmax(220px, 228px));
     grid-template-columns: repeat(auto-fit, minmax(300px, 486px));
+    margin-top: 20px;
   }
 `;
 const Brands = ({ data }) => {
@@ -53,58 +45,59 @@ const Brands = ({ data }) => {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <SectionContainer>
-        {/* <BrandItem
-          cover={data.sealy.childImageSharp.fluid}
-          brand={sealylogo}
-          route="/brands/sealy"
-        /> */}
         <BgImage
+          mobileHeight="228px"
+          height="228px"
           title="sealy"
           fluid={data.sealy.childImageSharp.fluid}
-          overlayColor="#04040454"
           brand={sealylogo}
         >
           Designed to deliver support where you need it most, Sealy supports
           you.
         </BgImage>
         <BgImage
+          mobileHeight="228px"
+          height="228px"
           title="stearns"
           fluid={data.stearns.childImageSharp.fluid}
-          overlayColor="#04040454"
           brand={stearnLogo}
         >
           Artfully crafted with a purposeful design. Stearns & Foster - uncover
           exceptional.
         </BgImage>
         <BgImage
+          mobileHeight="228px"
+          height="228px"
           title="tempur"
           fluid={data.tempur.childImageSharp.fluid}
-          overlayColor="#04040454"
           brand={tempurLogo}
         >
           Tempur-Pedic is the most highly recommended bed in America, feel the
           difference.
         </BgImage>
         <BgImage
+          mobileHeight="228px"
+          height="228px"
           title="bedTech"
           fluid={data.bedTech.childImageSharp.fluid}
-          overlayColor="#04040454"
           brand={bedTechLogo}
         >
           Making a commitment to better sleep, BedTech is constantly innovating.
         </BgImage>
         <BgImage
+          mobileHeight="228px"
+          height="228px"
           title="malouf"
           fluid={data.malouf.childImageSharp.fluid}
-          overlayColor="#04040454"
           brand={maloufLogo}
         >
           Making a commitment to better sleep, BedTech is constantly innovating.
         </BgImage>
         <BgImage
+          mobileHeight="228px"
+          height="228px"
           title="nectar"
           fluid={data.nectar.childImageSharp.fluid}
-          overlayColor="#04040454"
           brand={nectarLogo}
         >
           Inspired by sleepers like you, the Nectar mattress is like sleeping on
