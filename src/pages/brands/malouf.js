@@ -5,6 +5,97 @@ import Layout from "../../components/layout";
 import logo from "../../images/new/landing/logo.jpg";
 import hero from "../../images/new/landing/hero.jpg";
 import finessed from "../../images/new/landing/finessed-to-impress.jpg";
+
+import ease from "../../images/new/landing/ease.jpg";
+import ergo from "../../images/new/landing/ergo.jpg";
+import ergoExtend from "../../images/new/landing/ergo-extend.jpg";
+import flatFoundation from "../../images/new/landing/flat-foundation.jpg";
+import Carousel from "../../components/brands/carousel";
+
+import reserve from "../../images/new/landing/reserve.jpg";
+import luxEstateHybrid from "../../images/new/landing/lux-estate-hybrid.jpg";
+import luxEstate from "../../images/new/landing/lux-estate.jpg";
+import estate from "../../images/new/landing/estate.jpg";
+import restOnaSolid from "../../images/new/landing/rest-on-a-solid-foundation.jpg";
+import memoryPill from "../../images/new/landing/memory-foam-pillow.jpg";
+const pillow = [
+  {
+    title: "Memory Foam Pillow",
+    desc: [
+      "MEMORY FOAM PILLOW",
+      "Plush Memory Foam core",
+      "Premium stretch-knit cover featuring TENCELTM",
+      " Removable and washable cover",
+    ],
+    pic: "memoryPill",
+  },
+];
+
+const subBrand = [
+  {
+    title: "Reserve",
+    desc: `The Stearns & Foster® Reserve Collection is our highest expression 
+          of craftsmanship. We developed an entirely new mattress-making process 
+          to craft its one-of-a-kind design, quality, and feel. Nothing matches 
+          the feeling of a Reserve.`,
+    pic: reserve,
+  },
+  {
+    title: "Lux Estate Hybrid",
+    desc: `The Lux Estate Hybrid Collection takes the comfort of Indulge Memory 
+    Foam and adds our own time-honored craftsmanship. It’s a hybrid mattress 
+    that’s as cozy as it is supportive—and the only one to earn the Stearns 
+    & Foster® name.`,
+    pic: luxEstateHybrid,
+  },
+  {
+    title: "Lux Estate",
+    desc: `In a perfectly designed bedroom, it’s the little details that matter. 
+    The Lux Estate Collection includes all the extra touches you deserve.
+    All to deliver next-level comfort.`,
+    pic: luxEstate,
+  },
+  {
+    title: "Estate",
+    desc: `The Stearns & Foster® Estate Collection is designed to deliver supreme,
+     indulging comfort. Crafted by our Certified Master Craftsmen with the world’s
+      finest materials, plus designed with IntelliCoil® Technology.`,
+    pic: estate,
+  },
+];
+const car = [
+  {
+    title: "Ease®",
+    desc: `Ease® has all the features you need in a power base.
+            With nearly unlimited ergonomic positions and presets, 
+            the Ease is an essential part of a complete and seamless 
+            sleep experience.`,
+    pic: ease,
+  },
+  {
+    title: "Ergo®",
+    desc: `The TEMPUR-Ergo® power base is an essential part 
+            of a holistic sleep system, combining premium technologies 
+            like QuietModeTM, USB ports and underbed lighting.`,
+    pic: ergo,
+  },
+  {
+    title: "Ergo Extend®",
+    desc: `TEMPUR-Ergo® Extend is Tempur-Pedic's most elite power base, 
+    combining premium technologies like QuietModeTM and PerfectSeatTM to 
+    create the ultimate addition to a holistic sleep experience.`,
+    pic: ergoExtend,
+  },
+  {
+    title: "Flat Foundation",
+    desc: `Ease® has all the features you need in a power base.
+            With nearly unlimited ergonomic positions and presets, 
+            the Ease is an essential part of a complete and seamless 
+            sleep experience.`,
+    pic: flatFoundation,
+  },
+];
+
 const Section = styled.section`
   min-height: 100vh;
   min-width: 320px;
@@ -126,10 +217,22 @@ const Malouf = () => (
       <div>
         <Hr />
       </div>
-      <LogoContainer>
-        <img src={finessed} alt="erfewfg" />
-        <p>Design, Comfort, and Quality Craftsmanship in every collection.</p>
-      </LogoContainer>
+      <Carousel
+        car={subBrand}
+        topImg={finessed}
+        topP="Design, Comfort, and Quality Craftsmanship in every collection."
+      />
+      <div>
+        <Hr />
+      </div>
+      <Carousel
+        car={car}
+        topImg={restOnaSolid}
+        topP="Experience Stearns & Foster® indulgent comfort with a foundation or power base crafted to fit your lifestyle."
+      />
+      <div>
+        <Hr />
+      </div>
     </Section>
   </Layout>
 );
