@@ -65,7 +65,15 @@ const Carousel = ({ car, topImg, topP }) => {
           <img src={car[current].pic} alt="wefewf" />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <h4>{car[current].title.toUpperCase()}</h4>
-            <p>{car[current].desc}</p>
+            {typeof car[current].desc !== "object" ? (
+              <p>{car[current].desc}</p>
+            ) : (
+              <ul>
+                {car[current].desc.map(c => (
+                  <li key={c}>{c}</li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>

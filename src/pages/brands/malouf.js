@@ -18,16 +18,27 @@ import luxEstate from "../../images/new/landing/lux-estate.jpg";
 import estate from "../../images/new/landing/estate.jpg";
 import restOnaSolid from "../../images/new/landing/rest-on-a-solid-foundation.jpg";
 import memoryPill from "../../images/new/landing/memory-foam-pillow.jpg";
+import latexPillow from "../../images/new/landing/latex-pillow.jpg";
+import topItAll from "../../images/new/landing/top-it-all-off.jpg";
+
 const pillow = [
   {
     title: "Memory Foam Pillow",
     desc: [
-      "MEMORY FOAM PILLOW",
       "Plush Memory Foam core",
       "Premium stretch-knit cover featuring TENCELTM",
       " Removable and washable cover",
     ],
-    pic: "memoryPill",
+    pic: memoryPill,
+  },
+  {
+    title: "Latex Pillow",
+    desc: [
+      "Naturally breathable Talalay latex core",
+      "Premium stretch-knit cover featuring TENCELTM",
+      "Removable and washable cover",
+    ],
+    pic: latexPillow,
   },
 ];
 
@@ -233,6 +244,11 @@ const Malouf = () => (
       <div>
         <Hr />
       </div>
+      <Carousel
+        car={pillow}
+        topP="The only pillows worthy of your Stearns & Foster mattress."
+        topImg={topItAll}
+      />
     </Section>
   </Layout>
 );

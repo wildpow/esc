@@ -98,7 +98,8 @@ const Brands = ({ data }) => {
           brand={maloufLogo}
           url="/brands/malouf"
         >
-          Making a commitment to better sleep, BedTech is constantly innovating.
+          Bringing quality comfort into your home, Malouf helps you sleep
+          better.
         </BgImage>
         <BgImage
           mobileHeight="228px"
