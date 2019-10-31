@@ -51,7 +51,7 @@ const Brands = ({ data }) => {
             key={brand.id}
             mobileHeight="228px"
             height="228px"
-            title={brand.title}
+            title={brand.displayName}
             bgImg={brand.lifeStyleImg}
             logo={brand.brandLogo}
             url={`/brands/${brand.urlName}`}
@@ -77,6 +77,7 @@ export const brandsSEO = graphql`
     allDatoCmsBrand {
       nodes {
         id
+        displayName
         urlName
         lifeStyleText
         lifeStyleImg {

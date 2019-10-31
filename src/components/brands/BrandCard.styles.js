@@ -7,12 +7,23 @@ const BrandLink = styled(Link)`
   width: 100%;
   overflow: hidden;
   position: relative;
-  :hover .overlay {
+  :hover .overlay,
+  :focus .overlay {
     opacity: 1;
   }
-  :hover .brand {
+  :hover .brand,
+  :focus .brand {
     transform: translate(-50%, -80%);
   }
+  /* ASK WILL */
+  /* @media screen and (max-width: 568px) {
+    .overlay {
+      opacity: 0.9;
+    }
+    .brand {
+      transform: translate(-50%, -80%);
+    }
+  } */
 `;
 
 const BgImage = styled(Img)`
@@ -32,6 +43,7 @@ const BgImage = styled(Img)`
 
   @media screen and (max-width: 600px) {
     height: ${({ mobileHeight }) => mobileHeight};
+    /* filter: brightness(90%) saturate(145%); */
   }
 `;
 
@@ -79,6 +91,10 @@ const Content = styled.div`
     padding-right: 5px;
     color: white;
     font-weight: 300;
+  }
+  @media screen and (max-width: 568px) {
+    font-size: 1rem;
+    line-height: 1.3rem;
   }
 `;
 
