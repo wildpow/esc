@@ -16,23 +16,16 @@ const StyledLink = styled(Link)`
     transform: translate(-50%, -80%);
   }
 `;
-const Parent = styled.div`
-  position: relative;
-  background-color: ${({ bc }) => bc};
-`;
 
-const FakeBgImage = styled(Img)`
+const BgImage = styled(Img)`
   position: absolute;
-  filter: brightness(75%) saturate(140%);
-  filter: brightness(80%) saturate(130%);
+  /* filter: brightness(75%) saturate(140%);
+  filter: brightness(80%) saturate(130%); */
   filter: brightness(85%) saturate(135%);
-
   top: 0;
   left: 0;
   width: 100%;
   height: ${({ height }) => height};
-  /* z-index: -1; */
-
   & > img {
     object-fit: cover !important;
     object-position: 0% 0% !important;
@@ -86,51 +79,52 @@ const Content = styled.div`
   h4 {
     padding-left: 5px;
     padding-right: 5px;
+    color: white;
+    font-weight: 300;
   }
 `;
 
-const BgImage = ({
-  fluid,
+const LifeStyleCard = ({
+  bgImg,
   title,
   height,
   mobileHeight,
-  overlayColor,
   children,
-  className,
-  brand,
+  logo,
   url,
 }) => (
   <StyledLink to={url}>
-    <Parent bc={overlayColor}>
-      <FakeBgImage
-        fluid={fluid}
-        title={title}
-        height={height}
-        mobileHeight={mobileHeight}
-      />
-      <Brand src={brand} className="brand" />
-      <Content className="overlay">
-        <h4 style={{ color: "white", fontWeight: "300" }}>{children}</h4>
-      </Content>
-    </Parent>
+    <BgImage
+      fluid={bgImg.fluid}
+      title={title}
+      height={height}
+      mobileHeight={mobileHeight}
+      alt={bgImg.alt}
+    />
+    <Brand src={logo.url} className="brand" alt={logo.alt} />
+    <Content className="overlay">
+      <h4>{children}</h4>
+    </Content>
   </StyledLink>
 );
-BgImage.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  fluid: PropTypes.object.isRequired,
+LifeStyleCard.propTypes = {
+  logo: PropTypes.shape({
+    alt: PropTypes.string,
+    url: PropTypes.string,
+    title: PropTypes.string,
+  }).isRequired,
+  bgImg: PropTypes.instanceOf(Object).isRequired,
   title: PropTypes.string.isRequired,
   height: PropTypes.string,
   mobileHeight: PropTypes.string,
-  overlayColor: PropTypes.string,
   children: PropTypes.node,
-  className: PropTypes.string,
+  url: PropTypes.string,
 };
-BgImage.defaultProps = {
+LifeStyleCard.defaultProps = {
   height: null,
   mobileHeight: null,
-  overlayColor: "transparent",
   children: null,
-  className: null,
+  url: "/brands",
 };
 
-export default BgImage;
+export default LifeStyleCard;
