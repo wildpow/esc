@@ -4,7 +4,8 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
-import LifeStyleCard from "../components/brands/LifeStyleCard";
+import LifeStyleCard from "../components/brands/BrandCard";
+import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 
 const SectionContainer = styled.div`
   min-height: 100vh;
@@ -12,6 +13,7 @@ const SectionContainer = styled.div`
   max-width: 1366px;
   margin: auto;
   margin-top: 40px;
+  margin-bottom: 20px;
   scroll-behavior: smooth;
   display: grid;
   grid-template-rows: repeat(auto-fill, 1fr 1fr 1fr);
@@ -31,7 +33,7 @@ const SectionContainer = styled.div`
     grid-gap: 20px;
     grid-template-rows: repeat(auto-fit, minmax(220px, 228px));
     grid-template-columns: repeat(auto-fit, minmax(300px, 486px));
-    margin-top: 20px;
+    margin-top: 0px;
     padding-left: 5px;
     padding-right: 5px;
   }
@@ -40,6 +42,9 @@ const Brands = ({ data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
+      <BreadWrapper hidenLarge>
+        <BreadCrumbs here="Brands" />
+      </BreadWrapper>
       <SectionContainer>
         {data.allDatoCmsBrand.nodes.map(brand => (
           <LifeStyleCard
@@ -55,6 +60,9 @@ const Brands = ({ data }) => {
           </LifeStyleCard>
         ))}
       </SectionContainer>
+      <BreadWrapper hidenLarge Bottom>
+        <BreadCrumbs here="Brands" />
+      </BreadWrapper>
     </Layout>
   );
 };

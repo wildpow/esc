@@ -41,10 +41,25 @@ const LinkHolder = styled.div`
   }
 `;
 
+const Hr = styled.hr`
+  border-top: 1px solid #eee;
+  /* border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  z-index: 1000; */
+  border-bottom: 2px solid #7ea9c8;
+  margin-bottom: 3em;
+  display: block;
+`;
 const Carousel = ({ car, topImg, topP }) => {
   const [current, setCurrent] = useState(0);
   return (
     <>
+      {console.log(car)}
+      <div>
+        <Hr />
+      </div>
       <LogoContainer>
         <img src={topImg} alt="erfewfg" />
         <p>{topP}</p>
@@ -62,18 +77,12 @@ const Carousel = ({ car, topImg, topP }) => {
         <div
           style={{ display: "flex", flexDirection: "row", marginTop: "20px" }}
         >
-          <img src={car[current].pic} alt="wefewf" />
+          <img src={car[current].picture.url} alt="wefewf" />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <h4>{car[current].title.toUpperCase()}</h4>
-            {typeof car[current].desc !== "object" ? (
-              <p>{car[current].desc}</p>
-            ) : (
-              <ul>
-                {car[current].desc.map(c => (
-                  <li key={c}>{c}</li>
-                ))}
-              </ul>
-            )}
+            <div
+              dangerouslySetInnerHTML={{ __html: car[current].description }}
+            />
           </div>
         </div>
       </div>

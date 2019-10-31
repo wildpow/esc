@@ -1,10 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
 import Img from "gatsby-image";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-const StyledLink = styled(Link)`
+const BrandLink = styled(Link)`
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -37,7 +35,7 @@ const BgImage = styled(Img)`
   }
 `;
 
-const Brand = styled.img`
+const BrandLogo = styled.img`
   position: absolute;
   display: block;
   width: 100%;
@@ -84,47 +82,9 @@ const Content = styled.div`
   }
 `;
 
-const LifeStyleCard = ({
-  bgImg,
-  title,
-  height,
-  mobileHeight,
-  children,
-  logo,
-  url,
-}) => (
-  <StyledLink to={url}>
-    <BgImage
-      fluid={bgImg.fluid}
-      title={title}
-      height={height}
-      mobileHeight={mobileHeight}
-      alt={bgImg.alt}
-    />
-    <Brand src={logo.url} className="brand" alt={logo.alt} />
-    <Content className="overlay">
-      <h4>{children}</h4>
-    </Content>
-  </StyledLink>
-);
-LifeStyleCard.propTypes = {
-  logo: PropTypes.shape({
-    alt: PropTypes.string,
-    url: PropTypes.string,
-    title: PropTypes.string,
-  }).isRequired,
-  bgImg: PropTypes.instanceOf(Object).isRequired,
-  title: PropTypes.string.isRequired,
-  height: PropTypes.string,
-  mobileHeight: PropTypes.string,
-  children: PropTypes.node,
-  url: PropTypes.string,
+export default {
+  BrandLink,
+  BgImage,
+  BrandLogo,
+  Content,
 };
-LifeStyleCard.defaultProps = {
-  height: null,
-  mobileHeight: null,
-  children: null,
-  url: "/brands",
-};
-
-export default LifeStyleCard;

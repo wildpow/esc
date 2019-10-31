@@ -1,5 +1,6 @@
 import { graphql } from "gatsby";
 
+// eslint-disable-next-line import/prefer-default-export
 export const mattressParts = graphql`
   fragment mattressParts on DatoCmsMattress {
     slug
