@@ -2,16 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
-import Layout from "../../components/layout";
-import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
+import Layout from "../../../components/layout";
+import BreadCrumbs, { BreadWrapper } from "../../../components/breadCrumbs";
 import {
   MainWrapper,
   Wrapper,
   MainTitle,
   SealyImgPlace,
-} from "../../styles/mattListStyles";
-import SealyImg from "../../images/sealyLogo.png";
-import MattressThumb from "../../components/mattThumbNail/mattThumb";
+} from "../../../styles/mattListStyles";
+import SealyImg from "../../../images/sealyLogo.png";
+import MattressThumb from "../../../components/mattThumbNail/mattThumb";
 
 const Sealy = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;

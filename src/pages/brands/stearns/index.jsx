@@ -7,11 +7,11 @@ import {
   Wrapper,
   MainTitle,
   StearnsImgPlaceHolder,
-} from "../../styles/mattListStyles";
-import Layout from "../../components/layout";
-import StearnsImg from "../../images/stearnsLogo.png";
-import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
-import MattressThumb from "../../components/mattThumbNail/mattThumb";
+} from "../../../styles/mattListStyles";
+import Layout from "../../../components/layout";
+import StearnsImg from "../../../images/stearnsLogo.png";
+import BreadCrumbs, { BreadWrapper } from "../../../components/breadCrumbs";
+import MattressThumb from "../../../components/mattThumbNail/mattThumb";
 
 const Stearns = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;

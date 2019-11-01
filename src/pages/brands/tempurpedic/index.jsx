@@ -1,17 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import Layout from "../../components/layout";
+import Layout from "../../../components/layout";
 import {
   MainWrapper,
   Wrapper,
   MainTitle,
   Img,
-} from "../../styles/mattListStyles";
-import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
-import TempurImg from "../../images/tempurLogo2.png";
-import MattressThumb from "../../components/mattThumbNail/mattThumb";
+} from "../../../styles/mattListStyles";
+import BreadCrumbs, { BreadWrapper } from "../../../components/breadCrumbs";
+import TempurImg from "../../../images/tempurLogo2.png";
+import MattressThumb from "../../../components/mattThumbNail/mattThumb";
 
 const Tempurpedic = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;
@@ -23,6 +23,7 @@ const Tempurpedic = ({ data }) => {
           <BreadCrumbs next="Brands" here="Tempurpedic" />
         </BreadWrapper>
         <MainTitle>
+          <Link to="brands/tempurpedic/landing">Learn more</Link>
           <Img src={TempurImg} alt="Logo of the Tempurpedic mattress company" />
         </MainTitle>
         <Wrapper>

@@ -38,6 +38,14 @@ const LinkHolder = styled.div`
       background-color: #c8645d;
       color: white;
     }
+    :active {
+      background-color: #c8645d;
+      color: white;
+    }
+    :focus {
+      background-color: #c8645d;
+      color: white;
+    }
   }
 `;
 
