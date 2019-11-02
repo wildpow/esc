@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import Layout from "../../components/layout";
-import LandingTabBox from "../../components/brands/LandingTabBox";
+import TabBox from "../../components/brands/TabBox";
 
 const Section = styled.section`
   min-height: 100vh;
@@ -121,11 +121,11 @@ const Malouf = ({ data }) => {
           </div>
         </Container>
         {tabBox.map(item => (
-          <LandingTabBox
+          <TabBox
             key={item.id}
-            car={item.box}
-            topImg={item.topImage.url}
-            topP={item.topText}
+            tabs={item.box}
+            hero={item.topImage}
+            heroText={item.topText}
           />
         ))}
       </Section>
