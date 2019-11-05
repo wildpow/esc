@@ -93,6 +93,10 @@ const Hr = styled.hr`
   display: block;
 `;
 
+const TabBoxContainer = styled.div`
+  margin-bottom: 40px;
+  margin-top: 40px;
+`;
 const Landing = ({ data }) => {
   const { title, headingImg, heroImg, description, tabBox } = data;
 
@@ -111,17 +115,16 @@ const Landing = ({ data }) => {
           </div>
         </Container>
         {tabBox.map(item => (
-          <>
-            <div>
-              <Hr />
-            </div>
+          <TabBoxContainer>
+            <Hr />
+
             <TabBox
               key={item.id}
               tabs={item.box}
               hero={item.topImage}
               heroText={item.topText}
             />
-          </>
+          </TabBoxContainer>
         ))}
         <div>
           <Hr />
