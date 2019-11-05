@@ -92,18 +92,7 @@ const Hr = styled.hr`
   margin-bottom: 3em;
   display: block;
 `;
-const TabContainer = styled.div`
-  display: flex;
-  width: 100%;
-  position: relative;
-  flex-direction: column;
-  justify-self: center;
-  justify-items: center;
-  justify-content: center;
-  align-self: center;
-  align-content: center;
-  /* align-items: center; */
-`;
+
 const Landing = ({ data }) => {
   const { title, headingImg, heroImg, description, tabBox } = data;
 
@@ -113,9 +102,7 @@ const Landing = ({ data }) => {
         <LogoContainer>
           <Logo fluid={headingImg.fluid} alt={headingImg.alt} />
         </LogoContainer>
-
         <Hero fluid={heroImg.fluid} alt={heroImg.alt} />
-
         <Container>
           <p>{description}</p>
           <div>
@@ -123,9 +110,6 @@ const Landing = ({ data }) => {
             <Button>Contact Us Now!</Button>
           </div>
         </Container>
-      </Section>
-      <Section>
-        {/* <TabContainer> */}
         {tabBox.map(item => (
           <>
             <div>
@@ -139,7 +123,6 @@ const Landing = ({ data }) => {
             />
           </>
         ))}
-        {/* </TabContainer> */}
         <div>
           <Hr />
         </div>

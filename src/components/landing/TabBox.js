@@ -3,45 +3,14 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Tab from "./Tab";
-
-const LogoContainer = styled.div`
-  text-align: center;
-  p {
-    color: #00103b;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.6rem;
-    text-align: center;
-    font-family: ${props => props.theme.MainFont3};
-  }
-
-  @media only screen and (max-width: 768px) {
-    padding: 0 30px;
-  }
-`;
-const Logo = styled(Img)`
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  max-width: ${props => props.width}px;
-  margin: 0 auto;
-  text-align: center;
-`;
+import TabHero from "./TabHero";
 
 const LinkHolder = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const Hr = styled.hr`
-  border-top: 1px solid #eee;
-  border-bottom: 2px solid #7ea9c8;
-  margin-bottom: 3em;
-  display: block;
-`;
-
 const TabContainer = styled.div`
-  /* display: "flex", flexDirection: "row", width: "100%" */
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -68,24 +37,19 @@ const TabContent = styled.div`
     width: 100%;
   }
 `;
+
+const Header = styled.header`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+`;
+
 const TabBox = ({ tabs, hero, heroText }) => {
   const [current, setCurrent] = useState(0);
   return (
     <>
-      {console.log(hero)}
-      {/* <div>
-        <Hr />
-      </div> */}
-      <LogoContainer>
-        <Logo
-          fluid={hero.fluid}
-          alt={hero.alt}
-          title={hero.title}
-          width={hero.width}
-        />
-        <p>{heroText}</p>
-      </LogoContainer>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <Header>
+        <TabHero hero={hero} heroText={heroText} />
         <LinkHolder>
           {tabs.map((data, i) => {
             return (
@@ -100,6 +64,8 @@ const TabBox = ({ tabs, hero, heroText }) => {
             );
           })}
         </LinkHolder>
+      </Header>
+      <div style={{ display: "flex", flexDirection: "column" }}>
         <TabContainer>
           <TabImg
             fluid={tabs[current].picture.fluid}
