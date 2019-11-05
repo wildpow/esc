@@ -74,7 +74,7 @@ export const brandsSEO = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    allDatoCmsBrand {
+    allDatoCmsBrand(sort: { fields: position }) {
       nodes {
         id
         displayName

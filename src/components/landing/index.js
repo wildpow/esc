@@ -1,4 +1,5 @@
 import React from "react";
+import Img from "gatsby-image";
 import styled from "styled-components";
 import TabBox from "./TabBox";
 
@@ -9,7 +10,7 @@ const Section = styled.section`
   max-width: 1366px;
   display: flex;
   margin: auto;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   background-color: white;
   flex-direction: column;
   scroll-behavior: smooth;
@@ -24,38 +25,34 @@ const Section = styled.section`
   }
 `;
 
-const HeroContainer = styled.div`
+const Hero = styled(Img)`
   img {
     width: 100%;
     height: auto;
   }
 
   @media only screen and (max-width: 768px) {
-    img {
-      height: 210px;
-      overflow: hidden;
-    }
+    height: 210px;
+    overflow: hidden;
   }
 `;
 const LogoContainer = styled.div`
   text-align: center;
-  p {
-    color: #00103b;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.6rem;
-    text-align: center;
-    font-family: ${props => props.theme.MainFont3};
+  padding-top: 42px;
+  padding-bottom: 28px;
+  @media screen and (max-width: 768px) {
+    padding-right: 30px;
+    padding-left: 30px;
   }
-  img {
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-  }
-
-  @media only screen and (max-width: 768px) {
-    padding: 0 30px;
-  }
+`;
+const Logo = styled(Img)`
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 662px;
+  max-height: 116px;
 `;
 const Container = styled.div`
   font-family: ${props => props.theme.MainFont3};
@@ -103,11 +100,11 @@ const Landing = ({ data }) => {
     <div style={{ maxWidth: "1440px", backgroundColor: "white" }}>
       <Section>
         <LogoContainer>
-          <img src={headingImg.url} alt={headingImg.alt} />
+          <Logo fluid={headingImg.fluid} alt={headingImg.alt} />
         </LogoContainer>
-        <HeroContainer>
-          <img src={heroImg.url} alt={heroImg.alt} />
-        </HeroContainer>
+
+        <Hero fluid={heroImg.fluid} alt={heroImg.alt} />
+
         <Container>
           <p>{description}</p>
           <div>

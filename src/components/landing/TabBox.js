@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Img from "gatsby-image";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Tab from "./Tab";
