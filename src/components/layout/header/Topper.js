@@ -1,7 +1,7 @@
 import React from "react";
 import TopPromo from "./TopPromo";
-import { Top, Wrapper, OutBoundLink, BR } from "../styles/topperStyles";
-import { TopperNumber } from "../styles/_pr1nt/main";
+import { Top, Wrapper, OutBoundLink, BR } from "../../../styles/topperStyles";
+import { TopperNumber } from "../../../styles/_pr1nt/main";
 
 const Topper = ({ menuToggle }) => (
   <>

@@ -40,7 +40,6 @@ const TabBox = ({ tabs, hero, heroText }) => {
   const [current, setCurrent] = useState(0);
   return (
     <>
-      {console.log(current, hero.title)}
       <div>
         <Hr />
       </div>
@@ -81,7 +80,6 @@ const TabBox = ({ tabs, hero, heroText }) => {
           </div>
         </div>
       </div>
-      {console.log(tabs)}
     </>
   );
 };

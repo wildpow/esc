@@ -1,6 +1,6 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { OutBoundLink, InboundLink } from "../styles/topperStyles";
+import { OutBoundLink, InboundLink } from "../../../styles/topperStyles";
 
 const TopPromo = () => (
   <StaticQuery

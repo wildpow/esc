@@ -1,12 +1,24 @@
 import React from "react";
+import { graphql } from "gatsby";
+import PropTypes from "prop-types";
 import Layout from "../../../components/layout";
+import Landing from "../../../components/landing";
 
-const Landing = () => (
+const TempurLanding = ({ data }) => (
   <Layout>
-    <div>
-      <h1>Tempurpedic Landing Page</h1>
-    </div>
+    <Landing data={data.datoCmsLanding} />
   </Layout>
 );
 
-export default Landing;
+TempurLanding.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+export const TempurLandingPage = graphql`
+  query tempurLandingPage {
+    datoCmsLanding(title: { eq: "tempur" }) {
+      ...landing
+    }
+  }
+`;
+
+export default TempurLanding;

@@ -1,12 +1,24 @@
 import React from "react";
+import { graphql } from "gatsby";
+import PropTypes from "prop-types";
 import Layout from "../../../components/layout";
+import Landing from "../../../components/landing";
 
-const Landing = () => (
+const StearnsLanding = ({ data }) => (
   <Layout>
-    <div>
-      <h1>Stearns Landing Page</h1>
-    </div>
+    <Landing data={data.datoCmsLanding} />
   </Layout>
 );
 
-export default Landing;
+StearnsLanding.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+export const StearnsLandingPage = graphql`
+  query stearnsLandingPage {
+    datoCmsLanding(title: { eq: "stearns" }) {
+      ...landing
+    }
+  }
+`;
+
+export default StearnsLanding;

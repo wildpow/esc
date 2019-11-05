@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Img from "gatsby-image";
 import { graphql, StaticQuery } from "gatsby";
 import { Location } from "@reach/router";
-import SocialIcons from "./socialIcons";
+import SocialIcons from "../../socialIcons";
 import {
   MainFooter,
   Wrapper,
@@ -19,7 +19,7 @@ import {
   BottomIconWrapper,
   Bird667Container,
   BirdContainerSmall,
-} from "../styles/footerStyles";
+} from "../../../styles/footerStyles";
 // import BBBHor from "../images/ab_seal_horizontal_black_large.jpg";
 // import BBBWebpHor from "../images/ab_seal_horizontal_black_large.webp";
 import Bird from "./bird";

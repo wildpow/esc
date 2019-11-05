@@ -11,10 +11,10 @@ import {
   NoLinkOnSM,
   LinkWrapper,
   LastLinkWrapper,
-} from "../styles/menuStyles";
+} from "../src/styles/menuStyles";
 import Topper from "./Topper";
 import logo from "../images/logo.png";
-import SocialIcons from "./socialIcons";
+import SocialIcons from "../src/components/socialIcons";
 
 const Menu = ({ menuVisibility, handleMouseDown }) => {
   let visibility = "hide";

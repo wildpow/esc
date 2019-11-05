@@ -8,8 +8,8 @@ import {
   StyledLink,
   Wrapper,
   ReadersChoice,
-} from "../styles/logoStyles";
-import readersChoice from "../images/ReadersChoiceWinner300x.png";
+} from "../../../styles/logoStyles";
+import readersChoice from "../../../images/ReadersChoiceWinner300x.png";
 // test
 const Logo = ({ menuToggle }) => (
   <Wrapper>

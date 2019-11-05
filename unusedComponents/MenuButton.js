@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, MenuLines, Bar } from "../styles/menuStyles";
+import { Button, MenuLines, Bar } from "../src/styles/menuStyles";
 
 const MenuButton = ({ handleMouseDown }) => (
   <Button

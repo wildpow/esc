@@ -1,7 +1,7 @@
 import React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "styled-components";
-import CertifiedBig from "../images/badge1.png";
+import CertifiedBig from "../../../images/badge1.png";
 
 const BirdLink = styled(OutboundLink)`
   text-decoration: none;

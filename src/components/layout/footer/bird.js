@@ -2,9 +2,9 @@ import React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import Certified from "../images/badge.png";
+import Certified from "../../../images/badge.png";
 import BirdBig from "./birdBig";
-import star from "../images/star.png";
+import star from "../../../images/star.png";
 
 const BirdLink = styled(OutboundLink)`
   text-decoration: none;

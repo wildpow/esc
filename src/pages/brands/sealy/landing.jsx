@@ -1,12 +1,25 @@
 import React from "react";
+import { graphql } from "gatsby";
+import PropTypes from "prop-types";
 import Layout from "../../../components/layout";
+import Landing from "../../../components/landing";
 
-const Landing = () => (
+const SealyLanding = ({ data }) => (
   <Layout>
-    <div>
-      <h1>Sealy Landing Page</h1>
-    </div>
+    <Landing data={data.datoCmsLanding} />
   </Layout>
 );
 
-export default Landing;
+SealyLanding.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+
+export const sealyLandingPage = graphql`
+  query sealyLandingPage {
+    datoCmsLanding(title: { eq: "sealy" }) {
+      ...landing
+    }
+  }
+`;
+
+export default SealyLanding;
