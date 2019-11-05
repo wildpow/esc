@@ -92,7 +92,18 @@ const Hr = styled.hr`
   margin-bottom: 3em;
   display: block;
 `;
-
+const TabContainer = styled.div`
+  display: flex;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  justify-self: center;
+  justify-items: center;
+  justify-content: center;
+  align-self: center;
+  align-content: center;
+  /* align-items: center; */
+`;
 const Landing = ({ data }) => {
   const { title, headingImg, heroImg, description, tabBox } = data;
 
@@ -112,18 +123,27 @@ const Landing = ({ data }) => {
             <Button>Contact Us Now!</Button>
           </div>
         </Container>
-        {tabBox.map(item => (
-          <TabBox
-            key={item.id}
-            tabs={item.box}
-            hero={item.topImage}
-            heroText={item.topText}
-          />
-        ))}
       </Section>
-      <div>
-        <Hr />
-      </div>
+      <Section>
+        {/* <TabContainer> */}
+        {tabBox.map(item => (
+          <>
+            <div>
+              <Hr />
+            </div>
+            <TabBox
+              key={item.id}
+              tabs={item.box}
+              hero={item.topImage}
+              heroText={item.topText}
+            />
+          </>
+        ))}
+        {/* </TabContainer> */}
+        <div>
+          <Hr />
+        </div>
+      </Section>
     </div>
   );
 };

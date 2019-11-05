@@ -29,6 +29,8 @@ export const landing = graphql`
       topText
       topImage {
         alt
+        height
+        width
         title
         url
         fluid(

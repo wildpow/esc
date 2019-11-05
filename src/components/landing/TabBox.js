@@ -14,15 +14,18 @@ const LogoContainer = styled.div`
     text-align: center;
     font-family: ${props => props.theme.MainFont3};
   }
-  img {
-    max-width: 100%;
-    height: auto;
-    vertical-align: middle;
-  }
 
   @media only screen and (max-width: 768px) {
     padding: 0 30px;
   }
+`;
+const Logo = styled(Img)`
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  max-width: ${props => props.width}px;
+  margin: 0 auto;
+  text-align: center;
 `;
 
 const LinkHolder = styled.div`
@@ -37,15 +40,49 @@ const Hr = styled.hr`
   display: block;
 `;
 
+const TabContainer = styled.div`
+  /* display: "flex", flexDirection: "row", width: "100%" */
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const TabImg = styled(Img)`
+  width: 50%;
+  @media screen and (max-width: 992px) {
+    max-width: 528px;
+    width: 100%;
+  }
+`;
+
+const TabContent = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 992px) {
+    max-width: 528px;
+    width: 100%;
+  }
+`;
 const TabBox = ({ tabs, hero, heroText }) => {
   const [current, setCurrent] = useState(0);
   return (
     <>
-      <div>
+      {console.log(hero)}
+      {/* <div>
         <Hr />
-      </div>
+      </div> */}
       <LogoContainer>
-        <img src={hero.url} alt={hero.alt} title={hero.title} />
+        <Logo
+          fluid={hero.fluid}
+          alt={hero.alt}
+          title={hero.title}
+          width={hero.width}
+        />
         <p>{heroText}</p>
       </LogoContainer>
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -63,23 +100,18 @@ const TabBox = ({ tabs, hero, heroText }) => {
             );
           })}
         </LinkHolder>
-        <div
-          style={{ display: "flex", flexDirection: "row", marginTop: "20px" }}
-        >
-          <img src={tabs[current].picture.url} alt="wefewf" />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              transition: "all .2s ease",
-            }}
-          >
+        <TabContainer>
+          <TabImg
+            fluid={tabs[current].picture.fluid}
+            alt={tabs[current].picture.alt}
+          />
+          <TabContent>
             <h4>{tabs[current].title.toUpperCase()}</h4>
             <div
               dangerouslySetInnerHTML={{ __html: tabs[current].description }}
             />
-          </div>
-        </div>
+          </TabContent>
+        </TabContainer>
       </div>
     </>
   );
