@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import TabBox from "./TabBox";
 
+// 1440 should be the max page size and Section should Only define content
 const Section = styled.section`
   min-height: 100vh;
   min-width: 320px;
@@ -99,7 +100,7 @@ const Landing = ({ data }) => {
   const { title, headingImg, heroImg, description, tabBox } = data;
 
   return (
-    <>
+    <div style={{ maxWidth: "1440px", backgroundColor: "white" }}>
       <Section>
         <LogoContainer>
           <img src={headingImg.url} alt={headingImg.alt} />
@@ -126,7 +127,7 @@ const Landing = ({ data }) => {
       <div>
         <Hr />
       </div>
-    </>
+    </div>
   );
 };
 export default Landing;
