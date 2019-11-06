@@ -10,6 +10,8 @@ const Holder = styled.div`
   @media screen and (max-width: 992px) {
     height: 632px;
     height: 452px;
+    height: 515px;
+
     margin-left: 5px;
     margin-right: 5px;
   }
@@ -28,7 +30,7 @@ const TabContent = styled.div`
   padding-right: 45px;
   padding-left: 45px;
   @media screen and (max-width: 992px) {
-    max-width: 528px;
+    /* max-width: 528px; */
     width: 100%;
     padding-right: 10px;
     padding-left: 10px;
@@ -82,7 +84,6 @@ const TabContent = styled.div`
 const TabImg = styled(Img)`
   width: 50%;
   @media screen and (max-width: 992px) {
-    max-width: 528px;
     width: 100%;
   }
 `;

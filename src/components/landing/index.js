@@ -3,6 +3,7 @@ import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import TabBox from "./TabBox";
+import WindowDimensionsProvider from "../context/WindowDimensions";
 
 // 1440 should be the max page size and Section should Only define content
 const Section = styled.section`
@@ -75,6 +76,9 @@ const Container = styled.div`
     line-height: 1.6rem;
     text-align: center;
     font-family: ${props => props.theme.MainFont3};
+    /* @media screen and (max-width: 770px) {
+      margin-right: 1000px;
+    } */
     @media screen and (max-width: 375px) {
       font-size: 16px;
       margin-top: 36px;
@@ -111,38 +115,40 @@ const TabBoxContainer = styled.div`
 const Landing = ({ data }) => {
   const { headingImg, heroImg, description, tabBox } = data;
   return (
-    <div style={{ maxWidth: "1440px", backgroundColor: "white" }}>
-      <Section>
-        <LogoContainer>
-          <Logo fluid={headingImg.fluid} alt={headingImg.alt} />
-        </LogoContainer>
-        <Hero fluid={heroImg.fluid} alt={heroImg.alt} />
-        <Container>
-          <p>{description}</p>
+    <WindowDimensionsProvider>
+      <div style={{ maxWidth: "1440px", backgroundColor: "white" }}>
+        <Section>
+          <LogoContainer>
+            <Logo fluid={headingImg.fluid} alt={headingImg.alt} />
+          </LogoContainer>
+          <Hero fluid={heroImg.fluid} alt={heroImg.alt} />
+          <Container>
+            <p>{description}</p>
+            <div>
+              <Button>Shop Steans & Foster now!</Button>
+              <Button>Contact Us Now!</Button>
+            </div>
+          </Container>
+
+          {tabBox.map(item => (
+            <TabBoxContainer>
+              <Hr />
+
+              <TabBox
+                key={item.id}
+                tabs={item.box}
+                hero={item.topImage}
+                heroText={item.topText}
+              />
+            </TabBoxContainer>
+          ))}
+
           <div>
-            <Button>Shop Steans & Foster now!</Button>
-            <Button>Contact Us Now!</Button>
-          </div>
-        </Container>
-
-        {tabBox.map(item => (
-          <TabBoxContainer>
             <Hr />
-
-            <TabBox
-              key={item.id}
-              tabs={item.box}
-              hero={item.topImage}
-              heroText={item.topText}
-            />
-          </TabBoxContainer>
-        ))}
-
-        <div>
-          <Hr />
-        </div>
-      </Section>
-    </div>
+          </div>
+        </Section>
+      </div>
+    </WindowDimensionsProvider>
   );
 };
 
