@@ -68,13 +68,17 @@ const Container = styled.div`
   p {
     margin-top: 56px;
     margin-bottom: 30px;
-    width: 700px;
+    max-width: 700px;
     color: #00103b;
     font-weight: 400;
     font-size: 18px;
     line-height: 1.6rem;
     text-align: center;
     font-family: ${props => props.theme.MainFont3};
+    @media screen and (max-width: 375px) {
+      font-size: 16px;
+      margin-top: 36px;
+    }
   }
 `;
 const Button = styled.a`
@@ -95,8 +99,14 @@ const Hr = styled.hr`
 `;
 
 const TabBoxContainer = styled.div`
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 40px;
   margin-bottom: 40px;
-  margin-top: 40px;
+  margin-top: 0px;
+  @media screen and(min-width: 375px) {
+  }
 `;
 const Landing = ({ data }) => {
   const { headingImg, heroImg, description, tabBox } = data;

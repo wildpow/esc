@@ -16,6 +16,10 @@ const Button = styled.button`
     background-color: #c8645d;
     color: white;
   }
+  @media screen and (max-width: 375px) {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
 `;
 const Tab = ({ tabID, children, setActiveTab, activeTab }) => {
   const isActive = activeTab === tabID;

@@ -10,6 +10,13 @@ const Holder = styled.div`
   @media screen and (max-width: 992px) {
     height: 632px;
     height: 452px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  @media screen and (max-width: 375px) {
+    height: 450px;
+    /* margin-top: 200px; */
+    margin-bottom: 50px;
   }
 `;
 
@@ -23,6 +30,8 @@ const TabContent = styled.div`
   @media screen and (max-width: 992px) {
     max-width: 528px;
     width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   h4 {
     font-family: ${props => props.theme.MainFont3};
@@ -37,6 +46,11 @@ const TabContent = styled.div`
     font-weight: 300;
     line-height: 1.9rem;
     font-size: 1.2rem;
+    margin-bottom: 0;
+    @media screen and (max-width: 375px) {
+      font-size: 1rem;
+      line-height: 1.7rem;
+    }
   }
   ul {
     line-height: 1.6rem;

@@ -13,6 +13,11 @@ const TabHeroContainer = styled.div`
     line-height: 1.6rem;
     text-align: center;
     font-family: ${props => props.theme.MainFont3};
+
+    @media screen and (max-width: 375px) {
+      font-size: 16px;
+      margin-top: 36px;
+    }
   }
 
   @media only screen and (max-width: 768px) {

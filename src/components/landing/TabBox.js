@@ -37,7 +37,7 @@ const TabBox = ({ tabs, hero, heroText }) => {
           })}
         </LinkHolder>
       </Header>
-      <div style={{ paddingBottom: "50px" }}>
+      <div style={{ paddingBottom: "0px" }}>
         <AnimatedBox current={current} tabs={tabs} />
       </div>
     </>
