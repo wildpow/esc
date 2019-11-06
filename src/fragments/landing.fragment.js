@@ -10,15 +10,17 @@ export const landing = graphql`
       alt
       title
       url
-      fluid(maxWidth: 662, maxHeight: 116) {
+      fluid(maxWidth: 662) {
         ...GatsbyDatoCmsFluid
       }
     }
+    # , maxHeight: 116
+    # , maxHeight: 325
     heroImg {
       alt
       title
       url
-      fluid(maxWidth: 1080, maxHeight: 325) {
+      fluid(maxWidth: 1080) {
         ...GatsbyDatoCmsFluid
       }
     }
@@ -34,9 +36,7 @@ export const landing = graphql`
         title
         url
         fluid(
-          maxWidth: 458
-          maxHeight: 126
-          imgixParams: { auto: "compress", lossless: true }
+          maxWidth: 458 # maxHeight: 126
         ) {
           ...GatsbyDatoCmsFluid
         }
@@ -47,7 +47,7 @@ export const landing = graphql`
         picture {
           fluid(
             maxWidth: 528
-            maxHeight: 316
+            # maxHeight: 316
             imgixParams: { auto: "compress", lossless: true }
           ) {
             ...GatsbyDatoCmsFluid
@@ -60,3 +60,4 @@ export const landing = graphql`
     }
   }
 `;
+// imgixParams: { auto: "compress", lossless: true }

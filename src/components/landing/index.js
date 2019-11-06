@@ -36,6 +36,8 @@ const Hero = styled(Img)`
   @media only screen and (max-width: 768px) {
     height: 210px;
     overflow: hidden;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 `;
 const LogoContainer = styled.div`
