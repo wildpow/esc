@@ -114,6 +114,7 @@ const Landing = ({ data }) => {
             <Button>Contact Us Now!</Button>
           </div>
         </Container>
+
         {tabBox.map(item => (
           <TabBoxContainer>
             <Hr />
@@ -126,6 +127,7 @@ const Landing = ({ data }) => {
             />
           </TabBoxContainer>
         ))}
+
         <div>
           <Hr />
         </div>
