@@ -1,5 +1,6 @@
 import React from "react";
 import Img from "gatsby-image";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import TabBox from "./TabBox";
 
@@ -98,8 +99,7 @@ const TabBoxContainer = styled.div`
   margin-top: 40px;
 `;
 const Landing = ({ data }) => {
-  const { title, headingImg, heroImg, description, tabBox } = data;
-
+  const { headingImg, heroImg, description, tabBox } = data;
   return (
     <div style={{ maxWidth: "1440px", backgroundColor: "white" }}>
       <Section>
@@ -135,4 +135,9 @@ const Landing = ({ data }) => {
     </div>
   );
 };
+
+Landing.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
+
 export default Landing;

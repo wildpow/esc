@@ -27,6 +27,7 @@ const Tab = ({ tabID, children, setActiveTab, activeTab }) => {
 };
 
 export default Tab;
+
 Tab.propTypes = {
   tabID: PropTypes.number.isRequired,
   children: PropTypes.string.isRequired,
