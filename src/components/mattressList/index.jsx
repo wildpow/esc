@@ -11,7 +11,7 @@ import {
   Img,
   StearnsImgPlaceHolder,
   SealyImgPlace,
-} from "../../styles/mattListStyles";
+} from "./mattList.styles";
 import SealyImg from "../../images/sealyLogo.png";
 import StearnsImg from "../../images/stearnsLogo.png";
 import TempurImg from "../../images/tempurLogo2.png";

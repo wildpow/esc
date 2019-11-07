@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeConsumer } from "styled-components";
-import { Header, Nav, StyledLink } from "../../../styles/navStyles";
+import { Header, Nav, StyledLink } from "./nav.styles";
 
 const menuLeft = [
   { name: "Brands", url: "/brands" },

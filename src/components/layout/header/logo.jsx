@@ -8,7 +8,7 @@ import {
   StyledLink,
   Wrapper,
   ReadersChoice,
-} from "../../../styles/logoStyles";
+} from "./logo.styles";
 import readersChoice from "../../../images/ReadersChoiceWinner300x.png";
 // test
 const Logo = ({ menuToggle }) => (

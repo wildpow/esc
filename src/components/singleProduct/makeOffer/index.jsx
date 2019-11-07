@@ -9,8 +9,8 @@ import { ModalContainer, CardContainer, Card } from "./offerStyles/modalStyles";
 import { Front, Header } from "./offerStyles/frontCardStyles";
 import { Form, Input, TextArea, SubmitButton } from "./offerStyles/formStyles";
 import { Back } from "./offerStyles/backCardStyles";
-import Logo from "../../images/ezgif.com-optimize.gif";
-import Modal from "../adFormModal";
+import Logo from "../../../images/ezgif.com-optimize.gif";
+import Modal from "../../adFormModal";
 
 const encode = data => {
   return Object.keys(data)

@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { FlexCol, FlexRow } from "./mainStyles";
+import { FlexCol, FlexRow } from "../../../styles/mainStyles";
 import {
   ImgWrapperPr1nt,
   SmallImgHolderPr1nt,
   SmImgPr1nt,
   LargeImgPr1nt,
-} from "./_pr1nt/main";
+} from "../../../styles/_pr1nt/main";
 
 export const ImgWrapper = styled(FlexCol)`
   margin: 10px 0 0 0;

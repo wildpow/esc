@@ -4,7 +4,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import ImageViewer from "../components/imageViewer";
+import ImageViewer from "../components/singleProduct/imageViewer";
 import {
   Article,
   Description,
@@ -19,7 +19,7 @@ import {
   Wrapper,
 } from "../styles/singleMattStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import DropDown from "../components/priceDropDown_NEWMATT";
+import DropDown from "../components/singleProduct/priceDropDown.mattress";
 import dateSEO from "../functions/dateSEO";
 
 const Mattress = ({ data }) => {

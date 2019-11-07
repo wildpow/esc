@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FadeIn } from "../../../styles/mainStyles";
+import { FadeIn } from "../../../../styles/mainStyles";
 
 export const ModalContainer = styled.div`
   position: fixed;

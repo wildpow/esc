@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
-import { Headline, Wrapper, P } from "../styles/homeStyles";
+import { Headline, Wrapper, P } from "../../styles/homeStyles";
 // FooterLink
-import SocialIcons from "./socialIcons";
-import { BottomLinks } from "../styles/footerStyles";
+import SocialIcons from "../socialIcons";
+import { BottomLinks } from "../../styles/footerStyles";
 
 const Container = styled.div`
   border-top: 2px solid ${props => props.theme.newColor3};
@@ -38,7 +38,7 @@ const Front = () => (
         we are the sleep experts and we want to help educate you so you can get
         the great sleep you deserve. With our customer-friendly 90 day comfort
         guarantee we&apos;ve got your back in case you&apos;re not 100%
-        satisfied with your purchase.{" "}
+        satisfied with your purchase.
         <BottomLinks to="/about">Learn more</BottomLinks>
       </P>
       <Container>

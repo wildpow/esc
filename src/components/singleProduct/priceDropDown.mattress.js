@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { FlexCol } from "../styles/mainStyles";
-import MakeOffer from "./makeOffer/makeOffer_NEW";
+import { FlexCol } from "../../styles/mainStyles";
+import MakeOffer from "./makeOffer";
 
 const Wrapper = styled(FlexCol)`
   margin-left: 5px;

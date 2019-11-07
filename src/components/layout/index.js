@@ -5,7 +5,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import Logo from "./header/logo";
 import Navigation from "./header/nav";
 import Footer from "./footer";
-import Topper from "./header/Topper";
+import Topper from "./header/topper";
 import MenuButton from "./mobileMenu/mobileButton";
 import Menu from "./mobileMenu/menu";
 import StructuredDataMain from "./structuredDataMain";

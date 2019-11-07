@@ -8,9 +8,9 @@ import {
   SmallImgHolder,
   SmImgWrap,
   LargeImgWrap,
-} from "../styles/imageViewerStyles";
-import { Banner } from "./mattThumbNail/mattThumbStyles";
-import { BigBannerPr1nt } from "../styles/_pr1nt/main";
+} from "./imageViewer.styles";
+import { Banner } from "../../mattressList/mattThumbNail/mattThumb.Styles";
+import { BigBannerPr1nt } from "../../../styles/_pr1nt/main";
 
 const BigBanner = styled(Banner)`
   font-size: 0.6rem;

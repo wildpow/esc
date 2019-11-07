@@ -1,6 +1,4 @@
-// import { NavLink } from 'gatsby';
 import { Link } from "gatsby";
-
 import styled from "styled-components";
 
 export const Header = styled.header`
@@ -41,9 +39,6 @@ export const StyledLink = styled(Link)`
   :hover{
     color: ${props => props.theme.mainColor1};
   }
-  /* :enabled {
-    transform: translateY(-4px);
-  } */
   :before {
   content: "";
   position: absolute;
@@ -51,17 +46,13 @@ export const StyledLink = styled(Link)`
   height: 6px;
   bottom: -6px;
   left: 0;
-  /* border-radius: 5px; */
   background-color: ${props => props.theme.mainColor2};
   visibility: hidden;
-  /* -webkit-transform: scaleX(0); */
   transform: scaleX(0);
-  /* -webkit-transition: all 0.3s ease-in-out 0s; */
   transition: all .2s ease-in-out 0s;
 }
 :hover:before {
   visibility: visible;
-  /* -webkit-transform: scaleX(1); */
   transform: scaleX(1);
 }
 

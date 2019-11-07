@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { FlexCol } from "./mainStyles";
-import { ImagePr1nt, H1Pr1nt, ReadersPr1nt } from "./_pr1nt/main";
+import { ImagePr1nt, H1Pr1nt, ReadersPr1nt } from "../../../styles/_pr1nt/main";
 
-export const Wrapper = styled(FlexCol)`
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: -15px;
   @media (min-width: 768px) {
     margin-top: -22px;

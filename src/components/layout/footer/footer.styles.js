@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
-import { FlexRow, FlexCol } from "./mainStyles";
 import {
   DisplayNonePr1nt,
   MainFooterPr1nt,
@@ -10,7 +9,7 @@ import {
   FHoursPr1nt,
   FHoursParaPr1nt,
   FHoursSpan,
-} from "./_pr1nt/main";
+} from "../../../styles/_pr1nt/main";
 
 export const MainFooter = styled.footer`
   margin-top: 15px;
@@ -51,7 +50,9 @@ export const Wrapper = styled.div`
   ${FWrapPr1nt}
 `;
 
-export const Contact = styled(FlexRow)`
+export const Contact = styled.div`
+  display: flex;
+  flex-direction: row;
   justify-content: space-around;
   justify-content: space-evenly;
   margin-top: 25px;
@@ -62,7 +63,9 @@ export const Contact = styled(FlexRow)`
   ${FContactPr1nt}
 `;
 
-export const Hours = styled(FlexCol)`
+export const Hours = styled.div`
+  display: flex;
+  flex-direction: column;
   font-family: ${props => props.theme.MainFont1};
   font-weight: 300;
   text-align: center;

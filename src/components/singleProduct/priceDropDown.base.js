@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import styled from "styled-components";
-import { FlexCol } from "../styles/mainStyles";
+import { FlexCol } from "../../styles/mainStyles";
 
 const Wrapper = styled(FlexCol)`
   margin-left: 5px;

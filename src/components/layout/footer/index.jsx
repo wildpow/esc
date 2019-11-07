@@ -19,7 +19,7 @@ import {
   BottomIconWrapper,
   Bird667Container,
   BirdContainerSmall,
-} from "../../../styles/footerStyles";
+} from "./footer.styles";
 // import BBBHor from "../images/ab_seal_horizontal_black_large.jpg";
 // import BBBWebpHor from "../images/ab_seal_horizontal_black_large.webp";
 import Bird from "./bird";

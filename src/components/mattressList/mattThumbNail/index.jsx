@@ -9,7 +9,7 @@ import {
   Banner,
   PriceRange,
   Name,
-} from "./mattThumbStyles";
+} from "./mattThumb.Styles";
 
 const MattressThumb = ({ mattress, url }) => {
   return (

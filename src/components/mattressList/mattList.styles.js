@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FadeIn, H2, FlexCol, FlexRow } from "./mainStyles";
+import { FadeIn, H2, FlexCol, FlexRow } from "../../styles/mainStyles";
 
 export const MainWrapper = styled(FlexCol)`
   animation-name: ${FadeIn};

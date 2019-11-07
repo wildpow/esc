@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Link } from "gatsby";
 import { OutboundLink as GoogleAnalytics } from "gatsby-plugin-google-analytics";
-import { DisplayNonePr1nt } from "./_pr1nt/main";
+import { DisplayNonePr1nt } from "../../../../styles/_pr1nt/main";
 
 const SharedLinkStyles = css`
   color: ${props => props.theme.newColor1};

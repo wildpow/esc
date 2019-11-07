@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../../../components/layout";
-import MattressThumb from "../../../components/mattThumbNail/mattThumb";
+import MattressThumb from "../../../components/mattressList/mattThumbNail";
 import MattressList from "../../../components/mattressList";
 
 const Tempurpedic = ({ data }) => {
