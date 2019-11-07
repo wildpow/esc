@@ -105,14 +105,13 @@ const TabBox = ({ tabs, hero, heroText }) => {
 
 TabBox.propTypes = {
   heroText: PropTypes.string.isRequired,
-  hero: PropTypes.objectOf(PropTypes.string).isRequired,
-  tabs: PropTypes.shape([
-    {
-      description: PropTypes.string,
-      picture: PropTypes.objectOf(PropTypes.string),
-      title: PropTypes.string,
-    },
-  ]).isRequired,
+  hero: PropTypes.shape({
+    fluid: PropTypes.instanceOf(Object),
+    height: PropTypes.number,
+    width: PropTypes.number,
+    url: PropTypes.string,
+  }).isRequired,
+  tabs: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default TabBox;

@@ -151,13 +151,7 @@ const AnimatedBox = ({ tabs, current }) => {
 
 AnimatedBox.propTypes = {
   current: PropTypes.number,
-  tabs: PropTypes.shape([
-    {
-      description: PropTypes.string,
-      picture: PropTypes.objectOf(PropTypes.string),
-      title: PropTypes.string,
-    },
-  ]).isRequired,
+  tabs: PropTypes.instanceOf(Array).isRequired,
 };
 
 AnimatedBox.defaultProps = {
