@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import WindowDimensionsProvider from "../context/WindowDimensions";
 import TabBox from "./TabBox";
+import { P } from "./global.styles";
 
 const Header = styled(Img)`
   margin-top: 3em;
@@ -34,23 +35,7 @@ const Container = styled.section`
     width: 1170px;
   }
 `;
-export const P = styled.p`
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 0px;
-  margin-bottom: 54px;
-  max-width: 700px;
-  color: #00103b;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 1.6rem;
-  text-align: center;
-  font-family: ${props => props.theme.MainFont3};
-  @media screen and (max-width: 375px) {
-    font-size: 16px;
-    margin-top: 36px;
-  }
-`;
+
 const Hero = styled(Img)`
   width: 100%;
   height: auto;

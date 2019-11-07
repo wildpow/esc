@@ -6,7 +6,7 @@ import { useWindowDimensions } from "../context/WindowDimensions";
 import Tab from "./Tab";
 import arrowDown from "../../images/whitedownArrow.png";
 import AnimatedBox from "./AnimatedBox";
-import { P } from "./index";
+import { P } from "./global.styles";
 
 const TabHeroImg = styled(Img)`
   /* max-width: 100%;
@@ -42,8 +42,17 @@ const Select = styled.select`
   appearance: none;
 `;
 const Holder = styled.div`
-  @media screen and (max-width: 750px) {
+  @media screen and (max-width: 981px) {
     height: 90vh;
+    margin-bottom: 100px;
+  }
+  @media screen and (max-width: 568px) {
+    height: initial;
+    margin-bottom: 100px;
+  }
+  @media screen and (max-width: 320px) {
+    height: initial;
+    margin-bottom: 0px;
   }
 `;
 const TabBox = ({ tabs, hero, heroText }) => {

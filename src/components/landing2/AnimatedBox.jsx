@@ -15,7 +15,7 @@ const Holder = styled.div`
     height: 632px;
     height: 452px;
     height: 515px;
-    margin-bottom: 130px;
+    /* margin-bottom: 130px; */
     /* margin-left: 5px;
     margin-right: 5px; */
   }
@@ -26,6 +26,7 @@ const Holder = styled.div`
     height: 450px;
     /* margin-top: 200px; */
     margin-bottom: 50px;
+    margin-top: 0px;
   }
 `;
 
@@ -66,6 +67,8 @@ const TabContent = styled.div`
     font-family: ${props => props.theme.MainFont1};
     font-weight: 400;
     list-style: none;
+    padding-left: 0;
+    margin-top: 0;
   }
   ul li {
     margin-bottom: 5px;
@@ -73,7 +76,7 @@ const TabContent = styled.div`
     position: relative;
     font-weight: 300;
     line-height: 1.9rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     ::after {
       content: "";
       height: 0.3em;
@@ -107,48 +110,48 @@ const TabContainer = styled.div`
 
 const AnimatedBox = ({ tabs, current }) => {
   return (
-    <Holder>
-      <NodeGroup
-        data={[current]}
-        keyAccessor={d => d}
-        start={() => ({
-          opacity: 0,
-        })}
-        enter={() => ({
-          opacity: [1],
-          timing: { duration: 300 },
-        })}
-        update={() => ({
-          opacity: [1],
-          timing: { duration: 300 },
-        })}
-        leave={() => ({
-          opacity: [0],
-          timing: { duration: 300 },
-        })}
-      >
-        {nodes => (
-          <Holder>
-            {nodes.map(({ key, data, state: { opacity } }) => (
-              <TabContainer style={{ position: "absolute", opacity }} key={key}>
-                <TabImg
-                  fluid={tabs[data].picture.fluid}
-                  alt={tabs[data].picture.alt}
+    // <Holder>
+    <NodeGroup
+      data={[current]}
+      keyAccessor={d => d}
+      start={() => ({
+        opacity: 0,
+      })}
+      enter={() => ({
+        opacity: [1],
+        timing: { duration: 300 },
+      })}
+      update={() => ({
+        opacity: [1],
+        timing: { duration: 300 },
+      })}
+      leave={() => ({
+        opacity: [0],
+        timing: { duration: 300 },
+      })}
+    >
+      {nodes => (
+        <Holder>
+          {nodes.map(({ key, data, state: { opacity } }) => (
+            <TabContainer style={{ position: "absolute", opacity }} key={key}>
+              <TabImg
+                fluid={tabs[data].picture.fluid}
+                alt={tabs[data].picture.alt}
+              />
+              <TabContent>
+                <h4>{tabs[data].title.toUpperCase()}</h4>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: tabs[data].description,
+                  }}
                 />
-                <TabContent>
-                  <h4>{tabs[data].title.toUpperCase()}</h4>
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: tabs[data].description,
-                    }}
-                  />
-                </TabContent>
-              </TabContainer>
-            ))}
-          </Holder>
-        )}
-      </NodeGroup>
-    </Holder>
+              </TabContent>
+            </TabContainer>
+          ))}
+        </Holder>
+      )}
+    </NodeGroup>
+    // </Holder>
   );
 };
 
