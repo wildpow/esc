@@ -15,10 +15,8 @@ export const MainTitle = styled.header`
 `;
 
 export const Img = styled.img`
-  /* color: white; */
   background: ${props => props.theme.newColor1};
   align-self: center;
-  margin: auto;
   margin-top: 5px;
   margin-bottom: 5px;
   max-height: 10rem;
@@ -45,13 +43,17 @@ export const SealyImgPlace = styled(Img)`
     margin-bottom: 10px;
   }
   @media (min-width: 1024px) {
-    max-height: 10rem;
-    max-width: 10rem;
+    max-height: 7rem;
+    max-width: 7rem;
   }
 `;
 
 export const StearnsImgPlaceHolder = styled(Img)`
   padding: 10px;
+  @media (min-width: 1024px) {
+    max-height: 16rem;
+    max-width: 16rem;
+  }
 `;
 
 export const Wrapper = styled(FlexRow)`

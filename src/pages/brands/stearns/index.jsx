@@ -1,46 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { HelmetDatoCms } from "gatsby-source-datocms";
-import {
-  MainWrapper,
-  Wrapper,
-  MainTitle,
-  StearnsImgPlaceHolder,
-} from "../../../styles/mattListStyles";
 import Layout from "../../../components/layout";
-import StearnsImg from "../../../images/stearnsLogo.png";
-import BreadCrumbs, { BreadWrapper } from "../../../components/breadCrumbs";
 import MattressThumb from "../../../components/mattThumbNail/mattThumb";
+import MattressList from "../../../components/mattressList";
 
 const Stearns = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;
   return (
     <Layout>
-      <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
-      <MainWrapper>
-        <BreadWrapper Brands>
-          <BreadCrumbs next="Brands" here="Stearns" />
-        </BreadWrapper>
-        <MainTitle>
-          <StearnsImgPlaceHolder
-            src={StearnsImg}
-            alt="Logo of the Stearns and Foster mattress company"
+      <MattressList
+        seo={datoCmsSeo.seoMetaTags}
+        brandImgAlt="Logo of the Stearns and Foster mattress company."
+        headerText="Sterns uncover executional."
+        brandName="stearns"
+      >
+        {allDatoCmsMattress.nodes.map(mattress => (
+          <MattressThumb
+            key={mattress.id}
+            mattress={mattress}
+            url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
           />
-        </MainTitle>
-        <Wrapper>
-          {allDatoCmsMattress.nodes.map(mattress => (
-            <MattressThumb
-              key={mattress.id}
-              mattress={mattress}
-              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-            />
-          ))}
-        </Wrapper>
-        <BreadWrapper Brands Bottom>
-          <BreadCrumbs next="Brands" here="stearns" />
-        </BreadWrapper>
-      </MainWrapper>
+        ))}
+      </MattressList>
     </Layout>
   );
 };

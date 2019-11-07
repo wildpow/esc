@@ -52,6 +52,7 @@ const Crumbs = styled(Link)`
 `;
 const Location = styled.div`
   padding-bottom: 1px;
+  text-transform: capitalize;
   @media (max-width: 610px) {
     white-space: nowrap;
     overflow: hidden;
