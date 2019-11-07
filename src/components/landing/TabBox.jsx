@@ -54,6 +54,9 @@ const Holder = styled.div`
     height: initial;
     margin-bottom: 0px;
   }
+  @media screen and (orientation: landscape) {
+    height: initial;
+  }
 `;
 const TabBox = ({ tabs, hero, heroText }) => {
   const [current, setCurrent] = useState(0);

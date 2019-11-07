@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 const Button = styled.button`
   color: ${props => (props.isActive ? "white" : "#93959b")};
-  /* color: #93959b; */
   font-size: 17px;
   padding: 10px 15px;
   font-family: ${props => props.theme.MainFont1};
@@ -15,10 +14,6 @@ const Button = styled.button`
   :hover {
     background-color: #c8645d;
     color: white;
-  }
-  @media screen and (max-width: 375px) {
-    font-size: 12px;
-    padding: 5px 10px;
   }
 `;
 const Tab = ({ tabID, children, setActiveTab, activeTab }) => {

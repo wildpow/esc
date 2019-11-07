@@ -2,7 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import PropTypes from "prop-types";
 import Layout from "../../components/layout";
-import Landing from "../../components/landing2";
+import Landing from "../../components/landing";
 import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
 
 const Malouf = ({ data }) => {
