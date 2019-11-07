@@ -2,6 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import WindowDimensionsProvider from "../context/WindowDimensions";
 import TabBox from "./TabBox";
 import { P } from "./global.styles";
@@ -63,15 +64,16 @@ const Hr = styled.hr`
   display: block;
 `;
 const Landing = ({ data }) => {
-  const { headingImg, heroImg, description, tabBox } = data;
+  const { headingImg, heroImg, description, tabBox, seoMetaTags } = data;
   return (
     <WindowDimensionsProvider>
+      <HelmetDatoCms seo={seoMetaTags} />
       <div style={{ maxWidth: "1440px", backgroundColor: "white" }}>
         <Header fluid={headingImg.fluid} alt={headingImg.alt} />
         <Container>
           <Hero fluid={heroImg.fluid} alt={heroImg.alt} />
         </Container>
-        <Container style={{ marginTop: "4em" }}>
+        <Container style={{ marginTop: "3em" }}>
           <P style={{ marginBottom: "10px" }}>{description}</P>
           <div
             style={{

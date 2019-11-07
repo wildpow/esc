@@ -5,6 +5,9 @@ import { graphql } from "gatsby";
 // eslint-disable-next-line import/prefer-default-export
 export const landing = graphql`
   fragment landing on DatoCmsLanding {
+    seoMetaTags {
+      ...GatsbyDatoCmsSeoMetaTags
+    }
     title
     headingImg {
       alt
