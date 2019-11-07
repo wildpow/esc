@@ -4,14 +4,14 @@ const WindowDimensionsCtx = createContext(null);
 
 const WindowDimensionsProvider = ({ children }) => {
   const [dimensions, setDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: typeof window !== "undefined" ? window.innerWidth : null,
+    height: typeof window !== "undefined" ? window.innerHeight : null,
   });
   useEffect(() => {
     const handleResize = () => {
       setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: typeof window !== "undefined" ? window.innerWidth : null,
+        height: typeof window !== "undefined" ? window.innerHeight : null,
       });
     };
     window.addEventListener("resize", handleResize);
