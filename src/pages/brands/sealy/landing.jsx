@@ -10,7 +10,11 @@ const SealyLanding = ({ data }) => (
     <BreadWrapper Brands>
       <BreadCrumbs next="Brands" here="Landing" next2="Sealy" />
     </BreadWrapper>
-    <Landing data={data.datoCmsLanding} />
+    <Landing
+      data={data.datoCmsLanding}
+      buttonName="Sealy"
+      buttonURL="/brands/sealy"
+    />
     <BreadWrapper Brands>
       <BreadCrumbs next="Brands" here="Landing" next2="Sealy" />
     </BreadWrapper>

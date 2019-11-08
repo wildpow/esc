@@ -6,6 +6,7 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import WindowDimensionsProvider from "../context/WindowDimensions";
 import TabBox from "./TabBox";
 import { P } from "./global.styles";
+import HeaderButtons from "./HeaderButtons";
 
 const Header = styled(Img)`
   margin-top: 3em;
@@ -48,22 +49,14 @@ const Hero = styled(Img)`
     margin-left: -15px;
   }
 `;
-const Button = styled.a`
-  padding: 10px 25px;
-  font-family: ${props => props.theme.MainFont1};
-  text-decoration: none;
-  background: #00103b;
-  color: white;
-  font-size: 18px;
-  margin: 5px;
-`;
+
 const Hr = styled.hr`
   border-top: 1px solid #eee;
   border-bottom: 2px solid #7ea9c8;
   margin-bottom: 3em;
   display: block;
 `;
-const Landing = ({ data }) => {
+const Landing = ({ data, buttonName, buttonURL }) => {
   const { headingImg, heroImg, description, tabBox, seoMetaTags } = data;
   return (
     <WindowDimensionsProvider>
@@ -75,16 +68,7 @@ const Landing = ({ data }) => {
         </Container>
         <Container style={{ marginTop: "3em" }}>
           <P style={{ marginBottom: "10px" }}>{description}</P>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginBottom: " 54px",
-            }}
-          >
-            <Button>Shop Steans & Foster now!</Button>
-            <Button>Contact Us Now!</Button>
-          </div>
+          <HeaderButtons buttonName={buttonName} buttonURL={buttonURL} />
           {tabBox.map(item => (
             <div key={item.id}>
               <Hr />
@@ -104,6 +88,13 @@ const Landing = ({ data }) => {
 
 Landing.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
+  buttonName: PropTypes.string,
+  buttonURL: PropTypes.string,
+};
+
+Landing.defaultProps = {
+  buttonName: undefined,
+  buttonURL: undefined,
 };
 
 export default Landing;

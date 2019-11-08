@@ -10,7 +10,11 @@ const TempurLanding = ({ data }) => (
     <BreadWrapper Brands>
       <BreadCrumbs next="Brands" here="Landing" next2="Tempurpedic" />
     </BreadWrapper>
-    <Landing data={data.datoCmsLanding} />
+    <Landing
+      data={data.datoCmsLanding}
+      buttonName="Tempur-PEDIC"
+      buttonURL="/brands/tempurpedic"
+    />
     <BreadWrapper Brands>
       <BreadCrumbs next="Brands" here="Landing" next2="Tempurpedic" />
     </BreadWrapper>
