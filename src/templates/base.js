@@ -19,7 +19,7 @@ import {
   List,
   Construction,
   Info,
-} from "../styles/singleMattStyles";
+} from "../components/singleProduct/singleProduct.styles";
 import dateSEO from "../functions/dateSEO";
 
 const Base = ({ data }) => {

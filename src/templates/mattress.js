@@ -17,7 +17,7 @@ import {
   Profile,
   Warranty,
   Wrapper,
-} from "../styles/singleMattStyles";
+} from "../components/singleProduct/singleProduct.styles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import DropDown from "../components/singleProduct/priceDropDown.mattress";
 import dateSEO from "../functions/dateSEO";

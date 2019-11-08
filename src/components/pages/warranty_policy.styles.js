@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
-import { FadeIn, FlexCol } from "./mainStyles";
+import { FadeIn, FlexCol } from "../../styles/mainStyles";
 
 export const MainArticle = styled.article`
   box-shadow: ${props => props.theme.BoxShadow};

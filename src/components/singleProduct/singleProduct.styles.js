@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { FlexCol, FlexRow, FadeIn, H2 } from "./mainStyles";
+import { FadeIn, H2 } from "../../styles/mainStyles";
 import {
   MainTitlePr1nt,
   WrapperSingleMattPr1nt,
   ListPr1nt,
   DisplayNonePr1nt,
   DescriptionPr1nt,
-} from "./_pr1nt/main";
+} from "../../styles/_pr1nt/main";
 
 export const Article = styled.article`
   display: flex;
@@ -159,7 +159,9 @@ export const Construction = styled(List)`
   }
 `;
 
-export const Main = styled(FlexRow)`
+export const Main = styled.div`
+  display: flex;
+  flex-direction: row;
   margin-top: 2px;
   background-color: white;
 
@@ -257,7 +259,9 @@ export const Warranty = styled.p`
   }
 `;
 
-export const Wrapper = styled(FlexCol)`
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   box-shadow: ${props => props.theme.newBoxShadow};
   animation-name: ${FadeIn};
   background-color: white;
@@ -271,6 +275,8 @@ export const Wrapper = styled(FlexCol)`
   ${WrapperSingleMattPr1nt}
 `;
 
-export const MainInfo = styled(FlexCol)`
+export const MainInfo = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
 `;

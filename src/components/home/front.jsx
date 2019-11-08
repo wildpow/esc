@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from "gatsby";
 import { Headline, Wrapper, P } from "../../styles/homeStyles";
 // FooterLink
 import SocialIcons from "../socialIcons";
-import { BottomLinks } from "../../styles/footerStyles";
+import { BottomLinks } from "../layout/footer/footer.styles";
 
 const Container = styled.div`
   border-top: 2px solid ${props => props.theme.newColor3};
