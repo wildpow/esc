@@ -48,7 +48,7 @@ const Holder = styled.div`
   }
   @media screen and (max-width: 568px) {
     height: initial;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
   }
   @media screen and (max-width: 320px) {
     height: initial;
