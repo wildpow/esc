@@ -7,6 +7,7 @@ const BrandLink = styled(Link)`
   width: 100%;
   overflow: hidden;
   position: relative;
+  -webkit-tap-highlight-color: #1565c057;
   :hover .overlay,
   :focus .overlay {
     opacity: 1;
@@ -15,15 +16,24 @@ const BrandLink = styled(Link)`
   :focus .brand {
     transform: translate(-50%, -80%);
   }
+  box-shadow: ${props => props.theme.hoverBoxBefore};
   /* ASK WILL */
-  /* @media screen and (max-width: 568px) {
+  @media screen and (max-width: 768px) {
+    transition: ${props => props.theme.hoverTransition};
     .overlay {
-      opacity: 0.9;
+      opacity: 1;
     }
     .brand {
       transform: translate(-50%, -80%);
     }
-  } */
+    transition: transform 0.25s ease-in;
+    :hover {
+      /* transform: scale3d(1.03, 1.03, 1); */
+
+      transform: ${props => props.theme.hoverTransform};
+      /* box-shadow: ${props => props.theme.hoverBoxAfter}; */
+    }
+  }
 `;
 
 const BgImage = styled(Img)`
@@ -91,10 +101,23 @@ const Content = styled.div`
     padding-right: 5px;
     color: white;
     font-weight: 300;
+    @media screen and (max-width: 768px) {
+      background: rgba(20, 20, 40, 0.6);
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin: 0;
+    }
   }
   @media screen and (max-width: 568px) {
-    font-size: 1rem;
-    line-height: 1.3rem;
+    h4 {
+      font-size: 1rem;
+      line-height: 1.3rem;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    background: rgba(20, 20, 40, 0.1);
   }
 `;
 
