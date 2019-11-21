@@ -8,7 +8,7 @@ import LifeStyleCard from "../components/brands/BrandCard";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 
 const SectionContainer = styled.div`
-  min-height: 100vh;
+  /* min-height: 100vh; */
   min-width: 320px;
   max-width: 1366px;
   margin: auto;

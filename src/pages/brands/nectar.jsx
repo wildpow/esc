@@ -24,7 +24,7 @@ Nectar.propTypes = {
 // Waitng on content!!!
 export const NectarLandingPage = graphql`
   query nectarLandingPage {
-    datoCmsLanding(title: { eq: "sealy" }) {
+    datoCmsLanding(title: { eq: "nectar" }) {
       ...landing
     }
   }

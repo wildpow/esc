@@ -11,6 +11,7 @@ const Button = styled.button`
   background-color: none;
   background: ${props => (props.isActive ? "#c8645d" : "none")};
   border: none;
+  transition: all 0.2s ease;
   :hover {
     background-color: #c8645d;
     color: white;

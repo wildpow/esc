@@ -12,6 +12,10 @@ const buttonStyles = css`
   color: white;
   font-size: 18px;
   margin: 5px;
+  transition: all 0.2s ease;
+  :hover {
+    background: #c8645d;
+  }
 `;
 const OutBoundLink = styled.a`
   ${buttonStyles}
