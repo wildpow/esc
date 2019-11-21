@@ -38,26 +38,28 @@ const Post = ({ data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={post.seoMetaTags} />
-      <PostBread>
-        <BreadCrumbs next="Blog" here={post.title} />
-      </PostBread>
-      <Main>
-        <header>
-          <H2>{post.title}</H2>
-        </header>
-        <article>
-          <Marker source={post.postContent} escapeHtml={false} />
-        </article>
-        {post.bottomImage ? (
-          <BottomImg
-            src={post.bottomImage.url}
-            alt={`Image related to ${post.title}`}
-          />
-        ) : null}
-      </Main>
-      <PostBread>
-        <BreadCrumbs next="Blog" here={post.title} />
-      </PostBread>
+      <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
+        <PostBread>
+          <BreadCrumbs next="Blog" here={post.title} />
+        </PostBread>
+        <Main>
+          <header>
+            <H2>{post.title}</H2>
+          </header>
+          <article>
+            <Marker source={post.postContent} escapeHtml={false} />
+          </article>
+          {post.bottomImage ? (
+            <BottomImg
+              src={post.bottomImage.url}
+              alt={`Image related to ${post.title}`}
+            />
+          ) : null}
+        </Main>
+        <PostBread>
+          <BreadCrumbs next="Blog" here={post.title} />
+        </PostBread>
+      </div>
     </Layout>
   );
 };

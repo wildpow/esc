@@ -6,8 +6,8 @@ import { graphql, Link } from "gatsby";
 import { Carousel } from "react-responsive-carousel";
 import Layout from "../components/layout";
 import { Main } from "../styles/homeStyles";
-import Front from "../components/front";
-import TopThreeMatts from "../components/top3Mattresses";
+import Front from "../components/home/front";
+import TopThreeMatts from "../components/home/top3Mattress";
 
 const IndexPage = ({ data }) => {
   const { carousel } = data.datoCmsFrontPage;

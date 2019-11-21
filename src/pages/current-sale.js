@@ -9,8 +9,8 @@ import {
   P,
   Wrapper2,
   Headline,
-} from "../styles/mattListStyles";
-import MattressThumb from "../components/mattThumbNail/mattThumb";
+} from "../components/mattressList/mattList.styles";
+import MattressThumb from "../components/mattressList/mattThumbNail";
 
 const CurrentSale = ({ data }) => {
   const { allDatoCmsMattress, datoCmsCurrentSale } = data;

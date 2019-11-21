@@ -7,6 +7,8 @@ export const Main = styled(FlexCol)`
   margin-top: 15px;
   margin-left: 0px;
   margin-right: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
   @media (min-width: 1200px) {
     margin-left: 120px;
     margin-right: 120px;

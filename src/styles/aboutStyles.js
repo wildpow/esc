@@ -7,6 +7,8 @@ export const Main = styled(FlexCol)`
   margin-top: 15px;
   /* border: ${props => props.theme.Border}; */
   background-color: white;
+   padding-left: 5px;
+  padding-right: 5px;
   box-shadow: ${props => props.theme.newBoxShadow};
   @media (min-width: 1200px) {
     margin-left: 10px;

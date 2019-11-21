@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import ImageViewer from "../components/imageViewer";
-import PriceDropDown from "../components/priceDropDown_NEW";
+import ImageViewer from "../components/singleProduct/imageViewer";
+import PriceDropDown from "../components/singleProduct/priceDropDown.base";
 import {
   Wrapper,
   Main,
@@ -19,7 +19,7 @@ import {
   List,
   Construction,
   Info,
-} from "../styles/singleMattStyles";
+} from "../components/singleProduct/singleProduct.styles";
 import dateSEO from "../functions/dateSEO";
 
 const Base = ({ data }) => {
@@ -29,13 +29,14 @@ const Base = ({ data }) => {
   );
   return (
     <Layout>
-      <BreadWrapper>
-        <BreadCrumbs next="Adjustable" here={adjBase.fullName} />
-      </BreadWrapper>
-      <Wrapper>
-        <HelmetDatoCms seo={adjBase.seoMetaTags}>
-          <script type="application/ld+json">
-            {`
+      <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
+        <BreadWrapper>
+          <BreadCrumbs next="Adjustable" here={adjBase.fullName} />
+        </BreadWrapper>
+        <Wrapper>
+          <HelmetDatoCms seo={adjBase.seoMetaTags}>
+            <script type="application/ld+json">
+              {`
 
         {
     "@context": "http://schema.org/",
@@ -62,57 +63,58 @@ const Base = ({ data }) => {
     }
 }
         `}
-          </script>
-        </HelmetDatoCms>
-        <header>
-          <MainTitle>{adjBase.fullName}</MainTitle>
-        </header>
-        <Main>
-          <ImageViewer
-            saleBanner={adjBase.sale[0].saleBanner}
-            cover={adjBase.images3[0]}
-            img1={adjBase.images3[1]}
-            img2={adjBase.images3[2]}
-            base
-          />
-          <MainInfo>
-            <List>
-              <h3>Features</h3>
+            </script>
+          </HelmetDatoCms>
+          <header>
+            <MainTitle>{adjBase.fullName}</MainTitle>
+          </header>
+          <Main>
+            <ImageViewer
+              saleBanner={adjBase.sale[0].saleBanner}
+              cover={adjBase.images3[0]}
+              img1={adjBase.images3[1]}
+              img2={adjBase.images3[2]}
+              base
+            />
+            <MainInfo>
+              <List>
+                <h3>Features</h3>
+                <ul>
+                  {adjBase.smallFeatureList.map(item => (
+                    <li key={item.id}>{item.feature}</li>
+                  ))}
+                  <Info>
+                    <AnchorLink href="#moreInfo">See more details</AnchorLink>
+                  </Info>
+                </ul>
+              </List>
+              <PriceDropDown
+                price={adjBase.price[0]}
+                discount={adjBase.sale[0].discount}
+              />
+            </MainInfo>
+          </Main>
+          <header id="moreInfo">
+            <MainTitle red>OVERVIEW & SPECS</MainTitle>
+          </header>
+          <Article>
+            <Description>{adjBase.description}</Description>
+            <Profile>{`Profile: ${adjBase.height}`}</Profile>
+            <Construction>
+              <h3>Key Features:</h3>
               <ul>
-                {adjBase.smallFeatureList.map(item => (
+                {adjBase.fullFeatureList.map(item => (
                   <li key={item.id}>{item.feature}</li>
                 ))}
-                <Info>
-                  <AnchorLink href="#moreInfo">See more details</AnchorLink>
-                </Info>
               </ul>
-            </List>
-            <PriceDropDown
-              price={adjBase.price[0]}
-              discount={adjBase.sale[0].discount}
-            />
-          </MainInfo>
-        </Main>
-        <header id="moreInfo">
-          <MainTitle red>OVERVIEW & SPECS</MainTitle>
-        </header>
-        <Article>
-          <Description>{adjBase.description}</Description>
-          <Profile>{`Profile: ${adjBase.height}`}</Profile>
-          <Construction>
-            <h3>Key Features:</h3>
-            <ul>
-              {adjBase.fullFeatureList.map(item => (
-                <li key={item.id}>{item.feature}</li>
-              ))}
-            </ul>
-          </Construction>
-          <Warranty>{adjBase.warranty}</Warranty>
-        </Article>
-      </Wrapper>
-      <BreadWrapper>
-        <BreadCrumbs next="adjustable" here={adjBase.fullName} />
-      </BreadWrapper>
+            </Construction>
+            <Warranty>{adjBase.warranty}</Warranty>
+          </Article>
+        </Wrapper>
+        <BreadWrapper>
+          <BreadCrumbs next="adjustable" here={adjBase.fullName} />
+        </BreadWrapper>
+      </div>
     </Layout>
   );
 };
