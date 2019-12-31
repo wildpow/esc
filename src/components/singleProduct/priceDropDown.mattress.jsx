@@ -193,18 +193,6 @@ const sizeObj = {
   king: PropTypes.number,
 };
 class DropDown extends React.Component {
-  static propTypes = {
-    boxPrices: PropTypes.shape(sizeObj).isRequired,
-    prices: PropTypes.shape(sizeObj).isRequired,
-    discount: PropTypes.number,
-    freeBoxSpring: PropTypes.bool.isRequired,
-    mattress: PropTypes.string.isRequired,
-  };
-
-  static defaultProps = {
-    discount: 0,
-  };
-
   constructor(...args) {
     super(...args);
     this.state = {
@@ -374,7 +362,7 @@ class DropDown extends React.Component {
             disabled={boxDropDisabled}
             opacity={makeOfferOpacity} // MakeOffer only shows when total is visiable
             mattress={mattress} // from SingleMattres -> priceCalculator ->
-            // size={name}
+            size={selectedName}
           />
         ) : (
           <MakeOffer
@@ -388,5 +376,18 @@ class DropDown extends React.Component {
     );
   }
 }
+
+DropDown.propTypes = {
+  boxPrices: PropTypes.shape(sizeObj).isRequired,
+  prices: PropTypes.shape(sizeObj).isRequired,
+  discount: PropTypes.number,
+  freeBoxSpring: PropTypes.bool.isRequired,
+  mattress: PropTypes.string.isRequired,
+  typeOfDiscount: PropTypes.bool.isRequired,
+};
+
+DropDown.defaultProps = {
+  discount: 0,
+};
 
 export default DropDown;

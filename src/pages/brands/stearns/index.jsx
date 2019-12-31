@@ -12,7 +12,7 @@ const Stearns = ({ data }) => {
       <MattressList
         seo={datoCmsSeo.seoMetaTags}
         brandImgAlt="Logo of the Stearns and Foster mattress company."
-        headerText="Sterns uncover executional."
+        headerText="Stearns uncover exceptional."
         brandName="stearns"
       >
         {allDatoCmsMattress.nodes.map(mattress => (

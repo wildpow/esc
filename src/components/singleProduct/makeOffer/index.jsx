@@ -19,13 +19,6 @@ const encode = data => {
 };
 
 class MakeOffer extends Component {
-  static propTypes = {
-    size: PropTypes.string.isRequired,
-    mattress: PropTypes.string.isRequired,
-    disabled: PropTypes.bool.isRequired,
-    opacity: PropTypes.number.isRequired,
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -217,5 +210,16 @@ class MakeOffer extends Component {
     );
   }
 }
+
+MakeOffer.propTypes = {
+  size: PropTypes.string,
+  mattress: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
+  opacity: PropTypes.number.isRequired,
+};
+
+MakeOffer.defaultProps = {
+  size: "none choosen",
+};
 
 export default MakeOffer;

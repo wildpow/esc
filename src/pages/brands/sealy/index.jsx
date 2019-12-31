@@ -12,7 +12,7 @@ const Sealy = ({ data }) => {
       <MattressList
         seo={datoCmsSeo.seoMetaTags}
         brandImgAlt="A logo of the Sealy mattress company"
-        headerText="Sealy prodded supporter of you."
+        headerText="Sealy proud supporter of you."
         brandName="sealy"
       >
         {allDatoCmsMattress.nodes.map(mattress => {
