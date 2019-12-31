@@ -13,7 +13,7 @@ export const Header = styled.header`
 export const Nav = styled.nav`
   display: none;
   @media (min-width: 1022px) {
-    display: block;
+    display: flex;
     padding-top: 40px;
   }
 `;
