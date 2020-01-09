@@ -30,7 +30,12 @@ export const Description = styled.p`
   padding: 5px 14px 10px 14px;
   line-height: 1.5rem;
   margin: 0;
-
+  @media (min-width: 360px) {
+    font-size: 0.9rem;
+  }
+  @media (min-width: 550px) {
+    font-size: 1rem;
+  }
   @media (min-width: 768px) {
     font-size: 1.1rem;
     padding-right: 40px;
@@ -85,6 +90,10 @@ export const List = styled.div`
   @media (min-width: 360px) {
     ul {
       margin-top: 10px;
+      font-size: 1rem;
+    }
+    h3 {
+      font-size: 1.2rem;
     }
   }
 
