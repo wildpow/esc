@@ -25,12 +25,16 @@ export const StyledLink = styled(Link)`
   @media (min-width: 768px) {
     width: 340px;
     height: 365px;
+    height: 380px;
+
     margin-right: 10px;
     margin-bottom: 20px;
   }
   @media (min-width: 1024px) {
     width: 300px;
     height: 360px;
+    height: 380px;
+
     margin-right: 10px;
     margin-bottom: 20px;
   }
@@ -48,6 +52,7 @@ export const Topper = styled.div`
 export const BannerWrapper = styled.div`
   position: relative;
   display: flex;
+  margin-bottom: 20px;
 `;
 export const Banner = styled.div`
   font-family: ${props => props.theme.MainFont1};
