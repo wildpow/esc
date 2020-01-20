@@ -51,7 +51,7 @@ const Firmness = styled.div`
   }
   .number {
     font-family: ${props => props.theme.MainFont1};
-    left: 40%;
+    left: ${props => props.firmNum};
     border-radius: 50%;
     width: 35px;
     height: 35px;
@@ -69,6 +69,22 @@ const Firmness = styled.div`
   }
 `;
 const MattressThumb = ({ mattress, url }) => {
+  const firmnessPosition = num => {
+    switch (num) {
+      case 1:
+        return `5%`;
+      case 2:
+        return `20%`;
+      case 3:
+        return `40%`;
+      case 4:
+        return `60%`;
+      case 5:
+        return `76%`;
+      default:
+        return undefined;
+    }
+  };
   return (
     <StyledLink to={url}>
       <Topper>
@@ -86,10 +102,10 @@ const MattressThumb = ({ mattress, url }) => {
               }
             />
           </MattImgContainer>
-          <Firmness>
+          <Firmness firmNum={firmnessPosition(mattress.firmness)}>
             <div className="firm">Firm</div>
             <div className="scale">
-              <div className="number">3</div>
+              <div className="number">{mattress.firmness}</div>
             </div>
             <div className="soft">Soft</div>
           </Firmness>

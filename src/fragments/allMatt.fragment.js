@@ -5,6 +5,7 @@ export const mattressParts = graphql`
   fragment mattressParts on DatoCmsMattress {
     slug
     name
+    firmness
     id
     priceLow
     priceHigh
