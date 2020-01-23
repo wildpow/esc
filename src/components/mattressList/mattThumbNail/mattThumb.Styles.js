@@ -133,7 +133,8 @@ export const PriceRange = styled.div`
   color: ${props => props.theme.newColor2};
   font-weight: 400;
   font-family: ${props => props.theme.MainFont1};
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 700;
   text-align: center;
   z-index: 5;
   @media (min-width: 360px) {

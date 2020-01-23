@@ -6,7 +6,7 @@ const Firmness = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 20px;
+  height: 12px;
   left: 0;
   /* border: 2px solid black; */
   display: flex;
@@ -15,78 +15,45 @@ const Firmness = styled.div`
   justify-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-  div {
-    position: relative;
+  @media screen and (min-width: 737px) {
+    height: 20px;
   }
-  .firm {
-    font-family: ${props => props.theme.MainFont1};
-    /* padding-left: 10px; */
-    color: black;
-    width: 20%;
-    text-align: center;
-  }
+  .firm,
   .soft {
     font-family: ${props => props.theme.MainFont1};
-    /* padding-right: 10px; */
     color: black;
-    width: 20%;
+    width: 22%;
     text-align: center;
+    font-size: 0.8rem;
+    @media screen and (min-width: 737px) {
+      font-size: 1rem;
+      width: 20%;
+    }
   }
+
   .scale {
-    height: 15px;
-    width: 80%;
     position: relative;
-    background: #EAEAED;
+    background: #eaeaed;
     display: flex;
+    width: 55%;
+    height: 12px;
     :after {
       content: "";
       width: 40%;
-      height: 15px;
+      height: 12px;
       background-image: ${props => props.gradient};
       position: absolute;
       top: 0;
       left: ${props => props.firmNum};
+      @media screen and (min-width: 737px) {
+        height: 15px;
+      }
     }
-    /* :before {
-      content: "";
-      background: #1565c0;
+    @media screen and (min-width: 737px) {
       height: 15px;
-      width: ${props => props.firmNum};
-    } */
+      width: 80%;
+    }
   }
-  /* .number2 {
-    font-family: ${props => props.theme.MainFont1};
-    left: ${props => props.firmNum};
-
-    width: 35px;
-    height: 35px;
-    margin-top: -10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.1rem;
-    background: ${props => props.theme.mainColor1};
-    color: white;
-
-    background: #fcfcff;
-    border: 1px solid ${props => props.theme.mainColor1};
-    color: black;
-  } */
-  /* .poop {
-    background: #1565c0;
-    height: 15px;
-    width: ${props => props.firmNum};
-  }
-  .number {
-    width: 30%;
-    height: 15px; */
-    
-/*   
-    background: -moz-linear-gradient(left, #1565c0 0%, #ffffff 100%);
-    background: -webkit-linear-gradient(left, #1565c0 0%, #ffffff 100%);
-    background: linear-gradient(to right, #1565c0 0%, #ffffff 100%); */
-
-    /* background-image: linear-gradient(to left, #EAEAED 0%, #1565C0 100%);  } */
 `;
 
 const FirmnessScale = ({ firmNum }) => {
