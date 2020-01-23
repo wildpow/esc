@@ -40,16 +40,19 @@ const Firmness = styled.div`
     display: flex;
     :after {
       content: "";
-      width: 30%;
+      width: 40%;
       height: 15px;
-      background-image: linear-gradient(to left, #EAEAED 0%, #1565C0 100%); 
+      background-image: ${props => props.gradient};
+      position: absolute;
+      top: 0;
+      left: ${props => props.firmNum};
     }
-    :before {
+    /* :before {
       content: "";
       background: #1565c0;
       height: 15px;
       width: ${props => props.firmNum};
-    }
+    } */
   }
   /* .number2 {
     font-family: ${props => props.theme.MainFont1};
@@ -87,24 +90,28 @@ const Firmness = styled.div`
 `;
 
 const FirmnessScale = ({ firmNum }) => {
+  let gradient =
+    "linear-gradient(to left, #EAEAED 0%, #3F81CB 35%, #1565C0 50%, #3F81CB 65%, #EAEAED 100%)";
   const firmnessPosition = num => {
     switch (num) {
       case 1:
+        gradient = "linear-gradient(to left, #EAEAED 0%, #1565C0 100%)";
         return `0%`;
       case 2:
-        return `10%`;
+        return `9%`;
       case 3:
         return `30%`;
       case 4:
-        return `55%`;
+        return `52%`;
       case 5:
-        return `70%`;
+        gradient = "linear-gradient(to right, #EAEAED 0%, #1565C0 100%)";
+        return `60%`;
       default:
         return undefined;
     }
   };
   return (
-    <Firmness firmNum={firmnessPosition(firmNum)}>
+    <Firmness firmNum={firmnessPosition(firmNum)} gradient={gradient}>
       <div className="firm">Firm</div>
       <div className="scale" />
       <div className="soft">Soft</div>
