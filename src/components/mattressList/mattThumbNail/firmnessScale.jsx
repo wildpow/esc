@@ -34,15 +34,27 @@ const Firmness = styled.div`
   }
   .scale {
     height: 15px;
-    border: 1px solid #f7d0d1;
     width: 80%;
     position: relative;
-    background: ${props => props.theme.newColor4};
+    background: #EAEAED;
+    display: flex;
+    :after {
+      content: "";
+      width: 30%;
+      height: 15px;
+      background-image: linear-gradient(to left, #EAEAED 0%, #1565C0 100%); 
+    }
+    :before {
+      content: "";
+      background: #1565c0;
+      height: 15px;
+      width: ${props => props.firmNum};
+    }
   }
-  .number {
+  /* .number2 {
     font-family: ${props => props.theme.MainFont1};
     left: ${props => props.firmNum};
-    /* border-radius: 50%; */
+
     width: 35px;
     height: 35px;
     margin-top: -10px;
@@ -56,22 +68,37 @@ const Firmness = styled.div`
     background: #fcfcff;
     border: 1px solid ${props => props.theme.mainColor1};
     color: black;
+  } */
+  /* .poop {
+    background: #1565c0;
+    height: 15px;
+    width: ${props => props.firmNum};
   }
+  .number {
+    width: 30%;
+    height: 15px; */
+    
+/*   
+    background: -moz-linear-gradient(left, #1565c0 0%, #ffffff 100%);
+    background: -webkit-linear-gradient(left, #1565c0 0%, #ffffff 100%);
+    background: linear-gradient(to right, #1565c0 0%, #ffffff 100%); */
+
+    /* background-image: linear-gradient(to left, #EAEAED 0%, #1565C0 100%);  } */
 `;
 
 const FirmnessScale = ({ firmNum }) => {
   const firmnessPosition = num => {
     switch (num) {
       case 1:
-        return `5%`;
+        return `0%`;
       case 2:
-        return `20%`;
+        return `10%`;
       case 3:
-        return `40%`;
+        return `30%`;
       case 4:
-        return `60%`;
+        return `55%`;
       case 5:
-        return `76%`;
+        return `70%`;
       default:
         return undefined;
     }
@@ -79,9 +106,7 @@ const FirmnessScale = ({ firmNum }) => {
   return (
     <Firmness firmNum={firmnessPosition(firmNum)}>
       <div className="firm">Firm</div>
-      <div className="scale">
-        <div className="number">{firmNum}</div>
-      </div>
+      <div className="scale" />
       <div className="soft">Soft</div>
     </Firmness>
   );
