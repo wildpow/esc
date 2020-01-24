@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import ImageViewer from "../components/singleProduct/imageViewer";
+import ImageCarousel from "../components/singleProduct/ImageCarousel";
 import PriceDropDown from "../components/singleProduct/priceDropDown.base";
 import {
   Wrapper,
@@ -69,7 +69,7 @@ const Base = ({ data }) => {
             <MainTitle>{adjBase.fullName}</MainTitle>
           </header>
           <Main>
-            <ImageViewer
+            <ImageCarousel
               saleBanner={adjBase.sale[0].saleBanner}
               cover={adjBase.images3[0]}
               img1={adjBase.images3[1]}

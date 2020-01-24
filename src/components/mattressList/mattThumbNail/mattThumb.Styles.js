@@ -63,10 +63,6 @@ export const Banner = styled.div`
   color: white;
   position: absolute;
   font-size: 0.5rem;
-  /* padding-top: 3px;
-  padding-bottom: 3px;
-  padding-right: 10px;
-  padding-left: 5px; */
   padding-top: 3px;
   padding-bottom: 3px;
   padding-right: 10px;

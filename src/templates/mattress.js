@@ -4,7 +4,6 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import ImageViewer from "../components/singleProduct/imageViewer";
 import {
   Article,
   Description,
@@ -21,6 +20,7 @@ import {
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import DropDown from "../components/singleProduct/priceDropDown.mattress";
 import dateSEO from "../functions/dateSEO";
+import ImageCarousel from "../components/singleProduct/ImageCarousel";
 
 const Mattress = ({ data }) => {
   const { datoCmsMattress: mattress } = data;
@@ -78,7 +78,15 @@ const Mattress = ({ data }) => {
             </MainTitle>
           </header>
           <Main>
-            <ImageViewer
+            {/* <ImageViewer
+              cover={mattress.images[0].coverImage}
+              img1={mattress.images[0].image2}
+              img2={mattress.images[0].image3}
+              saleBanner={mattress.saleInfo[0].saleBanner}
+              mattName={`${mattress.brand.displayName} ${mattress.name}`}
+              firmness={mattress.firmness}
+            /> */}
+            <ImageCarousel
               cover={mattress.images[0].coverImage}
               img1={mattress.images[0].image2}
               img2={mattress.images[0].image3}
