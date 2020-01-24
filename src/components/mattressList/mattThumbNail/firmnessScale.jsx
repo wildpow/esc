@@ -8,7 +8,6 @@ const Firmness = styled.div`
   width: 100%;
   height: 12px;
   left: 0;
-  /* border: 2px solid black; */
   display: flex;
   align-content: center;
   align-items: center;

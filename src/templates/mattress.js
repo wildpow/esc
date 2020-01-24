@@ -84,6 +84,7 @@ const Mattress = ({ data }) => {
               img2={mattress.images[0].image3}
               saleBanner={mattress.saleInfo[0].saleBanner}
               mattName={`${mattress.brand.displayName} ${mattress.name}`}
+              firmness={mattress.firmness}
             />
             <MainInfo>
               <List>
@@ -147,6 +148,7 @@ export const query = graphql`
       priceHigh
       slug
       name
+      firmness
       id
       description
       profile
