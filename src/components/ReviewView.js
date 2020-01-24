@@ -15,7 +15,6 @@ const InsideWrapper = styled.div`
   max-width: 680px;
   height: 300px;
   text-align: center;
-
   padding-right: 5px;
   padding-left: 5px;
   @media (min-width: 568px) {
