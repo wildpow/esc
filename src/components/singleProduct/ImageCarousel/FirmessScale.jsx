@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Firmness = styled.div`
+  --heightLg: 21px;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -18,6 +19,11 @@ const Firmness = styled.div`
   @media screen and (min-width: 768px) {
     height: 20px;
   }
+  @media screen and (min-width: 900px) {
+    height: 50px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
   .firm,
   .soft {
     font-family: ${props => props.theme.MainFont1};
@@ -28,6 +34,10 @@ const Firmness = styled.div`
     @media screen and (min-width: 768px) {
       font-size: 1rem;
       width: 20%;
+    }
+    @media screen and (min-width: 900px) {
+      font-size: 1.2rem;
+      font-weight: 700;
     }
   }
 
@@ -48,10 +58,16 @@ const Firmness = styled.div`
       @media screen and (min-width: 768px) {
         height: 15px;
       }
+      @media screen and (min-width: 900px) {
+        height: var(--heightLg);
+      }
     }
     @media screen and (min-width: 768px) {
       height: 15px;
       width: 80%;
+    }
+    @media screen and (min-width: 900px) {
+      height: var(--heightLg);
     }
   }
 `;
