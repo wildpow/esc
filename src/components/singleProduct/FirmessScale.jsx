@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 
 const Firmness = styled.div`
   --heightLg: 21px;
-  /* position: absolute; */
-  bottom: 0;
+  /* padding-bottom: 5px; */
+  /* bottom: 0; */
   width: 100%;
   height: 12px;
   background: white;
-  left: 0;
+  /* left: 0; */
   display: flex;
   align-content: center;
   align-items: center;
@@ -72,6 +72,42 @@ const Firmness = styled.div`
   }
 `;
 
+const Wrapper = styled.div`
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  h6 {
+    display: none;
+  }
+  a {
+    /* text-transform: uppercase; */
+    justify-self: center;
+    align-self: center;
+    /* padding-top: 5px; */
+
+    font-family: ${props => props.theme.MainFont1};
+    color: ${props => props.theme.mainColor1};
+    transition: color 0.2s ease-in;
+    &:hover {
+      color: ${props => props.theme.mainColor2};
+    }
+  }
+  @media screen and (min-width: 420px) {
+    h6 {
+      display: block;
+      margin-top: 0px;
+      margin-bottom: 5px;
+      font-family: ${props => props.theme.MainFont3};
+      border-bottom: 4px solid #eb1c24;
+      padding-bottom: 2px;
+      padding-left: 7px;
+      font-size: 1rem;
+    }
+  }
+`;
+
 const FirmnessScale = ({ firmness }) => {
   let gradient =
     "linear-gradient(to left, #EAEAED 0%, #3F81CB 35%, #1565C0 50%, #3F81CB 65%, #EAEAED 100%)";
@@ -94,11 +130,16 @@ const FirmnessScale = ({ firmness }) => {
     }
   };
   return (
-    <Firmness firmNum={firmnessPosition(firmness)} gradient={gradient}>
-      <div className="firm">Firm</div>
-      <div className="scale" />
-      <div className="soft">Soft</div>
-    </Firmness>
+    <Wrapper>
+      <h6>Firmness Scale</h6>
+      <Firmness firmNum={firmnessPosition(firmness)} gradient={gradient}>
+        <div className="firm">Firm</div>
+        <div className="scale" />
+        <div className="soft">Soft</div>
+      </Firmness>
+      <a href="#">Learn More</a>
+      {/* <span>⬆</span> */}
+    </Wrapper>
   );
 };
 
