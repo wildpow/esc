@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Firmness = styled.div`
   --heightLg: 21px;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   width: 100%;
   height: 12px;

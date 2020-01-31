@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import { NodeGroup } from "react-move";
-import FirmnessScale from "./FirmessScale";
 import {
   ImgWrapper,
   SmallImgHolder,
@@ -11,15 +10,7 @@ import {
   BigBanner,
 } from "./index.styles";
 
-const TriImage = ({
-  base,
-  cover,
-  firmness,
-  img1,
-  img2,
-  mattName,
-  saleBanner,
-}) => {
+const TriImage = ({ base, cover, img1, img2, mattName, saleBanner }) => {
   const [index, setIndex] = useState(0);
   const ImagesArray = [cover, img1, img2];
 
@@ -69,7 +60,6 @@ const TriImage = ({
                 </div>
               </div>
             ))}
-            {!base && <FirmnessScale firmNum={firmness} />}
           </LargeImgWrap>
         )}
       </NodeGroup>
@@ -117,7 +107,6 @@ const objShape = {
 TriImage.propTypes = {
   base: PropTypes.bool,
   cover: PropTypes.shape(objShape).isRequired,
-  firmness: PropTypes.number,
   img1: PropTypes.shape(objShape).isRequired,
   img2: PropTypes.shape(objShape).isRequired,
   mattName: PropTypes.string.isRequired,
@@ -126,7 +115,6 @@ TriImage.propTypes = {
 
 TriImage.defaultProps = {
   base: false,
-  firmness: 0,
 };
 
 export default TriImage;

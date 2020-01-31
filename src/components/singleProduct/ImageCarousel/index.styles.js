@@ -11,7 +11,7 @@ import { Banner } from "../../mattressList/mattThumbNail/mattThumb.Styles";
 export const ImgWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10px 0 0 0;
+  /* margin: 10px 0 0 0; */
   ${ImgWrapperPr1nt}
 `;
 

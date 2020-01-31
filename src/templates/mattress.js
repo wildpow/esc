@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import PropTypes from "prop-types";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
@@ -21,6 +22,12 @@ import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import DropDown from "../components/singleProduct/priceDropDown.mattress";
 import dateSEO from "../functions/dateSEO";
 import ImageCarousel from "../components/singleProduct/ImageCarousel";
+import FirmnessScale from "../components/singleProduct/FirmessScale";
+
+const LeftSide = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Mattress = ({ data }) => {
   const { datoCmsMattress: mattress } = data;
@@ -78,22 +85,16 @@ const Mattress = ({ data }) => {
             </MainTitle>
           </header>
           <Main>
-            {/* <ImageViewer
-              cover={mattress.images[0].coverImage}
-              img1={mattress.images[0].image2}
-              img2={mattress.images[0].image3}
-              saleBanner={mattress.saleInfo[0].saleBanner}
-              mattName={`${mattress.brand.displayName} ${mattress.name}`}
-              firmness={mattress.firmness}
-            /> */}
-            <ImageCarousel
-              cover={mattress.images[0].coverImage}
-              img1={mattress.images[0].image2}
-              img2={mattress.images[0].image3}
-              saleBanner={mattress.saleInfo[0].saleBanner}
-              mattName={`${mattress.brand.displayName} ${mattress.name}`}
-              firmness={mattress.firmness}
-            />
+            <LeftSide>
+              <ImageCarousel
+                cover={mattress.images[0].coverImage}
+                img1={mattress.images[0].image2}
+                img2={mattress.images[0].image3}
+                saleBanner={mattress.saleInfo[0].saleBanner}
+                mattName={`${mattress.brand.displayName} ${mattress.name}`}
+              />
+              <FirmnessScale firmness={mattress.firmness} />
+            </LeftSide>
             <MainInfo>
               <List>
                 <h3>Features</h3>
