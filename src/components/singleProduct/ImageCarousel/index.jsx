@@ -9,8 +9,18 @@ import {
   LargeImgWrap,
   BigBanner,
 } from "./index.styles";
+import FirmnessScale from "./FirmnessScaleDesktop";
 
-const TriImage = ({ base, cover, img1, img2, mattName, saleBanner }) => {
+const TriImage = ({
+  base,
+  cover,
+  img1,
+  img2,
+  mattName,
+  saleBanner,
+  isMobile,
+  firmness,
+}) => {
   const [index, setIndex] = useState(0);
   const ImagesArray = [cover, img1, img2];
 
@@ -60,6 +70,7 @@ const TriImage = ({ base, cover, img1, img2, mattName, saleBanner }) => {
                 </div>
               </div>
             ))}
+            {!base && <FirmnessScale isMobile={isMobile} firmNum={firmness} />}
           </LargeImgWrap>
         )}
       </NodeGroup>

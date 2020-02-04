@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
+import useMobileDetect from "../components/singleProduct/useMobileDect";
+
 import Layout from "../components/layout";
 import {
   Article,
@@ -22,7 +24,7 @@ import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import DropDown from "../components/singleProduct/priceDropDown.mattress";
 import dateSEO from "../functions/dateSEO";
 import ImageCarousel from "../components/singleProduct/ImageCarousel";
-import FirmnessScale from "../components/singleProduct/FirmessScale";
+import FirmnessScale from "../components/singleProduct/FirmessScaleMobile";
 
 const LeftSide = styled.div`
   display: flex;
@@ -31,6 +33,7 @@ const LeftSide = styled.div`
 
 const Mattress = ({ data }) => {
   const { datoCmsMattress: mattress } = data;
+  const detectMobile = useMobileDetect();
   return (
     <Layout>
       <HelmetDatoCms seo={mattress.seoMetaTags}>
@@ -87,13 +90,17 @@ const Mattress = ({ data }) => {
           <Main>
             <LeftSide>
               <ImageCarousel
+                isMobile={detectMobile.isMobile()}
                 cover={mattress.images[0].coverImage}
                 img1={mattress.images[0].image2}
                 img2={mattress.images[0].image3}
                 saleBanner={mattress.saleInfo[0].saleBanner}
                 mattName={`${mattress.brand.displayName} ${mattress.name}`}
+                firmness={mattress.firmness}
               />
-              <FirmnessScale firmness={mattress.firmness} />
+              {detectMobile.isMobile() && (
+                <FirmnessScale firmness={mattress.firmness} />
+              )}
             </LeftSide>
             <MainInfo>
               <List>

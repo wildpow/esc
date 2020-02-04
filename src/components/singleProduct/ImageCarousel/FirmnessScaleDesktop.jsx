@@ -3,26 +3,44 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const Firmness = styled.div`
-  --heightLg: 21px;
-  /* padding-bottom: 5px; */
-  /* bottom: 0; */
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  height: 12px;
-  background: white;
-  /* left: 0; */
-  display: flex;
+  /* height: 12px; */
+  height: 25px;
+  left: 0;
+  display: ${props => (props.isMobile ? "none" : "flex")};
   align-content: center;
   align-items: center;
   justify-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-  @media screen and (min-width: 768px) {
-    height: 20px;
+  background: white;
+  /* :after {
+    position: absolute;
+    visibility: hidden;
+    left: 10%;
+    background: white;
+    border: 1px solid grey;
+    color: black;
+    padding: 15px;
+    transition: all 0.2s ease;
+    opacity: 0;
+    content: "Firmness Scale";
+    :hover {
+      visibility: visible;
+      opacity: 1;
+    }
+  } */
+  :hover {
+    /* :after {
+      visibility: visible;
+      opacity: 1;
+    } */
+    cursor: help;
   }
-  @media screen and (min-width: 900px) {
-    height: 50px;
-    padding-bottom: 5px;
-    padding-top: 5px;
+  @media screen and (min-width: 768px) {
+    height: 40px;
   }
   .firm,
   .soft {
@@ -30,14 +48,12 @@ const Firmness = styled.div`
     color: black;
     width: 22%;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    font-weight: 700;
     @media screen and (min-width: 768px) {
-      font-size: 1rem;
-      width: 20%;
-    }
-    @media screen and (min-width: 900px) {
       font-size: 1.2rem;
       font-weight: 700;
+      width: 20%;
     }
   }
 
@@ -45,7 +61,7 @@ const Firmness = styled.div`
     position: relative;
     background: #eaeaed;
     display: flex;
-    width: 55%;
+    width: 70%;
     height: 12px;
     :after {
       content: "";
@@ -58,57 +74,15 @@ const Firmness = styled.div`
       @media screen and (min-width: 768px) {
         height: 15px;
       }
-      @media screen and (min-width: 900px) {
-        height: var(--heightLg);
-      }
     }
     @media screen and (min-width: 768px) {
       height: 15px;
       width: 80%;
     }
-    @media screen and (min-width: 900px) {
-      height: var(--heightLg);
-    }
   }
 `;
 
-const Wrapper = styled.div`
-  margin-top: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100%;
-  h6 {
-    display: none;
-  }
-  a {
-    /* text-transform: uppercase; */
-    justify-self: center;
-    align-self: center;
-    /* padding-top: 5px; */
-
-    font-family: ${props => props.theme.MainFont1};
-    color: ${props => props.theme.mainColor1};
-    transition: color 0.2s ease-in;
-    &:hover {
-      color: ${props => props.theme.mainColor2};
-    }
-  }
-  @media screen and (min-width: 420px) {
-    h6 {
-      display: block;
-      margin-top: 0px;
-      margin-bottom: 5px;
-      font-family: ${props => props.theme.MainFont3};
-      border-bottom: 4px solid #eb1c24;
-      padding-bottom: 2px;
-      padding-left: 7px;
-      font-size: 1rem;
-    }
-  }
-`;
-
-const FirmnessScale = ({ firmness }) => {
+const FirmnessScale = ({ firmNum, isMobile }) => {
   let gradient =
     "linear-gradient(to left, #EAEAED 0%, #3F81CB 35%, #1565C0 50%, #3F81CB 65%, #EAEAED 100%)";
   const firmnessPosition = num => {
@@ -130,21 +104,22 @@ const FirmnessScale = ({ firmness }) => {
     }
   };
   return (
-    <Wrapper>
-      <h6>Firmness Scale</h6>
-      <Firmness firmNum={firmnessPosition(firmness)} gradient={gradient}>
+    <>
+      <Firmness
+        firmNum={firmnessPosition(firmNum)}
+        gradient={gradient}
+        isMobile={isMobile}
+      >
         <div className="firm">Firm</div>
         <div className="scale" />
         <div className="soft">Soft</div>
       </Firmness>
-      <a href="#">Learn More</a>
-      {/* <span>⬆</span> */}
-    </Wrapper>
+    </>
   );
 };
 
 FirmnessScale.propTypes = {
-  firmness: PropTypes.number.isRequired,
+  firmNum: PropTypes.number.isRequired,
 };
 
 export default FirmnessScale;

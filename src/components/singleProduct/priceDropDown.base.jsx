@@ -224,8 +224,8 @@ const PriceDropDown = ({ price, discount }) => {
         ) : (
           <Total price={state.price}>
             {discount > 1
-              ? `TOTAL: ${state.price - discount}`
-              : `TOTAL: ${state.price}`}
+              ? `TOTAL: $${state.price - discount}`
+              : `TOTAL: $${state.price}`}
           </Total>
         )}
       </Wrap>
