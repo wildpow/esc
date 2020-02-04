@@ -1,14 +1,27 @@
 const { useEffect } = require("react");
 
 const getMobileDetect = userAgent => {
-  const isAndroid = () => Boolean(userAgent.match(/Android/i));
-  const isIos = () => Boolean(userAgent.match(/iPhone|iPad|iPod/i));
-  const isOpera = () => Boolean(userAgent.match(/Opera Mini/i));
-  const isWindows = () => Boolean(userAgent.match(/IEMobile/i));
+  let isAndroid = () => null;
+  let isIos = () => null;
+  let isOpera = () => null;
+  let isWindows = () => null;
+  let isMobile = () => null;
+  let isDesktop = () => null;
+  if (userAgent === null) {
+    return {
+      isMobile,
+      isDesktop,
+      isAndroid,
+      isIos,
+    };
+  }
+  isAndroid = () => Boolean(userAgent.match(/Android/i));
+  isIos = () => Boolean(userAgent.match(/iPhone|iPad|iPod/i));
+  isOpera = () => Boolean(userAgent.match(/Opera Mini/i));
+  isWindows = () => Boolean(userAgent.match(/IEMobile/i));
 
-  const isMobile = () =>
-    Boolean(isAndroid() || isIos() || isOpera() || isWindows());
-  const isDesktop = () => !isMobile();
+  isMobile = () => Boolean(isAndroid() || isIos() || isOpera() || isWindows());
+  isDesktop = () => !isMobile();
   return {
     isMobile,
     isDesktop,
@@ -17,8 +30,10 @@ const getMobileDetect = userAgent => {
   };
 };
 const useMobileDetect = () => {
-  useEffect(() => {}, []);
-  return getMobileDetect(navigator.userAgent);
+  // useEffect(() => {}, []);
+  const userAgent =
+    typeof window !== "undefined" ? window.navigator.userAgent : null;
+  return getMobileDetect(userAgent);
 };
 
 module.exports = useMobileDetect;

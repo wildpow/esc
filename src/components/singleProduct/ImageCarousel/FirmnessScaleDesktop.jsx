@@ -120,6 +120,7 @@ const FirmnessScale = ({ firmNum, isMobile }) => {
 
 FirmnessScale.propTypes = {
   firmNum: PropTypes.number.isRequired,
+  isMobile: PropTypes.bool.isRequired,
 };
 
 export default FirmnessScale;

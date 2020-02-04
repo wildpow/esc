@@ -116,6 +116,8 @@ const objShape = {
 };
 
 TriImage.propTypes = {
+  firmness: PropTypes.number.isRequired,
+  isMobile: PropTypes.bool.isRequired,
   base: PropTypes.bool,
   cover: PropTypes.shape(objShape).isRequired,
   img1: PropTypes.shape(objShape).isRequired,

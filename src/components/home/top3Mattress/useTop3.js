@@ -13,6 +13,7 @@ export default () => {
               slug
               id
               name
+              firmness
               images {
                 coverImage {
                   fluid(

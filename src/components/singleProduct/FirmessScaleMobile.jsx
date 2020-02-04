@@ -21,6 +21,9 @@ const Firmness = styled.div`
     padding-bottom: 5px;
     padding-top: 5px;
   }
+  /* @media screen and (min-width: 1024px) {
+    padding-bottom: 0px;
+  } */
   .firm,
   .soft {
     font-family: ${props => props.theme.MainFont1};
@@ -28,8 +31,9 @@ const Firmness = styled.div`
     width: 22%;
     text-align: center;
     font-size: 0.8rem;
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 735px) {
       font-size: 1rem;
+      font-weight: 700;
       width: 20%;
     }
     @media screen and (min-width: 900px) {
@@ -98,6 +102,22 @@ const Wrapper = styled.div`
       padding-bottom: 2px;
       padding-left: 7px;
       font-size: 1rem;
+    }
+  }
+  @media screen and (min-width: 735px) {
+    h6 {
+      font-size: 1.2rem;
+    }
+    a {
+      font-size: 1.1rem;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    h6 {
+      font-size: 1.5rem;
+    }
+    a {
+      font-size: 1.2rem;
     }
   }
 `;
