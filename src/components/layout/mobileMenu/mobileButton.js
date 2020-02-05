@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
+import { useModalContext } from "../modalContext";
 
 const Line1Active = css`
   transform: translateY(12px) translateX(0) rotate(45deg);
@@ -13,7 +14,7 @@ const ButtonContainer = styled.div`
   position: absolute;
   top: 59px;
   right: 15px;
-  z-index: 99;
+  z-index: ${props => (props.modal ? "0" : "3")};
   opacity: 0.9;
   @media (max-width: 300px) {
     right: 15%;
@@ -108,8 +109,9 @@ const MenuButton = ({ menuToggle, onClick }) => {
     setHover(false);
     onClick();
   };
+  const { modal } = useModalContext();
   return (
-    <ButtonContainer>
+    <ButtonContainer modal={modal}>
       <HoverCircle hover={hover} menuToggle={menuToggle}>
         <Container
           hover={hover}

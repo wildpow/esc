@@ -16,7 +16,7 @@ const Container = styled.div`
   background: ${props => props.theme.mainColor1};
   opacity: ${props => (props.menuToggle ? 1 : 0)};
   color: #fafafa;
-  z-index: 20;
+  z-index: 2;
   width: 70%;
   transition: all 0.4s ease;
   transform: ${props =>

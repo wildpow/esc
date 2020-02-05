@@ -42,7 +42,7 @@ export const Top = styled.div`
   font-size: 0.9rem;
   letter-spacing: 0.056rem;
   position: relative;
-  z-index: 26;
+  z-index: 3;
   @media (min-width: 411px) {
     font-size: 1rem;
   }

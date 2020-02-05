@@ -9,6 +9,7 @@ import Topper from "./header/topper";
 import MenuButton from "./mobileMenu/mobileButton";
 import Menu from "./mobileMenu/menu";
 import StructuredDataMain from "./structuredDataMain";
+import ModalContextProvider from "./modalContext";
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -155,7 +156,7 @@ class Layout extends React.Component {
     const { menuToggle, outsideMenuEvents } = this.state;
     const { children } = this.props;
     return (
-      <>
+      <ModalContextProvider>
         <StructuredDataMain />
         <GlobalStyle />
         <div ref={this.myRef}>
@@ -171,7 +172,7 @@ class Layout extends React.Component {
             <Footer />
           </Container>
         </Body>
-      </>
+      </ModalContextProvider>
     );
   }
 }

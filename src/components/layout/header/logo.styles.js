@@ -29,7 +29,7 @@ export const Image = styled.img`
   transition: transform 0.25s ease-in;
   align-self: center;
   height: 6.5em;
-  z-index: 3;
+  z-index: ${props => (props.modal ? "0" : "3")};
   &:hover {
     transform: scale3d(1.05, 1.05, 1);
   }
@@ -47,7 +47,7 @@ export const H1 = styled.h1`
   color: ${props => props.theme.mainColor2};
   text-shadow: ${props => props.theme.newTextShadow};
   background-color: white;
-  z-index: 1;
+  z-index: 0;
   align-self: center;
   margin-bottom: 0;
   font-weight: 700;
@@ -86,7 +86,7 @@ export const ReadersChoice = styled.img`
   position: absolute;
   left: 9px;
   top: 39px;
-  z-index: 51;
+  z-index: ${props => (props.modal ? "0" : "4")};
   opacity: ${props => (props.menuToggle ? 0.2 : 1)};
   transition: transform 0.25s ease-in;
   cursor: pointer;

@@ -27,6 +27,7 @@
     "react-move": "^6.0.0",
     "react-responsive-carousel": "^3.1.50",
     "react-truncate-markup": "^4.1.0",
+    "reactjs-popup": "^1.5.0",
     "styled-components": "^4.4.0",
     "styled-normalize": "^8.0.6",
     "typeface-roboto": "^0.0.75",

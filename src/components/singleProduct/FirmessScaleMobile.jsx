@@ -1,7 +1,13 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
+import Popup from "reactjs-popup";
+import { useModalContext } from "../layout/modalContext";
 
+export const FadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
 const Firmness = styled.div`
   --heightLg: 21px;
   width: 100%;
@@ -121,7 +127,122 @@ const Wrapper = styled.div`
     }
   }
 `;
+const contentStyle = {
+  maxWidth: "600px",
+  width: "90%",
+  padding: "0px",
+};
+const OpenButton = styled.button`
+  font-family: ${props => props.theme.MainFont1};
+  text-decoration: underline;
+  color: ${props => props.theme.mainColor1};
+  text-align: center;
+  :hover,
+  :active {
+    color: ${props => props.theme.mainColor2};
+  }
+`;
+const Popper = styled.div`
+  transition: all 0.25s ease-in-out;
+  opacity: ${props => (props.modal ? "1" : "0")};
+  animation-name: ${FadeIn};
+  display: flex;
+  justify-content: center;
+  .button {
+    font-family: ${props => props.theme.MainFont1};
+    color: #000000;
+    cursor: pointer;
+    padding: 0px 30px;
+    display: inline-block;
+    margin: 10px 15px;
+    text-transform: uppercase;
+    line-height: 2em;
+    letter-spacing: 1.5px;
+    font-size: 1em;
+    outline: none;
+    position: relative;
+    font-size: 14px;
+    font-weight: 700;
+    border: 3px solid ${props => props.theme.mainColor1};
+    background-color: #ffffff;
+    border-radius: 15px 15px 15px 15px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    :hover {
+      border-color: green;
+      color: purple;
+    }
+  }
+  .button :hover {
+    border-color: red;
+    color: purple !important;
+  }
 
+  .example-warper {
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 1px #cfcece dashed;
+    margin: 10px;
+    white-space: pre-line;
+    color: #000;
+  }
+  .card {
+    font-size: 12px;
+  }
+  .card > .header {
+    width: 100%;
+    border-bottom: 1px solid gray;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .modal {
+    font-size: 12px;
+  }
+  .modal > .header {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    /* border-bottom: 1px solid gray;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px; */
+    font-family: ${props => props.theme.MainFont3};
+    border-bottom: 4px solid #eb1c24;
+    padding-bottom: 2px;
+    font-size: 1.4rem;
+    padding-left: 15px;
+    font-weight: 400;
+  }
+  .modal > .content {
+    font-family: ${props => props.theme.MainFont1};
+    font-size: 1rem;
+    line-height: 1.3rem;
+    font-weight: 300;
+    width: 100%;
+    padding: 10px 15px 10px 15px;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .modal > .actions {
+    margin: auto;
+  }
+  .modal > .actions {
+    width: 100%;
+    padding: 0px 5px 10px 5px;
+    text-align: center;
+  }
+  .example-warper-start {
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px #cfcece dashed;
+  }
+`;
 const FirmnessScale = ({ firmness }) => {
   let gradient =
     "linear-gradient(to left, #EAEAED 0%, #3F81CB 35%, #1565C0 50%, #3F81CB 65%, #EAEAED 100%)";
@@ -143,6 +264,7 @@ const FirmnessScale = ({ firmness }) => {
         return undefined;
     }
   };
+  const { modal, setModal } = useModalContext();
   return (
     <Wrapper>
       <h6>Firmness Scale</h6>
@@ -151,7 +273,43 @@ const FirmnessScale = ({ firmness }) => {
         <div className="scale" />
         <div className="soft">Soft</div>
       </Firmness>
-      <a href="#">Learn More</a>
+      <OpenButton
+        className="openButton"
+        type="button"
+        onClick={() => setModal(!modal)}
+      >
+        Learn More
+      </OpenButton>
+      <Popper modal={modal}>
+        <Popup
+          open={modal}
+          modal
+          lockScroll
+          arrow={false}
+          closeOnDocumentClick
+          position="bottom right"
+          repositionOnResize
+          contentStyle={contentStyle}
+        >
+          <article className="modal">
+            <h3 className="header">Firmness Scale </h3>
+            <p className="content">
+              Firmness ratings are based on customer feedback and manufacturer
+              information. Feel is subjective and we recommend experiencing the
+              bed for yourself in our showroom.
+            </p>
+            <div className="actions">
+              <button
+                type="button"
+                className="button"
+                onClick={() => setModal(!modal)}
+              >
+                close
+              </button>
+            </div>
+          </article>
+        </Popup>
+      </Popper>
     </Wrapper>
   );
 };
