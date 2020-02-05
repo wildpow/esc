@@ -27,9 +27,6 @@ const Firmness = styled.div`
     padding-bottom: 5px;
     padding-top: 5px;
   }
-  /* @media screen and (min-width: 1024px) {
-    padding-bottom: 0px;
-  } */
   .firm,
   .soft {
     font-family: ${props => props.theme.MainFont1};
@@ -168,36 +165,7 @@ const Popper = styled.div`
     border-radius: 15px 15px 15px 15px;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
-    :hover {
-      border-color: green;
-      color: purple;
-    }
   }
-  .button :hover {
-    border-color: red;
-    color: purple !important;
-  }
-
-  .example-warper {
-    padding: 20px 5%;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    border: 1px #cfcece dashed;
-    margin: 10px;
-    white-space: pre-line;
-    color: #000;
-  }
-  .card {
-    font-size: 12px;
-  }
-  .card > .header {
-    width: 100%;
-    border-bottom: 1px solid gray;
-    font-size: 14px;
-    text-align: center;
-  }
-
   .modal {
     font-size: 12px;
   }
@@ -206,10 +174,6 @@ const Popper = styled.div`
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 10px;
-    /* border-bottom: 1px solid gray;
-    font-size: 18px;
-    text-align: center;
-    padding: 5px; */
     font-family: ${props => props.theme.MainFont3};
     border-bottom: 4px solid #eb1c24;
     padding-bottom: 2px;
@@ -234,13 +198,6 @@ const Popper = styled.div`
     width: 100%;
     padding: 0px 5px 10px 5px;
     text-align: center;
-  }
-  .example-warper-start {
-    width: 100%;
-    padding: 20px 5%;
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px #cfcece dashed;
   }
 `;
 const FirmnessScale = ({ firmness }) => {
