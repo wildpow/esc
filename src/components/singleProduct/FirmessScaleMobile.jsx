@@ -130,6 +130,11 @@ const contentStyle = {
   padding: "0px",
 };
 const OpenButton = styled.button`
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: white;
   font-family: ${props => props.theme.MainFont1};
   text-decoration: underline;
   color: ${props => props.theme.mainColor1};
