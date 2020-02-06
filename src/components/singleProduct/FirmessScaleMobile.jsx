@@ -81,7 +81,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 100%;
+  /* height: 100%; */
   h6 {
     display: none;
   }
