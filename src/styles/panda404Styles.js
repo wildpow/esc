@@ -1,13 +1,12 @@
 import styled from "styled-components";
-import { FlexCol, FadeIn } from "./mainStyles";
 
-export const Main = styled(FlexCol)`
+export const Main = styled.div`
+  display: flex;
+  flex-direction: column;
   font-family: ${props => props.theme.MainFont1};
   border: ${props => props.theme.Border};
   box-shadow: ${props => props.theme.BoxShadow};
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
-  border-radius: .11rem;
+  border-radius: 0.11rem;
   text-align: center;
   justify-content: center;
   @media (min-width: 1300px) {

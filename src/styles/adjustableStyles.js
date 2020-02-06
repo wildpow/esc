@@ -1,7 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
 export const AdjMarkdown = styled(ReactMarkdown)`
   font-family: ${props => props.theme.MainFont3};
@@ -83,9 +82,9 @@ export const AdjMarkdown = styled(ReactMarkdown)`
   }
 `;
 
-export const Main = styled(FlexCol)`
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+export const Main = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-left: 0px;
   margin-right: 0px;
   padding-left: 5px;
@@ -150,7 +149,8 @@ export const H3 = styled.h3`
   }
 `;
 
-export const InfoWrapper = styled(FlexRow)`
+export const InfoWrapper = styled.div`
+  display: flex;
   justify-content: space-around;
   @media (min-width: 1024px) {
     justify-content: space-evenly;

@@ -1,10 +1,7 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { FadeIn, FlexCol } from "./mainStyles";
 
 export const Main = styled.div`
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
   background-color: white;
   margin-right: auto;
   margin-left: auto;
@@ -14,9 +11,6 @@ export const Main = styled.div`
   padding-right: 5px;
 `;
 
-// export const Linky = styled(Link)`
-//   margin: auto !important;
-// `;
 export const OneImg = styled.img`
   color: white;
   background-color: white;
@@ -26,7 +20,9 @@ export const OneImg = styled.img`
   // @media(min-width: 1024px) { max-width: 1000px; height: 600px; }
 `;
 
-export const Wrapper = styled(FlexCol)`
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: ${props => props.theme.newColor1};
   box-shadow: ${props => props.theme.newBoxShadow};
   justify-content: center;

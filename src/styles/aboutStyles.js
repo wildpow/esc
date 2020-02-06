@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
-export const Main = styled(FlexCol)`
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+export const Main = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: 15px;
-  /* border: ${props => props.theme.Border}; */
   background-color: white;
-   padding-left: 5px;
+  padding-left: 5px;
   padding-right: 5px;
   box-shadow: ${props => props.theme.newBoxShadow};
   @media (min-width: 1200px) {
@@ -16,7 +14,8 @@ export const Main = styled(FlexCol)`
   }
 `;
 
-export const PicHolder = styled(FlexRow)`
+export const PicHolder = styled.div`
+  display: flex;
   justify-content: space-between;
   @media (min-width: 568px) {
     justify-content: space-evenly;

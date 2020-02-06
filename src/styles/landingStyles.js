@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { FadeIn } from "./mainStyles";
 
 export const Container = styled.div`
   display: flex;
@@ -452,8 +451,6 @@ export const MapInfo = styled.div`
 `;
 
 export const ModalBox = styled.div`
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
   align-self: center;
   display: flex;
   flex-direction: column;

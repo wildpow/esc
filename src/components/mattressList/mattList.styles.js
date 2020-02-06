@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { FadeIn, H2, FlexCol, FlexRow } from "../../styles/mainStyles";
+import { H2 } from "../../styles/mainStyles";
 
-export const MainWrapper = styled(FlexCol)`
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+export const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  /* border: 0px solid green; */
 `;
 
 export const MainTitle = styled.header`
@@ -56,7 +55,8 @@ export const StearnsImgPlaceHolder = styled(Img)`
   }
 `;
 
-export const Wrapper = styled(FlexRow)`
+export const Wrapper = styled.div`
+  display: flex;
   flex-wrap: wrap;
   flex-basis: 100%;
   justify-content: center;
@@ -66,7 +66,9 @@ export const Wrapper = styled(FlexRow)`
   margin-bottom: 10px;
 `;
 
-export const Wrapper2 = styled(FlexCol)`
+export const Wrapper2 = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: 10px;
   margin-bottom: 0px;
   margin-right: 0px;

@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Markdown from "react-markdown";
-import { FadeIn, FlexCol } from "./mainStyles";
 
-export const Main = styled(FlexCol)`
+export const Main = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: white;
   box-shadow: ${props => props.theme.newBoxShadow};
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
   padding-bottom: 20px;
 `;
 // w: 800 h: 325

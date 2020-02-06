@@ -1,10 +1,9 @@
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "styled-components";
-import { FlexCol, FadeIn, FlexRow } from "./mainStyles";
 
-export const Main = styled(FlexCol)`
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+export const Main = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: 15px;
   margin-left: 0px;
   margin-right: 0px;
@@ -92,7 +91,8 @@ export const Img = styled.img`
   }
 `;
 
-export const InfoWrapper = styled(FlexRow)`
+export const InfoWrapper = styled.div`
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   @media (min-width: 768px) {

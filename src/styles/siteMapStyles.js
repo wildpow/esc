@@ -1,21 +1,18 @@
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
-export const MattLinksWrapper = styled(FlexRow)`
-  animation-name: ${FadeIn};
+export const MattLinksWrapper = styled.div`
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
-  ${props => props.theme.Animation}
-  @media(min-width: 1300px) {
+  @media (min-width: 1300px) {
     margin-left: 50px;
     margin-right: 50px;
   }
 `;
 
 export const Main = styled.div`
-  /* border: ${props => props.theme.Border}; */
   box-shadow: ${props => props.theme.newBoxShadow};
   background-color: white;
   margin-bottom: 20px;
@@ -54,15 +51,15 @@ export const SiteLinks = styled(Link)`
   }
 `;
 
-export const MainLinks = styled(FlexCol)`
-  animation-name: ${FadeIn};
+export const MainLinks = styled.div`
+  display: flex;
+  flex-direction: column;
   border: ${props => props.theme.Border};
   box-shadow: ${props => props.theme.BoxShadow};
   margin-top: 15px;
   padding-left: 5px;
   padding-right: 5px;
-  ${props => props.theme.Animation}
-  @media(min-width: 1300px) {
+  @media (min-width: 1300px) {
     margin-left: 85px;
     margin-right: 85px;
   }
@@ -95,7 +92,8 @@ export const UnList = styled.ul`
   padding-left: 0;
 `;
 
-export const BottomLinks = styled(FlexRow)`
+export const BottomLinks = styled.div`
+  display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   @media (min-width: 1300px) {
