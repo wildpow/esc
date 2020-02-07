@@ -21,21 +21,21 @@ const cfg = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
-    {
-      resolve: "@bundle-analyzer/gatsby-plugin",
-      options: { token: process.env.BUNDLE_ANALYZER_TOKEN },
-    },
-    {
-      resolve: "gatsby-plugin-bundle-stats",
-      options: {
-        compare: true,
-        json: true,
-        outDir: "../artifacts",
-        stats: {
-          context: "./src",
-        },
-      },
-    },
+    // {
+    //   resolve: "@bundle-analyzer/gatsby-plugin",
+    //   options: { token: process.env.BUNDLE_ANALYZER_TOKEN },
+    // },
+    // {
+    //   resolve: "gatsby-plugin-bundle-stats",
+    //   options: {
+    //     compare: true,
+    //     json: true,
+    //     outDir: "../artifacts",
+    //     stats: {
+    //       context: "./src",
+    //     },
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

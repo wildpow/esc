@@ -1,15 +1,24 @@
 const path = require("path");
-const StatsPlugin = require("stats-webpack-plugin");
+// const StatsPlugin = require("stats-webpack-plugin");
+const WebpackMonitor = require("webpack-monitor");
 
 exports.onCreateWebpackConfig = ({ stage, plugins, actions }) => {
   if (stage === "build-javascript") {
     actions.setWebpackConfig({
+      devtool: false,
       plugins: [
-        new StatsPlugin("../artifacts/webpack.json", {
-          all: false,
-          assets: true,
-          modules: true,
-          chunks: true,
+        // new StatsPlugin("../artifacts/webpack.json", {
+        //   all: false,
+        //   assets: true,
+        //   modules: true,
+        //   chunks: true,
+        // }),
+        new WebpackMonitor({
+          capture: true, // -> default 'true'
+          target: "../monitor/myStatsStore.json", // default -> '../monitor/stats.json'
+          launch: true, // -> default 'false'
+          port: 3030, // default -> 8081
+          excludeSourceMaps: true, // default 'true'
         }),
       ],
     });
