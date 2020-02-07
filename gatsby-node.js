@@ -3,15 +3,7 @@ const StatsPlugin = require("stats-webpack-plugin");
 
 exports.onCreateWebpackConfig = ({ stage, plugins, actions }) => {
   if (stage === "build-javascript") {
-  }
-};
-
-exports.onCreateWebpackConfig = ({ actions, stage }) => {
-  // If production JavaScript and CSS build
-  if (stage === "build-javascript") {
     actions.setWebpackConfig({
-      // Turn off source maps
-      devtool: false,
       plugins: [
         new StatsPlugin("../artifacts/webpack.json", {
           all: false,
@@ -23,6 +15,16 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
     });
   }
 };
+
+// exports.onCreateWebpackConfig = ({ actions, stage }) => {
+//   // If production JavaScript and CSS build
+//   if (stage === "build-javascript") {
+//     // Turn off source maps
+//     actions.setWebpackConfig({
+//       devtool: false,
+//     });
+//   }
+// };
 
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
