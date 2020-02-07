@@ -47,18 +47,18 @@
     "snap": "percy exec -- cypress run"
   },
   "devDependencies": {
-    "@percy/cypress": "^2.1.1",
-    "babel-plugin-styled-components": "^1.10.6",
-    "cypress": "^3.4.1",
+    "@percy/cypress": "^2.3.0",
+    "babel-plugin-styled-components": "^1.10.7",
+    "cypress": "^4.0.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.4.0",
-    "eslint-plugin-cypress": "^2.7.0",
-    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-cypress": "^2.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8",
-    "husky": "^3.0.7",
-    "lint-staged": "^9.4.1",
-    "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "webpack-monitor": "^1.0.14"
   },
   "husky": {
