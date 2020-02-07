@@ -26,6 +26,17 @@ const cfg = {
       options: { token: process.env.BUNDLE_ANALYZER_TOKEN },
     },
     {
+      resolve: "gatsby-plugin-bundle-stats",
+      options: {
+        compare: true,
+        json: true,
+        outDir: "../artifacts",
+        stats: {
+          context: "./src",
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `E.S.C Mattress Center`,
