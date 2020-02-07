@@ -3,16 +3,6 @@ const StatsPlugin = require("stats-webpack-plugin");
 
 exports.onCreateWebpackConfig = ({ stage, plugins, actions }) => {
   if (stage === "build-javascript") {
-    actions.setWebpackConfig({
-      plugins: [
-        new StatsPlugin("../artifacts/webpack.json", {
-          all: false,
-          assets: true,
-          modules: true,
-          chunks: true,
-        }),
-      ],
-    });
   }
 };
 
@@ -22,6 +12,14 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
     // Turn off source maps
     actions.setWebpackConfig({
       devtool: false,
+      plugins: [
+        new StatsPlugin("../artifacts/webpack.json", {
+          all: false,
+          assets: true,
+          modules: true,
+          chunks: true,
+        }),
+      ],
     });
   }
 };
