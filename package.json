@@ -47,6 +47,7 @@
     "snap": "percy exec -- cypress run"
   },
   "devDependencies": {
+    "@bundle-analyzer/gatsby-plugin": "^0.5.1",
     "@percy/cypress": "^2.1.1",
     "babel-plugin-styled-components": "^1.10.6",
     "cypress": "^3.4.1",
