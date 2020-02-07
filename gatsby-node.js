@@ -7,12 +7,6 @@ exports.onCreateWebpackConfig = ({ stage, plugins, actions }) => {
     actions.setWebpackConfig({
       devtool: false,
       plugins: [
-        // new StatsPlugin("../artifacts/webpack.json", {
-        //   all: false,
-        //   assets: true,
-        //   modules: true,
-        //   chunks: true,
-        // }),
         new WebpackMonitor({
           capture: true, // -> default 'true'
           target: "../monitor/myStatsStore.json", // default -> '../monitor/stats.json'
@@ -24,6 +18,12 @@ exports.onCreateWebpackConfig = ({ stage, plugins, actions }) => {
     });
   }
 };
+// new StatsPlugin("../artifacts/webpack.json", {
+//   all: false,
+//   assets: true,
+//   modules: true,
+//   chunks: true,
+// }),
 
 // exports.onCreateWebpackConfig = ({ actions, stage }) => {
 //   // If production JavaScript and CSS build
