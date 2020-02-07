@@ -9,8 +9,8 @@ exports.onCreateWebpackConfig = ({ stage, plugins, actions }) => {
 exports.onCreateWebpackConfig = ({ actions, stage }) => {
   // If production JavaScript and CSS build
   if (stage === "build-javascript") {
-    // Turn off source maps
     actions.setWebpackConfig({
+      // Turn off source maps
       devtool: false,
       plugins: [
         new StatsPlugin("../artifacts/webpack.json", {
