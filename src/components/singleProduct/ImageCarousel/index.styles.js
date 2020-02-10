@@ -9,8 +9,8 @@ import {
 import { Banner } from "../../mattressList/mattThumbNail/mattThumb.Styles";
 
 export const ImgWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   ${ImgWrapperPr1nt}
 `;
 

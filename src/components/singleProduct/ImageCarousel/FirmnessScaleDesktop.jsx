@@ -5,6 +5,9 @@ import Popup from "reactjs-popup";
 import { useModalContext } from "../../layout/modalContext";
 
 const Firmness = styled.div`
+  @media print {
+    display: none;
+  }
   position: absolute;
   bottom: 0;
   width: 100%;
