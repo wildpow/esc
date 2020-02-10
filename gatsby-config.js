@@ -22,6 +22,15 @@ const cfg = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
     // {
+    //   resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+    //   options: {
+    //     analyzerMode: `server`,
+    //     analyzerPort: `8888`,
+    //     devMode: true,
+    //     disable: true,
+    //   },
+    // },
+    // {
     //   resolve: "@bundle-analyzer/gatsby-plugin",
     //   options: { token: process.env.BUNDLE_ANALYZER_TOKEN },
     // },

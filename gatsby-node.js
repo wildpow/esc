@@ -1,39 +1,39 @@
 const path = require("path");
 // const StatsPlugin = require("stats-webpack-plugin");
-const WebpackMonitor = require("webpack-monitor");
-
-exports.onCreateWebpackConfig = ({ stage, plugins, actions }) => {
-  if (stage === "build-javascript") {
-    actions.setWebpackConfig({
-      devtool: false,
-      plugins: [
-        // new StatsPlugin("../artifacts/webpack.json", {
-        //   all: false,
-        //   assets: true,
-        //   modules: true,
-        //   chunks: true,
-        // }),
-        new WebpackMonitor({
-          capture: true, // -> default 'true'
-          target: "../monitor/myStatsStore.json", // default -> '../monitor/stats.json'
-          launch: true, // -> default 'false'
-          port: 3030, // default -> 8081
-          excludeSourceMaps: true, // default 'true'
-        }),
-      ],
-    });
-  }
-};
-
-// exports.onCreateWebpackConfig = ({ actions, stage }) => {
-//   // If production JavaScript and CSS build
+// const WebpackMonitor = require("webpack-monitor");
+// ONLY IN DEV MODE!!!!! ADDS A LOT OF TIME TO PRODUCTION BUILDS
+// exports.onCreateWebpackConfig = ({ stage, plugins, actions }) => {
 //   if (stage === "build-javascript") {
-//     // Turn off source maps
 //     actions.setWebpackConfig({
 //       devtool: false,
+//       plugins: [
+//         new WebpackMonitor({
+//           capture: true, // -> default 'true'
+//           target: "../monitor/myStatsStore.json", // default -> '../monitor/stats.json'
+//           launch: true, // -> default 'false'
+//           port: 3030, // default -> 8081
+//           excludeSourceMaps: true, // default 'true'
+//         }),
+//       ],
 //     });
 //   }
 // };
+// new StatsPlugin("../artifacts/webpack.json", {
+//   all: false,
+//   assets: true,
+//   modules: true,
+//   chunks: true,
+// }),
+
+exports.onCreateWebpackConfig = ({ actions, stage }) => {
+  // If production JavaScript and CSS build
+  if (stage === "build-javascript") {
+    // Turn off source maps
+    actions.setWebpackConfig({
+      devtool: false,
+    });
+  }
+};
 
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
