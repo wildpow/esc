@@ -23,7 +23,7 @@ const Firmness = styled.div`
     color: black;
     width: 22%;
     text-align: center;
-    font-size: 0.8rem;
+    font-weight: 700;
     @media screen and (min-width: 768px) {
       font-size: 1rem;
       width: 20%;
