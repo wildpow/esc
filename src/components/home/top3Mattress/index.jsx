@@ -32,7 +32,7 @@ const ThreeMattWrapper = styled(Wrapper)`
     margin-top: 5px;
   }
   @media (min-width: 1024px) {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
   }
   @media (min-width: 1300px) {
     margin-top: 10px;
