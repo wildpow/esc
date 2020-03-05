@@ -4,6 +4,8 @@ import { graphql } from "gatsby";
 import Layout from "../../../components/layout";
 import MattressThumb from "../../../components/mattressList/mattThumbNail";
 import MattressList from "../../../components/mattressList";
+import Filtering from "../../../components/mattressList/filtering";
+import NewTest from "../../../components/mattressList/NewTest";
 
 const Stearns = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;
@@ -15,13 +17,15 @@ const Stearns = ({ data }) => {
         headerText="Stearns uncover exceptional."
         brandName="stearns"
       >
-        {allDatoCmsMattress.nodes.map(mattress => (
+        {/* {allDatoCmsMattress.nodes.map(mattress => (
           <MattressThumb
             key={mattress.id}
             mattress={mattress}
             url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
           />
-        ))}
+        ))} */}
+        {/* <Filtering mattresses={allDatoCmsMattress.nodes} /> */}
+        <NewTest mattresses={allDatoCmsMattress.nodes} />
       </MattressList>
     </Layout>
   );
