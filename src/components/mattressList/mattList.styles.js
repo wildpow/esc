@@ -5,7 +5,6 @@ export const MainWrapper = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   justify-content: space-between;
-  /* border: 0px solid green; */
 `;
 
 export const MainTitle = styled.header`
@@ -57,13 +56,15 @@ export const StearnsImgPlaceHolder = styled(Img)`
 `;
 
 export const Wrapper = styled(FlexRow)`
-  flex-wrap: wrap;
-  flex-basis: 100%;
-  justify-content: center;
-  align-self: center;
-  align-items: center;
-  justify-items: center;
-  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  grid-auto-rows: minmax(300px, auto);
+  grid-gap: 1rem;
+  margin-left: 7px;
+  margin-right: 7px;
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
 `;
 
 export const Wrapper2 = styled(FlexCol)`
