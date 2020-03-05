@@ -8,11 +8,11 @@ export const MainWrapper = styled(FlexCol)`
   /* border: 0px solid green; */
 `;
 
-export const MainTitle = styled.header`
-  display: flex;
-  padding: 0px 10px 0px 10px;
-  background-color: ${props => props.theme.newColor1};
-`;
+// export const MainTitle = styled.header`
+//   display: flex;
+//   padding: 0px 10px 0px 10px;
+//   background-color: ${props => props.theme.newColor1};
+// `;
 
 export const Img = styled.img`
   background: ${props => props.theme.newColor1};
