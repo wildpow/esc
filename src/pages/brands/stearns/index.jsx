@@ -4,7 +4,6 @@ import { graphql } from "gatsby";
 import Layout from "../../../components/layout";
 import MattressThumb from "../../../components/mattressList/mattThumbNail";
 import MattressList from "../../../components/mattressList";
-import Filtering from "../../../components/mattressList/filtering2";
 
 const Stearns = ({ data }) => {
   const { datoCmsSeo, allDatoCmsMattress } = data;
@@ -23,7 +22,6 @@ const Stearns = ({ data }) => {
             url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
           />
         ))}
-        {/* <Filtering mattresses={allDatoCmsMattress.nodes} /> */}
       </MattressList>
     </Layout>
   );
