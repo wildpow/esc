@@ -3,21 +3,22 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
-import {
-  MainWrapper,
-  Wrapper,
-  P,
-  Wrapper2,
-  Headline,
-} from "../components/mattressList/mattList.styles";
-import MattressThumb from "../components/mattressList/mattThumbNail";
+import CurrentSale from "../components/mattressList/currentSale";
+// import {
+//   MainWrapper,
+//   Wrapper,
+//   P,
+//   Wrapper2,
+//   Headline,
+// } from "../components/mattressList/mattList.styles";
+// import MattressThumb from "../components/mattressList/mattThumbNail";
 
-const CurrentSale = ({ data }) => {
+const Sale = ({ data }) => {
   const { allDatoCmsMattress, datoCmsCurrentSale } = data;
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsCurrentSale.seoMetaTags} />
-      <MainWrapper>
+      {/* <MainWrapper>
         <Wrapper2>
           <Headline>{datoCmsCurrentSale.title}</Headline>
           <P>{datoCmsCurrentSale.description}</P>
@@ -33,15 +34,20 @@ const CurrentSale = ({ data }) => {
             />
           ))}
         </Wrapper>
-      </MainWrapper>
+      </MainWrapper> */}
+      <CurrentSale
+        mattresses={allDatoCmsMattress.nodes}
+        title={datoCmsCurrentSale.title}
+        description={datoCmsCurrentSale.description}
+      />
     </Layout>
   );
 };
 
-CurrentSale.propTypes = {
+Sale.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
 };
-export default CurrentSale;
+export default Sale;
 
 // export const currentSaleQuery = graphql`
 //   query currentSaleQuery {
