@@ -108,9 +108,7 @@ const CurrentSale = ({ title, description, mattresses }) => {
                   newFirmnessNumbs.includes(matt.firmness),
                 )
               : state.beforeFilter,
-          // checkBoxs: state.checkBoxs,
           firmnessNums: newFirmnessNumbs,
-          // beforeFilter: state.beforeFilter,
         };
       default:
         throw new Error();
@@ -159,6 +157,8 @@ const CurrentSale = ({ title, description, mattresses }) => {
                 </label>
               );
             })}
+            results:
+            {state.firmnessNums.length !== 0 ? state.mattresses.length : null}
           </div>
         </SortingWrapper>
       </Wrapper2>
