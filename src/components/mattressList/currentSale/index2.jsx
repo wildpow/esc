@@ -35,17 +35,18 @@ const CurrentSale = ({ title, description, mattresses }) => {
     mattresses,
     beforeFilter: mattresses,
     checkBoxs: [
-      { id: 0, value: "Extra Firm", firmness: 1 },
-      { id: 1, value: "Firm", firmness: 2 },
-      { id: 2, value: "Medium", firmness: 3 },
-      { id: 3, value: "Plush", firmness: 4 },
-      { id: 4, value: "Ultra Plush", firmness: 5 },
+      { id: 0, value: "Extra Firm", isChecked: false, firmness: 1 },
+      { id: 1, value: "Firm", isChecked: false, firmness: 2 },
+      { id: 2, value: "Medium", isChecked: false, firmness: 3 },
+      { id: 3, value: "Plush", isChecked: false, firmness: 4 },
+      { id: 4, value: "Ultra Plush", isChecked: false, firmness: 5 },
     ],
     firmnessNums: [],
   };
 
   function reducer(state, action) {
-    let newFirmnessNumbs;
+    let newCheckBoxs = state.checkBoxs;
+    let newFirmnessNumbs = [];
     switch (action.type) {
       case "low-high":
         return {
@@ -92,25 +93,25 @@ const CurrentSale = ({ title, description, mattresses }) => {
           }),
         };
       case "check":
-        newFirmnessNumbs = [...state.firmnessNums];
-        if (newFirmnessNumbs.includes(action.id)) {
-          newFirmnessNumbs = newFirmnessNumbs.filter(
-            item => item !== action.id,
-          );
-        } else {
-          newFirmnessNumbs.push(action.id);
-        }
+        console.log(newFirmnessNumbs);
+
+        newCheckBoxs.forEach(checkBox => {
+          if (checkBox.value === action.payload) {
+            newCheckBoxs[Number(checkBox.id)].isChecked = !newCheckBoxs[
+              Number(checkBox.id)
+            ].isChecked;
+          }
+          if (checkBox.isChecked) newFirmnessNumbs.push(checkBox.firmness);
+        });
+        newCheckBoxs.map(m => console.log("reducer", m));
+
         return {
-          ...state,
-          mattresses:
-            newFirmnessNumbs.length !== 0
-              ? state.beforeFilter.filter(matt =>
-                  newFirmnessNumbs.includes(matt.firmness),
-                )
-              : state.beforeFilter,
-          // checkBoxs: state.checkBoxs,
+          mattresses: state.beforeFilter.filter(matt =>
+            newFirmnessNumbs.includes(matt.firmness),
+          ),
+          checkBoxs: newCheckBoxs,
           firmnessNums: newFirmnessNumbs,
-          // beforeFilter: state.beforeFilter,
+          beforeFilter: state.beforeFilter,
         };
       default:
         throw new Error();
@@ -135,25 +136,28 @@ const CurrentSale = ({ title, description, mattresses }) => {
                 <option value="high-low">PRICE (HIGH-LOW)</option>
                 <option value="name a-z">NAME (A-Z)</option>
                 <option value="name z-a">NAME (Z-A)</option>
+                {/* <option value="default">DEFAULT</option> */}
               </select>
             </label>
           </div>
+          {console.log(state.firmnessNums, "state")}
+          {state.checkBoxs.map(m => console.log("state", m))}
           <div className="checkboxWrapper">
             {state.checkBoxs.map(checkBox => {
               return (
                 <label
                   key={checkBox.value}
                   htmlFor={checkBox.value}
+                  checked={checkBox.isChecked}
                   className="checkbox"
                 >
                   <input
                     type="checkbox"
-                    onChange={() => {
-                      dispatch({
-                        type: "check",
-                        id: checkBox.firmness,
-                      });
-                    }}
+                    value={checkBox.value}
+                    id={checkBox.value}
+                    onChange={e =>
+                      dispatch({ type: "check", payload: e.target.value })
+                    }
                   />
                   {checkBox.value}
                 </label>
