@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
-import CurrentSale from "../components/mattressList/currentSale";
+// import CurrentSale from "../components/mattressList/currentSale";
+import CurrentSale from "../components/mattressList/currentSale/newCurrentSale";
+
 // import {
 //   MainWrapper,
 //   Wrapper,
