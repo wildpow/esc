@@ -97,14 +97,6 @@ const Select = styled.select`
   background-color: ${props => props.theme.mainColor1};
   font-family: ${props => props.theme.MainFont1};
   width: 100%;
-  /* max-width: 326px; */
-  /* width: 150px; */
-  /* @media (min-width: 360px) {
-    width: 160px;
-  }
-  @media (min-width: 411px) {
-    width: 180px;
-  } */
   @media (min-width: 567px) {
     /* width: auto; */
     -moz-appearance: none;
@@ -143,9 +135,6 @@ const Select = styled.select`
     -webkit-appearance: none;
     /* width: 220px; */
   }
-  /* option {
-    max-width: 100px;
-  } */
 `;
 const BoxSelect = styled(Select)`
   opacity: ${props => (props.index !== "" && props.price !== 0 ? 1 : 0)};
