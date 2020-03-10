@@ -8,26 +8,49 @@ import test5 from "../../../../images/new lifestyle/test5.jpg";
 import test6 from "../../../../images/new lifestyle/test6.jpg";
 
 const HeaderWrapper = styled.div`
-  max-width: 1200px;
+  margin-top: 10px;
+
   display: flex;
-  justify-content: center;
-  justify-items: center;
-  align-content: center;
-  align-items: center;
-  justify-self: center;
-  align-self: center;
+  flex-direction: column;
+  background: white;
   font-family: ${props => props.theme.MainFont1};
+  h2 {
+    margin-top: 5px;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    border-bottom: 2px solid ${props => props.theme.mainColor2};
+    justify-self: flex-start;
+    align-self: flex-start;
+  }
   img {
-    padding: 15px;
+    width: 100%;
+    height: auto;
   }
   p {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    margin-top: 0px;
+    /* line-height: 1.65rem; */
+    font-weight: 300;
     font-family: ${props => props.theme.MainFont3};
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    h2 {
+      border-bottom: 4px solid ${props => props.theme.mainColor2};
+
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
   }
 `;
 const Heading = ({ description, title }) => {
   return (
     <HeaderWrapper>
-      <img src={test5} alt="bla" />
+      <img src={test3} alt="bla" />
       <div>
         <h2>{title}</h2>
         <p>{description}</p>
