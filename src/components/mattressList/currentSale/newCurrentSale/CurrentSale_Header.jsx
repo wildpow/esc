@@ -69,7 +69,7 @@ const HeaderWrapper = styled.div`
     }
   }
 `;
-const Heading = ({ description, title }) => {
+const Header = ({ description, title }) => {
   return (
     <HeaderWrapper>
       <div className="heading__content">
@@ -79,8 +79,8 @@ const Heading = ({ description, title }) => {
     </HeaderWrapper>
   );
 };
-Heading.propTypes = {
+Header.propTypes = {
   description: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
-export default Heading;
+export default Header;

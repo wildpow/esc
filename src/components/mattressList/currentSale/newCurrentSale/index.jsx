@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import styled from "styled-components";
 import FilterSortPanel from "./filterSortPanel";
-import Heading from "./heading";
+import Header from "./CurrentSale_Header";
 import MattressThumb from "../../mattThumbNail";
 import filterSortReducer from "./filterSortReducer";
 
@@ -49,7 +49,7 @@ const CurrentSale = ({ mattresses, title, description }) => {
   const [state, dispatch] = useReducer(filterSortReducer, initalState);
   return (
     <MainWrapper>
-      <Heading title={title} description={description} />
+      <Header title={title} description={description} />
       <div className="mainFlexView">
         <FilterSortPanel
           dispatch={dispatch}
