@@ -118,8 +118,13 @@ const Mattress = ({ data }) => {
                 freeBoxSpring={mattress.saleInfo[0].freeBox}
                 discount={mattress.saleInfo[0].discount}
                 prices={mattress.price[0]}
-                boxPrices={mattress.brand.boxPrice[0]}
+                boxPrices={
+                  mattress.subline.name === "iComfort"
+                    ? mattress.brand.boxPrice[1]
+                    : mattress.brand.boxPrice[0]
+                }
                 mattress={mattress.name}
+                subline={mattress.subline.name}
               />
             </MainInfo>
           </Main>
