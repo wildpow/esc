@@ -50,7 +50,11 @@ const MattListCurrentSale = ({ mattresses, title, description }) => {
     <MattList>
       <Header title={title} description={description} />
       <div className="mattList__flex">
-        <FilterSortPanel dispatch={dispatch} checkBoxs={state.checkBoxs} />
+        <FilterSortPanel
+          dispatch={dispatch}
+          checkBoxs={state.checkBoxs}
+          length={state.mattresses.length}
+        />
       </div>
       <div className="mattList__grid">
         {state.mattresses.map(mattress => (

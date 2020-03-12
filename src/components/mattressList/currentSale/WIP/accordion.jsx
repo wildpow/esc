@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
 const AccordionWrapper = styled.div`
+  margin-bottom: 10px;
   button {
     width: 100%;
     display: inline-block;
@@ -39,6 +40,8 @@ const AccordionWrapper = styled.div`
     max-height: ${props => props.height};
     overflow: hidden;
     max-height: 0;
+    border-bottom: ${props =>
+      props.active ? `4px solid ${props.theme.mainColor1}` : "white"};
   }
 `;
 
@@ -54,7 +57,6 @@ const Accordion = ({ title, children }) => {
   //   content.current.scrollHeight === null ? "" : content.current.scrollHeight;
   return (
     <AccordionWrapper active={active} height={height}>
-      {console.log(active, height)}
       <button
         // className={`accordion ${setActive}`}
         type="button"

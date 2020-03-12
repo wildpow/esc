@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import chevron from "../../../../images/new/chevron-down-solid.svg";
 import Accordion from "./accordion";
+import Checkbox from "./checkBox";
 
 const FilterSort = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 7px;
   padding-right: 7px;
+  @media screen and (min-width: 568px) {
+    flex-direction: row-reverse;
+  }
   .filterSort__select {
     display: block;
     font-size: 16px;
@@ -34,6 +38,7 @@ const FilterSort = styled.div`
     background-position: right 0.7em top 50%, 0 0;
     /* background-size: 0.65em auto, 100%; */
     background-size: 1.2em auto, 100%;
+    margin-bottom: 20px;
   }
   .filterSort__select::-ms-expand {
     display: none;
@@ -51,9 +56,43 @@ const FilterSort = styled.div`
   .filterSort__select option {
     font-weight: normal;
   }
+  .filterSort__confort {
+    font-family: ${props => props.theme.MainFont1};
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    h3 {
+      padding-left: 20px;
+      font-weight: 400;
+      padding-bottom: 10px;
+      font-size: 1.3rem;
+      border-bottom: 4px solid ${props => props.theme.mainColor2};
+    }
+    label {
+      padding-left: 20px;
+      padding-bottom: 15px;
+    }
+  }
 `;
 
-const FilterSortPanel = ({ dispatch, checkBoxs }) => {
+const FilterSortPanel = ({ dispatch, checkBoxs, length }) => {
+  const [checked, setChecked] = useState([
+    { checked: false },
+    { checked: false },
+    { checked: false },
+    { checked: false },
+    { checked: false },
+  ]);
+
+  const toggleCheck = (e, index, firmness) => {
+    const newChecked = checked;
+    newChecked[index].checked = e.target.checked;
+    setChecked([...newChecked]);
+    dispatch({
+      type: "check",
+      id: firmness,
+    });
+  };
   return (
     <FilterSort bg={chevron}>
       <select
@@ -71,27 +110,24 @@ const FilterSortPanel = ({ dispatch, checkBoxs }) => {
         <option value="name z-a">NAME (Z-A)</option>
       </select>
       <Accordion title="FILTER BY">
-        <ul className="filterSort__confort">
+        <div className="filterSort__confort">
+          <h3>Comfort</h3>
           {checkBoxs.map(checkBox => {
             return (
-              <li key={checkBox.value}>
-                <input
-                  className="checkbox"
-                  type="checkbox"
-                  onChange={() => {
-                    dispatch({
-                      type: "check",
-                      id: checkBox.firmness,
-                    });
-                  }}
+              <label htmlFor={checkBox.value}>
+                {console.log(checked[checkBox.id])}
+                <Checkbox
+                  id={checkBox.value}
+                  checked={checked[checkBox.id].checked}
+                  onChange={e => toggleCheck(e, checkBox.id, checkBox.firmness)}
                 />
-                {checkBox.value}
-              </li>
+                <span style={{ marginLeft: 8 }}>{checkBox.value}</span>
+              </label>
             );
           })}
           {/* results:
           {length !== 0 ? length : null} */}
-        </ul>
+        </div>
       </Accordion>
     </FilterSort>
   );
