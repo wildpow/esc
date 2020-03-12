@@ -4,8 +4,8 @@ import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
 // import CurrentSale from "../components/mattressList/currentSale";
-import CurrentSale from "../components/mattressList/currentSale/newCurrentSale";
-
+// import CurrentSale from "../components/mattressList/currentSale/newCurrentSale";
+import MattListCurrentSale from "../components/mattressList/currentSale/WIP";
 // import {
 //   MainWrapper,
 //   Wrapper,
@@ -37,7 +37,7 @@ const Sale = ({ data }) => {
           ))}
         </Wrapper>
       </MainWrapper> */}
-      <CurrentSale
+      <MattListCurrentSale
         mattresses={allDatoCmsMattress.nodes}
         title={datoCmsCurrentSale.title}
         description={datoCmsCurrentSale.description}
