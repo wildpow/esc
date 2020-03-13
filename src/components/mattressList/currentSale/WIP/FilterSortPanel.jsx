@@ -10,8 +10,9 @@ const FilterSort = styled.div`
   flex-direction: column;
   padding-left: 7px;
   padding-right: 7px;
-  @media screen and (min-width: 568px) {
-    flex-direction: row-reverse;
+  @media screen and (min-width: 740px) {
+    padding-left: 0;
+    width: 20%;
   }
   .filterSort__select {
     display: block;
@@ -36,26 +37,11 @@ const FilterSort = styled.div`
       linear-gradient(to bottom, #0069ed 0%, #0069ed 100%);
     background-repeat: no-repeat, repeat;
     background-position: right 0.7em top 50%, 0 0;
-    /* background-size: 0.65em auto, 100%; */
     background-size: 1.2em auto, 100%;
     margin-bottom: 20px;
     padding: 1rem 2rem 1rem 1rem;
     transition: background 250ms ease-in-out, transform 150ms ease;
   }
-  /* button:hover,
-  button:focus {
-    background-image: url(${props => props.bg}),
-      linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
-  }
-
-  button:focus {
-    outline: 1px solid #fff;
-    outline-offset: -4px;
-  }
-
-  button:active {
-    transform: scale(0.99);
-  } */
   .filterSort__select:active {
     transform: scale(0.99);
   }
@@ -63,7 +49,6 @@ const FilterSort = styled.div`
     display: none;
   }
   .filterSort__select:hover {
-    /* border-color: #888; */
     background-image: url(${props => props.bg}),
       linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
   }
@@ -75,12 +60,12 @@ const FilterSort = styled.div`
     box-shadow: 0 0 0 3px -moz-mac-focusring;
     color: white;
     outline: none;
-
   }
   .filterSort__select option {
     font-weight: normal;
   }
   .filterSort__confort {
+    background-color: white;
     font-family: ${props => props.theme.MainFont1};
     background-color: white;
     display: flex;
@@ -96,10 +81,13 @@ const FilterSort = styled.div`
       padding-left: 20px;
       padding-bottom: 15px;
     }
+    label:last-child {
+      padding-bottom: 20px;
+    }
   }
 `;
 
-const FilterSortPanel = ({ dispatch, checkBoxs, length }) => {
+const FilterSortPanel = ({ dispatch, checkBoxs }) => {
   const [checked, setChecked] = useState([
     { checked: false },
     { checked: false },
@@ -139,18 +127,16 @@ const FilterSortPanel = ({ dispatch, checkBoxs, length }) => {
           {checkBoxs.map(checkBox => {
             return (
               <label htmlFor={checkBox.value}>
-                {console.log(checked[checkBox.id])}
                 <Checkbox
                   id={checkBox.value}
                   checked={checked[checkBox.id].checked}
+                  firmness={checkBox.firmness}
                   onChange={e => toggleCheck(e, checkBox.id, checkBox.firmness)}
                 />
                 <span style={{ marginLeft: 8 }}>{checkBox.value}</span>
               </label>
             );
           })}
-          {/* results:
-          {length !== 0 ? length : null} */}
         </div>
       </Accordion>
     </FilterSort>

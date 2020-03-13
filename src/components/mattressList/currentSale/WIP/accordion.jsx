@@ -5,21 +5,6 @@ import chevron from "../../../../images/new/chevron-down-solid.svg";
 const AccordionWrapper = styled.div`
   margin-bottom: 10px;
   button {
-    /* width: 100%;
-    display: inline-block;
-    border: none;
-    padding: 1rem 2rem;
-    margin: 0;
-    text-decoration: none;
-    background: #0069ed;
-    color: #ffffff;
-    font-family: sans-serif;
-    font-size: 1rem;
-    cursor: pointer;
-    text-align: center;
-    transition: background 250ms ease-in-out, transform 150ms ease;
-    -webkit-appearance: none;
-    -moz-appearance: none; */
     transition: background 250ms ease-in-out, transform 150ms ease;
     display: block;
     font-size: 16px;
@@ -45,14 +30,9 @@ const AccordionWrapper = styled.div`
     background-position: right 0.7em top 50%, 0 0;
     /* background-size: 0.65em auto, 100%; */
     background-size: 1.2em auto, 100%;
-    margin-bottom: 20px;
+    margin-bottom: 1px;
     text-align: left;
     padding: 1rem 2rem 1rem 1rem;
-  }
-  stroke,
-  fill {
-    color: white;
-    background-color: white;
   }
   button:hover,
   button:focus {
@@ -87,18 +67,10 @@ const Accordion = ({ title, children }) => {
     setActive(!active);
     setHeight(active ? "0px" : `${content.current.scrollHeight}px`);
   };
-  // const scrollHeight =
-  //   content.current.scrollHeight === null ? "" : content.current.scrollHeight;
   return (
     <AccordionWrapper active={active} height={height} bg={chevron}>
-      <button
-        // className={`accordion ${setActive}`}
-        type="button"
-        onClick={toggleAccordion}
-      >
+      <button type="button" onClick={toggleAccordion}>
         {title}
-        {/* <p className="accordionTitle">{props.title}</p> */}
-        {/* <Chevron width={15} fill={"#777"} className={`${setRotate}`} /> */}
       </button>
       <div
         className="accordion__content"

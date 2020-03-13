@@ -49,21 +49,23 @@ const MattListCurrentSale = ({ mattresses, title, description }) => {
   return (
     <MattList>
       <Header title={title} description={description} />
+
       <div className="mattList__flex">
         <FilterSortPanel
           dispatch={dispatch}
           checkBoxs={state.checkBoxs}
           length={state.mattresses.length}
         />
-      </div>
-      <div className="mattList__grid">
-        {state.mattresses.map(mattress => (
-          <MattressThumb
-            key={mattress.id}
-            mattress={mattress}
-            url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-          />
-        ))}
+
+        <div className="mattList__grid">
+          {state.mattresses.map(mattress => (
+            <MattressThumb
+              key={mattress.id}
+              mattress={mattress}
+              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
+            />
+          ))}
+        </div>
       </div>
     </MattList>
   );
