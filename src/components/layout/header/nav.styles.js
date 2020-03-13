@@ -14,7 +14,7 @@ export const Nav = styled.nav`
   display: none;
   @media (min-width: 1022px) {
     display: flex;
-    padding-top: 40px;
+    padding-top: 15px;
   }
 `;
 

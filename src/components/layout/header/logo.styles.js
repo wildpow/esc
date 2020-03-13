@@ -22,6 +22,9 @@ export const StyledLink = styled(Link)`
   flex-direction: column;
   margin-top: -15px;
   margin: auto;
+  @media screen and (min-width: 1022px) {
+    margin-top: -25px;
+  }
 `;
 
 export const Image = styled.img`
