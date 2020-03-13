@@ -15,6 +15,7 @@ import {
 import SealyImg from "../../images/sealyLogo.png";
 import StearnsImg from "../../images/stearnsLogo.png";
 import TempurImg from "../../images/tempurLogo2.png";
+import SertaLogo from "../../images/sertaLogo.png";
 
 const NewThing = styled.header`
   display: flex;
@@ -106,12 +107,14 @@ const MattressList = ({
   brandImgAlt,
   headerText,
   brandName,
+  landing,
 }) => {
   const brandImgTag = name => {
     if (name === "sealy")
       return <SealyImgPlace src={SealyImg} alt={brandImgAlt} />;
     if (name === "stearns")
       return <StearnsImgPlaceHolder src={StearnsImg} alt={brandImgAlt} />;
+    if (name === "serta") return <Img src={SertaLogo} alt={brandImgAlt} />;
     return <Img src={TempurImg} alt={brandImgAlt} />;
   };
   return (
@@ -124,7 +127,9 @@ const MattressList = ({
         {brandImgTag(brandName)}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <p>{headerText}</p>
-          <Link to={`/brands/${brandName}/landing`}>Learn more</Link>
+          {landing && (
+            <Link to={`/brands/${brandName}/landing`}>Learn more</Link>
+          )}
         </div>
       </NewThing>
       <Wrapper>{children}</Wrapper>
@@ -135,12 +140,17 @@ const MattressList = ({
   );
 };
 
+MattressList.defaultProps = {
+  landing: true,
+};
+
 MattressList.propTypes = {
   seo: PropTypes.instanceOf(Object).isRequired,
   children: PropTypes.node.isRequired,
   headerText: PropTypes.string.isRequired,
   brandImgAlt: PropTypes.string.isRequired,
   brandName: PropTypes.string.isRequired,
+  landing: PropTypes.bool,
 };
 
 export default MattressList;
