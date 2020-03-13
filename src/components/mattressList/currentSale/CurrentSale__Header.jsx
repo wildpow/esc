@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import test4 from "../../../../images/new/test4.jpg";
+import test4 from "../../../images/new/test4.jpg";
 
 const HeaderWrapper = styled.div`
   margin-top: 15px;

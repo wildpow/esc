@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Header from "./CurrentSale__Header";
-import MattressThumb from "../../mattThumbNail";
+import MattressThumb from "../mattThumbNail";
 import FilterSortPanel from "./FilterSortPanel";
 import filterSortReducer from "./filterSortReducer";
 
@@ -56,7 +56,6 @@ const MattListCurrentSale = ({ mattresses, title, description }) => {
           checkBoxs={state.checkBoxs}
           length={state.mattresses.length}
         />
-
         <div className="mattList__grid">
           {state.mattresses.map(mattress => (
             <MattressThumb

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
-import chevron from "../../../../images/new/chevron-down-solid.svg";
+import chevron from "../../../images/new/chevron-down-solid.svg";
 
 const AccordionWrapper = styled.div`
   margin-bottom: 10px;
@@ -28,7 +29,6 @@ const AccordionWrapper = styled.div`
       linear-gradient(to bottom, #0069ed 0%, #0069ed 100%);
     background-repeat: no-repeat, repeat;
     background-position: right 0.7em top 50%, 0 0;
-    /* background-size: 0.65em auto, 100%; */
     background-size: 1.2em auto, 100%;
     margin-bottom: 1px;
     text-align: left;
@@ -81,5 +81,10 @@ const Accordion = ({ title, children }) => {
       </div>
     </AccordionWrapper>
   );
+};
+
+Accordion.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
 };
 export default Accordion;

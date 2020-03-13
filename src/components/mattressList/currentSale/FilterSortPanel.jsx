@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import chevron from "../../../../images/new/chevron-down-solid.svg";
+import chevron from "../../../images/new/chevron-down-solid.svg";
 import Accordion from "./accordion";
 import Checkbox from "./checkBox";
 
@@ -126,9 +126,8 @@ const FilterSortPanel = ({ dispatch, checkBoxs }) => {
           <h3>Comfort</h3>
           {checkBoxs.map(checkBox => {
             return (
-              <label htmlFor={checkBox.value}>
+              <label htmlFor={checkBox.value} key={checkBox.value}>
                 <Checkbox
-                  id={checkBox.value}
                   checked={checked[checkBox.id].checked}
                   firmness={checkBox.firmness}
                   onChange={e => toggleCheck(e, checkBox.id, checkBox.firmness)}
