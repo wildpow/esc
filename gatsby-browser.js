@@ -8,11 +8,16 @@
 
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import WindowDimensionsProvider from "./src/components/context/WindowDimensions";
 import { theme } from "./src/styles/mainStyles";
 
 require("typeface-roboto-slab");
 require("typeface-roboto");
 
 export const wrapRootElement = ({ element }) => {
-  return <ThemeProvider theme={theme}>{element}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <WindowDimensionsProvider>{element}</WindowDimensionsProvider>
+    </ThemeProvider>
+  );
 };

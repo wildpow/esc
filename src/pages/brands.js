@@ -9,6 +9,8 @@ import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 
 const SectionContainer = styled.div`
   /* min-height: 100vh; */
+  padding-left: 5px;
+  padding-right: 5px;
   min-width: 320px;
   max-width: 1366px;
   margin: auto;

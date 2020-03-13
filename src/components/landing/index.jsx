@@ -3,7 +3,6 @@ import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import WindowDimensionsProvider from "../context/WindowDimensions";
 import TabBox from "./TabBox";
 import { P } from "./global.styles";
 import HeaderButtons from "./HeaderButtons";
@@ -22,8 +21,8 @@ const Header = styled(Img)`
 `;
 
 const Container = styled.section`
-  padding-right: 15px;
-  padding-left: 15px;
+  /* padding-right: 15px;
+  padding-left: 15px; */
   margin-right: auto;
   margin-left: auto;
 
@@ -45,8 +44,8 @@ const Hero = styled(Img)`
   @media only screen and (max-width: 768px) {
     height: 210px;
     overflow: hidden;
-    width: 100vw;
-    margin-left: -15px;
+    /* width: 100vw; */
+    margin-left: 0px;
   }
 `;
 
@@ -59,30 +58,30 @@ const Hr = styled.hr`
 const Landing = ({ data, buttonName, buttonURL }) => {
   const { headingImg, heroImg, description, tabBox, seoMetaTags } = data;
   return (
-    <WindowDimensionsProvider>
+    <div style={{ maxWidth: "1440px", backgroundColor: "white" }}>
       <HelmetDatoCms seo={seoMetaTags} />
-      <div style={{ maxWidth: "1440px", backgroundColor: "white" }}>
-        <Header fluid={headingImg.fluid} alt={headingImg.alt} />
-        <Container>
-          <Hero fluid={heroImg.fluid} alt={heroImg.alt} />
-        </Container>
-        <Container style={{ marginTop: "3em" }}>
-          <P style={{ marginBottom: "10px" }}>{description}</P>
-          <HeaderButtons buttonName={buttonName} buttonURL={buttonURL} />
-          {tabBox.map(item => (
-            <div key={item.id}>
-              <Hr />
-              <TabBox
-                tabs={item.box}
-                hero={item.topImage}
-                heroText={item.topText}
-              />
-            </div>
-          ))}
-          <Hr />
-        </Container>
-      </div>
-    </WindowDimensionsProvider>
+      <Header fluid={headingImg.fluid} alt={headingImg.alt} />
+      <Container>
+        <Hero fluid={heroImg.fluid} alt={heroImg.alt} />
+      </Container>
+      <Container
+        style={{ marginTop: "3em", paddingRight: "15px", paddingLeft: "15px" }}
+      >
+        <P style={{ marginBottom: "10px" }}>{description}</P>
+        <HeaderButtons buttonName={buttonName} buttonURL={buttonURL} />
+        {tabBox.map(item => (
+          <div key={item.id}>
+            <Hr />
+            <TabBox
+              tabs={item.box}
+              hero={item.topImage}
+              heroText={item.topText}
+            />
+          </div>
+        ))}
+        <Hr />
+      </Container>
+    </div>
   );
 };
 

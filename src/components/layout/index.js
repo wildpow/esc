@@ -41,13 +41,26 @@ const Body = styled.div`
 const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
+  max-width: 1370px;
   /* padding-left: 5px;
   padding-right: 5px; */
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     width: 750px;
   }
+  @media screen and (min-width: 800px) and (orientation: landscape) {
+    width: 800px;
+  }
+  @media (min-width: 860px) {
+    width: 850px;
+  }
+  @media (min-width: 900px) {
+    width: 880px;
+  }
   @media (min-width: 992px) {
-    width: 970px;
+    width: 980px;
+  }
+  @media (min-width: 1100px) {
+    width: 1075px;
   }
   @media (min-width: 1200px) {
     width: 1170px;
@@ -57,7 +70,7 @@ const Container = styled.div`
   }
   @media (min-width: 1400px) {
     width: 1370px;
-  }
+  } */
 `;
 
 class Layout extends React.Component {

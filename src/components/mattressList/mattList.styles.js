@@ -5,13 +5,15 @@ export const MainWrapper = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 
-export const MainTitle = styled.header`
-  display: flex;
-  padding: 0px 10px 0px 10px;
-  background-color: ${props => props.theme.newColor1};
-`;
+// export const MainTitle = styled.header`
+//   display: flex;
+//   padding: 0px 10px 0px 10px;
+//   background-color: ${props => props.theme.newColor1};
+// `;
 
 export const Img = styled.img`
   background: ${props => props.theme.newColor1};
