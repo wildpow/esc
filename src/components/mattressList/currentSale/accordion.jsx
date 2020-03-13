@@ -70,8 +70,8 @@ const Accordion = ({ title, children }) => {
     setHeight(active ? "0px" : `${content.current.scrollHeight}px`);
   };
   useEffect(() => {
-    setActive(width > 768 ? true : false);
-    setHeight(width > 768 ? `${content.current.scrollHeight}px` : "0px");
+    setActive(width >= 768);
+    setHeight(width >= 768 ? `${content.current.scrollHeight}px` : "0px");
   }, [width]);
   return (
     <AccordionWrapper active={active} height={height} bg={chevron}>

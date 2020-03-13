@@ -46,6 +46,9 @@ const Container = styled.div`
   @media (min-width: 768px) {
     width: 750px;
   }
+  @media screen and (min-width: 800px) and (orientation: landscape) {
+    width: 800px;
+  }
   @media (min-width: 992px) {
     width: 970px;
   }

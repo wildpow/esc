@@ -45,7 +45,7 @@ const Hero = styled(Img)`
     height: 210px;
     overflow: hidden;
     width: 100vw;
-    margin-left: -15px;
+    margin-left: -24px;
   }
 `;
 
