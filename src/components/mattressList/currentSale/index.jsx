@@ -5,6 +5,7 @@ import Header from "./CurrentSale__Header";
 import MattressThumb from "../mattThumbNail";
 import FilterSortPanel from "./FilterSortPanel";
 import filterSortReducer from "./filterSortReducer";
+import BreadCrumbs, { BreadWrapper } from "../../breadCrumbs";
 
 const MattList = styled.div`
   display: flex;
@@ -34,7 +35,15 @@ const MattList = styled.div`
   }
 `;
 
-const MattListCurrentSale = ({ mattresses, title, description }) => {
+const MattListCurrentSale = ({
+  mattresses,
+  title,
+  description,
+  breadCrumbs,
+  brandName,
+  headerBG,
+  landing,
+}) => {
   const initalState = {
     mattresses,
     beforeFilter: mattresses,
@@ -50,7 +59,18 @@ const MattListCurrentSale = ({ mattresses, title, description }) => {
   const [state, dispatch] = useReducer(filterSortReducer, initalState);
   return (
     <MattList>
-      <Header title={title} description={description} />
+      {breadCrumbs && (
+        <BreadWrapper Brands>
+          <BreadCrumbs next="Brands" here={brandName} />
+        </BreadWrapper>
+      )}
+      <Header
+        title={title}
+        description={description}
+        headerBG={headerBG}
+        landing={landing}
+        brandName={brandName}
+      />
 
       <div className="mattList__flex">
         <FilterSortPanel
@@ -68,6 +88,11 @@ const MattListCurrentSale = ({ mattresses, title, description }) => {
           ))}
         </div>
       </div>
+      {breadCrumbs && (
+        <BreadWrapper Brands Bottom>
+          <BreadCrumbs next="Brands" here={brandName} />
+        </BreadWrapper>
+      )}
     </MattList>
   );
 };
@@ -76,6 +101,13 @@ MattListCurrentSale.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   mattresses: PropTypes.instanceOf(Object).isRequired,
+  breadCrumbs: PropTypes.bool,
+  brandName: PropTypes.string,
+};
+
+MattListCurrentSale.defaultProps = {
+  breadCrumbs: false,
+  brandName: "Nothing",
 };
 
 export default MattListCurrentSale;

@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
 import MattListCurrentSale from "../components/mattressList/currentSale";
+import test4 from "../images/new/test4.jpg";
 
 const Sale = ({ data }) => {
   const { allDatoCmsMattress, datoCmsCurrentSale } = data;
@@ -11,6 +12,7 @@ const Sale = ({ data }) => {
     <Layout>
       <HelmetDatoCms seo={datoCmsCurrentSale.seoMetaTags} />
       <MattListCurrentSale
+        headerBG={test4}
         mattresses={allDatoCmsMattress.nodes}
         title={datoCmsCurrentSale.title}
         description={datoCmsCurrentSale.description}
