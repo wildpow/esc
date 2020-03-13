@@ -10,7 +10,7 @@ const FilterSort = styled.div`
   flex-direction: column;
   padding-left: 7px;
   padding-right: 7px;
-  @media screen and (min-width: 740px) {
+  @media screen and (min-width: 768px) {
     padding-left: 0;
     width: 20%;
   }
