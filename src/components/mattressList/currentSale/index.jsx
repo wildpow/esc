@@ -8,6 +8,8 @@ import filterSortReducer from "./filterSortReducer";
 
 const MattList = styled.div`
   display: flex;
+  padding-left: 5px;
+  padding-right: 5px;
   flex-direction: column;
   .mattList__flex {
     border-top: 8px solid ${props => props.theme.mainColor1};

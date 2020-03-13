@@ -5,6 +5,8 @@ export const MainWrapper = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${props => props.theme.Animation}
   justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 
 // export const MainTitle = styled.header`

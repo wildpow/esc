@@ -21,8 +21,8 @@ const Header = styled(Img)`
 `;
 
 const Container = styled.section`
-  padding-right: 15px;
-  padding-left: 15px;
+  /* padding-right: 15px;
+  padding-left: 15px; */
   margin-right: auto;
   margin-left: auto;
 
@@ -44,8 +44,8 @@ const Hero = styled(Img)`
   @media only screen and (max-width: 768px) {
     height: 210px;
     overflow: hidden;
-    width: 100vw;
-    margin-left: -24px;
+    /* width: 100vw; */
+    margin-left: 0px;
   }
 `;
 
@@ -64,7 +64,9 @@ const Landing = ({ data, buttonName, buttonURL }) => {
       <Container>
         <Hero fluid={heroImg.fluid} alt={heroImg.alt} />
       </Container>
-      <Container style={{ marginTop: "3em" }}>
+      <Container
+        style={{ marginTop: "3em", paddingRight: "15px", paddingLeft: "15px" }}
+      >
         <P style={{ marginBottom: "10px" }}>{description}</P>
         <HeaderButtons buttonName={buttonName} buttonURL={buttonURL} />
         {tabBox.map(item => (
