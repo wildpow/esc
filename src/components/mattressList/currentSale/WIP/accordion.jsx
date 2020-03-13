@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
+import chevron from "../../../../images/new/chevron-down-solid.svg";
 
 const AccordionWrapper = styled.div`
   margin-bottom: 10px;
   button {
-    width: 100%;
+    /* width: 100%;
     display: inline-block;
     border: none;
     padding: 1rem 2rem;
@@ -18,12 +19,45 @@ const AccordionWrapper = styled.div`
     text-align: center;
     transition: background 250ms ease-in-out, transform 150ms ease;
     -webkit-appearance: none;
+    -moz-appearance: none; */
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    display: block;
+    font-size: 16px;
+    font-family: ${props => props.theme.MainFont1};
+    font-weight: 700;
+    color: white;
+    line-height: 1.3;
+    padding: 0.6em 1.4em 0.5em 0.8em;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+    border-radius: 0em;
     -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url(${props => props.bg}),
+      linear-gradient(to bottom, #0069ed 0%, #0069ed 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    /* background-size: 0.65em auto, 100%; */
+    background-size: 1.2em auto, 100%;
+    margin-bottom: 20px;
+    text-align: left;
+    padding: 1rem 2rem 1rem 1rem;
   }
-
+  stroke,
+  fill {
+    color: white;
+    background-color: white;
+  }
   button:hover,
   button:focus {
-    background: #0053ba;
+    background-image: url(${props => props.bg}),
+      linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
   }
 
   button:focus {
@@ -56,7 +90,7 @@ const Accordion = ({ title, children }) => {
   // const scrollHeight =
   //   content.current.scrollHeight === null ? "" : content.current.scrollHeight;
   return (
-    <AccordionWrapper active={active} height={height}>
+    <AccordionWrapper active={active} height={height} bg={chevron}>
       <button
         // className={`accordion ${setActive}`}
         type="button"

@@ -18,7 +18,7 @@ const FilterSort = styled.div`
     font-size: 16px;
     font-family: ${props => props.theme.MainFont1};
     font-weight: 700;
-    color: #444;
+    color: white;
     line-height: 1.3;
     padding: 0.6em 1.4em 0.5em 0.8em;
     width: 100%;
@@ -33,25 +33,49 @@ const FilterSort = styled.div`
     appearance: none;
     background-color: #fff;
     background-image: url(${props => props.bg}),
-      linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+      linear-gradient(to bottom, #0069ed 0%, #0069ed 100%);
     background-repeat: no-repeat, repeat;
     background-position: right 0.7em top 50%, 0 0;
     /* background-size: 0.65em auto, 100%; */
     background-size: 1.2em auto, 100%;
     margin-bottom: 20px;
+    padding: 1rem 2rem 1rem 1rem;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+  }
+  /* button:hover,
+  button:focus {
+    background-image: url(${props => props.bg}),
+      linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
+  }
+
+  button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+  }
+
+  button:active {
+    transform: scale(0.99);
+  } */
+  .filterSort__select:active {
+    transform: scale(0.99);
   }
   .filterSort__select::-ms-expand {
     display: none;
   }
   .filterSort__select:hover {
-    border-color: #888;
+    /* border-color: #888; */
+    background-image: url(${props => props.bg}),
+      linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
   }
   .filterSort__select:focus {
-    border-color: #aaa;
+    background-image: url(${props => props.bg}),
+      linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
+    border-color: white;
     box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
     box-shadow: 0 0 0 3px -moz-mac-focusring;
-    color: #222;
+    color: white;
     outline: none;
+
   }
   .filterSort__select option {
     font-weight: normal;
