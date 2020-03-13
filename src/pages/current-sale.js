@@ -28,7 +28,9 @@ export const currentSaleQuery = graphql`
     allDatoCmsMattress(
       filter: {
         meta: { status: { eq: "published" } }
-        saleInfo: { elemMatch: { saleBanner: { ne: "" } } }
+        saleInfo: {
+          elemMatch: { saleBanner: { ne: "NEW MODEL", regex: "/[a-z]/gi" } }
+        }
       }
       sort: { fields: priceLow, order: ASC }
     ) {
