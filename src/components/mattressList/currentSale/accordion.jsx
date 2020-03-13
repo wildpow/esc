@@ -1,7 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import chevron from "../../../images/new/chevron-down-solid.svg";
+import { useWindowDimensions } from "../../context/WindowDimensions";
 
 const AccordionWrapper = styled.div`
   margin-bottom: 10px;
@@ -60,6 +61,7 @@ const AccordionWrapper = styled.div`
 `;
 
 const Accordion = ({ title, children }) => {
+  const { width } = useWindowDimensions();
   const content = useRef(null);
   const [active, setActive] = useState(false);
   const [height, setHeight] = useState("0px");
@@ -67,6 +69,10 @@ const Accordion = ({ title, children }) => {
     setActive(!active);
     setHeight(active ? "0px" : `${content.current.scrollHeight}px`);
   };
+  useEffect(() => {
+    setActive(width > 768 ? true : false);
+    setHeight(width > 768 ? `${content.current.scrollHeight}px` : "0px");
+  }, [width]);
   return (
     <AccordionWrapper active={active} height={height} bg={chevron}>
       <button type="button" onClick={toggleAccordion}>

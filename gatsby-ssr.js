@@ -8,7 +8,12 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./src/styles/mainStyles";
+import WindowDimensionsProvider from "./src/components/context/WindowDimensions";
 
 export const wrapRootElement = ({ element }) => {
-  return <ThemeProvider theme={theme}>{element}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <WindowDimensionsProvider>{element}</WindowDimensionsProvider>
+    </ThemeProvider>
+  );
 };
