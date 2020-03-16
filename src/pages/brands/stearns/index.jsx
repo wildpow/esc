@@ -35,7 +35,7 @@ const Stearns = ({ data }) => {
         headerBG={test}
         mattresses={allDatoCmsMattress.nodes}
         title="Stearns & Foster"
-        description="Stearns uncover exceptional."
+        description="Our Spring Savings Event is going on now at ESC Mattress Center in Everett, Snohomish County's favorite mattress store! Shop our best deals on mattres"
         breadCrumbs
         brandName="stearns"
         landing

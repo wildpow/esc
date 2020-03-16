@@ -15,8 +15,8 @@ const HeaderWrapper = styled.div`
   align-items: center;
   font-family: ${props => props.theme.MainFont1};
   a {
-    /* align-self: flex-end;
-    justify-self: flex-end; */
+    align-self: flex-end;
+    justify-self: flex-end;
     text-decoration: none;
     text-align: center;
     background-color: ${props => props.theme.mainColor1};
@@ -46,7 +46,7 @@ const HeaderWrapper = styled.div`
       box-shadow: inset 0px 0px 5px #c1c1c1 !important;
       outline: none;
     }
-    /* @media (min-width: 360px) {
+    @media (min-width: 360px) {
       width: 130px;
     }
     @media (orientation: landscape) and (max-width: 568px) {
@@ -55,6 +55,8 @@ const HeaderWrapper = styled.div`
     @media (orientation: landscape) and (min-width: 569px) {
       width: 180px;
       padding: 7px;
+      margin-right: 8px;
+      margin-bottom: 8px;
     }
     @media screen and (max-width: 1024px) {
       margin-top: 10px;
@@ -62,9 +64,15 @@ const HeaderWrapper = styled.div`
     @media screen and (max-width: 600px) {
       align-self: center;
       margin-top: 0px;
-    } */
+    }
   }
-
+  .heading__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    /* align-content: space-between; */
+  }
   h2 {
     font-size: 1.35rem;
     margin-bottom: 0px;
@@ -91,14 +99,14 @@ const HeaderWrapper = styled.div`
     background-color: white;
     flex-direction: row;
     margin-bottom: 0px;
-    /* .heading__content {
+    .heading__content {
       max-width: 350px;
-    } */
+    }
   }
   @media screen and (min-width: 1000px) {
-    /* .heading__content {
+    .heading__content {
       max-width: 550px;
-    } */
+    }
     h2 {
       font-size: 1.7rem;
     }
@@ -110,19 +118,21 @@ const HeaderWrapper = styled.div`
     }
   }
   @media screen and (min-width: 1300px) {
-    /* .heading__content {
+    .heading__content {
       max-width: 650px;
-    } */
+    }
   }
 `;
 const Header = ({ description, title, headerBG, landing, brandName }) => {
   return (
     <HeaderWrapper headerBG={headerBG}>
       <div className="heading__content">
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <div>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </div>
+        {landing && <Link to={`/brands/${brandName}/landing`}>Learn more</Link>}
       </div>
-      {landing && <Link to={`/brands/${brandName}/landing`}>Learn more</Link>}
     </HeaderWrapper>
   );
 };
