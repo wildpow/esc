@@ -6,11 +6,11 @@ import MattressThumb from "../../../components/mattressList/mattThumbNail";
 import MattressList from "../../../components/mattressList";
 
 const Sealy = ({ data }) => {
-  const { datoCmsSeo, allDatoCmsMattress } = data;
+  const { datoCmsBrand, allDatoCmsMattress } = data;
   return (
     <Layout>
       <MattressList
-        seo={datoCmsSeo.seoMetaTags}
+        seo={datoCmsBrand.seoMetaTags}
         brandImgAlt="A logo of the Sealy mattress company"
         headerText="Sealy proud supporter of you."
         brandName="sealy"
@@ -87,10 +87,18 @@ export default Sealy;
 
 export const allSealyMattresses = graphql`
   query allSealyMattresses {
-    datoCmsSeo(name: { eq: "sealy mattresses" }) {
+    datoCmsBrand(urlName: { eq: "sealy" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
+      tagLine
+      headerImage {
+        alt
+        url
+        title
+      }
+      displayName
+      urlName
     }
 
     allDatoCmsMattress(
