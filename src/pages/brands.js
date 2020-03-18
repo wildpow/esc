@@ -18,12 +18,10 @@ const SectionContainer = styled.div`
   margin-bottom: 20px;
   scroll-behavior: smooth;
   display: grid;
-  grid-template-rows: repeat(auto-fill, 1fr 1fr 1fr);
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 560px) minmax(300px, 560px)
-  );
-  grid-gap: 30px;
+  /* grid-template-rows: repeat(auto-fill, 1fr); */
+  grid-template-columns: repeat(2, minmax(300px, 560px));
+  grid-gap: 20px;
+  align-items: stretch;
   justify-items: center;
   justify-content: center;
   align-content: flex-start;
