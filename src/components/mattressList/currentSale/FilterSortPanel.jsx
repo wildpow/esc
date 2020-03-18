@@ -42,9 +42,9 @@ const FilterSort = styled.div`
     padding: 1rem 2rem 1rem 1rem;
     transition: background 250ms ease-in-out, transform 150ms ease;
   }
-  .filterSort__select:active {
+  /* .filterSort__select:active {
     transform: scale(0.99);
-  }
+  } */
   .filterSort__select::-ms-expand {
     display: none;
   }
