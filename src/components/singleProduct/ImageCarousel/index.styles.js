@@ -82,7 +82,8 @@ export const BigBanner = styled(Banner)`
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
-    width: 75%;
+    padding-right: 10px;
+    width: 85%;
   }
   @media (max-width: 736px) and (orientation: landscape) {
     font-size: 0.8rem;
@@ -96,6 +97,9 @@ export const BigBanner = styled(Banner)`
   @media (min-width: 810px) and (orientation: landscape) {
     margin-left: 0;
     width: 75%;
+    font-size: 1.1rem;
+    padding-top: 7px;
+    padding-bottom: 7px;
   }
   @media (min-width: 768px) and (orientation: portrait) {
     font-size: 1.1rem;
