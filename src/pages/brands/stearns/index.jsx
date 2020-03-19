@@ -1,28 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
 import Layout from "../../../components/layout";
-import MattressThumb from "../../../components/mattressList/mattThumbNail";
-import MattressList from "../../../components/mattressList";
+import MattListCurrentSale from "../../../components/mattressList";
 
 const Stearns = ({ data }) => {
-  const { datoCmsSeo, allDatoCmsMattress } = data;
+  const { datoCmsBrand, allDatoCmsMattress } = data;
   return (
     <Layout>
-      <MattressList
-        seo={datoCmsSeo.seoMetaTags}
-        brandImgAlt="Logo of the Stearns and Foster mattress company."
-        headerText="Stearns uncover exceptional."
-        brandName="stearns"
-      >
-        {allDatoCmsMattress.nodes.map(mattress => (
-          <MattressThumb
-            key={mattress.id}
-            mattress={mattress}
-            url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-          />
-        ))}
-      </MattressList>
+      <HelmetDatoCms seo={datoCmsBrand.seoMetaTags} />
+      <MattListCurrentSale
+        headerBG={datoCmsBrand.headerImage.url}
+        mattresses={allDatoCmsMattress.nodes}
+        title={datoCmsBrand.displayName}
+        description={datoCmsBrand.tagLine}
+        breadCrumbs
+        brandName={datoCmsBrand.urlName}
+        landing
+      />
     </Layout>
   );
 };
@@ -35,10 +31,18 @@ export default Stearns;
 
 export const stearnsMattresses = graphql`
   query stearnsMattresses {
-    datoCmsSeo(name: { eq: "stearns mattresses" }) {
+    datoCmsBrand(urlName: { eq: "stearns" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
+      tagLine
+      headerImage {
+        alt
+        url
+        title
+      }
+      displayName
+      urlName
     }
     allDatoCmsMattress(
       filter: { brand: { urlName: { eq: "stearns" } } }

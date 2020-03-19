@@ -1,81 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../../../components/layout";
-import MattressThumb from "../../../components/mattressList/mattThumbNail";
-import MattressList from "../../../components/mattressList";
+import MattListCurrentSale from "../../../components/mattressList";
 
 const Sealy = ({ data }) => {
-  const { datoCmsSeo, allDatoCmsMattress } = data;
+  const { datoCmsBrand, allDatoCmsMattress } = data;
+  const golden = [];
+  const essentials = [];
+  const performance = [];
+  const premium = [];
+  allDatoCmsMattress.nodes.map(matt => {
+    if (matt.subline.name === "Golden Elegance") golden.push(matt);
+    if (matt.subline.name.includes("Essentials")) essentials.push(matt);
+    if (matt.subline.name.includes("Performance")) performance.push(matt);
+    if (matt.subline.name.includes("Premium")) premium.push(matt);
+    return null;
+  });
   return (
     <Layout>
-      <MattressList
-        seo={datoCmsSeo.seoMetaTags}
-        brandImgAlt="A logo of the Sealy mattress company"
-        headerText="Sealy proud supporter of you."
-        brandName="sealy"
-      >
-        {allDatoCmsMattress.nodes.map(mattress => {
-          if (
-            mattress.subline.name === "Golden Elegance" &&
-            mattress.brand.urlName === "sealy"
-          ) {
-            return (
-              <MattressThumb
-                key={mattress.id}
-                mattress={mattress}
-                url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-              />
-            );
-          }
-          return null;
-        })}
-        {allDatoCmsMattress.nodes.map(mattress => {
-          if (
-            mattress.subline.name.includes("Essentials") &&
-            mattress.brand.urlName === "sealy"
-          ) {
-            return (
-              <MattressThumb
-                key={mattress.id}
-                mattress={mattress}
-                url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-              />
-            );
-          }
-          return null;
-        })}
-        {allDatoCmsMattress.nodes.map(mattress => {
-          if (
-            mattress.subline.name.includes("Performance") &&
-            mattress.brand.urlName === "sealy"
-          ) {
-            return (
-              <MattressThumb
-                key={mattress.id}
-                mattress={mattress}
-                url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-              />
-            );
-          }
-          return null;
-        })}
-        {allDatoCmsMattress.nodes.map(mattress => {
-          if (
-            mattress.subline.name.includes("Premium") &&
-            mattress.brand.urlName === "sealy"
-          ) {
-            return (
-              <MattressThumb
-                key={mattress.id}
-                mattress={mattress}
-                url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-              />
-            );
-          }
-          return null;
-        })}
-      </MattressList>
+      <HelmetDatoCms seo={datoCmsBrand.seoMetaTags} />
+      <MattListCurrentSale
+        headerBG={datoCmsBrand.headerImage.url}
+        mattresses={[...golden, ...essentials, ...performance, ...premium]}
+        title={datoCmsBrand.displayName}
+        description={datoCmsBrand.tagLine}
+        breadCrumbs
+        brandName={datoCmsBrand.urlName}
+        landing
+      />
     </Layout>
   );
 };
@@ -87,10 +41,18 @@ export default Sealy;
 
 export const allSealyMattresses = graphql`
   query allSealyMattresses {
-    datoCmsSeo(name: { eq: "sealy mattresses" }) {
+    datoCmsBrand(urlName: { eq: "sealy" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
+      tagLine
+      headerImage {
+        alt
+        url
+        title
+      }
+      displayName
+      urlName
     }
 
     allDatoCmsMattress(
