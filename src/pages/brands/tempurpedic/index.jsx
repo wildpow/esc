@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../../../components/layout";
-import MattListCurrentSale from "../../../components/mattressList";
+import MattList from "../../../components/mattressList";
 
 const Tempurpedic = ({ data }) => {
   const { datoCmsBrand, allDatoCmsMattress } = data;
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsBrand.seoMetaTags} />
-      <MattListCurrentSale
+      <MattList
         headerBG={datoCmsBrand.headerImage.url}
         mattresses={allDatoCmsMattress.nodes}
         title={datoCmsBrand.displayName}
