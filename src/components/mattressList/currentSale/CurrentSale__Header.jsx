@@ -4,8 +4,8 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const HeaderWrapper = styled.div`
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 0px;
+  margin-bottom: 10px;
   display: flex;
   background-color: white;
   flex-direction: column;
@@ -76,6 +76,8 @@ const HeaderWrapper = styled.div`
   h2 {
     font-size: 1.35rem;
     margin-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 10px;
     border-bottom: 4px solid ${props => props.theme.mainColor2};
     justify-self: flex-start;
     align-self: flex-start;
@@ -86,7 +88,7 @@ const HeaderWrapper = styled.div`
     height: auto;
   }
   p {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     margin-top: 10px;
     line-height: 1.25rem;
     font-family: ${props => props.theme.MainFont3};
