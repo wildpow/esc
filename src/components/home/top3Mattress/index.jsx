@@ -1,9 +1,31 @@
 import React from "react";
 import styled from "styled-components";
-import { Wrapper, MainWrapper } from "../../mattressList/mattList.styles";
+import { FadeIn } from "../../../styles/mainStyles";
 import { P, Headline, FooterLink } from "../../../styles/homeStyles";
 import MattressThumb from "../../mattressList/mattThumbNail";
 import useTop3 from "./useTop3";
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  grid-auto-rows: minmax(300px, auto);
+  grid-gap: 1rem;
+  margin-left: 7px;
+  margin-right: 7px;
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+`;
+
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  animation-name: ${FadeIn};
+  ${props => props.theme.Animation}
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
+`;
 
 const NewWrapper = styled(MainWrapper)`
   background-color: ${props => props.theme.newColor1};

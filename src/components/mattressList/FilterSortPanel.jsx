@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import chevron from "../../../images/new/chevron-down-solid.svg";
+import chevron from "../../images/new/chevron-down-solid.svg";
 import Accordion from "./accordion";
 import Checkbox from "./checkBox";
 

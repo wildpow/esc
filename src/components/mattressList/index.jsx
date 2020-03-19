@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Header from "./CurrentSale__Header";
+import Header from "./Header";
 import MattressThumb from "./mattThumbNail";
 import FilterSortPanel from "./FilterSortPanel";
 import filterSortReducer from "./filterSortReducer";
