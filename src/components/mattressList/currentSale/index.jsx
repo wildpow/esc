@@ -7,6 +7,32 @@ import FilterSortPanel from "./FilterSortPanel";
 import filterSortReducer from "./filterSortReducer";
 import BreadCrumbs, { BreadWrapper } from "../../breadCrumbs";
 
+const NewBread = styled(BreadWrapper)`
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  @media (min-width: 568px) {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media (min-width: 768px) {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media (min-width: 1022px) {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media (min-width: 1300px) {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+`;
+
 const MattList = styled.div`
   display: flex;
   padding-left: 5px;
@@ -15,6 +41,7 @@ const MattList = styled.div`
   .mattList__flex {
     border-top: 8px solid ${props => props.theme.mainColor1};
     padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
     @media screen and (min-width: 768px) {
@@ -60,9 +87,9 @@ const MattListCurrentSale = ({
   return (
     <MattList>
       {breadCrumbs && (
-        <BreadWrapper Brands>
+        <NewBread Brands>
           <BreadCrumbs next="Brands" here={brandName} />
-        </BreadWrapper>
+        </NewBread>
       )}
       <Header
         title={title}
@@ -89,9 +116,9 @@ const MattListCurrentSale = ({
         </div>
       </div>
       {breadCrumbs && (
-        <BreadWrapper Brands Bottom>
+        <NewBread Brands Bottom>
           <BreadCrumbs next="Brands" here={brandName} />
-        </BreadWrapper>
+        </NewBread>
       )}
     </MattList>
   );
