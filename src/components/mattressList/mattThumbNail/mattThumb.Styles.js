@@ -30,7 +30,7 @@ export const Banner = styled.div`
   font-family: ${props => props.theme.MainFont1};
   font-weight: 400;
   text-align: center;
-  z-index: 10;
+  z-index: 1;
   background-color: ${props => props.theme.mainColor2};
   color: white;
   position: absolute;
