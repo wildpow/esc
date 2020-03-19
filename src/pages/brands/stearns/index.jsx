@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
 import Layout from "../../../components/layout";
-import MattListCurrentSale from "../../../components/mattressList/currentSale";
+import MattListCurrentSale from "../../../components/mattressList";
 
 const Stearns = ({ data }) => {
   const { datoCmsBrand, allDatoCmsMattress } = data;
