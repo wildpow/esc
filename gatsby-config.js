@@ -16,6 +16,7 @@ const cfg = {
         disableLiveReload: false,
       },
     },
+    `gatsby-plugin-preact`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
@@ -100,6 +101,7 @@ const cfg = {
             },
             name: `widget`,
           },
+
           {
             url: process.env.GATSBY_REST,
             method: "GET",
