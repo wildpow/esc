@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 
 export default class HTML extends React.Component {
@@ -24,7 +24,7 @@ export default class HTML extends React.Component {
             </a>
           </noscript>
           <div
-            key={`body`}
+            key="body"
             id="___gatsby"
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
@@ -57,8 +57,8 @@ export default class HTML extends React.Component {
           <script
             type="text/javascript"
             src="https://birdeye.com/embed/v1/154743410851424/1/2576351961/FsWvSa2fgLF5HBLjmAKhH9wfUcpe69Ft"
-          ></script>
-          <div id="bf-revz-widget-2576351961"></div>
+          />
+          <div id="bf-revz-widget-2576351961" />
         </body>
       </html>
     );

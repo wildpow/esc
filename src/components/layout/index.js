@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import styledNormalize from "styled-normalize";
 import styled, { createGlobalStyle } from "styled-components";

@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import TopPromo from "./TopPromo";
 import { Top, Wrapper, OutBoundLink, BR } from "./topper.styles";
 import { TopperNumber } from "../../../../styles/_pr1nt/main";

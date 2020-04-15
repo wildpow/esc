@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 
 const StructuredDataMain = () => (

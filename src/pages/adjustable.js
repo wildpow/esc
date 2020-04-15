@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import Img from "gatsby-image";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";

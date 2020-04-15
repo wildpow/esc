@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";

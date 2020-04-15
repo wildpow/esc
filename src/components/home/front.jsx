@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
 import { Headline, Wrapper, P } from "../../styles/homeStyles";

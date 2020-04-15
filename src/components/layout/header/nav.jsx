@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { ThemeConsumer } from "styled-components";
 import { Header, Nav, StyledLink } from "./nav.styles";
 

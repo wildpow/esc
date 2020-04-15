@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import { GoogleApiWrapper, InfoWindow, Map, Marker } from "google-maps-react";
 import mapStyles from "./mapStyles.json";
