@@ -24,7 +24,7 @@ export default class HTML extends React.Component {
             </a>
           </noscript>
           <div
-            key={`body`}
+            key="body"
             id="___gatsby"
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
@@ -55,10 +55,12 @@ export default class HTML extends React.Component {
           </form> */}
           {this.props.postBodyComponents}
           <script
+            defer
             type="text/javascript"
-            src="https://birdeye.com/embed/v1/154743410851424/1/2576351961/FsWvSa2fgLF5HBLjmAKhH9wfUcpe69Ft"
-          ></script>
-          <div id="bf-revz-widget-2576351961"></div>
+            src="https://birdeye.com/embed/v1/154743410851424/1/262481259/FsWvSa2fgLF5HBLjmAKhH9wfUcpe69Ft"
+          />
+
+          <div id="bf-revz-widget-262481259" />
         </body>
       </html>
     );
