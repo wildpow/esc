@@ -1,9 +1,7 @@
-import styled from "styled-components";
-import { FlexRow, FlexCol, FadeIn } from "./mainStyles";
+import { styled } from "linaria/react";
+import { css } from "linaria";
 
-export const Main = styled(FlexCol)`
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+export const Main = styled.div`
   margin-top: 15px;
   margin-left: 0px;
   margin-right: 0px;
@@ -23,8 +21,7 @@ export const P = styled.p`
   padding-left: 5px;
   padding-right: 5px;
   align-self: flex-start;
-  color: ${props => props.theme.newColor2};
-  font-family: ${props => props.theme.MainFont3};
+  font-family: var(--font-copy);
   font-weight: 300;
   @media (min-width: 360px) {
     padding-left: 7px;
@@ -61,14 +58,11 @@ export const P = styled.p`
   }
 `;
 export const AccWrapper = styled.article`
-  box-shadow: ${props => props.theme.newBoxShadow};
-  /* border: ${props => props.theme.Border}; */
+  box-shadow: var(--box-shadow);
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 15px;
   border-radius: 0.14rem;
-  display: flex;
-  flex-direction: column;
   justify-content: space-around;
   background-color: white;
   @media (min-width: 660px) {
@@ -86,15 +80,11 @@ export const AccWrapper = styled.article`
   }
 `;
 
-export const AccWrapper2 = styled(AccWrapper)`
-  margin-bottom: 0px;
-`;
-// 640
 export const H3 = styled.h3`
-  text-shadow: ${props => props.theme.newTextShadow};
-  font-family: ${props => props.theme.MainFont1};
-  background-color: ${props => props.theme.mainColor1};
-  color: ${props => props.theme.newColor1};
+  text-shadow: var(--text-shadow);
+  font-family: var(--font-headline);
+  background-color: var(--color-blue);
+  color: var(--color-white);
   margin-top: 0;
   font-weight: 700;
   text-align: center;
@@ -118,7 +108,7 @@ export const H3 = styled.h3`
   }
 `;
 
-export const InfoWrapper = styled(FlexRow)`
+export const InfoWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   @media (min-width: 568px) {
@@ -130,10 +120,6 @@ export const InfoWrapper = styled(FlexRow)`
   }
 `;
 
-export const InfoWrapperReversed = styled(InfoWrapper)`
-  flex-direction: row-reverse;
-`;
-// 667
 export const Img = styled.img`
   color: white;
   max-height: 10rem;
@@ -156,7 +142,7 @@ export const Img = styled.img`
   }
 `;
 
-export const Img2 = styled(Img)`
+export const Img2 = css`
   @media (min-width: 568px) {
     margin-left: 0px;
     margin-right: 20px;

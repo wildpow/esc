@@ -8,6 +8,7 @@ import Layout from "../components/layout";
 import { Main } from "../styles/homeStyles";
 import Front from "../components/home/front";
 import TopThreeMatts from "../components/home/top3Mattress";
+import "../styles/css.css";
 
 const IndexPage = ({ data }) => {
   const { carousel } = data.datoCmsFrontPage;

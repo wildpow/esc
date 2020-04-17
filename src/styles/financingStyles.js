@@ -1,10 +1,6 @@
-import { OutboundLink } from "gatsby-plugin-google-analytics";
-import styled from "styled-components";
-import { FlexCol, FadeIn, FlexRow } from "./mainStyles";
+import { styled } from "linaria/react";
 
-export const Main = styled(FlexCol)`
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+export const Main = styled.div`
   margin-top: 15px;
   margin-left: 0px;
   margin-right: 0px;
@@ -17,14 +13,11 @@ export const Main = styled(FlexCol)`
 `;
 
 export const CompanyWrapper = styled.article`
-  box-shadow: ${props => props.theme.newBoxShadow};
-  /* border: ${props => props.theme.Border}; */
+  box-shadow: var(--box-shadow);
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 15px;
   border-radius: 0.14rem;
-  display: flex;
-  flex-direction: column;
   justify-content: space-around;
   background-color: white;
   @media (min-width: 660px) {
@@ -38,17 +31,12 @@ export const CompanyWrapper = styled.article`
   }
 `;
 
-export const CompanyWrapper2 = styled(CompanyWrapper)`
-  margin-bottom: 0px;
-`;
-
 export const H3 = styled.h3`
-  text-shadow: ${props => props.theme.newTextShadow};
-  font-family: ${props => props.theme.MainFont1};
-  background-color: ${props => props.theme.mainColor1};
-  color: ${props => props.theme.newColor1};
+  text-shadow: var(--text-shadow);
+  font-family: var(--font-headline);
+  background-color: var(--color-blue);
+  color: var(--color-white);
   margin-top: 0;
-  /* text-align: center; */
   margin-bottom: 0;
   font-size: 1rem;
   padding: 10px 5px 10px 5px;
@@ -92,7 +80,7 @@ export const Img = styled.img`
   }
 `;
 
-export const InfoWrapper = styled(FlexRow)`
+export const InfoWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   @media (min-width: 768px) {
@@ -113,7 +101,7 @@ export const P = styled.p`
   padding-right: 5px;
   font-weight: 300;
   align-self: flex-start;
-  font-family: ${props => props.theme.MainFont3};
+  font-family: var(--font-copy);
   @media (min-width: 360px) {
     padding-left: 7px;
     padding-right: 7px;
@@ -150,37 +138,6 @@ export const Footer = styled.footer`
   justify-content: center;
 `;
 
-export const ApplyNow = styled(OutboundLink)`
-  font-size: 1rem;
-  float: right;
-  margin-top: -30px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  padding: 10px 15px 10px 15px;
-  background-color: #66ccff;
-  font-family: ${props => props.theme.MainFont1};
-  color: ${props => props.theme.newColor1};
-  border: none;
-  cursor: pointer;
-  border-radius: 0.17rem;
-  transition: transform 0.25s ease-in;
-  &:hover {
-    transform: scale3d(1.1, 1.1, 1);
-  }
-  @media (min-width: 360px) {
-    margin-top: -10px;
-  }
-  @media (min-width: 768px) {
-    padding: 10px 15px 10px 15px;
-    margin-top: -10px;
-    margin-right: 20px;
-    font-size: 1.2rem;
-  }
-  @media (min-width: 1028px) {
-    font-size: 1.3rem;
-  }
-`;
-
 export const BottomP = styled.p`
   font-size: 0.8rem;
   margin-top: 0;
@@ -190,5 +147,5 @@ export const BottomP = styled.p`
   margin-bottom: 0;
   padding-bottom: 5px;
   font-weight: 300;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: var(--font-headline);
 `;

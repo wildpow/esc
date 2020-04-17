@@ -1,4 +1,6 @@
 import styled, { keyframes } from "styled-components";
+import { css } from "linaria";
+
 // Site Wide default values and styles
 
 // export const Blue = "#1565c0";
@@ -10,7 +12,39 @@ import styled, { keyframes } from "styled-components";
 // export const MainFont1 = `'Roboto', sans-serif`;
 // export const MainFont2 = `'Open Sans', sans-serif`;
 // export const Animation = `animation-duration: .5s; animation-fill-mode: both;`;
+export const fadeIn = css`
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
 
+  @keyframes rotate {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`;
+
+export const flexCol = css`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const flexRow = css`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const themer = css`
+  --color-blue: #1565c0;
+  --color-red: #eb1c24;
+  --color-white: #fcfcff;
+  --font-headline: Roboto, "sans-serif";
+  --font-copy: Roboto Slab, serif;
+  --text-shadow: 2px 2px 4px rgba(52, 52, 52, 0.4);
+  --box-shadow: 0px 6px 6px -6px rgba(52, 52, 52, 0.41);
+`;
 export const theme = {
   mainColor1: "#1565c0", // BLUE
   mainColor2: "#eb1c24", // RED !

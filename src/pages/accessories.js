@@ -6,9 +6,7 @@ import {
   Main,
   H3,
   InfoWrapper,
-  InfoWrapperReversed,
   AccWrapper,
-  AccWrapper2,
   Img,
   P,
   Img2,
@@ -18,14 +16,15 @@ import Pillows from "../images/pillowCollage.jpg";
 import Protector from "../images/protector.jpg";
 import Sheets from "../images/sheetStack.jpg";
 import Layout from "../components/layout";
+import { themer, flexCol, fadeIn, flexRow } from "../styles/mainStyles";
 
 const Accessories = ({ data }) => (
   <Layout>
-    <Main>
+    <Main className={`${fadeIn} ${flexCol} ${themer}`}>
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
-      <AccWrapper>
+      <AccWrapper className={flexCol}>
         <H3>Pillows</H3>
-        <InfoWrapper>
+        <InfoWrapper className={flexRow}>
           <Img src={Pillows} />
           <P>
             We carry a wide range of pillows from Tempur-Pedic, Technogel,
@@ -37,19 +36,19 @@ const Accessories = ({ data }) => (
       </AccWrapper>
       <AccWrapper>
         <H3>Sheets</H3>
-        <InfoWrapperReversed>
-          <Img2 src={Sheets} />
+        <InfoWrapper style={{ display: "flex", flexDirection: "row-reverse" }}>
+          <Img className={Img2} src={Sheets} />
           <P>
             We proudly carry the full collection of DreamFit sheets. Ranging
             from a basic microfiber to luxurious Micro Tencel. All DreamFit
             sheets are of the upmost quality and are guaranteed not to &quot;pop
             off&quot; your mattress during the night.
           </P>
-        </InfoWrapperReversed>
+        </InfoWrapper>
       </AccWrapper>
       <AccWrapper>
         <H3>Mattress Protectors</H3>
-        <InfoWrapper>
+        <InfoWrapper className={flexRow}>
           <Img src={Protector} />
           <P>
             We carry a comprehensive selection of mattress protection options
@@ -59,18 +58,18 @@ const Accessories = ({ data }) => (
           </P>
         </InfoWrapper>
       </AccWrapper>
-      <AccWrapper2>
+      <AccWrapper style={{ marginBottom: "0px" }}>
         <H3>Bed Frames</H3>
-        <InfoWrapperReversed>
-          <Img2 src={Frame} />
+        <InfoWrapper style={{ flexDirection: "row-reverse", display: "flex" }}>
+          <Img className={Img2} src={Frame} />
           <P>
             Leggett & Platt makes some of the best metal supports and decorative
             frames on the market. Whether you need a basic frame to lift your
             mattress set off the ground, or want something to bring your room to
             life we have an option for you here.
           </P>
-        </InfoWrapperReversed>
-      </AccWrapper2>
+        </InfoWrapper>
+      </AccWrapper>
     </Main>
   </Layout>
 );

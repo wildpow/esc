@@ -7,24 +7,23 @@ import {
   H3,
   P,
   InfoWrapper,
-  Footer,
-  CompanyWrapper2,
   Img,
   BottomP,
-  ApplyNow,
   Main,
 } from "../styles/financingStyles";
 import Synchrony from "../images/synchrony_Card_Image.jpg";
 import Acima from "../images/acima_Logo.png";
 import Layout from "../components/layout";
+import { fadeIn, flexCol, flexRow, themer } from "../styles/mainStyles";
+import { ApplyNow } from "../styles/styledComponents";
 
 const Financing = ({ data }) => (
   <Layout>
-    <Main>
+    <Main className={`${themer} ${fadeIn} ${flexCol}`}>
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
-      <CompanyWrapper>
+      <CompanyWrapper className={flexCol}>
         <H3>Synchrony Financing</H3>
-        <InfoWrapper>
+        <InfoWrapper className={flexRow}>
           <Img
             src={Synchrony}
             alt="Synchrony Financial logo for E S C mattress center 0% interest financing options"
@@ -36,16 +35,16 @@ const Financing = ({ data }) => (
             management, and is accepted at many retailers nationwide.
           </P>
         </InfoWrapper>
-        <Footer>
+        <footer className={flexRow} style={{ justifyContent: "center" }}>
           <BottomP>
             *Subject to credit approval. Minimum monthly payments required. See
             store for details.
           </BottomP>
-        </Footer>
+        </footer>
       </CompanyWrapper>
-      <CompanyWrapper2>
+      <CompanyWrapper style={{ marginBottom: "0px" }}>
         <H3>Acima No-Credit Needed Financing</H3>
-        <InfoWrapper>
+        <InfoWrapper className={flexRow}>
           <Img
             src={Acima}
             alt="Acima Financing logo for low or no credit financing options"
@@ -67,7 +66,7 @@ const Financing = ({ data }) => (
             APPLY NOW
           </ApplyNow>
         </div>
-      </CompanyWrapper2>
+      </CompanyWrapper>
     </Main>
   </Layout>
 );
