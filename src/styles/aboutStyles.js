@@ -1,22 +1,19 @@
 import styled from "styled-components";
 import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
-export const Main = styled(FlexCol)`
-  animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+export const Main = styled.div`
   margin-top: 15px;
-  /* border: ${props => props.theme.Border}; */
   background-color: white;
-   padding-left: 5px;
+  padding-left: 5px;
   padding-right: 5px;
-  box-shadow: ${props => props.theme.newBoxShadow};
+  box-shadow: var(--box-shadow);
   @media (min-width: 1200px) {
     margin-left: 10px;
     margin-right: 10px;
   }
 `;
 
-export const PicHolder = styled(FlexRow)`
+export const PicHolder = styled.div`
   justify-content: space-between;
   @media (min-width: 568px) {
     justify-content: space-evenly;
@@ -126,16 +123,14 @@ export const MapImg = styled.img`
 `;
 
 export const Address = styled.p`
-  font-family: ${props => props.theme.MainFont1};
-  background: ${props => props.theme.mainColor2};
-  /* text-shadow: ${props => props.theme.newTextShadow}; */
-  color: ${props => props.theme.newColor1};
+  font-family: var(--font-headline);
+  background: var(--color-red);
+  color: var(--color-white);
   text-align: center;
   font-size: 0.9rem;
   padding: 10px;
   line-height: 1.2rem;
   margin-top: 0;
-  /* font-variant: small-caps; */
   margin-bottom: 0;
   @media (min-width: 768px) {
     font-size: 1.4rem;
@@ -155,7 +150,7 @@ export const Span = styled.span`
 `;
 
 export const RegularParagraph = styled.p`
-  font-family: ${props => props.theme.MainFont3};
+  font-family: var(--font-copy);
   font-weight: 300;
   padding-left: 12px;
   padding-right: 12px;
@@ -181,8 +176,8 @@ export const RegularParagraph = styled.p`
 `;
 
 export const BlueWrapper = styled.div`
-  background-color: ${props => props.theme.mainColor1};
-  color: ${props => props.theme.newColor1};
+  background-color: var(--color-blue);
+  color: var(--color-white);
   margin-top: 20px;
   @media (min-width: 1024px) {
     margin-top: 40px;
@@ -190,15 +185,14 @@ export const BlueWrapper = styled.div`
 `;
 
 export const SecondP = styled.p`
-  text-shadow: ${props => props.theme.newTextShadow};
-  font-family: ${props => props.theme.MainFont1};
+  text-shadow: var(--text-shadow);
+  font-family: var(--font-headline);
   padding-left: 30px;
   padding-right: 30px;
   line-height: 1.6rem;
   font-size: 1.3rem;
   letter-spacing: 0.1rem;
   font-weight: 300;
-  /* font-variant: small-caps; */
   text-align: center;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -219,57 +213,3 @@ export const PopImg = styled.img`
     max-width: 50rem;
   }
 `;
-
-// export const PopNameHolder = styled(FlexRow)`
-//   font-family: ${props => props.theme.MainFont1};
-//   justify-content: center;
-//   font-weight: 700;
-//   font-size: 1rem;
-//   @media (min-width: 700px) {
-//     font-size: 2rem;
-//   }
-// `;
-
-// export const Josh = styled.h4`
-//   text-align: center;
-//   padding-right: 26px;
-//   padding-left: 20px;
-//   margin-bottom: 10px;
-//   @media (min-width: 768px) {
-//     padding-right: 50px;
-//     padding-left: 100px;
-//   }
-//   @media (min-width: 1024px) {
-//     padding-right: 50px;
-//     padding-left: 100px;
-//   }
-// `;
-
-// export const Bill = styled.h4`
-//   margin-bottom: 10px;
-//   text-align: center;
-//   padding-right: 40px;
-//   padding-left: 33px;
-//   @media (min-width: 768px) {
-//     padding-right: 20px;
-//     padding-left: 60px;
-//   }
-//   @media (min-width: 1024px) {
-//     padding-right: 20px;
-//     padding-left: 60px;
-//   }
-// `;
-// export const Will = styled.h4`
-//   text-align: center;
-//   padding-right: 20px;
-//   padding-left: 20px;
-//   margin-bottom: 10px;
-//   @media (min-width: 768px) {
-//     padding-right: 50px;
-//     padding-left: 50px;
-//   }
-//   @media (min-width: 1024px) {
-//     padding-right: 50px;
-//     padding-left: 50px;
-//   }
-// `;

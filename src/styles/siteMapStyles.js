@@ -1,22 +1,17 @@
-import { Link } from "gatsby";
-import styled from "styled-components";
-import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
+import { styled } from "linaria/react";
 
-export const MattLinksWrapper = styled(FlexRow)`
-  animation-name: ${FadeIn};
+export const MattLinksWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
-  ${props => props.theme.Animation}
-  @media(min-width: 1300px) {
+  @media (min-width: 1300px) {
     margin-left: 50px;
     margin-right: 50px;
   }
 `;
 
 export const Main = styled.div`
-  /* border: ${props => props.theme.Border}; */
-  box-shadow: ${props => props.theme.newBoxShadow};
+  box-shadow: var(--box-shadow);
   background-color: white;
   margin-bottom: 20px;
   ul {
@@ -26,14 +21,15 @@ export const Main = styled.div`
     line-height: 1.9rem;
   }
   li {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: var(--font-headline);
     font-weight: 400;
   }
   h3 {
-    font-family: ${props => props.theme.MainFont1};
-    background-color: ${props => props.theme.mainColor1};
+    font-family: var(--font-headline);
+    background-color: var(--color-blue);
+
     margin: 0;
-    color: ${props => props.theme.newColor1};
+    color: var(--color-white);
     padding-top: 15px;
     padding-bottom: 15px;
     letter-spacing: 0.2rem;
@@ -41,35 +37,21 @@ export const Main = styled.div`
     text-align: center;
   }
 `;
-export const BrandLinks = styled(Link)`
-  color: ${props => props.theme.newColor1};
-  &:hover {
-    color: ${props => props.theme.newColor2};
-  }
-`;
-export const SiteLinks = styled(Link)`
-  color: #1565c0;
-  &:hover {
-    color: #eb1c24;
-  }
-`;
 
-export const MainLinks = styled(FlexCol)`
-  animation-name: ${FadeIn};
-  border: ${props => props.theme.Border};
-  box-shadow: ${props => props.theme.BoxShadow};
+export const MainLinks = styled.div`
+  background: white;
+  box-shadow: var(--box-shadow);
   margin-top: 15px;
   padding-left: 5px;
   padding-right: 5px;
-  ${props => props.theme.Animation}
-  @media(min-width: 1300px) {
+  @media (min-width: 1300px) {
     margin-left: 85px;
     margin-right: 85px;
   }
 `;
 
 export const Lilist = styled.li`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: var(--font-headline);
   font-size: 1rem;
   letter-spacing: 0.1rem;
   padding-left: 10px;
@@ -95,7 +77,7 @@ export const UnList = styled.ul`
   padding-left: 0;
 `;
 
-export const BottomLinks = styled(FlexRow)`
+export const BottomLinks = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   @media (min-width: 1300px) {
@@ -103,19 +85,3 @@ export const BottomLinks = styled(FlexRow)`
     margin-right: 85px;
   }
 `;
-
-// export const TheNew2 = styled.h2`
-//     font-family: ${MainFont1};
-//     background-color: ${Blue};
-//     text-shadow: ${TextShadow};
-//     text-align: center;
-//     color: white;
-//     margin: 0;
-//     padding-top: 15px;
-//     padding-bottom: 15px;
-//     letter-spacing: .25rem;
-//     font-size: 1.2rem;
-//     @media(min-width: 768px) {
-//       font-size: 2rem;
-//     }
-// `;

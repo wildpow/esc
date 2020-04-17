@@ -5,15 +5,14 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
 import {
   Main,
-  SiteLinks,
   MainLinks,
   MattLinksWrapper,
-  BrandLinks,
   UnList,
   Lilist,
   BottomLinks,
 } from "../styles/siteMapStyles";
-import { H2 } from "../styles/mainStyles";
+import { H2, SiteLinks, BrandLinks } from "../styles/styledComponents";
+import { themer, flexCol, fadeIn, flexRow } from "../styles/mainStyles";
 
 const SiteMap = ({ data }) => {
   const {
@@ -25,7 +24,7 @@ const SiteMap = ({ data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
-      <MainLinks>
+      <MainLinks className={`${fadeIn} ${flexCol} ${themer}`}>
         <H2>Main Site Links</H2>
         <UnList>
           <Lilist>
@@ -51,7 +50,7 @@ const SiteMap = ({ data }) => {
           </Lilist>
         </UnList>
       </MainLinks>
-      <MattLinksWrapper>
+      <MattLinksWrapper className={`${fadeIn} ${flexRow} ${themer}`}>
         <Main>
           <h3>
             <BrandLinks to="/brands/sealy">Sealy</BrandLinks>
@@ -110,7 +109,7 @@ const SiteMap = ({ data }) => {
           </ul>
         </Main>
       </MattLinksWrapper>
-      <BottomLinks>
+      <BottomLinks className={flexRow}>
         <Main>
           <h3>
             <BrandLinks to="/adjustable">Adjustable Bases</BrandLinks>

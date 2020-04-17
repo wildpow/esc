@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import styled from "styled-components";
 import {
   Main,
   PicHolder,
@@ -15,26 +14,15 @@ import {
   SecondP,
   PopImg,
 } from "../styles/aboutStyles";
-import { H2 } from "../styles/mainStyles";
+import { AboutH2 } from "../styles/styledComponents";
 import store1 from "../images/outsideNightRatio.jpg";
 import store2 from "../images/outsideDayRatio.jpg";
 import map from "../images/storeMapRatio.png";
 import Layout from "../components/layout";
 import pop from "../images/funkoWithoutBillWithText.png";
 import AboutReview from "../components/ReviewView";
+import { themer, flexCol, fadeIn, flexRow } from "../styles/mainStyles";
 
-const AboutH2 = styled(H2)`
-  @media (min-width: 768px) {
-    font-size: 1.4rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 1.5rem;
-  }
-  @media (min-width: 1300px) {
-    font-size: 1.8rem;
-  }
-`;
 const About = ({ data }) => {
   const content = data.allAboutReviews.nodes.filter(
     val => val.comments !== null,
@@ -42,7 +30,7 @@ const About = ({ data }) => {
   const maxIndex = content.length - 1;
   return (
     <Layout>
-      <Main>
+      <Main className={`${fadeIn} ${flexCol} ${themer}`}>
         <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
         <header>
           <AboutH2>
@@ -51,7 +39,7 @@ const About = ({ data }) => {
           </AboutH2>
         </header>
         <AboutReview maxIndex={maxIndex} content={content} />
-        <PicHolder>
+        <PicHolder className={flexRow}>
           <StoreImg
             src={store1}
             alt="E.S.C Mattress Center store front in Everett Washington at night"
