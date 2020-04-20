@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql, Link } from "gatsby";
 import { Carousel } from "react-responsive-carousel";
+import "../styles/carousel.css";
 import Layout from "../components/layout";
 import { Main } from "../styles/homeStyles";
 import Front from "../components/home/front";
