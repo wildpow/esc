@@ -2,6 +2,7 @@ import React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "styled-components";
 import CertifiedBig from "../../../images/badge1.png";
+import star from "../../../images/star.png";
 
 const BirdLink = styled(OutboundLink)`
   text-decoration: none;
@@ -68,7 +69,7 @@ const Text = styled.div`
   }
 `;
 const BirdBig = props => {
-  const { avgRating, reviewCount, star } = props;
+  const { avgRating, reviewCount } = props;
   const starsArr = [];
   for (let i = 0; i < Math.round(avgRating); i += 1) {
     starsArr.push(<img src={star} alt="start for rating" key={i + 200} />);

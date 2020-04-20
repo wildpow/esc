@@ -140,11 +140,7 @@ const Bird = () => {
               </CertReview>
             </BirdLink>
             <BigWrapper>
-              <BirdBig
-                avgRating={avgRating}
-                reviewCount={reviewCount}
-                star={star}
-              />
+              <BirdBig avgRating={avgRating} reviewCount={reviewCount} />
             </BigWrapper>
           </>
         );
