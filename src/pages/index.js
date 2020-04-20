@@ -1,5 +1,6 @@
 import React from "react";
 import Img from "gatsby-image";
+import loadable from "@loadable/component";
 import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql, Link } from "gatsby";
@@ -7,8 +8,14 @@ import { Carousel } from "react-responsive-carousel";
 import Layout from "../components/layout";
 import { Main } from "../styles/homeStyles";
 import Front from "../components/home/front";
-import TopThreeMatts from "../components/home/top3Mattress";
+// import TopThreeMatts from "../components/home/top3Mattress";
 
+const TopThreeMatts = loadable(
+  () => import("../components/home/top3Mattress"),
+  {
+    fallback: <div>Loading...</div>,
+  },
+);
 const IndexPage = ({ data }) => {
   const { carousel } = data.datoCmsFrontPage;
   return (

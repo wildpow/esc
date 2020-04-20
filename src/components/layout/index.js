@@ -1,15 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styledNormalize from "styled-normalize";
+import loadable from "@loadable/component";
 import styled, { createGlobalStyle } from "styled-components";
 import Logo from "./header/logo";
 import Navigation from "./header/nav";
-import Footer from "./footer";
+// import Footer from "./footer";
 import Topper from "./header/topper";
 import MenuButton from "./mobileMenu/mobileButton";
 import Menu from "./mobileMenu/menu";
 import StructuredDataMain from "./structuredDataMain";
 import ModalContextProvider from "./modalContext";
+
+// const Footer = lazy(() => import("./footer"));
+// const Footer = loadable(() => import("./footer"));
+const Footer = loadable(() => import("./footer"), {
+  fallback: <div>Loading...</div>,
+});
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}

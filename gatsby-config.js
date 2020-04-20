@@ -16,6 +16,7 @@ const cfg = {
         disableLiveReload: false,
       },
     },
+    "gatsby-plugin-loadable-components-ssr",
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
