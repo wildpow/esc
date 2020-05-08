@@ -21,6 +21,14 @@ const cfg = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        shopName: process.env.GATSBY_SHOPIFY_STORE,
+        accessToken: process.env.GATSBY_SHOPIFY_API,
+        verbose: true,
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
     //   options: {
