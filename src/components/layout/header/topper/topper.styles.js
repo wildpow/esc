@@ -38,11 +38,19 @@ export const Top = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px 6px 10px 6px;
+  padding: 10px 11px 10px 11px;
   font-size: 0.9rem;
   letter-spacing: 0.056rem;
   position: relative;
   z-index: 3;
+  @media (min-width: 375px) {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+  @media (orientation: landscape) {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
   @media (min-width: 411px) {
     font-size: 1rem;
   }
@@ -51,7 +59,7 @@ export const Top = styled.div`
   }
   @media (min-width: 768px) {
     font-size: 1.4rem;
-    padding: 10px 12px;
+    padding: 10px 20px;
     letter-spacing: 0.15rem;
   }
   @media (min-width: 1024px) {
@@ -61,32 +69,32 @@ export const Top = styled.div`
   ${DisplayNonePr1nt}
 `;
 
-export const Wrapper = styled.div`
-  margin-top: 0;
-  margin-right: ${props => (props.Right ? "5px" : "0px")};
-  margin-left: ${props => (props.Left ? "5px" : "0px")};
-  margin-bottom: 0;
-  padding: 0;
-  align-self: center;
-  text-align: center;
-  display: flex;
+// export const Wrapper = styled.div`
+//   margin-top: 0;
+//   margin-right: ${props => (props.Right ? "5px" : "0px")};
+//   margin-left: ${props => (props.Left ? "5px" : "0px")};
+//   margin-bottom: 0;
+//   padding: 0;
+//   align-self: center;
+//   text-align: center;
+//   display: flex;
 
-  @media (min-width: 375px) {
-    margin-right: ${props => (props.Right ? "1px" : "0px")};
-    margin-left: ${props => (props.Left ? "1px" : "0px")};
-  }
-  @media (orientation: landscape) {
-    margin-right: ${props => (props.Right ? "20px" : "0px")};
-    margin-left: ${props => (props.Left ? "20px" : "0px")};
-  }
-  @media (min-width: 768px) {
-    margin-right: ${props => (props.Right ? "10px" : "0px")};
-    margin-left: ${props => (props.Left ? "10px" : "0px")};
-  }
-`;
+//   @media (min-width: 375px) {
+//     margin-right: ${props => (props.Right ? "1px" : "0px")};
+//     margin-left: ${props => (props.Left ? "1px" : "0px")};
+//   }
+//   @media (orientation: landscape) {
+//     margin-right: ${props => (props.Right ? "20px" : "0px")};
+//     margin-left: ${props => (props.Left ? "20px" : "0px")};
+//   }
+//   @media (min-width: 768px) {
+//     margin-right: ${props => (props.Right ? "10px" : "0px")};
+//     margin-left: ${props => (props.Left ? "10px" : "0px")};
+//   }
+// `;
 
-export const BR = styled.br`
-  @media (min-width: 415px) {
-    display: none;
-  }
-`;
+// export const BR = styled.br`
+//   @media (min-width: 415px) {
+//     display: none;
+//   }
+// `;
