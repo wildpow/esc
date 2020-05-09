@@ -21,6 +21,7 @@ import {
 } from "../components/singleProduct/singleProduct.styles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import DropDown from "../components/singleProduct/priceDropDown.mattress";
+import ShopifyDropDown from "../components/singleProduct/priceDropdownShopify.matt";
 import dateSEO from "../functions/dateSEO";
 import ImageCarousel from "../components/singleProduct/ImageCarousel";
 import FirmnessScale from "../components/singleProduct/FirmessScaleMobile";
@@ -31,7 +32,7 @@ const LeftSide = styled.div`
 `;
 
 const Mattress = ({ data }) => {
-  const { datoCmsMattress: mattress, base, matt } = data;
+  const { datoCmsMattress: mattress, shopifyBase, shopifyMattress } = data;
   const detectMobile = useMobileDetect();
   return (
     <Layout>
@@ -81,7 +82,6 @@ const Mattress = ({ data }) => {
           />
         </BreadWrapper>
         <Wrapper>
-          {console.log(base, matt)}
           <header>
             <MainTitle>
               {`${mattress.brand.displayName} ${mattress.subline.name} ${mattress.name}`}
@@ -104,6 +104,7 @@ const Mattress = ({ data }) => {
             </LeftSide>
             <MainInfo>
               <List>
+                {" "}
                 <h3>Features</h3>
                 <ul>
                   {mattress.listFeature.map(item => (
@@ -114,19 +115,26 @@ const Mattress = ({ data }) => {
                   </Info>
                 </ul>
               </List>
-              <DropDown
-                typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}
-                freeBoxSpring={mattress.saleInfo[0].freeBox}
-                discount={mattress.saleInfo[0].discount}
-                prices={mattress.price[0]}
-                boxPrices={
-                  mattress.subline.name === "iComfort"
-                    ? mattress.brand.boxPrice[1]
-                    : mattress.brand.boxPrice[0]
-                }
-                mattress={mattress.name}
-                subline={mattress.subline.name}
-              />
+              {shopifyBase === null || shopifyMattress === null ? (
+                <DropDown
+                  typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}
+                  freeBoxSpring={mattress.saleInfo[0].freeBox}
+                  discount={mattress.saleInfo[0].discount}
+                  prices={mattress.price[0]}
+                  boxPrices={
+                    mattress.subline.name === "iComfort"
+                      ? mattress.brand.boxPrice[1]
+                      : mattress.brand.boxPrice[0]
+                  }
+                  mattress={mattress.name}
+                  subline={mattress.subline.name}
+                />
+              ) : (
+                <ShopifyDropDown
+                  shopifyBase={shopifyBase}
+                  shopifyMattress={shopifyMattress}
+                />
+              )}
             </MainInfo>
           </Main>
           <header id="moreInfo">
@@ -168,13 +176,29 @@ export const query = graphql`
     $shopifyMatt: String!
     $shopifyBase: String!
   ) {
-    matt: shopifyProduct(id: { eq: $shopifyMatt }) {
+    shopifyMattress: shopifyProduct(id: { eq: $shopifyMatt }) {
       title
+      vendor
+      shopifyId
+      variants {
+        price
+        title
+        shopifyId
+      }
     }
-    base: shopifyProduct(id: { eq: $shopifyBase }) {
+    shopifyBase: shopifyProduct(id: { eq: $shopifyBase }) {
       title
+      vendor
+      shopifyId
+      variants {
+        price
+        title
+        shopifyId
+      }
     }
     datoCmsMattress(slug: { eq: $slug }) {
+      shopifyMatt
+      shopifyBase
       priceLow
       priceHigh
       slug
