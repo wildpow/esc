@@ -10,6 +10,7 @@ import MenuButton from "./mobileMenu/mobileButton";
 import Menu from "./mobileMenu/menu";
 import StructuredDataMain from "./structuredDataMain";
 import ModalContextProvider from "./modalContext";
+import StoreProvider from "../../provider/StoreProvider";
 
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
@@ -170,23 +171,28 @@ class Layout extends React.Component {
     const { menuToggle, outsideMenuEvents } = this.state;
     const { children } = this.props;
     return (
-      <ModalContextProvider>
-        <StructuredDataMain />
-        <GlobalStyle />
-        <div ref={this.myRef}>
-          <MenuButton menuToggle={menuToggle} onClick={this.handleMenuToggle} />
-          <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc} />
-        </div>
-        <Topper menuToggle={menuToggle} />
-        <Body outsideMenuEvents={outsideMenuEvents} menuToggle={menuToggle}>
-          <Navigation />
-          <Logo menuToggle={menuToggle} />
-          <Container>
-            {children}
-            <Footer />
-          </Container>
-        </Body>
-      </ModalContextProvider>
+      <StoreProvider>
+        <ModalContextProvider>
+          <StructuredDataMain />
+          <GlobalStyle />
+          <div ref={this.myRef}>
+            <MenuButton
+              menuToggle={menuToggle}
+              onClick={this.handleMenuToggle}
+            />
+            <Menu menuToggle={menuToggle} closeonEsc={this.closeonEsc} />
+          </div>
+          <Topper menuToggle={menuToggle} />
+          <Body outsideMenuEvents={outsideMenuEvents} menuToggle={menuToggle}>
+            <Navigation />
+            <Logo menuToggle={menuToggle} />
+            <Container>
+              {children}
+              <Footer />
+            </Container>
+          </Body>
+        </ModalContextProvider>
+      </StoreProvider>
     );
   }
 }
