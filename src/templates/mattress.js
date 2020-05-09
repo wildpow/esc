@@ -31,7 +31,7 @@ const LeftSide = styled.div`
 `;
 
 const Mattress = ({ data }) => {
-  const { datoCmsMattress: mattress } = data;
+  const { datoCmsMattress: mattress, base, matt } = data;
   const detectMobile = useMobileDetect();
   return (
     <Layout>
@@ -81,6 +81,7 @@ const Mattress = ({ data }) => {
           />
         </BreadWrapper>
         <Wrapper>
+          {console.log(base, matt)}
           <header>
             <MainTitle>
               {`${mattress.brand.displayName} ${mattress.subline.name} ${mattress.name}`}
@@ -162,7 +163,17 @@ Mattress.propTypes = {
 export default Mattress;
 
 export const query = graphql`
-  query SingleMattress($slug: String!) {
+  query SingleMattress(
+    $slug: String!
+    $shopifyMatt: String!
+    $shopifyBase: String!
+  ) {
+    matt: shopifyProduct(id: { eq: $shopifyMatt }) {
+      title
+    }
+    base: shopifyProduct(id: { eq: $shopifyBase }) {
+      title
+    }
     datoCmsMattress(slug: { eq: $slug }) {
       priceLow
       priceHigh

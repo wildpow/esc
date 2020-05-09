@@ -24,7 +24,7 @@ const cfg = {
     {
       resolve: `gatsby-source-shopify`,
       options: {
-        shopName: process.env.GATSBY_SHOPIFY_STORE,
+        shopName: `${process.env.GATSBY_SHOPIFY_STORE}.myshopify.com`,
         accessToken: process.env.GATSBY_SHOPIFY_API,
         verbose: true,
       },
