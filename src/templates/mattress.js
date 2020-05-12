@@ -82,6 +82,7 @@ const Mattress = ({ data }) => {
           />
         </BreadWrapper>
         <Wrapper>
+          {console.log("efwefr", mattress.saleInfo)}
           <header>
             <MainTitle>
               {`${mattress.brand.displayName} ${mattress.subline.name} ${mattress.name}`}

@@ -21,6 +21,7 @@ import Layout from "../components/layout";
 
 const Accessories = ({ data }) => (
   <Layout>
+    {console.log(data)}
     <Main>
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <AccWrapper>
@@ -34,6 +35,13 @@ const Accessories = ({ data }) => (
             style and body type.
           </P>
         </InfoWrapper>
+        <div>
+          {/* {data.pillow.map(p => {
+            <div key={title}>
+              <img src={p.images} alt="" />
+            </div>;
+          })} */}
+        </div>
       </AccWrapper>
       <AccWrapper>
         <H3>Sheets</H3>
@@ -83,6 +91,33 @@ export const accessoriesSEO = graphql`
     datoCmsSeo(name: { eq: "accessories" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+    pillow: allShopifyProduct(filter: { productType: { eq: "pillow" } }) {
+      nodes {
+        title
+        shopifyId
+        vendor
+        availableForSale
+        variants {
+          shopifyId
+          price
+        }
+        description
+        title
+        images {
+          originalSrc
+        }
+        priceRange {
+          minVariantPrice {
+            currencyCode
+            amount
+          }
+          maxVariantPrice {
+            currencyCode
+            amount
+          }
+        }
       }
     }
   }
