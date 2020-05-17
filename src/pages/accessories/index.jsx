@@ -35,9 +35,7 @@ const Accessories = ({ data }) => {
               large selection of heights and firmnesses to compliment any
               sleeping style and body type.
             </P>
-            <Link to="/accessories/list" state={{ search: "Pillows" }}>
-              Shop Pillows
-            </Link>
+            <Link to="/accessories/list?type=pillows">Shop Pillows</Link>
           </InfoWrapper>
           <div>
             {/* {data.pillow.map(p => {
@@ -57,9 +55,7 @@ const Accessories = ({ data }) => {
               sheets are of the upmost quality and are guaranteed not to
               &quot;pop off&quot; your mattress during the night.
             </P>
-            <Link to="/accessories/list" state={{ search: "Sheets" }}>
-              Shop Sheets
-            </Link>
+            <Link to="/accessories/list?type=sheets">Shop Sheets</Link>
           </InfoWrapperReversed>
         </AccWrapper>
         <AccWrapper>
@@ -72,9 +68,7 @@ const Accessories = ({ data }) => {
               With options including Tencel, Active Cooling, 5-Sided and
               complete encasements protecting from spills, stains, and soiling.
             </P>
-            <Link to="/accessories/list" state={{ search: "Protector" }}>
-              Shop Protectors
-            </Link>
+            <Link to="/accessories/list?type=protector">Shop Protectors</Link>
           </InfoWrapper>
         </AccWrapper>
         <AccWrapper2>
@@ -87,9 +81,7 @@ const Accessories = ({ data }) => {
               lift your mattress set off the ground, or want something to bring
               your room to life we have an option for you here.
             </P>
-            <Link to="/accessories/list" state={{ search: "Frames" }}>
-              Shop Frames
-            </Link>
+            <Link to="/accessories/list?type=frames">Shop Frames</Link>
           </InfoWrapperReversed>
         </AccWrapper2>
       </Main>
