@@ -93,15 +93,27 @@ export const accessoriesSEO = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    pillow: allShopifyProduct(filter: { productType: { eq: "pillow" } }) {
+    pillow: allShopifyProduct(filter: { productType: { eq: "Pillow" } }) {
       nodes {
         title
         shopifyId
+        productType
+        tags
         vendor
         availableForSale
+        priceRange {
+          minVariantPrice {
+            amount
+          }
+          maxVariantPrice {
+            amount
+          }
+        }
         variants {
           shopifyId
           price
+          title
+          compareAtPrice
         }
         description
         title
