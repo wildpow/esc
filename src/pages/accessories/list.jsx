@@ -1,115 +1,97 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect, useReducer } from "react";
 import { graphql, Link } from "gatsby";
-import styled from "styled-components";
+// import styled from "styled-components";
 // import AccList from "../../components/accessoriessList";
 import Layout from "../../components/layout";
-import BreadCrumbs, { BreadWrapper } from "../../components/breadCrumbs";
+import BreadCrumbs from "../../components/breadCrumbs";
+import Header from "../../components/mattressList/Header";
+import { NewBread, MattListWrapper } from "../../components/mattressList";
+import accData from "../../components/accessoriessList/data";
+import filterSortAcc from "../../components/accessoriessList/filterSortAcc";
 
-const NewBread = styled(BreadWrapper)`
-  padding: 0;
-  margin-left: 0;
-  margin-right: 0;
-  @media (min-width: 568px) {
-    padding: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  @media (min-width: 768px) {
-    padding: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  @media (min-width: 1022px) {
-    padding: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  @media (min-width: 1300px) {
-    padding: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-`;
-
-const MattListWrapper = styled.div`
-  display: flex;
-  padding-left: 5px;
-  padding-right: 5px;
-  flex-direction: column;
-  .mattList__flex {
-    border-top: 8px solid ${props => props.theme.mainColor1};
-    padding-top: 20px;
-    padding-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    @media screen and (min-width: 768px) {
-      flex-direction: row;
-    }
-  }
-  .mattList__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-    grid-auto-rows: minmax(300px, auto);
-    grid-gap: 1rem;
-    margin-left: 7px;
-    margin-right: 7px;
-    @media screen and (min-width: 768px) {
-      margin: 0;
-      width: 80%;
-    }
-  }
-`;
 const AccessoriessList = ({
   data: { pillows, sheets, protector },
   location,
 }) => {
-  const [state, setState] = useState();
-  const [title, setTitle] = useState("");
+  const initalState = {
+    acc: [],
+    accBeforeFilter: [],
+    accInfo: {},
+    vendor: [],
+    type: [],
+    tags: [],
+    sheets,
+    pillows,
+    protector,
+    all: [...sheets.nodes, ...protector.nodes, ...pillows.nodes],
+  };
+  // const [state, setState] = useState();
+  // const [info, setInfo] = useState({
+  //   title: "",
+  //   description: "",
+  //   bg: "",
+  // });
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const type = params.get("type");
-    console.log(params, type);
     if (type === null) {
-      setTitle("All");
+      setInfo(accData[3]);
+      window.history.replaceState({}, "", `${location.pathname}?type=all`);
       setState([...sheets.nodes, ...protector.nodes, ...sheets.nodes]);
     } else if (type.toLowerCase() === "sheets") {
-      setState(sheets);
-      setTitle("Sheets");
+      setState(sheets.nodes);
+      setInfo(accData[0]);
     } else if (type.toLowerCase() === "pillows") {
-      setState(pillows);
-      setTitle("Pillows");
+      setState(pillows.nodes);
+      setInfo(accData[1]);
     } else if (type === "protector") {
-      setState(protector);
-      setTitle("Protector");
+      setInfo(accData[2]);
+      setState(protector.nodes);
+      setInfo("Protector");
     } else {
-      setTitle("All");
+      setInfo(accData[3]);
+      window.history.replaceState({}, "", `${location.pathname}?type=all`);
       setState([...sheets.nodes, ...protector.nodes, ...sheets.nodes]);
     }
-  }, [location.search, pillows, protector, sheets]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const [state, dispatch] = useReducer(filterSortAcc, initalState);
   return (
     <Layout>
       <MattListWrapper>
         <NewBread Brands>
-          <BreadCrumbs next="Accessories" here={title} />
+          <BreadCrumbs next="Accessories" here={info.title} />
         </NewBread>
+        <Header
+          title={info.title === "All" ? "Perfect Sleep System" : info.title}
+          description={info.description}
+          headerBG={info.bg}
+        />
         <div className="mattList__flex">
           <div>sort</div>
           <div className="mattList__grid">
-            <h1>accs</h1>
+            {console.log(info)}
+            {state.map(stuff => (
+              <div key={stuff.title}>{stuff.title}</div>
+            ))}
           </div>
         </div>
         <NewBread Brands Bottom>
-          <BreadCrumbs next="Accessories" here={title} />
+          <BreadCrumbs next="Accessories" here={info.title} />
         </NewBread>
       </MattListWrapper>
-      <h1>{title}</h1>
     </Layout>
   );
 };
 
 export const accessoryList = graphql`
   query accList {
-    protector: allShopifyProduct(filter: { productType: { eq: "Protector" } }) {
+    protector: allShopifyProduct(
+      filter: { productType: { eq: "Protector" } }
+      sort: { fields: priceRange___minVariantPrice___amount }
+    ) {
       nodes {
         title
         shopifyId
@@ -148,7 +130,10 @@ export const accessoryList = graphql`
         }
       }
     }
-    sheets: allShopifyProduct(filter: { productType: { eq: "Sheets" } }) {
+    sheets: allShopifyProduct(
+      filter: { productType: { eq: "Sheets" } }
+      sort: { fields: priceRange___minVariantPrice___amount }
+    ) {
       nodes {
         title
         shopifyId
@@ -187,7 +172,10 @@ export const accessoryList = graphql`
         }
       }
     }
-    pillows: allShopifyProduct(filter: { productType: { eq: "Pillow" } }) {
+    pillows: allShopifyProduct(
+      filter: { productType: { eq: "Pillow" } }
+      sort: { fields: priceRange___minVariantPrice___amount }
+    ) {
       nodes {
         title
         shopifyId

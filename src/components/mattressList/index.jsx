@@ -7,7 +7,7 @@ import FilterSortPanel from "./FilterSortPanel";
 import filterSortReducer from "./filterSortReducer";
 import BreadCrumbs, { BreadWrapper } from "../breadCrumbs";
 
-const NewBread = styled(BreadWrapper)`
+export const NewBread = styled(BreadWrapper)`
   padding: 0;
   margin-left: 0;
   margin-right: 0;
@@ -33,7 +33,7 @@ const NewBread = styled(BreadWrapper)`
   }
 `;
 
-const MattListWrapper = styled.div`
+export const MattListWrapper = styled.div`
   display: flex;
   padding-left: 5px;
   padding-right: 5px;
