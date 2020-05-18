@@ -108,7 +108,13 @@ const AccessoriessList = ({
           <FilterSortPanel dispatch={dispatch} types={state.types} />
           <div className="mattList__grid">
             {state.acc.map(stuff => (
-              <div key={stuff.title}>{stuff.title}</div>
+              <div
+                style={{ display: "flex", flexDirection: "column" }}
+                key={stuff.title}
+              >
+                <h4>{stuff.title}</h4>
+                <p>{stuff.priceRange.minVariantPrice.amount}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -125,7 +131,7 @@ export const accessoryList = graphql`
   query accList {
     protector: allShopifyProduct(
       filter: { productType: { eq: "Protector" } }
-      sort: { fields: priceRange___minVariantPrice___amount }
+      sort: { fields: priceRange___minVariantPrice___amount, order: DESC }
     ) {
       nodes {
         title
@@ -167,7 +173,7 @@ export const accessoryList = graphql`
     }
     sheets: allShopifyProduct(
       filter: { productType: { eq: "Sheets" } }
-      sort: { fields: priceRange___minVariantPrice___amount }
+      sort: { fields: priceRange___minVariantPrice___amount, order: DESC }
     ) {
       nodes {
         title
@@ -209,7 +215,7 @@ export const accessoryList = graphql`
     }
     pillows: allShopifyProduct(
       filter: { productType: { eq: "Pillow" } }
-      sort: { fields: priceRange___minVariantPrice___amount }
+      sort: { fields: priceRange___minVariantPrice___amount, order: DESC }
     ) {
       nodes {
         title
