@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useReducer } from "react";
 import { graphql, Link } from "gatsby";
@@ -21,9 +22,9 @@ const AccessoriessList = ({
     vendor: [],
     type: [],
     tags: [],
-    sheets,
-    pillows,
-    protector,
+    sheets: sheets.nodes,
+    pillows: pillows.nodes,
+    protector: protector.nodes,
     all: [...sheets.nodes, ...protector.nodes, ...pillows.nodes],
   };
   // const [state, setState] = useState();
@@ -33,53 +34,70 @@ const AccessoriessList = ({
   //   bg: "",
   // });
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const type = params.get("type");
-    if (type === null) {
-      setInfo(accData[3]);
-      window.history.replaceState({}, "", `${location.pathname}?type=all`);
-      setState([...sheets.nodes, ...protector.nodes, ...sheets.nodes]);
-    } else if (type.toLowerCase() === "sheets") {
-      setState(sheets.nodes);
-      setInfo(accData[0]);
-    } else if (type.toLowerCase() === "pillows") {
-      setState(pillows.nodes);
-      setInfo(accData[1]);
-    } else if (type === "protector") {
-      setInfo(accData[2]);
-      setState(protector.nodes);
-      setInfo("Protector");
-    } else {
-      setInfo(accData[3]);
-      window.history.replaceState({}, "", `${location.pathname}?type=all`);
-      setState([...sheets.nodes, ...protector.nodes, ...sheets.nodes]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const params = new URLSearchParams(location.search);
+  const type = params.get("type");
+  if (type === null) {
+    initalState.accInfo = accData[3];
+    initalState.type = ["sheets", "pillows", "protector"];
+    window.history.replaceState({}, "", `${location.pathname}?type=all`);
+    initalState.acc = initalState.all;
+    initalState.tags = [...initalState.all.map(a => a.tags)];
+    initalState.vendor = [...initalState.all.map(a => a.vendor)];
+  } else if (type.toLowerCase() === "sheets") {
+    initalState.accInfo = accData[0];
+    initalState.type = ["sheets"];
+    initalState.acc = initalState.sheets;
+    initalState.tags = [...initalState.sheets.map(a => a.tags)];
+    initalState.vendor = [...initalState.sheets.map(a => a.vendor)];
+  } else if (type.toLowerCase() === "pillows") {
+    initalState.accInfo = accData[1];
+    initalState.type = ["pillows"];
+    initalState.acc = initalState.pillows;
+    initalState.tags = [...initalState.pillows.map(a => a.tags)];
+    initalState.vendor = [...initalState.pillows.map(a => a.vendor)];
+  } else if (type.toLowerCase() === "protector") {
+    initalState.accInfo = accData[2];
+    initalState.type = ["protector"];
+    initalState.acc = initalState.protector;
+    initalState.tags = [...initalState.protector.map(a => a.tags)];
+    initalState.vendor = [...initalState.protector.map(a => a.vendor)];
+  } else {
+    initalState.accInfo = accData[3];
+    initalState.type = ["sheets", "pillows", "protector"];
+    window.history.replaceState({}, "", `${location.pathname}?type=all`);
+    initalState.acc = initalState.all;
+    initalState.tags = [...initalState.all.map(a => a.tags)];
+    initalState.vendor = [...initalState.all.map(a => a.vendor)];
+  }
+  // eslint--disablenext-line react-hooks/exhaustive-deps
+
   const [state, dispatch] = useReducer(filterSortAcc, initalState);
   return (
     <Layout>
       <MattListWrapper>
         <NewBread Brands>
-          <BreadCrumbs next="Accessories" here={info.title} />
+          <BreadCrumbs next="Accessories" here={state.accInfo.title} />
         </NewBread>
         <Header
-          title={info.title === "All" ? "Perfect Sleep System" : info.title}
-          description={info.description}
-          headerBG={info.bg}
+          title={
+            state.accInfo.title === "All"
+              ? "Perfect Sleep System"
+              : state.accInfo.title
+          }
+          description={state.accInfo.description}
+          headerBG={state.accInfo.bg}
         />
         <div className="mattList__flex">
           <div>sort</div>
           <div className="mattList__grid">
-            {console.log(info)}
-            {state.map(stuff => (
+            {state.acc.map(stuff => (
               <div key={stuff.title}>{stuff.title}</div>
             ))}
           </div>
         </div>
+        {console.log(state)}
         <NewBread Brands Bottom>
-          <BreadCrumbs next="Accessories" here={info.title} />
+          <BreadCrumbs next="Accessories" here={state.accInfo.title} />
         </NewBread>
       </MattListWrapper>
     </Layout>
