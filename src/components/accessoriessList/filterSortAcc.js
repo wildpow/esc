@@ -2,6 +2,7 @@ const filterSortReducer = (state, action) => {
   let newType;
   let newTag;
   let newVendor;
+  let newAcc;
   switch (action.type) {
     case "low-high":
       return {
@@ -60,20 +61,23 @@ const filterSortReducer = (state, action) => {
         }),
       };
     case "type":
-      newType = [...state.type];
-      if (newType.includes(action.type)) {
-        newType = newType.filter(item => item !== action.type);
-      } else {
-        newType.push(action.type);
-      }
+      newType = [...state.types];
+      newAcc = [...state.acc];
+      // if (newType.includes(action.type)) {
+      //   newType = newType.filter(item => item !== action.type);
+      // } else {
+      //   newType.push(action.type);
+      // }
+      console.log(action);
+      newType[action.index].checked = action.checked;
       return {
         ...state,
-        acc:
-          newType.length !== 0
-            ? state.accBeforeFilter.filter(acc =>
-                newType.includes(acc.productType),
-              )
-            : state.accBeforeFilter,
+        // acc:
+        //   newType.length !== 0
+        //     ? state.accBeforeFilter.filter(acc =>
+        //         newType.includes(acc.productType),
+        //       )
+        //     : state.accBeforeFilter,
         type: newType,
       };
     case "tag":

@@ -96,13 +96,14 @@ const FilterSortPanel = ({ dispatch, types }) => {
     { checked: false },
   ]);
 
-  const toggleCheck = (e, index, firmness) => {
-    const newChecked = checked;
-    newChecked[index].checked = e.target.checked;
-    setChecked([...newChecked]);
+  const toggleCheck = (e, index, value) => {
+    // const newChecked = checked;
+    // newChecked[index].checked = e.target.checked;
+    // setChecked([...newChecked]);
     dispatch({
-      type: "check",
-      id: firmness,
+      type: "type",
+      index,
+      checked: e.target.checked,
     });
   };
   return (
@@ -130,7 +131,7 @@ const FilterSortPanel = ({ dispatch, types }) => {
                 <Checkbox
                   id={type.value}
                   checked={type.checked}
-                  onChange={e => toggleCheck(e, index)}
+                  onChange={e => toggleCheck(e, index, type.value)}
                 />
                 <span style={{ marginLeft: 8 }}>{type.value}</span>
               </label>

@@ -16,6 +16,8 @@ const AccessoriessList = ({
   data: { pillows, sheets, protector },
   location,
 }) => {
+  const sheetTags = sheets.nodes.map(sheet => [...sheet.tags]);
+
   const initalState = {
     acc: [],
     accBeforeFilter: [],
@@ -42,8 +44,22 @@ const AccessoriessList = ({
     ];
     window.history.replaceState({}, "", `${location.pathname}?type=all`);
     initalState.acc = initalState.all;
-    initalState.tags = [...initalState.all.map(a => a.tags)];
-    initalState.vendor = [...initalState.all.map(a => a.vendor)];
+    // initalState.tags = [
+    //   ...initalState.all.map(item => {
+    //     return {
+    //       checked: false,
+    //       value: item.tags,
+    //     };
+    //   }),
+    // ];
+    initalState.vendor = [
+      ...initalState.all.map(item => {
+        return {
+          checked: false,
+          value: item.vendor,
+        };
+      }),
+    ];
   } else if (type.toLowerCase() === "sheets") {
     initalState.accInfo = accData[0];
     initalState.types = [
@@ -52,8 +68,22 @@ const AccessoriessList = ({
       { value: "protector", checked: false },
     ];
     initalState.acc = initalState.sheets;
-    initalState.tags = [...initalState.sheets.map(a => a.tags)];
-    initalState.vendor = [...initalState.sheets.map(a => a.vendor)];
+    // initalState.tags = [
+    //   ...initalState.sheets.map(item => {
+    //     return {
+    //       checked: false,
+    //       value: item.tags,
+    //     };
+    //   }),
+    // ];
+    initalState.vendor = [
+      ...initalState.sheets.map(item => {
+        return {
+          checked: false,
+          value: item.vendor,
+        };
+      }),
+    ];
   } else if (type.toLowerCase() === "pillows") {
     initalState.accInfo = accData[1];
     initalState.types = [
@@ -62,8 +92,22 @@ const AccessoriessList = ({
       { value: "protector", checked: false },
     ];
     initalState.acc = initalState.pillows;
-    initalState.tags = [...initalState.pillows.map(a => a.tags)];
-    initalState.vendor = [...initalState.pillows.map(a => a.vendor)];
+    // initalState.tags = [
+    //   ...initalState.pillows.map(item => {
+    //     return {
+    //       checked: false,
+    //       value: item.tags,
+    //     };
+    //   }),
+    // ];
+    initalState.vendor = [
+      ...initalState.pillows.map(item => {
+        return {
+          checked: false,
+          value: item.vendor,
+        };
+      }),
+    ];
   } else if (type.toLowerCase() === "protector") {
     initalState.accInfo = accData[2];
     initalState.types = [
@@ -72,8 +116,22 @@ const AccessoriessList = ({
       { value: "protector", checked: true },
     ];
     initalState.acc = initalState.protector;
-    initalState.tags = [...initalState.protector.map(a => a.tags)];
-    initalState.vendor = [...initalState.protector.map(a => a.vendor)];
+    // initalState.tags = [
+    //   ...initalState.protector.map(item => {
+    //     return {
+    //       checked: false,
+    //       value: item.tags,
+    //     };
+    //   }),
+    // ];
+    initalState.vendor = [
+      ...initalState.protector.map(item => {
+        return {
+          checked: false,
+          value: item.vendor,
+        };
+      }),
+    ];
   } else {
     initalState.accInfo = accData[3];
     initalState.types = [
@@ -83,14 +141,29 @@ const AccessoriessList = ({
     ];
     window.history.replaceState({}, "", `${location.pathname}?type=all`);
     initalState.acc = initalState.all;
-    initalState.tags = [...initalState.all.map(a => a.tags)];
-    initalState.vendor = [...initalState.all.map(a => a.vendor)];
+    // initalState.tags = [
+    //   ...initalState.all.map(item => {
+    //     return {
+    //       checked: false,
+    //       value: item.tags,
+    //     };
+    //   }),
+    // ];
+    initalState.vendor = [
+      ...initalState.all.map(item => {
+        return {
+          checked: false,
+          value: item.vendor,
+        };
+      }),
+    ];
   }
   // eslint--disablenext-line react-hooks/exhaustive-deps
 
   const [state, dispatch] = useReducer(filterSortAcc, initalState);
   return (
     <Layout>
+      {console.log(sheetTags)}
       <MattListWrapper>
         <NewBread Brands>
           <BreadCrumbs next="Accessories" here={state.accInfo.title} />
