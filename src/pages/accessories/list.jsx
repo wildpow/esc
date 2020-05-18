@@ -1,6 +1,6 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useReducer } from "react";
 import { graphql, Link } from "gatsby";
 // import styled from "styled-components";
 // import AccList from "../../components/accessoriessList";
@@ -10,6 +10,7 @@ import Header from "../../components/mattressList/Header";
 import { NewBread, MattListWrapper } from "../../components/mattressList";
 import accData from "../../components/accessoriessList/data";
 import filterSortAcc from "../../components/accessoriessList/filterSortAcc";
+import FilterSortPanel from "../../components/accessoriessList/filterSortPanelAcc";
 
 const AccessoriessList = ({
   data: { pillows, sheets, protector },
@@ -20,50 +21,66 @@ const AccessoriessList = ({
     accBeforeFilter: [],
     accInfo: {},
     vendor: [],
-    type: [],
+    selectedVendor: [],
+    types: [],
     tags: [],
+    selectedTags: [],
     sheets: sheets.nodes,
     pillows: pillows.nodes,
     protector: protector.nodes,
     all: [...sheets.nodes, ...protector.nodes, ...pillows.nodes],
   };
-  // const [state, setState] = useState();
-  // const [info, setInfo] = useState({
-  //   title: "",
-  //   description: "",
-  //   bg: "",
-  // });
 
   const params = new URLSearchParams(location.search);
   const type = params.get("type");
   if (type === null) {
     initalState.accInfo = accData[3];
-    initalState.type = ["sheets", "pillows", "protector"];
+    initalState.types = [
+      { value: "sheets", checked: true },
+      { value: "pillows", checked: true },
+      { value: "protector", checked: true },
+    ];
     window.history.replaceState({}, "", `${location.pathname}?type=all`);
     initalState.acc = initalState.all;
     initalState.tags = [...initalState.all.map(a => a.tags)];
     initalState.vendor = [...initalState.all.map(a => a.vendor)];
   } else if (type.toLowerCase() === "sheets") {
     initalState.accInfo = accData[0];
-    initalState.type = ["sheets"];
+    initalState.types = [
+      { value: "sheets", checked: true },
+      { value: "pillows", checked: false },
+      { value: "protector", checked: false },
+    ];
     initalState.acc = initalState.sheets;
     initalState.tags = [...initalState.sheets.map(a => a.tags)];
     initalState.vendor = [...initalState.sheets.map(a => a.vendor)];
   } else if (type.toLowerCase() === "pillows") {
     initalState.accInfo = accData[1];
-    initalState.type = ["pillows"];
+    initalState.types = [
+      { value: "sheets", checked: false },
+      { value: "pillows", checked: true },
+      { value: "protector", checked: false },
+    ];
     initalState.acc = initalState.pillows;
     initalState.tags = [...initalState.pillows.map(a => a.tags)];
     initalState.vendor = [...initalState.pillows.map(a => a.vendor)];
   } else if (type.toLowerCase() === "protector") {
     initalState.accInfo = accData[2];
-    initalState.type = ["protector"];
+    initalState.types = [
+      { value: "sheets", checked: false },
+      { value: "pillows", checked: false },
+      { value: "protector", checked: true },
+    ];
     initalState.acc = initalState.protector;
     initalState.tags = [...initalState.protector.map(a => a.tags)];
     initalState.vendor = [...initalState.protector.map(a => a.vendor)];
   } else {
     initalState.accInfo = accData[3];
-    initalState.type = ["sheets", "pillows", "protector"];
+    initalState.types = [
+      { value: "sheets", checked: true },
+      { value: "pillows", checked: true },
+      { value: "protector", checked: true },
+    ];
     window.history.replaceState({}, "", `${location.pathname}?type=all`);
     initalState.acc = initalState.all;
     initalState.tags = [...initalState.all.map(a => a.tags)];
@@ -88,7 +105,7 @@ const AccessoriessList = ({
           headerBG={state.accInfo.bg}
         />
         <div className="mattList__flex">
-          <div>sort</div>
+          <FilterSortPanel dispatch={dispatch} types={state.types} />
           <div className="mattList__grid">
             {state.acc.map(stuff => (
               <div key={stuff.title}>{stuff.title}</div>
