@@ -63,21 +63,11 @@ const filterSortReducer = (state, action) => {
     case "type":
       newType = [...state.types];
       newAcc = [...state.acc];
-      // if (newType.includes(action.type)) {
-      //   newType = newType.filter(item => item !== action.type);
-      // } else {
-      //   newType.push(action.type);
-      // }
-      console.log(action);
       newType[action.index].checked = action.checked;
+      // console.log(action, "sefewf", newAcc);
       return {
         ...state,
-        // acc:
-        //   newType.length !== 0
-        //     ? state.accBeforeFilter.filter(acc =>
-        //         newType.includes(acc.productType),
-        //       )
-        //     : state.accBeforeFilter,
+        acc: newAcc.filter(a => a.productType === action.value),
         type: newType,
       };
     case "tag":

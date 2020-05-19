@@ -1,9 +1,7 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/prop-types */
 import React, { useReducer } from "react";
-import { graphql, Link } from "gatsby";
-// import styled from "styled-components";
-// import AccList from "../../components/accessoriessList";
+import { graphql } from "gatsby";
 import Layout from "../../components/layout";
 import BreadCrumbs from "../../components/breadCrumbs";
 import Header from "../../components/mattressList/Header";
@@ -11,26 +9,18 @@ import { NewBread, MattListWrapper } from "../../components/mattressList";
 import accData from "../../components/accessoriessList/data";
 import filterSortAcc from "../../components/accessoriessList/filterSortAcc";
 import FilterSortPanel from "../../components/accessoriessList/filterSortPanelAcc";
+import AccThumb from "../../components/accessoriessList/accThumb";
 
 const AccessoriessList = ({
   data: { pillows, sheets, protector },
   location,
 }) => {
-  const sheetTags = sheets.nodes.map(sheet => [...sheet.tags]);
-
   const initalState = {
     acc: [],
-    accBeforeFilter: [],
     accInfo: {},
-    vendor: [],
-    selectedVendor: [],
     types: [],
-    tags: [],
-    selectedTags: [],
-    sheets: sheets.nodes,
-    pillows: pillows.nodes,
-    protector: protector.nodes,
-    all: [...sheets.nodes, ...protector.nodes, ...pillows.nodes],
+    selectedTypes: [],
+    accBeforeFilter: [...sheets.nodes, ...protector.nodes, ...pillows.nodes],
   };
 
   const params = new URLSearchParams(location.search);
@@ -38,28 +28,12 @@ const AccessoriessList = ({
   if (type === null) {
     initalState.accInfo = accData[3];
     initalState.types = [
-      { value: "sheets", checked: true },
-      { value: "pillows", checked: true },
-      { value: "protector", checked: true },
+      { value: "Sheets", checked: false },
+      { value: "Pillow", checked: false },
+      { value: "Protector", checked: false },
     ];
-    window.history.replaceState({}, "", `${location.pathname}?type=all`);
-    initalState.acc = initalState.all;
-    // initalState.tags = [
-    //   ...initalState.all.map(item => {
-    //     return {
-    //       checked: false,
-    //       value: item.tags,
-    //     };
-    //   }),
-    // ];
-    initalState.vendor = [
-      ...initalState.all.map(item => {
-        return {
-          checked: false,
-          value: item.vendor,
-        };
-      }),
-    ];
+    window.history.replaceState({}, "", `${location.pathname}`);
+    initalState.acc = initalState.accBeforeFilter;
   } else if (type.toLowerCase() === "sheets") {
     initalState.accInfo = accData[0];
     initalState.types = [
@@ -67,23 +41,8 @@ const AccessoriessList = ({
       { value: "pillows", checked: false },
       { value: "protector", checked: false },
     ];
-    initalState.acc = initalState.sheets;
-    // initalState.tags = [
-    //   ...initalState.sheets.map(item => {
-    //     return {
-    //       checked: false,
-    //       value: item.tags,
-    //     };
-    //   }),
-    // ];
-    initalState.vendor = [
-      ...initalState.sheets.map(item => {
-        return {
-          checked: false,
-          value: item.vendor,
-        };
-      }),
-    ];
+    initalState.acc = [...sheets.nodes];
+    initalState.selectedTypes.push("Sheets");
   } else if (type.toLowerCase() === "pillows") {
     initalState.accInfo = accData[1];
     initalState.types = [
@@ -91,23 +50,8 @@ const AccessoriessList = ({
       { value: "pillows", checked: true },
       { value: "protector", checked: false },
     ];
-    initalState.acc = initalState.pillows;
-    // initalState.tags = [
-    //   ...initalState.pillows.map(item => {
-    //     return {
-    //       checked: false,
-    //       value: item.tags,
-    //     };
-    //   }),
-    // ];
-    initalState.vendor = [
-      ...initalState.pillows.map(item => {
-        return {
-          checked: false,
-          value: item.vendor,
-        };
-      }),
-    ];
+    initalState.acc = [...pillows.nodes];
+    initalState.selectedTypes.push("Pillow");
   } else if (type.toLowerCase() === "protector") {
     initalState.accInfo = accData[2];
     initalState.types = [
@@ -115,55 +59,21 @@ const AccessoriessList = ({
       { value: "pillows", checked: false },
       { value: "protector", checked: true },
     ];
-    initalState.acc = initalState.protector;
-    // initalState.tags = [
-    //   ...initalState.protector.map(item => {
-    //     return {
-    //       checked: false,
-    //       value: item.tags,
-    //     };
-    //   }),
-    // ];
-    initalState.vendor = [
-      ...initalState.protector.map(item => {
-        return {
-          checked: false,
-          value: item.vendor,
-        };
-      }),
-    ];
+    initalState.acc = [...protector.nodes];
+    initalState.selectedTypes.push("Protector");
   } else {
     initalState.accInfo = accData[3];
     initalState.types = [
-      { value: "sheets", checked: true },
-      { value: "pillows", checked: true },
-      { value: "protector", checked: true },
+      { value: "sheets", checked: false },
+      { value: "pillows", checked: false },
+      { value: "protector", checked: false },
     ];
-    window.history.replaceState({}, "", `${location.pathname}?type=all`);
-    initalState.acc = initalState.all;
-    // initalState.tags = [
-    //   ...initalState.all.map(item => {
-    //     return {
-    //       checked: false,
-    //       value: item.tags,
-    //     };
-    //   }),
-    // ];
-    initalState.vendor = [
-      ...initalState.all.map(item => {
-        return {
-          checked: false,
-          value: item.vendor,
-        };
-      }),
-    ];
+    window.history.replaceState({}, "", `${location.pathname}`);
+    initalState.acc = initalState.accBeforeFilter;
   }
-  // eslint--disablenext-line react-hooks/exhaustive-deps
-
   const [state, dispatch] = useReducer(filterSortAcc, initalState);
   return (
     <Layout>
-      {console.log(sheetTags)}
       <MattListWrapper>
         <NewBread Brands>
           <BreadCrumbs next="Accessories" here={state.accInfo.title} />
@@ -181,13 +91,7 @@ const AccessoriessList = ({
           <FilterSortPanel dispatch={dispatch} types={state.types} />
           <div className="mattList__grid">
             {state.acc.map(stuff => (
-              <div
-                style={{ display: "flex", flexDirection: "column" }}
-                key={stuff.title}
-              >
-                <h4>{stuff.title}</h4>
-                <p>{stuff.priceRange.minVariantPrice.amount}</p>
-              </div>
+              <AccThumb stuff={stuff} />
             ))}
           </div>
         </div>

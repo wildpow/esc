@@ -88,14 +88,6 @@ const FilterSort = styled.div`
 `;
 
 const FilterSortPanel = ({ dispatch, types }) => {
-  const [checked, setChecked] = useState([
-    { checked: false },
-    { checked: false },
-    { checked: false },
-    { checked: false },
-    { checked: false },
-  ]);
-
   const toggleCheck = (e, index, value) => {
     // const newChecked = checked;
     // newChecked[index].checked = e.target.checked;
@@ -103,6 +95,7 @@ const FilterSortPanel = ({ dispatch, types }) => {
     dispatch({
       type: "type",
       index,
+      value,
       checked: e.target.checked,
     });
   };
