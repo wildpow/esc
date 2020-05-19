@@ -17,16 +17,18 @@ const AccessoriessList = ({
 }) => {
   const initalState = {
     acc: [],
-    accInfo: {},
+    accInfo: accData,
+    selectedAccInfo: {},
     typeCheckBoxs: [],
     selectedTypes: [],
     accBeforeFilter: [...sheets.nodes, ...protector.nodes, ...pillows.nodes],
+    locationPath: location.pathname,
   };
 
   const params = new URLSearchParams(location.search);
   const type = params.get("type");
   if (type === null) {
-    initalState.accInfo = accData[3];
+    initalState.selectedAccInfo = initalState.accInfo[3];
     initalState.typeCheckBoxs = [
       { value: "Sheets", checked: false, displayName: "Sheets" },
       { value: "Pillow", checked: false, displayName: "Pillows" },
@@ -35,7 +37,7 @@ const AccessoriessList = ({
     window.history.replaceState({}, "", `${location.pathname}`);
     initalState.acc = initalState.accBeforeFilter;
   } else if (type.toLowerCase() === "sheets") {
-    initalState.accInfo = accData[0];
+    initalState.selectedAccInfo = initalState.accInfo[0];
     initalState.typeCheckBoxs = [
       { value: "Sheets", checked: true, displayName: "Sheets" },
       { value: "Pillow", checked: false, displayName: "Pillows" },
@@ -43,8 +45,8 @@ const AccessoriessList = ({
     ];
     initalState.acc = [...sheets.nodes];
     initalState.selectedTypes.push("Sheets");
-  } else if (type.toLowerCase() === "pillows") {
-    initalState.accInfo = accData[1];
+  } else if (type.toLowerCase() === "pillow") {
+    initalState.selectedAccInfo = initalState.accInfo[1];
     initalState.typeCheckBoxs = [
       { value: "Sheets", checked: false, displayName: "Sheets" },
       { value: "Pillow", checked: true, displayName: "Pillows" },
@@ -52,8 +54,8 @@ const AccessoriessList = ({
     ];
     initalState.acc = [...pillows.nodes];
     initalState.selectedTypes.push("Pillow");
-  } else if (type.toLowerCase() === "protectors") {
-    initalState.accInfo = accData[2];
+  } else if (type.toLowerCase() === "protector") {
+    initalState.selectedAccInfo = initalState.accInfo[2];
     initalState.typeCheckBoxs = [
       { value: "Sheets", checked: false, displayName: "Sheets" },
       { value: "Pillow", checked: false, displayName: "Pillows" },
@@ -62,7 +64,7 @@ const AccessoriessList = ({
     initalState.acc = [...protector.nodes];
     initalState.selectedTypes.push("Protector");
   } else {
-    initalState.accInfo = accData[3];
+    initalState.selectedAccInfo = initalState.accInfo[3];
     initalState.typeCheckBoxs = [
       { value: "Sheets", checked: false, displayName: "Sheets" },
       { value: "Pillow", checked: false, displayName: "Pillows" },
@@ -76,16 +78,12 @@ const AccessoriessList = ({
     <Layout>
       <MattListWrapper>
         <NewBread Brands>
-          <BreadCrumbs next="Accessories" here={state.accInfo.title} />
+          <BreadCrumbs next="Accessories" here={state.selectedAccInfo.title} />
         </NewBread>
         <Header
-          title={
-            state.accInfo.title === "All"
-              ? "Perfect Sleep System"
-              : state.accInfo.title
-          }
-          description={state.accInfo.description}
-          headerBG={state.accInfo.bg}
+          title={state.selectedAccInfo.title}
+          description={state.selectedAccInfo.description}
+          headerBG={state.selectedAccInfo.bg}
         />
         <div className="mattList__flex">
           <FilterSortPanel
@@ -100,7 +98,7 @@ const AccessoriessList = ({
         </div>
         {console.log(state)}
         <NewBread Brands Bottom>
-          <BreadCrumbs next="Accessories" here={state.accInfo.title} />
+          <BreadCrumbs next="Accessories" here={state.selectedAccInfo.title} />
         </NewBread>
       </MattListWrapper>
     </Layout>

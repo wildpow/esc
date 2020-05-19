@@ -35,7 +35,7 @@ const Accessories = ({ data }) => {
               large selection of heights and firmnesses to compliment any
               sleeping style and body type.
             </P>
-            <Link to="/accessories/list?type=pillows">Shop Pillows</Link>
+            <Link to="/accessories/list?type=pillow">Shop Pillows</Link>
           </InfoWrapper>
           <div>
             {/* {data.pillow.map(p => {

@@ -1,6 +1,6 @@
 const filterSortReducer = (state, action) => {
   let newTypeCheckBoxs;
-  let newAcc;
+  let newInfo;
   let newSelectedTypes;
   switch (action.type) {
     case "low-high":
@@ -60,8 +60,8 @@ const filterSortReducer = (state, action) => {
         }),
       };
     case "type":
+      newInfo = state.selectedAccInfo;
       newTypeCheckBoxs = [...state.typeCheckBoxs];
-      newAcc = [...state.acc];
       newTypeCheckBoxs[action.index].checked = action.checked;
       newSelectedTypes = [...state.selectedTypes];
       if (newSelectedTypes.includes(action.value)) {
@@ -71,6 +71,19 @@ const filterSortReducer = (state, action) => {
       } else {
         newSelectedTypes.push(action.value);
       }
+
+      if (newSelectedTypes.length !== 1) {
+        newInfo = state.accInfo[3];
+        window.history.replaceState({}, "", `${state.locationPath}`);
+      } else {
+        newInfo = state.accInfo[action.index];
+        window.history.replaceState(
+          {},
+          "",
+          `${state.locationPath}?type=${newSelectedTypes[0].toLowerCase()}`,
+        );
+      }
+      console.log("!!!!!", action.displayName);
       return {
         ...state,
         acc:
@@ -79,7 +92,7 @@ const filterSortReducer = (state, action) => {
                 newSelectedTypes.includes(acc.productType),
               )
             : state.accBeforeFilter,
-
+        selectedAccInfo: newInfo,
         typeCheckBoxs: newTypeCheckBoxs,
         selectedTypes: newSelectedTypes,
       };
