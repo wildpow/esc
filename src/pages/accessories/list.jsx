@@ -91,12 +91,11 @@ const AccessoriessList = ({
             typeCheckBoxs={state.typeCheckBoxs}
           />
           <div className="mattList__grid">
-            {state.acc.map(stuff => (
-              <AccThumb stuff={stuff} key={stuff.shopifyId} />
+            {state.acc.map(acc => (
+              <AccThumb acc={acc} key={acc.shopifyId} />
             ))}
           </div>
         </div>
-        {console.log(state)}
         <NewBread Brands Bottom>
           <BreadCrumbs next="Accessories" here={state.selectedAccInfo.title} />
         </NewBread>
@@ -113,6 +112,7 @@ export const accessoryList = graphql`
     ) {
       nodes {
         title
+        handle
         shopifyId
         productType
         tags
@@ -136,6 +136,13 @@ export const accessoryList = graphql`
         title
         images {
           originalSrc
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 250) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
+          }
         }
         priceRange {
           minVariantPrice {
@@ -154,6 +161,7 @@ export const accessoryList = graphql`
       sort: { fields: priceRange___minVariantPrice___amount, order: DESC }
     ) {
       nodes {
+        handle
         title
         shopifyId
         productType
@@ -178,6 +186,13 @@ export const accessoryList = graphql`
         title
         images {
           originalSrc
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 250) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
+          }
         }
         priceRange {
           minVariantPrice {
@@ -196,6 +211,7 @@ export const accessoryList = graphql`
       sort: { fields: priceRange___minVariantPrice___amount, order: DESC }
     ) {
       nodes {
+        handle
         title
         shopifyId
         productType
@@ -220,6 +236,13 @@ export const accessoryList = graphql`
         title
         images {
           originalSrc
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 250) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
+          }
         }
         priceRange {
           minVariantPrice {

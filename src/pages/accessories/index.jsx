@@ -22,7 +22,6 @@ import Layout from "../../components/layout";
 const Accessories = ({ data }) => {
   return (
     <Layout>
-      {console.log(data)}
       <Main>
         <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
         <AccWrapper>

@@ -83,7 +83,6 @@ const filterSortReducer = (state, action) => {
           `${state.locationPath}?type=${newSelectedTypes[0].toLowerCase()}`,
         );
       }
-      console.log("!!!!!", action.displayName);
       return {
         ...state,
         acc:
