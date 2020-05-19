@@ -1,8 +1,7 @@
 const filterSortReducer = (state, action) => {
-  let newType;
-  let newTag;
-  let newVendor;
+  let newTypeCheckBoxs;
   let newAcc;
+  let newSelectedTypes;
   switch (action.type) {
     case "low-high":
       return {
@@ -61,46 +60,28 @@ const filterSortReducer = (state, action) => {
         }),
       };
     case "type":
-      newType = [...state.types];
+      newTypeCheckBoxs = [...state.typeCheckBoxs];
       newAcc = [...state.acc];
-      newType[action.index].checked = action.checked;
-      // console.log(action, "sefewf", newAcc);
-      return {
-        ...state,
-        acc: newAcc.filter(a => a.productType === action.value),
-        type: newType,
-      };
-    case "tag":
-      newTag = [...state.tags];
-      if (newTag.includes(action.tag)) {
-        newTag = newTag.filter(item => item !== action.tag);
+      newTypeCheckBoxs[action.index].checked = action.checked;
+      newSelectedTypes = [...state.selectedTypes];
+      if (newSelectedTypes.includes(action.value)) {
+        newSelectedTypes = newSelectedTypes.filter(
+          item => item !== action.value,
+        );
       } else {
-        newTag.push(action.tag);
+        newSelectedTypes.push(action.value);
       }
       return {
         ...state,
         acc:
-          newTag.length !== 0
-            ? state.accBeforeFilter.filter(acc => newTag.includes(acc.tags))
-            : state.accBeforeFilter,
-        tags: newTag,
-      };
-    case "vendor":
-      newVendor = [...state.vendor];
-      if (newType.includes(action.vendor)) {
-        newVendor = newVendor.filter(item => item !== action.vendor);
-      } else {
-        newVendor.push(action.vendor);
-      }
-      return {
-        ...state,
-        acc:
-          newVendor.length !== 0
+          newSelectedTypes.length !== 0
             ? state.accBeforeFilter.filter(acc =>
-                newVendor.includes(acc.vendor),
+                newSelectedTypes.includes(acc.productType),
               )
             : state.accBeforeFilter,
-        type: newVendor,
+
+        typeCheckBoxs: newTypeCheckBoxs,
+        selectedTypes: newSelectedTypes,
       };
     default:
       throw new Error();

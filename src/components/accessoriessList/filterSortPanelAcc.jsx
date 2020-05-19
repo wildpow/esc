@@ -87,7 +87,7 @@ const FilterSort = styled.div`
   }
 `;
 
-const FilterSortPanel = ({ dispatch, types }) => {
+const FilterSortPanel = ({ dispatch, typeCheckBoxs }) => {
   const toggleCheck = (e, index, value) => {
     // const newChecked = checked;
     // newChecked[index].checked = e.target.checked;
@@ -118,7 +118,7 @@ const FilterSortPanel = ({ dispatch, types }) => {
       <Accordion title="FILTER BY">
         <div className="filterSort__confort">
           <h3>Type</h3>
-          {types.map((type, index) => {
+          {typeCheckBoxs.map((type, index) => {
             return (
               <label htmlFor={type.value} key={type.value}>
                 <Checkbox
@@ -126,7 +126,7 @@ const FilterSortPanel = ({ dispatch, types }) => {
                   checked={type.checked}
                   onChange={e => toggleCheck(e, index, type.value)}
                 />
-                <span style={{ marginLeft: 8 }}>{type.value}</span>
+                <span style={{ marginLeft: 8 }}>{type.displayName}</span>
               </label>
             );
           })}
@@ -138,6 +138,6 @@ const FilterSortPanel = ({ dispatch, types }) => {
 
 FilterSortPanel.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  checkBoxs: PropTypes.instanceOf(Object).isRequired,
+  typeCheckBoxs: PropTypes.instanceOf(Object).isRequired,
 };
 export default FilterSortPanel;

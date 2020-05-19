@@ -18,7 +18,7 @@ const AccessoriessList = ({
   const initalState = {
     acc: [],
     accInfo: {},
-    types: [],
+    typeCheckBoxs: [],
     selectedTypes: [],
     accBeforeFilter: [...sheets.nodes, ...protector.nodes, ...pillows.nodes],
   };
@@ -27,46 +27,46 @@ const AccessoriessList = ({
   const type = params.get("type");
   if (type === null) {
     initalState.accInfo = accData[3];
-    initalState.types = [
-      { value: "Sheets", checked: false },
-      { value: "Pillow", checked: false },
-      { value: "Protector", checked: false },
+    initalState.typeCheckBoxs = [
+      { value: "Sheets", checked: false, displayName: "Sheets" },
+      { value: "Pillow", checked: false, displayName: "Pillows" },
+      { value: "Protector", checked: false, displayName: "Protectors" },
     ];
     window.history.replaceState({}, "", `${location.pathname}`);
     initalState.acc = initalState.accBeforeFilter;
   } else if (type.toLowerCase() === "sheets") {
     initalState.accInfo = accData[0];
-    initalState.types = [
-      { value: "sheets", checked: true },
-      { value: "pillows", checked: false },
-      { value: "protector", checked: false },
+    initalState.typeCheckBoxs = [
+      { value: "Sheets", checked: true, displayName: "Sheets" },
+      { value: "Pillow", checked: false, displayName: "Pillows" },
+      { value: "Protector", checked: false, displayName: "Protectors" },
     ];
     initalState.acc = [...sheets.nodes];
     initalState.selectedTypes.push("Sheets");
   } else if (type.toLowerCase() === "pillows") {
     initalState.accInfo = accData[1];
-    initalState.types = [
-      { value: "sheets", checked: false },
-      { value: "pillows", checked: true },
-      { value: "protector", checked: false },
+    initalState.typeCheckBoxs = [
+      { value: "Sheets", checked: false, displayName: "Sheets" },
+      { value: "Pillow", checked: true, displayName: "Pillows" },
+      { value: "Protector", checked: false, displayName: "Protectors" },
     ];
     initalState.acc = [...pillows.nodes];
     initalState.selectedTypes.push("Pillow");
-  } else if (type.toLowerCase() === "protector") {
+  } else if (type.toLowerCase() === "protectors") {
     initalState.accInfo = accData[2];
-    initalState.types = [
-      { value: "sheets", checked: false },
-      { value: "pillows", checked: false },
-      { value: "protector", checked: true },
+    initalState.typeCheckBoxs = [
+      { value: "Sheets", checked: false, displayName: "Sheets" },
+      { value: "Pillow", checked: false, displayName: "Pillows" },
+      { value: "Protector", checked: true, displayName: "Protectors" },
     ];
     initalState.acc = [...protector.nodes];
     initalState.selectedTypes.push("Protector");
   } else {
     initalState.accInfo = accData[3];
-    initalState.types = [
-      { value: "sheets", checked: false },
-      { value: "pillows", checked: false },
-      { value: "protector", checked: false },
+    initalState.typeCheckBoxs = [
+      { value: "Sheets", checked: false, displayName: "Sheets" },
+      { value: "Pillow", checked: false, displayName: "Pillows" },
+      { value: "Protector", checked: false, displayName: "Protectors" },
     ];
     window.history.replaceState({}, "", `${location.pathname}`);
     initalState.acc = initalState.accBeforeFilter;
@@ -88,10 +88,13 @@ const AccessoriessList = ({
           headerBG={state.accInfo.bg}
         />
         <div className="mattList__flex">
-          <FilterSortPanel dispatch={dispatch} types={state.types} />
+          <FilterSortPanel
+            dispatch={dispatch}
+            typeCheckBoxs={state.typeCheckBoxs}
+          />
           <div className="mattList__grid">
             {state.acc.map(stuff => (
-              <AccThumb stuff={stuff} />
+              <AccThumb stuff={stuff} key={stuff.shopifyId} />
             ))}
           </div>
         </div>
