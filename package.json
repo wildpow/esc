@@ -25,7 +25,7 @@
     "react": "^16.10.1",
     "react-anchor-link-smooth-scroll": "^1.0.11",
     "react-dom": "^16.10.1",
-    "react-helmet": "^5.2.0",
+    "react-helmet": "^6.0.0",
     "react-markdown": "^4.2.2",
     "react-move": "^6.0.0",
     "react-responsive-carousel": "^3.1.51",
@@ -42,7 +42,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
     "develop": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "dev-m": "gatsby develop -H 0.0.0.0 -p 8000",
     "format": "prettier --write 'src/**/*.js'",
@@ -61,7 +61,7 @@
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.8",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.7",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "webpack-monitor": "^1.0.14"
   },
