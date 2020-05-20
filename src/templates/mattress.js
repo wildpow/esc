@@ -177,7 +177,7 @@ export const query = graphql`
     $shopifyMatt: String!
     $shopifyBase: String!
   ) {
-    shopifyMattress: shopifyProduct(id: { eq: $shopifyMatt }) {
+    shopifyMattress: shopifyProduct(shopifyId: { eq: $shopifyMatt }) {
       title
       vendor
       shopifyId
@@ -187,7 +187,7 @@ export const query = graphql`
         shopifyId
       }
     }
-    shopifyBase: shopifyProduct(id: { eq: $shopifyBase }) {
+    shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
       title
       vendor
       shopifyId

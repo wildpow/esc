@@ -1,5 +1,6 @@
 import React from "react";
 import Img from "gatsby-image";
+import PropTypes from "prop-types";
 import {
   StyledLink,
   Topper,
@@ -13,7 +14,6 @@ const AccThumb = ({ acc }) => {
     <StyledLink to={`/accessories/${acc.handle}`}>
       <Topper>
         <MattImgContainer>
-          {console.log(acc)}
           <Img
             fluid={acc.images[0].localFile.childImageSharp.fluid}
             alt={acc.title}
@@ -21,12 +21,15 @@ const AccThumb = ({ acc }) => {
         </MattImgContainer>
       </Topper>
       <PriceRange>
-        {`$${acc.priceRange.maxVariantPrice.amount}
-          - $${acc.priceRange.minVariantPrice.amount}`}
+        {`$${acc.priceRange.minVariantPrice.amount}
+          - $${acc.priceRange.maxVariantPrice.amount}`}
       </PriceRange>
       <Name>{acc.title}</Name>
     </StyledLink>
   );
 };
 
+AccThumb.propTypes = {
+  acc: PropTypes.instanceOf(Object).isRequired,
+};
 export default AccThumb;

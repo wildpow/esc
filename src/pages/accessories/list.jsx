@@ -100,6 +100,7 @@ const AccessoriessList = ({
           <BreadCrumbs next="Accessories" here={state.selectedAccInfo.title} />
         </NewBread>
       </MattListWrapper>
+      {console.log(state.acc)}
     </Layout>
   );
 };
@@ -126,13 +127,6 @@ export const accessoryList = graphql`
             amount
           }
         }
-        variants {
-          shopifyId
-          price
-          title
-          compareAtPrice
-        }
-        description
         title
         images {
           originalSrc
@@ -176,13 +170,6 @@ export const accessoryList = graphql`
             amount
           }
         }
-        variants {
-          shopifyId
-          price
-          title
-          compareAtPrice
-        }
-        description
         title
         images {
           originalSrc
@@ -217,7 +204,6 @@ export const accessoryList = graphql`
         productType
         tags
         vendor
-        availableForSale
         priceRange {
           minVariantPrice {
             amount
@@ -226,13 +212,6 @@ export const accessoryList = graphql`
             amount
           }
         }
-        variants {
-          shopifyId
-          price
-          title
-          compareAtPrice
-        }
-        description
         title
         images {
           originalSrc

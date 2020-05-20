@@ -38,6 +38,26 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {
+      protector: allShopifyProduct(
+        filter: { productType: { eq: "Protector" } }
+      ) {
+        nodes {
+          handle
+          shopifyId
+        }
+      }
+      sheets: allShopifyProduct(filter: { productType: { eq: "Sheets" } }) {
+        nodes {
+          handle
+          shopifyId
+        }
+      }
+      pillow: allShopifyProduct(filter: { productType: { eq: "Pillow" } }) {
+        nodes {
+          handle
+          shopifyId
+        }
+      }
       allDatoCmsAdjustableBase {
         edges {
           node {
@@ -66,6 +86,33 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `);
+  data.protector.nodes.forEach(pro => {
+    actions.createPage({
+      path: `/accessories/${pro.handle}`,
+      component: path.resolve(`src/templates/accessory.jsx`),
+      context: {
+        id: pro.shopifyId,
+      },
+    });
+  });
+  data.sheets.nodes.forEach(sheet => {
+    actions.createPage({
+      path: `/accessories/${sheet.handle}`,
+      component: path.resolve(`src/templates/accessory.jsx`),
+      context: {
+        id: sheet.shopifyId,
+      },
+    });
+  });
+  data.pillow.nodes.forEach(pill => {
+    actions.createPage({
+      path: `/accessories/${pill.handle}`,
+      component: path.resolve(`src/templates/accessory.jsx`),
+      context: {
+        id: pill.shopifyId,
+      },
+    });
+  });
   data.allDatoCmsAdjustableBase.edges.forEach(base => {
     actions.createPage({
       path: `/adjustable/${base.node.slug}`,
@@ -82,8 +129,8 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve(`./src/templates/mattress.js`),
       context: {
         slug: mattress.node.slug,
-        shopifyMatt: `Shopify__Product__${mattress.node.shopifyMatt}`,
-        shopifyBase: `Shopify__Product__${mattress.node.shopifyBase}`,
+        shopifyMatt: mattress.node.shopifyMatt,
+        shopifyBase: mattress.node.shopifyBase,
       },
     });
   });
