@@ -15,6 +15,7 @@ const Sealy = ({ data }) => {
     if (matt.subline.name === "Golden Elegance") golden.push(matt);
     if (matt.subline.name.includes("Essentials")) essentials.push(matt);
     if (matt.subline.name.includes("Performance")) performance.push(matt);
+    if (matt.subline.name.includes("Posturepedic Plus")) performance.push(matt);
     if (matt.subline.name.includes("Premium")) premium.push(matt);
     return null;
   });
