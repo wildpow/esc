@@ -11,7 +11,7 @@ const Wrapper = styled(FlexCol)`
   @media (min-width: 1024px) {
     margin-left: 25px;
     margin-top: 10px;
-    border-left: ${props => props.theme.Border};
+    border-left: ${(props) => props.theme.Border};
   }
   @media (min-width: 992px) {
     padding-right: 30px;
@@ -33,7 +33,7 @@ const DropDownWrapper = styled.div`
   h4 {
     margin-bottom: 2px;
     margin-top: 2px;
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     font-size: 0.9rem;
     @media (min-width: 567px) {
       margin-top: 10px;
@@ -50,7 +50,7 @@ const DropDownWrapper = styled.div`
       margin-top: 2px;
     }
     @media print {
-      border-bottom: 2px solid ${props => props.theme.mainColor1};
+      border-bottom: 2px solid ${(props) => props.theme.mainColor1};
       font-size: 1.2rem;
     }
   }
@@ -58,17 +58,17 @@ const DropDownWrapper = styled.div`
 
 // Exact duplicate
 const BeforeSalePrice = styled.h6`
-  opacity: ${props =>
+  opacity: ${(props) =>
     props.discount > 1 && props.price !== 0 && props.price !== undefined
       ? 1
       : 0};
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   margin-top: 2px;
   margin-bottom: 0px;
   text-decoration: line-through;
-  text-decoration-color: ${props => props.theme.mainColor2};
-  -webkit-text-decoration-color: ${props => props.theme.mainColor2};
-  -moz-text-decoration-color: ${props => props.theme.mainColor2};
+  text-decoration-color: ${(props) => props.theme.mainColor2};
+  -webkit-text-decoration-color: ${(props) => props.theme.mainColor2};
+  -moz-text-decoration-color: ${(props) => props.theme.mainColor2};
   text-align: right;
   @media (min-width: 360px) {
     margin-top: 4px;
@@ -94,8 +94,8 @@ const BeforeSalePrice = styled.h6`
 const Select = styled.select`
   color: white;
   cursor: pointer;
-  background-color: ${props => props.theme.mainColor1};
-  font-family: ${props => props.theme.MainFont1};
+  background-color: ${(props) => props.theme.mainColor1};
+  font-family: ${(props) => props.theme.MainFont1};
   width: 100%;
   @media (min-width: 567px) {
     /* width: auto; */
@@ -137,27 +137,27 @@ const Select = styled.select`
   }
 `;
 const BoxSelect = styled(Select)`
-  opacity: ${props => (props.index !== "" && props.price !== 0 ? 1 : 0)};
+  opacity: ${(props) => (props.index !== "" && props.price !== 0 ? 1 : 0)};
   transition: opacity 250ms ease-in;
-  cursor: ${props =>
+  cursor: ${(props) =>
     props.index !== "" && props.price !== 0 ? "pointer" : "auto"};
 `;
 
 const H4 = styled.h4`
-  opacity: ${props => (props.index !== "" ? 1 : 0)};
+  opacity: ${(props) => (props.index !== "" ? 1 : 0)};
   transition: opacity 250ms ease-in;
 `;
 
 // Exact duplicate
 export const Total = styled.h4`
-  transition: ${props =>
+  transition: ${(props) =>
     props.price === 0 || Number.isNaN(props.price) === true
       ? `opacity 0ms ease-in-out`
       : `opacity 250ms ease-in-out`};
-  opacity: ${props =>
+  opacity: ${(props) =>
     props.price === 0 || Number.isNaN(props.price) === true ? 0 : 1};
   margin-top: 0px;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   margin-bottom: 2px;
   font-size: 1rem;
   text-align: right;
@@ -194,7 +194,7 @@ class DropDown extends React.Component {
     this.sizeSelect = this.sizeSelect.bind(this);
   }
 
-  sizeSelect = e => {
+  sizeSelect = (e) => {
     switch (e.target.value) {
       case "twin":
         this.setState({
@@ -289,7 +289,7 @@ class DropDown extends React.Component {
       <Wrapper>
         <DropDownWrapper>
           <h4>{`PRICE: ${selectedName}`}</h4>
-          <Select onChange={e => this.sizeSelect(e)}>
+          <Select onChange={(e) => this.sizeSelect(e)}>
             <option value="none">Select Size</option>
             <option value="twin">Twin</option>
             <option value="twinxl">Twin Extra Long</option>
@@ -306,7 +306,7 @@ class DropDown extends React.Component {
             index={selectedIndex}
             price={prices[selectedIndex]}
             disabled={boxDropDisabled}
-            onChange={e => this.sizeSelect(e)}
+            onChange={(e) => this.sizeSelect(e)}
           >
             <option value="noBox">[$0.00] No Box Spring</option>
             <option value="addBox">
