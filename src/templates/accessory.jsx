@@ -2,14 +2,70 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
+import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
+import AccDropDown from "../components/accessoriessList/AccDropDown";
+import {
+  Article,
+  Description,
+  List,
+  Construction,
+  Info,
+  Main,
+  MainInfo,
+  MainTitle,
+  Profile,
+  Warranty,
+  Wrapper,
+} from "../components/singleProduct/singleProduct.styles";
+import ImageCarousel from "../components/singleProduct/ImageCarousel";
 
 const Accessory = ({ data }) => {
   const { shopifyProduct: product } = data;
   return (
     <Layout>
-      {console.log(data)}
-      <h1>{product.title}</h1>
-      <p>{product.description}</p>
+      <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
+        <BreadWrapper>
+          <BreadCrumbs
+            acc
+            next="Accessories"
+            next2={product.productType}
+            here={product.title}
+          />
+        </BreadWrapper>
+        <Wrapper>
+          <header>
+            <MainTitle>{product.title}</MainTitle>
+          </header>
+          <Main>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <ImageCarousel
+                base
+                cover={product.images[0].localFile.childImageSharp}
+                img1={product.images[1].localFile.childImageSharp}
+                img2={product.images[2].localFile.childImageSharp}
+                mattName={product.title}
+              />
+            </div>
+            <MainInfo>
+              <AccDropDown product={product} />
+            </MainInfo>
+          </Main>
+          <header id="moreInfo">
+            <MainTitle red>OVERVIEW & SPECS</MainTitle>
+          </header>
+          <Article>
+            <Description>{product.description}</Description>
+          </Article>
+        </Wrapper>
+        <BreadWrapper>
+          <BreadCrumbs
+            acc
+            next="Accessories"
+            next2={product.productType}
+            here={product.title}
+          />
+        </BreadWrapper>
+      </div>
     </Layout>
   );
 };
@@ -42,6 +98,7 @@ export const query = graphql`
         compareAtPrice
       }
       description
+      descriptionHtml
       title
       images {
         originalSrc

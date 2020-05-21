@@ -65,7 +65,7 @@ const Mattress = ({ data }) => {
         "itemCondition": "New",
         "availability": "InStock",
         "offerCount": "${
-          Object.values(mattress.price[0]).filter(value => value !== 0).length
+          Object.values(mattress.price[0]).filter((value) => value !== 0).length
         }"
 
     }
@@ -82,13 +82,13 @@ const Mattress = ({ data }) => {
           />
         </BreadWrapper>
         <Wrapper>
-          {console.log("efwefr", mattress.saleInfo)}
           <header>
             <MainTitle>
               {`${mattress.brand.displayName} ${mattress.subline.name} ${mattress.name}`}
             </MainTitle>
           </header>
           <Main>
+            {console.log(mattress.images[0].coverImage)}
             <LeftSide>
               <ImageCarousel
                 isMobile={detectMobile.isMobile()}
@@ -108,7 +108,7 @@ const Mattress = ({ data }) => {
                 {" "}
                 <h3>Features</h3>
                 <ul>
-                  {mattress.listFeature.map(item => (
+                  {mattress.listFeature.map((item) => (
                     <li key={item.id}>{item.feature}</li>
                   ))}
                   <Info>
@@ -147,7 +147,7 @@ const Mattress = ({ data }) => {
             <Construction>
               <h3>Key Features:</h3>
               <ul>
-                {mattress.construction.map(item => (
+                {mattress.construction.map((item) => (
                   <li key={item.id}>{item.feature}</li>
                 ))}
               </ul>

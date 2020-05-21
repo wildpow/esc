@@ -25,7 +25,7 @@ import dateSEO from "../functions/dateSEO";
 const Base = ({ data }) => {
   const { datoCmsAdjustableBase: adjBase } = data;
   const removeZeroPrices = Object.values(adjBase.price[0]).filter(
-    value => value !== 0,
+    (value) => value !== 0,
   );
   return (
     <Layout>
@@ -80,7 +80,7 @@ const Base = ({ data }) => {
               <List>
                 <h3>Features</h3>
                 <ul>
-                  {adjBase.smallFeatureList.map(item => (
+                  {adjBase.smallFeatureList.map((item) => (
                     <li key={item.id}>{item.feature}</li>
                   ))}
                   <Info>
@@ -103,7 +103,7 @@ const Base = ({ data }) => {
             <Construction>
               <h3>Key Features:</h3>
               <ul>
-                {adjBase.fullFeatureList.map(item => (
+                {adjBase.fullFeatureList.map((item) => (
                   <li key={item.id}>{item.feature}</li>
                 ))}
               </ul>

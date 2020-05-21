@@ -21,7 +21,7 @@ export const Article = styled.article`
 export const Description = styled.p`
   font-weight: 400;
   color: black;
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   align-self: center;
   border-radius: 0.11rem;
   margin-left: 0px;
@@ -63,16 +63,16 @@ export const List = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   font-weight: 400;
   margin-left: 5px;
-  color: ${props => props.theme.newColor2};
+  color: ${(props) => props.theme.newColor2};
   padding: 0px;
   h3 {
     font-size: 0.9rem;
     margin-top: 0;
     margin-bottom: 0;
-    border-bottom: 4px solid ${props => props.theme.mainColor2};
+    border-bottom: 4px solid ${(props) => props.theme.mainColor2};
     padding-bottom: 2px;
     padding-left: 20px;
   }
@@ -103,7 +103,7 @@ export const List = styled.div`
       font-size: 1.8rem;
       margin-top: 0;
       margin-bottom: 0;
-      border-bottom: 4px solid ${props => props.theme.mainColor2};
+      border-bottom: 4px solid ${(props) => props.theme.mainColor2};
       padding-bottom: 2px;
       padding-left: 20px;
     }
@@ -194,12 +194,12 @@ export const Info = styled.li`
   a {
     display: none;
     font-size: 0.9rem;
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     font-weight: 700;
     letter-spacing: 0.05rem;
-    color: ${props => props.theme.mainColor2};
+    color: ${(props) => props.theme.mainColor2};
     &:hover {
-      color: ${props => props.theme.mainColor1};
+      color: ${(props) => props.theme.mainColor1};
     }
     @media (orientation: landscape) {
       display: block;
@@ -220,7 +220,7 @@ export const Info = styled.li`
 
 export const MainTitle = styled(H2)`
   font-weight: 700;
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.red ? props.theme.mainColor2 : props.theme.mainColor1};
   @media (min-width: 768px) {
     text-align: left;
@@ -236,7 +236,7 @@ export const MainTitle = styled(H2)`
 `;
 
 export const Profile = styled.p`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   margin-top: 0;
   font-size: 0.9rem;
   @media (min-width: 768px) {
@@ -251,7 +251,7 @@ export const Profile = styled.p`
 `;
 
 export const Warranty = styled.p`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   text-align: center;
   font-weight: 300;
   font-size: 0.5rem;
@@ -271,10 +271,10 @@ export const Warranty = styled.p`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: ${props => props.theme.newBoxShadow};
+  box-shadow: ${(props) => props.theme.newBoxShadow};
   animation-name: ${FadeIn};
   background-color: white;
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   justify-content: center;
   border-radius: 0.11rem;
   @media (min-width: 1300px) {

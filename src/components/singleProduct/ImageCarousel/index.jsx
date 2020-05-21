@@ -28,7 +28,7 @@ const TriImage = ({
     <ImgWrapper>
       <NodeGroup
         data={[index]}
-        keyAccessor={d => d}
+        keyAccessor={(d) => d}
         start={() => ({
           opacity: 0,
         })}
@@ -45,7 +45,7 @@ const TriImage = ({
           timing: { duration: 300 },
         })}
       >
-        {nodes => (
+        {(nodes) => (
           <LargeImgWrap>
             {nodes.map(({ key, data, state: { opacity } }) => (
               <div key={key} style={{ opacity, position: "relative" }}>
@@ -76,8 +76,8 @@ const TriImage = ({
       </NodeGroup>
       <SmallImgHolder base={base}>
         <SmImgWrap
-          onMouseOver={e => setIndex(Number(e.currentTarget.dataset.id))}
-          onFocus={e => setIndex(Number(e.currentTarget.dataset.id))}
+          onMouseOver={(e) => setIndex(Number(e.currentTarget.dataset.id))}
+          onFocus={(e) => setIndex(Number(e.currentTarget.dataset.id))}
           data-id={0}
         >
           <Img
@@ -86,8 +86,8 @@ const TriImage = ({
           />
         </SmImgWrap>
         <SmImgWrap
-          onMouseOver={e => setIndex(Number(e.currentTarget.dataset.id))}
-          onFocus={e => setIndex(Number(e.currentTarget.dataset.id))}
+          onMouseOver={(e) => setIndex(Number(e.currentTarget.dataset.id))}
+          onFocus={(e) => setIndex(Number(e.currentTarget.dataset.id))}
           data-id={1}
         >
           <Img
@@ -96,8 +96,8 @@ const TriImage = ({
           />
         </SmImgWrap>
         <SmImgWrap
-          onMouseOver={e => setIndex(Number(e.currentTarget.dataset.id))}
-          onFocus={e => setIndex(Number(e.currentTarget.dataset.id))}
+          onMouseOver={(e) => setIndex(Number(e.currentTarget.dataset.id))}
+          onFocus={(e) => setIndex(Number(e.currentTarget.dataset.id))}
           data-id={2}
         >
           <Img

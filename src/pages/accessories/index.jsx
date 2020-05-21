@@ -36,13 +36,6 @@ const Accessories = ({ data }) => {
             </P>
             <Link to="/accessories/list?type=pillow">Shop Pillows</Link>
           </InfoWrapper>
-          <div>
-            {/* {data.pillow.map(p => {
-            <div key={title}>
-              <img src={p.images} alt="" />
-            </div>;
-          })} */}
-          </div>
         </AccWrapper>
         <AccWrapper>
           <H3>Sheets</H3>
