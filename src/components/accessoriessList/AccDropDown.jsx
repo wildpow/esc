@@ -2,10 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const AccWrapper = styled.div`
+  font-family: ${(props) => props.theme.MainFont1};
+  color: #2d2926;
+  h3 {
+    font-weight: 700;
+    color: ${(props) => props.theme.mainColor2};
+    font-size: 2.1rem;
+  }
   .addToCart {
     display: flex;
     justify-content: space-evenly;
-    height: 38px;
+    height: 40px;
     margin: 15px 0;
   }
   border-top: 1px solid #cacaca;
@@ -15,31 +22,66 @@ const AccWrapper = styled.div`
     margin: 0;
   }
   .input-group-qty {
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #2d2926;
   }
   .input-group-qty input[type="number"] {
     outline: none;
     -moz-appearance: textfield;
     cursor: default;
-
-    height: 38px;
+    font-family: ${(props) => props.theme.MainFont1};
+    color: #2d2926;
+    height: 40px;
 
     text-align: center;
     width: 62px;
     display: inline-block;
-    font-size: 13px;
-    margin: 0 0 5px;
+    /* font-size: 13px; */
+    /* margin: 0 0 5px; */
     resize: vertical;
+    border: none;
   }
   .input-group-qty button {
     font-weight: bold;
-    height: 38px;
+    height: 40px;
     padding: 0;
-    width: 38px;
-    background-color: #eeeeee;
-    min-width: 38px;
+    width: 40px;
+    border: none;
+    /* background-color: #eeeeee; */
+    min-width: 40px;
     width: auto;
-    -webkit-appearance: button;
+    appearance: none;
+    -webkit-appearance: none;
     cursor: pointer;
+    font-family: ${(props) => props.theme.MainFont1};
+    color: #2d2926;
+    font-weight: bold;
+  }
+  .addCartBtn {
+    min-width: 170px;
+    background-color: ${(props) => props.theme.mainColor1};
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    color: white;
+    font-family: ${(props) => props.theme.MainFont1};
+    text-transform: uppercase;
+    cursor: pointer;
+    &:active {
+      box-shadow: 0 3px 0 #ccc;
+      top: 3px;
+      outline: none;
+    }
+    &:hover:enabled {
+      background-color: #094e9b;
+      color: white;
+      cursor: pointer !important;
+    }
+    &:active:enabled {
+      background: ${(props) => props.theme.mainColor1} !important;
+      box-shadow: inset 0px 0px 5px #c1c1c1 !important;
+      outline: none;
+    }
   }
 `;
 const AccDropDown = ({ product }) => {
@@ -81,7 +123,9 @@ const AccDropDown = ({ product }) => {
               </button>
             </div>
 
-            <button type="button">ADD TO CART</button>
+            <button className="addCartBtn" type="button">
+              ADD TO CART
+            </button>
           </div>
         </div>
       ) : (
