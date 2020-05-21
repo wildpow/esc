@@ -8,13 +8,13 @@ import {
   Article,
   Description,
   List,
-  Construction,
-  Info,
+  // Construction,
+  // Info,
   Main,
   MainInfo,
   MainTitle,
-  Profile,
-  Warranty,
+  // Profile,
+  // Warranty,
   Wrapper,
 } from "../components/singleProduct/singleProduct.styles";
 import ImageCarousel from "../components/singleProduct/ImageCarousel";
@@ -47,6 +47,15 @@ const Accessory = ({ data }) => {
               />
             </div>
             <MainInfo>
+              <List>
+                <h3>{product.metafields[0].key}</h3>
+                <div
+                  // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{
+                    __html: product.metafields[0].value,
+                  }}
+                />
+              </List>
               <AccDropDown product={product} />
             </MainInfo>
           </Main>
@@ -77,6 +86,10 @@ export const query = graphql`
   query SingleAccessory($id: String!) {
     shopifyProduct(shopifyId: { eq: $id }) {
       title
+      metafields {
+        key
+        value
+      }
       handle
       shopifyId
       productType
