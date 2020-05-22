@@ -40,19 +40,38 @@ const AccWrapper = styled.div`
     border-radius: 5px;
     font-weight: bold;
     text-align: center;
-    width: 62px;
+    /* width: 62px; */
     /* display: inline-block; */
     /* font-size: 13px; */
     /* margin: 0 0 5px; */
     /* resize: vertical; */
     border: none;
+    padding: 0;
+    line-height: 1rem;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .minus {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: transparent;
+    :hover {
+      color: #5e95d2;
+    }
+  }
+  .plus {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    :hover {
+      color: #5e95d2;
+    }
   }
   .input-group-qty button {
     font-weight: bold;
     /* height: 40px; */
-    border-radius: 5px;
+    /* border-radius: 5px; */
     padding: 0;
-    width: 40px;
+    /* width: 40px; */
     border: none;
     /* background-color: #eeeeee; */
     min-width: 40px;
@@ -66,7 +85,7 @@ const AccWrapper = styled.div`
     font-weight: bold;
   }
   .addCartBtn {
-    min-width: 170px;
+    min-width: 180px;
     background-color: ${(props) => props.theme.mainColor1};
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -113,7 +132,11 @@ const AccDropDown = ({ product }) => {
               <label htmlFor="quantity" aria-label="quantity" hidden>
                 Qty:
               </label>
-              <button type="button" aria-label="plus 1 quantity">
+              <button
+                type="button"
+                aria-label="plus 1 quantity"
+                className="minus"
+              >
                 -
               </button>
               <input
@@ -125,7 +148,11 @@ const AccDropDown = ({ product }) => {
                 min="1"
                 name="quantity"
               />
-              <button type="button" aria-label="minus 1 quantity">
+              <button
+                type="button"
+                aria-label="minus 1 quantity"
+                className="plus"
+              >
                 +
               </button>
             </div>
