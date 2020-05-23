@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Quantity from "./quantity";
 
 const AccWrapper = styled.div`
   /* * {
@@ -28,7 +29,11 @@ const AccWrapper = styled.div`
     height: 100%;
     margin-right: 10px;
     border-radius: 5px;
-    border: 1px solid #2d2926;
+    border: 2px solid #2d2926;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      border: 2px solid #a19389;
+    }
   }
   .input-group-qty input[type="number"] {
     outline: none;
@@ -65,6 +70,20 @@ const AccWrapper = styled.div`
     background: transparent;
     :hover {
       color: #5e95d2;
+    }
+  }
+  .plus:focus,
+  .plus span {
+    color: transparent;
+    text-shadow: 0 0 0 black;
+    transition: all 0.2s ease-in-out;
+  }
+  .plus:hover {
+    div {
+      transform: scale(0.8);
+    }
+    div span {
+      text-shadow: 0 0 0 #397cc7;
     }
   }
   .input-group-qty button {
@@ -119,17 +138,6 @@ const AccDropDown = ({ product }) => {
     }
     return `${min} - ${max}`;
   };
-  function onQty(type, qty) {
-    let newQty = qty;
-    if (type === "minus") {
-      if (qty === 1) return null;
-      setQuantity((newQty -= 1));
-    } else {
-      if (qty === 10) return null;
-      setQuantity((newQty += 1));
-    }
-    return null;
-  }
   return (
     <AccWrapper>
       {product.variants.length === 1 ? (
@@ -141,37 +149,7 @@ const AccDropDown = ({ product }) => {
             )}`}
           </h3>
           <div className="addToCart">
-            <div className="input-group-qty">
-              <label htmlFor="quantity" aria-label="quantity" hidden>
-                Qty:
-              </label>
-              <button
-                type="button"
-                aria-label="plus 1 quantity"
-                className="minus"
-                onClick={() => onQty("minus", quantity)}
-              >
-                -
-              </button>
-              <input
-                id="quantity"
-                type="number"
-                value={quantity}
-                readOnly
-                max="10"
-                min="1"
-                name="quantity"
-              />
-              <button
-                type="button"
-                aria-label="minus 1 quantity"
-                className="plus"
-                onClick={() => onQty("plus", quantity)}
-              >
-                +
-              </button>
-            </div>
-
+            <Quantity qty={quantity} hook={setQuantity} />
             <button className="addCartBtn" type="button">
               ADD TO CART
             </button>

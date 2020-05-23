@@ -17,8 +17,15 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   
 }
+html
 *, *:before, *:after {
   box-sizing: inherit;
+}
+*:focus {
+  outline-width: 1px;
+    outline-style: dashed;
+    outline-color: #5e95d2;
+
 }
 @media print {
   #bf-revz-widget-2576351961{
@@ -28,11 +35,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Body = styled.div`
-  background-color: ${props => props.theme.newColor1};
-  pointer-events: ${props => (props.outsideMenuEvents ? "none" : "auto")};
-  user-select: ${props => (props.outsideMenuEvents ? "none" : "auto")};
+  background-color: ${(props) => props.theme.newColor1};
+  pointer-events: ${(props) => (props.outsideMenuEvents ? "none" : "auto")};
+  user-select: ${(props) => (props.outsideMenuEvents ? "none" : "auto")};
   transition: opacity 0.4s ease;
-  opacity: ${props => (props.menuToggle ? 0.3 : 1)};
+  opacity: ${(props) => (props.menuToggle ? 0.3 : 1)};
 `;
 const Container = styled.div`
   margin-left: auto;
@@ -124,7 +131,7 @@ class Layout extends React.Component {
     }
   };
 
-  handleClickOutside = e => {
+  handleClickOutside = (e) => {
     e.stopPropagation();
     if (!this.myRef.current.contains(e.target)) {
       document.body.style.overflow = "visible";
