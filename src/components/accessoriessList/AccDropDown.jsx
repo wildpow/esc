@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const AccWrapper = styled.div`
@@ -62,6 +62,7 @@ const AccWrapper = styled.div`
   .plus {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    background: transparent;
     :hover {
       color: #5e95d2;
     }
@@ -111,12 +112,24 @@ const AccWrapper = styled.div`
   }
 `;
 const AccDropDown = ({ product }) => {
+  const [quantity, setQuantity] = useState(1);
   const minMaxMaker = (min, max) => {
     if (min === max) {
       return max;
     }
     return `${min} - ${max}`;
   };
+  function onQty(type, qty) {
+    let newQty = qty;
+    if (type === "minus") {
+      if (qty === 1) return null;
+      setQuantity((newQty -= 1));
+    } else {
+      if (qty === 10) return null;
+      setQuantity((newQty += 1));
+    }
+    return null;
+  }
   return (
     <AccWrapper>
       {product.variants.length === 1 ? (
@@ -136,13 +149,14 @@ const AccDropDown = ({ product }) => {
                 type="button"
                 aria-label="plus 1 quantity"
                 className="minus"
+                onClick={() => onQty("minus", quantity)}
               >
                 -
               </button>
               <input
                 id="quantity"
                 type="number"
-                value="1"
+                value={quantity}
                 readOnly
                 max="10"
                 min="1"
@@ -152,6 +166,7 @@ const AccDropDown = ({ product }) => {
                 type="button"
                 aria-label="minus 1 quantity"
                 className="plus"
+                onClick={() => onQty("plus", quantity)}
               >
                 +
               </button>
