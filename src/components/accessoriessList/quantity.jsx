@@ -52,6 +52,8 @@ const QtyWrapper = styled.div`
     margin-left: 5px;
     margin-right: 5px;
     font-size: 1.3rem;
+    height: calc(100% - 4px);
+    height: 100%;
   }
   .plus,
   .minus {
@@ -64,6 +66,7 @@ const QtyWrapper = styled.div`
     cursor: pointer;
     background: transparent;
     line-height: 1;
+
     div {
       transition: all 0.1s ease-in-out;
     }
@@ -75,7 +78,7 @@ const QtyWrapper = styled.div`
     }
     :hover {
       div {
-        transform: scale(0.8);
+        transform: scale(0.8) translateX(1.5px);
       }
       div span {
         text-shadow: 0 0 0 #397cc7;
