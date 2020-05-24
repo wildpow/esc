@@ -26,18 +26,18 @@ const StoreProvider = ({ children }) => {
         ? localStorage.getItem("shopify_checkout_id")
         : null;
 
-      const setCheckoutInState = checkout => {
+      const setCheckoutInState = (checkout) => {
         if (isBrowser) {
           localStorage.setItem("shopify_checkout_id", checkout.id);
         }
 
-        updateStore(prevState => {
+        updateStore((prevState) => {
           return { ...prevState, checkout };
         });
       };
 
       const createNewCheckout = () => store.client.checkout.create();
-      const fetchCheckout = id => store.client.checkout.fetch(id);
+      const fetchCheckout = (id) => store.client.checkout.fetch(id);
 
       if (existingCheckoutID) {
         try {
@@ -68,8 +68,8 @@ const StoreProvider = ({ children }) => {
             console.error("Both a size and quantity are required.");
             return;
           }
-
-          updateStore(prevState => {
+          updateStore((prevState) => {
+            console.log("POOOOOOOOOP", prevState);
             return { ...prevState, adding: true };
           });
 
@@ -82,8 +82,8 @@ const StoreProvider = ({ children }) => {
 
           return client.checkout
             .addLineItems(checkoutId, lineItemsToUpdate)
-            .then(checkout => {
-              updateStore(prevState => {
+            .then((checkout) => {
+              updateStore((prevState) => {
                 return { ...prevState, checkout, adding: false };
               });
             });
@@ -91,8 +91,8 @@ const StoreProvider = ({ children }) => {
         removeLineItem: (client, checkoutID, lineItemID) => {
           return client.checkout
             .removeLineItems(checkoutID, [lineItemID])
-            .then(res => {
-              updateStore(prevState => {
+            .then((res) => {
+              updateStore((prevState) => {
                 return { ...prevState, checkout: res };
               });
             });
@@ -104,8 +104,8 @@ const StoreProvider = ({ children }) => {
 
           return client.checkout
             .updateLineItems(checkoutID, lineItemsToUpdate)
-            .then(res => {
-              updateStore(prevState => {
+            .then((res) => {
+              updateStore((prevState) => {
                 return { ...prevState, checkout: res };
               });
             });

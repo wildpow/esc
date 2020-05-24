@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import Quantity from "./quantity";
+import StoreContext from "../../context/StoreContext";
 
 const AccWrapper = styled.div`
   font-family: ${(props) => props.theme.MainFont1};
@@ -42,8 +43,14 @@ const AccWrapper = styled.div`
     }
   }
 `;
+
 const AccDropDown = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
+  const [variant, setVariant] = useState(product.variants[0]);
+  const { addVariantToCart } = useContext(StoreContext);
+  const handleAddToCart = () => {
+    addVariantToCart(variant.shopifyId, quantity);
+  };
   const minMaxMaker = (min, max) => {
     if (min === max) {
       return max;
@@ -52,6 +59,7 @@ const AccDropDown = ({ product }) => {
   };
   return (
     <AccWrapper>
+      {console.log(quantity, variant)}
       {product.variants.length === 1 ? (
         <div>
           <h3>
@@ -62,7 +70,11 @@ const AccDropDown = ({ product }) => {
           </h3>
           <div className="addToCart">
             <Quantity qty={quantity} hook={setQuantity} />
-            <button className="addCartBtn" type="button">
+            <button
+              className="addCartBtn"
+              type="button"
+              onClick={handleAddToCart}
+            >
               ADD TO CART
             </button>
           </div>
