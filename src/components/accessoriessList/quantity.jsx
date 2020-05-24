@@ -2,7 +2,29 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 // margin-right: 10px;
+const Poop = styled.button`
+  padding: 0;
+  border: none;
+  min-width: 40px;
+  height: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  line-height: 1;
+  background: transparent;
+  div span {
+    text-shadow: 0 0 0 purple;
+    color: transparent;
+  }
+  div {
+    text-shadow: 0 0 0 purple;
+  }
+`;
+
 const QtyWrapper = styled.div`
+  /* * {
+    outline: 1px solid red;
+  } */
   border-radius: 5px;
   border: 2px solid #2d2926;
   transition: all 0.2s ease-in-out;
@@ -42,7 +64,11 @@ const QtyWrapper = styled.div`
     cursor: pointer;
     background: transparent;
     line-height: 1;
+    div {
+      transition: all 0.1s ease-in-out;
+    }
     div span {
+      color: transparent;
       text-shadow: 0 0 0 #2d2926;
       transition: all 0.2s ease-in-out;
       line-height: 1;
@@ -87,8 +113,8 @@ const Quantity = ({ qty, max, hook }) => {
       <button
         type="button"
         aria-label="subtract one from quantity"
-        className="minus"
         onClick={() => onQty("minus", qty)}
+        className="minus"
       >
         <div>
           <span role="img" aria-label="add one to quantity">
