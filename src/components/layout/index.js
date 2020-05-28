@@ -28,7 +28,7 @@ html
 
 }
 @media print {
-  #bf-revz-widget-2576351961{
+  #bf-revz-widget-1484606125{
     display: none;
   }
 }
