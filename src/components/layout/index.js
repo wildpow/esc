@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: inherit;
 }
 @media print {
-  #bf-revz-widget-2776353591{
+  #bf-revz-widget-1484606125{
     display: none;
   }
 }
