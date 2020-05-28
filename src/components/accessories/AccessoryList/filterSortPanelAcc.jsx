@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import chevron from "../../images/new/chevron-down-solid.svg";
-import Accordion from "../mattressList/accordion";
-import Checkbox from "../mattressList/checkBox";
+import chevron from "../../../images/new/chevron-down-solid.svg";
+import Accordion from "../../mattressList/accordion";
+import Checkbox from "../../mattressList/checkBox";
 
 const FilterSort = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const FilterSort = styled.div`
   .filterSort__select {
     display: block;
     font-size: 16px;
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     font-weight: 700;
     color: white;
     line-height: 1.3;
@@ -33,7 +33,7 @@ const FilterSort = styled.div`
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
-    background-image: url(${props => props.bg}),
+    background-image: url(${(props) => props.bg}),
       linear-gradient(to bottom, #0069ed 0%, #0069ed 100%);
     background-repeat: no-repeat, repeat;
     background-position: right 0.7em top 50%, 0 0;
@@ -49,11 +49,11 @@ const FilterSort = styled.div`
     display: none;
   }
   .filterSort__select:hover {
-    background-image: url(${props => props.bg}),
+    background-image: url(${(props) => props.bg}),
       linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
   }
   .filterSort__select:focus {
-    background-image: url(${props => props.bg}),
+    background-image: url(${(props) => props.bg}),
       linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
     border-color: white;
     box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
@@ -66,7 +66,7 @@ const FilterSort = styled.div`
   }
   .filterSort__confort {
     background-color: white;
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -75,7 +75,7 @@ const FilterSort = styled.div`
       font-weight: 400;
       padding-bottom: 10px;
       font-size: 1.3rem;
-      border-bottom: 4px solid ${props => props.theme.mainColor2};
+      border-bottom: 4px solid ${(props) => props.theme.mainColor2};
     }
     label {
       padding-left: 20px;
@@ -104,7 +104,7 @@ const FilterSortPanel = ({ dispatch, typeCheckBoxs }) => {
       <select
         className="filterSort__select"
         name="sorting"
-        onChange={e => dispatch({ type: e.target.value })}
+        onChange={(e) => dispatch({ type: e.target.value })}
         id="sorting"
       >
         <option value="" hidden>
@@ -124,7 +124,7 @@ const FilterSortPanel = ({ dispatch, typeCheckBoxs }) => {
                 <Checkbox
                   id={type.value}
                   checked={type.checked}
-                  onChange={e => toggleCheck(e, index, type.value)}
+                  onChange={(e) => toggleCheck(e, index, type.value)}
                 />
                 <span style={{ marginLeft: 8 }}>{type.displayName}</span>
               </label>

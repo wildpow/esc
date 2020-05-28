@@ -1,7 +1,7 @@
-import Pillows from "../../images/pillowCollage.jpg";
-import Protector from "../../images/protector.jpg";
-import Sheets from "../../images/sheetStack.jpg";
-import all from "../../images/new/test6.jpg";
+import Pillows from "../../../../images/pillowCollage.jpg";
+import Protector from "../../../../images/protector.jpg";
+import Sheets from "../../../../images/sheetStack.jpg";
+import all from "../../../../images/new/test6.jpg";
 
 const accData = [
   {

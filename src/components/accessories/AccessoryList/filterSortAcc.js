@@ -66,7 +66,7 @@ const filterSortReducer = (state, action) => {
       newSelectedTypes = [...state.selectedTypes];
       if (newSelectedTypes.includes(action.value)) {
         newSelectedTypes = newSelectedTypes.filter(
-          item => item !== action.value,
+          (item) => item !== action.value,
         );
       } else {
         newSelectedTypes.push(action.value);
@@ -87,7 +87,7 @@ const filterSortReducer = (state, action) => {
         ...state,
         acc:
           newSelectedTypes.length !== 0
-            ? state.accBeforeFilter.filter(acc =>
+            ? state.accBeforeFilter.filter((acc) =>
                 newSelectedTypes.includes(acc.productType),
               )
             : state.accBeforeFilter,
