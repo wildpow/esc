@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import AccDropDown from "../components/accessoriessList/AccDropDown";
+import AccDropDown from "../components/accessories/AccDropDown";
 import {
   Article,
   Description,

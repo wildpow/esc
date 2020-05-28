@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Quantity from "./quantity";
 import StoreContext from "../../context/StoreContext";
@@ -50,6 +51,10 @@ const AccDropDown = ({ product }) => {
   const { addVariantToCart } = useContext(StoreContext);
   const handleAddToCart = () => {
     addVariantToCart(variant.shopifyId, quantity);
+    // addVariantToCart(
+    //   "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTkwOTk3OTcxNzY5Nw==",
+    //   quantity,
+    // );
   };
   const minMaxMaker = (min, max) => {
     if (min === max) {
@@ -59,7 +64,6 @@ const AccDropDown = ({ product }) => {
   };
   return (
     <AccWrapper>
-      {console.log(quantity, variant)}
       {product.variants.length === 1 ? (
         <div>
           <h3>
@@ -86,4 +90,7 @@ const AccDropDown = ({ product }) => {
   );
 };
 
+AccDropDown.propTypes = {
+  product: PropTypes.instanceOf(Object).isRequired,
+};
 export default AccDropDown;
