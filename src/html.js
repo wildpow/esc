@@ -29,36 +29,7 @@ export default class HTML extends React.Component {
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           <div id="modal-root" />
-          {/* <form
-            name="contact"
-            netlify="true"
-            netlify-honeypot="bot-field"
-            hidden
-          >
-            <input type="text" name="name" />
-            <input type="email" name="email" />
-            <input type="tel" name="tel" />
-          </form>
-
-          <form
-            name="makeOffer"
-            netlify="true"
-            netlify-honeypot="bot-field"
-            hidden
-          >
-            <input type="text" name="name" />
-            <input type="email" name="email" />
-            <input type="tel" name="tel" />
-            <textarea type="text" name="note" />
-            <input type="text" name="mattress" />
-            <input type="text" name="size" />
-          </form> */}
           {this.props.postBodyComponents}
-          <script
-            type="text/javascript"
-            src="https://birdeye.com/embed/v1/154743410851424/1/2576351961/FsWvSa2fgLF5HBLjmAKhH9wfUcpe69Ft"
-          ></script>
-          <div id="bf-revz-widget-2576351961"></div>
         </body>
       </html>
     );
