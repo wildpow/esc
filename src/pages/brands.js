@@ -46,7 +46,7 @@ const Brands = ({ data }) => {
         <BreadCrumbs here="Brands" />
       </BreadWrapper>
       <SectionContainer>
-        {data.allDatoCmsBrand.nodes.map(brand => (
+        {data.allDatoCmsBrand.nodes.map((brand) => (
           <LifeStyleCard
             key={brand.id}
             mobileHeight="228px"
