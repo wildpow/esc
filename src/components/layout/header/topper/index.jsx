@@ -5,6 +5,9 @@ import TopPromo from "./TopPromo";
 import StoreContext from "../../../../context/StoreContext";
 import { Top, OutBoundLink, InboundLink } from "./topper.styles";
 import { TopperNumber } from "../../../../styles/_pr1nt/main";
+import cart from "../../../../images/shopping-cart-solid.svg";
+import phone from "../../../../images/phone-square-solid.svg";
+import phone2 from "../../../../images/phone-solid.svg";
 
 const useQuantity = () => {
   const {
@@ -26,12 +29,20 @@ const Topper = ({ menuToggle }) => {
         <div>
           <OutBoundLink href="tel:1-425-512-0017">
             <VisuallyHidden>store phone number 425-512-0017</VisuallyHidden>
-            <span aria-hidden>☎️</span>
+            <span aria-hidden>
+              <img src={phone} style={{ height: "25px" }} alt="phone icon" />
+            </span>
           </OutBoundLink>
           <InboundLink to="/cart">
             <VisuallyHidden>shoping cart</VisuallyHidden>
             {hasItems && <span>{quantity}</span>}
-            <span aria-hidden>🛒</span>
+            <span aria-hidden>
+              <img
+                src={cart}
+                style={{ height: "25px", marginLeft: "15px" }}
+                alt="Shopping cart icon"
+              />
+            </span>
           </InboundLink>
         </div>
       </Top>
