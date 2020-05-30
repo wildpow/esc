@@ -69,8 +69,8 @@ exports.createPages = async ({ actions, graphql }) => {
         edges {
           node {
             slug
-            shopifyMatt
-            shopifyBase
+            shopMattConnection
+            shopBoxConnection
             brand {
               urlName
             }
@@ -86,7 +86,7 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `);
-  data.protector.nodes.forEach(pro => {
+  data.protector.nodes.forEach((pro) => {
     actions.createPage({
       path: `/accessories/${pro.handle}`,
       component: path.resolve(`src/templates/accessory.jsx`),
@@ -95,7 +95,7 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     });
   });
-  data.sheets.nodes.forEach(sheet => {
+  data.sheets.nodes.forEach((sheet) => {
     actions.createPage({
       path: `/accessories/${sheet.handle}`,
       component: path.resolve(`src/templates/accessory.jsx`),
@@ -104,7 +104,7 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     });
   });
-  data.pillow.nodes.forEach(pill => {
+  data.pillow.nodes.forEach((pill) => {
     actions.createPage({
       path: `/accessories/${pill.handle}`,
       component: path.resolve(`src/templates/accessory.jsx`),
@@ -113,7 +113,7 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     });
   });
-  data.allDatoCmsAdjustableBase.edges.forEach(base => {
+  data.allDatoCmsAdjustableBase.edges.forEach((base) => {
     actions.createPage({
       path: `/adjustable/${base.node.slug}`,
 
@@ -123,18 +123,18 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     });
   });
-  data.allDatoCmsMattress.edges.forEach(mattress => {
+  data.allDatoCmsMattress.edges.forEach((mattress) => {
     actions.createPage({
       path: `/brands/${mattress.node.brand.urlName}/${mattress.node.slug}`,
       component: path.resolve(`./src/templates/mattress.js`),
       context: {
         slug: mattress.node.slug,
-        shopifyMatt: mattress.node.shopifyMatt,
-        shopifyBase: mattress.node.shopifyBase,
+        shopifyMatt: mattress.node.shopMattConnection,
+        shopifyBase: mattress.node.shopBoxConnection,
       },
     });
   });
-  data.allDatoCmsBlog.edges.forEach(blog => {
+  data.allDatoCmsBlog.edges.forEach((blog) => {
     actions.createPage({
       path: `/blog/${blog.node.slug}`,
       component: path.resolve(`./src/templates/post.js`),

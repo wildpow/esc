@@ -198,8 +198,8 @@ export const query = graphql`
       }
     }
     datoCmsMattress(slug: { eq: $slug }) {
-      shopifyMatt
-      shopifyBase
+      shopMattConnection
+      shopBoxConnection
       priceLow
       priceHigh
       slug
