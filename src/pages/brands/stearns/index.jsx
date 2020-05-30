@@ -11,10 +11,10 @@ const Stearns = ({ data }) => {
     <Layout>
       <HelmetDatoCms seo={datoCmsBrand.seoMetaTags} />
       <MattList
-        headerBG={datoCmsBrand.headerImage.url}
+        headerBG={datoCmsBrand.headerLink.bgImg.url}
         mattresses={allDatoCmsMattress.nodes}
         title={datoCmsBrand.displayName}
-        description={datoCmsBrand.tagLine}
+        description={datoCmsBrand.headerLink.tagLine}
         breadCrumbs
         brandName={datoCmsBrand.urlName}
         landing
@@ -32,17 +32,7 @@ export default Stearns;
 export const stearnsMattresses = graphql`
   query stearnsMattresses {
     datoCmsBrand(urlName: { eq: "stearns" }) {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-      tagLine
-      headerImage {
-        alt
-        url
-        title
-      }
-      displayName
-      urlName
+      ...brandList
     }
     allDatoCmsMattress(
       filter: { brand: { urlName: { eq: "stearns" } } }

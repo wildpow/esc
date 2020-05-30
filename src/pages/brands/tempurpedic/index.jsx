@@ -11,10 +11,10 @@ const Tempurpedic = ({ data }) => {
     <Layout>
       <HelmetDatoCms seo={datoCmsBrand.seoMetaTags} />
       <MattList
-        headerBG={datoCmsBrand.headerImage.url}
+        headerBG={datoCmsBrand.headerLink.bgImg.url}
         mattresses={allDatoCmsMattress.nodes}
         title={datoCmsBrand.displayName}
-        description={datoCmsBrand.tagLine}
+        description={datoCmsBrand.headerLink.tagLine}
         breadCrumbs
         brandName={datoCmsBrand.urlName}
         landing
@@ -31,17 +31,7 @@ export default Tempurpedic;
 export const tempurpedicMatt = graphql`
   query tempurpedic {
     datoCmsBrand(urlName: { eq: "tempurpedic" }) {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-      tagLine
-      headerImage {
-        alt
-        url
-        title
-      }
-      displayName
-      urlName
+      ...brandList
     }
     allDatoCmsMattress(
       filter: { brand: { urlName: { eq: "tempurpedic" } } }
