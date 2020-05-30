@@ -21,7 +21,7 @@ const Sealy = ({ data }) => {
   });
   return (
     <Layout>
-      <HelmetDatoCms seo={datoCmsBrand.seoMetaTags} />
+      <HelmetDatoCms seo={datoCmsBrand.seoLink.seoMetaTags} />
       <MattList
         headerBG={datoCmsBrand.headerLink.bgImg.url}
         mattresses={[...golden, ...essentials, ...performance, ...premium]}

@@ -16,13 +16,13 @@ import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import Layout from "../components/layout";
 
 export const AdjMarkdown = styled.div`
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   padding: 0px;
   margin-top: 7%;
   width: 50%;
   display: none;
   h3 {
-    border-bottom: 4px solid ${props => props.theme.mainColor2};
+    border-bottom: 4px solid ${(props) => props.theme.mainColor2};
     font-size: 1.3rem;
     margin-top: 0;
     margin-bottom: 0;
@@ -100,11 +100,11 @@ export const BannerWrapper = styled.div`
   display: flex;
 `;
 export const Banner = styled.div`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   font-weight: 400;
   text-align: center;
   z-index: 10;
-  background-color: ${props => props.theme.mainColor2};
+  background-color: ${(props) => props.theme.mainColor2};
   color: white;
   position: absolute;
   font-size: 0.8rem;
@@ -123,7 +123,7 @@ export const Banner = styled.div`
     top: 0;
     left: 0;
     z-index: -1;
-    background: ${props => props.theme.mainColor2};
+    background: ${(props) => props.theme.mainColor2};
     transform-origin: bottom left;
     transform: skew(-21deg, 0deg);
   }
@@ -182,7 +182,7 @@ const Adjustables = ({ data }) => (
         <BreadCrumbs here="Adjustable" />
       </BreadWrapper>
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
-      {data.allDatoCmsAdjustableBase.edges.map(base => (
+      {data.allDatoCmsAdjustableBase.edges.map((base) => (
         <StyledLink to={`/adjustable/${base.node.slug}`} key={base.node.id}>
           <H3>{base.node.fullName}</H3>
           <InfoWrapper>
@@ -202,7 +202,7 @@ const Adjustables = ({ data }) => (
             <AdjMarkdown>
               <h3>Features</h3>
               <ul>
-                {base.node.smallFeatureList.map(item => (
+                {base.node.smallFeatureList.map((item) => (
                   <li key={item.id}>{item.feature}</li>
                 ))}
               </ul>

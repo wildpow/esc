@@ -57,7 +57,7 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/brands/sealy">Sealy</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsMattress.nodes.map(mattress => {
+            {allDatoCmsMattress.nodes.map((mattress) => {
               if (mattress.brand.urlName === "sealy") {
                 return (
                   <li key={mattress.id}>
@@ -76,7 +76,7 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/brands/tempurpedic">Tempurpedic</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsMattress.nodes.map(mattress => {
+            {allDatoCmsMattress.nodes.map((mattress) => {
               if (mattress.brand.urlName === "tempurpedic") {
                 return (
                   <li key={mattress.id}>
@@ -95,7 +95,7 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/brands/stearns">Stearns & Foster</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsMattress.nodes.map(mattress => {
+            {allDatoCmsMattress.nodes.map((mattress) => {
               if (mattress.brand.urlName === "stearns") {
                 return (
                   <li key={mattress.id}>
@@ -116,7 +116,7 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/adjustable">Adjustable Bases</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsAdjustableBase.nodes.map(base => (
+            {allDatoCmsAdjustableBase.nodes.map((base) => (
               <li key={base.id}>
                 <SiteLinks to={`/adjustable/${base.slug}`}>
                   {base.fullName}
@@ -130,7 +130,7 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/blog">Blog</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsBlog.nodes.map(base => (
+            {allDatoCmsBlog.nodes.map((base) => (
               <li key={base.id}>
                 <SiteLinks to={`/blog/${base.slug}`}>{base.title}</SiteLinks>
               </li>

@@ -13,17 +13,17 @@ const HeaderWrapper = styled.div`
   justify-content: flex-end;
   align-content: center;
   align-items: center;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   a {
     align-self: flex-end;
     justify-self: flex-end;
     text-decoration: none;
     text-align: center;
-    background-color: ${props => props.theme.mainColor1};
+    background-color: ${(props) => props.theme.mainColor1};
     border-radius: 4px;
     border: 1px solid #ccc;
     color: white;
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     text-transform: uppercase;
     transform-style: flat;
     transition: all ease 0.3s;
@@ -37,12 +37,12 @@ const HeaderWrapper = styled.div`
       outline: none;
     }
     &:hover:enabled {
-      background-color: ${props => props.theme.mainColor2};
+      background-color: ${(props) => props.theme.mainColor2};
       color: white;
       cursor: pointer !important;
     }
     &:active:enabled {
-      background: ${props => props.theme.mainColor1} !important;
+      background: ${(props) => props.theme.mainColor1} !important;
       box-shadow: inset 0px 0px 5px #c1c1c1 !important;
       outline: none;
     }
@@ -78,7 +78,7 @@ const HeaderWrapper = styled.div`
     margin-bottom: 0px;
     margin-top: 0px;
     padding-top: 10px;
-    border-bottom: 4px solid ${props => props.theme.mainColor2};
+    border-bottom: 4px solid ${(props) => props.theme.mainColor2};
     justify-self: flex-start;
     align-self: flex-start;
     padding-left: 10px;
@@ -91,12 +91,12 @@ const HeaderWrapper = styled.div`
     margin-bottom: 10px;
     margin-top: 10px;
     line-height: 1.25rem;
-    font-family: ${props => props.theme.MainFont3};
+    font-family: ${(props) => props.theme.MainFont3};
     padding-right: 10px;
     padding-left: 10px;
   }
   @media screen and (min-width: 730px) {
-    background: url(${props => props.headerBG}) no-repeat;
+    background: url(${(props) => props.headerBG}) no-repeat;
     height: 200px;
     background-color: white;
     flex-direction: row;

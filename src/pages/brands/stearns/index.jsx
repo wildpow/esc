@@ -9,7 +9,7 @@ const Stearns = ({ data }) => {
   const { datoCmsBrand, allDatoCmsMattress } = data;
   return (
     <Layout>
-      <HelmetDatoCms seo={datoCmsBrand.seoMetaTags} />
+      <HelmetDatoCms seo={datoCmsBrand.seoLink.seoMetaTags} />
       <MattList
         headerBG={datoCmsBrand.headerLink.bgImg.url}
         mattresses={allDatoCmsMattress.nodes}
