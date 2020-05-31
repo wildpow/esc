@@ -1,6 +1,6 @@
 const { useEffect } = require("react");
 
-const getMobileDetect = userAgent => {
+const getMobileDetect = (userAgent) => {
   let isAndroid = () => null;
   let isIos = () => null;
   let isOpera = () => null;

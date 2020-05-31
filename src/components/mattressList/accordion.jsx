@@ -10,7 +10,7 @@ const AccordionWrapper = styled.div`
     transition: background 250ms ease-in-out, transform 150ms ease;
     display: block;
     font-size: 16px;
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     font-weight: 700;
     color: white;
     line-height: 1.3;
@@ -26,7 +26,7 @@ const AccordionWrapper = styled.div`
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
-    background-image: url(${props => props.bg}),
+    background-image: url(${(props) => props.bg}),
       linear-gradient(to bottom, #0069ed 0%, #0069ed 100%);
     background-repeat: no-repeat, repeat;
     background-position: right 0.7em top 50%, 0 0;
@@ -37,7 +37,7 @@ const AccordionWrapper = styled.div`
   }
   button:hover,
   button:focus {
-    background-image: url(${props => props.bg}),
+    background-image: url(${(props) => props.bg}),
       linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
   }
 
@@ -52,10 +52,10 @@ const AccordionWrapper = styled.div`
 
   .accordion__content {
     transition: max-height 0.6s ease;
-    max-height: ${props => props.height};
+    max-height: ${(props) => props.height};
     overflow: hidden;
     max-height: 0;
-    border-bottom: ${props =>
+    border-bottom: ${(props) =>
       props.active ? `4px solid ${props.theme.mainColor1}` : "white"};
   }
 `;

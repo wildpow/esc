@@ -29,19 +29,19 @@ const InsideWrapper = styled.div`
   }
 `;
 const ReadMore = styled(OutboundLink)`
-  color: ${props => props.theme.mainColor1};
+  color: ${(props) => props.theme.mainColor1};
   transition: all 250ms ease-in-out;
   text-decoration: none;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   font-weight: 500;
   font-size: 0.9em;
   :hover {
-    color: ${props => props.theme.mainColor2};
+    color: ${(props) => props.theme.mainColor2};
   }
 `;
 const Wrap = styled.div`
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   margin-bottom: 120px;
   margin-top: 10px;
   @media (min-width: 768px) {
@@ -50,11 +50,11 @@ const Wrap = styled.div`
   }
 `;
 const Name = styled.span`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   font-weight: 700;
   line-height: 21px;
   font-size: 12px;
-  color: ${props => props.theme.newColor2};
+  color: ${(props) => props.theme.newColor2};
   text-align: center;
   justify-self: center;
 
@@ -68,7 +68,7 @@ const Name = styled.span`
   }
 `;
 const Review = styled.p`
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   line-height: 1.3em;
   font-size: 14px;
   font-weight: 300;
@@ -136,7 +136,7 @@ class Reviews extends React.Component {
       }
       // eslint-disable-next-line react/destructuring-assignment
       if (!this.state.pause) {
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
           currentIndex: prevState.currentIndex + 1,
         }));
       }
@@ -179,7 +179,7 @@ class Reviews extends React.Component {
           <NodeGroup
             style={{ position: "relative" }}
             data={[currentIndex]}
-            keyAccessor={d => d}
+            keyAccessor={(d) => d}
             start={() => ({
               opacity: 0,
             })}
@@ -196,7 +196,7 @@ class Reviews extends React.Component {
               timing: { duration: 200 },
             })}
           >
-            {nodes => (
+            {(nodes) => (
               <div style={{ position: "relative" }}>
                 {nodes.map(({ key, data, state: { opacity } }) => (
                   <div key={key} style={{ opacity, position: "relative" }}>

@@ -30,14 +30,14 @@ const StyledCheckbox = styled.div`
   display: inline-block;
   width: 30px;
   height: 30px;
-  background: ${props => (props.checked ? props.theme.mainColor1 : "white")};
+  background: ${(props) => (props.checked ? props.theme.mainColor1 : "white")};
   transition: all 150ms;
   border: 2px solid lightgray;
   ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 1px ${props => props.theme.newColor4};
+    box-shadow: 0 0 0 1px ${(props) => props.theme.newColor4};
   }
   ${Icon} {
-    visibility: ${props => (props.checked ? "visible" : "hidden")};
+    visibility: ${(props) => (props.checked ? "visible" : "hidden")};
   }
 `;
 

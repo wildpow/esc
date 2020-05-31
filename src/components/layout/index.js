@@ -21,11 +21,13 @@ html
 *, *:before, *:after {
   box-sizing: inherit;
 }
-*:focus {
+${
+  "" /* *:focus {
   outline-width: 1px;
     outline-style: dashed;
     outline-color: #5e95d2;
 
+} */
 }
 @media print {
   #bf-revz-widget-1484606125{

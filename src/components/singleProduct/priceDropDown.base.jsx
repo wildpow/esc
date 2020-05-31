@@ -8,7 +8,7 @@ const Wrapper = styled(FlexCol)`
   @media (min-width: 1024px) {
     margin-left: 25px;
     margin-top: 10px;
-    border-left: ${props => props.theme.Border};
+    border-left: ${(props) => props.theme.Border};
   }
   @media (min-width: 992px) {
     padding-right: 30px;
@@ -28,7 +28,7 @@ const DropDownWrapper = styled.div`
   h4 {
     margin-bottom: 2px;
     margin-top: 0px;
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     font-size: 0.9rem;
     @media (min-width: 567px) {
       margin-top: 10px;
@@ -52,8 +52,8 @@ const DropDownWrapper = styled.div`
 export const DropDown = styled.select`
   color: white;
   cursor: pointer;
-  background-color: ${props => props.theme.mainColor1};
-  font-family: ${props => props.theme.MainFont1};
+  background-color: ${(props) => props.theme.mainColor1};
+  font-family: ${(props) => props.theme.MainFont1};
   width: 150px;
   @media (min-width: 360px) {
     width: 160px;
@@ -109,11 +109,11 @@ export const DropDownSize = styled(DropDown)`
 `;
 
 const Wrap = styled.div`
-  transition: ${props =>
+  transition: ${(props) =>
     props.size === ""
       ? `opacity 0ms ease-in-out`
       : `opacity 250ms ease-in-out`};
-  opacity: ${props => (props.size === "" ? 0 : 1)};
+  opacity: ${(props) => (props.size === "" ? 0 : 1)};
   @media (min-width: 375px) {
     margin-bottom: 5px;
     margin-top: 10px;
@@ -121,17 +121,17 @@ const Wrap = styled.div`
 `;
 
 const BeforeSalePrice = styled.h6`
-  opacity: ${props =>
+  opacity: ${(props) =>
     props.discount > 1 && props.price !== 0 && props.price !== undefined
       ? 1
       : 0};
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   margin-top: 2px;
   margin-bottom: 0px;
   text-decoration: line-through;
-  text-decoration-color: ${props => props.theme.mainColor2};
-  -webkit-text-decoration-color: ${props => props.theme.mainColor2};
-  -moz-text-decoration-color: ${props => props.theme.mainColor2};
+  text-decoration-color: ${(props) => props.theme.mainColor2};
+  -webkit-text-decoration-color: ${(props) => props.theme.mainColor2};
+  -moz-text-decoration-color: ${(props) => props.theme.mainColor2};
   text-align: right;
   @media (min-width: 360px) {
     margin-top: 4px;
@@ -155,13 +155,13 @@ const BeforeSalePrice = styled.h6`
 `;
 
 export const Total = styled.h4`
-  transition: ${props =>
+  transition: ${(props) =>
     props.price === 0
       ? `opacity 0ms ease-in-out`
       : `opacity 250ms ease-in-out`};
-  opacity: ${props => (props.price === 0 ? 0 : 1)};
+  opacity: ${(props) => (props.price === 0 ? 0 : 1)};
   margin-top: 0px;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   margin-bottom: 2px;
   font-size: 1rem;
   text-align: right;
@@ -203,7 +203,7 @@ const PriceDropDown = ({ price, discount }) => {
       <DropDownWrapper>
         <h4>{`PRICE: ${state.size}`}</h4>
         <div>
-          <DropDownSize onChange={e => dispatch({ type: e.target.value })}>
+          <DropDownSize onChange={(e) => dispatch({ type: e.target.value })}>
             <option value="none">Select Size</option>
             <option value="twin">Twin</option>
             <option value="twinxl">Twin Extra Long</option>

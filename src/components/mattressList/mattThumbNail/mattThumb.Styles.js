@@ -3,16 +3,16 @@ import { Link } from "gatsby";
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: ${props => props.theme.mainColor1};
+  color: ${(props) => props.theme.mainColor1};
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   background-color: white;
-  transition: ${props => props.theme.hoverTransition};
-  box-shadow: ${props => props.theme.hoverBoxBefore};
+  transition: ${(props) => props.theme.hoverTransition};
+  box-shadow: ${(props) => props.theme.hoverBoxBefore};
   &:hover {
-    transform: ${props => props.theme.hoverTransform};
-    box-shadow: ${props => props.theme.hoverBoxAfter};
+    transform: ${(props) => props.theme.hoverTransform};
+    box-shadow: ${(props) => props.theme.hoverBoxAfter};
   }
 `;
 
@@ -27,11 +27,11 @@ export const BannerWrapper = styled.div`
   margin-bottom: 20px;
 `;
 export const Banner = styled.div`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   font-weight: 400;
   text-align: center;
   z-index: 1;
-  background-color: ${props => props.theme.mainColor2};
+  background-color: ${(props) => props.theme.mainColor2};
   color: white;
   position: absolute;
   font-size: 1rem;
@@ -50,7 +50,7 @@ export const Banner = styled.div`
     top: 0;
     left: 0;
     z-index: -1;
-    background: ${props => props.theme.mainColor2};
+    background: ${(props) => props.theme.mainColor2};
     transform-origin: bottom left;
     transform: skew(-21deg, 0deg);
   }
@@ -65,9 +65,9 @@ export const Banner = styled.div`
 `;
 
 export const PriceRange = styled.div`
-  color: ${props => props.theme.newColor2};
+  color: ${(props) => props.theme.newColor2};
   font-weight: 400;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   text-align: center;
   z-index: 5;
   font-weight: 700;
@@ -76,7 +76,7 @@ export const PriceRange = styled.div`
   }
 `;
 export const Name = styled.div`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   text-decoration: none;
   font-weight: 400;
   text-align: center;

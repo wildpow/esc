@@ -33,7 +33,7 @@ export const NewBread = styled(BreadWrapper)`
   }
 `;
 
-const MattListWrapper = styled.div`
+export const MattListWrapper = styled.div`
   margin-top: ${(props) => (!props.breadCrumbs ? "20px" : "0px")};
   display: flex;
   padding-left: 5px;
