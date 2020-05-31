@@ -21,7 +21,7 @@ const PostsContainer = styled.div`
 
 const BlogContainer = styled.div`
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   display: grid;
   grid-gap: 10px;
   margin-top: 10px;
@@ -37,48 +37,48 @@ const BlogContainer = styled.div`
   }
 `;
 const Button = styled.button`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   grid-area: footer;
-  background: ${props => props.theme.mainColor1};
+  background: ${(props) => props.theme.mainColor1};
   width: 100%;
-  box-shadow: ${props => props.theme.hoverBoxBefore};
+  box-shadow: ${(props) => props.theme.hoverBoxBefore};
   font-size: 16px;
   color: white;
   font-weight: 900;
   text-transform: uppercase;
   padding: 16px 24px;
-  border: ${props => props.theme.Border};
+  border: ${(props) => props.theme.Border};
   /* border-radius: 7px; */
   cursor: pointer;
   margin-bottom: 10px;
   letter-spacing: 0.2rem;
-  transition: ${props => props.theme.hoverTransition};
+  transition: ${(props) => props.theme.hoverTransition};
   &:disabled {
     background: grey;
     cursor: not-allowed;
   }
   &:hover {
-    box-shadow: ${props => props.theme.hoverBoxAfter};
-    transform: ${props => props.theme.hoverTransform};
+    box-shadow: ${(props) => props.theme.hoverBoxAfter};
+    transform: ${(props) => props.theme.hoverTransform};
   }
 `;
 const Header = styled.header`
   grid-area: header;
-  background: ${props => props.theme.mainColor1};
+  background: ${(props) => props.theme.mainColor1};
   color: white;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   padding: 5px;
   font-size: 1rem;
   line-height: 1.4rem;
-  /* text-shadow: ${props => props.theme.newTextShadow}; */
+  /* text-shadow: ${(props) => props.theme.newTextShadow}; */
   text-align: center;
   @media (min-width: 568px) {
     font-size: 1.2rem;
     line-height: 1.5rem;
-    text-shadow: ${props => props.theme.newTextShadow};
+    text-shadow: ${(props) => props.theme.newTextShadow};
   }
   @media (min-width: 768px) {
-    box-shadow: ${props => props.theme.newBoxShadow};
+    box-shadow: ${(props) => props.theme.newBoxShadow};
     padding: 15px;
     font-size: 1.3rem;
     line-height: 1.7rem;
@@ -102,14 +102,14 @@ class Blog extends React.Component {
     this.setState({ numberOfPosts: numberOfPosts + 4 });
   };
 
-  handleMouseEnter = index => {
-    this.setState(prevState => {
+  handleMouseEnter = (index) => {
+    this.setState((prevState) => {
       return { isHovered: { ...prevState.isHovered, [index]: true } };
     });
   };
 
-  handleMouseLeave = index => {
-    this.setState(prevState => {
+  handleMouseLeave = (index) => {
+    this.setState((prevState) => {
       return { isHovered: { ...prevState.isHovered, [index]: false } };
     });
   };

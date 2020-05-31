@@ -56,10 +56,10 @@ const Hr = styled.hr`
   display: block;
 `;
 const Landing = ({ data, buttonName, buttonURL }) => {
-  const { headingImg, heroImg, description, tabBox, seoMetaTags } = data;
+  const { headingImg, heroImg, description, tabBox, seoLink } = data;
   return (
     <div style={{ maxWidth: "1440px", backgroundColor: "white" }}>
-      <HelmetDatoCms seo={seoMetaTags} />
+      <HelmetDatoCms seo={seoLink.seoMetaTags} />
       <Header fluid={headingImg.fluid} alt={headingImg.alt} />
       <Container>
         <Hero fluid={heroImg.fluid} alt={heroImg.alt} />
@@ -69,7 +69,7 @@ const Landing = ({ data, buttonName, buttonURL }) => {
       >
         <P style={{ marginBottom: "10px" }}>{description}</P>
         <HeaderButtons buttonName={buttonName} buttonURL={buttonURL} />
-        {tabBox.map(item => (
+        {tabBox.map((item) => (
           <div key={item.id}>
             <Hr />
             <TabBox
