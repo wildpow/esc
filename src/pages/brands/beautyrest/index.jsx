@@ -9,12 +9,12 @@ const Beautyrest = ({ data }) => {
   const { datoCmsBrand, allDatoCmsMattress } = data;
   return (
     <Layout>
-      <HelmetDatoCms seo={datoCmsBrand.seoMetaTags} />
+      <HelmetDatoCms seo={datoCmsBrand.seoLink.seoMetaTags} />
       <MattList
-        headerBG={datoCmsBrand.headerImage.url}
+        headerBG={datoCmsBrand.headerLink.bgImg.url}
         mattresses={allDatoCmsMattress.nodes}
         title={datoCmsBrand.displayName}
-        description={datoCmsBrand.tagLine}
+        description={datoCmsBrand.headerLink.tagLine}
         breadCrumbs
         brandName={datoCmsBrand.urlName}
       />
@@ -29,17 +29,7 @@ Beautyrest.propTypes = {
 export const beautyrestMatt = graphql`
   query beautyrest {
     datoCmsBrand(urlName: { eq: "beautyrest" }) {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-      tagLine
-      headerImage {
-        alt
-        url
-        title
-      }
-      displayName
-      urlName
+      ...brandList
     }
     allDatoCmsMattress(
       filter: { brand: { urlName: { eq: "beautyrest" } } }

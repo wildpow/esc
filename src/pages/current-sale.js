@@ -4,18 +4,17 @@ import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/layout";
 import MattList from "../components/mattressList";
-import test4 from "../images/new/test4.jpg";
 
 const Sale = ({ data }) => {
-  const { allDatoCmsMattress, datoCmsCurrentSale } = data;
+  const { allDatoCmsMattress, datoCmsFrontPage } = data;
   return (
     <Layout>
-      <HelmetDatoCms seo={datoCmsCurrentSale.seoMetaTags} />
+      <HelmetDatoCms seo={datoCmsFrontPage.currentSaleSeoLink.seoMetaTags} />
       <MattList
-        headerBG={test4}
+        headerBG={datoCmsFrontPage.currentSaleHeaderLink.bgImg.url}
         mattresses={allDatoCmsMattress.nodes}
-        title={datoCmsCurrentSale.title}
-        description={datoCmsCurrentSale.description}
+        title={datoCmsFrontPage.currentSaleHeaderLink.title}
+        description={datoCmsFrontPage.currentSaleHeaderLink.tagLine}
       />
     </Layout>
   );
@@ -40,14 +39,32 @@ export const currentSaleQuery = graphql`
         ...mattressParts
       }
     }
-    datoCmsCurrentSale {
-      title
-      description
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
+
+    datoCmsFrontPage {
+      currentSaleSeoLink {
+        seoMetaTags {
+          ...GatsbyDatoCmsSeoMetaTags
+        }
+      }
+      currentSaleHeaderLink {
+        title
+        tagLine
+        bgImg {
+          url
+          alt
+          title
+        }
       }
     }
   }
 `;
 
 export default Sale;
+
+// datoCmsCurrentSale {
+//   title
+//   description
+//   seoMetaTags {
+//     ...GatsbyDatoCmsSeoMetaTags
+//   }
+// }

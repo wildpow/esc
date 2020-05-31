@@ -21,12 +21,12 @@ const Sealy = ({ data }) => {
   });
   return (
     <Layout>
-      <HelmetDatoCms seo={datoCmsBrand.seoMetaTags} />
+      <HelmetDatoCms seo={datoCmsBrand.seoLink.seoMetaTags} />
       <MattList
-        headerBG={datoCmsBrand.headerImage.url}
+        headerBG={datoCmsBrand.headerLink.bgImg.url}
         mattresses={[...golden, ...essentials, ...performance, ...premium]}
         title={datoCmsBrand.displayName}
-        description={datoCmsBrand.tagLine}
+        description={datoCmsBrand.headerLink.tagLine}
         breadCrumbs
         brandName={datoCmsBrand.urlName}
         landing
@@ -43,17 +43,7 @@ export default Sealy;
 export const allSealyMattresses = graphql`
   query allSealyMattresses {
     datoCmsBrand(urlName: { eq: "sealy" }) {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-      tagLine
-      headerImage {
-        alt
-        url
-        title
-      }
-      displayName
-      urlName
+      ...brandList
     }
 
     allDatoCmsMattress(

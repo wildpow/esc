@@ -33,13 +33,14 @@ export const NewBread = styled(BreadWrapper)`
   }
 `;
 
-export const MattListWrapper = styled.div`
+const MattListWrapper = styled.div`
+  margin-top: ${(props) => (!props.breadCrumbs ? "20px" : "0px")};
   display: flex;
   padding-left: 5px;
   padding-right: 5px;
   flex-direction: column;
   .mattList__flex {
-    border-top: 8px solid ${props => props.theme.mainColor1};
+    border-top: 8px solid ${(props) => props.theme.mainColor1};
     padding-top: 20px;
     padding-bottom: 20px;
     display: flex;
@@ -85,7 +86,7 @@ const MattList = ({
   };
   const [state, dispatch] = useReducer(filterSortReducer, initalState);
   return (
-    <MattListWrapper>
+    <MattListWrapper breadCrumbs={breadCrumbs}>
       {breadCrumbs && (
         <NewBread Brands>
           <BreadCrumbs next="Brands" here={brandName} />
@@ -106,7 +107,7 @@ const MattList = ({
           length={state.mattresses.length}
         />
         <div className="mattList__grid">
-          {state.mattresses.map(mattress => (
+          {state.mattresses.map((mattress) => (
             <MattressThumb
               key={mattress.id}
               mattress={mattress}

@@ -25,7 +25,7 @@ const IndexPage = ({ data }) => {
           centerSlidePercentage={100}
           showStatus={false}
         >
-          {carousel.map(car => (
+          {carousel.map((car) => (
             <Link key={car.id} to={`${car.url}`}>
               <Img fluid={car.image.fluid} alt={car.image.alt} />
             </Link>

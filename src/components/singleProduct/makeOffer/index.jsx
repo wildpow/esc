@@ -12,9 +12,9 @@ import { Back } from "./offerStyles/backCardStyles";
 import Logo from "../../../images/ezgif.com-optimize.gif";
 import Modal from "../../adFormModal";
 
-const encode = data => {
+const encode = (data) => {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
     .join("&");
 };
 
@@ -39,9 +39,9 @@ class MakeOffer extends Component {
     this.handleFlip = this.handleFlip.bind(this);
   }
 
-  handleChange = e => this.setState({ [e.target.name]: e.target.value });
+  handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     const { disabled, formSubmit } = this.state;
     fetch("/?no-cache=1", {
       method: "POST",
@@ -57,7 +57,7 @@ class MakeOffer extends Component {
         }),
       )
       .then(() => this.handleFlip())
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
 
     e.preventDefault();
   };
