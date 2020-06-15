@@ -65,7 +65,14 @@ const cfg = {
         icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
     },
-    "gatsby-plugin-react-svg",
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
     {

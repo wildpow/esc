@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { func, string, bool } from "prop-types";
 import VisuallyHidden from "@reach/visually-hidden";
 import styled from "styled-components";
-import CloseIcon from "../../../images/header/times-solid.svg";
-import CartIcon from "../../../images/header/shopping-cart-solid.svg";
+import CloseIcon from "../../../assets/times-solid.svg";
+import CartIcon from "../../../assets/shopping-cart-solid.svg";
 import { iconEntry, numberEntry } from "../../../utils/keyframes";
 import {
   dimensions,

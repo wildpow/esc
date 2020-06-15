@@ -97,13 +97,13 @@ const HeaderRoot = styled.header`
     h1 {
       margin: 0;
       padding-left: ${spacing["4"]};
-      font-size: ${fontSize["4xl"]};
+      font-size: ${fontSize["5xl"]};
       padding-bottom: ${spacing["2"]};
       align-self: flex-end;
     }
     .brand__anchor {
       img {
-        height: 45px;
+        height: 55px;
       }
     }
   }

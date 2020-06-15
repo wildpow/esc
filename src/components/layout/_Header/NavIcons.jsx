@@ -2,9 +2,9 @@ import React from "react";
 import { bool } from "prop-types";
 import styled from "styled-components";
 import VisuallyHidden from "@reach/visually-hidden";
-import Phone from "../../../images/header/phone-solid.svg";
-import Email from "../../../images/header/envelope-solid.svg";
-import Map from "../../../images/header/directions-solid.svg";
+import Phone from "../../../assets/phone-solid.svg";
+import Email from "../../../assets/envelope-solid.svg";
+import Map from "../../../assets/directions-solid.svg";
 import { iconEntry } from "../../../utils/keyframes";
 import { colors, dimensions, breakpoints } from "../../../utils/styles";
 

@@ -13,7 +13,7 @@ const Firmness = styled.div`
   width: 100%;
   height: 25px;
   left: 0;
-  display: ${props => (props.isMobile ? "none" : "flex")};
+  display: ${(props) => (props.isMobile ? "none" : "flex")};
   align-content: center;
   align-items: center;
   justify-items: center;
@@ -35,7 +35,7 @@ const Firmness = styled.div`
   }
   .firm,
   .soft {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     color: black;
     width: 22%;
     text-align: center;
@@ -58,10 +58,10 @@ const Firmness = styled.div`
       content: "";
       width: 40%;
       height: 12px;
-      background-image: ${props => props.gradient};
+      background-image: ${(props) => props.gradient};
       position: absolute;
       top: 0;
-      left: ${props => props.firmNum};
+      left: ${(props) => props.firmNum};
       @media screen and (min-width: 768px) {
         height: 15px;
       }
@@ -75,11 +75,10 @@ const Firmness = styled.div`
 const Article = styled.article`
   color: black;
   .header {
-    width: 100%;
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 10px;
-    font-family: ${props => props.theme.MainFont3};
+    font-family: ${(props) => props.theme.MainFont3};
     border-bottom: 4px solid #eb1c24;
     padding-bottom: 2px;
     font-size: 1.4rem;
@@ -87,17 +86,16 @@ const Article = styled.article`
     font-weight: 400;
   }
   .content {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     font-size: 1rem;
     line-height: 1.3rem;
     font-weight: 300;
-    width: 100%;
     padding: 10px 15px 10px 15px;
     margin-bottom: 0;
     margin-top: 0;
   }
   .button {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     color: #000000;
     cursor: pointer;
     padding: 0px 30px;
@@ -111,7 +109,7 @@ const Article = styled.article`
     position: relative;
     font-size: 14px;
     font-weight: 700;
-    border: 3px solid ${props => props.theme.mainColor1};
+    border: 3px solid ${(props) => props.theme.mainColor1};
     background-color: #ffffff;
     border-radius: 15px 15px 15px 15px;
     -webkit-transition: all 0.3s;
@@ -124,10 +122,10 @@ const contentStyle = {
   padding: "0px",
 };
 const FirmnessScale = ({ firmNum, isMobile }) => {
-  const { modal, setModal } = useModalContext();
+  // const { modal, setModal } = useModalContext();
   let gradient =
     "linear-gradient(to left, #EAEAED 0%, #3F81CB 35%, #1565C0 50%, #3F81CB 65%, #EAEAED 100%)";
-  const firmnessPosition = num => {
+  const firmnessPosition = (num) => {
     switch (num) {
       case 1:
         gradient = "linear-gradient(to left, #EAEAED 0%, #1565C0 100%)";
@@ -149,7 +147,7 @@ const FirmnessScale = ({ firmNum, isMobile }) => {
     <Popup
       trigger={
         <Firmness
-          onClick={() => setModal(!modal)}
+          // onClick={() => setModal(!modal)}
           firmNum={firmnessPosition(firmNum)}
           gradient={gradient}
           isMobile={isMobile}

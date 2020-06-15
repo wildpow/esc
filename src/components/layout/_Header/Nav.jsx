@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 import { string } from "prop-types";
 import styled, { keyframes } from "styled-components";
 import {
@@ -10,18 +11,29 @@ import {
   fonts,
 } from "../../../utils/styles";
 
-const navEntry = keyframes`
-  0% {
-    transform: translateX(100%)
-  }
-  100% {
-    transform: translateX(0%);
-  }
-`;
+// const navEntry = keyframes`
+//   0% {
+//     transform: translateY(-100%)
+//   }
+//   100% {
+//     transform: translateY(0%);
+//   }
+// `;
+
+const menuData = [
+  { name: "Brands", url: "/brands" },
+  { name: "Adjustable", url: "/adjustable" },
+  { name: "Accessories", url: "/accessories" },
+  { name: "Financing", url: "/financing" },
+  { name: "Our Blog", url: "/blog" },
+  { name: "About Us", url: "/about" },
+];
+
 const NavRoot = styled.nav`
-  animation: ${navEntry} 0.75s ease forwards;
+  /* animation: ${navEntry} 0.75s ease forwards; */
   font-family: ${fonts.sans};
   background: ${colors.blue["700"]};
+  z-index: 0;
   ul {
     margin: 0;
     opacity: ${({ cartStatus }) => (cartStatus === "open" ? 0.5 : 1)};
@@ -31,46 +43,6 @@ const NavRoot = styled.nav`
     li {
       flex: 1;
       position: relative;
-      /* background-color: #222; */
-      /* border-right: solid thin #111; */
-      :nth-child(6) {
-        /* ::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          right: 0;
-          height: 0px;
-          width: 0px;
-          background: white;
-        } */
-        /* ::before {
-          content: "";
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          height: 0px;
-          width: 0px;
-          background: white;
-        } */
-      }
-      /* ::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 10px;
-        width: 2px;
-        background: white;
-      } */
-      /* ::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        height: 10px;
-        width: 2px;
-        background: white;
-      } */
       text-align: center;
       a {
         transition: all 0.2s ease-in-out;
@@ -94,24 +66,17 @@ const Nav = ({ cartStatus }) => {
   return (
     <NavRoot cartStatus={cartStatus}>
       <ul>
-        <li>
-          <a href="#brands">Brands</a>
-        </li>
-        <li>
-          <a href="#Adjustable">Adjustable</a>
-        </li>
-        <li>
-          <a href="#accessories">Accessories</a>
-        </li>
-        <li>
-          <a href="#financing">Financing</a>
-        </li>
-        <li>
-          <a href="#blog">Our Blog</a>
-        </li>
-        <li>
-          <a href="#about">About</a>
-        </li>
+        {menuData.map((item) => (
+          <li key={item.name}>
+            <Link
+              to={item.url}
+              partiallyActive
+              activeStyle={{ background: colors.blue["900"] }}
+            >
+              {item.name}
+            </Link>
+          </li>
+        ))}
       </ul>
     </NavRoot>
   );
