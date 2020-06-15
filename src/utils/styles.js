@@ -137,6 +137,8 @@ export const dimensions = {
 };
 
 export const breakpoints = {
+  xsm: "400px",
+  phablet: "550px",
   sm: "640px",
   md: "768px",
   lg: "1024px",

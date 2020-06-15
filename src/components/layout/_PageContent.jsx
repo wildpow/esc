@@ -12,7 +12,8 @@ const deadSimpleEntry = keyframes`
 const OverLay = styled.div`
   display: none;
   @media (min-width: ${breakpoints.lg}) {
-    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.3);
     bottom: 0;
     display: block;
     left: 0;
@@ -24,7 +25,8 @@ const OverLay = styled.div`
 const MenuOverLay = styled.div`
   display: none;
   @media (min-width: ${breakpoints.md}) {
-    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.3);
     bottom: 0;
     display: block;
     left: 0;
@@ -34,10 +36,9 @@ const MenuOverLay = styled.div`
   }
 `;
 const PageContentRoot = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  min-height: calc(100vh - 60px);
+  /* display: flex;
+  flex-direction: column; */
+  /* min-height: calc(100vh - 60px); */
   opacity: 1;
   padding-left: 0;
   transition: 0.75s;
@@ -52,7 +53,7 @@ const PageContentRoot = styled.main`
     animation: ${deadSimpleEntry};
   }
 
-  @media (min-width: ${breakpoints.lg}) {
+  @media (min-width: ${breakpoints.md}) {
     transform: translateX(0);
     &.moved {
       filter: blur(1px);

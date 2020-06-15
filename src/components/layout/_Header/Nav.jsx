@@ -1,6 +1,6 @@
 import React from "react";
 import { string } from "prop-types";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
   colors,
   // dimensions,
@@ -9,16 +9,17 @@ import {
   // fontSize,
   fonts,
 } from "../../../utils/styles";
-// const navEntry = keyframes`
-//   0% {
-//     transform: translateX(100%)
-//   }
-//   100% {
-//     transform: translateX(0%);
-//   }
-// `;
-// animation: ${navEntry} 0.75s ease forwards;
+
+const navEntry = keyframes`
+  0% {
+    transform: translateX(100%)
+  }
+  100% {
+    transform: translateX(0%);
+  }
+`;
 const NavRoot = styled.nav`
+  animation: ${navEntry} 0.75s ease forwards;
   font-family: ${fonts.sans};
   background: ${colors.blue["700"]};
   ul {
