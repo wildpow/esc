@@ -12,6 +12,7 @@ import PageContent from "./_PageContent";
 import useOnClickOutside from "../Hooks/use-onClick-outside";
 import useKeyboardEvent from "../Hooks/use-keyboard-event";
 import { useWindowDimensions } from "../context/WindowDimensions";
+import Footer from "./_Footer";
 
 const MainRoot = styled.div`
   max-width: 1370px;
@@ -109,6 +110,7 @@ function Layout({ children }) {
           {children}
         </MainRoot>
       </PageContent>
+      <Footer />
     </>
   );
 }

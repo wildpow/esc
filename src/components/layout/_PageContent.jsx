@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { node, string } from "prop-types";
 import styled, { keyframes } from "styled-components";
-import { breakpoints } from "../../utils/styles";
+import { breakpoints, colors } from "../../utils/styles";
 
 const deadSimpleEntry = keyframes`
   from {
@@ -36,6 +36,10 @@ const MenuOverLay = styled.div`
   }
 `;
 const PageContentRoot = styled.main`
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  background-color: ${colors.gray["100"]};
   /* display: flex;
   flex-direction: column; */
   /* min-height: calc(100vh - 60px); */
