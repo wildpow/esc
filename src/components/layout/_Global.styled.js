@@ -5,12 +5,16 @@ const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
   html {
   box-sizing: border-box;
-  
 }
 html
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+.headroom {
+  z-index: 2 !important;
+}
+
 body {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;

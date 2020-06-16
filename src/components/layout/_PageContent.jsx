@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { node, string } from "prop-types";
 import styled, { keyframes } from "styled-components";
-import { breakpoints, colors } from "../../utils/styles";
+import { breakpoints, colors, spacing, boxShadow } from "../../utils/styles";
 
 const deadSimpleEntry = keyframes`
   from {
@@ -37,8 +37,10 @@ const MenuOverLay = styled.div`
 `;
 const PageContentRoot = styled.main`
   min-height: 100vh;
+  box-shadow: ${boxShadow["2xl"]};
   position: relative;
   z-index: 1;
+  padding-bottom: ${spacing["20"]};
   background-color: ${colors.gray["100"]};
   /* display: flex;
   flex-direction: column; */
@@ -73,8 +75,8 @@ const PageContent = ({ children, cartStatus, menuStatus }) => {
   }, [cartStatus, menuStatus]);
   return (
     <PageContentRoot className={className}>
-      {cartStatus === "open" ? <OverLay /> : null}
       {menuStatus === "open" ? <MenuOverLay /> : null}
+      {cartStatus === "open" ? <OverLay /> : null}
       {children}
     </PageContentRoot>
   );
