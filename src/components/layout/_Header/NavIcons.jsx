@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 import { bool } from "prop-types";
 import styled from "styled-components";
 import VisuallyHidden from "@reach/visually-hidden";
@@ -59,7 +60,7 @@ const StyledLinks = styled.a`
 const NavIcons = ({ pin }) => {
   return (
     <ExtraNavRoot>
-      <StyledLinks href="#call" pin={pin}>
+      <StyledLinks href="tel:1-425-512-0017" pin={pin}>
         <span aria-hidden>
           <VisuallyHidden>Call store</VisuallyHidden>
           <Phone className="fa-phone" title="call store" />
@@ -67,11 +68,18 @@ const NavIcons = ({ pin }) => {
       </StyledLinks>
       <StyledLinks href="#email" pin={pin}>
         <span aria-hidden>
-          <VisuallyHidden>email store</VisuallyHidden>
-          <Email className="fa-phone" title="email store" />
+          <VisuallyHidden>Contact Us</VisuallyHidden>
+          <Link to="/contact-us">
+            <Email className="fa-phone" title="Contact Us" />
+          </Link>
         </span>
       </StyledLinks>
-      <StyledLinks href="#direction" pin={pin}>
+      <StyledLinks
+        href="https://goo.gl/maps/nqXkkkAGRdu"
+        target="_blank"
+        rel="noopener noreferrer"
+        pin={pin}
+      >
         <span aria-hidden>
           <VisuallyHidden>directions to store</VisuallyHidden>
           <Map className="fa-phone" title="directions to store" />

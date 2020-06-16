@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "gatsby";
 import { string, bool } from "prop-types";
 import styled from "styled-components";
 import logo from "../../../images/header/logo2.png";
@@ -18,39 +19,17 @@ import NavIcons from "./NavIcons";
 const HeaderRoot = styled.header`
   transition: 0.75s;
   will-change: transform;
-  @media (min-width: ${breakpoints.sm}) {
-    transform: translateX(0);
-    &.moved {
-      filter: blur(1px);
-      transform: translateX(-400px);
-    }
-  }
   right: 0;
   top: 0;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  padding-right: ${({ cartStatus, menuStatus }) =>
-    cartStatus === "open" || menuStatus === "open" ? "15px" : "0px"};
   box-shadow: ${boxShadow.lg};
   background-color: ${colors.gray["100"]};
+
   .header__Wrapper {
     display: flex;
     flex-direction: column-reverse;
-  }
-  @media screen and (min-width: ${breakpoints.md}) {
-    box-shadow: ${boxShadow.md};
-    .header__Wrapper {
-      display: flex;
-      justify-content: space-between;
-      flex-direction: row;
-    }
-    .header__flex {
-      border-top: none;
-    }
-    h1 {
-      padding-left: 6px;
-    }
   }
   .header__flex {
     border-top: 2px solid ${colors.gray["200"]};
@@ -66,6 +45,15 @@ const HeaderRoot = styled.header`
     display: block;
     flex-shrink: 0;
     line-height: 1;
+    transition: all 0.2s ease;
+    :hover {
+      transform: scale(1.1);
+    }
+    :focus {
+      box-shadow: 0 0 0 1px ${colors.blue["300"]} inset;
+      outline: 0;
+      transition: box-shadow 0.15s ease-in-out;
+    }
     img {
       height: 35px;
       position: relative;
@@ -91,6 +79,29 @@ const HeaderRoot = styled.header`
       font-style: italic;
     }
   }
+
+  @media (min-width: ${breakpoints.sm}) {
+    transform: translateX(0);
+    &.moved {
+      filter: blur(1px);
+      transform: translateX(-400px);
+    }
+  }
+  @media screen and (min-width: ${breakpoints.md}) {
+    box-shadow: ${boxShadow.md};
+    .header__Wrapper {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+    .header__flex {
+      border-top: none;
+    }
+    h1 {
+      padding-left: 6px;
+    }
+  }
+
   @media screen and (min-width: ${breakpoints.phablet}) {
     h1 {
       font-size: ${fontSize["4xl"]};
@@ -128,9 +139,9 @@ const Header = ({ cartStatus, menuStatus, pin, moved }) => {
     >
       <div className="header__Wrapper">
         <div className="header__flex">
-          <a className="brand__anchor" href="#">
+          <Link className="brand__anchor" to="/">
             <img src={logo} alt="panda" />
-          </a>
+          </Link>
           <h1>
             <span>E.S.C.</span>
             Mattress Center
