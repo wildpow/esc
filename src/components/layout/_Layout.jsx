@@ -13,6 +13,21 @@ import useOnClickOutside from "../Hooks/use-onClick-outside";
 import useKeyboardEvent from "../Hooks/use-keyboard-event";
 import { useWindowDimensions } from "../context/WindowDimensions";
 import Footer from "./_Footer";
+import { breakpoints } from "../../utils/styles";
+
+const MenuOverLay = styled.div`
+  display: none;
+  @media (min-width: ${breakpoints.sm}) {
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.3);
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+`;
 
 const MainRoot = styled.div`
   max-width: 1370px;
@@ -23,9 +38,17 @@ const MainRoot = styled.div`
 `;
 
 function Layout({ children }) {
+  const menuId = "main-menu";
   const node = useRef();
+  const { width } = useWindowDimensions();
   const [cartStatus, setCartStatus] = useState("closed");
   const [menuStatus, setMenuStatus] = useState("closed");
+  const [pin, setpen] = useState(true);
+  const [moved, setMoved] = useState("");
+  const FocusLockSidecar = sidecar(() =>
+    import(/* webpackPrefetch: true */ "react-focus-lock/sidecar"),
+  );
+
   function menuToggle(e) {
     e.preventDefault();
     if (menuStatus !== "open") {
@@ -38,6 +61,7 @@ function Layout({ children }) {
       document.body.style.overflow = "visible";
     }
   }
+
   function cartToggle(e) {
     e.preventDefault();
     if (cartStatus !== "open") {
@@ -50,6 +74,7 @@ function Layout({ children }) {
       document.body.style.overflow = "visible";
     }
   }
+
   useOnClickOutside(node, () => {
     setCartStatus("closed");
     setMenuStatus("closed");
@@ -61,10 +86,6 @@ function Layout({ children }) {
     document.body.style.overflow = "visible";
   });
 
-  const FocusLockSidecar = sidecar(() =>
-    import(/* webpackPrefetch: true */ "react-focus-lock/sidecar"),
-  );
-  const { width } = useWindowDimensions();
   useEffect(() => {
     if (width > 1028) {
       setMenuStatus("closed");
@@ -72,13 +93,18 @@ function Layout({ children }) {
       document.body.style.overflow = "visible";
     }
   }, [width]);
-  const [pin, setpen] = useState(true);
-  const menuId = "main-menu";
+
+  useEffect(() => {
+    setMoved(cartStatus === "open" || menuStatus === "open" ? "moved" : "");
+  }, [cartStatus, menuStatus]);
   return (
     <>
       <GlobalStyle />
       <Headroom onPin={() => setpen(true)} onUnpin={() => setpen(false)}>
-        <Header cartStatus={cartStatus} menuStatus={menuStatus} pin={pin} />
+        {menuStatus === "open" || cartStatus === "open" ? (
+          <MenuOverLay />
+        ) : null}
+        <Header moved={moved} pin={pin} />
       </Headroom>
       <div ref={node}>
         <FocusLockUI
@@ -105,12 +131,13 @@ function Layout({ children }) {
           />
         </FocusLockUI>
       </div>
-      <PageContent cartStatus={cartStatus} menuStatus={menuStatus}>
+      <PageContent moved={moved}>
         <MainRoot cartStatus={cartStatus} menuStatus={menuStatus}>
           {children}
         </MainRoot>
       </PageContent>
-      <Footer />
+      <Footer moved={moved} />
+      {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
     </>
   );
 }

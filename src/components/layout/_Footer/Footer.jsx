@@ -15,7 +15,7 @@ padding-left: 20px;
   bottom: 0;
   left: 0;
   padding-top: 40px;
-  width: 100%;
+  /* width: 100%; */
   color: ${colors.white};
   background-color: ${colors.blue["900"]};
   /* border-top: 10px solid ${colors.red["700"]}; */
@@ -41,11 +41,22 @@ padding-left: 20px;
   .middleWrapper {
     display: flex;
   }
+
+
+  transition: 0.75s;
+  will-change: transform;
+  @media (min-width: ${breakpoints.sm}) {
+    transform: translateX(0);
+    &.moved {
+      filter: blur(1px);
+      transform: translateX(-400px);
+    }
+  }
 `;
 
-const Footer = () => {
+const Footer = ({ moved }) => {
   return (
-    <FooterRoot>
+    <FooterRoot className={moved}>
       <div className="topWrapper">
         <section>
           <h3>Our Mission</h3>

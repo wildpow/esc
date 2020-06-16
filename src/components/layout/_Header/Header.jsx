@@ -16,6 +16,15 @@ import Nav from "./Nav";
 import NavIcons from "./NavIcons";
 
 const HeaderRoot = styled.header`
+  transition: 0.75s;
+  will-change: transform;
+  @media (min-width: ${breakpoints.sm}) {
+    transform: translateX(0);
+    &.moved {
+      filter: blur(1px);
+      transform: translateX(-400px);
+    }
+  }
   right: 0;
   top: 0;
   z-index: 10;
@@ -109,10 +118,14 @@ const HeaderRoot = styled.header`
   }
 `;
 
-const Header = ({ cartStatus, menuStatus, pin }) => {
+const Header = ({ cartStatus, menuStatus, pin, moved }) => {
   const { width } = useWindowDimensions();
   return (
-    <HeaderRoot cartStatus={cartStatus} menuStatus={menuStatus}>
+    <HeaderRoot
+      cartStatus={cartStatus}
+      menuStatus={menuStatus}
+      className={moved}
+    >
       <div className="header__Wrapper">
         <div className="header__flex">
           <a className="brand__anchor" href="#">
@@ -134,11 +147,13 @@ const Header = ({ cartStatus, menuStatus, pin }) => {
 Header.defaultProps = {
   cartStatus: "closed",
   menuStatus: "closed",
+  moved: "",
   pin: true,
 };
 Header.propTypes = {
   cartStatus: string,
   menuStatus: string,
+  moved: string,
   pin: bool,
 };
 

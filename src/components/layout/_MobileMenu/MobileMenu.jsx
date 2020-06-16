@@ -16,7 +16,8 @@ const MobileMenuRoot = styled.div`
   bottom: 0;
   position: fixed;
   right: 0;
-  top: -1px;
+  /* top: -1px; */
+  top: 0;
   transform: translateX(100%);
   transition: transform 0.75s;
   width: 100%;
@@ -25,16 +26,15 @@ const MobileMenuRoot = styled.div`
 
   &.open {
     transform: translateX(0%);
+    box-shadow: 0 0 10px #85888c;
   }
 
   &.closed {
     transform: translateX(100%);
   }
 
-  @media (min-width: ${breakpoints.md}) {
-    &.open {
-      transform: translateX(60%);
-    }
+  @media (min-width: ${breakpoints.sm}) {
+    width: ${dimensions.cartWidthDesktop};
   }
 
   &.loading {
@@ -95,7 +95,7 @@ const MobileMenu = ({ status, pin, toggle, menuId, ...props }) => {
           aria-controls={menuId}
           pin={pin}
         />
-        <Title>Mobile Menu</Title>
+        {/* <Title>Mobile Menu</Title> */}
       </Heading>
       <ul aria-hidden={!isHidden}>
         <li tabIndex={tabIndex}>Cool</li>
