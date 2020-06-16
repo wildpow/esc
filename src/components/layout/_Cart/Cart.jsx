@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { func, string, bool } from "prop-types";
 import VisuallyHidden from "@reach/visually-hidden";
 import styled from "styled-components";
+import reduce from "lodash/reduce";
+import StoreContext from "../../../context/StoreContext";
 import CloseIcon from "../../../assets/times-solid.svg";
 import CartIcon from "../../../assets/shopping-cart-solid.svg";
 import { iconEntry, numberEntry } from "../../../utils/keyframes";
@@ -49,16 +51,19 @@ const CartRoot = styled.div`
 `;
 
 const ItemsNumber = styled.span`
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   align-items: center;
   background: ${colors.yellow["400"]};
   border-radius: 50%;
-  color: ${colors.blue["900"]};
+  color: ${colors.gray["900"]};
   display: flex;
-  font-size: 1.3rem;
+  font-size: 1.45rem;
   font-weight: bold;
   height: 36px;
   justify-content: center;
   width: 36px;
+  font-family: ${fonts.sans};
 `;
 
 const Heading = styled.header`
@@ -172,8 +177,20 @@ const ItemsInCart = styled.div`
     margin-right: ${spacing["4"]};
   }
 `;
-const Cart = ({ toggle, status, menuStatus, pin, ...rest }) => {
-  const itemsInCart = 0;
+const Cart = ({ toggle, status, menuStatus, pin }) => {
+  const {
+    store: { checkout },
+  } = useContext(StoreContext);
+
+  const handleCheckout = () => {
+    window.open(checkout.webUrl);
+  };
+  const useQuantity = () => {
+    const items = checkout ? checkout.lineItems : [];
+    const total = reduce(items, (acc, item) => acc + item.quantity, 0);
+    return [total !== 0, total];
+  };
+  const [hasItems, quantity] = useQuantity();
   const [zIndex, setZindex] = useState(10);
   useEffect(() => {
     function zIndexTimer(value, time) {
@@ -189,7 +206,7 @@ const Cart = ({ toggle, status, menuStatus, pin, ...rest }) => {
     return () => clearTimeout(zIndexTimer);
   }, [status]);
   const isHidden = status === "open";
-  const tabIndex = isHidden ? 0 : -1;
+  // const tabIndex = isHidden ? 0 : -1;
   return (
     <CartRoot
       className={status}
@@ -222,7 +239,7 @@ const Cart = ({ toggle, status, menuStatus, pin, ...rest }) => {
                   title="Open shopping cart menu"
                 />
               </span>
-              {rest.fakeHasItems && <ItemsNumber>{rest.fakeQty}</ItemsNumber>}
+              {hasItems && <ItemsNumber>{quantity}</ItemsNumber>}
             </>
           )}
         </CartToggle>
@@ -231,14 +248,16 @@ const Cart = ({ toggle, status, menuStatus, pin, ...rest }) => {
           items
           <br />
           in cart
-          <ItemsNumber>{rest.fakeQty}</ItemsNumber>
+          <ItemsNumber>{quantity}</ItemsNumber>
         </ItemsInCart>
       </Heading>
-      <ul>
-        <li tabIndex={tabIndex}>Cool</li>
-        <li tabIndex={tabIndex}>stuff</li>
-        <li tabIndex={tabIndex}>here</li>
-      </ul>
+      <button
+        onClick={handleCheckout}
+        disabled={checkout.lineItems.length === 0}
+        type="button"
+      >
+        Check out
+      </button>
     </CartRoot>
   );
 };

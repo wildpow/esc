@@ -36,8 +36,8 @@ const MainRoot = styled.div`
   padding-right: ${({ cartStatus, menuStatus }) =>
     cartStatus === "open" || menuStatus === "open" ? "15px" : "0px"};
 `;
-
 function Layout({ children }) {
+  const element = document.getElementById("bf-revz-widget-1484606125");
   const menuId = "main-menu";
   const node = useRef();
   const { width } = useWindowDimensions();
@@ -53,12 +53,14 @@ function Layout({ children }) {
     e.preventDefault();
     if (menuStatus !== "open") {
       setMenuStatus("open");
-      document.body.style.overflow = "hidden";
       // document.body.style.paddingRight = "15px";
+      document.body.style.overflow = "hidden";
+      element.style.visibility = "hidden";
     } else {
       setMenuStatus("closed");
       // document.body.style.paddingRight = "0";
       document.body.style.overflow = "visible";
+      element.style.visibility = "visible";
     }
   }
 
@@ -67,11 +69,13 @@ function Layout({ children }) {
     if (cartStatus !== "open") {
       setCartStatus("open");
       document.body.style.overflow = "hidden";
+      element.style.visibility = "hidden";
       // document.body.style.paddingRight = "15px";
     } else {
       setCartStatus("closed");
       // document.body.style.paddingRight = "0";
       document.body.style.overflow = "visible";
+      element.style.visibility = "visible";
     }
   }
 
@@ -100,7 +104,11 @@ function Layout({ children }) {
   return (
     <>
       <GlobalStyle />
-      <Headroom onPin={() => setpen(true)} onUnpin={() => setpen(false)}>
+      <Headroom
+        onPin={() => setpen(true)}
+        onUnpin={() => setpen(false)}
+        pinStart={-1}
+      >
         {menuStatus === "open" || cartStatus === "open" ? (
           <MenuOverLay />
         ) : null}

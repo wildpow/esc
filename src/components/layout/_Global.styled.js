@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
   html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 html
 *, *:before, *:after {
