@@ -18,9 +18,11 @@ const StoreProvider = ({ children }) => {
   };
 
   const [store, updateStore] = useState(initialStoreState);
+  let isRemoved = false;
 
   useEffect(() => {
     const initializeCheckout = async () => {
+      // Check for an existing cart.
       const isBrowser = typeof window !== "undefined";
       const existingCheckoutID = isBrowser
         ? localStorage.getItem("shopify_checkout_id")
@@ -42,7 +44,8 @@ const StoreProvider = ({ children }) => {
       if (existingCheckoutID) {
         try {
           const checkout = await fetchCheckout(existingCheckoutID);
-          if (!checkout.completedAt) {
+          // Make sure this cart hasn’t already been purchased.
+          if (!isRemoved && !checkout.completedAt) {
             setCheckoutInState(checkout);
             return;
           }
@@ -52,11 +55,20 @@ const StoreProvider = ({ children }) => {
       }
 
       const newCheckout = await createNewCheckout();
-      setCheckoutInState(newCheckout);
+      if (!isRemoved) {
+        setCheckoutInState(newCheckout);
+      }
     };
 
     initializeCheckout();
-  }, [store.client.checkout]);
+  }, [isRemoved, store.client.checkout]);
+
+  useEffect(
+    () => () => {
+      isRemoved = true;
+    },
+    [],
+  );
 
   return (
     <StoreContext.Provider
@@ -64,12 +76,11 @@ const StoreProvider = ({ children }) => {
         store,
         addVariantToCart: (variantId, quantity) => {
           if (variantId === "" || !quantity) {
-            // eslint-disable-next-line no-console
             console.error("Both a size and quantity are required.");
             return;
           }
+
           updateStore((prevState) => {
-            console.log("POOOOOOOOOP", prevState);
             return { ...prevState, adding: true };
           });
 

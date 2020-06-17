@@ -131,6 +131,11 @@ export const boxShadow = {
   none: "none",
 };
 
+export const radius = {
+  default: 2,
+  large: 4,
+};
+
 export const dimensions = {
   headerHeight: "60px",
   cartWidthDesktop: "415px",

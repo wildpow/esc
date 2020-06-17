@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import { func, string, bool } from "prop-types";
 import VisuallyHidden from "@reach/visually-hidden";
 import styled from "styled-components";
-import reduce from "lodash/reduce";
 import StoreContext from "../../../context/StoreContext";
 import CloseIcon from "../../../assets/times-solid.svg";
 import CartIcon from "../../../assets/shopping-cart-solid.svg";
@@ -14,6 +13,7 @@ import {
   fonts,
   spacing,
 } from "../../../utils/styles";
+import CartList from "./CartList";
 
 const CartRoot = styled.div`
   background: ${colors.white};
@@ -27,6 +27,18 @@ const CartRoot = styled.div`
   will-change: transform;
   z-index: ${({ zIndex }) => zIndex};
   display: ${({ pin }) => (pin ? "initial" : "none")};
+  ::after {
+    background-color: ${colors.lightest};
+    bottom: 0;
+    content: "";
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 250ms;
+  }
   &.open {
     transform: translateX(0%);
   }
@@ -177,20 +189,59 @@ const ItemsInCart = styled.div`
     margin-right: ${spacing["4"]};
   }
 `;
+
+const Content = styled.div`
+  bottom: 0;
+  overflow-y: auto;
+  padding: ${spacing["6"]};
+  position: absolute;
+  top: ${dimensions.headerHeight};
+  width: 100%;
+
+  @media (min-width: ${breakpoints.lg}) {
+    ::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: ${colors.white};
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: ${colors.blue["700"]};
+    }
+    ::-webkit-scrollbar-track {
+      background: ${colors.white};
+    }
+  }
+`;
 const Cart = ({ toggle, status, menuStatus, pin }) => {
+  const [loading, setLoading] = useState(false);
   const {
-    store: { checkout },
+    store: { checkout, client },
+    removeLineItem,
+    updateLineItem,
   } = useContext(StoreContext);
 
+  const handleRemove = (itemID) => async (event) => {
+    event.preventDefault();
+    await removeLineItem(client, checkout.id, itemID);
+    setLoading(false);
+  };
+
+  const handleQuantityChange = (lineItemID) => async (quantity) => {
+    if (!quantity) {
+      return;
+    }
+    await updateLineItem(client, checkout.id, lineItemID, quantity);
+    setLoading(false);
+  };
   const handleCheckout = () => {
     window.open(checkout.webUrl);
   };
-  const useQuantity = () => {
-    const items = checkout ? checkout.lineItems : [];
-    const total = reduce(items, (acc, item) => acc + item.quantity, 0);
-    return [total !== 0, total];
-  };
-  const [hasItems, quantity] = useQuantity();
+  const itemsInCart = checkout.lineItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
   const [zIndex, setZindex] = useState(10);
   useEffect(() => {
     function zIndexTimer(value, time) {
@@ -206,10 +257,9 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     return () => clearTimeout(zIndexTimer);
   }, [status]);
   const isHidden = status === "open";
-  // const tabIndex = isHidden ? 0 : -1;
   return (
     <CartRoot
-      className={status}
+      className={`${status} ${loading ? "loading" : ""}`}
       zIndex={zIndex}
       aria-hidden={!isHidden}
       pin={pin}
@@ -239,7 +289,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
                   title="Open shopping cart menu"
                 />
               </span>
-              {hasItems && <ItemsNumber>{quantity}</ItemsNumber>}
+              {itemsInCart > 0 && <ItemsNumber>{itemsInCart}</ItemsNumber>}
             </>
           )}
         </CartToggle>
@@ -248,16 +298,31 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
           items
           <br />
           in cart
-          <ItemsNumber>{quantity}</ItemsNumber>
+          <ItemsNumber>{itemsInCart}</ItemsNumber>
         </ItemsInCart>
       </Heading>
-      <button
+      {checkout.lineItems.length > 0 ? (
+        <Content>
+          <CartList
+            items={checkout.lineItems}
+            handleRemove={handleRemove}
+            updateQuantity={handleQuantityChange}
+            setCartLoading={setLoading}
+            isCartLoading={loading}
+          />
+        </Content>
+      ) : (
+        <div>
+          <h1>Empty Cart</h1>
+        </div>
+      )}
+      {/* <button
         onClick={handleCheckout}
         disabled={checkout.lineItems.length === 0}
         type="button"
       >
         Check out
-      </button>
+      </button> */}
     </CartRoot>
   );
 };

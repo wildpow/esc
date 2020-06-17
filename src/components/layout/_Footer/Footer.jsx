@@ -182,7 +182,6 @@ const Footer = ({ moved }) => {
   });
   return (
     <FooterRoot className={moved}>
-      {console.log(images)}
       <div className="topWrapper">
         <section>
           <div>

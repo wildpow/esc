@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
-html
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
