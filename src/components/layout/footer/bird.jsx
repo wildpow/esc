@@ -6,9 +6,11 @@ import BirdBig from "./birdBig";
 
 const BirdLink = styled(OutboundLink)`
   text-decoration: none;
-  @media (min-width: 1366px) {
+  padding-top: 10px;
+  /* width: 100px; */
+  /* @media (min-width: 1366px) {
     display: none;
-  }
+  } */
 `;
 
 const CertReview = styled.div`
@@ -20,9 +22,9 @@ const CertReview = styled.div`
   height: 96.656px;
   /* width: 270px;
   height: 180px; */
-  font-family: ${props => props.theme.MainFont1};
-  box-shadow: ${props => props.theme.BoxShadow};
-  background-color: ${props => props.theme.mainColor1};
+  font-family: ${(props) => props.theme.MainFont1};
+  /* box-shadow: ${(props) => props.theme.BoxShadow}; */
+  background-color: ${(props) => props.theme.mainColor1};
   display: flex;
   color: white;
   border-radius: 5px;
@@ -88,7 +90,7 @@ const AvgContainer = styled.div`
   margin-top: 2px;
   font-size: 0.8em;
   margin-left: 4px;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   @media (min-width: 812px) {
     margin-top: 0px;
     font-size: 0.9em;
@@ -110,7 +112,7 @@ const Bird = () => {
           }
         }
       `}
-      render={data => {
+      render={(data) => {
         const { avgRating, reviewCount } = data.allWidget.nodes[0];
         for (let i = 0; i < avgRating; i += 1) {
           starsArr.push(
@@ -137,9 +139,9 @@ const Bird = () => {
                 <Cert alt="BirdEye certified seal" src="/badge.png" />
               </CertReview>
             </BirdLink>
-            <BigWrapper>
+            {/* <BigWrapper>
               <BirdBig avgRating={avgRating} reviewCount={reviewCount} />
-            </BigWrapper>
+            </BigWrapper> */}
           </>
         );
       }}

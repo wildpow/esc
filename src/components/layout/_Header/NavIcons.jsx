@@ -15,9 +15,9 @@ const ExtraNavRoot = styled.div`
 
 const StyledLinks = styled.a`
   align-items: center;
-  transition: all 0.2s ease;
   display: ${({ pin }) => (pin ? "initial" : "none")};
 
+  transition: all 0.2s ease;
   :hover {
     transform: scale(1.2);
     .fa-phone {
