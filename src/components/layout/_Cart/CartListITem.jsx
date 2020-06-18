@@ -6,7 +6,13 @@ import CloseIcon from "../../../assets/times-solid.svg";
 import CartThumbnail from "./CartThumbnail";
 // import { Button } from "../shared/Buttons";
 
-import { breakpoints, colors, spacing, radius } from "../../../utils/styles";
+import {
+  breakpoints,
+  colors,
+  spacing,
+  radius,
+  fonts,
+} from "../../../utils/styles";
 
 const CartListItemRoot = styled.li`
   align-items: center;
@@ -27,13 +33,17 @@ const Info = styled.div`
 `;
 
 const Name = styled.span`
+  font-family: ${fonts.sans};
+  color: ${colors.blue["900"]};
   display: block;
   font-size: 1rem;
   line-height: 1.2;
 `;
 
 const Meta = styled.span`
-  color: ${colors.black};
+  color: ${colors.gray["700"]};
+  font-weight: 300;
+  font-family: ${fonts.sans};
   display: block;
   font-size: 0.95rem;
   font-style: normal;
@@ -46,6 +56,7 @@ const Quantity = styled.input`
   color: ${colors.gray["900"]};
   display: block;
   font-size: 1.1rem;
+  font-family: ${fonts.sans};
   padding: ${spacing["2"]} ${spacing["3"]};
   width: 100%;
 
@@ -67,18 +78,24 @@ const Quantity = styled.input`
 `;
 
 const Remove = styled.button`
-  border: 1px dotted ${colors.red["400"]};
+  align-items: center;
+  font-size: 1.1rem;
+  justify-content: center;
+  padding: 0.5em 0.75rem;
+  transition: 0.5s;
+  border: 1px dotted ${colors.blue["200"]};
   display: flex;
   height: 44px;
   justify-content: center;
   margin-right: ${spacing["1"]};
   padding: 0;
   width: 44px;
-
+  background: white;
   svg {
     height: 24px;
     margin: 0;
     width: 24px;
+    color: ${colors.blue["900"]};
   }
 `;
 

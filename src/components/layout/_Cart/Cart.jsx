@@ -168,7 +168,7 @@ const Title = styled.h2`
   margin: 0;
   margin-left: ${spacing["4"]};
   position: relative;
-
+  color: ${colors.blue["900"]};
   .open & {
     margin-left: calc(${dimensions.headerHeight} + ${spacing["4"]});
 
@@ -184,6 +184,7 @@ const ItemsInCart = styled.div`
   line-height: 1.2;
   text-align: right;
   font-family: ${fonts.sans};
+  color: ${colors.gray["700"]};
   ${ItemsNumber} {
     margin-left: ${spacing["2"]};
     margin-right: ${spacing["4"]};
@@ -214,6 +215,52 @@ const Content = styled.div`
     }
   }
 `;
+
+const Costs = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: ${spacing["2"]};
+`;
+
+const Cost = styled.div`
+  display: flex;
+  padding: 0 ${spacing["1"]} ${spacing["2"]};
+
+  :last-child {
+    padding-bottom: 0;
+  }
+
+  span {
+    color: ${colors.gray["700"]};
+    flex-basis: 60%;
+    font-size: 0.9rem;
+    text-align: right;
+  }
+
+  strong {
+    color: ${colors.lilac};
+    flex-basis: 40%;
+    text-align: right;
+  }
+`;
+
+const Total = styled(Cost)`
+  border-top: 1px solid ${colors.blue["900"]};
+  color: ${colors.black};
+  margin-top: ${spacing["2"]};
+  padding-top: ${spacing["3"]};
+
+  span {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  strong,
+  span {
+    color: inherit;
+  }
+`;
+
 const Cart = ({ toggle, status, menuStatus, pin }) => {
   const [loading, setLoading] = useState(false);
   const {
@@ -310,6 +357,22 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
             setCartLoading={setLoading}
             isCartLoading={loading}
           />
+          <Costs>
+            <Cost>
+              <span>Subtotal:</span>{" "}
+              <strong>USD ${checkout.subtotalPrice}</strong>
+            </Cost>
+            <Cost>
+              <span>Taxes:</span> <strong>{checkout.totalTax}</strong>
+            </Cost>
+            <Cost>
+              <span>Shipping (worldwide):</span> <strong>FREE</strong>
+            </Cost>
+            <Total>
+              <span>Total Price:</span>
+              <strong>USD ${checkout.totalPrice}</strong>
+            </Total>
+          </Costs>
         </Content>
       ) : (
         <div>

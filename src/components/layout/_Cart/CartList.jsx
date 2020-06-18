@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import CartListItem from "./CartListITem";
 
-import { colors, spacing } from "../../../utils/styles";
+import { colors, spacing, fonts } from "../../../utils/styles";
 
 const CartListRoot = styled.ul`
   list-style: none;
@@ -14,13 +14,14 @@ const Headers = styled.div`
   border-bottom: 1px solid ${colors.gray["300"]};
   display: flex;
   justify-content: space-between;
-
+  font-family: ${fonts.sans};
+  color: ${colors.gray["600"]};
   span {
     color: ${colors.green};
     flex-basis: 60px;
     flex-grow: 0;
     font-size: 0.8rem;
-    padding-bottom: ${spacing["4"]};
+    padding-bottom: ${spacing["2"]};
     text-align: center;
 
     &:first-of-type {
