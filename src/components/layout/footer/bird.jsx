@@ -2,11 +2,11 @@ import React from "react";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import BirdBig from "./birdBig";
+// import BirdBig from "./birdBig";
 
 const BirdLink = styled(OutboundLink)`
   text-decoration: none;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   /* width: 100px; */
   /* @media (min-width: 1366px) {
     display: none;

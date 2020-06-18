@@ -31,7 +31,11 @@ const FooterRoot = styled.footer`
   color: ${colors.white};
   background-color: ${colors.blue["900"]};
   /* height: 300px; */
+  margin: 0 auto;
   .topWrapper {
+    max-width: 1224px;
+    margin: 0 auto;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -72,6 +76,7 @@ const FooterRoot = styled.footer`
     display: flex;
     ul {
       list-style: none;
+      margin-top: 0;
       li {
         margin: 0;
         /* margin-bottom: 1em; */
@@ -151,20 +156,24 @@ const FooterRoot = styled.footer`
   }
   .hours {
     font-family: ${fonts.sans};
+    justify-self: flex-end;
     h6 {
+      /* max-width: 200px; */
+      display: flex;
+      /* justify-content: space-around; */
       padding-bottom: ${spacing["1"]};
       margin: 0;
     }
   }
-  .mission {
+
+  .iconWrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
-  .reviews {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+
+  .sticker {
+    width: 100px;
   }
 `;
 
@@ -183,59 +192,6 @@ const Footer = ({ moved }) => {
   return (
     <FooterRoot className={moved}>
       <div className="topWrapper">
-        <section>
-          <div>
-            <h3>Our Partners</h3>
-            <div className="mission">
-              <OutboundLink
-                href="https://www.milb.com/everett"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: "none" }}
-              >
-                <Img
-                  fluid={aquasox.fluid}
-                  style={{
-                    borderRadius: "5px",
-                    width: "140px",
-                  }}
-                  alt={aquasox.alt}
-                />
-              </OutboundLink>
-              <OutboundLink
-                href="https://clothesforkids.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Img
-                  fluid={clothsForKids.fluid}
-                  style={{
-                    borderRadius: "5px",
-                    width: "140px",
-                  }}
-                  alt={clothsForKids.alt}
-                />
-              </OutboundLink>
-            </div>
-            <div>
-              <h3>Reviews / Rewards</h3>
-              <div className="reviews">
-                <Bird />
-                <Link to="/blog/esc-mattress-center-wins-best-mattress-store-in-snohomish-county">
-                  <img src={sticker.url} alt={sticker.alt} />
-                </Link>
-              </div>
-            </div>
-            {/* <OutboundLink
-              href="https://www.bbb.org/northwest/customer-reviews/mattress/esc-mattress-center-in-everett-wa-1000056497/add/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Img fluid={bbb.fluid} alt={bbb.alt} style={{ width: "120px" }} />
-            </OutboundLink> */}
-          </div>
-          <div />
-        </section>
         <section>
           <div>
             <h3>Stay Connected</h3>
@@ -274,7 +230,10 @@ const Footer = ({ moved }) => {
           <div className="hours">
             <h3>Hours</h3>
             <div>
-              <h6>Mon-Fri 10am - 8pm</h6>
+              <h6>
+                <span>Mon-Fri:</span>
+                <span>10am - 8pm</span>
+              </h6>
               <h6>Saturday 10am - 7pm</h6>
               <h6>Sunday 10am - 6pm</h6>
             </div>
@@ -319,6 +278,63 @@ const Footer = ({ moved }) => {
                 <span>&gt;</span>
               </li>
             </ul>
+          </div>
+        </section>
+      </div>
+      <div className="topWrapper">
+        <section>
+          <div>
+            <h3>Our Partners</h3>
+            <div className="iconWrapper">
+              <OutboundLink
+                href="https://www.milb.com/everett"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none" }}
+              >
+                <Img
+                  fluid={aquasox.fluid}
+                  style={{
+                    borderRadius: "5px",
+                    width: "140px",
+                  }}
+                  alt={aquasox.alt}
+                />
+              </OutboundLink>
+              <OutboundLink
+                href="https://clothesforkids.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Img
+                  fluid={clothsForKids.fluid}
+                  style={{
+                    borderRadius: "5px",
+                    width: "140px",
+                  }}
+                  alt={clothsForKids.alt}
+                />
+              </OutboundLink>
+            </div>
+
+            {/* <OutboundLink
+              href="https://www.bbb.org/northwest/customer-reviews/mattress/esc-mattress-center-in-everett-wa-1000056497/add/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Img fluid={bbb.fluid} alt={bbb.alt} style={{ width: "120px" }} />
+            </OutboundLink> */}
+          </div>
+        </section>
+        <section>
+          <div>
+            <h3>Reviews / Rewards</h3>
+            <div className="iconWrapper">
+              <Bird />
+              <Link to="/blog/esc-mattress-center-wins-best-mattress-store-in-snohomish-county">
+                <img src={sticker.url} alt={sticker.alt} className="sticker" />
+              </Link>
+            </div>
           </div>
         </section>
       </div>
