@@ -155,7 +155,6 @@ export default ({
 
   return (
     <CartListItemRoot>
-      {console.log(setCartLoading, isCartLoading)}
       <Thumbnail
         id={item.variant.image.id}
         fallback={item.variant.image.src}

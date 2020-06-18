@@ -6,6 +6,8 @@ import StoreContext from "../../../context/StoreContext";
 import CloseIcon from "../../../assets/times-solid.svg";
 import CartIcon from "../../../assets/shopping-cart-solid.svg";
 import { iconEntry, numberEntry } from "../../../utils/keyframes";
+import CartList from "./CartList";
+import CartIndicator from "./CartIndicator";
 import {
   dimensions,
   colors,
@@ -13,7 +15,6 @@ import {
   fonts,
   spacing,
 } from "../../../utils/styles";
-import CartList from "./CartList";
 
 const CartRoot = styled.div`
   background: ${colors.white};
@@ -28,7 +29,7 @@ const CartRoot = styled.div`
   z-index: ${({ zIndex }) => zIndex};
   display: ${({ pin }) => (pin ? "initial" : "none")};
   ::after {
-    background-color: ${colors.lightest};
+    background-color: ${colors.white};
     bottom: 0;
     content: "";
     left: 0;
@@ -269,7 +270,7 @@ const Total = styled(Cost)`
 const Cart = ({ toggle, status, menuStatus, pin }) => {
   const [loading, setLoading] = useState(false);
   const {
-    store: { checkout, client },
+    store: { checkout, client, adding },
     removeLineItem,
     updateLineItem,
   } = useContext(StoreContext);
@@ -345,6 +346,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
             </>
           )}
         </CartToggle>
+        <CartIndicator adding={adding} itemsInCart={itemsInCart} />
         <Title>Your Cart</Title>
         <ItemsInCart>
           items

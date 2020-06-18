@@ -51,10 +51,6 @@ const AccDropDown = ({ product }) => {
   const { addVariantToCart } = useContext(StoreContext);
   const handleAddToCart = () => {
     addVariantToCart(variant.shopifyId, quantity);
-    // addVariantToCart(
-    //   "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTkwOTk3OTcxNzY5Nw==",
-    //   quantity,
-    // );
   };
   const minMaxMaker = (min, max) => {
     if (min === max) {
