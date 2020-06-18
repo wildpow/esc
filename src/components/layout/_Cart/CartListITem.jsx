@@ -41,10 +41,11 @@ const Name = styled.span`
 `;
 
 const Meta = styled.span`
-  color: ${colors.gray["700"]};
+  color: ${colors.blue["800"]};
   font-weight: 300;
   font-family: ${fonts.sans};
   display: block;
+  padding-top: 4px;
   font-size: 0.95rem;
   font-style: normal;
 `;
@@ -61,7 +62,7 @@ const Quantity = styled.input`
   width: 100%;
 
   :focus {
-    box-shadow: 0 0 0 3px ${colors.accent};
+    box-shadow: 0 0 0 3px ${colors.blue["700"]};
     outline: 0;
     transition: box-shadow 0.15s ease-in-out;
   }

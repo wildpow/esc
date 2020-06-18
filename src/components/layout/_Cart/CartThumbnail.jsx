@@ -10,6 +10,8 @@ const CartThumbnailRoot = styled(Image)`
   border-radius: ${radius.default}px;
   height: 36px;
   width: 36px;
+  height: 46px;
+  width: 46px;
 `;
 
 const CartThumbnail = ({

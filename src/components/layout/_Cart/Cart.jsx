@@ -220,12 +220,14 @@ const Costs = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: ${spacing["2"]};
+  font-family: ${fonts.sans};
 `;
 
 const Cost = styled.div`
   display: flex;
   padding: 0 ${spacing["1"]} ${spacing["2"]};
-
+  color: ${colors.blue["900"]};
+  font-family: ${fonts.sans};
   :last-child {
     padding-bottom: 0;
   }
@@ -238,15 +240,18 @@ const Cost = styled.div`
   }
 
   strong {
-    color: ${colors.lilac};
+    color: ${colors.gray["800"]};
     flex-basis: 40%;
     text-align: right;
+  }
+  .free {
+    color: ${colors.red["800"]};
   }
 `;
 
 const Total = styled(Cost)`
-  border-top: 1px solid ${colors.blue["900"]};
-  color: ${colors.black};
+  border-top: 1px solid ${colors.gray["400"]};
+  color: ${colors.blue["900"]};
   margin-top: ${spacing["2"]};
   padding-top: ${spacing["3"]};
 
@@ -363,10 +368,12 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
               <strong>USD ${checkout.subtotalPrice}</strong>
             </Cost>
             <Cost>
-              <span>Taxes:</span> <strong>{checkout.totalTax}</strong>
+              <span>Taxes:</span>
+              <strong>{checkout.totalTax}</strong>
             </Cost>
             <Cost>
-              <span>Shipping (worldwide):</span> <strong>FREE</strong>
+              <span>Shipping (nationwide):</span>
+              <strong className="free">FREE</strong>
             </Cost>
             <Total>
               <span>Total Price:</span>

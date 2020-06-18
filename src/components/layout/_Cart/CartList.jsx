@@ -11,13 +11,13 @@ const CartListRoot = styled.ul`
 `;
 
 const Headers = styled.div`
-  border-bottom: 1px solid ${colors.gray["300"]};
+  border-bottom: 1px solid ${colors.gray["400"]};
   display: flex;
   justify-content: space-between;
   font-family: ${fonts.sans};
-  color: ${colors.gray["600"]};
+  color: ${colors.blue["900"]};
   span {
-    color: ${colors.green};
+    /* color: ${colors.green}; */
     flex-basis: 60px;
     flex-grow: 0;
     font-size: 0.8rem;
