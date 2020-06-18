@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { bool, number } from "prop-types";
 import styled from "styled-components";
+import usePrevious from "../../Hooks/use-previous";
 import {
   colors,
   dimensions,
@@ -12,7 +13,7 @@ import {
 const CartIndicatorRoot = styled.div`
   font-family: ${fonts.sans};
   background: ${colors.yellow["400"]};
-  border-radius: ${radius.default}px;
+  border-radius: ${radius.large}px;
   color: ${colors.blue["900"]};
   display: ${(props) => (props.visible ? "flex" : "none")};
   justify-content: center;
@@ -23,20 +24,6 @@ const CartIndicatorRoot = styled.div`
   transform: translateX(calc((100% + ${spacing["4"]}) * -1));
   transition: all 1s ease-in-out;
 `;
-
-function usePrevious(value) {
-  // The ref object is a generic container whose current property is mutable ...
-  // ... and can hold any value, similar to an instance property on a class
-  const ref = useRef();
-
-  // Store current value in ref
-  useEffect(() => {
-    ref.current = value;
-  }, [value]); // Only re-run if value changes
-
-  // Return previous value (happens before update in useEffect above)
-  return ref.current;
-}
 
 const CartIndicator = ({ adding, itemsInCart }) => {
   const [visible, setVisible] = useState(false);
