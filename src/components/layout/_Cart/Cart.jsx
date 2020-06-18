@@ -5,9 +5,12 @@ import styled from "styled-components";
 import StoreContext from "../../../context/StoreContext";
 import CloseIcon from "../../../assets/times-solid.svg";
 import CartIcon from "../../../assets/shopping-cart-solid.svg";
+import ForwardArrow from "../../../assets/arrow-right-solid.svg";
+import BackArrow from "../../../assets/arrow-left-solid.svg";
 import { iconEntry, numberEntry } from "../../../utils/keyframes";
 import CartList from "./CartList";
 import CartIndicator from "./CartIndicator";
+import { PrimaryButton, Button } from "../../shared/Buttons";
 import {
   dimensions,
   colors,
@@ -154,10 +157,10 @@ const CartToggle = styled.button`
   }
 
   ${ItemsNumber} {
-    animation: ${numberEntry} 0.5s ease forwards;
     position: absolute;
     right: 0rem;
     top: 0rem;
+    animation: ${numberEntry} 0.5s ease forwards;
     transform: scale(0.6);
   }
 `;
@@ -266,7 +269,16 @@ const Total = styled(Cost)`
     color: inherit;
   }
 `;
-
+const CheckOut = styled(PrimaryButton)`
+  font-size: 1.25rem;
+  margin: ${spacing["8"]} 0 ${spacing["4"]};
+  width: 100%;
+`;
+const BackLink = styled(Button)`
+  font-size: 1.25rem;
+  margin-bottom: ${spacing["4"]};
+  width: 100%;
+`;
 const Cart = ({ toggle, status, menuStatus, pin }) => {
   const [loading, setLoading] = useState(false);
   const {
@@ -382,6 +394,14 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
               <strong>USD ${checkout.totalPrice}</strong>
             </Total>
           </Costs>
+          <CheckOut href={checkout.webUrl}>
+            Check out
+            <ForwardArrow />
+          </CheckOut>
+          <BackLink onClick={toggle}>
+            <BackArrow />
+            Back to shopping
+          </BackLink>
         </Content>
       ) : (
         <div>

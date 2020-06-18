@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { bool, number } from "prop-types";
 import styled from "styled-components";
 import usePrevious from "../../Hooks/use-previous";
+import { numberEntry } from "../../../utils/keyframes";
 import {
   colors,
   dimensions,
@@ -15,14 +16,19 @@ const CartIndicatorRoot = styled.div`
   background: ${colors.yellow["400"]};
   border-radius: ${radius.large}px;
   color: ${colors.blue["900"]};
-  display: ${(props) => (props.visible ? "flex" : "none")};
+  display: flex;
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  transform: ${(props) =>
+    props.visible
+      ? `translateX(calc((100% + ${spacing["12"]}) * -1)) scale(1.2)`
+      : `translateX(calc((100% + ${spacing["4"]}) * -1)) scale(1)`};
   justify-content: center;
   left: 0;
   padding: ${spacing["2"]} ${spacing["4"]};
   position: absolute;
   top: calc(${dimensions.headerHeight} + ${spacing["4"]});
-  transform: translateX(calc((100% + ${spacing["4"]}) * -1));
-  transition: all 1s ease-in-out;
+  /* transform: translateX(calc((100% + ${spacing["4"]}) * -1)); */
+  transition: all 0.2s ease-in-out;
 `;
 
 const CartIndicator = ({ adding, itemsInCart }) => {
@@ -47,7 +53,7 @@ const CartIndicator = ({ adding, itemsInCart }) => {
     }
     const timer = setTimeout(() => {
       setVisible(false);
-      setMessage("");
+      // setMessage("");
     }, 3000);
     return () => clearTimeout(timer);
   }, [adding, itemsInCart, prevAdding, prevItemsInCart]);
