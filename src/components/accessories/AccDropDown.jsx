@@ -60,6 +60,7 @@ const AccDropDown = ({ product }) => {
   };
   return (
     <AccWrapper>
+      {console.log(product)}
       {product.variants.length === 1 ? (
         <div>
           <h3>
@@ -80,7 +81,26 @@ const AccDropDown = ({ product }) => {
           </div>
         </div>
       ) : (
-        <h1>more variants</h1>
+        <div>
+          <h3>
+            {`$${minMaxMaker(
+              product.priceRange.minVariantPrice.amount,
+              product.priceRange.maxVariantPrice.amount,
+            )}`}
+          </h3>
+          <div>
+            <h6>SIZE</h6>
+            <select name="" id="">
+              {product.variants.map((item) => {
+                return (
+                  <option key={item.title} value={item.title}>
+                    {item.title}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
       )}
     </AccWrapper>
   );

@@ -18,6 +18,7 @@ import {
   Wrapper,
 } from "../components/singleProduct/singleProduct.styles";
 import ImageCarousel from "../components/singleProduct/ImageCarousel";
+import AccessoryForm from "../components/accessories/AccessoryForm";
 
 const Accessory = ({ data }) => {
   const { shopifyProduct: product } = data;
@@ -56,7 +57,8 @@ const Accessory = ({ data }) => {
                   }}
                 />
               </List>
-              <AccDropDown product={product} />
+              <AccessoryForm variants={product.variants} />
+              {/* <AccDropDown product={product} /> */}
             </MainInfo>
           </Main>
           <header id="moreInfo">
