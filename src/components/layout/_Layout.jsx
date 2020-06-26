@@ -14,6 +14,7 @@ import useKeyboardEvent from "../Hooks/use-keyboard-event";
 import { useWindowDimensions } from "../context/WindowDimensions";
 import Footer from "./_Footer";
 import { breakpoints } from "../../utils/styles";
+import StructuredDataMain from "./structuredDataMain";
 
 const MenuOverLay = styled.div`
   display: none;
@@ -103,6 +104,7 @@ function Layout({ children }) {
   }, [cartStatus, menuStatus]);
   return (
     <>
+      <StructuredDataMain />
       <GlobalStyle />
       <Headroom
         onPin={() => setpen(true)}
