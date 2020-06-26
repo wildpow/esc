@@ -11,19 +11,16 @@ import { ThemeProvider } from "styled-components";
 import WindowDimensionsProvider from "./src/components/context/WindowDimensions";
 import { theme } from "./src/styles/mainStyles";
 import StoreProvider from "./src/provider/StoreProvider";
-import ToastProvider from "./src/components/context/ToastProvider";
 
 require("typeface-roboto-slab");
 require("typeface-roboto");
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <ToastProvider>
-      <StoreProvider>
-        <ThemeProvider theme={theme}>
-          <WindowDimensionsProvider>{element}</WindowDimensionsProvider>
-        </ThemeProvider>
-      </StoreProvider>
-    </ToastProvider>
+    <StoreProvider>
+      <ThemeProvider theme={theme}>
+        <WindowDimensionsProvider>{element}</WindowDimensionsProvider>
+      </ThemeProvider>
+    </StoreProvider>
   );
 };

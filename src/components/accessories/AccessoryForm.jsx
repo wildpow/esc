@@ -12,7 +12,6 @@ import {
 import ShopingCart from "../../assets/shopping-cart-solid.svg";
 import StoreContext from "../../context/StoreContext";
 import ErrorIcon from "../../assets/exclamation-triangle-solid.svg";
-import { ToastCtx } from "../context/ToastProvider";
 
 const Form = styled.form`
   display: flex;
@@ -100,7 +99,6 @@ const ErrorMsgs = styled.ul`
 `;
 
 const AccessoryForm = ({ variants }) => {
-  const { addToast } = useContext(ToastCtx);
   const { addVariantToCart } = useContext(StoreContext);
   const [quantity, setQuantity] = useState(1);
   const [errors, setErrors] = useState([]);
@@ -153,7 +151,6 @@ const AccessoryForm = ({ variants }) => {
     }
 
     addVariantToCart(variant, quantity);
-    addToast("success", "Poop Shit dick", "top-right");
   };
 
   const hasVariants = variants.length > 1;
@@ -161,7 +158,6 @@ const AccessoryForm = ({ variants }) => {
     <Form onSubmit={handleSubmit} noValidate>
       <Errors show={errors.length}>
         <ErrorSign>
-          {console.log(addToast)}
           <ErrorIcon />
         </ErrorSign>
         <ErrorMsgs>
