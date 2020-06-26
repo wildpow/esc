@@ -24,15 +24,17 @@ export const SmallImgHolder = styled.div`
 
 export const SmImgWrap = styled.div`
   color: white;
-  width: 50px;
-  height: 50px;
-  @media (min-width: 360px) {
+  width: 83px;
+  height: 83px;
+  /* @media (min-width: 360px) {
     width: 60px;
     height: 60px;
-  }
+  } */
   @media (min-width: 500px) {
-    width: 83px;
-    height: 83px;
+    /* width: 83px;
+    height: 83px; */
+    width: calc(350px / 3);
+    height: 116px;
   }
   @media (min-width: 768px) {
     width: calc(350px / 3);
@@ -55,18 +57,22 @@ export const LargeImgWrap = styled.div`
   position: relative;
   width: 150px;
   height: 150px;
-  @media (min-width: 360px) {
+  width: 250px;
+  height: 250px;
+  /* @media (min-width: 360px) {
     width: 180px;
     height: 180px;
-  }
+  } */
   @media (min-width: 500px) {
-    width: 250px;
-    height: 250px;
-  }
-  @media (min-width: 768px) {
+    /* width: 250px;
+    height: 250px; */
     width: 350px;
     height: 350px;
   }
+  /* @media (min-width: 768px) {
+    width: 350px;
+    height: 350px;
+  } */
   @media (min-width: 1024px) {
     width: 500px;
     height: 500px;

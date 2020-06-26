@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import AccDropDown from "../components/accessories/AccDropDown";
+// import AccDropDown from "../components/accessories/AccDropDown";
 import {
   Article,
   Description,
@@ -57,7 +57,11 @@ const Accessory = ({ data }) => {
                   }}
                 />
               </List>
-              <AccessoryForm variants={product.variants} />
+              <AccessoryForm
+                variants={product.variants}
+                priceMin={product.priceRange.minVariantPrice.amount}
+                priceMax={product.priceRange.maxVariantPrice.amount}
+              />
               {/* <AccDropDown product={product} /> */}
             </MainInfo>
           </Main>
@@ -119,7 +123,7 @@ export const query = graphql`
         originalSrc
         localFile {
           childImageSharp {
-            fluid(maxWidth: 250) {
+            fluid(maxWidth: 450) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }

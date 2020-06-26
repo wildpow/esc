@@ -122,7 +122,7 @@ const contentStyle = {
   padding: "0px",
 };
 const FirmnessScale = ({ firmNum, isMobile }) => {
-  // const { modal, setModal } = useModalContext();
+  const { modal, setModal } = useModalContext();
   let gradient =
     "linear-gradient(to left, #EAEAED 0%, #3F81CB 35%, #1565C0 50%, #3F81CB 65%, #EAEAED 100%)";
   const firmnessPosition = (num) => {
@@ -147,7 +147,7 @@ const FirmnessScale = ({ firmNum, isMobile }) => {
     <Popup
       trigger={
         <Firmness
-          // onClick={() => setModal(!modal)}
+          onClick={() => setModal(!modal)}
           firmNum={firmnessPosition(firmNum)}
           gradient={gradient}
           isMobile={isMobile}
@@ -157,7 +157,7 @@ const FirmnessScale = ({ firmNum, isMobile }) => {
           <div className="soft">Soft</div>
         </Firmness>
       }
-      position="top center"
+      position="center center"
       closeOnDocumentClick
       contentStyle={contentStyle}
       closeOnEscape

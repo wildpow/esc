@@ -170,7 +170,8 @@ export const Construction = styled(List)`
 
 export const Main = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   margin-top: 2px;
   background-color: white;
 
@@ -180,6 +181,7 @@ export const Main = styled.div`
   }
   @media (min-width: 768px) {
     margin-bottom: 10px;
+    flex-direction: row;
   }
   @media (min-width: 1024px) {
     justify-content: space-evenly;

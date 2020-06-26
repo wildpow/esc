@@ -8,10 +8,25 @@ import {
   spacing,
   fonts,
   breakpoints,
+  fontSize,
 } from "../../utils/styles";
 import ShopingCart from "../../assets/shopping-cart-solid.svg";
 import StoreContext from "../../context/StoreContext";
 import ErrorIcon from "../../assets/exclamation-triangle-solid.svg";
+
+const PriceRange = styled.div`
+  font-family: ${fonts.sans};
+  padding-top: 20px;
+  small {
+    font-weight: 300;
+    color: ${colors.red["900"]};
+  }
+  h4 {
+    font-size: ${fontSize["4xl"]};
+    margin-top: 0;
+    color: ${colors.blue["900"]};
+  }
+`;
 
 const Form = styled.form`
   display: flex;
@@ -68,6 +83,7 @@ const Errors = styled.div`
   flex-direction: row;
   margin-bottom: ${spacing["2"]};
   width: 100%;
+  height: 50px;
 `;
 
 const ErrorSign = styled.div`
@@ -96,10 +112,14 @@ const ErrorMsgs = styled.ul`
   font-family: ${fonts.sans};
   padding: ${spacing["2"]};
   padding-left: ${spacing["3"]};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
-const AccessoryForm = ({ variants }) => {
+const AccessoryForm = ({ variants, priceMin, priceMax }) => {
   const { addVariantToCart } = useContext(StoreContext);
+  // const [price, setPrice] = useState(`$${priceMin} - $${priceMax}`);
   const [quantity, setQuantity] = useState(1);
   const [errors, setErrors] = useState([]);
   const [variant, setVariant] = useState(
@@ -121,6 +141,7 @@ const AccessoryForm = ({ variants }) => {
         setErrors(newErrors);
       }
     }
+
     if (event.target.name === "variant") {
       setVariant(event.target.value);
     } else {
@@ -141,7 +162,7 @@ const AccessoryForm = ({ variants }) => {
     if (variant === "" || variant === ".") {
       newErrors.push({
         field: "variant",
-        msg: "PLease select a <b>size</b>.",
+        msg: "Please select a <b>size</b>.",
       });
     }
 
@@ -171,7 +192,6 @@ const AccessoryForm = ({ variants }) => {
       </Errors>
       <div className="fieldset">
         <QtyFieldset>
-          {/* {console.log(errors, colors.red["100"])} */}
           <Label htmlFor="quantity">Qty.</Label>
           <Input
             type="number"
@@ -186,7 +206,6 @@ const AccessoryForm = ({ variants }) => {
         </QtyFieldset>
         {hasVariants && (
           <SizeFieldset>
-            {console.log(errors)}
             <Label htmlFor="variant">Size</Label>
             <Select
               as="select"
@@ -211,6 +230,10 @@ const AccessoryForm = ({ variants }) => {
         Add to Cart
         <ShopingCart />
       </AddToCartButton>
+      <PriceRange>
+        <small>Price Range</small>
+        <h4>{`$${priceMin} - $${priceMax}`}</h4>
+      </PriceRange>
     </Form>
   );
 };

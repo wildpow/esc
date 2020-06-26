@@ -29,7 +29,7 @@ const Firmness = styled.div`
   }
   .firm,
   .soft {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     color: black;
     width: 22%;
     text-align: center;
@@ -55,10 +55,10 @@ const Firmness = styled.div`
       content: "";
       width: 40%;
       height: 12px;
-      background-image: ${props => props.gradient};
+      background-image: ${(props) => props.gradient};
       position: absolute;
       top: 0;
-      left: ${props => props.firmNum};
+      left: ${(props) => props.firmNum};
       @media screen and (min-width: 768px) {
         height: 15px;
       }
@@ -88,11 +88,11 @@ const Wrapper = styled.div`
   a {
     justify-self: center;
     align-self: center;
-    font-family: ${props => props.theme.MainFont1};
-    color: ${props => props.theme.mainColor1};
+    font-family: ${(props) => props.theme.MainFont1};
+    color: ${(props) => props.theme.mainColor1};
     transition: color 0.2s ease-in;
     &:hover {
-      color: ${props => props.theme.mainColor2};
+      color: ${(props) => props.theme.mainColor2};
     }
   }
   @media screen and (min-width: 375px) {
@@ -100,7 +100,7 @@ const Wrapper = styled.div`
       display: block;
       margin-top: 0px;
       margin-bottom: 5px;
-      font-family: ${props => props.theme.MainFont3};
+      font-family: ${(props) => props.theme.MainFont3};
       border-bottom: 4px solid #eb1c24;
       padding-bottom: 2px;
       padding-left: 7px;
@@ -135,23 +135,23 @@ const OpenButton = styled.button`
   -moz-appearance: none;
   appearance: none;
   background: white;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   text-decoration: underline;
-  color: ${props => props.theme.mainColor1};
+  color: ${(props) => props.theme.mainColor1};
   text-align: center;
   :hover,
   :active {
-    color: ${props => props.theme.mainColor2};
+    color: ${(props) => props.theme.mainColor2};
   }
 `;
 const Popper = styled.div`
   transition: all 0.25s ease-in-out;
-  opacity: ${props => (props.modal ? "1" : "0")};
+  opacity: ${(props) => (props.modal ? "1" : "0")};
   animation-name: ${FadeIn};
   display: flex;
   justify-content: center;
   .button {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     color: #000000;
     cursor: pointer;
     padding: 0px 30px;
@@ -165,7 +165,7 @@ const Popper = styled.div`
     position: relative;
     font-size: 14px;
     font-weight: 700;
-    border: 3px solid ${props => props.theme.mainColor1};
+    border: 3px solid ${(props) => props.theme.mainColor1};
     background-color: #ffffff;
     border-radius: 15px 15px 15px 15px;
     -webkit-transition: all 0.3s;
@@ -179,7 +179,7 @@ const Popper = styled.div`
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 10px;
-    font-family: ${props => props.theme.MainFont3};
+    font-family: ${(props) => props.theme.MainFont3};
     border-bottom: 4px solid #eb1c24;
     padding-bottom: 2px;
     font-size: 1.4rem;
@@ -187,7 +187,7 @@ const Popper = styled.div`
     font-weight: 400;
   }
   .modal > .content {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     font-size: 1rem;
     line-height: 1.3rem;
     font-weight: 300;
@@ -208,7 +208,7 @@ const Popper = styled.div`
 const FirmnessScale = ({ firmness }) => {
   let gradient =
     "linear-gradient(to left, #EAEAED 0%, #3F81CB 35%, #1565C0 50%, #3F81CB 65%, #EAEAED 100%)";
-  const firmnessPosition = num => {
+  const firmnessPosition = (num) => {
     switch (num) {
       case 1:
         gradient = "linear-gradient(to left, #EAEAED 0%, #1565C0 100%)";

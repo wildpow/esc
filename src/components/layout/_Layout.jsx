@@ -8,6 +8,8 @@ import GlobalStyle from "./_Global.styled";
 import Header from "./_Header";
 import Cart from "./_Cart";
 import MobileMenu from "./_MobileMenu";
+import ModalContextProvider from "./modalContext";
+
 import PageContent from "./_PageContent";
 import useOnClickOutside from "../Hooks/use-onClick-outside";
 import useKeyboardEvent from "../Hooks/use-keyboard-event";
@@ -103,7 +105,7 @@ function Layout({ children }) {
     setMoved(cartStatus === "open" || menuStatus === "open" ? "moved" : "");
   }, [cartStatus, menuStatus]);
   return (
-    <>
+    <ModalContextProvider>
       <StructuredDataMain />
       <GlobalStyle />
       <Headroom
@@ -148,7 +150,7 @@ function Layout({ children }) {
       </PageContent>
       <Footer moved={moved} />
       {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
-    </>
+    </ModalContextProvider>
   );
 }
 
