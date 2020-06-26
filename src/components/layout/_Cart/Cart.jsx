@@ -279,6 +279,21 @@ const BackLink = styled(Button)`
   margin-bottom: ${spacing["4"]};
   width: 100%;
 `;
+const EmptyCartRoot = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  justify-content: center;
+  font-family: ${fonts.sans};
+  .fa-empty-cart {
+    color: ${colors.red["900"]};
+    width: 45px;
+  }
+  p {
+    color: ${colors.blue["900"]};
+  }
+`;
 const Cart = ({ toggle, status, menuStatus, pin }) => {
   const [loading, setLoading] = useState(false);
   const {
@@ -300,9 +315,9 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     await updateLineItem(client, checkout.id, lineItemID, quantity);
     setLoading(false);
   };
-  const handleCheckout = () => {
-    window.open(checkout.webUrl);
-  };
+  // const handleCheckout = () => {
+  //   window.open(checkout.webUrl);
+  // };
   const itemsInCart = checkout.lineItems.reduce(
     (total, item) => total + item.quantity,
     0,
@@ -367,54 +382,65 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
           <ItemsNumber>{itemsInCart}</ItemsNumber>
         </ItemsInCart>
       </Heading>
-      {checkout.lineItems.length > 0 ? (
-        <Content>
-          <CartList
-            items={checkout.lineItems}
-            handleRemove={handleRemove}
-            updateQuantity={handleQuantityChange}
-            setCartLoading={setLoading}
-            isCartLoading={loading}
-          />
-          <Costs>
-            <Cost>
-              <span>Subtotal:</span>{" "}
-              <strong>USD ${checkout.subtotalPrice}</strong>
-            </Cost>
-            <Cost>
-              <span>Taxes:</span>
-              <strong>{checkout.totalTax}</strong>
-            </Cost>
-            <Cost>
-              <span>Shipping (nationwide):</span>
-              <strong className="free">FREE</strong>
-            </Cost>
-            <Total>
-              <span>Total Price:</span>
-              <strong>USD ${checkout.totalPrice}</strong>
-            </Total>
-          </Costs>
-          <CheckOut href={checkout.webUrl}>
-            Check out
-            <ForwardArrow />
-          </CheckOut>
-          <BackLink onClick={toggle}>
-            <BackArrow />
-            Back to shopping
-          </BackLink>
-        </Content>
-      ) : (
-        <div>
-          <h1>Empty Cart</h1>
-        </div>
-      )}
-      {/* <button
-        onClick={handleCheckout}
-        disabled={checkout.lineItems.length === 0}
-        type="button"
-      >
-        Check out
-      </button> */}
+      <Content>
+        {checkout.lineItems.length > 0 ? (
+          <>
+            <CartList
+              items={checkout.lineItems}
+              handleRemove={handleRemove}
+              updateQuantity={handleQuantityChange}
+              setCartLoading={setLoading}
+              isCartLoading={loading}
+            />
+            <Costs>
+              <Cost>
+                <span>Subtotal:</span>
+                <strong>USD ${checkout.subtotalPrice}</strong>
+              </Cost>
+              <Cost>
+                <span>Taxes:</span>
+                <strong>{checkout.totalTax}</strong>
+              </Cost>
+              <Cost>
+                <span>Shipping (nationwide):</span>
+                <strong className="free">FREE</strong>
+              </Cost>
+              <Total>
+                <span>Total Price:</span>
+                <strong>USD ${checkout.totalPrice}</strong>
+              </Total>
+            </Costs>
+            <CheckOut href={checkout.webUrl}>
+              Check out
+              <ForwardArrow />
+            </CheckOut>
+            <BackLink onClick={toggle}>
+              <BackArrow />
+              Back to shopping
+            </BackLink>
+          </>
+        ) : (
+          <>
+            <EmptyCartRoot>
+              <>
+                <VisuallyHidden>shoping cart</VisuallyHidden>
+                <span aria-hidden>
+                  <CartIcon
+                    alt="Shopping cart icon"
+                    className="fa-empty-cart"
+                    title="Open shopping cart menu"
+                  />
+                </span>
+              </>
+              <p>Your Cart is empty.</p>
+            </EmptyCartRoot>
+            <BackLink onClick={toggle}>
+              <BackArrow />
+              Back to shopping
+            </BackLink>
+          </>
+        )}
+      </Content>
     </CartRoot>
   );
 };
@@ -422,13 +448,13 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
 Cart.defaultProps = {
   status: "closed",
   pin: true,
-  menuId: "main-menu",
+  // menuId: "main-menu",
 };
 Cart.propTypes = {
   status: string,
   pin: bool,
   toggle: func.isRequired,
-  menuId: string,
+  // menuId: string,
 };
 
 export default Cart;
