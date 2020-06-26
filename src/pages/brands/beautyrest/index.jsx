@@ -16,6 +16,7 @@ const Beautyrest = ({ data }) => {
         title={datoCmsBrand.displayName}
         description={datoCmsBrand.headerLink.tagLine}
         breadCrumbs
+        landing
         brandName={datoCmsBrand.urlName}
       />
     </Layout>
