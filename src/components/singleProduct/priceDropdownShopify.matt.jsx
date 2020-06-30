@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
-const ShopifyDropDown = ({ shopifyBase, shopifyMattress }) => {
+const ShopifyDropDown = ({
+  shopify2Inch,
+  shopify5Inch,
+  shopify9Inch,
+  shopifyMattress,
+}) => {
   const [currentSize, setCurrentSize] = useState("");
   const [currentBase, setCurrentBase] = useState("");
   const test2 = ["twin", "twinxl", "full", "queen", "king"];

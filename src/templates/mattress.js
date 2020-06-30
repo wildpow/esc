@@ -32,7 +32,13 @@ const LeftSide = styled.div`
 `;
 
 const Mattress = ({ data }) => {
-  const { datoCmsMattress: mattress, shopifyBase, shopifyMattress } = data;
+  const {
+    datoCmsMattress: mattress,
+    shopify2Inch,
+    shopify5Inch,
+    shopify9Inch,
+    shopifyMattress,
+  } = data;
   const detectMobile = useMobileDetect();
   return (
     <Layout>
@@ -88,7 +94,6 @@ const Mattress = ({ data }) => {
             </MainTitle>
           </header>
           <Main>
-            {console.log(mattress.images[0].coverImage)}
             <LeftSide>
               <ImageCarousel
                 isMobile={detectMobile.isMobile()}
@@ -105,7 +110,6 @@ const Mattress = ({ data }) => {
             </LeftSide>
             <MainInfo>
               <List>
-                {" "}
                 <h3>Features</h3>
                 <ul>
                   {mattress.listFeature.map((item) => (
@@ -116,7 +120,7 @@ const Mattress = ({ data }) => {
                   </Info>
                 </ul>
               </List>
-              {shopifyBase === null || shopifyMattress === null ? (
+              {shopifyMattress === null ? (
                 <DropDown
                   typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}
                   freeBoxSpring={mattress.saleInfo[0].freeBox}
@@ -132,7 +136,9 @@ const Mattress = ({ data }) => {
                 />
               ) : (
                 <ShopifyDropDown
-                  shopifyBase={shopifyBase}
+                  shopify2Inch={shopify2Inch}
+                  shopify5Inch={shopify5Inch}
+                  shopify9Inch={shopify9Inch}
                   shopifyMattress={shopifyMattress}
                 />
               )}
@@ -175,7 +181,9 @@ export const query = graphql`
   query SingleMattress(
     $slug: String!
     $shopifyMatt: String!
-    $shopifyBase: String!
+    $shopify2Inch: String!
+    $shopify5Inch: String!
+    $shopify9Inch: String!
   ) {
     shopifyMattress: shopifyProduct(shopifyId: { eq: $shopifyMatt }) {
       title
@@ -187,7 +195,27 @@ export const query = graphql`
         shopifyId
       }
     }
-    shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
+    shopify2Inch: shopifyProduct(shopifyId: { eq: $shopify2Inch }) {
+      title
+      vendor
+      shopifyId
+      variants {
+        price
+        title
+        shopifyId
+      }
+    }
+    shopify5Inch: shopifyProduct(shopifyId: { eq: $shopify5Inch }) {
+      title
+      vendor
+      shopifyId
+      variants {
+        price
+        title
+        shopifyId
+      }
+    }
+    shopify9Inch: shopifyProduct(shopifyId: { eq: $shopify9Inch }) {
       title
       vendor
       shopifyId
@@ -199,7 +227,6 @@ export const query = graphql`
     }
     datoCmsMattress(slug: { eq: $slug }) {
       shopMattConnection
-      shopBoxConnection
       priceLow
       priceHigh
       slug

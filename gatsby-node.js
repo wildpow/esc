@@ -70,7 +70,9 @@ exports.createPages = async ({ actions, graphql }) => {
           node {
             slug
             shopMattConnection
-            shopBoxConnection
+            shopify2Inch
+            shopify5Inch
+            shopify9Inch
             brand {
               urlName
             }
@@ -130,7 +132,9 @@ exports.createPages = async ({ actions, graphql }) => {
       context: {
         slug: mattress.node.slug,
         shopifyMatt: mattress.node.shopMattConnection,
-        shopifyBase: mattress.node.shopBoxConnection,
+        shopify2Inch: mattress.node.shopify2Inch,
+        shopify5Inch: mattress.node.shopify5Inch,
+        shopify9Inch: mattress.node.shopify9Inch,
       },
     });
   });
