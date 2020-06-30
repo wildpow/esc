@@ -38,10 +38,10 @@ const MobileMenuRoot = styled.div`
     width: 100%;
   }
   @media (min-width: 600px) and (min-height: 700px) {
-    width: 45%;
+    width: ${dimensions.cartWidthDesktop};
   }
   @media (min-width: 800px) and (min-height: 800px) {
-    width: 35%;
+    width: ${dimensions.cartWidthDesktop};
   }
   @media (max-height: 500px) and (max-width: 900px) {
     width: 100%;
@@ -50,10 +50,10 @@ const MobileMenuRoot = styled.div`
     width: 100%;
   }
   @media (min-height: 550px) and (min-width: 900px) and (max-width: 1022px) {
-    width: 40%;
+    width: ${dimensions.cartWidthDesktop};
   }
   @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
-    width: 40%;
+    width: ${dimensions.cartWidthDesktop};
   }
   /* @media (min-width: ${breakpoints.sm}) {
     width: ${dimensions.cartWidthDesktop};
@@ -124,7 +124,7 @@ const MobileMenu = ({ status, pin, toggle, menuId, ...props }) => {
         <li tabIndex={tabIndex}>stuff</li>
         <li tabIndex={tabIndex}>here</li>
       </ul> */}
-      {status && <Portrait />}
+      {status === "open" && <Portrait />}
       <Landscape />
     </MobileMenuRoot>
   );

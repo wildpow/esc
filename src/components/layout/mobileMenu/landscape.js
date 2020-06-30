@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
+import { colors, fonts } from "../../../utils/styles";
 
 const StyledLink = styled(Link)`
-  font-family: ${(props) => props.theme.MainFont1};
+  font-family: ${fonts.sans};
   font-size: 1.1rem;
   text-decoration: none;
   font-weight: 700;

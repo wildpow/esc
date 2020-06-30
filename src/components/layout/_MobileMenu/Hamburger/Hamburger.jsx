@@ -77,7 +77,7 @@ const BurgerToggle = styled.button`
   }
 
   .open & {
-    background: ${colors.blue["800"]};
+    /* background: ${colors.blue["800"]}; */
     color: ${colors.white};
     transform: translateX(0);
     .hamburger {

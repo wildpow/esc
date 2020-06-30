@@ -9,6 +9,7 @@ import {
   LogoAnimate,
 } from "./mobileMenuStyles";
 import { firstSet, secondSet } from "./items";
+import { colors, fonts } from "../../../utils/styles";
 
 const Panda = styled.img`
   width: 140px;
@@ -31,16 +32,22 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.2rem;
-  color: white;
+  color: ${colors.gray["100"]};
   padding-left: 10px;
   background-color: inital;
   transition: background-color 0.2s ease-in-out;
   &:hover {
     cursor: pointer;
     background-color: rgba(17, 75, 95, 0.4);
+    background-color: ${colors.gray["700"]};
+  }
+  &:focus {
+    box-shadow: 0 0 0 1px ${colors.blue["300"]} inset;
+    outline: 0;
+    transition: box-shadow 0.15s ease-in-out;
   }
   &:active {
-    background-color: rgba(235, 28, 26, 0.8);
+    background-color: ${colors.red["900"]};
   }
   @media (max-width: 300px) {
     text-align: center;
@@ -178,7 +185,7 @@ const Portrait = () => {
             <StyledLink
               to="/"
               activeStyle={{
-                backgroundColor: "rgba(17, 75, 95, 0.2)",
+                backgroundColor: colors.red["900"],
               }}
             >
               <SlideIn delay={`${0}s`}>
@@ -202,7 +209,7 @@ const Portrait = () => {
                 to={item.to}
                 partiallyActive
                 activeStyle={{
-                  backgroundColor: "rgba(235, 28, 26, 0.9)",
+                  backgroundColor: colors.red["900"],
                 }}
               >
                 <SlideIn delay={`${item.delay}s`}>

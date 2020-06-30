@@ -25,7 +25,7 @@ const HeaderRoot = styled.header`
   display: flex;
   flex-direction: column;
   box-shadow: ${boxShadow.lg};
-  background-color: ${colors.gray["100"]};
+  background-color: ${colors.gray["200"]};
 
   .header__Wrapper {
     display: flex;
