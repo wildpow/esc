@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 const StyledLink = styled(Link)`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   font-size: 1.1rem;
   text-decoration: none;
   font-weight: 700;
@@ -65,6 +65,7 @@ const Wrapper = styled.div`
     margin-right: 5px;
     margin-left: 5px;
     margin-bottom: 1px;
+    padding-top: 34px;
   }
   @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
     display: none;
@@ -165,7 +166,7 @@ const Home = styled(StyledLink)`
 const Landscape = () => {
   return (
     <>
-      <Div>
+      {/* <Div>
         <Home
           onClick={() => {
             document.body.style.overflow = "visible";
@@ -178,7 +179,7 @@ const Landscape = () => {
         >
           Home
         </Home>
-      </Div>
+      </Div> */}
       <Wrapper>
         <Holder>
           <StyledLink

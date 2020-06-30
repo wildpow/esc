@@ -26,7 +26,7 @@ const Panda = styled.img`
   }
 `;
 const StyledLink = styled(Link)`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   font-size: 1.1rem;
   text-decoration: none;
   font-weight: 700;
@@ -79,7 +79,7 @@ const Line = styled.div`
   background: white;
   margin: 0 auto;
   animation: 0.9s ${ShrinkKeyframe} forwards;
-  animation-delay: ${props => props.delay};
+  animation-delay: ${(props) => props.delay};
 `;
 const Wrapper = styled.div`
   display: none;
@@ -87,7 +87,7 @@ const Wrapper = styled.div`
   margin: 0;
   padding: 0;
   height: 100%;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   @media (min-width: 300px) and (max-width: 360px) {
     height: 90%;
   }
@@ -133,13 +133,13 @@ const HideLine = styled(Line)`
 `;
 const Space = styled.div`
   width: 100%;
-  height: 110px;
+  height: 50px;
 
   @media (max-width: 350px) {
-    height: 110px;
+    /* height: 110px; */
   }
   @media (min-width: 414px) and (min-height: 736px) {
-    height: 125px;
+    /* height: 125px; */
     width: 100%;
   }
 
@@ -190,7 +190,7 @@ const Portrait = () => {
           </Container>
           <Line delay="0s" />
 
-          {firstSet.map(item => (
+          {firstSet.map((item) => (
             <Container
               key={item.key}
               onClick={() => {
@@ -222,7 +222,7 @@ const Portrait = () => {
           ))}
         </SmallItemsContainer>
         <LargeItemsContainer>
-          {secondSet.map(item => (
+          {secondSet.map((item) => (
             <Container
               key={item.key}
               onClick={() => {
@@ -252,7 +252,7 @@ const Portrait = () => {
           ))}
         </LargeItemsContainer>
       </div>
-      <Panda src={Logo} />
+      {/* <Panda src={Logo} /> */}
     </Wrapper>
   );
 };

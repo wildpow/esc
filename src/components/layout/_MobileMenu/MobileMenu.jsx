@@ -9,10 +9,12 @@ import {
   spacing,
   fonts,
 } from "../../../utils/styles";
+import Landscape from "../mobileMenu/landscape";
+import Portrait from "../mobileMenu/portrait";
 
 const MobileMenuRoot = styled.div`
   display: ${({ pin }) => (pin ? "initial" : "none")};
-  background: ${colors.white};
+  background: ${colors.blue["900"]};
   bottom: 0;
   position: fixed;
   right: 0;
@@ -32,10 +34,30 @@ const MobileMenuRoot = styled.div`
   &.closed {
     transform: translateX(100%);
   }
-
-  @media (min-width: ${breakpoints.sm}) {
-    width: ${dimensions.cartWidthDesktop};
+  @media (max-width: 300px) {
+    width: 100%;
   }
+  @media (min-width: 600px) and (min-height: 700px) {
+    width: 45%;
+  }
+  @media (min-width: 800px) and (min-height: 800px) {
+    width: 35%;
+  }
+  @media (max-height: 500px) and (max-width: 900px) {
+    width: 100%;
+  }
+  @media (orientation: landscape) and (max-height: 600px) {
+    width: 100%;
+  }
+  @media (min-height: 550px) and (min-width: 900px) and (max-width: 1022px) {
+    width: 40%;
+  }
+  @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
+    width: 40%;
+  }
+  /* @media (min-width: ${breakpoints.sm}) {
+    width: ${dimensions.cartWidthDesktop};
+  } */
 
   &.loading {
     ::after {
@@ -97,11 +119,13 @@ const MobileMenu = ({ status, pin, toggle, menuId, ...props }) => {
         />
         {/* <Title>Mobile Menu</Title> */}
       </Heading>
-      <ul aria-hidden={!isHidden}>
+      {/* <ul aria-hidden={!isHidden}>
         <li tabIndex={tabIndex}>Cool</li>
         <li tabIndex={tabIndex}>stuff</li>
         <li tabIndex={tabIndex}>here</li>
-      </ul>
+      </ul> */}
+      {status && <Portrait />}
+      <Landscape />
     </MobileMenuRoot>
   );
 };
