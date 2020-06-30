@@ -28,7 +28,7 @@ export const MainFooter = styled.footer`
 `;
 
 export const Wrapper = styled.div`
-  box-shadow: ${props => props.theme.newBoxShadow};
+  box-shadow: ${(props) => props.theme.newBoxShadow};
   margin: 0 auto;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -66,7 +66,7 @@ export const Contact = styled.div`
 export const Hours = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   font-weight: 300;
   text-align: center;
   font-size: 0.9rem;
@@ -76,7 +76,7 @@ export const Hours = styled.div`
   }
   @media (min-width: 768px) {
     font-size: 1.3rem;
-    width: 250px;
+    width: auto;
     line-height: 2rem;
   }
   @media (min-width: 1024px) {
@@ -90,6 +90,19 @@ export const HoursPara = styled.p`
   margin-top: 4px;
   margin: 0;
   ${FHoursParaPr1nt}
+  line-height: ${({ time }) => (time ? "1.5rem" : "1rem")};
+  /* @media (min-width: 640px) {
+    line-height: 1.8rem;
+  } */
+  @media (orientation: landscape) and (max-width: 640px) {
+    line-height: 2rem;
+    line-height: 1.6rem;
+    /* line-height: ${({ time }) => (time ? "2rem" : "1.5rem")}; */
+  }
+  @media (min-width: 640px){
+    line-height: 1.8rem;
+    /* line-height: ${({ time }) => (time ? "2rem" : "1.5rem")}; */
+  }
 `;
 
 export const HoursSpan = styled.span`
@@ -103,9 +116,9 @@ export const MapLink = styled(OutboundLink)`
   text-decoration: none;
   &:hover {
     text-decoration: underline;
-    text-decoration-color: ${props => props.theme.mainColor2};
-    -webkit-text-decoration-color: ${props => props.theme.mainColor2};
-    -moz-text-decoration-color: ${props => props.theme.mainColor2};
+    text-decoration-color: ${(props) => props.theme.mainColor2};
+    -webkit-text-decoration-color: ${(props) => props.theme.mainColor2};
+    -moz-text-decoration-color: ${(props) => props.theme.mainColor2};
   }
 `;
 
@@ -154,7 +167,7 @@ export const Wrap = styled.div`
 `;
 
 export const BottomLinkWrapper = styled.div`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   font-weight: 400;
   display: flex;
   width: 100%;
@@ -172,10 +185,10 @@ export const BottomLinkWrapper = styled.div`
 `;
 
 export const BottomLinks = styled(Link)`
-  color: ${props => props.theme.mainColor1};
+  color: ${(props) => props.theme.mainColor1};
   transition: color 0.2s ease-in;
   &:hover {
-    color: ${props => props.theme.mainColor2};
+    color: ${(props) => props.theme.mainColor2};
   }
 `;
 

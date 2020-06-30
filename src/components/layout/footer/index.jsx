@@ -78,12 +78,12 @@ const Footer = () => (
         }
       }
     `}
-    render={data => {
+    render={(data) => {
       const { images } = data.datoCmsImage;
       let bbb;
       let clothsForKids;
       let aquasox;
-      images.map(img => {
+      images.map((img) => {
         if (img.title === "bbb") bbb = img;
         if (img.title === "aquosox") aquasox = img;
         if (img.title === "clothes_for_kids") clothsForKids = img;
@@ -159,10 +159,8 @@ const Footer = () => (
             <Contact>
               <Hours>
                 <HoursSpan>Hours</HoursSpan>
-                <HoursPara>
-                  Mon-Fri 10am - 8pm
-                  <br />
-                  Saturday 10am - 7pm
+                <HoursPara time>
+                  Mon-Sat 10am - 7pm
                   <br />
                   Sunday 10am - 6pm
                 </HoursPara>
@@ -175,9 +173,7 @@ const Footer = () => (
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    10121 Evergreen Way
-                    <br />
-                    #30
+                    10121 Evergreen Way #30
                     <br />
                     Everett, Washington 98204
                   </MapLink>
