@@ -10,7 +10,7 @@ const deadSimpleEntry = keyframes`
 `;
 
 const PageContentRoot = styled.main`
-  /* padding-top: ${spacing["4"]}; */
+  padding-top: ${spacing["4"]};
   min-height: 100vh;
   box-shadow: ${boxShadow["2xl"]};
   position: relative;

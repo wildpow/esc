@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { bool, number } from "prop-types";
 import styled from "styled-components";
 import usePrevious from "../../Hooks/use-previous";
-import { numberEntry } from "../../../utils/keyframes";
+// import { numberEntry } from "../../../utils/keyframes";
 import {
   colors,
   dimensions,
@@ -13,6 +13,7 @@ import {
 
 const CartIndicatorRoot = styled.div`
   font-family: ${fonts.sans};
+  pointer-events: none;
   background: ${colors.yellow["400"]};
   border-radius: ${radius.large}px;
   color: ${colors.blue["900"]};
@@ -27,7 +28,7 @@ const CartIndicatorRoot = styled.div`
   padding: ${spacing["2"]} ${spacing["4"]};
   position: absolute;
   top: calc(${dimensions.headerHeight} + ${spacing["4"]});
-  /* transform: translateX(calc((100% + ${spacing["4"]}) * -1)); */
+  transform: translateX(calc((100% + ${spacing["4"]}) * -1));
   transition: all 0.2s ease-in-out;
 `;
 

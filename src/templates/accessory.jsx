@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
@@ -20,6 +21,19 @@ import {
 import ImageCarousel from "../components/singleProduct/ImageCarousel";
 import AccessoryForm from "../components/accessories/AccessoryForm";
 
+const SmList = styled(List)`
+  display: flex;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const LgList = styled(List)`
+  display: flex;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
 const Accessory = ({ data }) => {
   const { shopifyProduct: product } = data;
   return (
@@ -48,7 +62,7 @@ const Accessory = ({ data }) => {
               />
             </div>
             <MainInfo>
-              <List>
+              <SmList>
                 <h3>{product.metafields[0].key}</h3>
                 <div
                   // eslint-disable-next-line react/no-danger
@@ -56,7 +70,7 @@ const Accessory = ({ data }) => {
                     __html: product.metafields[0].value,
                   }}
                 />
-              </List>
+              </SmList>
               <AccessoryForm
                 variants={product.variants}
                 priceMin={product.priceRange.minVariantPrice.amount}
@@ -70,6 +84,15 @@ const Accessory = ({ data }) => {
           </header>
           <Article>
             <Description>{product.description}</Description>
+            <LgList>
+              <h3>{product.metafields[0].key}</h3>
+              <div
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: product.metafields[0].value,
+                }}
+              />
+            </LgList>
           </Article>
         </Wrapper>
         <BreadWrapper>
