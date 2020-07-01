@@ -15,10 +15,11 @@ import {
 } from "../../../utils/styles";
 import Nav from "./Nav";
 import NavIcons from "./NavIcons";
+import MenuOverLay from "../../shared/MenuOverLay";
 
 const HeaderRoot = styled.header`
-  transition: 0.75s;
-  will-change: transform;
+  transition: all 0.75s;
+  /* will-change: transform; */
   right: 0;
   top: 0;
   z-index: 10;
@@ -26,7 +27,8 @@ const HeaderRoot = styled.header`
   flex-direction: column;
   box-shadow: ${boxShadow.lg};
   background-color: ${colors.gray["200"]};
-
+  pointer-events: ${({ cartStatus, menuStatus }) =>
+    cartStatus === "open" || menuStatus === "open" ? "none" : "auto"};
   .header__Wrapper {
     display: flex;
     flex-direction: column-reverse;
@@ -40,8 +42,8 @@ const HeaderRoot = styled.header`
     padding-left: ${spacing["2"]};
   }
   .brand__anchor {
-    pointer-events: ${({ cartStatus }) =>
-      cartStatus === "open" ? "none" : "auto"};
+    /* pointer-events: ${({ cartStatus, menuStatus }) =>
+      cartStatus === "open" || menuStatus === "open" ? "none" : "auto"}; */
     display: block;
     flex-shrink: 0;
     line-height: 1;
@@ -81,10 +83,10 @@ const HeaderRoot = styled.header`
   }
 
   @media (min-width: ${breakpoints.sm}) {
-    transform: translateX(0);
+    transform: translate3d(0vw, 0, 0);
     &.moved {
-      filter: blur(1px);
-      transform: translateX(-400px);
+      /* filter: blur(1px); */
+      transform: translate3d(-400px, 0, 0);
     }
   }
   @media screen and (min-width: ${breakpoints.md}) {
@@ -137,6 +139,7 @@ const Header = ({ cartStatus, menuStatus, pin, moved }) => {
       menuStatus={menuStatus}
       className={moved}
     >
+      {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
       <div className="header__Wrapper">
         <div className="header__flex">
           <Link className="brand__anchor" to="/">

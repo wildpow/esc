@@ -28,7 +28,7 @@ const MobileMenuRoot = styled.div`
 
   &.open {
     transform: translateX(0%);
-    box-shadow: 0 0 10px #85888c;
+    box-shadow: 0 0 10px ${colors.gray["800"]};
   }
 
   &.closed {

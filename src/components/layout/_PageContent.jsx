@@ -20,11 +20,11 @@ const PageContentRoot = styled.main`
   /* display: flex;
   flex-direction: column; */
   /* min-height: calc(100vh - 60px); */
+  will-change: transform;
   opacity: 1;
   padding-left: 0;
   width: 100%;
-  transition: 0.75s;
-  will-change: transform;
+  transition: all 0.75s;
   &.covered {
     opacity: 0;
     position: fixed;
@@ -35,10 +35,10 @@ const PageContentRoot = styled.main`
   }
 
   @media (min-width: ${breakpoints.sm}) {
-    transform: translateX(0);
+    transform: translate3d(0vw, 0, 0);
     &.moved {
-      filter: blur(1px);
-      transform: translateX(-400px);
+      /* filter: blur(1px); */
+      transform: translate3d(-400px, 0, 0);
     }
   }
   @media (min-width: ${breakpoints.md}) {

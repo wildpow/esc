@@ -9,35 +9,20 @@ import Header from "./_Header";
 import Cart from "./_Cart";
 import MobileMenu from "./_MobileMenu";
 import ModalContextProvider from "./modalContext";
-
 import PageContent from "./_PageContent";
 import useOnClickOutside from "../Hooks/use-onClick-outside";
 import useKeyboardEvent from "../Hooks/use-keyboard-event";
 import { useWindowDimensions } from "../context/WindowDimensions";
 import Footer from "./_Footer";
-import { breakpoints } from "../../utils/styles";
 import StructuredDataMain from "./structuredDataMain";
-
-const MenuOverLay = styled.div`
-  display: none;
-  @media (min-width: ${breakpoints.sm}) {
-    z-index: 1;
-    background: rgba(0, 0, 0, 0.3);
-    bottom: 0;
-    display: block;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-  }
-`;
+import MenuOverLay from "../shared/MenuOverLay";
 
 const MainRoot = styled.div`
   max-width: 1370px;
   margin-left: auto;
   margin-right: auto;
-  padding-right: ${({ cartStatus, menuStatus }) =>
-    cartStatus === "open" || menuStatus === "open" ? "15px" : "0px"};
+  /* padding-right: ${({ cartStatus, menuStatus }) =>
+    cartStatus === "open" || menuStatus === "open" ? "15px" : "0px"}; */
 `;
 function Layout({ children }) {
   const element = document.getElementById("bf-revz-widget-1484606125");
@@ -113,10 +98,12 @@ function Layout({ children }) {
         onUnpin={() => setpen(false)}
         pinStart={-1}
       >
-        {menuStatus === "open" || cartStatus === "open" ? (
-          <MenuOverLay />
-        ) : null}
-        <Header moved={moved} pin={pin} />
+        <Header
+          moved={moved}
+          pin={pin}
+          cartStatus={cartStatus}
+          menuStatus={menuStatus}
+        />
       </Headroom>
       <div ref={node}>
         <FocusLockUI

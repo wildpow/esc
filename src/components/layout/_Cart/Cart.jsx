@@ -349,6 +349,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
           aria-label="Shopping cart with 1 items"
           onClick={toggle}
           pin={pin}
+          menuStatus={menuStatus}
         >
           {status === "open" ? (
             <span aria-hidden>

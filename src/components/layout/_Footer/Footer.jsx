@@ -63,10 +63,10 @@ const FooterRoot = styled.footer`
   transition: 0.75s;
   will-change: transform;
   @media (min-width: ${breakpoints.sm}) {
-    transform: translateX(0);
+    transform: translate3d(0vw, 0, 0);
     &.moved {
-      filter: blur(1px);
-      transform: translateX(-400px);
+      /* filter: blur(1px); */
+      transform: translate3d(-400px, 0, 0);
     }
   }
   .firstUL {
