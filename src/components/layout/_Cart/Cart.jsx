@@ -30,6 +30,7 @@ const CartRoot = styled.div`
   width: 100%;
   will-change: transform;
   z-index: ${({ zIndex }) => zIndex};
+  /* z-index: ${({ status }) => (status === "open" ? "11" : "10")}; */
   display: ${({ pin }) => (pin ? "initial" : "none")};
   ::after {
     background-color: ${colors.white};
@@ -97,7 +98,8 @@ const CartToggle = styled.button`
     height: 28px;
     margin: 0;
     width: 28px;
-    color: ${colors.gray["600"]};
+    color: ${({ menuStatus }) =>
+      menuStatus === "open" ? colors.gray["800"] : colors.gray["600"]};
     transition: all 0.2s ease;
   }
 
@@ -112,8 +114,22 @@ const CartToggle = styled.button`
   padding: 0;
   position: relative;
   top: 0;
-  transform: translateX(-100%);
-  transition: all 0.2s ease;
+  @media (max-width: ${breakpoints.sm}) {
+    transform: translateX(-100%);
+    transition: all 0.2s ease;
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    transform: ${({ menuStatus }) =>
+      menuStatus === "open" ? "translateX(-420px)" : "translateX(-100%)"};
+  }
+  @media (min-width: ${breakpoints.md}) {
+    transform: ${({ menuStatus }) =>
+      menuStatus === "open" ? "translateX(-465px)" : "translateX(-100%)"};
+  }
+  transition: ${({ menuStatus }) =>
+    menuStatus === "open" ? "all 0.75s" : "all .2s ease"};
+  pointer-events: ${({ menuStatus }) =>
+    menuStatus === "open" ? "none" : "auto"};
   width: ${dimensions.headerHeight};
   :hover {
     transform: scale(1.2) translateX(-85%);
@@ -322,6 +338,8 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     (total, item) => total + item.quantity,
     0,
   );
+  /* z-index: ${({ zIndex }) => zIndex}; */
+  //  z-index: ${({ status }) => (status === "open" ? "11" : "10")};
   const [zIndex, setZindex] = useState(10);
   useEffect(() => {
     function zIndexTimer(value, time) {
@@ -340,6 +358,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
   return (
     <CartRoot
       className={`${status} ${loading ? "loading" : ""}`}
+      status={status}
       zIndex={zIndex}
       aria-hidden={!isHidden}
       pin={pin}
