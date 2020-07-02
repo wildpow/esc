@@ -9,8 +9,8 @@ import {
   // spacing,
   // fonts,
 } from "../../../utils/styles";
-import Landscape from "./landscape";
-import Portrait from "./portrait";
+import Landscape from "./Landscape";
+import Portrait from "./Portrait";
 
 const MobileMenuRoot = styled.div`
   display: ${({ pin }) => (pin ? "initial" : "none")};

@@ -16,7 +16,7 @@ import Twitter from "../../../assets/twitter-brands.svg";
 import FaceBook from "../../../assets/facebook-f-brands.svg";
 import useFooterIcons from "./use-footer-icons";
 import useReaders from "./use-readers-choice";
-import Bird from "./bird";
+import Bird from "./Bird";
 
 const FooterRoot = styled.footer`
   display: flex;
