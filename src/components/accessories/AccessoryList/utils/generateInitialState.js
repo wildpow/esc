@@ -1,6 +1,6 @@
 /* eslint-disable prefer-destructuring */
-import accData from "./headerData";
-import useHeaders from "../../Hooks/use-headers";
+// import accData from "./headerData";
+// import useHeaders from "../../Hooks/use-headers";
 
 const GenerateInitialState = (
   location,
@@ -28,7 +28,9 @@ const GenerateInitialState = (
       { value: "Pillow", checked: false, displayName: "Pillows" },
       { value: "Protector", checked: false, displayName: "Protectors" },
     ];
-    window.history.replaceState({}, "", `${location.pathname}`);
+    if (typeof window !== `undefined`) {
+      window.history.replaceState({}, "", `${location.pathname}`);
+    }
     initialState.acc = initialState.accBeforeFilter;
   } else if (type.toLowerCase() === "sheets") {
     initialState.selectedAccInfo = initialState.accInfo[0];
@@ -64,7 +66,9 @@ const GenerateInitialState = (
       { value: "Pillow", checked: false, displayName: "Pillows" },
       { value: "Protector", checked: false, displayName: "Protectors" },
     ];
-    window.history.replaceState({}, "", `${location.pathname}`);
+    if (typeof window !== `undefined`) {
+      window.history.replaceState({}, "", `${location.pathname}`);
+    }
     initialState.acc = initialState.accBeforeFilter;
   }
   return initialState;

@@ -74,14 +74,18 @@ const filterSortReducer = (state, action) => {
 
       if (newSelectedTypes.length !== 1) {
         newInfo = state.accInfo[3];
-        window.history.replaceState({}, "", `${state.locationPath}`);
+        if (typeof window !== `undefined`) {
+          window.history.replaceState({}, "", `${state.locationPath}`);
+        }
       } else {
         newInfo = state.accInfo[action.index];
-        window.history.replaceState(
-          {},
-          "",
-          `${state.locationPath}?type=${newSelectedTypes[0].toLowerCase()}`,
-        );
+        if (typeof window !== `undefined`) {
+          window.history.replaceState(
+            {},
+            "",
+            `${state.locationPath}?type=${newSelectedTypes[0].toLowerCase()}`,
+          );
+        }
       }
       return {
         ...state,

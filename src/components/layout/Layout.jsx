@@ -19,7 +19,10 @@ const MainRoot = styled.div`
     cartStatus === "open" || menuStatus === "open" ? "15px" : "0px"}; */
 `;
 function Layout({ children }) {
-  const element = document.getElementById("bf-revz-widget-1484606125");
+  const element =
+    typeof document !== `undefined`
+      ? document.getElementById("bf-revz-widget-1484606125")
+      : null;
   const menuId = "main-menu";
   const node = useRef();
   const { width } = useWindowDimensions();

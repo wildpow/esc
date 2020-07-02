@@ -1,13 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { StaticQuery, graphql } from "gatsby";
+import { StaticQuery, graphql, Link } from "gatsby";
 import { Headline, Wrapper, P } from "../../styles/homeStyles";
-// FooterLink
 import SocialIcons from "../socialIcons";
-import { BottomLinks } from "../layout/footer/footer.styles";
+
+export const BottomLinks = styled(Link)`
+  color: ${(props) => props.theme.mainColor1};
+  transition: color 0.2s ease-in;
+  &:hover {
+    color: ${(props) => props.theme.mainColor2};
+  }
+`;
 
 const Container = styled.div`
-  border-top: 2px solid ${props => props.theme.newColor3};
+  border-top: 2px solid ${(props) => props.theme.newColor3};
   background-color: white;
 `;
 
@@ -23,7 +29,7 @@ const Front = () => (
             }
           }
         `}
-        render={data => (
+        render={(data) => (
           <>
             <Headline>{data.datoCmsFrontPage.frontPageTitle}</Headline>
             <P>{data.datoCmsFrontPage.frontPageTextBlock}</P>
