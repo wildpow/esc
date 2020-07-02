@@ -323,7 +323,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     await removeLineItem(client, checkout.id, itemID);
     setLoading(false);
   };
-
+  // test
   const handleQuantityChange = (lineItemID) => async (quantity) => {
     if (!quantity) {
       return;
