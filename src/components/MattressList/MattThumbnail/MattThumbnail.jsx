@@ -9,8 +9,8 @@ import {
   Banner,
   PriceRange,
   Name,
-} from "./mattThumb.Styles";
-import FirmnessScale from "./firmnessScale";
+} from "./MattThumb.Styled";
+import FirmnessScale from "./FirmnessScale";
 
 const MattressThumb = ({ mattress, url }) => {
   return (

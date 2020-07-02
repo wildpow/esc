@@ -8,7 +8,7 @@
 
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import WindowDimensionsProvider from "./src/components/context/WindowDimensions";
+import WindowSizeProvider from "./src/provider/WindowSizeProvider";
 import { theme } from "./src/styles/mainStyles";
 import StoreProvider from "./src/provider/StoreProvider";
 
@@ -19,7 +19,7 @@ export const wrapRootElement = ({ element }) => {
   return (
     <StoreProvider>
       <ThemeProvider theme={theme}>
-        <WindowDimensionsProvider>{element}</WindowDimensionsProvider>
+        <WindowSizeProvider>{element}</WindowSizeProvider>
       </ThemeProvider>
     </StoreProvider>
   );

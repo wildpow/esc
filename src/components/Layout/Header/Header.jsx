@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { string, bool } from "prop-types";
 import styled from "styled-components";
 import logo from "../../../images/header/logo2.png";
-import { useWindowDimensions } from "../../Context/WindowDimensions";
+import { useWindowSize } from "../../../context/WindowSizeContext";
 import {
   colors,
   dimensions,
@@ -132,7 +132,7 @@ const HeaderRoot = styled.header`
 `;
 
 const Header = ({ cartStatus, menuStatus, pin, moved }) => {
-  const { width } = useWindowDimensions();
+  const { width } = useWindowSize();
   return (
     <HeaderRoot
       cartStatus={cartStatus}

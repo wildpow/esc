@@ -6,7 +6,7 @@ import { sidecar } from "use-sidecar";
 import Headroom from "react-headroom";
 import ModalContextProvider from "./ModalContext";
 import { useOnClickOutside, useKeyboardEvent } from "../Hooks";
-import { useWindowDimensions } from "../Context/WindowDimensions";
+import { useWindowSize } from "../../context/WindowSizeContext";
 import MenuOverLay from "../shared/MenuOverLay";
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
 // import Header from "./Header";
@@ -29,7 +29,7 @@ function Layout({ children }) {
       : null;
   const menuId = "main-menu";
   const node = useRef();
-  const { width } = useWindowDimensions();
+  const { width } = useWindowSize();
   const [cartStatus, setCartStatus] = useState("closed");
   const [menuStatus, setMenuStatus] = useState("closed");
   const [pin, setpen] = useState(true);

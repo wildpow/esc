@@ -2,9 +2,9 @@ import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Header from "./Header";
-import MattressThumb from "./mattThumbNail";
+import MattressThumb from "./MattThumbnail";
 import FilterSortPanel from "./FilterSortPanel";
-import filterSortReducer from "./filterSortReducer";
+import filterSortReducer from "./FilterSortReducer";
 import BreadCrumbs, { BreadWrapper } from "../BreadCrumbs";
 
 export const NewBread = styled(BreadWrapper)`
@@ -63,7 +63,7 @@ export const MattListWrapper = styled.div`
   }
 `;
 
-const MattList = ({
+const MattressList = ({
   mattresses,
   title,
   description,
@@ -125,7 +125,7 @@ const MattList = ({
   );
 };
 
-MattList.propTypes = {
+MattressList.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   mattresses: PropTypes.instanceOf(Object).isRequired,
@@ -133,9 +133,9 @@ MattList.propTypes = {
   brandName: PropTypes.string,
 };
 
-MattList.defaultProps = {
+MattressList.defaultProps = {
   breadCrumbs: false,
   brandName: "Nothing",
 };
 
-export default MattList;
+export default MattressList;

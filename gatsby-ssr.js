@@ -9,13 +9,13 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./src/styles/mainStyles";
 import StoreProvider from "./src/provider/StoreProvider";
-import WindowDimensionsProvider from "./src/components/context/WindowDimensions";
+import WindowSizeProvider from "./src/provider/WindowSizeProvider";
 
 export const wrapRootElement = ({ element }) => {
   return (
     <StoreProvider>
       <ThemeProvider theme={theme}>
-        <WindowDimensionsProvider>{element}</WindowDimensionsProvider>
+        <WindowSizeProvider>{element}</WindowSizeProvider>
       </ThemeProvider>
     </StoreProvider>
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Img from "gatsby-image";
-import { useWindowDimensions } from "../Context/WindowDimensions";
+import { useWindowSize } from "../../context/WindowSizeContext";
 import Tab from "./Tab";
 import arrowDown from "../../images/whitedownArrow.png";
 import AnimatedBox from "./AnimatedBox";
@@ -60,7 +60,7 @@ const Holder = styled.div`
 `;
 const TabBox = ({ tabs, hero, heroText }) => {
   const [current, setCurrent] = useState(0);
-  const { width } = useWindowDimensions();
+  const { width } = useWindowSize();
   return (
     <Holder>
       <header>

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import chevron from "../../images/new/chevron-down-solid.svg";
-import { useWindowDimensions } from "../Context/WindowDimensions";
+import { useWindowSize } from "../../context/WindowSizeContext";
 import { colors } from "../../utils/styles";
 
 const AccordionWrapper = styled.div`
@@ -70,7 +70,7 @@ const AccordionWrapper = styled.div`
 `;
 
 const Accordion = ({ title, children }) => {
-  const { width } = useWindowDimensions();
+  const { width } = useWindowSize();
   const content = useRef(null);
   const [active, setActive] = useState(false);
   const [height, setHeight] = useState("0px");
