@@ -9,7 +9,10 @@ import { useOnClickOutside, useKeyboardEvent } from "../Hooks";
 import { useWindowDimensions } from "../context/WindowDimensions";
 import MenuOverLay from "../shared/MenuOverLay";
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
-import { Header, Cart, MobileMenu, Footer } from "./LayoutComponents";
+import Header from "./Header";
+import Cart from "./Cart";
+import MobileMenu from "./MobileMenu";
+import Footer from "./Footer";
 
 const MainRoot = styled.div`
   max-width: 1370px;
