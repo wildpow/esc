@@ -19,7 +19,7 @@ import {
   List,
   Construction,
   Info,
-} from "../components/singleProduct/singleProduct.styles";
+} from "../components/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
 
 const Base = ({ data }) => {

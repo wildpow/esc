@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { FadeIn } from "../../styles/mainStyles";
+import { FadeIn } from "../../../styles/mainStyles";
 
 export const StyledLink = styled(Link)`
   padding-right: 2px;

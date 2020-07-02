@@ -18,13 +18,13 @@ import {
   Profile,
   Warranty,
   Wrapper,
-} from "../components/singleProduct/singleProduct.styles";
-import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import DropDown from "../components/singleProduct/priceDropDown.mattress";
-import ShopifyDropDown from "../components/singleProduct/priceDropdownShopify.matt";
+} from "../components/SingleProduct/SingleProduct.styled";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
+import DropDown from "../components/SingleProduct/priceDropDown.mattress";
+import ShopifyDropDown from "../components/SingleProduct/priceDropdownShopify.matt";
 import dateSEO from "../functions/dateSEO";
-import ImageCarousel from "../components/singleProduct/ImageCarousel";
-import FirmnessScale from "../components/singleProduct/FirmessScaleMobile";
+import ImageCarousel from "../components/SingleProduct/ImageCarousel";
+import FirmnessScale from "../components/SingleProduct/FirmessScaleMobile";
 
 const LeftSide = styled.div`
   display: flex;
