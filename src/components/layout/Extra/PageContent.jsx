@@ -1,7 +1,7 @@
 import React from "react";
 import { node, string } from "prop-types";
 import styled, { keyframes } from "styled-components";
-import { breakpoints, colors, spacing, boxShadow } from "../../utils/styles";
+import { breakpoints, colors, spacing, boxShadow } from "../../../utils/styles";
 
 const deadSimpleEntry = keyframes`
   from {

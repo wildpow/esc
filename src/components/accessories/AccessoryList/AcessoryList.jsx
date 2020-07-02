@@ -11,16 +11,19 @@ import useProtector from "../Hooks/use-protector";
 import useSheets from "../Hooks/use-sheets";
 import usePillows from "../Hooks/use-pillows";
 import GenerateInitialState from "./utils/generateInitialState";
+import useHeaders from "../Hooks/use-headers";
 
 const AccessoryList = ({ location }) => {
   const protectors = useProtector();
   const sheets = useSheets();
   const pillows = usePillows();
+  const headers = useHeaders();
   const initialState = GenerateInitialState(
     location,
     pillows,
     sheets,
     protectors,
+    headers,
   );
   const [state, dispatch] = useReducer(filterSortAcc, initialState);
   return (
@@ -31,8 +34,8 @@ const AccessoryList = ({ location }) => {
         </NewBread>
         <Header
           title={state.selectedAccInfo.title}
-          description={state.selectedAccInfo.description}
-          headerBG={state.selectedAccInfo.bg}
+          description={state.selectedAccInfo.tagLine}
+          headerBG={state.selectedAccInfo.bgImg.url}
         />
         <div className="mattList__flex">
           <FilterSortPanel

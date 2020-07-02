@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import chevron from "../../images/new/chevron-down-solid.svg";
 import { useWindowDimensions } from "../context/WindowDimensions";
+import { colors } from "../../utils/styles";
 
 const AccordionWrapper = styled.div`
   margin-bottom: 10px;
@@ -27,7 +28,11 @@ const AccordionWrapper = styled.div`
     appearance: none;
     background-color: #fff;
     background-image: url(${(props) => props.bg}),
-      linear-gradient(to bottom, #0069ed 0%, #0069ed 100%);
+      linear-gradient(
+        to bottom,
+        ${colors.blue["600"]} 0%,
+        ${colors.blue["800"]} 100%
+      );
     background-repeat: no-repeat, repeat;
     background-position: right 0.7em top 50%, 0 0;
     background-size: 1.2em auto, 100%;
@@ -38,7 +43,11 @@ const AccordionWrapper = styled.div`
   button:hover,
   button:focus {
     background-image: url(${(props) => props.bg}),
-      linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
+      linear-gradient(
+        to bottom,
+        ${colors.red["700"]} 0%,
+        ${colors.red["900"]} 100%
+      );
   }
 
   button:focus {

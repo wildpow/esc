@@ -3,13 +3,13 @@ import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   margin-top: 15px;
-  /* border: ${props => props.theme.Border}; */
+  /* border: ${(props) => props.theme.Border}; */
   background-color: white;
    padding-left: 5px;
   padding-right: 5px;
-  box-shadow: ${props => props.theme.newBoxShadow};
+  box-shadow: ${(props) => props.theme.newBoxShadow};
   @media (min-width: 1200px) {
     margin-left: 10px;
     margin-right: 10px;
@@ -126,10 +126,10 @@ export const MapImg = styled.img`
 `;
 
 export const Address = styled.p`
-  font-family: ${props => props.theme.MainFont1};
-  background: ${props => props.theme.mainColor2};
-  /* text-shadow: ${props => props.theme.newTextShadow}; */
-  color: ${props => props.theme.newColor1};
+  font-family: ${(props) => props.theme.MainFont1};
+  background: ${(props) => props.theme.mainColor2};
+  /* text-shadow: ${(props) => props.theme.newTextShadow}; */
+  color: ${(props) => props.theme.newColor1};
   text-align: center;
   font-size: 0.9rem;
   padding: 10px;
@@ -155,7 +155,7 @@ export const Span = styled.span`
 `;
 
 export const RegularParagraph = styled.p`
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   font-weight: 300;
   padding-left: 12px;
   padding-right: 12px;
@@ -181,8 +181,8 @@ export const RegularParagraph = styled.p`
 `;
 
 export const BlueWrapper = styled.div`
-  background-color: ${props => props.theme.mainColor1};
-  color: ${props => props.theme.newColor1};
+  background-color: ${(props) => props.theme.mainColor1};
+  color: ${(props) => props.theme.newColor1};
   margin-top: 20px;
   @media (min-width: 1024px) {
     margin-top: 40px;
@@ -190,8 +190,8 @@ export const BlueWrapper = styled.div`
 `;
 
 export const SecondP = styled.p`
-  text-shadow: ${props => props.theme.newTextShadow};
-  font-family: ${props => props.theme.MainFont1};
+  text-shadow: ${(props) => props.theme.newTextShadow};
+  font-family: ${(props) => props.theme.MainFont1};
   padding-left: 30px;
   padding-right: 30px;
   line-height: 1.6rem;

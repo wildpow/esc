@@ -6,11 +6,11 @@ import {
   colors,
   breakpoints,
   dimensions,
-  spacing,
-  fonts,
+  // spacing,
+  // fonts,
 } from "../../../utils/styles";
-import Landscape from "../mobileMenu/landscape";
-import Portrait from "../mobileMenu/portrait";
+import Landscape from "./landscape";
+import Portrait from "./portrait";
 
 const MobileMenuRoot = styled.div`
   display: ${({ pin }) => (pin ? "initial" : "none")};
@@ -81,23 +81,23 @@ const Heading = styled.header`
   color: ${colors.gray["900"]};
 `;
 
-const Title = styled.h2`
-  flex-grow: 1;
-  font-family: ${fonts.sans};
-  font-size: 1.8rem;
-  left: -${dimensions.headerHeight};
-  margin: 0;
-  margin-left: ${spacing["4"]};
-  position: relative;
+// const Title = styled.h2`
+//   flex-grow: 1;
+//   font-family: ${fonts.sans};
+//   font-size: 1.8rem;
+//   left: -${dimensions.headerHeight};
+//   margin: 0;
+//   margin-left: ${spacing["4"]};
+//   position: relative;
 
-  .open & {
-    margin-left: calc(${dimensions.headerHeight} + ${spacing["4"]});
+//   .open & {
+//     margin-left: calc(${dimensions.headerHeight} + ${spacing["4"]});
 
-    @media (min-width: ${breakpoints.lg}) {
-      margin-left: ${spacing["4"]};
-    }
-  }
-`;
+//     @media (min-width: ${breakpoints.lg}) {
+//       margin-left: ${spacing["4"]};
+//     }
+//   }
+// `;
 
 const MobileMenu = ({ status, pin, toggle, menuId, ...props }) => {
   const isHidden = status === "open";

@@ -14,6 +14,7 @@ import {
 } from "../styles/adjustableStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
 import Layout from "../components/layout";
+import { colors } from "../utils/styles";
 
 export const AdjMarkdown = styled.div`
   font-family: ${(props) => props.theme.MainFont3};
@@ -24,6 +25,7 @@ export const AdjMarkdown = styled.div`
   h3 {
     border-bottom: 4px solid ${(props) => props.theme.mainColor2};
     font-size: 1.3rem;
+    color: ${colors.blue["900"]};
     margin-top: 0;
     margin-bottom: 0;
     padding-bottom: 2px;
@@ -40,6 +42,7 @@ export const AdjMarkdown = styled.div`
     line-height: 1.35rem;
     padding-bottom: 2px;
     font-size: 0.9rem;
+    color: ${colors.gray["700"]};
   }
   @media (min-width: 568px) {
     display: block;

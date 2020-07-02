@@ -1,66 +1,91 @@
 import React from "react";
-import { ThemeConsumer } from "styled-components";
-import { Header, Nav, StyledLink } from "./nav.styles";
+import { Link } from "gatsby";
+import { string } from "prop-types";
+import styled, { keyframes } from "styled-components";
+import {
+  colors,
+  // dimensions,
+  // breakpoints,
+  // spacing,
+  // fontSize,
+  fonts,
+} from "../../../utils/styles";
 
-const menuLeft = [
+// const navEntry = keyframes`
+//   0% {
+//     transform: translateY(-100%)
+//   }
+//   100% {
+//     transform: translateY(0%);
+//   }
+// `;
+
+const menuData = [
   { name: "Brands", url: "/brands" },
   { name: "Adjustable", url: "/adjustable" },
   { name: "Accessories", url: "/accessories" },
-];
-const menuRight = [
   { name: "Financing", url: "/financing" },
   { name: "Our Blog", url: "/blog" },
   { name: "About Us", url: "/about" },
 ];
 
-const Navigation = () => (
-  <Header>
-    <ThemeConsumer>
-      {theme => (
-        <>
-          <Nav>
-            {menuLeft.map(item => (
-              <StyledLink
-                key={item.name}
-                left="left"
-                partiallyActive
-                activeStyle={{
-                  color: "#0d469b",
-                  transition: "all .5s ease-in-out",
-                  // textShadow: "2px 2px 4px rgba(52, 52, 52, 0.2)",
-                  borderColor: `${theme.mainColor2}`,
-                  boxShadow: `0px 6px 6px -6px rgba(52,52,52,0.51)`,
-                }}
-                to={item.url}
-                styles={{ transition: "all .5s ease-in-out" }}
-              >
-                {item.name}
-              </StyledLink>
-            ))}
-          </Nav>
-          <Nav>
-            {menuRight.map(item => (
-              <StyledLink
-                key={item.name}
-                right="right"
-                partiallyActive
-                to={item.url}
-                activeStyle={{
-                  color: "#0d469b",
-                  transition: "all .5s ease-in-out",
-                  // textShadow: "2px 2px 4px rgba(52, 52, 52, 0.2)",
-                  borderColor: `${theme.mainColor2}`,
-                  boxShadow: `0px 6px 6px -6px rgba(52,52,52,0.51)`,
-                }}
-              >
-                {item.name}
-              </StyledLink>
-            ))}
-          </Nav>
-        </>
-      )}
-    </ThemeConsumer>
-  </Header>
-);
+const NavRoot = styled.nav`
+  /* animation: ${navEntry} 0.75s ease forwards; */
+  font-family: ${fonts.sans};
+  background: ${colors.blue["700"]};
+  z-index: 0;
+  ul {
+    margin: 0;
+    opacity: ${({ cartStatus }) => (cartStatus === "open" ? 0.5 : 1)};
+    display: flex;
+    list-style: none;
+    padding: 0;
+    li {
+      flex: 1;
+      position: relative;
+      text-align: center;
+      a {
+        transition: all 0.2s ease-in-out;
+        pointer-events: ${({ cartStatus }) =>
+          cartStatus === "open" ? "none" : "auto"};
+        width: 100%;
+        padding: 10px 0;
+        color: #fff;
+        display: block;
+        text-decoration: none;
+        :hover {
+          color: ${colors.gray["100"]};
+          background: ${colors.red["800"]};
+        }
+      }
+    }
+  }
+`;
 
-export default Navigation;
+const Nav = ({ cartStatus }) => {
+  return (
+    <NavRoot cartStatus={cartStatus}>
+      <ul>
+        {menuData.map((item) => (
+          <li key={item.name}>
+            <Link
+              to={item.url}
+              partiallyActive
+              activeStyle={{ background: colors.blue["900"] }}
+            >
+              {item.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </NavRoot>
+  );
+};
+
+Nav.defaultProps = {
+  cartStatus: "closed",
+};
+Nav.propTypes = {
+  cartStatus: string,
+};
+export default Nav;

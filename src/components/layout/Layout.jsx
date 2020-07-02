@@ -4,18 +4,12 @@ import PropTypes from "prop-types";
 import FocusLockUI from "react-focus-lock/UI";
 import { sidecar } from "use-sidecar";
 import Headroom from "react-headroom";
-import GlobalStyle from "./_Global.styled";
-import Header from "./_Header";
-import Cart from "./_Cart";
-import MobileMenu from "./_MobileMenu";
 import ModalContextProvider from "./modalContext";
-import PageContent from "./_PageContent";
-import useOnClickOutside from "../Hooks/use-onClick-outside";
-import useKeyboardEvent from "../Hooks/use-keyboard-event";
+import { useOnClickOutside, useKeyboardEvent } from "../Hooks";
 import { useWindowDimensions } from "../context/WindowDimensions";
-import Footer from "./_Footer";
-import StructuredDataMain from "./structuredDataMain";
 import MenuOverLay from "../shared/MenuOverLay";
+import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
+import { Header, Cart, MobileMenu, Footer } from "./LayoutComponents";
 
 const MainRoot = styled.div`
   max-width: 1370px;

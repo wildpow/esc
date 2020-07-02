@@ -1,16 +1,16 @@
-import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
+import { colors } from "../utils/styles";
 
-export const AdjMarkdown = styled(ReactMarkdown)`
-  font-family: ${props => props.theme.MainFont3};
+export const AdjMarkdown = styled.div`
+  font-family: ${(props) => props.theme.MainFont3};
   padding: 0px;
   margin-top: 7%;
   width: 50%;
   display: none;
   p {
-    border-bottom: 4px solid ${props => props.theme.mainColor2};
+    border-bottom: 4px solid ${(props) => props.theme.mainColor2};
     font-size: 1.3rem;
     margin-top: 0;
     margin-bottom: 0;
@@ -85,13 +85,13 @@ export const AdjMarkdown = styled(ReactMarkdown)`
 
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   margin-left: 0px;
   margin-right: 0px;
   padding-left: 5px;
   padding-right: 5px;
   @media (min-width: 1022px) {
-    margin-top: ${props => (props.MarginTop ? "15px" : "0")};
+    margin-top: ${(props) => (props.MarginTop ? "15px" : "0")};
   }
   @media (min-width: 1200px) {
     margin-left: 120px;
@@ -110,19 +110,19 @@ export const StyledLink = styled(Link)`
   flex-direction: column;
   justify-content: center;
   background-color: white;
-  transition: ${props => props.theme.hoverTransition};
-  box-shadow: ${props => props.theme.hoverBoxBefore};
+  transition: ${(props) => props.theme.hoverTransition};
+  box-shadow: ${(props) => props.theme.hoverBoxBefore};
   &:hover {
-    transform: ${props => props.theme.hoverTransform};
-    box-shadow: ${props => props.theme.hoverBoxAfter};
+    transform: ${(props) => props.theme.hoverTransform};
+    box-shadow: ${(props) => props.theme.hoverBoxAfter};
   }
 `;
 
 export const H3 = styled.h3`
-  text-shadow: ${props => props.theme.newTextShadow};
-  font-family: ${props => props.theme.MainFont1};
-  background-color: ${props => props.theme.mainColor1};
-  color: ${props => props.theme.newColor1};
+  text-shadow: ${(props) => props.theme.newTextShadow};
+  font-family: ${(props) => props.theme.MainFont1};
+  background-color: ${colors.blue["900"]};
+  color: ${colors.gray["100"]};
   margin-top: 0;
   text-align: center;
   margin-bottom: 0;

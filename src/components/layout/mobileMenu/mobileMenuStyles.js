@@ -14,12 +14,12 @@ export const LogoAnimate = css`
 export const FadeIn = styled.div`
   opacity: 0;
   animation: 0.7s ${AppearKeyframe} forwards;
-  animation-delay: ${props => props.delay};
+  animation-delay: ${(props) => props.delay};
   transition: all 0.5s ease-in-out;
 `;
 export const SlideIn = styled.div`
   animation: 0.5s ${SlideInKeyframe} forwards;
-  animation-delay: ${props => props.delay};
+  animation-delay: ${(props) => props.delay};
 `;
 
 export const ShrinkKeyframe = keyframes`

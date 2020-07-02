@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { colors } from "../../utils/styles";
 
 const HeaderWrapper = styled.div`
   margin-top: 0px;
@@ -68,12 +69,14 @@ const HeaderWrapper = styled.div`
   }
   .heading__content {
     display: flex;
+
     flex-direction: column;
     justify-content: space-evenly;
     height: 100%;
     /* align-content: space-between; */
   }
   h2 {
+    color: ${colors.blue["900"]};
     font-size: 1.35rem;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -88,6 +91,7 @@ const HeaderWrapper = styled.div`
     height: auto;
   }
   p {
+    color: ${colors.gray["900"]};
     margin-bottom: 10px;
     margin-top: 10px;
     line-height: 1.25rem;

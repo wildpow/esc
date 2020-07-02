@@ -1,31 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import Logo from "../../../images/logo.png";
+// import Logo from "../../../images/logo.png";
 import {
   FadeIn,
   SlideIn,
   ShrinkKeyframe,
-  LogoAnimate,
+  // LogoAnimate,
 } from "./mobileMenuStyles";
 import { firstSet, secondSet } from "./items";
-import { colors, fonts } from "../../../utils/styles";
+import { colors } from "../../../utils/styles";
 
-const Panda = styled.img`
-  width: 140px;
-  margin-right: 15px;
-  align-self: center;
-  ${LogoAnimate}
-  @media (orientation: portrait) and (min-height: 800px) {
-    width: 200px;
-  }
-  @media (min-width: 500px) and (min-height: 850px) {
-    width: 200px;
-  }
-  @media (max-height: 480px) {
-    display: none;
-  }
-`;
+// const Panda = styled.img`
+//   width: 140px;
+//   margin-right: 15px;
+//   align-self: center;
+//   ${LogoAnimate}
+//   @media (orientation: portrait) and (min-height: 800px) {
+//     width: 200px;
+//   }
+//   @media (min-width: 500px) and (min-height: 850px) {
+//     width: 200px;
+//   }
+//   @media (max-height: 480px) {
+//     display: none;
+//   }
+// `;
 const StyledLink = styled(Link)`
   font-family: ${(props) => props.theme.MainFont1};
   font-size: 1.1rem;

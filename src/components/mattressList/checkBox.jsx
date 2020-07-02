@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { colors } from "../../utils/styles";
 
 const CheckboxContainer = styled.div`
   display: inline-block;
@@ -32,7 +33,7 @@ const StyledCheckbox = styled.div`
   height: 30px;
   background: ${(props) => (props.checked ? props.theme.mainColor1 : "white")};
   transition: all 150ms;
-  border: 2px solid lightgray;
+  border: 2px solid ${colors.gray["400"]};
   ${HiddenCheckbox}:focus + & {
     box-shadow: 0 0 0 1px ${(props) => props.theme.newColor4};
   }

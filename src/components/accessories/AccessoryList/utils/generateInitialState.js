@@ -1,17 +1,23 @@
 /* eslint-disable prefer-destructuring */
 import accData from "./headerData";
+import useHeaders from "../../Hooks/use-headers";
 
-const GenerateInitialState = (location, pillows, sheets, protectors) => {
+const GenerateInitialState = (
+  location,
+  pillows,
+  sheets,
+  protectors,
+  headers,
+) => {
   const initialState = {
     acc: [],
-    accInfo: accData,
+    accInfo: headers,
     selectedAccInfo: {},
     typeCheckBoxs: [],
     selectedTypes: [],
     accBeforeFilter: [...sheets, ...protectors, ...pillows],
     locationPath: location.pathname,
   };
-
   const params = new URLSearchParams(location.search);
   const type = params.get("type");
 

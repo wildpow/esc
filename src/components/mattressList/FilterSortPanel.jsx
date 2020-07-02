@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import chevron from "../../images/new/chevron-down-solid.svg";
 import Accordion from "./accordion";
 import Checkbox from "./checkBox";
+import { colors } from "../../utils/styles";
 
 const FilterSort = styled.div`
   display: flex;
@@ -34,7 +35,11 @@ const FilterSort = styled.div`
     appearance: none;
     background-color: #fff;
     background-image: url(${(props) => props.bg}),
-      linear-gradient(to bottom, #0069ed 0%, #0069ed 100%);
+      linear-gradient(
+        to bottom,
+        ${colors.blue["700"]} 0%,
+        ${colors.blue["800"]} 100%
+      );
     background-repeat: no-repeat, repeat;
     background-position: right 0.7em top 50%, 0 0;
     background-size: 1.2em auto, 100%;
@@ -50,11 +55,19 @@ const FilterSort = styled.div`
   }
   .filterSort__select:hover {
     background-image: url(${(props) => props.bg}),
-      linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
+      linear-gradient(
+        to bottom,
+        ${colors.red["800"]} 0%,
+        ${colors.red["900"]} 100%
+      );
   }
   .filterSort__select:focus {
     background-image: url(${(props) => props.bg}),
-      linear-gradient(to bottom, #0053ba 0%, #0053ba 100%);
+      linear-gradient(
+        to bottom,
+        ${colors.red["800"]} 0%,
+        ${colors.red["900"]} 100%
+      );
     border-color: white;
     box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
     box-shadow: 0 0 0 3px -moz-mac-focusring;

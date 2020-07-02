@@ -9,7 +9,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.2rem;
-  color: #fafafa;
+  color: ${colors.gray["100"]};
   background-color: inital;
   transition: background-color 0.2s ease-in-out;
   border: 2px solid rgba(255, 255, 255, 0.4);
@@ -88,82 +88,82 @@ const Holder = styled.div`
   }
 `;
 
-const Div = styled.div`
-  height: 140px;
-  position: relative;
-  @media (min-height: 200px) and (max-height: 280px) {
-    display: initial;
-    height: 1px;
-  }
+// const Div = styled.div`
+//   height: 140px;
+//   position: relative;
+//   @media (min-height: 200px) and (max-height: 280px) {
+//     display: initial;
+//     height: 1px;
+//   }
 
-  @media (orientation: portrait) {
-    display: none;
-  }
-  @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
-    display: none;
-  }
-  @media (max-width: 400px) and (max-height: 400px) {
-    display: none;
-  }
-  @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
-    display: none;
-  }
-  @media (orientation: portrait) {
-    display: none;
-  }
-  @media (max-width: 400px) and (max-height: 450px) {
-    display: none;
-  }
-  @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
-    display: none;
-  }
-`;
-const Home = styled(StyledLink)`
-  position: absolute;
-  top: 53px;
-  left: 5px;
-  padding: 15px;
-  width: 30.5%;
-  text-align: center;
-  /* @media (min-height: 200px) and (max-height: 280px) and (min-width: 610px) {
+//   @media (orientation: portrait) {
+//     display: none;
+//   }
+//   @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
+//     display: none;
+//   }
+//   @media (max-width: 400px) and (max-height: 400px) {
+//     display: none;
+//   }
+//   @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
+//     display: none;
+//   }
+//   @media (orientation: portrait) {
+//     display: none;
+//   }
+//   @media (max-width: 400px) and (max-height: 450px) {
+//     display: none;
+//   }
+//   @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
+//     display: none;
+//   }
+// `;
+// const Home = styled(StyledLink)`
+//   position: absolute;
+//   top: 53px;
+//   left: 5px;
+//   padding: 15px;
+//   width: 30.5%;
+//   text-align: center;
+//   /* @media (min-height: 200px) and (max-height: 280px) and (min-width: 610px) {
 
-  } */
-  @media (min-height: 200px) and (max-height: 280px) {
-    top: 20px;
-    width: 31%;
-  }
-  @media (max-height: 315px) {
-    display: none;
-  }
-  @media (min-height: 200px) and (max-height: 280px) {
-    display: initial;
-    padding: 10px;
-  }
-  @media (orientation: portrait) {
-    display: none;
-  }
-  @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
-    display: none;
-  }
-  @media (max-width: 400px) and (max-height: 400px) {
-    display: none;
-  }
-  @media (min-width: 800px) and (min-height: 375px) {
-    width: 31%;
-  }
-  @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
-    display: none;
-  }
-  @media (orientation: portrait) {
-    display: none;
-  }
-  @media (max-width: 400px) and (max-height: 450px) {
-    display: none;
-  }
-  @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
-    display: none;
-  }
-`;
+//   } */
+//   @media (min-height: 200px) and (max-height: 280px) {
+//     top: 20px;
+//     width: 31%;
+//   }
+//   @media (max-height: 315px) {
+//     display: none;
+//   }
+//   @media (min-height: 200px) and (max-height: 280px) {
+//     display: initial;
+//     padding: 10px;
+//   }
+//   @media (orientation: portrait) {
+//     display: none;
+//   }
+//   @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
+//     display: none;
+//   }
+//   @media (max-width: 400px) and (max-height: 400px) {
+//     display: none;
+//   }
+//   @media (min-width: 800px) and (min-height: 375px) {
+//     width: 31%;
+//   }
+//   @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
+//     display: none;
+//   }
+//   @media (orientation: portrait) {
+//     display: none;
+//   }
+//   @media (max-width: 400px) and (max-height: 450px) {
+//     display: none;
+//   }
+//   @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
+//     display: none;
+//   }
+// `;
 const Landscape = () => {
   return (
     <>
