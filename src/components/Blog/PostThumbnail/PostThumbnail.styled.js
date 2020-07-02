@@ -8,7 +8,7 @@ export const StyledLink = styled(Link)`
   padding-bottom: 5px;
   background: white;
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   grid-template-columns: 80px 1fr;
   grid-template-rows: 100px 1fr;
   text-decoration: none;
@@ -36,7 +36,7 @@ export const StyledLink = styled(Link)`
     padding: 0;
     font-size: 1rem;
     line-height: 1.3rem;
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     color: black;
     z-index: 10;
     @media (min-width: 375px) {
@@ -53,7 +53,7 @@ export const StyledLink = styled(Link)`
   span {
     top: 73px;
     position: absolute;
-    background: ${props => props.theme.mainColor1};
+    background: ${(props) => props.theme.mainColor1};
     height: 20px;
     width: 100%;
     /* border-radius: 4px; */
@@ -69,20 +69,20 @@ export const ThumbImg = styled.img`
   justify-self: center;
   z-index: 10;
   transition: transform 0.25s ease-in;
-  transform: ${props =>
+  transform: ${(props) =>
     props.isHovering ? "scale3d(1.1, 1.1, 1)" : "scale3d(1, 1, 1)"};
 `;
 
 export const Description = styled.p`
   grid-area: Description;
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   margin: 0;
   padding: 0;
   font-size: 1rem;
   line-height: 1.4rem;
   color: black;
-  text-decoration: ${props => (props.isHovering ? "underline" : "none")};
-  text-decoration-color: ${props =>
+  text-decoration: ${(props) => (props.isHovering ? "underline" : "none")};
+  text-decoration-color: ${(props) =>
     props.isHovering ? props.theme.mainColor2 : "none"};
   text-underline-position: under;
   font-weight: 300;

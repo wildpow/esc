@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Styled from "./BrandCard.styles";
+import Styled from "./LifeStyleCard.styled";
 
 const LifeStyleCard = ({
   bgImg,

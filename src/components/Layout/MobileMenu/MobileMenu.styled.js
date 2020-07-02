@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const SlideInKeyframe = keyframes`
   from { transform: translateX(60%); }
@@ -8,9 +8,10 @@ export const AppearKeyframe = keyframes`
   from { opacity: 0; }
   to { opacity: 1; }
 `;
-export const LogoAnimate = css`
-  animation: 1s ${SlideInKeyframe} forwards, 2.2s ${AppearKeyframe} forwards;
-`;
+
+// export const LogoAnimate = css`
+//   animation: 1s ${SlideInKeyframe} forwards, 2.2s ${AppearKeyframe} forwards;
+// `;
 export const FadeIn = styled.div`
   opacity: 0;
   animation: 0.7s ${AppearKeyframe} forwards;

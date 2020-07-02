@@ -6,13 +6,13 @@ import { useWindowDimensions } from "../context/WindowDimensions";
 import Tab from "./Tab";
 import arrowDown from "../../images/whitedownArrow.png";
 import AnimatedBox from "./AnimatedBox";
-import { P } from "./global.styles";
+import { P } from "./Landing.styled";
 
 const TabHeroImg = styled(Img)`
   /* max-width: 100%;
   height: auto;
   vertical-align: middle; */
-  max-width: ${props => props.width}px;
+  max-width: ${(props) => props.width}px;
   margin: 0 auto;
   text-align: center;
   margin-bottom: 10px;
@@ -26,7 +26,7 @@ const Select = styled.select`
   width: 100%;
   margin-bottom: 1em;
   font-size: 18px;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   background-image: url(${arrowDown});
   background-size: 17px;
   border-width: 0px;
@@ -88,7 +88,7 @@ const TabBox = ({ tabs, hero, heroText }) => {
               })}
             </>
           ) : (
-            <Select onChange={e => setCurrent(e.target.value)}>
+            <Select onChange={(e) => setCurrent(e.target.value)}>
               {tabs.map((data, i) => (
                 <option value={i} key={data.title}>
                   {data.title}

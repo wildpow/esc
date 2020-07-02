@@ -16,10 +16,10 @@ const BrandLink = styled(Link)`
   :focus .brand {
     transform: translate(-50%, -80%);
   }
-  box-shadow: ${props => props.theme.hoverBoxBefore};
+  box-shadow: ${(props) => props.theme.hoverBoxBefore};
   /* ASK WILL */
   @media screen and (max-width: 768px) {
-    transition: ${props => props.theme.hoverTransition};
+    transition: ${(props) => props.theme.hoverTransition};
     .overlay {
       opacity: 1;
     }
@@ -30,8 +30,8 @@ const BrandLink = styled(Link)`
     :hover {
       /* transform: scale3d(1.03, 1.03, 1); */
 
-      transform: ${props => props.theme.hoverTransform};
-      /* box-shadow: ${props => props.theme.hoverBoxAfter}; */
+      transform: ${(props) => props.theme.hoverTransform};
+      /* box-shadow: ${(props) => props.theme.hoverBoxAfter}; */
     }
   }
 `;
@@ -92,7 +92,7 @@ const Content = styled.div`
   justify-content: center;
   align-content: flex-end;
   align-items: flex-end;
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   font-size: 1.1rem;
   line-height: 1.7rem;
   text-shadow: 2px 2px 4px rgba(10, 10, 10, 1);

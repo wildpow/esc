@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import Layout from "../components/layout";
-import LifeStyleCard from "../components/brands/BrandCard";
-import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
+import Layout from "../components/Layout";
+import LifeStyleCard from "../components/Brands/LifeStyleCard";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 
 const SectionContainer = styled.div`
   /* min-height: 100vh; */

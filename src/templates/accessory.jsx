@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
+import Layout from "../components/Layout";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 // import AccDropDown from "../components/accessories/AccDropDown";
 import {
   Article,
@@ -17,9 +17,9 @@ import {
   // Profile,
   // Warranty,
   Wrapper,
-} from "../components/singleProduct/singleProduct.styles";
-import ImageCarousel from "../components/singleProduct/ImageCarousel";
-import AccessoryForm from "../components/accessories/AccessoryForm";
+} from "../components/SingleProduct/SingleProduct.styled";
+import ImageCarousel from "../components/SingleProduct/ImageCarousel";
+import AccessoryForm from "../components/Accessories/AccessoryForm";
 
 const SmList = styled(List)`
   display: flex;

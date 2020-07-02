@@ -6,7 +6,7 @@ import { useWindowDimensions } from "../context/WindowDimensions";
 
 const buttonStyles = css`
   padding: 10px 25px;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   text-decoration: none;
   background: #00103b;
   color: white;

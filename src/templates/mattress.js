@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
-import useMobileDetect from "../components/singleProduct/useMobileDect";
-import Layout from "../components/layout";
+import useMobileDetect from "../components/SingleProduct/useMobileDect";
+import Layout from "../components/Layout";
 import {
   Article,
   Description,

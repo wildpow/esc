@@ -3,8 +3,8 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import PostThumbnail from "../components/blog/postThumbnail_NEW";
+import Layout from "../components/Layout";
+import PostThumbnail from "../components/Blog/PostThumbnail";
 import { FadeIn } from "../styles/mainStyles";
 // import SEO from "../components/seo";
 

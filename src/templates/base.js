@@ -3,10 +3,10 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import ImageCarousel from "../components/singleProduct/ImageCarousel";
-import PriceDropDown from "../components/singleProduct/priceDropDown.base";
+import Layout from "../components/Layout";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
+import ImageCarousel from "../components/SingleProduct/ImageCarousel";
+import PriceDropDown from "../components/SingleProduct/PriceDropDown.base";
 import {
   Wrapper,
   Main,

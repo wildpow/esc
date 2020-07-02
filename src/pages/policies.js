@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import PoliciesComponent from "../components/pages/policies";
+import Layout from "../components/Layout";
+import PoliciesComponent from "../components/Pages/Policies";
 
 const Policies = ({ data }) => (
   <Layout>

@@ -12,8 +12,8 @@ import {
   ImageContainer,
   // AdjMarkdown,
 } from "../styles/adjustableStyles";
-import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import Layout from "../components/layout";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
+import Layout from "../components/Layout";
 import { colors } from "../utils/styles";
 
 export const AdjMarkdown = styled.div`

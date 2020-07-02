@@ -7,7 +7,7 @@ import {
   SlideIn,
   ShrinkKeyframe,
   // LogoAnimate,
-} from "./mobileMenuStyles";
+} from "./MobileMenu.styled";
 import { firstSet, secondSet } from "./items";
 import { colors } from "../../../utils/styles";
 

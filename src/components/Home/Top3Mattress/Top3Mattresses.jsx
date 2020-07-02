@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FadeIn } from "../../../styles/mainStyles";
 import { P, Headline, FooterLink } from "../../../styles/homeStyles";
 import MattressThumb from "../../mattressList/mattThumbNail";
-import useTop3 from "./useTop3";
+import useTop3 from "./use-top-3";
 
 const Wrapper = styled.div`
   display: grid;
@@ -21,18 +21,18 @@ const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   justify-content: space-between;
   padding-left: 5px;
   padding-right: 5px;
 `;
 
 const NewWrapper = styled(MainWrapper)`
-  background-color: ${props => props.theme.newColor1};
+  background-color: ${(props) => props.theme.newColor1};
 
   margin-top: 15px;
   @media (min-width: 1024px) {
-    box-shadow: ${props => props.theme.newBoxShadow};
+    box-shadow: ${(props) => props.theme.newBoxShadow};
   }
 `;
 
@@ -67,7 +67,7 @@ const TopThreeMatts = () => {
     <NewWrapper>
       <Headline>{header}</Headline>
       <ThreeMattWrapper>
-        {mattresses.map(mattress => (
+        {mattresses.map((mattress) => (
           <MattressThumb
             key={mattress.id}
             mattress={mattress}

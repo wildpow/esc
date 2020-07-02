@@ -19,7 +19,7 @@ import { H2 } from "../styles/mainStyles";
 import store1 from "../images/outsideNightRatio.jpg";
 import store2 from "../images/outsideDayRatio.jpg";
 import map from "../images/storeMapRatio.png";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import pop from "../images/funkoWithoutBillWithText.png";
 import AboutReview from "../components/ReviewView";
 
@@ -37,7 +37,7 @@ const AboutH2 = styled(H2)`
 `;
 const About = ({ data }) => {
   const content = data.allAboutReviews.nodes.filter(
-    val => val.comments !== null,
+    (val) => val.comments !== null,
   );
   const maxIndex = content.length - 1;
   return (

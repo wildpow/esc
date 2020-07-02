@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyledLink, ThumbImg, Description } from "./postThumbStyles";
+import { StyledLink, ThumbImg, Description } from "./PostThumbnail.styled";
 
 const PostThumbnail = ({ post, isHovering, onMouseEnter, onMouseLeave }) => {
   return (

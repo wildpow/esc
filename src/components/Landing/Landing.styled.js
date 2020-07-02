@@ -12,7 +12,7 @@ export const P = styled.p`
   font-size: 18px;
   line-height: 1.6rem;
   text-align: center;
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   @media screen and (max-width: 375px) {
     font-size: 16px;
     /* margin-top: 36px; */

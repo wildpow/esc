@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import TabBox from "./TabBox";
-import { P } from "./global.styles";
+import { P } from "./Landing.styled";
 import HeaderButtons from "./HeaderButtons";
 
 const Header = styled(Img)`

@@ -8,7 +8,7 @@ import {
   WarranyNumber,
   WarrantyWrapper,
   WarrantyTopper,
-} from "./warranty_policy.styles";
+} from "./Warranty_policy.styled";
 import { H2 } from "../../styles/mainStyles";
 
 const WarrantyComponent = ({ seo }) => (

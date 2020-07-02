@@ -8,10 +8,10 @@ import {
   SmImgWrap,
   LargeImgWrap,
   BigBanner,
-} from "./index.styles";
+} from "./ImageCarousel.styled";
 import FirmnessScale from "./FirmnessScaleDesktop";
 
-const TriImage = ({
+const ImageCarousel = ({
   base,
   cover,
   img1,
@@ -115,7 +115,7 @@ const objShape = {
   url: PropTypes.string,
 };
 
-TriImage.propTypes = {
+ImageCarousel.propTypes = {
   firmness: PropTypes.number.isRequired,
   isMobile: PropTypes.bool.isRequired,
   base: PropTypes.bool,
@@ -126,8 +126,8 @@ TriImage.propTypes = {
   saleBanner: PropTypes.string.isRequired,
 };
 
-TriImage.defaultProps = {
+ImageCarousel.defaultProps = {
   base: false,
 };
 
-export default TriImage;
+export default ImageCarousel;

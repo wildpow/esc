@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import { MainArticle, P, Heading } from "./warranty_policy.styles";
+import { MainArticle, P, Heading } from "./Warranty_policy.styled";
 import { H2 } from "../../styles/mainStyles";
 
 const PoliciesComponent = ({ seo }) => (

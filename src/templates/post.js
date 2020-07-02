@@ -3,8 +3,8 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import Layout from "../components/layout";
-import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
+import Layout from "../components/Layout";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import { Marker, BottomImg, Main } from "../styles/postStyles";
 import { H2 } from "../styles/mainStyles";
 

@@ -3,11 +3,11 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { FadeIn, FlexCol } from "../../styles/mainStyles";
 
 export const MainArticle = styled.article`
-  box-shadow: ${props => props.theme.BoxShadow};
+  box-shadow: ${(props) => props.theme.BoxShadow};
   background-color: white;
-  color: ${props => props.theme.newColor2};
+  color: ${(props) => props.theme.newColor2};
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   margin-top: 15px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -22,8 +22,8 @@ export const MainArticle = styled.article`
 `;
 
 export const WarranyName = styled.h4`
-  font-family: ${props => props.theme.MainFont1};
-  border-bottom: 4px solid ${props => props.theme.mainColor2};
+  font-family: ${(props) => props.theme.MainFont1};
+  border-bottom: 4px solid ${(props) => props.theme.mainColor2};
   text-align: center;
   margin: 0 auto;
   font-size: 1rem;
@@ -39,15 +39,15 @@ export const WarranyName = styled.h4`
 `;
 
 export const WarranyNumber = styled(OutboundLink)`
-  color: ${props => props.theme.mainColor1};
-  font-family: ${props => props.theme.MainFont1};
+  color: ${(props) => props.theme.mainColor1};
+  font-family: ${(props) => props.theme.MainFont1};
   margin-top: 10px;
   margin-bottom: 20px;
   text-align: center;
   font-size: 1.2rem;
   letter-spacing: 0.12rem;
   &:hover {
-    color: ${props => props.theme.mainColor2};
+    color: ${(props) => props.theme.mainColor2};
   }
   @media (min-width: 768px) {
     font-size: 1.5rem;
@@ -56,11 +56,11 @@ export const WarranyNumber = styled(OutboundLink)`
 `;
 
 export const WarrantyTopper = styled.h3`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   font-weight: 400;
-  color: ${props => props.theme.newColor1};
-  text-shadow: ${props => props.theme.newTextShadow};
-  background-color: ${props => props.theme.mainColor1};
+  color: ${(props) => props.theme.newColor1};
+  text-shadow: ${(props) => props.theme.newTextShadow};
+  background-color: ${(props) => props.theme.mainColor1};
   padding: 20px;
   line-height: 1.2rem;
   letter-spacing: 0.1rem;
@@ -87,7 +87,7 @@ export const WarrantyWrapper = styled(FlexCol)`
 `;
 
 export const P = styled.p`
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   font-weight: 300;
   text-indent: 25px;
   line-height: 1.35rem;
@@ -113,8 +113,8 @@ export const P = styled.p`
 `;
 // where
 export const Heading = styled.h3`
-  font-family: ${props => props.theme.MainFont1};
-  border-bottom: 4px solid ${props => props.theme.mainColor2};
+  font-family: ${(props) => props.theme.MainFont1};
+  border-bottom: 4px solid ${(props) => props.theme.mainColor2};
   padding-bottom: 5px;
   padding-left: 10px;
   margin-bottom: 8px;
