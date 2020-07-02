@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { StaticQuery, graphql, Link } from "gatsby";
 import { Headline, Wrapper, P } from "../../styles/homeStyles";
-import SocialIcons from "../socialIcons";
+import SocialIcons from "../SocialIcons";
 
 export const BottomLinks = styled(Link)`
   color: ${(props) => props.theme.mainColor1};

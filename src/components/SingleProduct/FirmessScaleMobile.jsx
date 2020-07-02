@@ -2,7 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
 import Popup from "reactjs-popup";
-import { useModalContext } from "../layout/modalContext";
+import { useModalContext } from "../Layout/ModalContext";
 
 export const FadeIn = keyframes`
   from { opacity: 0; }

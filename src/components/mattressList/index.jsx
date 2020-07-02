@@ -5,7 +5,7 @@ import Header from "./Header";
 import MattressThumb from "./mattThumbNail";
 import FilterSortPanel from "./FilterSortPanel";
 import filterSortReducer from "./filterSortReducer";
-import BreadCrumbs, { BreadWrapper } from "../breadCrumbs";
+import BreadCrumbs, { BreadWrapper } from "../BreadCrumbs";
 
 export const NewBread = styled(BreadWrapper)`
   padding: 0;

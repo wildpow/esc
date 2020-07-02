@@ -18,7 +18,7 @@ import Frame from "../../images/frame.jpg";
 import Pillows from "../../images/pillowCollage.jpg";
 import Protector from "../../images/protector.jpg";
 import Sheets from "../../images/sheetStack.jpg";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout";
 
 const FlexWrapper = styled.div`
   display: flex;

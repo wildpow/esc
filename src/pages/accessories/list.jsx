@@ -1,5 +1,5 @@
 import React from "react";
-import AccessoryList from "../../components/accessories/AccessoryList";
+import AccessoryList from "../../components/Accessories/AccessoryList";
 
 const AccessoryListingPage = ({ location }) => {
   return (

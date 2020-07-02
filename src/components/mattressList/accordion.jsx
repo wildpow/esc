@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import chevron from "../../images/new/chevron-down-solid.svg";
-import { useWindowDimensions } from "../context/WindowDimensions";
+import { useWindowDimensions } from "../Context/WindowDimensions";
 import { colors } from "../../utils/styles";
 
 const AccordionWrapper = styled.div`

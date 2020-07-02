@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
-import { useWindowDimensions } from "../context/WindowDimensions";
+import { useWindowDimensions } from "../../context/WindowDimensions";
 
 const buttonStyles = css`
   padding: 10px 25px;

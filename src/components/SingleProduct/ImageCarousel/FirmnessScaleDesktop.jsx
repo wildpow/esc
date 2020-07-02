@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Popup from "reactjs-popup";
-import { useModalContext } from "../../Layout/modalContext";
+import { useModalContext } from "../../Layout/ModalContext";
 
 const Firmness = styled.div`
   @media print {

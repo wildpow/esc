@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
-import Layout from "../../../components/layout";
+import Layout from "../../../components/Layout";
 import MattList from "../../../components/mattressList";
 
 const Stearns = ({ data }) => {

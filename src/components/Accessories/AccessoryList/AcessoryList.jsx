@@ -1,16 +1,16 @@
 import React, { useReducer } from "react";
 import propTypes from "prop-types";
-import Layout from "../../layout";
-import BreadCrumbs from "../../breadCrumbs";
+import Layout from "../../Layout";
+import BreadCrumbs from "../../BreadCrumbs";
 import Header from "../../mattressList/Header";
 import { NewBread, MattListWrapper } from "../../mattressList";
-import filterSortAcc from "./filterSortAcc";
-import FilterSortPanel from "./filterSortPanelAcc";
-import AccThumb from "./accThumb";
+import filterSortAcc from "./FilterSortAcc";
+import FilterSortPanel from "./FilterSortPanelAcc";
+import AccThumb from "./AccThumb";
 import useProtector from "../Hooks/use-protector";
 import useSheets from "../Hooks/use-sheets";
 import usePillows from "../Hooks/use-pillows";
-import GenerateInitialState from "./utils/generateInitialState";
+import GenerateInitialState from "./Utils/generateInitialState";
 import useHeaders from "../Hooks/use-headers";
 
 const AccessoryList = ({ location }) => {
