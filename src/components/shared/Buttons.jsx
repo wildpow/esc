@@ -12,7 +12,7 @@ export const ButtonBase = styled.button`
     ${(props) => (props.inverse ? colors.blue["700"] : colors.blue["800"])};
   border-radius: ${radius.default}px;
   color: ${(props) =>
-    props.inverse ? colors.blue["700"] : colors.blue["800"]};
+    props.inverse ? colors.blue["800"] : colors.blue["700"]};
   cursor: pointer;
   display: inline-flex;
   font-family: ${fonts.sans};
@@ -20,7 +20,6 @@ export const ButtonBase = styled.button`
   justify-content: center;
   padding: 0.5em 0.75rem;
   transition: 0.5s;
-
   :focus {
     box-shadow: 0 0 0 3px ${colors.blue["200"]};
     outline: 0;
@@ -101,6 +100,7 @@ export const PrimaryButton = styled(Button)`
   display: flex;
   font-size: 1.25rem;
   justify-content: center;
+  font-family: ${fonts.sans};
 
   @media (hover: hover) {
     &:hover {
