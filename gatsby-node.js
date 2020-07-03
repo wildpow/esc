@@ -61,6 +61,7 @@ exports.createPages = async ({ actions, graphql }) => {
       allDatoCmsAdjustableBase {
         edges {
           node {
+            shopifyLink
             slug
           }
         }
@@ -122,6 +123,7 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve(`./src/templates/base.js`),
       context: {
         slug: base.node.slug,
+        shopifyBase: base.node.shopifyLink,
       },
     });
   });

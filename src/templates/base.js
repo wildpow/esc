@@ -6,7 +6,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import ImageCarousel from "../components/SingleProduct/ImageCarousel";
-import PriceDropDown from "../components/SingleProduct/PriceDropDown.base";
+// import PriceDropDown from "../components/SingleProduct/PriceDropDown.base";
 import {
   Wrapper,
   Main,
@@ -21,9 +21,10 @@ import {
   Info,
 } from "../components/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
+import AccessoryForm from "../components/Accessories/AccessoryForm";
 
 const Base = ({ data }) => {
-  const { datoCmsAdjustableBase: adjBase } = data;
+  const { datoCmsAdjustableBase: adjBase, shopifyBase } = data;
   const removeZeroPrices = Object.values(adjBase.price[0]).filter(
     (value) => value !== 0,
   );
@@ -88,9 +89,10 @@ const Base = ({ data }) => {
                   </Info>
                 </ul>
               </List>
-              <PriceDropDown
-                price={adjBase.price[0]}
-                discount={adjBase.sale[0].discount}
+              <AccessoryForm
+                variants={shopifyBase.variants}
+                priceMin={shopifyBase.priceRange.minVariantPrice.amount}
+                priceMax={shopifyBase.priceRange.maxVariantPrice.amount}
               />
             </MainInfo>
           </Main>
@@ -124,7 +126,26 @@ Base.propTypes = {
 export default Base;
 
 export const query = graphql`
-  query singleAdjustable($slug: String!) {
+  query singleAdjustable($slug: String!, $shopifyBase: String!) {
+    shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
+      title
+      vendor
+      shopifyId
+      priceRange {
+        minVariantPrice {
+          amount
+        }
+        maxVariantPrice {
+          amount
+        }
+      }
+      variants {
+        price
+        title
+        shopifyId
+        compareAtPrice
+      }
+    }
     datoCmsAdjustableBase(slug: { eq: $slug }) {
       brand
       slug

@@ -66,12 +66,15 @@ const NavIcons = ({ pin }) => {
           <Phone className="fa-phone" title="call store" />
         </span>
       </StyledLinks>
-      <StyledLinks href="#email" pin={pin}>
+      <StyledLinks
+        href="mailto:info@escmattresscenter.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        pin={pin}
+      >
         <span aria-hidden>
           <VisuallyHidden>Contact Us</VisuallyHidden>
-          <Link to="/contact-us">
-            <Email className="fa-phone" title="Contact Us" />
-          </Link>
+          <Email className="fa-phone" title="Contact Us" />
         </span>
       </StyledLinks>
       <StyledLinks

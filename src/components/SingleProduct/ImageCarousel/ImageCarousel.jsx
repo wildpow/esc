@@ -116,18 +116,21 @@ const objShape = {
 };
 
 ImageCarousel.propTypes = {
-  firmness: PropTypes.number.isRequired,
-  isMobile: PropTypes.bool.isRequired,
+  firmness: PropTypes.number,
+  isMobile: PropTypes.bool,
   base: PropTypes.bool,
   cover: PropTypes.shape(objShape).isRequired,
   img1: PropTypes.shape(objShape).isRequired,
   img2: PropTypes.shape(objShape).isRequired,
-  mattName: PropTypes.string.isRequired,
+  mattName: PropTypes.string,
   saleBanner: PropTypes.string.isRequired,
 };
 
 ImageCarousel.defaultProps = {
   base: false,
+  firmness: 0,
+  isMobile: false,
+  mattName: "test",
 };
 
 export default ImageCarousel;
