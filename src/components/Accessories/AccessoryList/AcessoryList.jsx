@@ -3,7 +3,10 @@ import propTypes from "prop-types";
 import Layout from "../../Layout";
 import BreadCrumbs from "../../BreadCrumbs";
 import Header from "../../MattressList/Header";
-import { NewBread, MattListWrapper } from "../../MattressList";
+import {
+  NewBread,
+  MattListWrapper,
+} from "../../MattressList/MattressList.styled";
 import filterSortAcc from "./FilterSortAcc";
 import FilterSortPanel from "./FilterSortPanelAcc";
 import AccThumb from "./AccThumb";

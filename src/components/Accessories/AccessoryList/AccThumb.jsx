@@ -7,7 +7,7 @@ import {
   MattImgContainer,
   PriceRange,
   Name,
-} from "../../mattressList/MattThumbnail/MattThumb.Styled";
+} from "../../MattressList/MattressThumbnail/MattThumb.Styled";
 
 const AccThumb = ({ acc }) => {
   return (

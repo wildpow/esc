@@ -12,7 +12,7 @@ import {
 } from "./MattThumb.Styled";
 import FirmnessScale from "./FirmnessScale";
 
-const MattressThumb = ({ mattress, url }) => {
+const MattressThumbnail = ({ mattress, url }) => {
   return (
     <StyledLink to={url}>
       <Topper>
@@ -48,9 +48,9 @@ const MattressThumb = ({ mattress, url }) => {
   );
 };
 
-MattressThumb.propTypes = {
+MattressThumbnail.propTypes = {
   mattress: PropTypes.instanceOf(Object).isRequired,
   url: PropTypes.string.isRequired,
 };
 
-export default MattressThumb;
+export default MattressThumbnail;
