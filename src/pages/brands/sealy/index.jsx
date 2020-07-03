@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../../../components/Layout";
-import MattList from "../../../components/mattressList";
+import MattressList from "../../../components/MattressList";
 
 const Sealy = ({ data }) => {
   const { datoCmsBrand, allDatoCmsMattress } = data;
@@ -22,7 +22,7 @@ const Sealy = ({ data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsBrand.seoLink.seoMetaTags} />
-      <MattList
+      <MattressList
         headerBG={datoCmsBrand.headerLink.bgImg.url}
         mattresses={[...golden, ...essentials, ...performance, ...premium]}
         title={datoCmsBrand.displayName}

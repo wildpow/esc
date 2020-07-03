@@ -6,7 +6,7 @@ import {
   LargeImgPr1nt,
   BigBannerPr1nt,
 } from "../../../styles/_pr1nt/main";
-import { Banner } from "../../mattressList/mattThumbNail/mattThumb.Styles";
+import { Banner } from "../../MattressList/MattThumbnail/MattThumb.Styled";
 
 export const ImgWrapper = styled.div`
   /* display: flex;

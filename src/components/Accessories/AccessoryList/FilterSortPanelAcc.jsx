@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import chevron from "../../../images/new/chevron-down-solid.svg";
-import Accordion from "../../mattressList/accordion";
-import Checkbox from "../../mattressList/checkBox";
+import Accordion from "../../MattressList/Accordion";
+import Checkbox from "../../MattressList/CheckBox";
 import { colors } from "../../../utils/styles";
 
 const FilterSort = styled.div`
