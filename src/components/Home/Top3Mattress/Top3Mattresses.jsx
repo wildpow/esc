@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FadeIn } from "../../../styles/mainStyles";
 import { P, Headline, FooterLink } from "../../../styles/homeStyles";
-import MattressThumb from "../../mattressList/mattThumbNail";
+import MattressThumbnail from "../../MattressList/MattressThumbnail";
 import useTop3 from "./use-top-3";
 
 const Wrapper = styled.div`
@@ -68,7 +68,7 @@ const TopThreeMatts = () => {
       <Headline>{header}</Headline>
       <ThreeMattWrapper>
         {mattresses.map((mattress) => (
-          <MattressThumb
+          <MattressThumbnail
             key={mattress.id}
             mattress={mattress}
             url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}

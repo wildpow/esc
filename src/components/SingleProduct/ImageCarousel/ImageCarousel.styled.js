@@ -6,8 +6,8 @@ import {
   LargeImgPr1nt,
   BigBannerPr1nt,
 } from "../../../styles/_pr1nt/main";
-import { Banner } from "../../MattressList/MattThumbnail/MattThumb.Styled";
-
+import { Banner } from "../../MattressList/MattressThumbnail/MattressThumbnail.styled";
+// ../../MattressList/MattressThumbnail/MattressThumbnail.Styled
 export const ImgWrapper = styled.div`
   /* display: flex;
   flex-direction: column; */

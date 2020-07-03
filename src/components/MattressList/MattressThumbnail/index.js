@@ -1,1 +1,1 @@
-export { default } from "./MattThumbnail";
+export { default } from "./MattressThumbnail";

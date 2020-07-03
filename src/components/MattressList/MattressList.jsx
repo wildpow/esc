@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import Header from "./Header";
-import MattressThumbnail from "./MattThumbnail";
+import MattressThumbnail from "./MattressThumbnail";
 import FilterSortPanel from "./FilterSortPanel";
 import filterSortReducer from "./FilterSortReducer";
 import BreadCrumbs from "../BreadCrumbs";

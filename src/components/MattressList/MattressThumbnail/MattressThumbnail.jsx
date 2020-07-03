@@ -9,7 +9,7 @@ import {
   Banner,
   PriceRange,
   Name,
-} from "./MattThumb.Styled";
+} from "./MattressThumbnail.styled";
 import FirmnessScale from "./FirmnessScale";
 
 const MattressThumbnail = ({ mattress, url }) => {

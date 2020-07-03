@@ -85,10 +85,6 @@ const Header = styled.header`
   }
 `;
 class Blog extends React.Component {
-  static propTypes = {
-    data: PropTypes.instanceOf(Object).isRequired,
-  };
-
   constructor(...args) {
     super(...args);
     this.state = {
@@ -151,6 +147,10 @@ class Blog extends React.Component {
 }
 
 export default Blog;
+
+Blog.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 
 export const blogList = graphql`
   query blogList {
