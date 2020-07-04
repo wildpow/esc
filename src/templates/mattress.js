@@ -25,6 +25,7 @@ import ShopifyDropDown from "../components/SingleProduct/priceDropdownShopify.ma
 import dateSEO from "../functions/dateSEO";
 import ImageCarousel from "../components/SingleProduct/ImageCarousel";
 import FirmnessScale from "../components/SingleProduct/FirmessScaleMobile";
+import MattressForm from "../components/SingleProduct/MattressForm";
 
 const LeftSide = styled.div`
   display: flex;
@@ -120,7 +121,7 @@ const Mattress = ({ data }) => {
                   </Info>
                 </ul>
               </List>
-              {shopifyMattress === null ? (
+              {/* {shopifyMattress === null ? (
                 <DropDown
                   typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}
                   freeBoxSpring={mattress.saleInfo[0].freeBox}
@@ -141,7 +142,14 @@ const Mattress = ({ data }) => {
                   shopify9Inch={shopify9Inch}
                   shopifyMattress={shopifyMattress}
                 />
-              )}
+              )} */}
+              <MattressForm
+                variants={shopifyMattress.variants}
+                priceMin={shopifyMattress.priceRange.minVariantPrice.amount}
+                priceMax={shopifyMattress.priceRange.maxVariantPrice.amount}
+                matt
+                boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
+              />
             </MainInfo>
           </Main>
           <header id="moreInfo">
@@ -189,6 +197,14 @@ export const query = graphql`
       title
       vendor
       shopifyId
+      priceRange {
+        minVariantPrice {
+          amount
+        }
+        maxVariantPrice {
+          amount
+        }
+      }
       variants {
         price
         title
