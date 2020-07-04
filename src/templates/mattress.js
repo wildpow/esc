@@ -121,7 +121,7 @@ const Mattress = ({ data }) => {
                   </Info>
                 </ul>
               </List>
-              {/* {shopifyMattress === null ? (
+              {shopifyMattress === null ? (
                 <DropDown
                   typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}
                   freeBoxSpring={mattress.saleInfo[0].freeBox}
@@ -136,20 +136,14 @@ const Mattress = ({ data }) => {
                   subline={mattress.subline.name}
                 />
               ) : (
-                <ShopifyDropDown
-                  shopify2Inch={shopify2Inch}
-                  shopify5Inch={shopify5Inch}
-                  shopify9Inch={shopify9Inch}
-                  shopifyMattress={shopifyMattress}
+                <MattressForm
+                  variants={shopifyMattress.variants}
+                  priceMin={shopifyMattress.priceRange.minVariantPrice.amount}
+                  priceMax={shopifyMattress.priceRange.maxVariantPrice.amount}
+                  matt
+                  boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
                 />
-              )} */}
-              <MattressForm
-                variants={shopifyMattress.variants}
-                priceMin={shopifyMattress.priceRange.minVariantPrice.amount}
-                priceMax={shopifyMattress.priceRange.maxVariantPrice.amount}
-                matt
-                boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
-              />
+              )}
             </MainInfo>
           </Main>
           <header id="moreInfo">
