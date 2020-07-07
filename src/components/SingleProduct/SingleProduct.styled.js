@@ -7,6 +7,7 @@ import {
   DisplayNonePr1nt,
   DescriptionPr1nt,
 } from "../../styles/_pr1nt/main";
+import { colors } from "../../utils/styles";
 
 export const Article = styled.article`
   display: flex;
@@ -72,6 +73,7 @@ export const List = styled.div`
     font-size: 0.9rem;
     margin-top: 0;
     margin-bottom: 0;
+    color: ${colors.blue["900"]};
     border-bottom: 4px solid ${(props) => props.theme.mainColor2};
     padding-bottom: 2px;
     padding-left: 20px;
@@ -85,6 +87,7 @@ export const List = styled.div`
   }
   ul li {
     padding-bottom: 2px;
+    color: ${colors.gray["700"]};
   }
 
   @media (min-width: 360px) {
@@ -199,7 +202,7 @@ export const Info = styled.li`
     font-family: ${(props) => props.theme.MainFont1};
     font-weight: 700;
     letter-spacing: 0.05rem;
-    color: ${(props) => props.theme.mainColor2};
+    color: ${colors.red["500"]};
     &:hover {
       color: ${(props) => props.theme.mainColor1};
     }

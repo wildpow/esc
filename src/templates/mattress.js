@@ -21,7 +21,7 @@ import {
 } from "../components/SingleProduct/SingleProduct.styled";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import DropDown from "../components/SingleProduct/priceDropDown.mattress";
-import ShopifyDropDown from "../components/SingleProduct/priceDropdownShopify.matt";
+// import ShopifyDropDown from "../components/SingleProduct/priceDropdownShopify.matt";
 import dateSEO from "../functions/dateSEO";
 import ImageCarousel from "../components/SingleProduct/ImageCarousel";
 import FirmnessScale from "../components/SingleProduct/FirmessScaleMobile";

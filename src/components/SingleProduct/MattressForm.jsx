@@ -125,10 +125,16 @@ const MattressForm = ({
   boxVariants,
   adjBase,
 }) => {
+  const twoInchBox = boxVariants[0].variants;
+  const fiveInchBox = boxVariants[1].variants;
+  const nineInchBox = boxVariants[2].variants;
+  const [boxDisabled, setBoxDisabled] = useState(true);
+  const [boxIndex, setBoxIndex] = useState("");
+  const [box, setBox] = useState([]);
   const { addVariantToCart } = useContext(StoreContext);
-  // const [price, setPrice] = useState(`$${priceMin} - $${priceMax}`);
   const [quantity, setQuantity] = useState(1);
   const [errors, setErrors] = useState([]);
+  const [price, setPrice] = useState(`$${priceMin} - $${priceMax}`);
   const [variant, setVariant] = useState(
     variants.length === 1 ? variants[0].shopifyId : "",
   );
@@ -150,7 +156,26 @@ const MattressForm = ({
     }
 
     if (event.target.name === "variant") {
+      const newBoxs = [
+        ...twoInchBox.filter(
+          (a) => a.title === variants[event.target.value].title,
+        ),
+        ...fiveInchBox.filter(
+          (a) => a.title === variants[event.target.value].title,
+        ),
+        ...nineInchBox.filter(
+          (a) => a.title === variants[event.target.value].title,
+        ),
+      ];
       setVariant(event.target.value);
+      setPrice(variants[event.target.value].price);
+      setBoxIndex("");
+      setBoxDisabled(false);
+      setBox(newBoxs);
+    } else if (event.target.name === "foundation") {
+      setBoxIndex(event.target.value);
+      setPrice(`$${Number(variants[variant].price) + Number(box[0].price)}`);
+      console.log("Price", typeof box[0].price);
     } else {
       setQuantity(event.target.value);
     }
@@ -177,8 +202,12 @@ const MattressForm = ({
       setErrors(newErrors);
       return;
     }
-
-    addVariantToCart(variant, quantity);
+    console.log("Boox", box[boxIndex].shopifyId, variants[variant].shopifyId);
+    addVariantToCart(variants[variant].shopifyId, quantity);
+    if (boxIndex !== "") {
+      addVariantToCart(box[boxIndex].shopifyId, 1);
+      console.log("BYULWSDLJWDE");
+    }
   };
 
   const hasVariants = variants.length > 1;
@@ -224,9 +253,9 @@ const MattressForm = ({
               <option disabled value="">
                 Choose Size
               </option>
-              {variants.map((item) => (
-                <option value={item.shopifyId} key={item.shopifyId}>
-                  {item.title}
+              {variants.map((item, index) => (
+                <option value={index} key={item.shopifyId}>
+                  {`${item.title} - $${item.price}`}
                 </option>
               ))}
             </Select>
@@ -239,16 +268,19 @@ const MattressForm = ({
           <Select
             as="select"
             id="foundation"
-            value={variant}
+            value={boxIndex}
             name="foundation"
+            disabled={boxDisabled}
             onChange={(e) => handleChange(e)}
           >
             <option disabled value="">
               Choose Foundation
+              {box.length !== 0 && ` - $${box[0].price}`}
             </option>
-            <option value={0}>2</option>
-            <option value={1}>5</option>
-            <option value={2}>9</option>
+            <option value={0}>2&quot; Low Foundation</option>
+            <option value={1}>5&quot; Flat Foundation</option>
+            <option value={2}>9&quot; Flat Foundation</option>
+            <option disabled>──────────</option>
             <option value={3}>Adj</option>
           </Select>
         </SizeFieldset>
@@ -258,9 +290,19 @@ const MattressForm = ({
         <ShopingCart />
       </AddToCartButton>
       <PriceRange>
-        <small>Price Range</small>
-        <h4>{`$${priceMin} - $${priceMax}`}</h4>
+        {variant === "" ? (
+          <>
+            <small>Price Range</small>
+            <h4>{`$${priceMin} - $${priceMax}`}</h4>
+          </>
+        ) : (
+          <>
+            <small>Total</small>
+            <h4>{`${price}`}</h4>
+          </>
+        )}
       </PriceRange>
+      {}
     </Form>
   );
 };
