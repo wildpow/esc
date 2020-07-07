@@ -175,7 +175,6 @@ const MattressForm = ({
     } else if (event.target.name === "foundation") {
       setBoxIndex(event.target.value);
       setPrice(`$${Number(variants[variant].price) + Number(box[0].price)}`);
-      console.log("Price", typeof box[0].price);
     } else {
       setQuantity(event.target.value);
     }
@@ -202,11 +201,11 @@ const MattressForm = ({
       setErrors(newErrors);
       return;
     }
-    console.log("Boox", box[boxIndex].shopifyId, variants[variant].shopifyId);
-    addVariantToCart(variants[variant].shopifyId, quantity);
     if (boxIndex !== "") {
-      addVariantToCart(box[boxIndex].shopifyId, 1);
-      console.log("BYULWSDLJWDE");
+      const extra = { variantId: box[boxIndex].shopifyId, quantity: 1 };
+      addVariantToCart(variants[variant].shopifyId, quantity, extra);
+    } else {
+      addVariantToCart(variants[variant].shopifyId, quantity);
     }
   };
 
