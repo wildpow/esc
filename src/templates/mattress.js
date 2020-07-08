@@ -141,6 +141,7 @@ const Mattress = ({ data }) => {
                   priceMin={shopifyMattress.priceRange.minVariantPrice.amount}
                   priceMax={shopifyMattress.priceRange.maxVariantPrice.amount}
                   matt
+                  maxQty={4}
                   boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
                 />
               )}

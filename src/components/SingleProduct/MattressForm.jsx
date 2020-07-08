@@ -33,6 +33,7 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   padding: ${spacing["10"]} ${spacing["4"]} 0;
+
   .fieldset {
     display: flex;
   }
@@ -42,6 +43,7 @@ const Form = styled.form`
 
   @media (min-width: ${breakpoints.lg}) {
     justify-content: flex-start;
+    min-width: 420px;
   }
 `;
 const QtyFieldset = styled(Fieldset)`
@@ -124,22 +126,23 @@ const MattressForm = ({
   matt,
   boxVariants,
   adjBase,
+  maxQty,
 }) => {
-  const twoInchBox = boxVariants[0].variants;
-  const fiveInchBox = boxVariants[1].variants;
-  const nineInchBox = boxVariants[2].variants;
+  const twoInchBox = boxVariants ? boxVariants[0].variants : null;
+  const fiveInchBox = boxVariants ? boxVariants[1].variants : null;
+  const nineInchBox = boxVariants ? boxVariants[2].variants : null;
   const [boxDisabled, setBoxDisabled] = useState(true);
   const [boxIndex, setBoxIndex] = useState("");
-  const [box, setBox] = useState([]);
+  const [box, setBox] = useState(null);
   const { addVariantToCart } = useContext(StoreContext);
   const [quantity, setQuantity] = useState(1);
   const [errors, setErrors] = useState([]);
   const [price, setPrice] = useState(
-    `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
+    variants.length === 1
+      ? `$${variants[0].price}`
+      : `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
   );
-  const [variant, setVariant] = useState(
-    variants.length === 1 ? variants[0].shopifyId : "",
-  );
+  const [variant, setVariant] = useState(variants.length === 1 ? 0 : "");
   const handleChange = (event) => {
     event.preventDefault();
 
@@ -158,17 +161,19 @@ const MattressForm = ({
     }
 
     if (event.target.name === "variant") {
-      const newBoxs = [
-        ...twoInchBox.filter(
-          (a) => a.title === variants[event.target.value].title,
-        ),
-        ...fiveInchBox.filter(
-          (a) => a.title === variants[event.target.value].title,
-        ),
-        ...nineInchBox.filter(
-          (a) => a.title === variants[event.target.value].title,
-        ),
-      ];
+      const newBoxs = boxVariants
+        ? [
+            ...twoInchBox.filter(
+              (a) => a.title === variants[event.target.value].title,
+            ),
+            ...fiveInchBox.filter(
+              (a) => a.title === variants[event.target.value].title,
+            ),
+            ...nineInchBox.filter(
+              (a) => a.title === variants[event.target.value].title,
+            ),
+          ]
+        : null;
       setVariant(event.target.value);
       setPrice(variants[event.target.value].price);
       setBoxIndex("");
@@ -205,7 +210,10 @@ const MattressForm = ({
       return;
     }
     if (boxIndex !== "") {
-      const extra = { variantId: box[boxIndex].shopifyId, quantity: 1 };
+      const extra = {
+        variantId: box[boxIndex].shopifyId,
+        quantity: parseInt(quantity, 10),
+      };
       addVariantToCart(variants[variant].shopifyId, quantity, extra);
     } else {
       addVariantToCart(variants[variant].shopifyId, quantity);
@@ -238,6 +246,7 @@ const MattressForm = ({
             name="quantity"
             min="1"
             step="1"
+            max={maxQty}
             onChange={(e) => handleChange(e)}
             value={quantity}
           />
@@ -309,8 +318,9 @@ const MattressForm = ({
 };
 MattressForm.defaultProps = {
   matt: false,
-  boxVariants: [],
+  boxVariants: null,
   adjBase: [],
+  maxQty: 10,
 };
 MattressForm.propTypes = {
   variants: PropTypes.instanceOf(Object).isRequired,
@@ -319,5 +329,6 @@ MattressForm.propTypes = {
   matt: PropTypes.bool,
   boxVariants: PropTypes.instanceOf(Object),
   adjBase: PropTypes.instanceOf(Object),
+  maxQty: PropTypes.number,
 };
 export default MattressForm;

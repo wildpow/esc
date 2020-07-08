@@ -19,7 +19,7 @@ import {
   Wrapper,
 } from "../components/SingleProduct/SingleProduct.styled";
 import ImageCarousel from "../components/SingleProduct/ImageCarousel";
-import AccessoryForm from "../components/Accessories/AccessoryForm";
+import MattressForm from "../components/SingleProduct/MattressForm";
 
 const SmList = styled(List)`
   display: flex;
@@ -71,7 +71,8 @@ const Accessory = ({ data }) => {
                   }}
                 />
               </SmList>
-              <AccessoryForm
+
+              <MattressForm
                 variants={product.variants}
                 priceMin={product.priceRange.minVariantPrice.amount}
                 priceMax={product.priceRange.maxVariantPrice.amount}

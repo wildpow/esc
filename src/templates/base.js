@@ -21,7 +21,7 @@ import {
   Info,
 } from "../components/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
-import AccessoryForm from "../components/Accessories/AccessoryForm";
+import MattressForm from "../components/SingleProduct/MattressForm";
 
 const Base = ({ data }) => {
   const { datoCmsAdjustableBase: adjBase, shopifyBase } = data;
@@ -89,7 +89,7 @@ const Base = ({ data }) => {
                   </Info>
                 </ul>
               </List>
-              <AccessoryForm
+              <MattressForm
                 variants={shopifyBase.variants}
                 priceMin={shopifyBase.priceRange.minVariantPrice.amount}
                 priceMax={shopifyBase.priceRange.maxVariantPrice.amount}
