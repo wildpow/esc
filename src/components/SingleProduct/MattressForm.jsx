@@ -286,7 +286,7 @@ const MattressForm = ({
           >
             <option disabled value="">
               Choose Foundation
-              {box.length !== 0 && ` - $${box[0].price}`}
+              {box && ` - $${box[0].price}`}
             </option>
             <option value={0}>2&quot; Low Foundation</option>
             <option value={1}>5&quot; Flat Foundation</option>
