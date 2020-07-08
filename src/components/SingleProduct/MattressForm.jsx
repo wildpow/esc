@@ -134,7 +134,9 @@ const MattressForm = ({
   const { addVariantToCart } = useContext(StoreContext);
   const [quantity, setQuantity] = useState(1);
   const [errors, setErrors] = useState([]);
-  const [price, setPrice] = useState(`$${priceMin} - $${priceMax}`);
+  const [price, setPrice] = useState(
+    `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
+  );
   const [variant, setVariant] = useState(
     variants.length === 1 ? variants[0].shopifyId : "",
   );
@@ -174,7 +176,8 @@ const MattressForm = ({
       setBox(newBoxs);
     } else if (event.target.name === "foundation") {
       setBoxIndex(event.target.value);
-      setPrice(`$${Number(variants[variant].price) + Number(box[0].price)}`);
+      const newPrice = Number(variants[variant].price) + Number(box[0].price);
+      setPrice(`$${newPrice.toFixed(2)}`);
     } else {
       setQuantity(event.target.value);
     }
@@ -292,7 +295,7 @@ const MattressForm = ({
         {variant === "" ? (
           <>
             <small>Price Range</small>
-            <h4>{`$${priceMin} - $${priceMax}`}</h4>
+            <h4>{price}</h4>
           </>
         ) : (
           <>
@@ -301,9 +304,20 @@ const MattressForm = ({
           </>
         )}
       </PriceRange>
-      {}
     </Form>
   );
 };
-
+MattressForm.defaultProps = {
+  matt: false,
+  boxVariants: [],
+  adjBase: [],
+};
+MattressForm.propTypes = {
+  variants: PropTypes.instanceOf(Object).isRequired,
+  priceMin: PropTypes.string.isRequired,
+  priceMax: PropTypes.string.isRequired,
+  matt: PropTypes.bool,
+  boxVariants: PropTypes.instanceOf(Object),
+  adjBase: PropTypes.instanceOf(Object),
+};
 export default MattressForm;
