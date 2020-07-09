@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+/* eslint-disable react/no-danger */
+import React, { useContext, useState, useReducer } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Fieldset, Input, Label, Select, Submit } from "../shared/FormElements";
@@ -128,25 +129,88 @@ const MattressForm = ({
   adjBase,
   maxQty,
 }) => {
-  const twoInchBox = boxVariants ? boxVariants[0].variants : null;
-  const fiveInchBox = boxVariants ? boxVariants[1].variants : null;
-  const nineInchBox = boxVariants ? boxVariants[2].variants : null;
-  const [boxDisabled, setBoxDisabled] = useState(true);
-  const [boxIndex, setBoxIndex] = useState("");
-  const [box, setBox] = useState(null);
+  const initialState = {
+    boxIndex: "",
+    boxVariants: null,
+    boxDisabled: true,
+    twoInchBox: boxVariants ? boxVariants[0].variants : null,
+    fiveInchBox: boxVariants ? boxVariants[1].variants : null,
+    nineInchBox: boxVariants ? boxVariants[2].variants : null,
+    quantity: 1,
+    qtyDisabled: variants.length !== 1,
+    price:
+      variants.length === 1
+        ? variants[0].price
+        : `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
+    variantIndex: variants.length === 1 ? 0 : "",
+  };
   const { addVariantToCart } = useContext(StoreContext);
-  const [quantity, setQuantity] = useState(1);
+  const reducer = (state, action) => {
+    let newBoxs;
+    let newPrice;
+    let newBoxPrice;
+
+    switch (action.type) {
+      case "variant":
+        newBoxs = boxVariants
+          ? [
+              ...state.twoInchBox.filter(
+                (a) => a.title === variants[action.payload].title,
+              ),
+              ...state.fiveInchBox.filter(
+                (a) => a.title === variants[action.payload].title,
+              ),
+              ...state.nineInchBox.filter(
+                (a) => a.title === variants[action.payload].title,
+              ),
+            ]
+          : null;
+        newPrice = Number(variants[action.payload].price);
+        return {
+          ...state,
+          boxVariants: newBoxs,
+          variantIndex: action.payload,
+          quantity: 1,
+          boxIndex: "",
+          boxDisabled: false,
+          qtyDisabled: false,
+          price: newPrice.toFixed(2),
+        };
+      case "foundation":
+        newPrice =
+          action.payload !== "4"
+            ? (Number(variants[state.variantIndex].price) +
+                Number(state.boxVariants[action.payload].price)) *
+              state.quantity
+            : Number(variants[state.variantIndex].price) * state.quantity;
+        return {
+          ...state,
+          boxIndex: action.payload,
+          price: newPrice.toFixed(2),
+        };
+      case "quantity":
+        newBoxPrice =
+          matt && state.boxIndex !== ""
+            ? Number(state.boxVariants[state.boxIndex].price)
+            : 0;
+        newPrice =
+          variants.length === 1
+            ? Number(variants[0].price) * Number(action.payload)
+            : (Number(variants[state.variantIndex].price) + newBoxPrice) *
+              Number(action.payload);
+        return {
+          ...state,
+          price: newPrice.toFixed(2),
+          quantity: action.payload,
+        };
+      default:
+        throw new Error();
+    }
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [errors, setErrors] = useState([]);
-  const [price, setPrice] = useState(
-    variants.length === 1
-      ? variants[0].price
-      : `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
-  );
-  const [variant, setVariant] = useState(variants.length === 1 ? 0 : "");
-  const [qtyDisabled, setQtyDisabled] = useState(variants.length !== 1);
   const handleChange = (event) => {
     event.preventDefault();
-    let newPrice;
     if (event.target.value) {
       const newErrors = errors;
 
@@ -160,58 +224,21 @@ const MattressForm = ({
         setErrors(newErrors);
       }
     }
-
-    if (event.target.name === "variant") {
-      const newBoxs = boxVariants
-        ? [
-            ...twoInchBox.filter(
-              (a) => a.title === variants[event.target.value].title,
-            ),
-            ...fiveInchBox.filter(
-              (a) => a.title === variants[event.target.value].title,
-            ),
-            ...nineInchBox.filter(
-              (a) => a.title === variants[event.target.value].title,
-            ),
-          ]
-        : null;
-      setVariant(event.target.value);
-      setQuantity(1);
-      newPrice = Number(variants[event.target.value].price) * 1;
-      setPrice(newPrice.toFixed(2));
-      setBoxIndex("");
-      setBoxDisabled(false);
-      setBox(newBoxs);
-      setQtyDisabled(false);
-    } else if (event.target.name === "foundation") {
-      setBoxIndex(event.target.value);
-      newPrice =
-        event.target.value !== "4"
-          ? (Number(variants[variant].price) + Number(box[0].price)) * quantity
-          : Number(variants[variant].price) * quantity;
-      setPrice(newPrice.toFixed(2));
-    } else {
-      newPrice =
-        variants.length === 1 || !matt
-          ? Number(variants[0].price) * Number(event.target.value)
-          : (Number(variants[variant].price) + Number(box[boxIndex].price)) *
-            Number(event.target.value);
-      setPrice(newPrice.toFixed(2));
-      setQuantity(event.target.value);
-    }
+    dispatch({ type: event.target.name, payload: event.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const newErrors = [];
 
-    if (quantity < 1) {
+    if (state.quantity < 1) {
       newErrors.push({
         field: "quantity",
         msg: "Choose a <b>quantity</b> of 1 or more.",
       });
     }
 
-    if (variant === "" || variant === ".") {
+    if (state.variantIndex === "" || state.variantIndex === ".") {
       newErrors.push({
         field: "variant",
         msg: "Please select a <b>size</b>.",
@@ -222,14 +249,19 @@ const MattressForm = ({
       setErrors(newErrors);
       return;
     }
-    if (boxIndex !== "") {
-      const extra = {
-        variantId: box[boxIndex].shopifyId,
-        quantity: parseInt(quantity, 10),
-      };
-      addVariantToCart(variants[variant].shopifyId, quantity, extra);
+
+    if (state.boxIndex === "" || state.boxIndex === "4") {
+      addVariantToCart(variants[state.variantIndex].shopifyId, state.quantity);
     } else {
-      addVariantToCart(variants[variant].shopifyId, quantity);
+      const extra = {
+        variantId: state.boxVariants[state.boxIndex].shopifyId,
+        quantity: parseInt(state.quantity, 10),
+      };
+      addVariantToCart(
+        variants[state.variantIndex].shopifyId,
+        state.quantity,
+        extra,
+      );
     }
   };
 
@@ -241,7 +273,6 @@ const MattressForm = ({
           <ErrorIcon />
         </ErrorSign>
         <ErrorMsgs>
-          {console.log(boxIndex)}
           {errors.map((error) => (
             <li
               key={error.field}
@@ -257,13 +288,13 @@ const MattressForm = ({
             type="number"
             inputmode="numeric"
             id="quantity"
-            disabled={qtyDisabled}
+            disabled={state.qtyDisabled}
             name="quantity"
             min="1"
             step="1"
             max={maxQty}
             onChange={(e) => handleChange(e)}
-            value={quantity}
+            value={state.quantity}
           />
         </QtyFieldset>
         {hasVariants && (
@@ -272,7 +303,7 @@ const MattressForm = ({
             <Select
               as="select"
               id="variant"
-              value={variant}
+              value={state.variantIndex}
               name="variant"
               onChange={(e) => handleChange(e)}
             >
@@ -294,14 +325,14 @@ const MattressForm = ({
           <Select
             as="select"
             id="foundation"
-            value={boxIndex}
+            value={state.boxIndex}
             name="foundation"
-            disabled={boxDisabled}
+            disabled={state.boxDisabled}
             onChange={(e) => handleChange(e)}
           >
             <option disabled value="">
               Choose Foundation
-              {box && ` - $${box[0].price}`}
+              {state.boxVariants && ` - $${state.boxVariants[0].price}`}
             </option>
             <option value={4}>No Foundation - $0</option>
             <option value={0}>2&quot; Low Foundation</option>
@@ -317,15 +348,15 @@ const MattressForm = ({
         <ShopingCart />
       </AddToCartButton>
       <PriceRange>
-        {variant === "" ? (
+        {state.variantIndex === "" ? (
           <>
             <small>Price Range</small>
-            <h4>{price}</h4>
+            <h4>{state.price}</h4>
           </>
         ) : (
           <>
             <small>Total</small>
-            <h4>{`$${price}`}</h4>
+            <h4>{`$${state.price}`}</h4>
           </>
         )}
       </PriceRange>
