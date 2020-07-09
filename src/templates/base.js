@@ -93,6 +93,7 @@ const Base = ({ data }) => {
                 variants={shopifyBase.variants}
                 priceMin={shopifyBase.priceRange.minVariantPrice.amount}
                 priceMax={shopifyBase.priceRange.maxVariantPrice.amount}
+                maxQty={4}
               />
             </MainInfo>
           </Main>

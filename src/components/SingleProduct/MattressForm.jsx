@@ -139,13 +139,14 @@ const MattressForm = ({
   const [errors, setErrors] = useState([]);
   const [price, setPrice] = useState(
     variants.length === 1
-      ? `$${variants[0].price}`
+      ? variants[0].price
       : `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
   );
   const [variant, setVariant] = useState(variants.length === 1 ? 0 : "");
+  const [qtyDisabled, setQtyDisabled] = useState(variants.length !== 1);
   const handleChange = (event) => {
     event.preventDefault();
-
+    let newPrice;
     if (event.target.value) {
       const newErrors = errors;
 
@@ -175,15 +176,27 @@ const MattressForm = ({
           ]
         : null;
       setVariant(event.target.value);
-      setPrice(variants[event.target.value].price);
+      setQuantity(1);
+      newPrice = Number(variants[event.target.value].price) * 1;
+      setPrice(newPrice.toFixed(2));
       setBoxIndex("");
       setBoxDisabled(false);
       setBox(newBoxs);
+      setQtyDisabled(false);
     } else if (event.target.name === "foundation") {
       setBoxIndex(event.target.value);
-      const newPrice = Number(variants[variant].price) + Number(box[0].price);
-      setPrice(`$${newPrice.toFixed(2)}`);
+      newPrice =
+        event.target.value !== "4"
+          ? (Number(variants[variant].price) + Number(box[0].price)) * quantity
+          : Number(variants[variant].price) * quantity;
+      setPrice(newPrice.toFixed(2));
     } else {
+      newPrice =
+        variants.length === 1 || !matt
+          ? Number(variants[0].price) * Number(event.target.value)
+          : (Number(variants[variant].price) + Number(box[boxIndex].price)) *
+            Number(event.target.value);
+      setPrice(newPrice.toFixed(2));
       setQuantity(event.target.value);
     }
   };
@@ -228,6 +241,7 @@ const MattressForm = ({
           <ErrorIcon />
         </ErrorSign>
         <ErrorMsgs>
+          {console.log(boxIndex)}
           {errors.map((error) => (
             <li
               key={error.field}
@@ -243,6 +257,7 @@ const MattressForm = ({
             type="number"
             inputmode="numeric"
             id="quantity"
+            disabled={qtyDisabled}
             name="quantity"
             min="1"
             step="1"
@@ -288,6 +303,7 @@ const MattressForm = ({
               Choose Foundation
               {box && ` - $${box[0].price}`}
             </option>
+            <option value={4}>No Foundation - $0</option>
             <option value={0}>2&quot; Low Foundation</option>
             <option value={1}>5&quot; Flat Foundation</option>
             <option value={2}>9&quot; Flat Foundation</option>
@@ -309,7 +325,7 @@ const MattressForm = ({
         ) : (
           <>
             <small>Total</small>
-            <h4>{`${price}`}</h4>
+            <h4>{`$${price}`}</h4>
           </>
         )}
       </PriceRange>
