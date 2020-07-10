@@ -56,11 +56,26 @@ const FooterRoot = styled.footer`
     justify-content: center;
     padding: ${spacing["4"]} 0;
     flex-direction: column;
+    font-weight: 300;
+    font-size: ${fontSize.sm};
     h4 {
+      font-size: ${fontSize.base};
       margin: 0;
+      text-align: center;
+      font-weight: 400;
+      color: ${colors.gray["100"]};
+      padding-bottom: ${spacing["2"]};
     }
   }
-
+  .middleWrapper__contact {
+    padding-top: ${spacing["2"]};
+    display: flex;
+    justify-content: space-evenly;
+    font-size: ${fontSize.base};
+    a {
+      color: ${colors.red["200"]};
+    }
+  }
   transition: 0.75s;
   will-change: transform;
   @media (min-width: ${breakpoints.sm}) {
@@ -167,14 +182,41 @@ const FooterRoot = styled.footer`
     font-family: ${fonts.sans};
     justify-self: flex-end;
     h6 {
+      color: ${colors.gray["100"]};
+      font-weight: 300;
       /* max-width: 200px; */
       display: flex;
       /* justify-content: space-around; */
-      padding-bottom: ${spacing["1"]};
+      /* padding-bottom: ${spacing["1"]}; */
       margin: 0;
+      font-size: ${fontSize.base};
+    }
+    span {
+      color: ${colors.blue["100"]};
+      font-weight: 400;
+      padding-right: ${spacing["4"]};
     }
   }
-
+  .hours__inner {
+    display: flex;
+  }
+  .hours__days {
+    padding-right: ${spacing["6"]};
+    h6 {
+      margin: 0;
+      padding-bottom: ${spacing["2"]};
+      font-size: ${fontSize.base};
+    }
+  }
+  .hours__time {
+    h6 {
+      margin: 0;
+      padding-bottom: ${spacing["2"]};
+      font-size: ${fontSize.base};
+    }
+    display: flex;
+    flex-direction: column;
+  }
   .iconWrapper {
     display: flex;
     flex-wrap: wrap;
@@ -238,13 +280,17 @@ const Footer = ({ moved }) => {
           </div>
           <div className="hours">
             <h3>Hours</h3>
-            <div>
-              <h6>
-                <span>Mon-Fri:</span>
-                <span>10am - 8pm</span>
-              </h6>
-              <h6>Saturday 10am - 7pm</h6>
-              <h6>Sunday 10am - 6pm</h6>
+            <div className="hours__inner">
+              <div className="hours__days">
+                <h6>Mon-Fri:</h6>
+                <h6>Saturday:</h6>
+                <h6>Sunday:</h6>
+              </div>
+              <div className="hours__time">
+                <h6>10am - 8pm</h6>
+                <h6>10am - 7pm</h6>
+                <h6> 10am - 6pm</h6>
+              </div>
             </div>
           </div>
         </section>
@@ -351,15 +397,16 @@ const Footer = ({ moved }) => {
         <section className="middleWrapper">
           <h4>E.S.C. Mattress Center</h4>
           <div>10121 Evergreen Way, #30, Everett, WA 98204</div>
-          <a href="#">Map</a>
-          <div>
-            Main <a href="#">(425) 512.0017</a>
+          <div className="middleWrapper__contact">
+            <a href="#">Directions</a>
+            <a href="#">(425) 512.0017</a>
           </div>
         </section>
         <section className="bottomWrapper">
           <div>
             <a href="#">Terms/Policies</a>
             <a href="#">Warranty Info</a>
+            <a href="#">Site Map</a>
           </div>
           <small>&copy; 2020 E.S.C. Mattress Center</small>
         </section>
