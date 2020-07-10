@@ -24,7 +24,7 @@ const FooterRoot = styled.footer`
   justify-content: space-between;
   padding-right: ${spacing["5"]};
   padding-left: ${spacing["5"]};
-  position: sticky;
+  /* position: sticky; */
   bottom: 0;
   left: 0;
   padding-top: ${spacing["10"]};
@@ -55,6 +55,7 @@ const FooterRoot = styled.footer`
     display: flex;
     justify-content: center;
     padding: ${spacing["4"]} 0;
+    flex-direction: column;
     h4 {
       margin: 0;
     }
@@ -64,9 +65,16 @@ const FooterRoot = styled.footer`
   will-change: transform;
   @media (min-width: ${breakpoints.sm}) {
     transform: translate3d(0vw, 0, 0);
+    position: sticky;
     &.moved {
       /* filter: blur(1px); */
       transform: translate3d(-400px, 0, 0);
+    }
+    .middleWrapper {
+      flex-direction: row;
+    }
+    .bottomWrapper {
+      flex-direction: row;
     }
   }
   .firstUL {
@@ -148,6 +156,7 @@ const FooterRoot = styled.footer`
     }
   }
   .bottomWrapper {
+    flex-direction: column;
     border-top: 2px solid ${colors.gray["100"]}10;
     display: flex;
     justify-content: center;
@@ -348,8 +357,10 @@ const Footer = ({ moved }) => {
           </div>
         </section>
         <section className="bottomWrapper">
-          <a href="#">Terms/Policies</a>
-          <a href="#">Warranty Info</a>
+          <div>
+            <a href="#">Terms/Policies</a>
+            <a href="#">Warranty Info</a>
+          </div>
           <small>&copy; 2020 E.S.C. Mattress Center</small>
         </section>
       </div>
