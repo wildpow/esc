@@ -81,9 +81,10 @@ export const LargeImgWrap = styled.div`
 `;
 
 export const BigBanner = styled(Banner)`
-  font-size: 0.6rem;
+  font-size: 0.8rem;
+
   @media (min-width: 360px) and (orientation: portrait) {
-    font-size: 0.7rem;
+    font-size: 1rem;
     margin-left: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -92,7 +93,7 @@ export const BigBanner = styled(Banner)`
     width: 85%;
   }
   @media (max-width: 736px) and (orientation: landscape) {
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-left: 0px;
     width: 80%;
     padding-top: 5px;

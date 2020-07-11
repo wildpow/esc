@@ -350,11 +350,13 @@ const MattressForm = ({
             <option value={0}>2&quot; Low Foundation</option>
             <option value={1}>5&quot; Flat Foundation</option>
             <option value={2}>9&quot; Flat Foundation</option>
-            <option disabled>──────────</option>
-            <option value={3}>
-              {`${shopifyBase.title} - 
+            {shopifyBase && <option disabled>──────────</option>}
+            {shopifyBase && (
+              <option value={3}>
+                {`${shopifyBase.title} - 
               $${state.boxVariants && state.boxVariants[3].price}`}
-            </option>
+              </option>
+            )}
           </Select>
         </SizeFieldset>
       )}
