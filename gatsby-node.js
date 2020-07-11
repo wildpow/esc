@@ -70,6 +70,7 @@ exports.createPages = async ({ actions, graphql }) => {
         edges {
           node {
             slug
+            adjBaseShop
             shopMattConnection
             brand {
               shopify2Inch
@@ -133,6 +134,7 @@ exports.createPages = async ({ actions, graphql }) => {
       component: path.resolve(`./src/templates/mattress.js`),
       context: {
         slug: mattress.node.slug,
+        shopifyBase: mattress.node.adjBaseShop,
         shopifyMatt: mattress.node.shopMattConnection,
         shopify2Inch: mattress.node.brand.shopify2Inch,
         shopify5Inch: mattress.node.brand.shopify5Inch,

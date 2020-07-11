@@ -129,13 +129,14 @@ const MattressForm = ({
   priceMax,
   matt,
   boxVariants,
-  adjBase,
+  shopifyBase,
   maxQty,
 }) => {
   const initialState = {
     boxIndex: "",
     boxVariants: null,
     boxDisabled: true,
+    adjBase: shopifyBase.variants || null,
     twoInchBox: boxVariants ? boxVariants[0].variants : null,
     fiveInchBox: boxVariants ? boxVariants[1].variants : null,
     nineInchBox: boxVariants ? boxVariants[2].variants : null,
@@ -152,9 +153,15 @@ const MattressForm = ({
     let newBoxs;
     let newPrice;
     let newBoxPrice;
-
+    let newAdj;
     switch (action.type) {
       case "variant":
+        newAdj = shopifyBase
+          ? state.adjBase.filter(
+              (a) => a.title === variants[action.payload].title,
+            )
+          : null;
+
         newBoxs = boxVariants
           ? [
               ...state.twoInchBox.filter(
@@ -168,6 +175,7 @@ const MattressForm = ({
               ),
             ]
           : null;
+        if (newAdj) newBoxs.push(newAdj[0]);
         newPrice = Number(variants[action.payload].price);
         return {
           ...state,
@@ -180,17 +188,13 @@ const MattressForm = ({
           price: newPrice.toFixed(2),
         };
       case "foundation":
-        // Remove when adjustables are inputed
-        if (action.payload === "3") {
-          newPrice = 0;
-        } else {
-          newPrice =
-            action.payload !== "4"
-              ? (Number(variants[state.variantIndex].price) +
-                  Number(state.boxVariants[action.payload].price)) *
-                state.quantity
-              : Number(variants[state.variantIndex].price) * state.quantity;
-        }
+        newPrice =
+          action.payload !== "4"
+            ? (Number(variants[state.variantIndex].price) +
+                Number(state.boxVariants[action.payload].price)) *
+              state.quantity
+            : Number(variants[state.variantIndex].price) * state.quantity;
+
         return {
           ...state,
           boxIndex: action.payload,
@@ -347,7 +351,10 @@ const MattressForm = ({
             <option value={1}>5&quot; Flat Foundation</option>
             <option value={2}>9&quot; Flat Foundation</option>
             <option disabled>──────────</option>
-            <option value={3}>Adj</option>
+            <option value={3}>
+              {`${shopifyBase.title} - 
+              $${state.boxVariants && state.boxVariants[3].price}`}
+            </option>
           </Select>
         </SizeFieldset>
       )}
@@ -374,7 +381,7 @@ const MattressForm = ({
 MattressForm.defaultProps = {
   matt: false,
   boxVariants: null,
-  adjBase: [],
+  shopifyBase: null,
   maxQty: 10,
 };
 MattressForm.propTypes = {
@@ -383,7 +390,7 @@ MattressForm.propTypes = {
   priceMax: PropTypes.string.isRequired,
   matt: PropTypes.bool,
   boxVariants: PropTypes.instanceOf(Object),
-  adjBase: PropTypes.instanceOf(Object),
+  shopifyBase: PropTypes.instanceOf(Object),
   maxQty: PropTypes.number,
 };
 export default MattressForm;

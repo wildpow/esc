@@ -35,6 +35,7 @@ const LeftSide = styled.div`
 const Mattress = ({ data }) => {
   const {
     datoCmsMattress: mattress,
+    shopifyBase,
     shopify2Inch,
     shopify5Inch,
     shopify9Inch,
@@ -143,6 +144,7 @@ const Mattress = ({ data }) => {
                   matt
                   maxQty={4}
                   boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
+                  shopifyBase={shopifyBase}
                 />
               )}
             </MainInfo>
@@ -184,6 +186,7 @@ export const query = graphql`
   query SingleMattress(
     $slug: String!
     $shopifyMatt: String!
+    $shopifyBase: String!
     $shopify2Inch: String!
     $shopify5Inch: String!
     $shopify9Inch: String!
@@ -200,6 +203,16 @@ export const query = graphql`
           amount
         }
       }
+      variants {
+        price
+        title
+        shopifyId
+      }
+    }
+    shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
+      title
+      vendor
+      shopifyId
       variants {
         price
         title
