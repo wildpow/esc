@@ -136,7 +136,7 @@ const MattressForm = ({
     boxIndex: "",
     boxVariants: null,
     boxDisabled: true,
-    adjBase: shopifyBase.variants || null,
+    adjBase: shopifyBase ? shopifyBase.variants : null,
     twoInchBox: boxVariants ? boxVariants[0].variants : null,
     fiveInchBox: boxVariants ? boxVariants[1].variants : null,
     nineInchBox: boxVariants ? boxVariants[2].variants : null,
