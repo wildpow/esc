@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { FadeIn, FlexCol } from "./mainStyles";
+import { breakpoints } from "../utils/styles";
 
 export const Main = styled.div`
   animation-name: ${FadeIn};
@@ -8,10 +9,13 @@ export const Main = styled.div`
   /* background-color: white; */
   margin-right: auto;
   margin-left: auto;
-  padding-top: 15px;
+  padding-top: 1px;
   max-width: 980px;
   padding-left: 5px;
   padding-right: 5px;
+  @media (min-width: ${breakpoints.phablet}) {
+    padding-top: 15px;
+  }
 `;
 
 // export const Linky = styled(Link)`

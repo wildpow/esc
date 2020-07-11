@@ -46,6 +46,9 @@ const Form = styled.form`
     justify-content: flex-start;
     min-width: 420px;
   }
+  @media (min-width: ${breakpoints.xl}) {
+    min-width: 450px;
+  }
 `;
 const QtyFieldset = styled(Fieldset)`
   flex-basis: 65px;
@@ -177,12 +180,17 @@ const MattressForm = ({
           price: newPrice.toFixed(2),
         };
       case "foundation":
-        newPrice =
-          action.payload !== "4"
-            ? (Number(variants[state.variantIndex].price) +
-                Number(state.boxVariants[action.payload].price)) *
-              state.quantity
-            : Number(variants[state.variantIndex].price) * state.quantity;
+        // Remove when adjustables are inputed
+        if (action.payload === "3") {
+          newPrice = 0;
+        } else {
+          newPrice =
+            action.payload !== "4"
+              ? (Number(variants[state.variantIndex].price) +
+                  Number(state.boxVariants[action.payload].price)) *
+                state.quantity
+              : Number(variants[state.variantIndex].price) * state.quantity;
+        }
         return {
           ...state,
           boxIndex: action.payload,

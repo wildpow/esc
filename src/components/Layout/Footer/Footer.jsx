@@ -49,7 +49,19 @@ const FooterRoot = styled.footer`
       }
     }
   }
+  /* @media (min-width: ${breakpoints.phablet}) {
+    .topWrapper {
+      flex-wrap: nowrap;
+      section {
+        width: auto;
+      }
+    }
+  } */
+
   .middleWrapper {
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 1224px;
     font-family: ${fonts.sans};
     border-top: 2px solid ${colors.gray["100"]}10;
     display: flex;
@@ -66,28 +78,40 @@ const FooterRoot = styled.footer`
       color: ${colors.gray["100"]};
       padding-bottom: ${spacing["2"]};
     }
+    span {
+      text-align: center;
+    }
+    aside {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .middleWrapper__contact {
     padding-top: ${spacing["2"]};
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     font-size: ${fontSize.base};
     a {
+      padding: 0 10px;
       color: ${colors.red["200"]};
+      transition: all .2s ease-in;
+        &:hover {
+          color: ${colors.gray["600"]};
+        }
     }
   }
   transition: 0.75s;
   will-change: transform;
   @media (min-width: ${breakpoints.sm}) {
     transform: translate3d(0vw, 0, 0);
-    position: sticky;
+    /* position: sticky; */
     &.moved {
       /* filter: blur(1px); */
       transform: translate3d(-400px, 0, 0);
     }
-    .middleWrapper {
-      flex-direction: row;
-    }
+    /* .middleWrapper {
+      flex-direction: column;
+    } */
     .bottomWrapper {
       flex-direction: row;
     }
@@ -175,8 +199,29 @@ const FooterRoot = styled.footer`
     border-top: 2px solid ${colors.gray["100"]}10;
     display: flex;
     justify-content: center;
-    padding: ${spacing["4"]} 0;
+    padding-top: ${spacing["4"]};
+    padding-bottom: ${spacing["2"]};
     font-family: ${fonts.sans};
+    max-width: 1224px;
+    margin: 0 auto;
+    aside {
+      display: flex;
+      justify-content: center;
+      a {
+        padding: 0 10px;
+        color: ${colors.red["200"]};
+        transition: all .2s ease-in;
+        &:hover {
+          color: ${colors.gray["600"]};
+        }
+      }
+    }
+    small {
+      text-align: center;
+      padding-top: 10px;
+      font-weight: 300;
+      color: ${colors.gray["300"]};
+    }
   }
   .hours {
     font-family: ${fonts.sans};
@@ -395,19 +440,29 @@ const Footer = ({ moved }) => {
       </div>
       <div>
         <section className="middleWrapper">
-          <h4>E.S.C. Mattress Center</h4>
-          <div>10121 Evergreen Way, #30, Everett, WA 98204</div>
+          <aside>
+            <h4>E.S.C. Mattress Center</h4>
+            <span>10121 Evergreen Way, #30, Everett, WA 98204</span>
+          </aside>
           <div className="middleWrapper__contact">
-            <a href="#">Directions</a>
-            <a href="#">(425) 512.0017</a>
+            <OutboundLink
+              href="https://goo.gl/maps/nqXkkkAGRdu"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Directions
+            </OutboundLink>
+            <OutboundLink href="tel:1-425-512-0017">
+              (425) 512.0017
+            </OutboundLink>
           </div>
         </section>
         <section className="bottomWrapper">
-          <div>
-            <a href="#">Terms/Policies</a>
-            <a href="#">Warranty Info</a>
-            <a href="#">Site Map</a>
-          </div>
+          <aside>
+            <Link to="/policies">Terms/Policies</Link>
+            <Link to="/sitemap">Site Map</Link>
+            <Link to="/warranty">Warranty Info</Link>
+          </aside>
           <small>&copy; 2020 E.S.C. Mattress Center</small>
         </section>
       </div>

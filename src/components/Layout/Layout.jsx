@@ -5,15 +5,19 @@ import FocusLockUI from "react-focus-lock/UI";
 import { sidecar } from "use-sidecar";
 import Headroom from "react-headroom";
 import ModalContextProvider from "./ModalContext";
-import { useOnClickOutside, useKeyboardEvent } from "../Hooks";
+import { useOnClickOutside, useKeyboardEvent, useIntersect } from "../Hooks";
 import { useWindowSize } from "../../context/WindowSizeContext";
 import MenuOverLay from "../shared/MenuOverLay";
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
-// import Header from "./Header";
-// import Cart from "./Cart";
-// import MobileMenu from "./MobileMenu";
-// import Footer from "./Footer";
 import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
+
+const FooterWrapper = styled.footer`
+  bottom: 0;
+  left: 0;
+  top: 0;
+
+  position: sticky;
+`;
 
 const MainRoot = styled.div`
   max-width: 1370px;
@@ -44,12 +48,12 @@ function Layout({ children }) {
       setMenuStatus("open");
       // document.body.style.paddingRight = "15px";
       document.body.style.overflow = "hidden";
-      element.style.visibility = "hidden";
+      element.style.display = "none";
     } else {
       setMenuStatus("closed");
       // document.body.style.paddingRight = "0";
       document.body.style.overflow = "visible";
-      element.style.visibility = "visible";
+      element.style.display = "block";
     }
   }
 
@@ -58,13 +62,13 @@ function Layout({ children }) {
     if (cartStatus !== "open") {
       setCartStatus("open");
       document.body.style.overflow = "hidden";
-      element.style.visibility = "hidden";
+      element.style.display = "none";
       // document.body.style.paddingRight = "15px";
     } else {
       setCartStatus("closed");
       // document.body.style.paddingRight = "0";
       document.body.style.overflow = "visible";
-      element.style.visibility = "visible";
+      element.style.display = "block";
     }
   }
 
@@ -78,18 +82,28 @@ function Layout({ children }) {
     setMenuStatus("closed");
     document.body.style.overflow = "visible";
   });
-
+  const [ref, entry] = useIntersect({ threshold: 0.1 });
   useEffect(() => {
     if (width > 1028) {
       setMenuStatus("closed");
       document.body.style.paddingRight = "0";
       document.body.style.overflow = "visible";
     }
-  }, [width]);
+    if (
+      entry.isIntersecting &&
+      width < 769 &&
+      element.style.display === "block"
+    ) {
+      element.style.display = "none";
+    } else {
+      element.style.display = "block";
+    }
+  }, [width, element, entry]);
 
   useEffect(() => {
     setMoved(cartStatus === "open" || menuStatus === "open" ? "moved" : "");
   }, [cartStatus, menuStatus]);
+
   return (
     <ModalContextProvider>
       <StructuredDataMain />
@@ -136,7 +150,9 @@ function Layout({ children }) {
           {children}
         </MainRoot>
       </PageContent>
-      <Footer moved={moved} />
+      <FooterWrapper ref={ref}>
+        <Footer moved={moved} />
+      </FooterWrapper>
       {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
     </ModalContextProvider>
   );

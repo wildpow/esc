@@ -34,7 +34,7 @@ const HeaderRoot = styled.header`
     flex-direction: column-reverse;
   }
   .header__flex {
-    border-top: 2px solid ${colors.gray["200"]};
+    border-top: 2px solid ${colors.gray["300"]};
     display: flex;
     align-items: center;
     height: ${dimensions.headerHeight};

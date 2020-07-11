@@ -10,12 +10,12 @@ const deadSimpleEntry = keyframes`
 `;
 
 const PageContentRoot = styled.main`
-  padding-top: ${spacing["4"]};
   min-height: 100vh;
-  box-shadow: ${boxShadow["2xl"]};
   position: relative;
   z-index: 1;
-  padding-bottom: ${spacing["20"]};
+  /* padding-top: ${spacing["4"]}; */
+  box-shadow: ${boxShadow["2xl"]};
+  padding-bottom: ${spacing["6"]};
   background-color: ${colors.gray["100"]};
   /* display: flex;
   flex-direction: column; */
@@ -42,7 +42,7 @@ const PageContentRoot = styled.main`
     }
   }
   @media (min-width: ${breakpoints.md}) {
-    /* padding-top: ${spacing["10"]}; */
+    padding-bottom: ${spacing["20"]};
   }
 `;
 
