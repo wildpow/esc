@@ -57,7 +57,7 @@ const GenerateInitialState = (
       { value: "Pillow", checked: false, displayName: "Pillows" },
       { value: "Protector", checked: true, displayName: "Protectors" },
     ];
-    initialState.acc = protectors.nodes;
+    initialState.acc = protectors;
     initialState.selectedTypes.push("Protector");
   } else {
     initialState.selectedAccInfo = initialState.accInfo[3];

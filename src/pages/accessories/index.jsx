@@ -19,7 +19,37 @@ import Pillows from "../../images/pillowCollage.jpg";
 import Protector from "../../images/protector.jpg";
 import Sheets from "../../images/sheetStack.jpg";
 import Layout from "../../components/Layout";
+import { colors } from "../../utils/styles";
 
+const Button = styled(Link)`
+  align-self: center;
+  justify-items: center;
+  min-width: 180px;
+  text-decoration: none;
+  padding: 15px 25px;
+  background-color: ${colors.red["900"]};
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: white;
+  font-family: ${(props) => props.theme.MainFont1};
+  text-transform: uppercase;
+  cursor: pointer;
+  &:active {
+    box-shadow: 0 3px 0 #ccc;
+    top: 3px;
+    outline: none;
+  }
+  &:hover:enabled {
+    background-color: #094e9b;
+    color: white;
+    cursor: pointer !important;
+  }
+  &:active:enabled {
+    background: ${(props) => props.theme.mainColor1} !important;
+    box-shadow: inset 0px 0px 5px #c1c1c1 !important;
+    outline: none;
+  }
+`;
 const FlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -69,9 +99,7 @@ const Accessories = ({ data }) => {
                 large selection of heights and firmnesses to compliment any
                 sleeping style and body type.
               </P>
-              <Link to="/accessories/list?type=pillow" className="btn">
-                Shop Pillows
-              </Link>
+              <Button to="/accessories/list?type=pillow">Shop Pillows</Button>
             </FlexWrapper>
           </InfoWrapper>
         </AccWrapper>
@@ -86,9 +114,7 @@ const Accessories = ({ data }) => {
                 sheets are of the upmost quality and are guaranteed not to
                 &quot;pop off&quot; your mattress during the night.
               </P>
-              <Link to="/accessories/list?type=sheets" className="btn">
-                Shop Sheets
-              </Link>
+              <Button to="/accessories/list?type=sheets">Shop Sheets</Button>
             </FlexWrapper>
           </InfoWrapperReversed>
         </AccWrapper>
@@ -104,9 +130,9 @@ const Accessories = ({ data }) => {
                 5-Sided and complete encasements protecting from spills, stains,
                 and soiling.
               </P>
-              <Link to="/accessories/list?type=protector" className="btn">
+              <Button to="/accessories/list?type=protector">
                 Shop Protectors
-              </Link>
+              </Button>
             </FlexWrapper>
           </InfoWrapper>
         </AccWrapper>

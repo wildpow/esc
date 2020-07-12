@@ -121,6 +121,7 @@ export const H3 = styled.h3`
 export const InfoWrapper = styled(FlexRow)`
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-bottom: 20px;
   @media (min-width: 568px) {
     flex-wrap: nowrap;
     justify-content: space-around;
