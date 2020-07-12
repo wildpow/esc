@@ -26,15 +26,13 @@ export const SmImgWrap = styled.div`
   color: white;
   width: 83px;
   height: 83px;
-  /* @media (min-width: 360px) {
+  @media (min-width: 360px) {
     width: 60px;
     height: 60px;
-  } */
+  }
   @media (min-width: 500px) {
-    /* width: 83px;
-    height: 83px; */
-    width: calc(450px / 3);
-    height: 148px;
+    width: calc(350px / 3);
+    height: 112px;
   }
   @media (min-width: 768px) {
     width: calc(450px / 3);
@@ -63,7 +61,7 @@ export const LargeImgWrap = styled.div`
     width: 350px;
     height: 350px;
   }
-  @media (min-width: 500px) {
+  @media (min-width: 768px) {
     /* width: 250px;
     height: 250px; */
     width: 450px;

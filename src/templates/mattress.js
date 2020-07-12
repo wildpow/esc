@@ -26,6 +26,7 @@ import dateSEO from "../functions/dateSEO";
 import ImageCarousel from "../components/SingleProduct/ImageCarousel";
 import FirmnessScale from "../components/SingleProduct/FirmessScaleMobile";
 import MattressForm from "../components/SingleProduct/MattressForm";
+import { useWindowSize } from "../context/WindowSizeContext";
 
 const LeftSide = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ const Mattress = ({ data }) => {
     shopifyMattress,
   } = data;
   const detectMobile = useMobileDetect();
+  const { width } = useWindowSize();
   return (
     <Layout>
       <HelmetDatoCms seo={mattress.seoMetaTags}>
@@ -111,17 +113,19 @@ const Mattress = ({ data }) => {
               )}
             </LeftSide>
             <MainInfo>
-              <List>
-                <h3>Features</h3>
-                <ul>
-                  {mattress.listFeature.map((item) => (
-                    <li key={item.id}>{item.feature}</li>
-                  ))}
-                  <Info>
-                    <AnchorLink href="#moreInfo">See more details</AnchorLink>
-                  </Info>
-                </ul>
-              </List>
+              {width > 768 && (
+                <List>
+                  <h3>Features</h3>
+                  <ul>
+                    {mattress.listFeature.map((item) => (
+                      <li key={item.id}>{item.feature}</li>
+                    ))}
+                    <Info>
+                      <AnchorLink href="#moreInfo">See more details</AnchorLink>
+                    </Info>
+                  </ul>
+                </List>
+              )}
               {shopifyMattress === null ? (
                 <DropDown
                   typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}

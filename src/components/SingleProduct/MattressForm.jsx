@@ -18,22 +18,53 @@ import ErrorIcon from "../../assets/exclamation-triangle-solid.svg";
 const PriceRange = styled.div`
   font-family: ${fonts.sans};
   padding-top: 20px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
   small {
     font-weight: 300;
     color: ${colors.red["900"]};
   }
   h4 {
-    font-size: ${fontSize["4xl"]};
+    font-size: ${fontSize["2xl"]};
     margin-top: 0;
     color: ${colors.blue["900"]};
+    margin-bottom: 0;
+  }
+  @media (min-width: ${breakpoints.xsm}) {
+    h4 {
+      font-size: ${fontSize["4xl"]};
+    }
+    small {
+      font-size: ${fontSize.xl};
+      font-weight: 300;
+      color: ${colors.red["900"]};
+    }
+  }
+  /* @media (min-width: ${breakpoints.md}) {
+    h4 {
+      font-size: ${fontSize["3xl"]};
+    }
+    small {
+      font-size: ${fontSize.xl};
+      font-weight: 300;
+      color: ${colors.red["900"]};
+    }
+  } */
+  @media (min-width: ${breakpoints.lg}) {
+    h4 {
+      font-size: ${fontSize["5xl"]};
+    }
   }
 `;
 
 const Form = styled.form`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: ${spacing["10"]} ${spacing["4"]} 0;
+  justify-content: center; */
+  display: flex;
+  flex-wrap: wrap;
+  padding: ${spacing["2"]} ${spacing["2"]} 0;
 
   .fieldset {
     display: flex;
@@ -43,11 +74,15 @@ const Form = styled.form`
   }
 
   @media (min-width: ${breakpoints.lg}) {
-    justify-content: flex-start;
-    min-width: 420px;
+    /* justify-content: flex-start;
+    min-width: 420px; */
   }
   @media (min-width: ${breakpoints.xl}) {
-    min-width: 450px;
+    max-width: 600px;
+    /* flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: flex-start; */
   }
 `;
 const QtyFieldset = styled(Fieldset)`
@@ -280,7 +315,7 @@ const MattressForm = ({
   const hasVariants = variants.length > 1;
   return (
     <Form onSubmit={handleSubmit} noValidate>
-      <Errors show={errors.length}>
+      {/* <Errors show={errors.length}>
         <ErrorSign>
           <ErrorIcon />
         </ErrorSign>
@@ -292,45 +327,45 @@ const MattressForm = ({
             />
           ))}
         </ErrorMsgs>
-      </Errors>
-      <div className="fieldset">
-        <QtyFieldset>
-          <Label htmlFor="quantity">Qty.</Label>
-          <Input
-            type="number"
-            inputmode="numeric"
-            id="quantity"
-            disabled={state.qtyDisabled}
-            name="quantity"
-            min="1"
-            step="1"
-            max={maxQty}
+      </Errors> */}
+      {/* <div className="fieldset"> */}
+      <QtyFieldset>
+        <Label htmlFor="quantity">Qty.</Label>
+        <Input
+          type="number"
+          inputmode="numeric"
+          id="quantity"
+          disabled={state.qtyDisabled}
+          name="quantity"
+          min="1"
+          step="1"
+          max={maxQty}
+          onChange={(e) => handleChange(e)}
+          value={state.quantity}
+        />
+      </QtyFieldset>
+      {hasVariants && (
+        <SizeFieldset>
+          <Label htmlFor="variant">Size</Label>
+          <Select
+            as="select"
+            id="variant"
+            value={state.variantIndex}
+            name="variant"
             onChange={(e) => handleChange(e)}
-            value={state.quantity}
-          />
-        </QtyFieldset>
-        {hasVariants && (
-          <SizeFieldset>
-            <Label htmlFor="variant">Size</Label>
-            <Select
-              as="select"
-              id="variant"
-              value={state.variantIndex}
-              name="variant"
-              onChange={(e) => handleChange(e)}
-            >
-              <option disabled value="">
-                Choose Size
+          >
+            <option disabled value="">
+              Choose Size
+            </option>
+            {variants.map((item, index) => (
+              <option value={index} key={item.shopifyId}>
+                {`${item.title} - $${item.price}`}
               </option>
-              {variants.map((item, index) => (
-                <option value={index} key={item.shopifyId}>
-                  {`${item.title} - $${item.price}`}
-                </option>
-              ))}
-            </Select>
-          </SizeFieldset>
-        )}
-      </div>
+            ))}
+          </Select>
+        </SizeFieldset>
+      )}
+
       {matt && (
         <SizeFieldset>
           <Label htmlFor="foundation">Foundation</Label>
@@ -364,19 +399,33 @@ const MattressForm = ({
         Add to Cart
         <ShopingCart />
       </AddToCartButton>
+
       <PriceRange>
         {state.variantIndex === "" ? (
-          <>
+          <div>
             <small>Price Range</small>
             <h4>{state.price}</h4>
-          </>
+          </div>
         ) : (
-          <>
+          <div>
             <small>Total</small>
             <h4>{`$${state.price}`}</h4>
-          </>
+          </div>
         )}
       </PriceRange>
+      <Errors show={errors.length}>
+        <ErrorSign>
+          <ErrorIcon />
+        </ErrorSign>
+        <ErrorMsgs>
+          {errors.map((error) => (
+            <li
+              key={error.field}
+              dangerouslySetInnerHTML={{ __html: error.msg }}
+            />
+          ))}
+        </ErrorMsgs>
+      </Errors>
     </Form>
   );
 };

@@ -36,6 +36,7 @@ export const Description = styled.p`
   }
   @media (min-width: 550px) {
     font-size: 1rem;
+    padding-top: 15px;
   }
   @media (min-width: 768px) {
     font-size: 1.1rem;
@@ -181,6 +182,7 @@ export const Main = styled.div`
   justify-content: space-around;
   @media (min-width: 360px) {
     margin-top: 4px;
+    margin-bottom: 12px;
   }
   @media (min-width: 768px) {
     margin-bottom: 10px;

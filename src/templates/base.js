@@ -22,8 +22,10 @@ import {
 } from "../components/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
 import MattressForm from "../components/SingleProduct/MattressForm";
+import { useWindowSize } from "../context/WindowSizeContext";
 
 const Base = ({ data }) => {
+  const { width } = useWindowSize();
   const { datoCmsAdjustableBase: adjBase, shopifyBase } = data;
   const removeZeroPrices = Object.values(adjBase.price[0]).filter(
     (value) => value !== 0,
@@ -78,17 +80,19 @@ const Base = ({ data }) => {
               base
             />
             <MainInfo>
-              <List>
-                <h3>Features</h3>
-                <ul>
-                  {adjBase.smallFeatureList.map((item) => (
-                    <li key={item.id}>{item.feature}</li>
-                  ))}
-                  <Info>
-                    <AnchorLink href="#moreInfo">See more details</AnchorLink>
-                  </Info>
-                </ul>
-              </List>
+              {width > 768 && (
+                <List>
+                  <h3>Features</h3>
+                  <ul>
+                    {adjBase.smallFeatureList.map((item) => (
+                      <li key={item.id}>{item.feature}</li>
+                    ))}
+                    <Info>
+                      <AnchorLink href="#moreInfo">See more details</AnchorLink>
+                    </Info>
+                  </ul>
+                </List>
+              )}
               <MattressForm
                 variants={shopifyBase.variants}
                 priceMin={shopifyBase.priceRange.minVariantPrice.amount}
