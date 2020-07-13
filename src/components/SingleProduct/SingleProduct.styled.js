@@ -104,7 +104,7 @@ export const List = styled.div`
   @media (min-width: 550px) {
     padding: 0px 0px 0px 10px;
     h3 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-top: 0;
       margin-bottom: 0;
       border-bottom: 4px solid ${(props) => props.theme.mainColor2};
@@ -114,11 +114,10 @@ export const List = styled.div`
     ul {
       list-style: square;
       margin-top: 10px;
-      font-size: 1rem;
     }
     ul li {
-      padding-bottom: 2px;
-      font-size: 1.1rem;
+      padding-bottom: 4px;
+      font-size: 1.5rem;
     }
   }
 
@@ -182,16 +181,16 @@ export const Main = styled.div`
   justify-content: space-around;
   @media (min-width: 360px) {
     margin-top: 4px;
-    margin-bottom: 12px;
+    /* margin-bottom: 12px; */
   }
   @media (min-width: 768px) {
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     flex-direction: row;
   }
   @media (min-width: 1024px) {
     justify-content: space-evenly;
     margin-left: 5px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
 `;
 

@@ -3,6 +3,7 @@ import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 // import BirdBig from "./birdBig";
+import { colors } from "../../../utils/styles";
 
 const BirdLink = styled(OutboundLink)`
   text-decoration: none;
@@ -24,7 +25,7 @@ const CertReview = styled.div`
   height: 180px; */
   font-family: ${(props) => props.theme.MainFont1};
   /* box-shadow: ${(props) => props.theme.BoxShadow}; */
-  background-color: ${(props) => props.theme.mainColor1};
+  background-color: ${colors.red["800"]};
   display: flex;
   color: white;
   border-radius: 5px;

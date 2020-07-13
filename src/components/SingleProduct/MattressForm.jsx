@@ -65,7 +65,7 @@ const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
   padding: ${spacing["2"]} ${spacing["2"]} 0;
-
+  padding-top: 0;
   .fieldset {
     display: flex;
   }
@@ -125,6 +125,9 @@ const Errors = styled.div`
   margin-bottom: ${spacing["2"]};
   width: 100%;
   height: 50px;
+  @media (min-width: ${breakpoints.md}){
+    margin-bottom: 0;
+  }
 `;
 
 const ErrorSign = styled.div`

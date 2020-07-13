@@ -32,7 +32,7 @@ export const SmImgWrap = styled.div`
   }
   @media (min-width: 500px) {
     width: calc(350px / 3);
-    height: 112px;
+    height: 117px;
   }
   @media (min-width: 768px) {
     width: calc(450px / 3);

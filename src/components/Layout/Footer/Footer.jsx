@@ -18,7 +18,7 @@ import useFooterIcons from "./use-footer-icons";
 import useReaders from "./use-readers-choice";
 import Bird from "./Bird";
 
-const FooterRoot = styled.footer`
+const FooterRoot = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

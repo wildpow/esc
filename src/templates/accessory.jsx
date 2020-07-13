@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 import Layout from "../components/Layout";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 // import AccDropDown from "../components/accessories/AccDropDown";
@@ -20,6 +21,7 @@ import {
 } from "../components/SingleProduct/SingleProduct.styled";
 import ImageCarousel from "../components/SingleProduct/ImageCarousel";
 import MattressForm from "../components/SingleProduct/MattressForm";
+import dateSEO from "../functions/dateSEO";
 
 const SmList = styled(List)`
   display: flex;
@@ -38,6 +40,43 @@ const Accessory = ({ data }) => {
   const { shopifyProduct: product } = data;
   return (
     <Layout>
+      <Helmet>
+        <title>{`${product.title} at ESC Mattress Center`}</title>
+        <meta property="og:title" content={product.title} />
+        <meta name="twitter:title" content={product.title} />
+        <meta
+          name="description"
+          content={`${product.description} at ESC Mattress Center in Everett, WA`}
+        />
+        <meta
+          property="og:description"
+          content={`${product.description} at ESC Mattress Center in Everett, WA`}
+        />
+        <meta
+          name="twitter:description"
+          content={`${product.description} at ESC Mattress Center in Everett, WA`}
+        />
+        <meta
+          name="twitter:site"
+          content="@https://twitter.com/CenterEsc?ref_src=twsrc%5Etfw"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* This time needs to change!!!!!!!!!!!!!!!!!!!! */}
+        <meta property="article:modified_time" content="2020-07-11T19:50:32Z" />
+        <meta
+          property="article:published_time"
+          content="2020-07-11T19:50:32Z"
+        />
+        <meta
+          property="article:publisher"
+          content="https://www.facebook.com/ESCMattressCenter/"
+        />
+        <meta property="og:locale" content="en_EN" />
+        <meta property=" og:type" content="product" />
+        <meta property="og:site_name" content="E.S.C Mattress Center" />
+        <meta property="og:image" content={product.images.originalSrc} />
+        <meta name="twitter:image" content={product.images.originalSrc} />
+      </Helmet>
       <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
         <BreadWrapper>
           <BreadCrumbs
