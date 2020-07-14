@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { Link } from "gatsby";
 import Img from "gatsby-image";
 import { useWindowSize } from "../../context/WindowSizeContext";
 import Tab from "./Tab";
 import arrowDown from "../../images/whitedownArrow.png";
 import AnimatedBox from "./AnimatedBox";
 import { P } from "./Landing.styled";
+import { InBoundLink } from "./HeaderButtons";
 
 const TabHeroImg = styled(Img)`
   /* max-width: 100%;
   height: auto;
   vertical-align: middle; */
   max-width: ${(props) => props.width}px;
+  width: ${(props) => props.width}px;
   margin: 0 auto;
   text-align: center;
   margin-bottom: 10px;
@@ -57,10 +60,18 @@ const Holder = styled.div`
   @media screen and (orientation: landscape) {
     height: initial;
   }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
-const TabBox = ({ tabs, hero, heroText }) => {
+const TabBox = ({ tabs, hero, heroText, topButtonName, topButtonUrl }) => {
   const [current, setCurrent] = useState(0);
   const { width } = useWindowSize();
+  const hasTopButton = !!(
+    topButtonName.length !== 0 || topButtonUrl.length !== 0
+  );
   return (
     <Holder>
       <header>
@@ -70,6 +81,14 @@ const TabBox = ({ tabs, hero, heroText }) => {
           title={hero.title}
           width={hero.width}
         />
+        {hasTopButton ? (
+          <InBoundLink
+            style={{ width: "250px", textAlign: "center" }}
+            to={topButtonUrl}
+          >
+            {topButtonName}
+          </InBoundLink>
+        ) : null}
         <P>{heroText}</P>
         <div style={{ display: "flex", justifyContent: "center" }}>
           {width > 770 ? (
@@ -103,6 +122,11 @@ const TabBox = ({ tabs, hero, heroText }) => {
   );
 };
 
+TabBox.defaultProps = {
+  topButtonUrl: null,
+  topButtonName: null,
+};
+
 TabBox.propTypes = {
   heroText: PropTypes.string.isRequired,
   hero: PropTypes.shape({
@@ -112,6 +136,8 @@ TabBox.propTypes = {
     url: PropTypes.string,
   }).isRequired,
   tabs: PropTypes.instanceOf(Array).isRequired,
+  topButtonUrl: PropTypes.string,
+  topButtonName: PropTypes.string,
 };
 
 export default TabBox;

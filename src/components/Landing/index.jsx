@@ -8,7 +8,7 @@ import { P } from "./Landing.styled";
 import HeaderButtons from "./HeaderButtons";
 
 const Header = styled(Img)`
-  margin-top: 3em;
+  margin-top: 2em;
   margin-bottom: 2em;
   max-width: 662px;
   max-height: 116px;
@@ -76,6 +76,8 @@ const Landing = ({ data, buttonName, buttonURL }) => {
               tabs={item.box}
               hero={item.topImage}
               heroText={item.topText}
+              topButtonName={item.topButtonName}
+              topButtonUrl={item.topButtonUrl}
             />
           </div>
         ))}

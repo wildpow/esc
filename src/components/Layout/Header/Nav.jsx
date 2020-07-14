@@ -5,9 +5,9 @@ import styled, { keyframes } from "styled-components";
 import {
   colors,
   // dimensions,
-  // breakpoints,
+  breakpoints,
   // spacing,
-  // fontSize,
+  fontSize,
   fonts,
 } from "../../../utils/styles";
 
@@ -58,6 +58,11 @@ const NavRoot = styled.nav`
           background: ${colors.red["800"]};
         }
       }
+    }
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    ul li a {
+      font-size: ${fontSize.lg};
     }
   }
 `;

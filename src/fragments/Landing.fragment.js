@@ -31,6 +31,8 @@ export const landing = graphql`
     }
     description
     tabBox {
+      topButtonUrl
+      topButtonName
       id
       name
       topText
@@ -47,6 +49,8 @@ export const landing = graphql`
         }
       }
       box {
+        buttonUrl
+        buttonText
         title
         description
         picture {

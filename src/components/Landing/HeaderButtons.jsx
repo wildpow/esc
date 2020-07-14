@@ -20,7 +20,7 @@ const buttonStyles = css`
 const OutBoundLink = styled.a`
   ${buttonStyles}
 `;
-const InBoundLink = styled(Link)`
+export const InBoundLink = styled(Link)`
   ${buttonStyles}
 `;
 

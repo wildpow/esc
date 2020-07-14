@@ -33,7 +33,14 @@ const AccessoryList = ({ location }) => {
     <Layout>
       <MattListWrapper>
         <NewBread Brands>
-          <BreadCrumbs next="Accessories" here={state.selectedAccInfo.title} />
+          <BreadCrumbs
+            next="Accessories"
+            here={
+              state.selectedAccInfo.title === "Accessories"
+                ? "All"
+                : state.selectedAccInfo.title
+            }
+          />
         </NewBread>
         <Header
           title={state.selectedAccInfo.title}
@@ -54,7 +61,14 @@ const AccessoryList = ({ location }) => {
           </div>
         </div>
         <NewBread Brands Bottom>
-          <BreadCrumbs next="Accessories" here={state.selectedAccInfo.title} />
+          <BreadCrumbs
+            next="Accessories"
+            here={
+              state.selectedAccInfo.title === "Accessories"
+                ? "All"
+                : state.selectedAccInfo.title
+            }
+          />
         </NewBread>
       </MattListWrapper>
     </Layout>
