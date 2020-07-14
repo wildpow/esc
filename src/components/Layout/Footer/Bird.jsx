@@ -25,9 +25,9 @@ const CertReview = styled.div`
   height: 180px; */
   font-family: ${(props) => props.theme.MainFont1};
   /* box-shadow: ${(props) => props.theme.BoxShadow}; */
-  background-color: ${colors.red["800"]};
+  background-color: ${colors.gray["100"]};
   display: flex;
-  color: white;
+  color: ${colors.blue["900"]};
   border-radius: 5px;
   justify-content: space-between;
   div h4 {

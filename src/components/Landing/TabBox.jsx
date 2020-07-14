@@ -15,7 +15,7 @@ const TabHeroImg = styled(Img)`
   height: auto;
   vertical-align: middle; */
   max-width: ${(props) => props.width}px;
-  width: ${(props) => props.width}px;
+  /* width: ${(props) => props.width}px; */
   margin: 0 auto;
   text-align: center;
   margin-bottom: 10px;
@@ -60,7 +60,7 @@ const Holder = styled.div`
   @media screen and (orientation: landscape) {
     height: initial;
   }
-  header {
+  article {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,15 +81,17 @@ const TabBox = ({ tabs, hero, heroText, topButtonName, topButtonUrl }) => {
           title={hero.title}
           width={hero.width}
         />
-        {hasTopButton ? (
-          <InBoundLink
-            style={{ width: "250px", textAlign: "center" }}
-            to={topButtonUrl}
-          >
-            {topButtonName}
-          </InBoundLink>
-        ) : null}
-        <P>{heroText}</P>
+        <article>
+          {hasTopButton ? (
+            <InBoundLink
+              style={{ width: "250px", textAlign: "center" }}
+              to={topButtonUrl}
+            >
+              {topButtonName}
+            </InBoundLink>
+          ) : null}
+          <P>{heroText}</P>
+        </article>
         <div style={{ display: "flex", justifyContent: "center" }}>
           {width > 770 ? (
             <>

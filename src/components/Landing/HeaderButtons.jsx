@@ -32,6 +32,7 @@ const HeaderButtons = ({ buttonName, buttonURL }) => {
         display: "flex",
         justifyContent: "center",
         marginBottom: " 54px",
+        flexWrap: "wrap",
       }}
     >
       {buttonName && (
