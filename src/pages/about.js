@@ -16,11 +16,7 @@ import {
   PopImg,
 } from "../styles/aboutStyles";
 import { H2 } from "../styles/mainStyles";
-import store1 from "../images/outsideNightRatio.jpg";
-import store2 from "../images/outsideDayRatio.jpg";
-import map from "../images/storeMapRatio.png";
 import Layout from "../components/Layout";
-import pop from "../images/funkoWithoutBillWithText.png";
 import AboutReview from "../components/ReviewView";
 
 const AboutH2 = styled(H2)`
@@ -40,6 +36,17 @@ const About = ({ data }) => {
     (val) => val.comments !== null,
   );
   const maxIndex = content.length - 1;
+  let funCoPop;
+  let escNight;
+  let escDay;
+  let escMap;
+  data.datoCmsImage.images.map((img) => {
+    if (img.title === "panda_map") escMap = img;
+    if (img.title === "ESC Mattress Center") escNight = img;
+    if (img.title === "fun_co") funCoPop = img;
+    if (img.title === "outside_light") escDay = img;
+    return null;
+  });
   return (
     <Layout>
       <Main>
@@ -52,18 +59,9 @@ const About = ({ data }) => {
         </header>
         <AboutReview maxIndex={maxIndex} content={content} />
         <PicHolder>
-          <StoreImg
-            src={store1}
-            alt="E.S.C Mattress Center store front in Everett Washington at night"
-          />
-          <MapImg
-            src={map}
-            alt="Map of our mattress store the showing the major cross streets of Pacific Hwy/ Evergreen Way and Everett Mall Way"
-          />
-          <StoreImg
-            src={store2}
-            alt="E.S.C Matttress Center store front from Everett Mall Way in Snohomish County"
-          />
+          <StoreImg fluid={escNight.fluid} alt={escNight.alt} />
+          <MapImg fluid={escMap.fluid} alt={escMap.alt} />
+          <StoreImg fluid={escDay.fluid} alt={escDay.alt} />
         </PicHolder>
 
         <Address>
@@ -113,10 +111,7 @@ const About = ({ data }) => {
           just call ahead and we’ll do everything we can to make it happen (we
           go to Whidbey Island all the time).
         </RegularParagraph>
-        <PopImg
-          src={pop}
-          alt="FunCo toys of E.S.C Mattress Centers co-founders Joshua and William"
-        />
+        <PopImg fluid={funCoPop.fluid} alt={funCoPop.alt} />
       </Main>
     </Layout>
   );
@@ -139,6 +134,16 @@ export const aboutSEO = graphql`
         reviewer {
           firstName
           lastName
+        }
+      }
+    }
+    datoCmsImage(uniqueName: { eq: "about" }) {
+      uniqueName
+      images {
+        title
+        alt
+        fluid(maxWidth: 420, imgixParams: { auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
         }
       }
     }

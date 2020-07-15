@@ -3,6 +3,12 @@ import styled from "styled-components";
 import { FadeIn } from "../../../styles/mainStyles";
 
 export const StyledLink = styled(Link)`
+  transition: ${(props) => props.theme.hoverTransition};
+  box-shadow: ${(props) => props.theme.hoverBoxBefore};
+  &:hover {
+    transform: ${(props) => props.theme.hoverTransform};
+    box-shadow: ${(props) => props.theme.hoverBoxAfter};
+  }
   padding-right: 2px;
   padding-left: 2px;
   padding-bottom: 5px;

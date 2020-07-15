@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { string } from "prop-types";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import {
   colors,
   // dimensions,
@@ -9,6 +9,7 @@ import {
   // spacing,
   fontSize,
   fonts,
+  boxShadow,
 } from "../../../utils/styles";
 
 // const navEntry = keyframes`
@@ -30,10 +31,10 @@ const menuData = [
 ];
 
 const NavRoot = styled.nav`
-  /* animation: ${navEntry} 0.75s ease forwards; */
   font-family: ${fonts.sans};
   background: ${colors.blue["700"]};
   z-index: 0;
+  box-shadow: ${boxShadow.md};
   ul {
     margin: 0;
     opacity: ${({ cartStatus }) => (cartStatus === "open" ? 0.5 : 1)};

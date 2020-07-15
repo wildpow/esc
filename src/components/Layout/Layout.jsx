@@ -11,13 +11,13 @@ import MenuOverLay from "../shared/MenuOverLay";
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
 import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
 
-const FooterWrapper = styled.footer`
-  bottom: 0;
-  left: 0;
-  top: 0;
+// const FooterWrapper = styled.footer`
+//   bottom: 0;
+//   left: 0;
+//   top: 0;
 
-  position: sticky;
-`;
+//   position: sticky;
+// `;
 
 const MainRoot = styled.div`
   max-width: 1370px;
@@ -150,9 +150,9 @@ function Layout({ children }) {
           {children}
         </MainRoot>
       </PageContent>
-      <FooterWrapper ref={ref}>
+      <div ref={ref}>
         <Footer moved={moved} />
-      </FooterWrapper>
+      </div>
       {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
     </ModalContextProvider>
   );

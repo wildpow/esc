@@ -7,6 +7,7 @@ import Layout from "../components/Layout";
 import PostThumbnail from "../components/Blog/PostThumbnail";
 import { FadeIn } from "../styles/mainStyles";
 // import SEO from "../components/seo";
+import { colors } from "../utils/styles";
 
 const PostsContainer = styled.div`
   display: grid;
@@ -39,7 +40,7 @@ const BlogContainer = styled.div`
 const Button = styled.button`
   font-family: ${(props) => props.theme.MainFont1};
   grid-area: footer;
-  background: ${(props) => props.theme.mainColor1};
+  background: ${colors.red["900"]};
   width: 100%;
   box-shadow: ${(props) => props.theme.hoverBoxBefore};
   font-size: 16px;

@@ -10,11 +10,11 @@ const deadSimpleEntry = keyframes`
 `;
 
 const PageContentRoot = styled.main`
-  min-height: 100vh;
+  /* min-height: 100vh; */
   position: relative;
   z-index: 1;
   /* padding-top: ${spacing["4"]}; */
-  box-shadow: ${boxShadow["2xl"]};
+  box-shadow: ${boxShadow.xl};
   padding-bottom: ${spacing["6"]};
   background-color: ${colors.gray["100"]};
   /* display: flex;

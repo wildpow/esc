@@ -18,15 +18,15 @@ import useFooterIcons from "./use-footer-icons";
 import useReaders from "./use-readers-choice";
 import Bird from "./Bird";
 
-const FooterRoot = styled.div`
+const FooterRoot = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding-right: ${spacing["5"]};
   padding-left: ${spacing["5"]};
   /* position: sticky; */
-  bottom: 0;
-  left: 0;
+  /* bottom: 0;
+  left: 0; */
   padding-top: ${spacing["10"]};
   color: ${colors.white};
   background-color: ${colors.blue["900"]};
