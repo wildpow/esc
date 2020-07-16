@@ -20,10 +20,13 @@ const PriceRange = styled.div`
   padding-top: 20px;
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
   small {
-    font-weight: 300;
+    font-weight: ${({ compareAtPrice }) => (compareAtPrice ? 500 : 300)};
     color: ${colors.red["900"]};
+    text-decoration: ${({ compareAtPrice }) =>
+      compareAtPrice ? "line-through" : "initial"};
   }
   h4 {
     font-size: ${fontSize["2xl"]};
@@ -37,7 +40,7 @@ const PriceRange = styled.div`
     }
     small {
       font-size: ${fontSize.xl};
-      font-weight: 300;
+    
       color: ${colors.red["900"]};
     }
   }
@@ -185,13 +188,31 @@ const MattressForm = ({
         ? variants[0].price
         : `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
     variantIndex: variants.length === 1 ? 0 : "",
+    compareAtPrice: null,
   };
   const { addVariantToCart } = useContext(StoreContext);
+  function comparePrice(price, compare) {
+    if (compare) {
+      return Number(compare);
+    }
+    return Number(price);
+  }
+  function doesBoxExist(bool, index) {
+    if (bool) {
+      if (index === "" || index === "4") {
+        return false;
+      }
+      return true;
+    }
+    return false;
+  }
   const reducer = (state, action) => {
     let newBoxs;
     let newPrice;
     let newBoxPrice;
     let newAdj;
+    let newCompareAtPrice;
+    let newCompareBoxPrice;
     switch (action.type) {
       case "variant":
         newAdj = shopifyBase
@@ -215,6 +236,10 @@ const MattressForm = ({
           : null;
         if (newAdj) newBoxs.push(newAdj[0]);
         newPrice = Number(variants[action.payload].price);
+        newCompareAtPrice =
+          variants[action.payload].compareAtPrice !== null
+            ? variants[action.payload].compareAtPrice
+            : null;
         return {
           ...state,
           boxVariants: newBoxs,
@@ -224,6 +249,7 @@ const MattressForm = ({
           boxDisabled: false,
           qtyDisabled: false,
           price: newPrice.toFixed(2),
+          compareAtPrice: newCompareAtPrice,
         };
       case "foundation":
         newPrice =
@@ -233,25 +259,64 @@ const MattressForm = ({
               state.quantity
             : Number(variants[state.variantIndex].price) * state.quantity;
 
+        newCompareAtPrice =
+          action.payload !== "4"
+            ? comparePrice(
+                variants[state.variantIndex].price,
+                variants[state.variantIndex].compareAtPrice,
+              ) +
+              comparePrice(
+                state.boxVariants[action.payload].price,
+                state.boxVariants[action.payload].compareAtPrice,
+              ) *
+                state.quantity
+            : comparePrice(
+                variants[state.variantIndex].price,
+                variants[state.variantIndex].compareAtPrice,
+              ) * state.quantity;
+
         return {
           ...state,
           boxIndex: action.payload,
           price: newPrice.toFixed(2),
+          compareAtPrice:
+            newPrice === newCompareAtPrice
+              ? null
+              : newCompareAtPrice.toFixed(2),
         };
       case "quantity":
-        newBoxPrice =
-          matt && state.boxIndex !== ""
-            ? Number(state.boxVariants[state.boxIndex].price)
-            : 0;
+        newBoxPrice = doesBoxExist(matt, state.boxIndex)
+          ? Number(state.boxVariants[state.boxIndex].price)
+          : 0;
+        newCompareBoxPrice = doesBoxExist(matt, state.boxIndex)
+          ? comparePrice(
+              state.boxVariants[state.boxIndex].price,
+              state.boxVariants[state.boxIndex].compareAtPrice,
+            )
+          : 0;
         newPrice =
           variants.length === 1
             ? Number(variants[0].price) * Number(action.payload)
             : (Number(variants[state.variantIndex].price) + newBoxPrice) *
               Number(action.payload);
+        newCompareAtPrice =
+          variants.length === 1
+            ? comparePrice(variants[0].price, variants[0].compareAtPrice) *
+              Number(action.payload)
+            : (comparePrice(
+                variants[state.variantIndex].price,
+                variants[state.variantIndex].compareAtPrice,
+              ) +
+                newCompareBoxPrice) *
+              Number(action.payload);
         return {
           ...state,
           price: newPrice.toFixed(2),
           quantity: action.payload,
+          compareAtPrice:
+            newPrice === newCompareAtPrice
+              ? null
+              : newCompareAtPrice.toFixed(2),
         };
       default:
         throw new Error();
@@ -318,20 +383,6 @@ const MattressForm = ({
   const hasVariants = variants.length > 1;
   return (
     <Form onSubmit={handleSubmit} noValidate>
-      {/* <Errors show={errors.length}>
-        <ErrorSign>
-          <ErrorIcon />
-        </ErrorSign>
-        <ErrorMsgs>
-          {errors.map((error) => (
-            <li
-              key={error.field}
-              dangerouslySetInnerHTML={{ __html: error.msg }}
-            />
-          ))}
-        </ErrorMsgs>
-      </Errors> */}
-      {/* <div className="fieldset"> */}
       <QtyFieldset>
         <Label htmlFor="quantity">Qty.</Label>
         <Input
@@ -382,7 +433,7 @@ const MattressForm = ({
           >
             <option disabled value="">
               Choose Foundation
-              {state.boxVariants && ` - $${state.boxVariants[0].price}`}
+              {state.boxVariants ? ` - $${state.boxVariants[0].price}` : null}
             </option>
             <option value={4}>No Foundation - $0</option>
             <option value={0}>2&quot; Low Foundation</option>
@@ -403,17 +454,21 @@ const MattressForm = ({
         <ShopingCart />
       </AddToCartButton>
 
-      <PriceRange>
+      <PriceRange compareAtPrice={state.compareAtPrice}>
         {state.variantIndex === "" ? (
-          <div>
+          <>
             <small>Price Range</small>
             <h4>{state.price}</h4>
-          </div>
+          </>
         ) : (
-          <div>
-            <small>Total</small>
-            <h4>{`$${state.price}`}</h4>
-          </div>
+          <>
+            <small>
+              {state.compareAtPrice === null
+                ? "Total"
+                : `$${state.compareAtPrice}`}
+            </small>
+            <h4>{`$${state.price ? state.price : "error"}`}</h4>
+          </>
         )}
       </PriceRange>
       <Errors show={errors.length}>

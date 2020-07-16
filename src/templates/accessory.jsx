@@ -174,6 +174,7 @@ export const query = graphql`
         }
       }
       variants {
+        compareAtPrice
         shopifyId
         price
         title

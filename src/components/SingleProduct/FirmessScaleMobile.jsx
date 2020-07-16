@@ -235,7 +235,7 @@ const FirmnessScale = ({ firmness }) => {
       </Firmness>
       <Popup
         closeOnDocumentClick
-        position="top top"
+        position="top center"
         // modal
         closeOnEscape
         repositionOnResize

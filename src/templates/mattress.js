@@ -208,6 +208,7 @@ export const query = graphql`
         }
       }
       variants {
+        compareAtPrice
         price
         title
         shopifyId
@@ -218,6 +219,7 @@ export const query = graphql`
       vendor
       shopifyId
       variants {
+        compareAtPrice
         price
         title
         shopifyId
@@ -228,6 +230,7 @@ export const query = graphql`
       vendor
       shopifyId
       variants {
+        compareAtPrice
         price
         title
         shopifyId
@@ -238,6 +241,7 @@ export const query = graphql`
       vendor
       shopifyId
       variants {
+        compareAtPrice
         price
         title
         shopifyId
@@ -248,6 +252,7 @@ export const query = graphql`
       vendor
       shopifyId
       variants {
+        compareAtPrice
         price
         title
         shopifyId
