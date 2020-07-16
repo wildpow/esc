@@ -261,20 +261,19 @@ const MattressForm = ({
 
         newCompareAtPrice =
           action.payload !== "4"
-            ? comparePrice(
+            ? (comparePrice(
                 variants[state.variantIndex].price,
                 variants[state.variantIndex].compareAtPrice,
               ) +
-              comparePrice(
-                state.boxVariants[action.payload].price,
-                state.boxVariants[action.payload].compareAtPrice,
-              ) *
-                state.quantity
+                comparePrice(
+                  state.boxVariants[action.payload].price,
+                  state.boxVariants[action.payload].compareAtPrice,
+                )) *
+              state.quantity
             : comparePrice(
                 variants[state.variantIndex].price,
                 variants[state.variantIndex].compareAtPrice,
               ) * state.quantity;
-
         return {
           ...state,
           boxIndex: action.payload,
