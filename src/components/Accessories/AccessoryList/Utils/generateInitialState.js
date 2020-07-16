@@ -29,7 +29,9 @@ const GenerateInitialState = (
       { value: "Pillow", checked: false, displayName: "Pillows" },
       { value: "Protector", checked: false, displayName: "Protectors" },
     ];
-    navigate(location.pathname);
+    if (typeof window !== `undefined`) {
+      navigate(location.pathname);
+    }
     initialState.acc = initialState.accBeforeFilter;
   } else if (type.toLowerCase() === "sheets") {
     initialState.selectedAccInfo = initialState.accInfo[0];
@@ -65,7 +67,9 @@ const GenerateInitialState = (
       { value: "Pillow", checked: false, displayName: "Pillows" },
       { value: "Protector", checked: false, displayName: "Protectors" },
     ];
-    navigate(location.pathname);
+    if (typeof window !== `undefined`) {
+      navigate(location.pathname);
+    }
     initialState.acc = initialState.accBeforeFilter;
   }
   return initialState;
