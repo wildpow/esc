@@ -32,7 +32,7 @@ const MattressList = ({
   return (
     <MattListWrapper breadCrumbs={breadCrumbs}>
       {breadCrumbs && (
-        <NewBread Brands>
+        <NewBread>
           <BreadCrumbs next="Brands" here={brandName} />
         </NewBread>
       )}

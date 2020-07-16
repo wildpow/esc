@@ -9,8 +9,8 @@ function capitalizeFirstLetter(string) {
 }
 
 export const BreadWrapper = styled.div`
-  margin-top: ${(props) => (props.Bottom ? "0px" : "12px")};
-  margin-bottom: ${(props) => (props.Bottom ? "0px" : "10px")};
+  padding-top: ${(props) => (props.Bottom ? "0px" : "12px")};
+  padding-bottom: ${(props) => (props.Bottom ? "0px" : "10px")};
   font-size: 0.9rem;
   font-weight: 400;
   color: ${(props) => props.theme.newColor2};

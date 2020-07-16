@@ -2,26 +2,21 @@ import styled from "styled-components";
 import { BreadWrapper } from "../BreadCrumbs";
 
 export const NewBread = styled(BreadWrapper)`
-  padding: 0;
   margin-left: 0;
   margin-right: 0;
   @media (min-width: 568px) {
-    padding: 0;
     margin-left: 0;
     margin-right: 0;
   }
   @media (min-width: 768px) {
-    padding: 0;
     margin-left: 0;
     margin-right: 0;
   }
   @media (min-width: 1022px) {
-    padding: 0;
     margin-left: 0;
     margin-right: 0;
   }
   @media (min-width: 1300px) {
-    padding: 0;
     margin-left: 0;
     margin-right: 0;
   }
