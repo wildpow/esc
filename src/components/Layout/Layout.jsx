@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import FocusLockUI from "react-focus-lock/UI";
 import { sidecar } from "use-sidecar";
 import Headroom from "react-headroom";
-import ModalContextProvider from "./ModalContext";
+// import ModalContextProvider from "./ModalContext";
 import { useOnClickOutside, useKeyboardEvent, useIntersect } from "../Hooks";
 import { useWindowSize } from "../../context/WindowSizeContext";
 import MenuOverLay from "../shared/MenuOverLay";
@@ -105,7 +105,7 @@ function Layout({ children }) {
   }, [cartStatus, menuStatus]);
 
   return (
-    <ModalContextProvider>
+    <>
       <StructuredDataMain />
       <GlobalStyle />
       <Headroom
@@ -154,7 +154,7 @@ function Layout({ children }) {
         <Footer moved={moved} />
       </div>
       {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
-    </ModalContextProvider>
+    </>
   );
 }
 

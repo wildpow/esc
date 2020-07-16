@@ -2,7 +2,6 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
 import Popup from "reactjs-popup";
-import { useModalContext } from "../Layout/ModalContext";
 
 export const FadeIn = keyframes`
   from { opacity: 0; }
@@ -146,7 +145,7 @@ const OpenButton = styled.button`
 `;
 const Popper = styled.div`
   transition: all 0.25s ease-in-out;
-  opacity: ${(props) => (props.modal ? "1" : "0")};
+  opacity: 1;
   animation-name: ${FadeIn};
   display: flex;
   justify-content: center;
@@ -226,7 +225,6 @@ const FirmnessScale = ({ firmness }) => {
         return undefined;
     }
   };
-  const { modal, setModal } = useModalContext();
   return (
     <Wrapper>
       <h6>Firmness Scale</h6>
@@ -235,43 +233,38 @@ const FirmnessScale = ({ firmness }) => {
         <div className="scale" />
         <div className="soft">Soft</div>
       </Firmness>
-      <OpenButton
-        className="openButton"
-        type="button"
-        onClick={() => setModal(!modal)}
+      <Popup
+        closeOnDocumentClick
+        position="top top"
+        // modal
+        closeOnEscape
+        repositionOnResize
+        keepTooltipInside
+        contentStyle={contentStyle}
+        trigger={
+          <OpenButton className="openButton" type="button">
+            Learn More
+          </OpenButton>
+        }
       >
-        Learn More
-      </OpenButton>
-      <Popper modal={modal}>
-        <Popup
-          open={modal}
-          modal
-          lockScroll
-          arrow={false}
-          closeOnDocumentClick
-          position="bottom right"
-          repositionOnResize
-          contentStyle={contentStyle}
-        >
-          <article className="modal">
-            <h3 className="header">Firmness Scale </h3>
-            <p className="content">
-              Firmness ratings are based on customer feedback and manufacturer
-              information. Feel is subjective and we recommend experiencing the
-              bed for yourself in our showroom.
-            </p>
-            <div className="actions">
-              <button
-                type="button"
-                className="button"
-                onClick={() => setModal(!modal)}
-              >
-                close
-              </button>
-            </div>
-          </article>
-        </Popup>
-      </Popper>
+        {(close) => (
+          <Popper>
+            <article className="modal">
+              <h3 className="header">Firmness Scale </h3>
+              <p className="content">
+                Firmness ratings are based on customer feedback and manufacturer
+                information. Feel is subjective and we recommend experiencing
+                the bed for yourself in our showroom.
+              </p>
+              <div className="actions">
+                <button type="button" className="button" onClick={close}>
+                  close
+                </button>
+              </div>
+            </article>
+          </Popper>
+        )}
+      </Popup>
     </Wrapper>
   );
 };
