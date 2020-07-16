@@ -1,7 +1,6 @@
 /* eslint-disable prefer-destructuring */
 // import accData from "./headerData";
 // import useHeaders from "../../Hooks/use-headers";
-import { navigate } from "gatsby";
 
 const GenerateInitialState = (
   location,
@@ -30,7 +29,7 @@ const GenerateInitialState = (
       { value: "Protector", checked: false, displayName: "Protectors" },
     ];
     if (typeof window !== `undefined`) {
-      navigate(location.pathname);
+      window.history.replaceState({}, "", `${location.pathname}`);
     }
     initialState.acc = initialState.accBeforeFilter;
   } else if (type.toLowerCase() === "sheets") {
@@ -68,7 +67,7 @@ const GenerateInitialState = (
       { value: "Protector", checked: false, displayName: "Protectors" },
     ];
     if (typeof window !== `undefined`) {
-      navigate(location.pathname);
+      window.history.replaceState({}, "", `${location.pathname}`);
     }
     initialState.acc = initialState.accBeforeFilter;
   }

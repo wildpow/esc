@@ -1,10 +1,9 @@
-import { navigate } from "gatsby";
+import { navigate, replace } from "gatsby";
 
 const filterSortReducer = (state, action) => {
   let newTypeCheckBoxs;
   let newInfo;
   let newSelectedTypes;
-  let newLocationPush;
   switch (action.type) {
     case "low-high":
       return {
@@ -77,7 +76,7 @@ const filterSortReducer = (state, action) => {
 
       if (newSelectedTypes.length !== 1) {
         newInfo = state.accInfo[3];
-        navigate(state.locationPath);
+        window.history.replaceState({}, "", `${state.locationPath}`);
       } else {
         if (newSelectedTypes[0] === "Sheets") {
           newInfo = state.accInfo[0];
@@ -86,11 +85,11 @@ const filterSortReducer = (state, action) => {
         } else {
           newInfo = state.accInfo[2];
         }
-        newLocationPush = `${
-          state.locationPath
-        }?type=${newSelectedTypes[0].toLowerCase()}`;
-        navigate(newLocationPush);
+        navigate(
+          `${state.locationPath}?type=${newSelectedTypes[0].toLowerCase()}`,
+        );
       }
+
       return {
         ...state,
         acc:
