@@ -1,7 +1,10 @@
+import { navigate } from "gatsby";
+
 const filterSortReducer = (state, action) => {
   let newTypeCheckBoxs;
   let newInfo;
   let newSelectedTypes;
+  let newLocationPush;
   switch (action.type) {
     case "low-high":
       return {
@@ -74,18 +77,19 @@ const filterSortReducer = (state, action) => {
 
       if (newSelectedTypes.length !== 1) {
         newInfo = state.accInfo[3];
-        if (typeof window !== `undefined`) {
-          window.history.replaceState({}, "", `${state.locationPath}`);
-        }
+        navigate(state.locationPath);
       } else {
-        newInfo = state.accInfo[action.index];
-        if (typeof window !== `undefined`) {
-          window.history.replaceState(
-            {},
-            "",
-            `${state.locationPath}?type=${newSelectedTypes[0].toLowerCase()}`,
-          );
+        if (newSelectedTypes[0] === "Sheets") {
+          newInfo = state.accInfo[0];
+        } else if (newSelectedTypes[0] === "Pillow") {
+          newInfo = state.accInfo[1];
+        } else {
+          newInfo = state.accInfo[2];
         }
+        newLocationPush = `${
+          state.locationPath
+        }?type=${newSelectedTypes[0].toLowerCase()}`;
+        navigate(newLocationPush);
       }
       return {
         ...state,

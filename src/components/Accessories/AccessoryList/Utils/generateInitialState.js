@@ -1,6 +1,7 @@
 /* eslint-disable prefer-destructuring */
 // import accData from "./headerData";
 // import useHeaders from "../../Hooks/use-headers";
+import { navigate } from "gatsby";
 
 const GenerateInitialState = (
   location,
@@ -28,9 +29,7 @@ const GenerateInitialState = (
       { value: "Pillow", checked: false, displayName: "Pillows" },
       { value: "Protector", checked: false, displayName: "Protectors" },
     ];
-    if (typeof window !== `undefined`) {
-      window.history.replaceState({}, "", `${location.pathname}`);
-    }
+    navigate(location.pathname);
     initialState.acc = initialState.accBeforeFilter;
   } else if (type.toLowerCase() === "sheets") {
     initialState.selectedAccInfo = initialState.accInfo[0];
@@ -66,9 +65,7 @@ const GenerateInitialState = (
       { value: "Pillow", checked: false, displayName: "Pillows" },
       { value: "Protector", checked: false, displayName: "Protectors" },
     ];
-    if (typeof window !== `undefined`) {
-      window.history.replaceState({}, "", `${location.pathname}`);
-    }
+    navigate(location.pathname);
     initialState.acc = initialState.accBeforeFilter;
   }
   return initialState;
