@@ -14,7 +14,7 @@ const SectionContainer = styled.div`
   min-width: 320px;
   max-width: 1366px;
   margin: auto;
-  padding-top: 40px;
+  padding-top: 0px;
   margin-bottom: 20px;
   scroll-behavior: smooth;
   display: grid;
@@ -36,6 +36,9 @@ const SectionContainer = styled.div`
     padding-top: 0px;
     padding-left: 5px;
     padding-right: 5px;
+  }
+  @media screen and (min-width: 1022px) {
+    padding-top: 40px;
   }
 `;
 const Brands = ({ data }) => {

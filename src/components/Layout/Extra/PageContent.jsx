@@ -42,7 +42,7 @@ const PageContentRoot = styled.main`
     }
   }
   @media (min-width: ${breakpoints.md}) {
-    padding-bottom: ${spacing["20"]};
+    padding-bottom: ${spacing["6"]};
   }
 `;
 
