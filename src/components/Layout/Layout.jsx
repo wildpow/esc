@@ -111,7 +111,6 @@ function Layout({ children }) {
 
   return (
     <>
-      {console.log(height)}
       <StructuredDataMain />
       <GlobalStyle />
       <Headroom

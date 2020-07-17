@@ -62,11 +62,11 @@ const Accessory = ({ data }) => {
         />
         <meta name="twitter:card" content="summary_large_image" />
         {/* This time needs to change!!!!!!!!!!!!!!!!!!!! */}
-        <meta property="article:modified_time" content="2020-07-11T19:50:32Z" />
+        {/* <meta property="article:modified_time" content="2020-07-11T19:50:32Z" />
         <meta
           property="article:published_time"
           content="2020-07-11T19:50:32Z"
-        />
+        /> */}
         <meta
           property="article:publisher"
           content="https://www.facebook.com/ESCMattressCenter/"
@@ -76,6 +76,36 @@ const Accessory = ({ data }) => {
         <meta property="og:site_name" content="E.S.C Mattress Center" />
         <meta property="og:image" content={product.images.originalSrc} />
         <meta name="twitter:image" content={product.images.originalSrc} />
+
+        <script type="application/ld+json">
+          {`
+
+        {  
+    "@context": "http://schema.org/",
+    "@type": "Product",
+    "name": "${product.title}",
+    "url": "https://www.escmattresscenter.com/accessories/${product.handle}",
+    "image": "${product.images[0].originalSrc}",
+    "description": "${product.description}",
+    "brand": {
+        "@type": "${product.type}",
+        "name": "${product.title}"
+    },
+    "sku": "ESC${product.title}",
+    "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "highPrice": ${product.priceRange.maxVariantPrice.amount},
+        "lowPrice": ${product.priceRange.minVariantPrice.amount},
+        "priceValidUntil": "${dateSEO()}",
+        "itemCondition": "New",
+        "availability": "InStock",
+        "offerCount": "${product.variants.length}"
+
+    }
+}
+        `}
+        </script>
       </Helmet>
       <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
         <BreadWrapper>
@@ -158,6 +188,9 @@ export const query = graphql`
       metafields {
         key
         value
+      }
+      images {
+        originalSrc
       }
       handle
       shopifyId
