@@ -10,6 +10,10 @@ export const Main = styled(FlexCol)`
   margin-right: 0px;
   padding-left: 5px;
   padding-right: 5px;
+  @media (min-width: 1022px) {
+    margin-top: 0px;
+    padding-top: 30px;
+  }
   @media (min-width: 1200px) {
     margin-left: 120px;
     margin-right: 120px;

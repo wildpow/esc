@@ -271,6 +271,12 @@ const FooterRoot = styled.footer`
   .sticker {
     width: 100px;
   }
+  .clothesForKids {
+    @media (max-width: 350px) {
+      padding-left: 5px;
+      width: 139px;
+    }
+  }
 `;
 
 const Footer = ({ moved }) => {
@@ -405,6 +411,7 @@ const Footer = ({ moved }) => {
                 href="https://clothesforkids.org/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="clothesForKids"
               >
                 <Img
                   fluid={clothsForKids.fluid}

@@ -6,7 +6,7 @@ import { colors } from "../utils/styles";
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
   ${(props) => props.theme.Animation}
-  margin-top: 15px;
+  
   /* border: ${(props) => props.theme.Border}; */
   background-color: white;
    padding-left: 5px;

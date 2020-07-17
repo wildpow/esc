@@ -25,7 +25,8 @@ const BlogContainer = styled.div`
   ${(props) => props.theme.Animation}
   display: grid;
   grid-gap: 10px;
-  margin-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   padding-left: 5px;
   padding-right: 5px;
   grid-template-areas:
@@ -34,7 +35,6 @@ const BlogContainer = styled.div`
     "footer";
   @media (min-width: 768px) {
     grid-gap: 20px;
-    margin-top: 20px;
   }
 `;
 const Button = styled.button`
