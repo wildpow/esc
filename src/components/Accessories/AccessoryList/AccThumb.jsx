@@ -21,8 +21,8 @@ const AccThumb = ({ acc }) => {
         </MattImgContainer>
       </Topper>
       <PriceRange>
-        {`$${acc.priceRange.minVariantPrice.amount}
-          - $${acc.priceRange.maxVariantPrice.amount}`}
+        {`$${Number(acc.priceRange.minVariantPrice.amount).toFixed(2)}
+          - $${Number(acc.priceRange.maxVariantPrice.amount).toFixed(2)}`}
       </PriceRange>
       <Name>{acc.title}</Name>
     </StyledLink>
