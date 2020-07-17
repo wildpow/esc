@@ -15,7 +15,7 @@ const PageContentRoot = styled.main`
   z-index: 1;
   /* padding-top: ${spacing["4"]}; */
   box-shadow: ${boxShadow.xl};
-  padding-bottom: ${spacing["6"]};
+  /* padding-bottom: ${spacing["1"]}; */
   background-color: ${colors.gray["100"]};
   /* display: flex;
   flex-direction: column; */
@@ -42,7 +42,7 @@ const PageContentRoot = styled.main`
     }
   }
   @media (min-width: ${breakpoints.md}) {
-    padding-bottom: ${spacing["6"]};
+    /* padding-bottom: ${spacing["1"]}; */
   }
 `;
 

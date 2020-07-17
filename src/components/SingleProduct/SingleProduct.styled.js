@@ -283,10 +283,10 @@ export const Wrapper = styled.div`
   ${(props) => props.theme.Animation}
   justify-content: center;
   border-radius: 0.11rem;
-  @media (min-width: 1300px) {
+  /* @media (min-width: 1300px) {
     margin-right: 85px;
     margin-left: 85px;
-  }
+  } */
   ${WrapperSingleMattPr1nt}
 `;
 

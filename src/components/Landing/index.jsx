@@ -7,8 +7,8 @@ import TabBox from "./TabBox";
 import { P } from "./Landing.styled";
 import HeaderButtons from "./HeaderButtons";
 
-const Header = styled(Img)`
-  margin-top: 2em;
+const Header = styled.div`
+  padding-top: 2em;
   margin-bottom: 2em;
   max-width: 662px;
   max-height: 116px;
@@ -25,8 +25,8 @@ const Container = styled.section`
   padding-left: 15px; */
   margin-right: auto;
   margin-left: auto;
-
   @media (min-width: 768px) {
+    padding-top: 20px;
     width: 750px;
   }
   @media (min-width: 992px) {
@@ -48,7 +48,7 @@ const Hero = styled(Img)`
     margin-left: 0px;
   }
 `;
-
+const LandingRoot = styled.article``;
 const Hr = styled.hr`
   border-top: 1px solid #eee;
   border-bottom: 2px solid #7ea9c8;
@@ -58,9 +58,11 @@ const Hr = styled.hr`
 const Landing = ({ data, buttonName, buttonURL }) => {
   const { headingImg, heroImg, description, tabBox, seoLink } = data;
   return (
-    <div style={{ maxWidth: "1440px", backgroundColor: "white" }}>
+    <LandingRoot style={{ maxWidth: "1440px", backgroundColor: "white" }}>
       <HelmetDatoCms seo={seoLink.seoMetaTags} />
-      <Header fluid={headingImg.fluid} alt={headingImg.alt} />
+      <Header>
+        <Img fluid={headingImg.fluid} alt={headingImg.alt} />
+      </Header>
       <Container>
         <Hero fluid={heroImg.fluid} alt={heroImg.alt} />
       </Container>
@@ -83,7 +85,7 @@ const Landing = ({ data, buttonName, buttonURL }) => {
         ))}
         <Hr />
       </Container>
-    </div>
+    </LandingRoot>
   );
 };
 

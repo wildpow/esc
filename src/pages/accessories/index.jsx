@@ -10,11 +10,14 @@ const AccessoryLanding = ({ data }) => (
     {/* <BreadWrapper hidenLarge>
       <BreadCrumbs here="Accessories" />
     </BreadWrapper> */}
+
     <Landing
+      acc
       data={data.datoCmsLanding}
       buttonName="Accessories"
       buttonURL="/accessories/list"
     />
+
     <BreadWrapper Brands>
       <BreadCrumbs here="Accessories" hidenLarge Bottom />
     </BreadWrapper>

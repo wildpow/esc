@@ -31,7 +31,7 @@ export const MattListWrapper = styled.div`
   .mattList__flex {
     border-top: 8px solid ${(props) => props.theme.mainColor1};
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     display: flex;
     flex-direction: column;
     @media screen and (min-width: 768px) {

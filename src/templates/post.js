@@ -29,6 +29,7 @@ const PostBread = styled(BreadWrapper)`
   }
   @media (min-width: 1300px) {
     padding: 0;
+    padding-top: 15px;
     margin-left: 0;
     margin-right: 0;
   }
@@ -39,9 +40,9 @@ const Post = ({ data }) => {
     <Layout>
       <HelmetDatoCms seo={post.seoMetaTags} />
       <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
-        <PostBread>
+        <BreadWrapper>
           <BreadCrumbs next="Blog" here={post.title} />
-        </PostBread>
+        </BreadWrapper>
         <Main>
           <header>
             <H2>{post.title}</H2>
@@ -56,9 +57,9 @@ const Post = ({ data }) => {
             />
           ) : null}
         </Main>
-        <PostBread>
+        <BreadWrapper>
           <BreadCrumbs next="Blog" here={post.title} />
-        </PostBread>
+        </BreadWrapper>
       </div>
     </Layout>
   );

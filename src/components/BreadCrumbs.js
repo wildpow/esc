@@ -9,19 +9,19 @@ function capitalizeFirstLetter(string) {
 }
 
 export const BreadWrapper = styled.div`
-  padding-top: ${(props) => (props.Bottom ? "0px" : "12px")};
-  padding-bottom: ${(props) => (props.Bottom ? "0px" : "10px")};
+  padding-top: 15px;
+  padding-bottom:  15px;
   font-size: 0.9rem;
   font-weight: 400;
   color: ${(props) => props.theme.newColor2};
   font-family: ${(props) => props.theme.MainFont1};
   display: flex;
-  margin-right: ${(props) => (props.Brands ? "15px" : "5px")};
-  margin-left: ${(props) => (props.Brands ? "15px" : "5px")};
+  /* margin-right: ${(props) => (props.Brands ? "15px" : "5px")};
+  margin-left: ${(props) => (props.Brands ? "15px" : "5px")}; */
   @media (min-width: 568px) {
     font-size: 1rem;
-    margin-right: ${(props) => (props.Brands ? "45px" : "5px")};
-    margin-left: ${(props) => (props.Brands ? "45px" : "5px")};
+    /* margin-right: ${(props) => (props.Brands ? "45px" : "5px")};
+    margin-left: ${(props) => (props.Brands ? "45px" : "5px")}; */
   }
   @media (min-width: 768px) {
     font-size: 1.1rem;
@@ -31,8 +31,8 @@ export const BreadWrapper = styled.div`
     display: ${(props) => (props.hidenLarge ? "none" : "flex")};
   }
   @media (min-width: 1300px) {
-    margin-right: ${(props) => (props.Brands ? "55px" : "85px")};
-    margin-left: ${(props) => (props.Brands ? "55px" : "85px")};
+    /* margin-right: ${(props) => (props.Brands ? "55px" : "85px")};
+    margin-left: ${(props) => (props.Brands ? "55px" : "85px")}; */
   }
   ${DisplayNonePr1nt}
 `;
