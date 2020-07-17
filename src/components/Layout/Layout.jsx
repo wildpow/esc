@@ -33,7 +33,7 @@ function Layout({ children }) {
       : null;
   const menuId = "main-menu";
   const node = useRef();
-  const { width } = useWindowSize();
+  const { width, height } = useWindowSize();
   const [cartStatus, setCartStatus] = useState("closed");
   const [menuStatus, setMenuStatus] = useState("closed");
   const [pin, setpen] = useState(true);
@@ -84,7 +84,7 @@ function Layout({ children }) {
   });
   const [ref, entry] = useIntersect({ threshold: 0.1 });
   useEffect(() => {
-    if (width > 1028) {
+    if (width > 1022) {
       setMenuStatus("closed");
       document.body.style.paddingRight = "0";
       document.body.style.overflow = "visible";
@@ -98,7 +98,12 @@ function Layout({ children }) {
     } else {
       element.style.display = "block";
     }
-  }, [width, element, entry]);
+    if (height < 400 && menuStatus === "open") {
+      element.style.display = "none";
+    } else {
+      element.style.display = "block";
+    }
+  }, [width, element, entry, height, menuStatus]);
 
   useEffect(() => {
     setMoved(cartStatus === "open" || menuStatus === "open" ? "moved" : "");
@@ -106,6 +111,7 @@ function Layout({ children }) {
 
   return (
     <>
+      {console.log(height)}
       <StructuredDataMain />
       <GlobalStyle />
       <Headroom

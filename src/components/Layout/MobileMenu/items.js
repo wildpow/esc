@@ -1,13 +1,13 @@
 export const firstSet = [
   {
     to: "/brands",
-    label: "Brands",
+    label: "Mattresses",
     delay: 0.1,
     key: 3,
   },
   {
     to: "/adjustable",
-    label: "Adjustable",
+    label: "Adjustable Bases",
     delay: 0.15,
     key: 4,
   },

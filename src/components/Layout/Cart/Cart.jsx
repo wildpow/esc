@@ -421,10 +421,10 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
                 <span>Taxes:</span>
                 <strong>{checkout.totalTax}</strong>
               </Cost>
-              <Cost>
+              {/* <Cost>
                 <span>Shipping (nationwide):</span>
                 <strong className="free">FREE</strong>
-              </Cost>
+              </Cost> */}
               <Total>
                 <span>Total Price:</span>
                 <strong>USD ${checkout.totalPrice}</strong>

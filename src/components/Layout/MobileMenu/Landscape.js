@@ -194,7 +194,7 @@ const Landscape = () => {
             }}
             to="/brands"
           >
-            Brands
+            Mattresses
           </StyledLink>
           <StyledLink
             onClick={() => {
@@ -207,7 +207,7 @@ const Landscape = () => {
             }}
             to="/adjustable"
           >
-            Ajustable
+            Ajustables
           </StyledLink>
           <StyledLink
             onClick={() => {

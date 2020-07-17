@@ -40,6 +40,13 @@ const HeaderRoot = styled.header`
     height: ${dimensions.headerHeight};
     left: 0;
     padding-left: ${spacing["2"]};
+    a {
+      :focus {
+      box-shadow: 0 0 0 2px ${colors.blue["300"]};
+      outline: 0;
+      transition: box-shadow 0.15s ease-in-out;
+    }
+    }
   }
   .brand__anchor {
     /* pointer-events: ${({ cartStatus, menuStatus }) =>
@@ -52,7 +59,7 @@ const HeaderRoot = styled.header`
       transform: scale(1.1);
     }
     :focus {
-      box-shadow: 0 0 0 1px ${colors.blue["300"]} inset;
+      box-shadow: 0 0 0 1px ${colors.blue["300"]};
       outline: 0;
       transition: box-shadow 0.15s ease-in-out;
     }
@@ -120,7 +127,7 @@ const HeaderRoot = styled.header`
       margin: 0;
       padding-left: ${spacing["4"]};
       font-size: ${fontSize["5xl"]};
-      padding-bottom: ${spacing["2"]};
+      padding-bottom: ${spacing["0"]};
       align-self: flex-end;
     }
     .brand__anchor {
@@ -142,13 +149,19 @@ const Header = ({ cartStatus, menuStatus, pin, moved }) => {
       {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
       <div className="header__Wrapper">
         <div className="header__flex">
-          <Link className="brand__anchor" to="/">
+          <Link className="brand__anchor" to="/" title="Back to home page">
             <img src={logo} alt="panda" />
           </Link>
-          <h1>
-            <span>E.S.C.</span>
-            Mattress Center
-          </h1>
+          <Link
+            title="Back to home page"
+            to="/"
+            style={{ textDecoration: "none" }}
+          >
+            <h1>
+              <span>E.S.C.</span>
+              Mattress Center
+            </h1>
+          </Link>
         </div>
         {/* {width > 768 ? <ExtraNavIcons /> : null} */}
         <NavIcons pin={pin} />

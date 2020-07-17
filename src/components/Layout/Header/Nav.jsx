@@ -22,8 +22,8 @@ import {
 // `;
 
 const menuData = [
-  { name: "Brands", url: "/brands" },
-  { name: "Adjustable", url: "/adjustable" },
+  { name: "Mattresses", url: "/brands" },
+  { name: "Adjustable Bases", url: "/adjustable" },
   { name: "Accessories", url: "/accessories" },
   { name: "Financing", url: "/financing" },
   { name: "Our Blog", url: "/blog" },
@@ -57,6 +57,11 @@ const NavRoot = styled.nav`
         :hover {
           color: ${colors.gray["100"]};
           background: ${colors.red["800"]};
+        }
+        :focus {
+          box-shadow: 0 0 0 1px ${colors.blue["300"]} inset;
+          outline: 0;
+          transition: box-shadow 0.15s ease-in-out;
         }
       }
     }
