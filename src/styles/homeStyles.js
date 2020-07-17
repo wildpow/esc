@@ -13,6 +13,7 @@ export const Main = styled.div`
   max-width: 980px;
   padding-left: 5px;
   padding-right: 5px;
+  padding-bottom: 15px;
   @media (min-width: ${breakpoints.phablet}) {
     padding-top: 15px;
   }

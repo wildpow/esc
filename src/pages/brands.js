@@ -15,7 +15,8 @@ const SectionContainer = styled.div`
   max-width: 1366px;
   margin: auto;
   padding-top: 0px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  /* padding-bottom: 25px; */
   scroll-behavior: smooth;
   display: grid;
   /* grid-template-rows: repeat(auto-fill, 1fr); */
@@ -39,6 +40,7 @@ const SectionContainer = styled.div`
   }
   @media screen and (min-width: 1022px) {
     padding-top: 40px;
+    padding-bottom: 40px;
   }
 `;
 const Brands = ({ data }) => {

@@ -91,7 +91,8 @@ export const Main = styled(FlexCol)`
   padding-left: 5px;
   padding-right: 5px;
   @media (min-width: 1022px) {
-    margin-top: ${(props) => (props.MarginTop ? "15px" : "0")};
+    padding-bottom: 25px;
+    padding-top: 25px;
   }
   @media (min-width: 1200px) {
     margin-left: 120px;

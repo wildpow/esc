@@ -83,7 +83,9 @@ const Landing = ({ data, buttonName, buttonURL }) => {
             />
           </div>
         ))}
-        <Hr />
+        <div style={{ paddingBottom: "20px" }}>
+          <Hr style={{ marginBottom: 0, marginTop: 0 }} />
+        </div>
       </Container>
     </LandingRoot>
   );

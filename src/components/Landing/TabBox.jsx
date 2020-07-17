@@ -84,7 +84,11 @@ const TabBox = ({ tabs, hero, heroText, topButtonName, topButtonUrl }) => {
         <article>
           {hasTopButton ? (
             <InBoundLink
-              style={{ width: "250px", textAlign: "center" }}
+              style={{
+                width: "250px",
+                textAlign: "center",
+                marginBottom: "20px",
+              }}
               to={topButtonUrl}
             >
               {topButtonName}
