@@ -1,17 +1,22 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { FadeIn, FlexCol } from "./mainStyles";
+import { breakpoints } from "../utils/styles";
 
 export const Main = styled.div`
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
-  background-color: white;
+  ${(props) => props.theme.Animation}
+  /* background-color: white; */
   margin-right: auto;
   margin-left: auto;
-  margin-top: 15px;
+  padding-top: 1px;
   max-width: 980px;
   padding-left: 5px;
   padding-right: 5px;
+  padding-bottom: 15px;
+  @media (min-width: ${breakpoints.phablet}) {
+    padding-top: 15px;
+  }
 `;
 
 // export const Linky = styled(Link)`
@@ -27,8 +32,8 @@ export const OneImg = styled.img`
 `;
 
 export const Wrapper = styled(FlexCol)`
-  background-color: ${props => props.theme.newColor1};
-  box-shadow: ${props => props.theme.newBoxShadow};
+  background-color: ${(props) => props.theme.newColor1};
+  box-shadow: ${(props) => props.theme.newBoxShadow};
   justify-content: center;
   margin-top: 10px;
   margin-right: 0px;
@@ -42,12 +47,12 @@ export const Wrapper = styled(FlexCol)`
 `;
 
 export const Headline = styled.h2`
-  color: ${props => props.theme.newColo1};
-  font-family: ${props => props.theme.MainFont1};
-  text-shadow: ${props => props.theme.newTextShadow};
+  color: ${(props) => props.theme.newColo1};
+  font-family: ${(props) => props.theme.MainFont1};
+  text-shadow: ${(props) => props.theme.newTextShadow};
   text-align: center;
   font-weight: 400;
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.red ? props.theme.mainColor2 : props.theme.mainColor1};
   color: white;
   margin: 0;
@@ -70,7 +75,7 @@ export const Headline = styled.h2`
 `;
 
 export const P = styled.p`
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   text-align: justify;
   text-justify: inter-character !important;
   margin-bottom: 0;
@@ -80,7 +85,7 @@ export const P = styled.p`
   padding: 5px 15px 5px 15px;
   font-size: 1rem;
   line-height: 1.55rem;
-  color: ${props => props.theme.newColor2};
+  color: ${(props) => props.theme.newColor2};
 
   @media (min-width: 640px) {
     padding: 5px 15px 5px 15px;
@@ -99,9 +104,9 @@ export const P = styled.p`
 `;
 
 export const Links = styled(Link)`
-  color: ${props => props.theme.mainColor2};
+  color: ${(props) => props.theme.mainColor2};
   &:hover {
-    color: ${props => props.theme.mainColor1};
+    color: ${(props) => props.theme.mainColor1};
   }
 `;
 
@@ -112,7 +117,7 @@ export const FooterLink = styled(Link)`
   color: white;
   :hover {
     transform: scale(1.04);
-    text-decoration-color: ${props => props.theme.newColor2};
-    /* color: ${props => props.theme.mainColor1}; */
+    text-decoration-color: ${(props) => props.theme.newColor2};
+    /* color: ${(props) => props.theme.mainColor1}; */
   }
 `;

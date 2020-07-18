@@ -3,7 +3,7 @@ import { FlexRow, FlexCol, FadeIn } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   margin-top: 15px;
   margin-left: 0px;
   margin-right: 0px;
@@ -23,8 +23,8 @@ export const P = styled.p`
   padding-left: 5px;
   padding-right: 5px;
   align-self: flex-start;
-  color: ${props => props.theme.newColor2};
-  font-family: ${props => props.theme.MainFont3};
+  color: ${(props) => props.theme.newColor2};
+  font-family: ${(props) => props.theme.MainFont3};
   font-weight: 300;
   @media (min-width: 360px) {
     padding-left: 7px;
@@ -61,8 +61,8 @@ export const P = styled.p`
   }
 `;
 export const AccWrapper = styled.article`
-  box-shadow: ${props => props.theme.newBoxShadow};
-  /* border: ${props => props.theme.Border}; */
+  box-shadow: ${(props) => props.theme.newBoxShadow};
+  /* border: ${(props) => props.theme.Border}; */
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 15px;
@@ -91,10 +91,10 @@ export const AccWrapper2 = styled(AccWrapper)`
 `;
 // 640
 export const H3 = styled.h3`
-  text-shadow: ${props => props.theme.newTextShadow};
-  font-family: ${props => props.theme.MainFont1};
-  background-color: ${props => props.theme.mainColor1};
-  color: ${props => props.theme.newColor1};
+  text-shadow: ${(props) => props.theme.newTextShadow};
+  font-family: ${(props) => props.theme.MainFont1};
+  background-color: ${(props) => props.theme.mainColor1};
+  color: ${(props) => props.theme.newColor1};
   margin-top: 0;
   font-weight: 700;
   text-align: center;
@@ -121,6 +121,7 @@ export const H3 = styled.h3`
 export const InfoWrapper = styled(FlexRow)`
   flex-wrap: wrap;
   justify-content: space-around;
+  padding-bottom: 20px;
   @media (min-width: 568px) {
     flex-wrap: nowrap;
     justify-content: space-around;

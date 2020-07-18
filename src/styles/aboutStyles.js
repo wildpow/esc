@@ -1,15 +1,17 @@
 import styled from "styled-components";
+import Img from "gatsby-image";
 import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
+import { colors } from "../utils/styles";
 
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
-  margin-top: 15px;
-  /* border: ${props => props.theme.Border}; */
+  ${(props) => props.theme.Animation}
+  
+  /* border: ${(props) => props.theme.Border}; */
   background-color: white;
    padding-left: 5px;
   padding-right: 5px;
-  box-shadow: ${props => props.theme.newBoxShadow};
+  box-shadow: ${(props) => props.theme.newBoxShadow};
   @media (min-width: 1200px) {
     margin-left: 10px;
     margin-right: 10px;
@@ -29,7 +31,7 @@ export const PicHolder = styled(FlexRow)`
   }
 `;
 
-export const StoreImg = styled.img`
+export const StoreImg = styled(Img)`
   color: white;
   width: 100px;
   height: 100px;
@@ -79,7 +81,7 @@ export const StoreImg = styled.img`
   }
 `;
 
-export const MapImg = styled.img`
+export const MapImg = styled(Img)`
   color: white;
   width: 105px;
   height: 99px;
@@ -126,10 +128,10 @@ export const MapImg = styled.img`
 `;
 
 export const Address = styled.p`
-  font-family: ${props => props.theme.MainFont1};
-  background: ${props => props.theme.mainColor2};
-  /* text-shadow: ${props => props.theme.newTextShadow}; */
-  color: ${props => props.theme.newColor1};
+  font-family: ${(props) => props.theme.MainFont1};
+  background: ${colors.red["900"]};
+  /* text-shadow: ${(props) => props.theme.newTextShadow}; */
+  color: ${(props) => props.theme.newColor1};
   text-align: center;
   font-size: 0.9rem;
   padding: 10px;
@@ -155,7 +157,7 @@ export const Span = styled.span`
 `;
 
 export const RegularParagraph = styled.p`
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   font-weight: 300;
   padding-left: 12px;
   padding-right: 12px;
@@ -181,8 +183,8 @@ export const RegularParagraph = styled.p`
 `;
 
 export const BlueWrapper = styled.div`
-  background-color: ${props => props.theme.mainColor1};
-  color: ${props => props.theme.newColor1};
+  background-color: ${colors.blue["900"]};
+  color: ${(props) => props.theme.newColor1};
   margin-top: 20px;
   @media (min-width: 1024px) {
     margin-top: 40px;
@@ -190,8 +192,8 @@ export const BlueWrapper = styled.div`
 `;
 
 export const SecondP = styled.p`
-  text-shadow: ${props => props.theme.newTextShadow};
-  font-family: ${props => props.theme.MainFont1};
+  text-shadow: ${(props) => props.theme.newTextShadow};
+  font-family: ${(props) => props.theme.MainFont1};
   padding-left: 30px;
   padding-right: 30px;
   line-height: 1.6rem;
@@ -208,15 +210,12 @@ export const SecondP = styled.p`
   }
 `;
 
-export const PopImg = styled.img`
+export const PopImg = styled(Img)`
   color: white;
-  max-width: 19rem;
+  width: 19rem;
   margin: auto;
   @media (min-width: 360px) {
-    max-width: 20rem;
-  }
-  @media (min-width: 700px) {
-    max-width: 50rem;
+    width: 20rem;
   }
 `;
 

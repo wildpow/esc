@@ -3,10 +3,10 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import ImageCarousel from "../components/singleProduct/ImageCarousel";
-import PriceDropDown from "../components/singleProduct/priceDropDown.base";
+import Layout from "../components/Layout";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
+import ImageCarousel from "../components/SingleProduct/ImageCarousel";
+// import PriceDropDown from "../components/SingleProduct/PriceDropDown.base";
 import {
   Wrapper,
   Main,
@@ -19,13 +19,16 @@ import {
   List,
   Construction,
   Info,
-} from "../components/singleProduct/singleProduct.styles";
+} from "../components/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
+import MattressForm from "../components/SingleProduct/MattressForm";
+import { useWindowSize } from "../context/WindowSizeContext";
 
 const Base = ({ data }) => {
-  const { datoCmsAdjustableBase: adjBase } = data;
+  const { width } = useWindowSize();
+  const { datoCmsAdjustableBase: adjBase, shopifyBase } = data;
   const removeZeroPrices = Object.values(adjBase.price[0]).filter(
-    value => value !== 0,
+    (value) => value !== 0,
   );
   return (
     <Layout>
@@ -77,20 +80,24 @@ const Base = ({ data }) => {
               base
             />
             <MainInfo>
-              <List>
-                <h3>Features</h3>
-                <ul>
-                  {adjBase.smallFeatureList.map(item => (
-                    <li key={item.id}>{item.feature}</li>
-                  ))}
-                  <Info>
-                    <AnchorLink href="#moreInfo">See more details</AnchorLink>
-                  </Info>
-                </ul>
-              </List>
-              <PriceDropDown
-                price={adjBase.price[0]}
-                discount={adjBase.sale[0].discount}
+              {width > 768 && (
+                <List>
+                  <h3>Features</h3>
+                  <ul>
+                    {adjBase.smallFeatureList.map((item) => (
+                      <li key={item.id}>{item.feature}</li>
+                    ))}
+                    <Info>
+                      <AnchorLink href="#moreInfo">See more details</AnchorLink>
+                    </Info>
+                  </ul>
+                </List>
+              )}
+              <MattressForm
+                variants={shopifyBase.variants}
+                priceMin={shopifyBase.priceRange.minVariantPrice.amount}
+                priceMax={shopifyBase.priceRange.maxVariantPrice.amount}
+                maxQty={4}
               />
             </MainInfo>
           </Main>
@@ -103,7 +110,7 @@ const Base = ({ data }) => {
             <Construction>
               <h3>Key Features:</h3>
               <ul>
-                {adjBase.fullFeatureList.map(item => (
+                {adjBase.fullFeatureList.map((item) => (
                   <li key={item.id}>{item.feature}</li>
                 ))}
               </ul>
@@ -124,7 +131,27 @@ Base.propTypes = {
 export default Base;
 
 export const query = graphql`
-  query singleAdjustable($slug: String!) {
+  query singleAdjustable($slug: String!, $shopifyBase: String!) {
+    shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
+      title
+      vendor
+      shopifyId
+      priceRange {
+        minVariantPrice {
+          amount
+        }
+        maxVariantPrice {
+          amount
+        }
+      }
+      variants {
+        compareAtPrice
+        price
+        title
+        shopifyId
+        compareAtPrice
+      }
+    }
     datoCmsAdjustableBase(slug: { eq: $slug }) {
       brand
       slug

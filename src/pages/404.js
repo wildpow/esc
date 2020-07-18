@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import { Main, Img } from "../styles/panda404Styles";
 import { H2 } from "../styles/mainStyles";
 import image from "../images/ezgif.com-optimize.gif";
-import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 
 const NotFoundPage = () => {
   let uri = [];

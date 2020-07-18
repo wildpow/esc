@@ -7,7 +7,7 @@ export const MattLinksWrapper = styled(FlexRow)`
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 20px;
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   @media(min-width: 1300px) {
     margin-left: 50px;
     margin-right: 50px;
@@ -15,8 +15,8 @@ export const MattLinksWrapper = styled(FlexRow)`
 `;
 
 export const Main = styled.div`
-  /* border: ${props => props.theme.Border}; */
-  box-shadow: ${props => props.theme.newBoxShadow};
+  /* border: ${(props) => props.theme.Border}; */
+  box-shadow: ${(props) => props.theme.newBoxShadow};
   background-color: white;
   margin-bottom: 20px;
   ul {
@@ -26,14 +26,14 @@ export const Main = styled.div`
     line-height: 1.9rem;
   }
   li {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     font-weight: 400;
   }
   h3 {
-    font-family: ${props => props.theme.MainFont1};
-    background-color: ${props => props.theme.mainColor1};
+    font-family: ${(props) => props.theme.MainFont1};
+    background-color: ${(props) => props.theme.mainColor1};
     margin: 0;
-    color: ${props => props.theme.newColor1};
+    color: ${(props) => props.theme.newColor1};
     padding-top: 15px;
     padding-bottom: 15px;
     letter-spacing: 0.2rem;
@@ -42,9 +42,9 @@ export const Main = styled.div`
   }
 `;
 export const BrandLinks = styled(Link)`
-  color: ${props => props.theme.newColor1};
+  color: ${(props) => props.theme.newColor1};
   &:hover {
-    color: ${props => props.theme.newColor2};
+    color: ${(props) => props.theme.newColor2};
   }
 `;
 export const SiteLinks = styled(Link)`
@@ -56,12 +56,12 @@ export const SiteLinks = styled(Link)`
 
 export const MainLinks = styled(FlexCol)`
   animation-name: ${FadeIn};
-  border: ${props => props.theme.Border};
-  box-shadow: ${props => props.theme.BoxShadow};
+  border: ${(props) => props.theme.Border};
+  box-shadow: ${(props) => props.theme.BoxShadow};
   margin-top: 15px;
   padding-left: 5px;
   padding-right: 5px;
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   @media(min-width: 1300px) {
     margin-left: 85px;
     margin-right: 85px;
@@ -69,7 +69,7 @@ export const MainLinks = styled(FlexCol)`
 `;
 
 export const Lilist = styled.li`
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
   font-size: 1rem;
   letter-spacing: 0.1rem;
   padding-left: 10px;

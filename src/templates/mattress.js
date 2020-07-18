@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
-import useMobileDetect from "../components/singleProduct/useMobileDect";
-import Layout from "../components/layout";
+import useMobileDetect from "../components/SingleProduct/useMobileDect";
+import Layout from "../components/Layout";
 import {
   Article,
   Description,
@@ -18,12 +18,15 @@ import {
   Profile,
   Warranty,
   Wrapper,
-} from "../components/singleProduct/singleProduct.styles";
-import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
-import DropDown from "../components/singleProduct/priceDropDown.mattress";
+} from "../components/SingleProduct/SingleProduct.styled";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
+import DropDown from "../components/SingleProduct/priceDropDown.mattress";
+// import ShopifyDropDown from "../components/SingleProduct/priceDropdownShopify.matt";
 import dateSEO from "../functions/dateSEO";
-import ImageCarousel from "../components/singleProduct/ImageCarousel";
-import FirmnessScale from "../components/singleProduct/FirmessScaleMobile";
+import ImageCarousel from "../components/SingleProduct/ImageCarousel";
+import FirmnessScale from "../components/SingleProduct/FirmessScaleMobile";
+import MattressForm from "../components/SingleProduct/MattressForm";
+import { useWindowSize } from "../context/WindowSizeContext";
 
 const LeftSide = styled.div`
   display: flex;
@@ -31,8 +34,16 @@ const LeftSide = styled.div`
 `;
 
 const Mattress = ({ data }) => {
-  const { datoCmsMattress: mattress } = data;
+  const {
+    datoCmsMattress: mattress,
+    shopifyBase,
+    shopify2Inch,
+    shopify5Inch,
+    shopify9Inch,
+    shopifyMattress,
+  } = data;
   const detectMobile = useMobileDetect();
+  const { width } = useWindowSize();
   return (
     <Layout>
       <HelmetDatoCms seo={mattress.seoMetaTags}>
@@ -64,7 +75,7 @@ const Mattress = ({ data }) => {
         "itemCondition": "New",
         "availability": "InStock",
         "offerCount": "${
-          Object.values(mattress.price[0]).filter(value => value !== 0).length
+          Object.values(mattress.price[0]).filter((value) => value !== 0).length
         }"
 
     }
@@ -102,30 +113,44 @@ const Mattress = ({ data }) => {
               )}
             </LeftSide>
             <MainInfo>
-              <List>
-                <h3>Features</h3>
-                <ul>
-                  {mattress.listFeature.map(item => (
-                    <li key={item.id}>{item.feature}</li>
-                  ))}
-                  <Info>
-                    <AnchorLink href="#moreInfo">See more details</AnchorLink>
-                  </Info>
-                </ul>
-              </List>
-              <DropDown
-                typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}
-                freeBoxSpring={mattress.saleInfo[0].freeBox}
-                discount={mattress.saleInfo[0].discount}
-                prices={mattress.price[0]}
-                boxPrices={
-                  mattress.subline.name === "iComfort"
-                    ? mattress.brand.boxPrice[1]
-                    : mattress.brand.boxPrice[0]
-                }
-                mattress={mattress.name}
-                subline={mattress.subline.name}
-              />
+              {width > 768 && (
+                <List>
+                  <h3>Features</h3>
+                  <ul>
+                    {mattress.listFeature.map((item) => (
+                      <li key={item.id}>{item.feature}</li>
+                    ))}
+                    <Info>
+                      <AnchorLink href="#moreInfo">See more details</AnchorLink>
+                    </Info>
+                  </ul>
+                </List>
+              )}
+              {shopifyMattress === null ? (
+                <DropDown
+                  typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}
+                  freeBoxSpring={mattress.saleInfo[0].freeBox}
+                  discount={mattress.saleInfo[0].discount}
+                  prices={mattress.price[0]}
+                  boxPrices={
+                    mattress.subline.name === "iComfort"
+                      ? mattress.brand.boxPrice[1]
+                      : mattress.brand.boxPrice[0]
+                  }
+                  mattress={mattress.name}
+                  subline={mattress.subline.name}
+                />
+              ) : (
+                <MattressForm
+                  variants={shopifyMattress.variants}
+                  priceMin={shopifyMattress.priceRange.minVariantPrice.amount}
+                  priceMax={shopifyMattress.priceRange.maxVariantPrice.amount}
+                  matt
+                  maxQty={4}
+                  boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
+                  shopifyBase={shopifyBase}
+                />
+              )}
             </MainInfo>
           </Main>
           <header id="moreInfo">
@@ -137,7 +162,7 @@ const Mattress = ({ data }) => {
             <Construction>
               <h3>Key Features:</h3>
               <ul>
-                {mattress.construction.map(item => (
+                {mattress.construction.map((item) => (
                   <li key={item.id}>{item.feature}</li>
                 ))}
               </ul>
@@ -162,8 +187,79 @@ Mattress.propTypes = {
 export default Mattress;
 
 export const query = graphql`
-  query SingleMattress($slug: String!) {
+  query SingleMattress(
+    $slug: String!
+    $shopifyMatt: String!
+    $shopifyBase: String!
+    $shopify2Inch: String!
+    $shopify5Inch: String!
+    $shopify9Inch: String!
+  ) {
+    shopifyMattress: shopifyProduct(shopifyId: { eq: $shopifyMatt }) {
+      title
+      vendor
+      shopifyId
+      priceRange {
+        minVariantPrice {
+          amount
+        }
+        maxVariantPrice {
+          amount
+        }
+      }
+      variants {
+        compareAtPrice
+        price
+        title
+        shopifyId
+      }
+    }
+    shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
+      title
+      vendor
+      shopifyId
+      variants {
+        compareAtPrice
+        price
+        title
+        shopifyId
+      }
+    }
+    shopify2Inch: shopifyProduct(shopifyId: { eq: $shopify2Inch }) {
+      title
+      vendor
+      shopifyId
+      variants {
+        compareAtPrice
+        price
+        title
+        shopifyId
+      }
+    }
+    shopify5Inch: shopifyProduct(shopifyId: { eq: $shopify5Inch }) {
+      title
+      vendor
+      shopifyId
+      variants {
+        compareAtPrice
+        price
+        title
+        shopifyId
+      }
+    }
+    shopify9Inch: shopifyProduct(shopifyId: { eq: $shopify9Inch }) {
+      title
+      vendor
+      shopifyId
+      variants {
+        compareAtPrice
+        price
+        title
+        shopifyId
+      }
+    }
     datoCmsMattress(slug: { eq: $slug }) {
+      shopMattConnection
       priceLow
       priceHigh
       slug

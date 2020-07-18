@@ -12,8 +12,10 @@ import styled, { keyframes } from "styled-components";
 // export const Animation = `animation-duration: .5s; animation-fill-mode: both;`;
 
 export const theme = {
-  mainColor1: "#1565c0", // BLUE
-  mainColor2: "#eb1c24", // RED !
+  // mainColor1: "#1565c0", // BLUE
+  // mainColor2: "#eb1c24", // RED !
+  mainColor1: "#2c5282", // BLUE
+  mainColor2: "#9b2c2c", // RED !
   // newColor1: "#fffafa", // snow white
   // newColor1: "#fcfcfc", // Try
   newColor1: "#fcfcff", // New
@@ -54,13 +56,13 @@ export const FadeIn = keyframes`
 `;
 
 export const H2 = styled.h2`
-  font-family: ${props => props.theme.MainFont1};
-  text-shadow: ${props => props.theme.newTextShadow};
-  background-color: ${props =>
+  font-family: ${(props) => props.theme.MainFont1};
+  text-shadow: ${(props) => props.theme.newTextShadow};
+  background-color: ${(props) =>
     props.red ? props.theme.mainColor2 : props.theme.mainColor1};
   font-weight: 400;
   text-align: center;
-  color: ${props => props.theme.newColor1};
+  color: ${(props) => props.theme.newColor1};
   margin: 0;
   font-size: 1.1rem;
   line-height: 1.1rem;

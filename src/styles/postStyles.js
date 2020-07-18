@@ -4,9 +4,9 @@ import { FadeIn, FlexCol } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
   background-color: white;
-  box-shadow: ${props => props.theme.newBoxShadow};
+  box-shadow: ${(props) => props.theme.newBoxShadow};
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   padding-bottom: 20px;
 `;
 // w: 800 h: 325
@@ -23,22 +23,22 @@ export const BottomImg = styled.img`
 
 export const Marker = styled(Markdown)`
   h2 {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 10px 20px;
-    background-color: ${props => props.theme.mainColor1};
+    background-color: ${(props) => props.theme.mainColor1};
     color: white;
   }
   & ol {
-    background-color: ${props => props.theme.mainColor1};
+    background-color: ${(props) => props.theme.mainColor1};
     list-style-position: inside;
     color: white;
     padding-top: 10px;
     padding-bottom: 20px;
   }
   & li {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     padding-left: 12px;
     padding-right: 12px;
     line-height: 1.4rem;
@@ -48,7 +48,7 @@ export const Marker = styled(Markdown)`
   }
   & p {
     font-weight: 300;
-    font-family: ${props => props.theme.MainFont3};
+    font-family: ${(props) => props.theme.MainFont3};
     padding-left: 7px;
     padding-right: 7px;
     line-height: 1.5rem;

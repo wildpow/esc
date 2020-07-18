@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import Layout from "../../../components/layout";
-import MattList from "../../../components/mattressList";
+import Layout from "../../../components/Layout";
+import MattressList from "../../../components/MattressList";
 
 const Serta = ({ data }) => {
   const { datoCmsBrand, allDatoCmsMattress } = data;
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsBrand.seoLink.seoMetaTags} />
-      <MattList
+      <MattressList
         headerBG={datoCmsBrand.headerLink.bgImg.url}
         mattresses={allDatoCmsMattress.nodes}
         title={datoCmsBrand.displayName}

@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import Layout from "../components/layout";
-import LifeStyleCard from "../components/brands/BrandCard";
-import BreadCrumbs, { BreadWrapper } from "../components/breadCrumbs";
+import Layout from "../components/Layout";
+import LifeStyleCard from "../components/Brands/LifeStyleCard";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 
 const SectionContainer = styled.div`
   /* min-height: 100vh; */
@@ -14,8 +14,9 @@ const SectionContainer = styled.div`
   min-width: 320px;
   max-width: 1366px;
   margin: auto;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  padding-top: 0px;
+  /* margin-bottom: 20px; */
+  /* padding-bottom: 25px; */
   scroll-behavior: smooth;
   display: grid;
   /* grid-template-rows: repeat(auto-fill, 1fr); */
@@ -33,9 +34,13 @@ const SectionContainer = styled.div`
     grid-gap: 20px;
     grid-template-rows: repeat(auto-fit, minmax(220px, 228px));
     grid-template-columns: repeat(auto-fit, minmax(300px, 486px));
-    margin-top: 0px;
+    padding-top: 0px;
     padding-left: 5px;
     padding-right: 5px;
+  }
+  @media screen and (min-width: 1022px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 `;
 const Brands = ({ data }) => {

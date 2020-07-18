@@ -30,6 +30,11 @@ export default class HTML extends React.Component {
           />
           <div id="modal-root" />
           {this.props.postBodyComponents}
+          <script
+            type="text/javascript"
+            src="https://birdeye.com/embed/v1/154743410851424/1/1484606125/FsWvSa2fgLF5HBLjmAKhH9wfUcpe69Ft"
+          />
+          <div id="bf-revz-widget-1484606125" />
         </body>
       </html>
     );

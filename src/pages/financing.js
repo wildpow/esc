@@ -16,7 +16,7 @@ import {
 } from "../styles/financingStyles";
 import Synchrony from "../images/synchrony_Card_Image.jpg";
 import Acima from "../images/acima_Logo.png";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 
 const Financing = ({ data }) => (
   <Layout>

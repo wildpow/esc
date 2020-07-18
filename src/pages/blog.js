@@ -3,10 +3,11 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import PostThumbnail from "../components/blog/postThumbnail_NEW";
+import Layout from "../components/Layout";
+import PostThumbnail from "../components/Blog/PostThumbnail";
 import { FadeIn } from "../styles/mainStyles";
 // import SEO from "../components/seo";
+import { colors } from "../utils/styles";
 
 const PostsContainer = styled.div`
   display: grid;
@@ -24,7 +25,8 @@ const BlogContainer = styled.div`
   ${(props) => props.theme.Animation}
   display: grid;
   grid-gap: 10px;
-  margin-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   padding-left: 5px;
   padding-right: 5px;
   grid-template-areas:
@@ -33,13 +35,12 @@ const BlogContainer = styled.div`
     "footer";
   @media (min-width: 768px) {
     grid-gap: 20px;
-    margin-top: 20px;
   }
 `;
 const Button = styled.button`
   font-family: ${(props) => props.theme.MainFont1};
   grid-area: footer;
-  background: ${(props) => props.theme.mainColor1};
+  background: ${colors.red["900"]};
   width: 100%;
   box-shadow: ${(props) => props.theme.hoverBoxBefore};
   font-size: 16px;
@@ -85,10 +86,6 @@ const Header = styled.header`
   }
 `;
 class Blog extends React.Component {
-  static propTypes = {
-    data: PropTypes.instanceOf(Object).isRequired,
-  };
-
   constructor(...args) {
     super(...args);
     this.state = {
@@ -151,6 +148,10 @@ class Blog extends React.Component {
 }
 
 export default Blog;
+
+Blog.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 
 export const blogList = graphql`
   query blogList {

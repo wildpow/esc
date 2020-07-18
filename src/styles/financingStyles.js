@@ -4,12 +4,16 @@ import { FlexCol, FadeIn, FlexRow } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   margin-top: 15px;
   margin-left: 0px;
   margin-right: 0px;
   padding-left: 5px;
   padding-right: 5px;
+  @media (min-width: 1022px) {
+    margin-top: 0px;
+    padding-top: 30px;
+  }
   @media (min-width: 1200px) {
     margin-left: 120px;
     margin-right: 120px;
@@ -17,8 +21,8 @@ export const Main = styled(FlexCol)`
 `;
 
 export const CompanyWrapper = styled.article`
-  box-shadow: ${props => props.theme.newBoxShadow};
-  /* border: ${props => props.theme.Border}; */
+  box-shadow: ${(props) => props.theme.newBoxShadow};
+  /* border: ${(props) => props.theme.Border}; */
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 15px;
@@ -43,10 +47,10 @@ export const CompanyWrapper2 = styled(CompanyWrapper)`
 `;
 
 export const H3 = styled.h3`
-  text-shadow: ${props => props.theme.newTextShadow};
-  font-family: ${props => props.theme.MainFont1};
-  background-color: ${props => props.theme.mainColor1};
-  color: ${props => props.theme.newColor1};
+  text-shadow: ${(props) => props.theme.newTextShadow};
+  font-family: ${(props) => props.theme.MainFont1};
+  background-color: ${(props) => props.theme.mainColor1};
+  color: ${(props) => props.theme.newColor1};
   margin-top: 0;
   /* text-align: center; */
   margin-bottom: 0;
@@ -113,7 +117,7 @@ export const P = styled.p`
   padding-right: 5px;
   font-weight: 300;
   align-self: flex-start;
-  font-family: ${props => props.theme.MainFont3};
+  font-family: ${(props) => props.theme.MainFont3};
   @media (min-width: 360px) {
     padding-left: 7px;
     padding-right: 7px;
@@ -158,8 +162,8 @@ export const ApplyNow = styled(OutboundLink)`
   margin-bottom: 5px;
   padding: 10px 15px 10px 15px;
   background-color: #66ccff;
-  font-family: ${props => props.theme.MainFont1};
-  color: ${props => props.theme.newColor1};
+  font-family: ${(props) => props.theme.MainFont1};
+  color: ${(props) => props.theme.newColor1};
   border: none;
   cursor: pointer;
   border-radius: 0.17rem;
@@ -190,5 +194,5 @@ export const BottomP = styled.p`
   margin-bottom: 0;
   padding-bottom: 5px;
   font-weight: 300;
-  font-family: ${props => props.theme.MainFont1};
+  font-family: ${(props) => props.theme.MainFont1};
 `;

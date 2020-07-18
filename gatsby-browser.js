@@ -8,16 +8,19 @@
 
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import WindowDimensionsProvider from "./src/components/context/WindowDimensions";
+import WindowSizeProvider from "./src/provider/WindowSizeProvider";
 import { theme } from "./src/styles/mainStyles";
+import StoreProvider from "./src/provider/StoreProvider";
 
 require("typeface-roboto-slab");
 require("typeface-roboto");
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <ThemeProvider theme={theme}>
-      <WindowDimensionsProvider>{element}</WindowDimensionsProvider>
-    </ThemeProvider>
+    <StoreProvider>
+      <ThemeProvider theme={theme}>
+        <WindowSizeProvider>{element}</WindowSizeProvider>
+      </ThemeProvider>
+    </StoreProvider>
   );
 };

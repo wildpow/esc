@@ -5,10 +5,10 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql, Link } from "gatsby";
 import { Carousel } from "react-responsive-carousel";
 import "../styles/carousel.css";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import { Main } from "../styles/homeStyles";
-import Front from "../components/home/front";
-import TopThreeMatts from "../components/home/top3Mattress";
+import Front from "../components/Home/front";
+import TopThreeMatts from "../components/Home/Top3Mattress";
 
 const IndexPage = ({ data }) => {
   const { carousel } = data.datoCmsFrontPage;

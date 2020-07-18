@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
-import WarrantyComponent from "../components/pages/warranty";
+import Layout from "../components/Layout";
+import WarrantyComponent from "../components/Pages/Warranty";
 
 const Warranty = ({ data }) => (
   <Layout>

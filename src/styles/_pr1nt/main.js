@@ -10,14 +10,14 @@ export const DisplayNonePr1nt = css`
 export const TopperNumber = styled.div`
   display: none;
   @media print {
-    font-family: ${props => props.theme.MainFont1};
+    font-family: ${(props) => props.theme.MainFont1};
     display: initial;
     position: absolute;
     float: right;
     right: 0;
     top: 0;
     font-weight: 700;
-    border-bottom: 2px solid ${props => props.theme.mainColor2};
+    border-bottom: 2px solid ${(props) => props.theme.mainColor2};
     font-size: 1.2rem;
   }
 `;
@@ -75,7 +75,7 @@ export const MainTitlePr1nt = css`
   @media print {
     color: black;
     text-shadow: none;
-    border-bottom: 3px solid ${props => props.theme.mainColor1};
+    border-bottom: 3px solid ${(props) => props.theme.mainColor1};
     text-align: left;
     padding-bottom: 1px;
     margin-top: 2px;
@@ -97,7 +97,7 @@ export const BigBannerPr1nt = css`
     width: 100%;
     padding-top: 0;
     font-size: 1rem;
-    border-bottom: 4px solid ${props => props.theme.mainColor2};
+    border-bottom: 4px solid ${(props) => props.theme.mainColor2};
     color: black;
     text-align: left;
     padding-bottom: 2px;
@@ -140,7 +140,7 @@ export const MainFooterPr1nt = css`
 
 export const FWrapPr1nt = css`
   @media print {
-    border-top: 2px solid ${props => props.theme.mainColor1};
+    border-top: 2px solid ${(props) => props.theme.mainColor1};
 
     box-shadow: none;
   }

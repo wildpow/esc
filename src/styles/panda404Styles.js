@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { FlexCol, FadeIn } from "./mainStyles";
 
 export const Main = styled(FlexCol)`
-  font-family: ${props => props.theme.MainFont1};
-  border: ${props => props.theme.Border};
-  box-shadow: ${props => props.theme.BoxShadow};
+  font-family: ${(props) => props.theme.MainFont1};
+  border: ${(props) => props.theme.Border};
+  box-shadow: ${(props) => props.theme.BoxShadow};
   animation-name: ${FadeIn};
-  ${props => props.theme.Animation}
+  ${(props) => props.theme.Animation}
   border-radius: .11rem;
   text-align: center;
   justify-content: center;
@@ -27,9 +27,9 @@ export const Img = styled.img`
 `;
 
 export const Header = styled.header`
-  background-color: ${props => props.theme.mainColor1};
-  font-family: ${props => props.theme.MainFont1};
-  text-shadow: ${props => props.theme.TextShadow};
+  background-color: ${(props) => props.theme.mainColor1};
+  font-family: ${(props) => props.theme.MainFont1};
+  text-shadow: ${(props) => props.theme.TextShadow};
   font-size: 1.2rem;
   padding: 0px 30px 0px 30px;
   color: white;

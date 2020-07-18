@@ -21,6 +21,14 @@ const cfg = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        shopName: `${process.env.GATSBY_SHOPIFY_STORE}.myshopify.com`,
+        accessToken: process.env.GATSBY_SHOPIFY_API,
+        verbose: true,
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
     //   options: {
@@ -55,6 +63,14 @@ const cfg = {
         theme_color: `#1565c0`,
         display: `minimal-ui`,
         icon: `src/images/logo.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/,
+        },
       },
     },
     `gatsby-plugin-offline`,
