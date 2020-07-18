@@ -17,6 +17,9 @@ export const Main = styled.div`
   @media (min-width: ${breakpoints.phablet}) {
     padding-top: 15px;
   }
+  @media (min-width: ${breakpoints.lg}) {
+    padding-bottom: 45px;
+  }
 `;
 
 // export const Linky = styled(Link)`

@@ -383,7 +383,6 @@ const MattressForm = ({
   return (
     <Form onSubmit={handleSubmit} noValidate>
       <QtyFieldset>
-        {console.log(variants)}
         <Label htmlFor="quantity">Qty.</Label>
         <Input
           type="number"
