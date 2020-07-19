@@ -277,6 +277,18 @@ const FooterRoot = styled.footer`
       width: 139px;
     }
   }
+  .link {
+   
+      :focus {
+        box-shadow: 0 0 0 3px ${colors.blue["300"]};
+        outline: 0;
+        transition: box-shadow 0.15s ease-in-out;
+      }
+      transition: all 0.25s ease-in;
+  &:hover {
+    transform: scale3d(1.05, 1.05, 1);
+  }
+  }
 `;
 
 const Footer = ({ moved }) => {
@@ -333,12 +345,11 @@ const Footer = ({ moved }) => {
             <h3>Hours</h3>
             <div className="hours__inner">
               <div className="hours__days">
-                <h6>Mon-Fri:</h6>
-                <h6>Saturday:</h6>
+                <h6>Mon-Sat:</h6>
+
                 <h6>Sunday:</h6>
               </div>
               <div className="hours__time">
-                <h6>10am - 8pm</h6>
                 <h6>10am - 7pm</h6>
                 <h6> 10am - 6pm</h6>
               </div>
@@ -396,6 +407,7 @@ const Footer = ({ moved }) => {
                 href="https://www.milb.com/everett"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="link"
                 style={{ textDecoration: "none" }}
               >
                 <Img
@@ -411,7 +423,7 @@ const Footer = ({ moved }) => {
                 href="https://clothesforkids.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="clothesForKids"
+                className="clothesForKids link"
               >
                 <Img
                   fluid={clothsForKids.fluid}
@@ -438,7 +450,10 @@ const Footer = ({ moved }) => {
             <h3>Reviews / Rewards</h3>
             <div className="iconWrapper">
               <Bird />
-              <Link to="/blog/esc-mattress-center-wins-best-mattress-store-in-snohomish-county">
+              <Link
+                to="/blog/esc-mattress-center-wins-best-mattress-store-in-snohomish-county"
+                className="link"
+              >
                 <img src={sticker.url} alt={sticker.alt} className="sticker" />
               </Link>
             </div>
