@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import Popup from "reactjs-popup";
+import { colors } from "../../../utils/styles";
 
 const Firmness = styled.div`
   @media print {
@@ -25,8 +26,8 @@ const Firmness = styled.div`
   transition: all 0.2s ease-in-out;
   :hover {
     cursor: help;
-    border-bottom: 2px solid #1565c0;
-    border-top: 2px solid #eb1c24;
+    border-bottom: 2px solid ${colors.blue["800"]};
+    border-top: 2px solid ${colors.red["800"]};
     transform: translateY(-2px);
   }
   @media screen and (min-width: 768px) {
@@ -35,7 +36,8 @@ const Firmness = styled.div`
   .firm,
   .soft {
     font-family: ${(props) => props.theme.MainFont1};
-    color: black;
+    color: ${colors.gray["700"]};
+
     width: 22%;
     text-align: center;
     font-size: 1rem;

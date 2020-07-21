@@ -89,10 +89,12 @@ const FilterSort = styled.div`
       padding-bottom: 10px;
       font-size: 1.3rem;
       border-bottom: 4px solid ${(props) => props.theme.mainColor2};
+      color: ${colors.blue["900"]};
     }
     label {
       padding-left: 20px;
       padding-bottom: 15px;
+      color: ${colors.gray["800"]};
     }
     label:last-child {
       padding-bottom: 20px;

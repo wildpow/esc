@@ -11,7 +11,7 @@ import { colors } from "../../utils/styles";
 
 export const Article = styled.article`
   display: flex;
-  background: rgba(224, 224, 224, 0.42);
+  background: ${colors.gray["200"]};
   flex-direction: column;
   justify-content: center;
   align-content: center;
@@ -21,7 +21,7 @@ export const Article = styled.article`
 
 export const Description = styled.p`
   font-weight: 400;
-  color: black;
+  color: ${colors.gray["800"]};
   font-family: ${(props) => props.theme.MainFont3};
   align-self: center;
   border-radius: 0.11rem;
@@ -242,6 +242,8 @@ export const MainTitle = styled(H2)`
 `;
 
 export const Profile = styled.p`
+  color: ${colors.gray["700"]};
+
   font-family: ${(props) => props.theme.MainFont1};
   margin-top: 0;
   font-size: 0.9rem;

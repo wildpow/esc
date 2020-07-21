@@ -30,8 +30,8 @@ const HeaderWrapper = styled.div`
     transition: all ease 0.3s;
     letter-spacing: 0.18rem;
     font-size: 0.8rem;
-    width: 120px;
-    padding: 5px;
+    /* width: 120px; */
+    padding: 10px;
     &:active {
       box-shadow: 0 3px 0 #ccc;
       top: 3px;
@@ -55,13 +55,13 @@ const HeaderWrapper = styled.div`
     }
     @media (orientation: landscape) and (min-width: 569px) {
       width: 180px;
-      padding: 7px;
-      margin-right: 8px;
+      padding: 12px;
+      margin-right: 20px;
       margin-bottom: 8px;
     }
-    @media screen and (max-width: 1024px) {
+    /* @media screen and (max-width: 1024px) {
       margin-top: 10px;
-    }
+    } */
     @media screen and (max-width: 600px) {
       align-self: center;
       margin-top: 0px;
@@ -99,6 +99,11 @@ const HeaderWrapper = styled.div`
     padding-right: 10px;
     padding-left: 10px;
   }
+  @media screen and (min-width: 360px) {
+    h2 {
+      font-size: 1.65rem;
+    }
+  }
   @media screen and (min-width: 730px) {
     background: url(${(props) => props.headerBG}) no-repeat;
     height: 200px;
@@ -107,6 +112,10 @@ const HeaderWrapper = styled.div`
     margin-bottom: 0px;
     .heading__content {
       max-width: 350px;
+    }
+    a {
+      margin-right: 20px;
+      font-weight: 700;
     }
   }
   @media screen and (min-width: 1000px) {
