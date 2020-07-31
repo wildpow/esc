@@ -8,6 +8,7 @@ import Headroom from "react-headroom";
 import { useOnClickOutside, useKeyboardEvent, useIntersect } from "../Hooks";
 import { useWindowSize } from "../../context/WindowSizeContext";
 import MenuOverLay from "../shared/MenuOverLay";
+
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
 import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
 
@@ -109,6 +110,15 @@ function Layout({ children }) {
     setMoved(cartStatus === "open" || menuStatus === "open" ? "moved" : "");
   }, [cartStatus, menuStatus]);
 
+  useEffect(() => {
+    const beforPrint = (e) => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+    window.addEventListener("beforeprint", beforPrint);
+    return () => {
+      window.removeEventListener("beforeprint", beforPrint);
+    };
+  }, []);
   return (
     <>
       <StructuredDataMain />
@@ -162,9 +172,5 @@ function Layout({ children }) {
     </>
   );
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Layout;
