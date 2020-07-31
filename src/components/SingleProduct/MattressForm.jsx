@@ -117,6 +117,9 @@ const AddToCartButton = styled(Submit)`
   flex-grow: 1;
   /* height: ${(props) => (props.fullWidth ? "auto" : "")};
   width: ${(props) => (props.fullWidth ? "100%" : "auto")}; */
+  @media print {
+    display: none;
+  }
 `;
 
 const Errors = styled.div`
@@ -130,6 +133,9 @@ const Errors = styled.div`
   height: 50px;
   @media (min-width: ${breakpoints.md}){
     margin-bottom: 0;
+  }
+  @media print {
+    display: none;
   }
 `;
 

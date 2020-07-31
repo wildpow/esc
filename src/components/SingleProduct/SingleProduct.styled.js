@@ -192,6 +192,9 @@ export const Main = styled.div`
     margin-left: 5px;
     /* margin-bottom: 10px; */
   }
+  @media print {
+    flex-direction: row;
+  }
 `;
 
 export const Info = styled.li`
