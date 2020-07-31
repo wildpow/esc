@@ -44,6 +44,9 @@ const PageContentRoot = styled.main`
   @media (min-width: ${breakpoints.md}) {
     /* padding-bottom: ${spacing["1"]}; */
   }
+  @media print {
+    box-shadow: none;
+  }
 `;
 
 const PageContent = ({ children, moved }) => {

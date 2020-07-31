@@ -194,6 +194,7 @@ export const Main = styled.div`
   }
   @media print {
     flex-direction: row;
+    margin-top: 0;
   }
 `;
 
