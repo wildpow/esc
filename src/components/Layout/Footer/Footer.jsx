@@ -19,6 +19,9 @@ import useReaders from "./use-readers-choice";
 import Bird from "./Bird";
 
 const FooterRoot = styled.footer`
+@media print {
+  display: none;
+}
   display: flex;
   flex-direction: column;
   justify-content: space-between;

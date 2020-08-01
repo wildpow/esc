@@ -65,6 +65,9 @@ const CartRoot = styled.div`
       display: none;
     }
   }
+  @media print {
+      display: none;
+    }
 `;
 
 const ItemsNumber = styled.span`

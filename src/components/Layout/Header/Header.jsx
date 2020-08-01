@@ -136,8 +136,22 @@ const HeaderRoot = styled.header`
       }
     }
   }
+  @media print {
+    box-shadow: none;
+   
+    border-bottom: 2px solid ${colors.gray["300"]};
+  }
 `;
-
+const PrintOnlyContact = styled.div`
+  display: none;
+  /* color: black;
+  font-size: 40px; */
+  font-family: ${fonts.sans};
+  @media print {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
 const Header = ({ cartStatus, menuStatus, pin, moved }) => {
   const { width } = useWindowSize();
   return (
@@ -165,7 +179,12 @@ const Header = ({ cartStatus, menuStatus, pin, moved }) => {
         </div>
         {/* {width > 768 ? <ExtraNavIcons /> : null} */}
         <NavIcons pin={pin} />
+        <PrintOnlyContact>
+          <div>10121 Evergreen Way, #30, Everett, WA 98204</div>
+          <div>(425) 512.0017</div>
+        </PrintOnlyContact>
       </div>
+      {/* (425) 512.0017 */}
       {width >= 1024 ? <Nav cartStatus={cartStatus} /> : null}
       {/* {width < 768 ? <ExtraNavIcons /> : null} */}
     </HeaderRoot>

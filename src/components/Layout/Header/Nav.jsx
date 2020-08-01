@@ -65,6 +65,9 @@ const NavRoot = styled.nav`
         }
       }
     }
+    @media print {
+      display: none;
+    }
   }
   @media (min-width: ${breakpoints.xl}) {
     ul li a {

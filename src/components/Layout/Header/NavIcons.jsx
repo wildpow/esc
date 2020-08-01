@@ -11,6 +11,9 @@ import { colors, dimensions, breakpoints } from "../../../utils/styles";
 
 const ExtraNavRoot = styled.div`
   display: flex;
+  @media print {
+    display: none;
+  }
 `;
 
 const StyledLinks = styled.a`

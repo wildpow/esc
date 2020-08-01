@@ -107,7 +107,7 @@ export const BigBannerPr1nt = css`
 
 export const ImgWrapperPr1nt = css`
   @media print {
-    height: 240px;
+    height: 340px;
     margin: 0px;
   }
 `;
@@ -126,7 +126,7 @@ export const SmImgPr1nt = css`
 `;
 export const LargeImgPr1nt = css`
   @media print {
-    width: 250px;
+    width: 300px;
     height: 250px;
   }
 `;
