@@ -101,8 +101,6 @@ function Layout({ children }) {
     }
     if (height < 400 && menuStatus === "open") {
       element.style.display = "none";
-    } else {
-      element.style.display = "block";
     }
   }, [width, element, entry, height, menuStatus]);
 
