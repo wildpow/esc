@@ -159,6 +159,7 @@ const Header = ({ cartStatus, menuStatus, pin, moved }) => {
       cartStatus={cartStatus}
       menuStatus={menuStatus}
       className={moved}
+      role="banner"
     >
       {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
       <div className="header__Wrapper">

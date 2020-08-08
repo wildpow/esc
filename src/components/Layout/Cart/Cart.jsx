@@ -86,7 +86,7 @@ const ItemsNumber = styled.span`
   font-family: ${fonts.sans};
 `;
 
-const Heading = styled.header`
+const Heading = styled.div`
   align-items: center;
   display: flex;
   height: ${dimensions.headerHeight};

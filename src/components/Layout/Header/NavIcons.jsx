@@ -63,7 +63,11 @@ const StyledLinks = styled.a`
 const NavIcons = ({ pin }) => {
   return (
     <ExtraNavRoot>
-      <StyledLinks href="tel:1-425-512-0017" pin={pin}>
+      <StyledLinks
+        href="tel:1-425-512-0017"
+        pin={pin}
+        aria-label="Store phone number"
+      >
         <span aria-hidden>
           <VisuallyHidden>Call store</VisuallyHidden>
           <Phone className="fa-phone" title="call store" />
@@ -74,6 +78,7 @@ const NavIcons = ({ pin }) => {
         target="_blank"
         rel="noopener noreferrer"
         pin={pin}
+        aria-label="get in contact with us via email"
       >
         <span aria-hidden>
           <VisuallyHidden>Contact Us</VisuallyHidden>
@@ -85,6 +90,7 @@ const NavIcons = ({ pin }) => {
         target="_blank"
         rel="noopener noreferrer"
         pin={pin}
+        aria-label="Google maps link to our store"
       >
         <span aria-hidden>
           <VisuallyHidden>directions to store</VisuallyHidden>
