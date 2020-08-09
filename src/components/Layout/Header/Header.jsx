@@ -32,6 +32,9 @@ const HeaderRoot = styled.header`
   .header__Wrapper {
     display: flex;
     flex-direction: column-reverse;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
   }
   .header__flex {
     border-top: 2px solid ${colors.gray["300"]};
