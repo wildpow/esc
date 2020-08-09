@@ -51,7 +51,7 @@ const HeaderRoot = styled.header`
     }
   }
   .brand__anchor {
-    height: 35px;
+    width: 60px;
       position: relative;
     /* pointer-events: ${({ cartStatus, menuStatus }) =>
       cartStatus === "open" || menuStatus === "open" ? "none" : "auto"}; */
@@ -119,7 +119,7 @@ const HeaderRoot = styled.header`
     }
     .brand__anchor {
       
-        height: 45px;
+      width: 75px;
       
     }
   }
@@ -133,7 +133,7 @@ const HeaderRoot = styled.header`
     }
     .brand__anchor {
     
-        height: 55px;
+      width: 90px;
       
     }
   }

@@ -8,8 +8,8 @@ const useLogo = () => {
           pandaLogo {
             alt
             fluid(
-              maxWidth: 90
-              maxHeight: 55
+              maxWidth: 180
+              maxHeight: 110
               imgixParams: { auto: "compress" }
             ) {
               ...GatsbyDatoCmsFluid
