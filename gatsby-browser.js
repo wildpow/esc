@@ -8,6 +8,7 @@
 
 import React from "react";
 import { ThemeProvider } from "styled-components";
+import ReactDOM from "react-dom";
 import WindowSizeProvider from "./src/provider/WindowSizeProvider";
 import { theme } from "./src/styles/mainStyles";
 import StoreProvider from "./src/provider/StoreProvider";
@@ -23,4 +24,19 @@ export const wrapRootElement = ({ element }) => {
       </ThemeProvider>
     </StoreProvider>
   );
+};
+
+export const onInitialClientRender = async (_, pluginOptions = {}) => {
+  const { showInProduction, axeOptions, axeContext, delay } = {
+    showInProduction: false,
+    axeOptions: {},
+    axeContext: undefined,
+    delay: 8000,
+    ...pluginOptions,
+  };
+
+  if (process.env.NODE_ENV === "development" || showInProduction) {
+    const { default: axe } = await import("react-axe");
+    axe(React, ReactDOM, delay, axeOptions, axeContext);
+  }
 };

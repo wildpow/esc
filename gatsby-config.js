@@ -8,6 +8,13 @@ const cfg = {
     siteUrl: `https://www.escmattresscenter.com`,
   },
   plugins: [
+    // {
+    //   resolve: "gatsby-plugin-react-axe",
+    //   options: {
+    //     delay: 3000,
+    //   },
+    // },
+
     {
       resolve: `gatsby-source-datocms`,
       options: {
