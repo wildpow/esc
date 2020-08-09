@@ -49,7 +49,7 @@ export const carouselQuery = graphql`
         id
         image {
           fluid(
-            maxWidth: 980
+            maxWidth: 1440
             imgixParams: { auto: "compress", lossless: true }
           ) {
             ...GatsbyDatoCmsFluid_tracedSVG

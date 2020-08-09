@@ -16,9 +16,12 @@ const Container = styled.div`
   border-top: 2px solid ${(props) => props.theme.newColor3};
   background-color: white;
 `;
-
+// TODO responsive break to col on small screens
+const FrontRoot = styled.div`
+  display: flex;
+`;
 const Front = () => (
-  <>
+  <FrontRoot>
     <Wrapper>
       <StaticQuery
         query={graphql`
@@ -51,7 +54,7 @@ const Front = () => (
         <SocialIcons />
       </Container>
     </Wrapper>
-  </>
+  </FrontRoot>
 );
 
 export default Front;

@@ -14,6 +14,7 @@ export const Main = styled.div`
   padding-left: 5px;
   padding-right: 5px;
   padding-bottom: 15px;
+  max-width: 1440px;
   @media (min-width: ${breakpoints.phablet}) {
     padding-top: 15px;
   }
@@ -37,7 +38,7 @@ export const OneImg = styled.img`
 export const Wrapper = styled(FlexCol)`
   background-color: ${(props) => props.theme.newColor1};
   box-shadow: ${(props) => props.theme.newBoxShadow};
-  justify-content: center;
+  /* justify-content: center; */
   margin-top: 10px;
   margin-right: 0px;
   margin-left: 0px;

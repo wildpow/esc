@@ -21,7 +21,7 @@ import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
 // `;
 
 const MainRoot = styled.div`
-  max-width: 1370px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
   /* padding-right: ${({ cartStatus, menuStatus }) =>
