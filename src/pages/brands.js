@@ -12,7 +12,7 @@ const SectionContainer = styled.div`
   padding-left: 5px;
   padding-right: 5px;
   min-width: 320px;
-  max-width: 1366px;
+  max-width: 1440px;
   margin: auto;
   padding-top: 0px;
   /* margin-bottom: 20px; */
@@ -20,7 +20,7 @@ const SectionContainer = styled.div`
   scroll-behavior: smooth;
   display: grid;
   /* grid-template-rows: repeat(auto-fill, 1fr); */
-  grid-template-columns: repeat(2, minmax(300px, 560px));
+  grid-template-columns: repeat(2, minmax(300px, 720px));
   grid-gap: 20px;
   align-items: stretch;
   justify-items: center;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { StaticQuery, graphql, Link } from "gatsby";
 import { Headline, Wrapper, P } from "../../styles/homeStyles";
 import SocialIcons from "../SocialIcons";
+import { breakpoints } from "../../utils/styles";
 
 export const BottomLinks = styled(Link)`
   color: ${(props) => props.theme.mainColor1};
@@ -19,6 +20,12 @@ const Container = styled.div`
 // TODO responsive break to col on small screens
 const FrontRoot = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
+  @media (min-width: 925px) {
+    flex-direction: row;
+  }
 `;
 const Front = () => (
   <FrontRoot>
