@@ -21,7 +21,7 @@ import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
 // `;
 
 const MainRoot = styled.div`
-  max-width: 1370px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
   /* padding-right: ${({ cartStatus, menuStatus }) =>
@@ -109,7 +109,7 @@ function Layout({ children }) {
   }, [cartStatus, menuStatus]);
 
   useEffect(() => {
-    const beforPrint = (e) => {
+    const beforPrint = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
     window.addEventListener("beforeprint", beforPrint);
@@ -131,6 +131,7 @@ function Layout({ children }) {
           pin={pin}
           cartStatus={cartStatus}
           menuStatus={menuStatus}
+          cartToggle={cartToggle}
         />
       </Headroom>
       <div ref={node}>
@@ -171,4 +172,7 @@ function Layout({ children }) {
   );
 }
 
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default Layout;

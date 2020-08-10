@@ -17,8 +17,17 @@ const Container = styled.div`
   background-color: white;
 `;
 
+const FrontRoot = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
+  @media (min-width: 925px) {
+    flex-direction: row;
+  }
+`;
 const Front = () => (
-  <>
+  <FrontRoot>
     <Wrapper>
       <StaticQuery
         query={graphql`
@@ -51,7 +60,7 @@ const Front = () => (
         <SocialIcons />
       </Container>
     </Wrapper>
-  </>
+  </FrontRoot>
 );
 
 export default Front;
