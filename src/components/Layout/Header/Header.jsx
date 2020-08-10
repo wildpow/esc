@@ -169,7 +169,6 @@ const Header = ({ cartStatus, menuStatus, pin, moved, cartToggle }) => {
       className={moved}
       role="banner"
     >
-      {console.log(pandaLogo)}
       {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
       <div className="header__Wrapper">
         <div className="header__flex">
