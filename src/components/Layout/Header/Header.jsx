@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import { string, bool } from "prop-types";
+import { string, bool, func } from "prop-types";
 import styled from "styled-components";
 import logo from "../../../images/header/logo2.png";
 import { useWindowSize } from "../../../context/WindowSizeContext";
@@ -155,7 +155,7 @@ const PrintOnlyContact = styled.div`
     justify-content: space-between;
   }
 `;
-const Header = ({ cartStatus, menuStatus, pin, moved }) => {
+const Header = ({ cartStatus, menuStatus, pin, moved, cartToggle }) => {
   const { width } = useWindowSize();
   return (
     <HeaderRoot
@@ -182,7 +182,12 @@ const Header = ({ cartStatus, menuStatus, pin, moved }) => {
           </Link>
         </div>
         {/* {width > 768 ? <ExtraNavIcons /> : null} */}
-        <NavIcons pin={pin} />
+        <NavIcons
+          pin={pin}
+          cartToggle={cartToggle}
+          menuStatus={menuStatus}
+          cartStatus={cartStatus}
+        />
         <PrintOnlyContact>
           <div>10121 Evergreen Way, #30, Everett, WA 98204</div>
           <div>(425) 512.0017</div>
@@ -205,6 +210,7 @@ Header.propTypes = {
   menuStatus: string,
   moved: string,
   pin: bool,
+  cartToggle: func.isRequired,
 };
 
 export default Header;
