@@ -68,7 +68,7 @@ export const Headline = styled.h2`
   padding-top: 15px;
   padding-bottom: 15px;
   letter-spacing: 0.2rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   @media (min-width: 412px) {
     letter-spacing: 0.25rem;
     font-size: 1.4rem;
