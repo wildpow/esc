@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
+
+import Img from "gatsby-image";
+
 import { string, bool, func } from "prop-types";
+
 import styled from "styled-components";
 import logo from "../../../images/header/logo2.png";
 import { useWindowSize } from "../../../context/WindowSizeContext";
@@ -16,6 +20,7 @@ import {
 import Nav from "./Nav";
 import NavIcons from "./NavIcons";
 import MenuOverLay from "../../shared/MenuOverLay";
+import useLogo from "./use-logo";
 
 const HeaderRoot = styled.header`
   transition: all 0.75s;
@@ -52,6 +57,8 @@ const HeaderRoot = styled.header`
     }
   }
   .brand__anchor {
+    width: 60px;
+      position: relative;
     /* pointer-events: ${({ cartStatus, menuStatus }) =>
       cartStatus === "open" || menuStatus === "open" ? "none" : "auto"}; */
     display: block;
@@ -66,10 +73,7 @@ const HeaderRoot = styled.header`
       outline: 0;
       transition: box-shadow 0.15s ease-in-out;
     }
-    img {
-      height: 35px;
-      position: relative;
-    }
+   
   }
   h1 {
     align-self: center;
@@ -120,9 +124,9 @@ const HeaderRoot = styled.header`
       padding-left: ${spacing["3"]};
     }
     .brand__anchor {
-      img {
-        height: 45px;
-      }
+      
+      width: 75px;
+      
     }
   }
   @media screen and (min-width: ${breakpoints.lg}) {
@@ -134,9 +138,9 @@ const HeaderRoot = styled.header`
       align-self: flex-end;
     }
     .brand__anchor {
-      img {
-        height: 55px;
-      }
+    
+      width: 90px;
+      
     }
   }
   @media print {
@@ -157,6 +161,7 @@ const PrintOnlyContact = styled.div`
 `;
 const Header = ({ cartStatus, menuStatus, pin, moved, cartToggle }) => {
   const { width } = useWindowSize();
+  const { pandaLogo } = useLogo();
   return (
     <HeaderRoot
       cartStatus={cartStatus}
@@ -164,11 +169,12 @@ const Header = ({ cartStatus, menuStatus, pin, moved, cartToggle }) => {
       className={moved}
       role="banner"
     >
+      {console.log(pandaLogo)}
       {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
       <div className="header__Wrapper">
         <div className="header__flex">
           <Link className="brand__anchor" to="/" title="Back to home page">
-            <img src={logo} alt="panda" />
+            <Img fluid={pandaLogo.fluid} alt={pandaLogo.alt} />
           </Link>
           <Link
             title="Back to home page"
