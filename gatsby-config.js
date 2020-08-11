@@ -73,7 +73,7 @@ const cfg = {
         },
       },
     },
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-netlify`,
     {
       resolve: "gatsby-source-apiserver",
