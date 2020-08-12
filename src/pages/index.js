@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => {
           showStatus={false}
         >
           {carousel.map((car) => (
-            <Link key={car.id} to={`${car.url}`}>
+            <Link key={car.id} to={`${car.url}`} style={{ maxHeight: "550px" }}>
               <Img fluid={car.image.fluid} alt={car.image.alt} />
             </Link>
           ))}

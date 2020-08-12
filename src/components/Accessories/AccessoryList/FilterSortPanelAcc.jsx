@@ -76,6 +76,8 @@ const FilterSort = styled.div`
   }
   .filterSort__select option {
     font-weight: normal;
+    background-color: white;
+    color: black;
   }
   .filterSort__confort {
     background-color: white;
