@@ -88,6 +88,13 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
+      allDatoCmsNewBlog {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
     }
   `);
   data.protector.nodes.forEach((pro) => {
@@ -146,6 +153,15 @@ exports.createPages = async ({ actions, graphql }) => {
     actions.createPage({
       path: `/blog/${blog.node.slug}`,
       component: path.resolve(`./src/templates/post.js`),
+      context: {
+        slug: blog.node.slug,
+      },
+    });
+  });
+  data.allDatoCmsNewBlog.edges.forEach((blog) => {
+    actions.createPage({
+      path: `/blog/${blog.node.slug}`,
+      component: path.resolve(`./src/templates/newpost.js`),
       context: {
         slug: blog.node.slug,
       },
