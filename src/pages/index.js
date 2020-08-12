@@ -26,7 +26,7 @@ const IndexPage = ({ data }) => {
           showStatus={false}
         >
           {carousel.map((car) => (
-            <Link key={car.id} to={`${car.url}`}>
+            <Link key={car.id} to={`${car.url}`} style={{ maxHeight: "550px" }}>
               <Img fluid={car.image.fluid} alt={car.image.alt} />
             </Link>
           ))}
@@ -49,7 +49,7 @@ export const carouselQuery = graphql`
         id
         image {
           fluid(
-            maxWidth: 980
+            maxWidth: 1440
             imgixParams: { auto: "compress", lossless: true }
           ) {
             ...GatsbyDatoCmsFluid_tracedSVG

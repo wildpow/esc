@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { useEffect, useState, useContext } from "react";
 import { func, string, bool } from "prop-types";
 import VisuallyHidden from "@reach/visually-hidden";
@@ -65,6 +66,9 @@ const CartRoot = styled.div`
       display: none;
     }
   }
+  @media print {
+      display: none;
+    }
 `;
 
 const ItemsNumber = styled.span`
@@ -83,7 +87,7 @@ const ItemsNumber = styled.span`
   font-family: ${fonts.sans};
 `;
 
-const Heading = styled.header`
+const Heading = styled.div`
   align-items: center;
   display: flex;
   height: ${dimensions.headerHeight};
@@ -110,11 +114,11 @@ const CartToggle = styled.button`
   height: ${dimensions.headerHeight};
   justify-content: center;
   align-items: center;
-  left: -61px;
+  left: 0;
   padding: 0;
   position: relative;
   top: 0;
-  @media (max-width: ${breakpoints.sm}) {
+  /* @media (max-width: ${breakpoints.sm}) {
     transform: translateX(-100%);
     transition: all 0.2s ease;
   }
@@ -125,14 +129,14 @@ const CartToggle = styled.button`
   @media (min-width: ${breakpoints.md}) {
     transform: ${({ menuStatus }) =>
       menuStatus === "open" ? "translateX(-465px)" : "translateX(-100%)"};
-  }
+  } */
   transition: ${({ menuStatus }) =>
     menuStatus === "open" ? "all 0.75s" : "all .2s ease"};
   pointer-events: ${({ menuStatus }) =>
     menuStatus === "open" ? "none" : "auto"};
   width: ${dimensions.headerHeight};
   :hover {
-    transform: scale(1.2) translateX(-85%);
+    transform: scale(1.2);
     .fa-shopping-cart {
       color: ${colors.blue["900"]};
     }
@@ -157,12 +161,12 @@ const CartToggle = styled.button`
     }
   }
 
-  @media screen and (min-width: ${breakpoints.md}) {
+  /* @media screen and (min-width: ${breakpoints.md}) {
     left: -61px;
   }
   @media (min-width: ${breakpoints.lg}) {
     left: -61px;
-  }
+  } */
 
   @media (min-width: ${breakpoints.lg}) {
     left: 0;
@@ -370,28 +374,14 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
           pin={pin}
           menuStatus={menuStatus}
         >
-          {status === "open" ? (
-            <span aria-hidden>
-              <VisuallyHidden>close shoping cart</VisuallyHidden>
-              <CloseIcon
-                className="fa-times"
-                title="Close shopping cart menu"
-                alt="X to close hopping cart"
-              />
-            </span>
-          ) : (
-            <>
-              <VisuallyHidden>shoping cart</VisuallyHidden>
-              <span aria-hidden>
-                <CartIcon
-                  alt="Shopping cart icon"
-                  className="fa-shopping-cart"
-                  title="Open shopping cart menu"
-                />
-              </span>
-              {itemsInCart > 0 && <ItemsNumber>{itemsInCart}</ItemsNumber>}
-            </>
-          )}
+          <span aria-hidden>
+            <VisuallyHidden>close shoping cart</VisuallyHidden>
+            <CloseIcon
+              className="fa-times"
+              title="Close shopping cart menu"
+              alt="X to close hopping cart"
+            />
+          </span>
         </CartToggle>
         <CartIndicator adding={adding} itemsInCart={itemsInCart} />
         <Title>Your Cart</Title>
@@ -467,11 +457,13 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
 
 Cart.defaultProps = {
   status: "closed",
+  menuStatus: "closed",
   pin: true,
   // menuId: "main-menu",
 };
 Cart.propTypes = {
   status: string,
+  menuStatus: string,
   pin: bool,
   toggle: func.isRequired,
   // menuId: string,

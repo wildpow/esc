@@ -19,6 +19,9 @@ import useReaders from "./use-readers-choice";
 import Bird from "./Bird";
 
 const FooterRoot = styled.footer`
+@media print {
+  display: none;
+}
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -33,7 +36,7 @@ const FooterRoot = styled.footer`
   /* height: 300px; */
   margin: 0 auto;
   .topWrapper {
-    max-width: 1224px;
+    max-width: 1440px;
     margin: 0 auto;
     width: 100%;
     display: flex;
@@ -314,6 +317,7 @@ const Footer = ({ moved }) => {
                 href="https://www.facebook.com/ESCMattressCenter/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Vist our FaceBook page"
               >
                 <FaceBook />
               </OutboundLink>
@@ -321,6 +325,7 @@ const Footer = ({ moved }) => {
                 href="https://www.yelp.com/biz/esc-mattress-center-everett-3"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Vist our Yelp page"
               >
                 <Yelp />
               </OutboundLink>
@@ -328,6 +333,7 @@ const Footer = ({ moved }) => {
                 href="https://www.instagram.com/centeresc/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Vist our Instagram page"
               >
                 <Insta />
               </OutboundLink>
@@ -336,6 +342,7 @@ const Footer = ({ moved }) => {
                 data-size="large"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Vist our Twitter page"
               >
                 <Twitter />
               </OutboundLink>
@@ -346,7 +353,6 @@ const Footer = ({ moved }) => {
             <div className="hours__inner">
               <div className="hours__days">
                 <h6>Mon-Sat:</h6>
-
                 <h6>Sunday:</h6>
               </div>
               <div className="hours__time">
@@ -471,11 +477,15 @@ const Footer = ({ moved }) => {
               href="https://goo.gl/maps/nqXkkkAGRdu"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Google maps link to our store"
             >
               Directions
             </OutboundLink>
-            <OutboundLink href="tel:1-425-512-0017">
-              (425) 512.0017
+            <OutboundLink
+              href="tel:1-425-512-0017"
+              aria-label="Store phone number"
+            >
+              (425) 512-0017
             </OutboundLink>
           </div>
         </section>

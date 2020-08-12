@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
-import { string, bool } from "prop-types";
+
+import Img from "gatsby-image";
+
+import { string, bool, func } from "prop-types";
+
 import styled from "styled-components";
 import logo from "../../../images/header/logo2.png";
 import { useWindowSize } from "../../../context/WindowSizeContext";
@@ -16,6 +20,7 @@ import {
 import Nav from "./Nav";
 import NavIcons from "./NavIcons";
 import MenuOverLay from "../../shared/MenuOverLay";
+import useLogo from "./use-logo";
 
 const HeaderRoot = styled.header`
   transition: all 0.75s;
@@ -32,6 +37,9 @@ const HeaderRoot = styled.header`
   .header__Wrapper {
     display: flex;
     flex-direction: column-reverse;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
   }
   .header__flex {
     border-top: 2px solid ${colors.gray["300"]};
@@ -49,6 +57,8 @@ const HeaderRoot = styled.header`
     }
   }
   .brand__anchor {
+    width: 60px;
+      position: relative;
     /* pointer-events: ${({ cartStatus, menuStatus }) =>
       cartStatus === "open" || menuStatus === "open" ? "none" : "auto"}; */
     display: block;
@@ -63,10 +73,7 @@ const HeaderRoot = styled.header`
       outline: 0;
       transition: box-shadow 0.15s ease-in-out;
     }
-    img {
-      height: 35px;
-      position: relative;
-    }
+   
   }
   h1 {
     align-self: center;
@@ -117,9 +124,9 @@ const HeaderRoot = styled.header`
       padding-left: ${spacing["3"]};
     }
     .brand__anchor {
-      img {
-        height: 45px;
-      }
+      
+      width: 75px;
+      
     }
   }
   @media screen and (min-width: ${breakpoints.lg}) {
@@ -131,26 +138,42 @@ const HeaderRoot = styled.header`
       align-self: flex-end;
     }
     .brand__anchor {
-      img {
-        height: 55px;
-      }
+    
+      width: 90px;
+      
     }
   }
+  @media print {
+    box-shadow: none;
+   
+    border-bottom: 2px solid ${colors.gray["300"]};
+  }
 `;
-
-const Header = ({ cartStatus, menuStatus, pin, moved }) => {
+const PrintOnlyContact = styled.div`
+  display: none;
+  /* color: black;
+  font-size: 40px; */
+  font-family: ${fonts.sans};
+  @media print {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+const Header = ({ cartStatus, menuStatus, pin, moved, cartToggle }) => {
   const { width } = useWindowSize();
+  const { pandaLogo } = useLogo();
   return (
     <HeaderRoot
       cartStatus={cartStatus}
       menuStatus={menuStatus}
       className={moved}
+      role="banner"
     >
       {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
       <div className="header__Wrapper">
         <div className="header__flex">
           <Link className="brand__anchor" to="/" title="Back to home page">
-            <img src={logo} alt="panda" />
+            <Img fluid={pandaLogo.fluid} alt={pandaLogo.alt} />
           </Link>
           <Link
             title="Back to home page"
@@ -164,8 +187,18 @@ const Header = ({ cartStatus, menuStatus, pin, moved }) => {
           </Link>
         </div>
         {/* {width > 768 ? <ExtraNavIcons /> : null} */}
-        <NavIcons pin={pin} />
+        <NavIcons
+          pin={pin}
+          cartToggle={cartToggle}
+          menuStatus={menuStatus}
+          cartStatus={cartStatus}
+        />
+        <PrintOnlyContact>
+          <div>10121 Evergreen Way, #30, Everett, WA 98204</div>
+          <div>(425) 512.0017</div>
+        </PrintOnlyContact>
       </div>
+      {/* (425) 512.0017 */}
       {width >= 1024 ? <Nav cartStatus={cartStatus} /> : null}
       {/* {width < 768 ? <ExtraNavIcons /> : null} */}
     </HeaderRoot>
@@ -182,6 +215,7 @@ Header.propTypes = {
   menuStatus: string,
   moved: string,
   pin: bool,
+  cartToggle: func.isRequired,
 };
 
 export default Header;

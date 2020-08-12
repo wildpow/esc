@@ -36,7 +36,10 @@ const NavRoot = styled.nav`
   z-index: 0;
   box-shadow: ${boxShadow.md};
   ul {
-    margin: 0;
+    max-width: 1440px;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    /* margin: 0; */
     opacity: ${({ cartStatus }) => (cartStatus === "open" ? 0.5 : 1)};
     display: flex;
     list-style: none;
@@ -64,6 +67,9 @@ const NavRoot = styled.nav`
           transition: box-shadow 0.15s ease-in-out;
         }
       }
+    }
+    @media print {
+      display: none;
     }
   }
   @media (min-width: ${breakpoints.xl}) {

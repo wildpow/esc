@@ -8,6 +8,7 @@ import Headroom from "react-headroom";
 import { useOnClickOutside, useKeyboardEvent, useIntersect } from "../Hooks";
 import { useWindowSize } from "../../context/WindowSizeContext";
 import MenuOverLay from "../shared/MenuOverLay";
+
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
 import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
 
@@ -20,7 +21,7 @@ import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
 // `;
 
 const MainRoot = styled.div`
-  max-width: 1370px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
   /* padding-right: ${({ cartStatus, menuStatus }) =>
@@ -100,8 +101,6 @@ function Layout({ children }) {
     }
     if (height < 400 && menuStatus === "open") {
       element.style.display = "none";
-    } else {
-      element.style.display = "block";
     }
   }, [width, element, entry, height, menuStatus]);
 
@@ -109,6 +108,15 @@ function Layout({ children }) {
     setMoved(cartStatus === "open" || menuStatus === "open" ? "moved" : "");
   }, [cartStatus, menuStatus]);
 
+  useEffect(() => {
+    const beforPrint = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+    window.addEventListener("beforeprint", beforPrint);
+    return () => {
+      window.removeEventListener("beforeprint", beforPrint);
+    };
+  }, []);
   return (
     <>
       <StructuredDataMain />
@@ -123,6 +131,7 @@ function Layout({ children }) {
           pin={pin}
           cartStatus={cartStatus}
           menuStatus={menuStatus}
+          cartToggle={cartToggle}
         />
       </Headroom>
       <div ref={node}>
@@ -166,5 +175,4 @@ function Layout({ children }) {
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
 export default Layout;

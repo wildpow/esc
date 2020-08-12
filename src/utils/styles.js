@@ -138,7 +138,7 @@ export const radius = {
 
 export const dimensions = {
   headerHeight: "60px",
-  cartWidthDesktop: "415px",
+  cartWidthDesktop: "515px",
 };
 
 export const breakpoints = {
