@@ -7,6 +7,7 @@
     "@reach/visually-hidden": "^0.10.4",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
+    "gatsby-plugin-catch-links": "^2.3.11",
     "gatsby-plugin-google-analytics": "^2.1.35",
     "gatsby-plugin-manifest": "^2.2.41",
     "gatsby-plugin-netlify": "^2.1.32",
@@ -55,6 +56,7 @@
   },
   "devDependencies": {
     "@percy/cypress": "^2.3.0",
+    "@tailwindcss/typography": "^0.2.0",
     "babel-plugin-styled-components": "^1.10.7",
     "cypress": "^4.0.0",
     "eslint-config-airbnb": "^18.0.1",
@@ -66,6 +68,7 @@
     "lint-staged": "^10.0.7",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
+    "twin.macro": "^1.7.0",
     "webpack-monitor": "^1.0.14"
   },
   "husky": {
@@ -76,5 +79,15 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/wildpow/new-esc-gatsby"
+  },
+  "babelMacros": {
+    "twin": {
+      "config": "tailwind.config.js",
+      "preset": "styled-components",
+      "autoCssProp": true,
+      "debugProp": true,
+      "debugPlugins": false,
+      "debug": false
+    }
   }
 }

@@ -18,6 +18,7 @@ const cfg = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -25,12 +26,17 @@ const cfg = {
           {
             resolve: `gatsby-remark-images-datocms`,
             options: {
+              tracedSVG: true,
+              // withWebp: false,
+              // quality: 80,
               // You need to specify your project read-only API token here!
               apiToken: process.env.GATSBY_DATO_API,
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
-              maxWidth: 590,
+              // maxWidth: 780,
+              maxWidth: 780,
+              wrapperStyle: "padding-top: 20px; padding-bottom: 20px;",
             },
           },
         ],
