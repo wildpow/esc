@@ -9,9 +9,11 @@ import Layout from "../components/Layout";
 import { Main } from "../styles/homeStyles";
 import Front from "../components/Home/front";
 import TopThreeMatts from "../components/Home/Top3Mattress";
+import { useWindowSize } from "../context/WindowSizeContext";
 
 const IndexPage = ({ data }) => {
   const { carousel } = data.datoCmsFrontPage;
+  const { width } = useWindowSize();
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsFrontPage.seoMetaTags} />
@@ -25,9 +27,23 @@ const IndexPage = ({ data }) => {
           centerSlidePercentage={100}
           showStatus={false}
         >
-          {carousel.map((car) => (
+          {carousel.map((car, index) => (
             <Link key={car.id} to={`${car.url}`} style={{ maxHeight: "550px" }}>
-              <Img fluid={car.image.fluid} alt={car.image.alt} />
+              {width > 500 ? (
+                <Img
+                  fluid={car.image.fluid}
+                  alt={car.image.alt}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fadeIn={index !== 0}
+                />
+              ) : (
+                <Img
+                  fluid={car.mobileImage.fluid}
+                  alt={car.mobileImage.alt}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fadeIn={index !== 0}
+                />
+              )}
             </Link>
           ))}
         </Carousel>
@@ -47,6 +63,15 @@ export const carouselQuery = graphql`
       carousel {
         url
         id
+        mobileImage {
+          alt
+          fluid(
+            maxWidth: 500
+            imgixParams: { auto: "compress", lossless: true }
+          ) {
+            ...GatsbyDatoCmsFluid_tracedSVG
+          }
+        }
         image {
           fluid(
             maxWidth: 1440
