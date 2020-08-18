@@ -4,8 +4,11 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { DisplayNonePr1nt } from "../styles/_pr1nt/main";
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+function ifLavish(string) {
+  if (string === "posh-and-lavish") {
+    return string.split("-").join(" ");
+  }
+  return string;
 }
 
 export const BreadWrapper = styled.div`
@@ -45,6 +48,8 @@ const Span = styled.span`
   }
 `;
 const Crumbs = styled(Link)`
+  text-transform: capitalize;
+
   color: ${(props) => props.theme.mainColor1};
   &:hover {
     color: ${(props) => props.theme.mainColor2};
@@ -86,6 +91,9 @@ const BreadCrumbs = (props) => {
   //   - query URL
   return (
     <>
+      {console.log("here", here)}
+      {console.log("next2", next2)}
+
       <Crumbs to="/">Home</Crumbs>
       <Span>&gt;</Span>
       {next && (
@@ -103,7 +111,7 @@ const BreadCrumbs = (props) => {
                 : `/${next.toLowerCase()}/${next2.toLowerCase()}`
             }
           >
-            {acc ? accessoryDisplay(next2) : capitalizeFirstLetter(next2)}
+            {acc ? accessoryDisplay(next2) : ifLavish(next2)}
           </Crumbs>
           {!only3Links ? <Span>&gt;</Span> : ""}
         </div>
@@ -116,7 +124,7 @@ const BreadCrumbs = (props) => {
             {here}
           </Crumbs>
         ) : (
-          here
+          ifLavish(here)
         )}
       </Location>
     </>
