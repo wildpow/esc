@@ -91,9 +91,6 @@ const BreadCrumbs = (props) => {
   //   - query URL
   return (
     <>
-      {console.log("here", here)}
-      {console.log("next2", next2)}
-
       <Crumbs to="/">Home</Crumbs>
       <Span>&gt;</Span>
       {next && (

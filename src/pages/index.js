@@ -27,25 +27,27 @@ const IndexPage = ({ data }) => {
           centerSlidePercentage={100}
           showStatus={false}
         >
-          {carousel.map((car, index) => (
-            <Link key={car.id} to={`${car.url}`} style={{ maxHeight: "550px" }}>
-              {width > 500 ? (
-                <Img
-                  fluid={car.image.fluid}
-                  alt={car.image.alt}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fadeIn={index !== 0}
-                />
-              ) : (
-                <Img
-                  fluid={car.mobileImage.fluid}
-                  alt={car.mobileImage.alt}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fadeIn={index !== 0}
-                />
-              )}
-            </Link>
-          ))}
+          {width > 500
+            ? carousel.map((car, index) => (
+                <Link key={car.id} to={`${car.url}`}>
+                  <Img
+                    fluid={car.image.fluid}
+                    alt={car.image.alt}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fadeIn={index !== 0}
+                  />
+                </Link>
+              ))
+            : carousel.map((car, index) => (
+                <Link key={car.id} to={`${car.url}`}>
+                  <Img
+                    fluid={car.mobileImage.fluid}
+                    alt={car.mobileImage.alt}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fadeIn={index !== 0}
+                  />
+                </Link>
+              ))}
         </Carousel>
         <Front />
         <TopThreeMatts />
