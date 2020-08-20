@@ -41,6 +41,8 @@ const IndexPage = ({ data }) => {
                   alt={item.image.alt}
                   loading={index === 0 ? "eager" : "lazy"}
                   fadeIn={index !== 0}
+                  imgStyle={{ minHeight: "140px" }}
+                  style={{ minHeight: "140px" }}
                 />
               </Link>
             );
