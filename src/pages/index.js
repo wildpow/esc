@@ -18,37 +18,49 @@ const IndexPage = ({ data }) => {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsFrontPage.seoMetaTags} />
       <Main>
-        <Carousel
-          infiniteLoop
-          autoPlay
-          showThumbs={false}
-          interval={6000}
-          centerMode
-          centerSlidePercentage={100}
-          showStatus={false}
-        >
-          {width > 500
-            ? carousel.map((car, index) => (
-                <Link key={car.id} to={`${car.url}`}>
-                  <Img
-                    fluid={car.image.fluid}
-                    alt={car.image.alt}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    fadeIn={index !== 0}
-                  />
-                </Link>
-              ))
-            : carousel.map((car, index) => (
-                <Link key={car.id} to={`${car.url}`}>
-                  <Img
-                    fluid={car.mobileImage.fluid}
-                    alt={car.mobileImage.alt}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    fadeIn={index !== 0}
-                  />
-                </Link>
-              ))}
-        </Carousel>
+        {width > 500 ? (
+          <Carousel
+            infiniteLoop
+            autoPlay
+            showThumbs={false}
+            interval={6000}
+            centerMode
+            centerSlidePercentage={100}
+            showStatus={false}
+          >
+            {carousel.map((car, index) => (
+              <Link key={car.id} to={`${car.url}`}>
+                <Img
+                  fluid={car.image.fluid}
+                  alt={car.image.alt}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fadeIn={index !== 0}
+                />
+              </Link>
+            ))}
+          </Carousel>
+        ) : (
+          <Carousel
+            infiniteLoop
+            autoPlay
+            showThumbs={false}
+            interval={6000}
+            centerMode
+            centerSlidePercentage={100}
+            showStatus={false}
+          >
+            {carousel.map((car, index) => (
+              <Link key={car.id} to={`${car.url}`}>
+                <Img
+                  fluid={car.mobileImage.fluid}
+                  alt={car.mobileImage.alt}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fadeIn={index !== 0}
+                />
+              </Link>
+            ))}
+          </Carousel>
+        )}
         <Front />
         <TopThreeMatts />
       </Main>
