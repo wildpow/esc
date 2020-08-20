@@ -9,58 +9,43 @@ import Layout from "../components/Layout";
 import { Main } from "../styles/homeStyles";
 import Front from "../components/Home/front";
 import TopThreeMatts from "../components/Home/Top3Mattress";
-import { useWindowSize } from "../context/WindowSizeContext";
 
 const IndexPage = ({ data }) => {
   const { carousel } = data.datoCmsFrontPage;
-  const { width } = useWindowSize();
+  let sources = [];
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsFrontPage.seoMetaTags} />
       <Main>
-        {width > 500 ? (
-          <Carousel
-            infiniteLoop
-            autoPlay
-            showThumbs={false}
-            interval={6000}
-            centerMode
-            centerSlidePercentage={100}
-            showStatus={false}
-          >
-            {carousel.map((car, index) => (
-              <Link key={car.id} to={`${car.url}`}>
+        <Carousel
+          infiniteLoop
+          autoPlay
+          showThumbs={false}
+          interval={6000}
+          centerMode
+          centerSlidePercentage={100}
+          showStatus={false}
+        >
+          {carousel.map((item, index) => {
+            sources = [
+              item.mobileImage.fluid,
+              {
+                ...item.image.fluid,
+                media: `(min-width: 501px)`,
+              },
+            ];
+            return (
+              <Link key={item.id} to={`${item.url}`}>
                 <Img
-                  fluid={car.image.fluid}
-                  alt={car.image.alt}
+                  fluid={sources}
+                  alt={item.image.alt}
                   loading={index === 0 ? "eager" : "lazy"}
                   fadeIn={index !== 0}
                 />
               </Link>
-            ))}
-          </Carousel>
-        ) : (
-          <Carousel
-            infiniteLoop
-            autoPlay
-            showThumbs={false}
-            interval={6000}
-            centerMode
-            centerSlidePercentage={100}
-            showStatus={false}
-          >
-            {carousel.map((car, index) => (
-              <Link key={car.id} to={`${car.url}`}>
-                <Img
-                  fluid={car.mobileImage.fluid}
-                  alt={car.mobileImage.alt}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fadeIn={index !== 0}
-                />
-              </Link>
-            ))}
-          </Carousel>
-        )}
+            );
+          })}
+        </Carousel>
         <Front />
         <TopThreeMatts />
       </Main>
@@ -103,4 +88,3 @@ IndexPage.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
 };
 export default IndexPage;
-// imgixParams: { fm: "jpg", auto: "format", lossless: true }
