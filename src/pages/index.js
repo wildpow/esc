@@ -12,6 +12,7 @@ import TopThreeMatts from "../components/Home/Top3Mattress";
 
 const IndexPage = ({ data }) => {
   const { carousel } = data.datoCmsFrontPage;
+  let sources = [];
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsFrontPage.seoMetaTags} />
@@ -25,11 +26,27 @@ const IndexPage = ({ data }) => {
           centerSlidePercentage={100}
           showStatus={false}
         >
-          {carousel.map((car) => (
-            <Link key={car.id} to={`${car.url}`}>
-              <Img fluid={car.image.fluid} alt={car.image.alt} />
-            </Link>
-          ))}
+          {carousel.map((item, index) => {
+            sources = [
+              item.mobileImage.fluid,
+              {
+                ...item.image.fluid,
+                media: `(min-width: 501px)`,
+              },
+            ];
+            return (
+              <Link key={item.id} to={`${item.url}`}>
+                <Img
+                  fluid={sources}
+                  alt={item.image.alt}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fadeIn={index !== 0}
+                  imgStyle={{ minHeight: "140px" }}
+                  style={{ minHeight: "140px" }}
+                />
+              </Link>
+            );
+          })}
         </Carousel>
         <Front />
         <TopThreeMatts />
@@ -47,6 +64,15 @@ export const carouselQuery = graphql`
       carousel {
         url
         id
+        mobileImage {
+          alt
+          fluid(
+            maxWidth: 500
+            imgixParams: { auto: "compress", lossless: true }
+          ) {
+            ...GatsbyDatoCmsFluid_tracedSVG
+          }
+        }
         image {
           fluid(
             maxWidth: 1440
@@ -64,4 +90,3 @@ IndexPage.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
 };
 export default IndexPage;
-// imgixParams: { fm: "jpg", auto: "format", lossless: true }
