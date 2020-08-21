@@ -17,7 +17,7 @@ All notable changes to this project will be documented in this file.
 - Home page redesign [#109](https://github.com/wildpow/new-esc-gatsby/pull/109).
 - Accessibility updates [52ecf4b](https://github.com/wildpow/new-esc-gatsby/commit/52ecf4b613e841e2424ffb38c9e624ca01fc5cbd).
 - Print styles [#108](https://github.com/wildpow/new-esc-gatsby/pull/108).
-- Added change log ✌🏽.
+- Added change log ✌🏽[86bcdc4](https://github.com/wildpow/new-esc-gatsby/commit/786e9ca3412f52646388b43af164abed827bc2f5).
 
 ### Bug Fixes
 
