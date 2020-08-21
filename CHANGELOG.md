@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Features
 
-- 50%+ reduction on build times🎉 with [netlify-plugin-gatsby-cache](https://github.com/jlengstorf/netlify-plugin-gatsby-cache#readme).
+- 50%+ reduction in build times🎉 with [netlify-plugin-gatsby-cache](https://github.com/jlengstorf/netlify-plugin-gatsby-cache#readme).
 - Automatically submit sitemap to search with [netlify-plugin-submit-sitemap](https://github.com/cdeleeuwe/netlify-plugin-submit-sitemap#readme)
 - Auto generate `robot.txt` [#115](https://github.com/wildpow/new-esc-gatsby/pull/115).
 - Auto generate `canonical` link tags [#116](https://github.com/wildpow/new-esc-gatsby/pull/116).
