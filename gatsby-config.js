@@ -52,6 +52,13 @@ const cfg = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
     {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://www.escmattresscenter.com/`,
+        stripQueryString: true,
+      },
+    },
+    {
       resolve: `gatsby-source-shopify`,
       options: {
         shopName: `${process.env.GATSBY_SHOPIFY_STORE}.myshopify.com`,
