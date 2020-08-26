@@ -12,9 +12,11 @@ import TopThreeMatts from "../components/Home/Top3Mattress";
 
 const IndexPage = ({ data }) => {
   const { carousel } = data.datoCmsFrontPage;
+  const { products } = data.shopifyCollection;
   let sources = [];
   return (
     <Layout>
+      {console.log(data.datoCmsFrontPage)}
       <HelmetDatoCms seo={data.datoCmsFrontPage.seoMetaTags} />
       <Main>
         <Carousel
@@ -57,7 +59,33 @@ const IndexPage = ({ data }) => {
 
 export const carouselQuery = graphql`
   query carousels {
+    shopifyCollection(title: { eq: "Top accessories" }) {
+      products {
+        title
+        priceRange {
+          minVariantPrice {
+            amount
+          }
+          maxVariantPrice {
+            amount
+          }
+        }
+        images {
+          altText
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 250) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
+          }
+        }
+      }
+    }
     datoCmsFrontPage {
+      topAccessoryFooter
+      topAccessoryHeader
+      topAccessoryFooterUrl
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
