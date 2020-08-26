@@ -27,7 +27,7 @@ const MainWrapper = styled.div`
   padding-right: 5px;
 `;
 
-const NewWrapper = styled(MainWrapper)`
+export const NewWrapper = styled(MainWrapper)`
   background-color: ${(props) => props.theme.newColor1};
 
   margin-top: 15px;
@@ -36,7 +36,7 @@ const NewWrapper = styled(MainWrapper)`
   }
 `;
 
-const ThreeMattWrapper = styled(Wrapper)`
+export const ThreeMattWrapper = styled(Wrapper)`
   margin-bottom: 10px;
   @media (min-width: 375px) {
     margin-top: 5px;

@@ -9,9 +9,15 @@ import Layout from "../components/Layout";
 import { Main } from "../styles/homeStyles";
 import Front from "../components/Home/front";
 import TopThreeMatts from "../components/Home/Top3Mattress";
+import TopAccessories from "../components/Home/TopAccessories";
 
 const IndexPage = ({ data }) => {
-  const { carousel } = data.datoCmsFrontPage;
+  const {
+    carousel,
+    topAccessoryFooter,
+    topAccessoryHeader,
+    topAccessoryFooterUrl,
+  } = data.datoCmsFrontPage;
   const { products } = data.shopifyCollection;
   let sources = [];
   return (
@@ -52,6 +58,12 @@ const IndexPage = ({ data }) => {
         </Carousel>
         <Front />
         <TopThreeMatts />
+        <TopAccessories
+          products={products}
+          topAccessoryFooter={topAccessoryFooter}
+          topAccessoryHeader={topAccessoryHeader}
+          topAccessoryFooterUrl={topAccessoryFooterUrl}
+        />
       </Main>
     </Layout>
   );
@@ -61,7 +73,9 @@ export const carouselQuery = graphql`
   query carousels {
     shopifyCollection(title: { eq: "Top accessories" }) {
       products {
+        shopifyId
         title
+        handle
         priceRange {
           minVariantPrice {
             amount

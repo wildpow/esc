@@ -70,6 +70,7 @@ export const PriceRange = styled.div`
   font-family: ${(props) => props.theme.MainFont1};
   text-align: center;
   z-index: 5;
+  margin-top: ${({ acc }) => (acc ? "15px" : "0px")};
   font-weight: 700;
   @media (min-width: 768px) {
     letter-spacing: 0.05rem;

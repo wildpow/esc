@@ -19,6 +19,7 @@ import useReaders from "./use-readers-choice";
 import Bird from "./Bird";
 
 const FooterRoot = styled.footer`
+content-visibility: auto;
 @media print {
   display: none;
 }
