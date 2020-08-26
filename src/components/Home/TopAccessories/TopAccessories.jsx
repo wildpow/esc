@@ -1,4 +1,5 @@
 import React from "react";
+import { string } from "prop-types";
 import { NewWrapper, ThreeMattWrapper } from "../Top3Mattress/Top3Mattresses";
 import { Headline, FooterLink } from "../../../styles/homeStyles";
 import AccThumb from "../../Accessories/AccessoryList/AccThumb";
@@ -24,4 +25,9 @@ const TopAccessories = ({
   );
 };
 
+TopAccessories.propTypes = {
+  topAccessoryFooter: string.isRequired,
+  topAccessoryHeader: String.isRequired,
+  topAccessoryFooterUrl: String.isRequired,
+};
 export default TopAccessories;
