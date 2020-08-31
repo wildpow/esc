@@ -56,7 +56,7 @@ const cfg = {
           {
             resolve: `gatsby-remark-images-datocms`,
             options: {
-              tracedSVG: true,
+              // tracedSVG: true,
               // withWebp: false,
               // quality: 80,
               // You need to specify your project read-only API token here!
@@ -66,7 +66,7 @@ const cfg = {
               // base for generating different widths of each image.
               // maxWidth: 780,
               maxWidth: 780,
-              wrapperStyle: "padding-top: 20px; padding-bottom: 20px;",
+              // wrapperStyle: "padding-top: 20px; padding-bottom: 20px;",
             },
           },
         ],

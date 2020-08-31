@@ -63,7 +63,7 @@ const NewPost = ({ data }) => {
           alt={datoCmsNewBlog.coverImage.alt}
           fluid={datoCmsNewBlog.coverImage.fluid}
         />
-        <div className="mainWrapper">
+        {/* <div className="mainWrapper">
           <div className="sidebar">
             <h3>Other articles</h3>
             <ul>
@@ -76,13 +76,13 @@ const NewPost = ({ data }) => {
                 </li>
               ))}
             </ul>
-          </div>
-          <Article
-            dangerouslySetInnerHTML={{
-              __html: datoCmsNewBlog.contentNode.childMarkdownRemark.html,
-            }}
-          />
-        </div>
+          </div> */}
+        <Article
+          dangerouslySetInnerHTML={{
+            __html: datoCmsNewBlog.contentNode.childMarkdownRemark.html,
+          }}
+        />
+        {/* </div> */}
       </PostRoot>
     </Layout>
   );
