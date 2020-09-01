@@ -96,6 +96,10 @@ exports.createPages = async ({ actions, graphql }) => {
       allDatoCmsNewBlog {
         edges {
           node {
+            excerptImage {
+              alt
+              url
+            }
             slug
             title
           }
