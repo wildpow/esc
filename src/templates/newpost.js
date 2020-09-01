@@ -167,8 +167,6 @@ const NewPost = ({ data, pageContext }) => {
             __html: datoCmsNewBlog.contentNode.childMarkdownRemark.html,
           }}
         />
-
-        {console.log(prev)}
         <SuggestionBar>
           <PostSuggestion>
             {prev && (
