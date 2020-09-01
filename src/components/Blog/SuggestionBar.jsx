@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { fonts } from "../../utils/styles";
+import { fonts, colors } from "../../utils/styles";
 
 const StyledLink = styled(Link)`
   padding-right: 2px;
@@ -53,16 +53,34 @@ const StyledLink = styled(Link)`
   span {
     top: 73px;
     position: absolute;
-    background: ${(props) => props.theme.mainColor1};
+    background: ${colors.gray["900"]};
     height: 20px;
     width: 100%;
     /* border-radius: 4px; */
     opacity: 0.3;
     grid-column: span 2;
+    transition: transform 0.25s ease-in;
+  }
+  :hover {
+    h4 {
+      color: ${colors.red["900"]};
+    }
+    img {
+      transform: scale3d(1.1, 1.1, 1);
+    }
+    span {
+      background-color: ${colors.blue["900"]};
+      :after {
+        border-right-color: ${(props) =>
+          props.left ? colors.blue["900"] : ""};
+        border-left-color: ${(props) =>
+          props.right ? colors.blue["900"] : ""};
+      }
+    }
   }
   span:after {
-    left: ${({ next }) => (next ? "100%" : "-6%")};
-    right: ${({ prev }) => (prev ? "100%" : "0%")};
+    left: ${({ right }) => (right ? "100%" : "-7%")};
+    right: ${({ left }) => (left ? "100%" : "0%")};
     top: 50%;
     border: solid transparent;
     content: " ";
@@ -70,21 +88,25 @@ const StyledLink = styled(Link)`
     width: 0;
     position: absolute;
     pointer-events: none;
-  }
-  span:after {
     border-color: rgba(136, 183, 213, 0);
-    border-right-color: ${(props) =>
-      props.prev ? props.theme.mainColor1 : ""};
-    border-left-color: ${(props) => (props.next ? props.theme.mainColor1 : "")};
+    border-right-color: ${(props) => (props.left ? colors.gray["900"] : "")};
+    border-left-color: ${(props) => (props.right ? colors.gray["900"] : "")};
     border-width: 10px;
     margin-top: -10px;
-    margin-left: ${({ prev }) => prev && "2px"};
+    margin-left: ${({ left }) => left && "1px"};
+  }
+  @media (min-width: 768px) {
+    span:after {
+      left: ${({ right }) => (right ? "100%" : "-6%")};
+      margin-left: ${({ left }) => left && "3px"};
+    }
   }
 `;
 
 const ThumbImg = styled.img`
   grid-area: ThumbImg;
   width: 70px;
+  transition: transform 0.25s ease-in;
   align-self: center;
   justify-self: center;
   z-index: 10;
@@ -93,15 +115,13 @@ const ThumbImg = styled.img`
 
 const SuggestionRoot = styled.div`
   display: flex;
-  /* flex-wrap: wrap; */
   justify-content: space-between;
-  margin-top: 20px;
-  /* border-top: 2px solid black; */
-  /* width: 100%; */
+  padding-top: 20px;
+  padding-bottom: 20px;
   flex-direction: column;
   margin: 0 auto;
   align-content: center;
-  @media (min-width: 568px) {
+  @media (min-width: 768px) {
     flex-direction: row;
   }
 `;
@@ -109,16 +129,9 @@ const SuggestionRoot = styled.div`
 const PostSuggestion = styled.div`
   display: flex;
   align-items: center;
-  /* margin: 1rem 3rem 0 3rem; */
   max-width: 300px;
   margin: 0 auto;
   font-family: ${fonts.sans};
-  a {
-    text-decoration: none;
-  }
-  a h4 {
-    margin-top: 5px;
-  }
   @media (min-width: 768px) {
     max-width: 370px;
   }
@@ -129,7 +142,7 @@ const SuggestionBar = ({ prev, next }) => {
     <SuggestionRoot>
       <PostSuggestion>
         {prev && (
-          <StyledLink to={`/blog/${prev.slug}`} prev>
+          <StyledLink to={`/blog/${prev.slug}`} left>
             <ThumbImg
               src={prev.excerptImage.url}
               alt={
@@ -145,7 +158,7 @@ const SuggestionBar = ({ prev, next }) => {
       </PostSuggestion>
       <PostSuggestion>
         {next && (
-          <StyledLink to={`/blog/${next.slug}`} next>
+          <StyledLink to={`/blog/${next.slug}`} right>
             <ThumbImg
               src={next.excerptImage.url}
               alt={

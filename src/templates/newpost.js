@@ -18,6 +18,7 @@ const PostRoot = styled.div`
   article h3,
   article h4 {
     font-family: ${fonts.sans};
+    padding-left: 5px;
   }
   article p {
     margin: 0 auto;
@@ -41,10 +42,13 @@ const PostRoot = styled.div`
   }
 
   article a {
-    margin-bottom: 10px;
-    margin-top: 10px;
+    /* margin-bottom: 10px; */
+    /* margin-top: 10px; */
     margin-right: -5px;
     margin-left: -5px;
+  }
+  img {
+    padding-bottom: 20px;
   }
 `;
 
