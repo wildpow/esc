@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Img from "gatsby-image";
 import tw, { styled } from "twin.macro";
@@ -52,10 +53,11 @@ const Article = tw.article`
 `;
 
 const NewPost = ({ data, pageContext }) => {
-  const { allDatoCmsNewBlog, datoCmsNewBlog } = data;
+  const { datoCmsNewBlog } = data;
   const { next, prev } = pageContext;
   return (
     <Layout>
+      <HelmetDatoCms seo={datoCmsNewBlog.seoMetaTags} />
       <BreadWrapper>
         <BreadCrumbs next="Blog" here={datoCmsNewBlog.title} />
       </BreadWrapper>
@@ -76,22 +78,15 @@ const NewPost = ({ data, pageContext }) => {
   );
 };
 
+NewPost.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+  pageContext: PropTypes.instanceOf(Object).isRequired,
+};
+
 export default NewPost;
 
 export const newPostQuery = graphql`
   query newSinglePost($slug: String!) {
-    allDatoCmsNewBlog(filter: { slug: { ne: $slug } }) {
-      nodes {
-        title
-        slug
-        id
-        excerpt
-        excerptImage {
-          alt
-          url
-        }
-      }
-    }
     datoCmsNewBlog(slug: { eq: $slug }) {
       id
       slug
