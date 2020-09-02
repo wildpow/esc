@@ -54,7 +54,8 @@ const PageContent = ({ children, moved }) => {
     if (
       str.includes("blog/") ||
       str.includes("/landing") ||
-      str === "/accessories"
+      str === "/accessories" ||
+      str === "/brands/nectar"
     ) {
       return true;
     }
