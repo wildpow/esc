@@ -16,7 +16,8 @@ const PostRoot = styled.div`
   article h1,
   article h2,
   article h3,
-  article h4 {
+  article h4,
+  article h5 {
     font-family: ${fonts.sans};
     padding-left: 5px;
   }
@@ -31,9 +32,11 @@ const PostRoot = styled.div`
   }
   article ul li {
     list-style: none;
+    font-family: ${fonts.sans};
   }
   article ol li {
     list-style: none;
+    font-family: ${fonts.sans};
   }
   article ul .task-list-item {
     ::before {
