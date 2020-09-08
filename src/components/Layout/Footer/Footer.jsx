@@ -368,7 +368,7 @@ const Footer = ({ moved }) => {
           <div className="navlinks">
             <ul className="firstUL">
               <li>
-                <Link to="/brands">Brands</Link>
+                <Link to="/brands">Mattresses</Link>
                 <span>&gt;</span>
               </li>
               <li>
