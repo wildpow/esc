@@ -25,6 +25,8 @@ const IndexPage = ({ data }) => {
           centerMode
           centerSlidePercentage={100}
           showStatus={false}
+          dynamicHeight
+          style={{ minHeight: "140px", height: "auto" }}
         >
           {carousel.map((item, index) => {
             sources = [
@@ -41,8 +43,8 @@ const IndexPage = ({ data }) => {
                   alt={item.image.alt}
                   loading={index === 0 ? "eager" : "lazy"}
                   fadeIn={index !== 0}
-                  imgStyle={{ minHeight: "140px" }}
-                  style={{ minHeight: "140px" }}
+                  imgStyle={{ minHeight: "140px", height: "auto" }}
+                  style={{ minHeight: "140px", height: "auto" }}
                 />
               </Link>
             );
