@@ -67,8 +67,8 @@ const CartRoot = styled.div`
     }
   }
   @media print {
-      display: none;
-    }
+    display: none;
+  }
 `;
 
 const ItemsNumber = styled.span`
@@ -118,18 +118,6 @@ const CartToggle = styled.button`
   padding: 0;
   position: relative;
   top: 0;
-  /* @media (max-width: ${breakpoints.sm}) {
-    transform: translateX(-100%);
-    transition: all 0.2s ease;
-  }
-  @media (min-width: ${breakpoints.sm}) {
-    transform: ${({ menuStatus }) =>
-      menuStatus === "open" ? "translateX(-420px)" : "translateX(-100%)"};
-  }
-  @media (min-width: ${breakpoints.md}) {
-    transform: ${({ menuStatus }) =>
-      menuStatus === "open" ? "translateX(-465px)" : "translateX(-100%)"};
-  } */
   transition: ${({ menuStatus }) =>
     menuStatus === "open" ? "all 0.75s" : "all .2s ease"};
   pointer-events: ${({ menuStatus }) =>
