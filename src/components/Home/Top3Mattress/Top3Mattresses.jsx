@@ -23,17 +23,14 @@ const MainWrapper = styled.div`
   animation-name: ${FadeIn};
   ${(props) => props.theme.Animation}
   justify-content: space-between;
-  padding-left: 5px;
-  padding-right: 5px;
+  /* padding-left: 5px;
+  padding-right: 5px; */
 `;
 
 export const NewWrapper = styled(MainWrapper)`
   background-color: ${(props) => props.theme.newColor1};
 
   margin-top: 15px;
-  @media (min-width: 1024px) {
-    box-shadow: ${(props) => props.theme.newBoxShadow};
-  }
 `;
 
 export const ThreeMattWrapper = styled(Wrapper)`

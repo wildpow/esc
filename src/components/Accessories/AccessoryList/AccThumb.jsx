@@ -9,9 +9,9 @@ import {
   Name,
 } from "../../MattressList/MattressThumbnail/MattressThumbnail.styled";
 
-const AccThumb = ({ acc }) => {
+const AccThumb = ({ acc, front }) => {
   return (
-    <StyledLink to={`/accessories/${acc.handle}`}>
+    <StyledLink to={`/accessories/${acc.handle}`} front={front}>
       <Topper>
         <MattImgContainer>
           <Img

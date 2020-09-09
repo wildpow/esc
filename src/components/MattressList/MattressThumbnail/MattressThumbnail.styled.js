@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 export const StyledLink = styled(Link)`
+  min-width: ${({ front }) => front && "365px"};
   text-decoration: none;
   color: ${(props) => props.theme.mainColor1};
   display: flex;
@@ -13,6 +14,10 @@ export const StyledLink = styled(Link)`
   &:hover {
     transform: ${(props) => props.theme.hoverTransform};
     box-shadow: ${(props) => props.theme.hoverBoxAfter};
+  }
+  @media (min-width: 1440px) {
+    min-width: ${({ front }) => front && "273px"};
+    min-height: ${({ front }) => front && "381px"};
   }
 `;
 
