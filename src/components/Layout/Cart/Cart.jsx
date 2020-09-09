@@ -174,9 +174,8 @@ const Title = styled.h2`
   margin-left: ${spacing["4"]};
   position: relative;
   color: ${colors.blue["900"]};
+  margin-left: calc(${dimensions.headerHeight} + ${spacing["4"]});
   .open & {
-    margin-left: calc(${dimensions.headerHeight} + ${spacing["4"]});
-
     @media (min-width: ${breakpoints.lg}) {
       margin-left: ${spacing["4"]};
     }
