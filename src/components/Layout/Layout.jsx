@@ -12,20 +12,12 @@ import MenuOverLay from "../shared/MenuOverLay";
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
 import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
 
-// const FooterWrapper = styled.footer`
-//   bottom: 0;
-//   left: 0;
-//   top: 0;
-
-//   position: sticky;
-// `;
-
 const MainRoot = styled.div`
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  /* padding-right: ${({ cartStatus, menuStatus }) =>
-    cartStatus === "open" || menuStatus === "open" ? "15px" : "0px"}; */
+  padding-right: ${({ cartStatus, menuStatus }) =>
+    cartStatus === "open" || menuStatus === "open" ? "15px" : "0px"};
 `;
 function Layout({ children }) {
   const element =
