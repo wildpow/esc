@@ -2,15 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [August 2020]
+## [September 2020]
 
 ### Features
 
-- 🤖 Added pre-commit hook. Project now following Conventional Commit spec with [commitlint](https://github.com/conventional-changelog/commitlint) and [husk](https://github.com/typicode/husky).
+- 🤖 Added pre-commit hook. Project now following Conventional Commit spec with [commitlint](https://github.com/conventional-changelog/commitlint) and [husk](https://github.com/typicode/husky). [ad43fa3](https://github.com/wildpow/new-esc-gatsby/commit/26dd5dd08fde77d6edbefa494f2c89ff86e2d25d)
 
 ### Bug Fixes
 
-- 🔧 Updated all instances of `Brands` link text to `Mattresses`. commits: [a115f0c](https://github.com/wildpow/new-esc-gatsby/commit/ad43fa3003f07aa94dd07b225bb38844ef55db8b), [786e9ca](https://github.com/wildpow/new-esc-gatsby/commit/a115f0c9eae7fe132ff4fa90fd311f0a6dd6357d)
+- 🔧 Updated all instances of `Brands` link text to `Mattresses`. [a115f0c](https://github.com/wildpow/new-esc-gatsby/commit/ad43fa3003f07aa94dd07b225bb38844ef55db8b), [786e9ca](https://github.com/wildpow/new-esc-gatsby/commit/a115f0c9eae7fe132ff4fa90fd311f0a6dd6357d)
+
+- 🔧 Webkit mobile now displays carousel correctly.
 
 ---
 
