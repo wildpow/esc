@@ -57,6 +57,8 @@
     "snap": "percy exec -- cypress run"
   },
   "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
     "@percy/cypress": "^2.3.0",
     "@tailwindcss/typography": "^0.2.0",
     "babel-plugin-styled-components": "^1.10.7",
@@ -75,6 +77,7 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "pretty-quick --staged"
     }
   },

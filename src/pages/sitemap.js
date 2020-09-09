@@ -47,7 +47,7 @@ const SiteMap = ({ data }) => {
             <SiteLinks to="/adjustable">Adjustable</SiteLinks>
           </Lilist>
           <Lilist>
-            <SiteLinks to="/brands">Brands</SiteLinks>
+            <SiteLinks to="/brands">Mattresses</SiteLinks>
           </Lilist>
         </UnList>
       </MainLinks>
