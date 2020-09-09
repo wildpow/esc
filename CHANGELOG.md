@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [August 2020]
+## [September 2020]
 
 ### Features
 
