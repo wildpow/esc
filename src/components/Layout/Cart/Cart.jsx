@@ -346,7 +346,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     >
       <Heading>
         <CartToggle
-          aria-label="Shopping cart with 1 items"
+          aria-label={`Shopping cart with ${itemsInCart} items`}
           onClick={toggle}
           pin={pin}
           menuStatus={menuStatus}
