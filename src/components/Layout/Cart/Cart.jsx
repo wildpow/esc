@@ -67,8 +67,8 @@ const CartRoot = styled.div`
     }
   }
   @media print {
-      display: none;
-    }
+    display: none;
+  }
 `;
 
 const ItemsNumber = styled.span`
@@ -118,18 +118,6 @@ const CartToggle = styled.button`
   padding: 0;
   position: relative;
   top: 0;
-  /* @media (max-width: ${breakpoints.sm}) {
-    transform: translateX(-100%);
-    transition: all 0.2s ease;
-  }
-  @media (min-width: ${breakpoints.sm}) {
-    transform: ${({ menuStatus }) =>
-      menuStatus === "open" ? "translateX(-420px)" : "translateX(-100%)"};
-  }
-  @media (min-width: ${breakpoints.md}) {
-    transform: ${({ menuStatus }) =>
-      menuStatus === "open" ? "translateX(-465px)" : "translateX(-100%)"};
-  } */
   transition: ${({ menuStatus }) =>
     menuStatus === "open" ? "all 0.75s" : "all .2s ease"};
   pointer-events: ${({ menuStatus }) =>
@@ -161,13 +149,6 @@ const CartToggle = styled.button`
     }
   }
 
-  /* @media screen and (min-width: ${breakpoints.md}) {
-    left: -61px;
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    left: -61px;
-  } */
-
   @media (min-width: ${breakpoints.lg}) {
     left: 0;
     .open & {
@@ -193,9 +174,8 @@ const Title = styled.h2`
   margin-left: ${spacing["4"]};
   position: relative;
   color: ${colors.blue["900"]};
+  margin-left: calc(${dimensions.headerHeight} + ${spacing["4"]});
   .open & {
-    margin-left: calc(${dimensions.headerHeight} + ${spacing["4"]});
-
     @media (min-width: ${breakpoints.lg}) {
       margin-left: ${spacing["4"]};
     }
@@ -327,7 +307,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     await removeLineItem(client, checkout.id, itemID);
     setLoading(false);
   };
-  // test
+
   const handleQuantityChange = (lineItemID) => async (quantity) => {
     if (!quantity) {
       return;
@@ -335,15 +315,11 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     await updateLineItem(client, checkout.id, lineItemID, quantity);
     setLoading(false);
   };
-  // const handleCheckout = () => {
-  //   window.open(checkout.webUrl);
-  // };
+
   const itemsInCart = checkout.lineItems.reduce(
     (total, item) => total + item.quantity,
     0,
   );
-  /* z-index: ${({ zIndex }) => zIndex}; */
-  //  z-index: ${({ status }) => (status === "open" ? "11" : "10")};
   const [zIndex, setZindex] = useState(10);
   useEffect(() => {
     function zIndexTimer(value, time) {
@@ -369,7 +345,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     >
       <Heading>
         <CartToggle
-          aria-label="Shopping cart with 1 items"
+          aria-label={`Shopping cart with ${itemsInCart} items`}
           onClick={toggle}
           pin={pin}
           menuStatus={menuStatus}
