@@ -10,9 +10,10 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
-- 🔧 Updated all instances of `Brands` link text to `Mattresses`. [a115f0c](https://github.com/wildpow/new-esc-gatsby/commit/ad43fa3003f07aa94dd07b225bb38844ef55db8b), [786e9ca](https://github.com/wildpow/new-esc-gatsby/commit/a115f0c9eae7fe132ff4fa90fd311f0a6dd6357d)
-
-- 🔧 Webkit mobile now displays carousel correctly.
+- Updated all instances of `Brands` link text to `Mattresses`. [a115f0c](https://github.com/wildpow/new-esc-gatsby/commit/ad43fa3003f07aa94dd07b225bb38844ef55db8b), [786e9ca](https://github.com/wildpow/new-esc-gatsby/commit/a115f0c9eae7fe132ff4fa90fd311f0a6dd6357d)
+- Webkit mobile now displays carousel correctly. [43b5f1e](https://github.com/wildpow/new-esc-gatsby/commit/51c5d0fb12899bee366bb5e290a4a7e3cfbf81e3)
+- Aria-label in cart now displays correct item number. [5d18e3b](https://github.com/wildpow/new-esc-gatsby/commit/a9b5f6eed878e5cb87b327cd6fa12d69eb05767d)
+- Cart close icon doesn't hide behind text on close anymore. [a9b5f6e](https://github.com/wildpow/new-esc-gatsby/commit/917adebcccc61fd5c55833fb9d4caaa4df8b51c7)
 
 ---
 
