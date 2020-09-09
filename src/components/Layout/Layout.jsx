@@ -16,8 +16,8 @@ const MainRoot = styled.div`
   max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding-right: ${({ cartStatus, menuStatus }) =>
-    cartStatus === "open" || menuStatus === "open" ? "15px" : "0px"};
+  /* padding-right: ${({ cartStatus, menuStatus }) =>
+    cartStatus === "open" || menuStatus === "open" ? "15px" : "0px"}; */
 `;
 function Layout({ children }) {
   const element =
