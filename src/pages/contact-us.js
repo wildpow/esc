@@ -1,27 +1,78 @@
 import React from "react";
 import styled from "styled-components";
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
 import Layout from "../components/Layout";
-import { spacing, breakpoints, fonts, colors } from "../utils/styles";
+import {
+  spacing,
+  breakpoints,
+  fonts,
+  colors,
+  fontSize,
+  radius,
+  boxShadow,
+} from "../utils/styles";
 
-const Title = styled.h2`
-  background-image: linear-gradient(
-    120deg,
-    ${colors.blue["200"]},
-    ${colors.blue["200"]}
-  );
-  background-repeat: no-repeat;
-  background-size: 100% 0.4em;
-  background-position: 0 88%;
-  font-weight: 900;
-  font-size: 60px;
+const Content = styled.div`
+  background-color: white;
+  max-width: 1128px;
+  margin: 0 auto;
+  margin-top: -200px;
+  position: relative;
+  height: 500px;
+  box-shadow: ${boxShadow.lg};
+  border-top-left-radius: ${radius.large}px;
+  border-top-right-radius: ${radius.large}px;
+  padding: 20px;
+  color: ${colors.gray["800"]};
+  h2 {
+    margin-top: 0;
+    color: inherit;
+    font-size: ${fontSize["4xl"]};
+    margin-bottom: 0;
+  }
+  p {
+    font-family: ${fonts.serif};
+    line-height: ${spacing["6"]};
+  }
+`;
+const ContactUsRoot = styled.section`
+  padding-top: ${spacing["4"]};
+  position: relative;
+  padding-bottom: ${spacing["10"]};
   font-family: ${fonts.sans};
 `;
-const ContactUs = () => {
+const ContactUs = ({ data }) => {
+  const { fluid } = data.file.childImageSharp;
   return (
     <Layout>
-      <Title>Contact Us</Title>
+      <ContactUsRoot>
+        <Img fluid={fluid} />
+        <Content>
+          <h2>Contact Us</h2>
+          <p>
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The point
+            of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here, content
+            here', making it look like readable English.
+          </p>
+        </Content>
+      </ContactUsRoot>
     </Layout>
   );
 };
+
+export const contactUsQuery = graphql`
+  query {
+    file(relativePath: { eq: "contact-us.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1440) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;
 
 export default ContactUs;
