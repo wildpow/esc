@@ -149,13 +149,6 @@ const CartToggle = styled.button`
     }
   }
 
-  /* @media screen and (min-width: ${breakpoints.md}) {
-    left: -61px;
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    left: -61px;
-  } */
-
   @media (min-width: ${breakpoints.lg}) {
     left: 0;
     .open & {
@@ -315,7 +308,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     await removeLineItem(client, checkout.id, itemID);
     setLoading(false);
   };
-  // test
+
   const handleQuantityChange = (lineItemID) => async (quantity) => {
     if (!quantity) {
       return;
@@ -323,15 +316,11 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     await updateLineItem(client, checkout.id, lineItemID, quantity);
     setLoading(false);
   };
-  // const handleCheckout = () => {
-  //   window.open(checkout.webUrl);
-  // };
+
   const itemsInCart = checkout.lineItems.reduce(
     (total, item) => total + item.quantity,
     0,
   );
-  /* z-index: ${({ zIndex }) => zIndex}; */
-  //  z-index: ${({ status }) => (status === "open" ? "11" : "10")};
   const [zIndex, setZindex] = useState(10);
   useEffect(() => {
     function zIndexTimer(value, time) {
