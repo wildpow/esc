@@ -1,6 +1,9 @@
 import React, { useReducer } from "react";
 import styled from "styled-components";
-import { colors } from "../../utils/styles";
+import { colors, spacing, fontSize } from "../../utils/styles";
+import { PrimaryButton } from "../shared/Buttons";
+import SendIcon from "../../assets/paper-plane-solid.svg";
+import ResetIcon from "../../assets/redo-solid.svg";
 
 const FormRoot = styled.form`
   input:-webkit-autofill,
@@ -23,7 +26,7 @@ const FormRoot = styled.form`
     flex-direction: column;
   }
   textarea {
-    min-height: 50px;
+    min-height: 150px;
   }
   .user-box {
     position: relative;
@@ -57,6 +60,21 @@ const FormRoot = styled.form`
       font-size: 12px;
     }
   }
+  .bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: ${spacing["8"]};
+  }
+  .message {
+    font-size: ${fontSize["3xl"]};
+    font-weight: 700;
+    textarea {
+      /* border: 4px solid ${colors.gray[
+        "300"
+      ]};
+      border-top: 4px solid #9b2c2c; */
+    }
+  }
 `;
 
 const initialState = {
@@ -87,7 +105,10 @@ const reducer = (state, action) => {
       throw new Error();
   }
 };
-
+const FormButtons = styled(PrimaryButton)`
+  padding-right: 20px;
+  padding-left: 20px;
+`;
 const ContactUsForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const encode = (data) => {
@@ -181,8 +202,8 @@ const ContactUsForm = () => {
           </div>
         </div>
 
-        <label htmlFor="message">
-          How can I help?
+        <label htmlFor="message" className="message">
+          How can We help?
           <textarea
             onChange={(e) =>
               dispatch({ type: "message", payload: e.target.value })
@@ -193,11 +214,19 @@ const ContactUsForm = () => {
             name="note"
           />
         </label>
-        <div>
-          <button type="button" onClick={() => dispatch({ type: "reset" })}>
+        <div className="bottom-buttons">
+          <FormButtons
+            danger
+            type="button"
+            onClick={() => dispatch({ type: "reset" })}
+          >
             Reset
-          </button>
-          <button type="submit">Submit</button>
+            <ResetIcon />
+          </FormButtons>
+          <FormButtons type="submit">
+            Submit
+            <SendIcon />
+          </FormButtons>
         </div>
 
         {console.log(state)}

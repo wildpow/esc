@@ -95,7 +95,8 @@ Button.propTypes = {
 };
 
 export const PrimaryButton = styled(Button)`
-  background: ${colors.blue["700"]};
+  background: ${({ danger }) =>
+    danger ? colors.red["700"] : colors.blue["700"]};
   color: ${colors.blue["100"]};
   display: flex;
   font-size: 1.25rem;
@@ -104,7 +105,8 @@ export const PrimaryButton = styled(Button)`
 
   @media (hover: hover) {
     &:hover {
-      background: ${colors.blue["900"]};
+      background: ${({ danger }) =>
+        danger ? colors.red["900"] : colors.blue["900"]};
     }
   }
 `;
