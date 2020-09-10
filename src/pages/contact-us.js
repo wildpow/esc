@@ -20,7 +20,7 @@ const Content = styled.div`
   margin: 0 auto;
   margin-top: -200px;
   position: relative;
-  height: 500px;
+
   box-shadow: ${boxShadow.lg};
   border-top-left-radius: ${radius.large}px;
   border-top-right-radius: ${radius.large}px;
@@ -29,12 +29,15 @@ const Content = styled.div`
   h2 {
     margin-top: 0;
     color: inherit;
-    font-size: ${fontSize["4xl"]};
+    font-size: ${fontSize["5xl"]};
     margin-bottom: 0;
+    border-bottom: 4px solid #9b2c2c;
   }
   p {
     font-family: ${fonts.serif};
-    line-height: ${spacing["6"]};
+    line-height: ${spacing["8"]};
+    padding-bottom: ${spacing["6"]};
+    font-size: ${fontSize["2xl"]};
   }
 `;
 const ContactUsRoot = styled.section`
@@ -42,6 +45,7 @@ const ContactUsRoot = styled.section`
   position: relative;
   padding-bottom: ${spacing["10"]};
   font-family: ${fonts.sans};
+  height: 100vh;
 `;
 const ContactUs = ({ data }) => {
   const { fluid } = data.file.childImageSharp;
@@ -52,11 +56,11 @@ const ContactUs = ({ data }) => {
         <Content>
           <h2>Contact Us</h2>
           <p>
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using 'Content here, content
-            here', making it look like readable English.
+            Thank you for visiting ESC Mattress Center, Snohomish County's
+            favorite mattress store. We strive to be the best mattress store we
+            can be and are always here to help. Feel free to contact us in
+            person at the store during normal business hours, by phone, or
+            through the form below. Sleep well!
           </p>
           <ContactUsForm />
         </Content>

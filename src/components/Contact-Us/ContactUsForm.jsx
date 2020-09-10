@@ -3,13 +3,27 @@ import styled from "styled-components";
 import { colors } from "../../utils/styles";
 
 const FormRoot = styled.form`
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active,
+  input:-webkit-autofill:valid,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-transition-delay: 99999s;
+    -webkit-text-fill-color: #d7d8ce;
+  }
   .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   label {
     display: flex;
     flex-direction: column;
+  }
+  textarea {
+    min-height: 50px;
   }
   .user-box {
     position: relative;
@@ -18,7 +32,7 @@ const FormRoot = styled.form`
       width: 100%;
       padding: 10px 0;
       font-size: 16px;
-      color: #fff;
+      color: ${colors.gray["900"]};
       margin-bottom: 30px;
       border: none;
       border-bottom: 1px solid black;
@@ -46,7 +60,8 @@ const FormRoot = styled.form`
 `;
 
 const initialState = {
-  name: "",
+  firstName: "",
+  lastName: "",
   email: "",
   tel: "",
   type: "",
@@ -54,8 +69,10 @@ const initialState = {
 };
 const reducer = (state, action) => {
   switch (action.type) {
-    case "name":
-      return { ...state, name: action.payload };
+    case "firstName":
+      return { ...state, firstName: action.payload };
+    case "lastName":
+      return { ...state, lastName: action.payload };
     case "email":
       return { ...state, email: action.payload };
     case "tel":
@@ -63,7 +80,9 @@ const reducer = (state, action) => {
     case "type":
       return { ...state, type: action.payload };
     case "message":
-      return { ...state, text: action.payload };
+      return { ...state, message: action.payload };
+    case "reset":
+      return { ...initialState };
     default:
       throw new Error();
   }
@@ -103,30 +122,33 @@ const ContactUsForm = () => {
             <input
               required
               type="text"
-              id="name"
-              name="name"
-              autoComplete="name"
-              value={state.name}
+              id="firstName"
+              name="firstName"
+              autoComplete="given-name"
+              value={state.firstName}
               onChange={(e) =>
-                dispatch({ type: "name", payload: e.target.value })
+                dispatch({ type: "firstName", payload: e.target.value })
               }
             />
-            <label htmlFor="name" id="name">
-              Name
+            <label htmlFor="firstName" id="firstName">
+              Fist Name
             </label>
           </div>
           <div className="user-box">
             <input
               required
-              type="email"
-              name="email"
-              autoComplete="email"
-              value={state.email}
+              type="text"
+              id="lastName"
+              name="lastName"
+              autoComplete="family-name"
+              value={state.lastName}
               onChange={(e) =>
-                dispatch({ type: "email", payload: e.target.value })
+                dispatch({ type: "lastName", payload: e.target.value })
               }
             />
-            <label htmlFor="email">Email</label>
+            <label htmlFor="lastName" id="lastName">
+              Last Name
+            </label>
           </div>
         </div>
         <div className="container">
@@ -144,6 +166,19 @@ const ContactUsForm = () => {
             />
             <label htmlFor="tel">Phone</label>
           </div>
+          <div className="user-box">
+            <input
+              required
+              type="email"
+              name="email"
+              autoComplete="email"
+              value={state.email}
+              onChange={(e) =>
+                dispatch({ type: "email", payload: e.target.value })
+              }
+            />
+            <label htmlFor="email">Email</label>
+          </div>
         </div>
 
         <label htmlFor="message">
@@ -152,14 +187,20 @@ const ContactUsForm = () => {
             onChange={(e) =>
               dispatch({ type: "message", payload: e.target.value })
             }
-            placeholder="Price match info"
             required
             type="text"
             value={state.message}
             name="note"
           />
         </label>
-        <button type="submit">Submit</button>
+        <div>
+          <button type="button" onClick={() => dispatch({ type: "reset" })}>
+            Reset
+          </button>
+          <button type="submit">Submit</button>
+        </div>
+
+        {console.log(state)}
       </feildset>
     </FormRoot>
   );
