@@ -18,34 +18,49 @@ const Content = styled.div`
   background-color: white;
   max-width: 1128px;
   margin: 0 auto;
-  margin-top: -200px;
+  margin-top: -50px;
   position: relative;
-
+  margin-right: 5px;
+  margin-left: 5px;
   box-shadow: ${boxShadow.lg};
   border-top-left-radius: ${radius.large}px;
   border-top-right-radius: ${radius.large}px;
-  padding: ${spacing["12"]};
+  padding: ${spacing["3"]};
   color: ${colors.gray["800"]};
   h2 {
     margin-top: 0;
     color: inherit;
-    font-size: ${fontSize["5xl"]};
+    font-size: ${fontSize["2xl"]};
     margin-bottom: 0;
     border-bottom: 4px solid #9b2c2c;
   }
   p {
     font-family: ${fonts.serif};
-    line-height: ${spacing["8"]};
-    padding-bottom: ${spacing["6"]};
-    font-size: ${fontSize["2xl"]};
+    line-height: ${spacing["6"]};
+    padding-bottom: ${spacing["2"]};
+    font-size: ${fontSize.md};
   }
+  @media (min-width: ${breakpoints.sm}) {
+    padding: ${spacing["12"]};
+    margin-top: -200px;
+    margin-right: 0px;
+    margin-left: 0px;
+    h2 {
+      font-size: ${fontSize["5xl"]};
+    }
+    p {
+      font-size: ${fontSize["2xl"]};
+      line-height: ${spacing["8"]};
+      padding-bottom: ${spacing["6"]};
+    }
+  } ;
 `;
 const ContactUsRoot = styled.section`
   padding-top: ${spacing["4"]};
   position: relative;
   padding-bottom: ${spacing["10"]};
   font-family: ${fonts.sans};
-  height: 100vh;
+  /* height: 100vh; */
 `;
 const ContactUs = ({ data }) => {
   const { fluid } = data.file.childImageSharp;

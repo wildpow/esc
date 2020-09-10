@@ -1,11 +1,21 @@
 import React, { useReducer } from "react";
 import styled from "styled-components";
-import { colors, spacing, fontSize } from "../../utils/styles";
+import {
+  colors,
+  spacing,
+  fontSize,
+  breakpoints,
+  radius,
+} from "../../utils/styles";
 import { PrimaryButton } from "../shared/Buttons";
 import SendIcon from "../../assets/paper-plane-solid.svg";
 import ResetIcon from "../../assets/redo-solid.svg";
 
 const FormRoot = styled.form`
+  background: ${colors.gray["300"]};
+  border: 1px solid ${colors.gray["500"]};
+  border-radius: ${radius.large}px;
+  padding: ${spacing["6"]};
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -20,6 +30,16 @@ const FormRoot = styled.form`
   .container {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    .container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .user-box {
+      width: 40%;
+    }
   }
   label {
     display: flex;
@@ -30,7 +50,7 @@ const FormRoot = styled.form`
   }
   .user-box {
     position: relative;
-    width: 40%;
+    width: 100%;
     input {
       width: 100%;
       padding: 10px 0;
