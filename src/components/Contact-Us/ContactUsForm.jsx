@@ -1,4 +1,49 @@
 import React, { useReducer } from "react";
+import styled from "styled-components";
+import { colors } from "../../utils/styles";
+
+const FormRoot = styled.form`
+  .container {
+    display: flex;
+    justify-content: space-around;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+  }
+  .user-box {
+    position: relative;
+    width: 40%;
+    input {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid black;
+      outline: none;
+      background: transparent;
+    }
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px 0;
+      font-size: 16px;
+      color: black;
+      pointer-events: none;
+      transition: 0.5s;
+    }
+    input:focus ~ label,
+    input:valid ~ label {
+      top: -20px;
+      left: 0;
+      color: ${colors.blue["800"]};
+      font-size: 12px;
+    }
+  }
+`;
 
 const initialState = {
   name: "",
@@ -38,7 +83,7 @@ const ContactUsForm = () => {
     console.log(state);
   };
   return (
-    <form
+    <FormRoot
       onSubmit={handleSubmit}
       data-netlify="true"
       data-netlify-honeypot="bot-field"
@@ -53,48 +98,54 @@ const ContactUsForm = () => {
       </p>
 
       <feildset>
-        <legend>contact Information</legend>
-        <label htmlFor="name">
-          Name:
-          <input
-            required
-            placeholder="Mr. Sleeping Panda"
-            type="text"
-            name="name"
-            autoComplete="name"
-            value={state.name}
-            onChange={(e) =>
-              dispatch({ type: "name", payload: e.target.value })
-            }
-          />
-        </label>
-        <label htmlFor="email">
-          Email:
-          <input
-            required
-            placeholder="youremail@example.com"
-            type="email"
-            name="email"
-            autoComplete="email"
-            value={state.email}
-            onChange={(e) =>
-              dispatch({ type: "email", payload: e.target.value })
-            }
-          />
-        </label>
-        <label htmlFor="tel">
-          Phone:
-          <input
-            required
-            autoComplete="tel-national"
-            placeholder="###-###-####"
-            pattern="^[0-9-+s()]*$"
-            type="tel"
-            name="tel"
-            value={state.tel}
-            onChange={(e) => dispatch({ type: "tel", payload: e.target.value })}
-          />
-        </label>
+        <div className="container">
+          <div className="user-box">
+            <input
+              required
+              type="text"
+              id="name"
+              name="name"
+              autoComplete="name"
+              value={state.name}
+              onChange={(e) =>
+                dispatch({ type: "name", payload: e.target.value })
+              }
+            />
+            <label htmlFor="name" id="name">
+              Name
+            </label>
+          </div>
+          <div className="user-box">
+            <input
+              required
+              type="email"
+              name="email"
+              autoComplete="email"
+              value={state.email}
+              onChange={(e) =>
+                dispatch({ type: "email", payload: e.target.value })
+              }
+            />
+            <label htmlFor="email">Email</label>
+          </div>
+        </div>
+        <div className="container">
+          <div className="user-box">
+            <input
+              required
+              autoComplete="tel-national"
+              pattern="^[0-9-+s()]*$"
+              type="tel"
+              name="tel"
+              value={state.tel}
+              onChange={(e) =>
+                dispatch({ type: "tel", payload: e.target.value })
+              }
+            />
+            <label htmlFor="tel">Phone</label>
+          </div>
+        </div>
+
         <label htmlFor="message">
           How can I help?
           <textarea
@@ -110,7 +161,7 @@ const ContactUsForm = () => {
         </label>
         <button type="submit">Submit</button>
       </feildset>
-    </form>
+    </FormRoot>
   );
 };
 

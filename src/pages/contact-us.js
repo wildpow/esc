@@ -24,7 +24,7 @@ const Content = styled.div`
   box-shadow: ${boxShadow.lg};
   border-top-left-radius: ${radius.large}px;
   border-top-right-radius: ${radius.large}px;
-  padding: 20px;
+  padding: ${spacing["12"]};
   color: ${colors.gray["800"]};
   h2 {
     margin-top: 0;
