@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import Layout from "../components/Layout";
 import {
@@ -12,6 +12,7 @@ import {
   radius,
   boxShadow,
 } from "../utils/styles";
+import ContactUsForm from "../components/Contact-Us/ContactUsForm";
 
 const Content = styled.div`
   background-color: white;
@@ -57,6 +58,7 @@ const ContactUs = ({ data }) => {
             distribution of letters, as opposed to using 'Content here, content
             here', making it look like readable English.
           </p>
+          <ContactUsForm />
         </Content>
       </ContactUsRoot>
     </Layout>
