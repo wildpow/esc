@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import styled from "styled-components";
+import { navigate } from "gatsby-link";
 import {
   colors,
   spacing,
@@ -148,31 +149,45 @@ const FormButtons = styled(PrimaryButton)`
   padding-right: 20px;
   padding-left: 20px;
 `;
+
+const encode = (data) => {
+  return Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join("&");
+};
 const ContactUsForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const encode = (data) => {
-    return Object.keys(data)
-      .map(
-        (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`,
-      )
-      .join("&");
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(state);
+    const form = e.target;
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...state,
+      }),
+    })
+      .then(() => navigate(form.getAttribute("action")))
+      .catch((error) => alert(error));
   };
   return (
     <FormRoot
-      onSubmit={handleSubmit}
+      name="contact"
+      method="post"
+      action="/thanks/"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
-      method="post"
+      onSubmit={handleSubmit}
     >
-      <input type="hidden" name="bot-field" />
+      <input type="hidden" name="form-name" value="contact" />
       <p hidden>
-        <label htmlFor="form-name">
+        <label htmlFor>
           Don’t fill this out:
-          <input name="bot-field" onChange={() => console.log("Bot")} />
+          <input
+            name="bot-field"
+            onChange={() => console.log("Don’t fill this out")}
+          />
         </label>
       </p>
 
