@@ -42,8 +42,8 @@ const Content = styled.div`
   }
   @media (min-width: ${breakpoints.sm}) {
     padding: ${spacing["12"]};
-    margin: 0 auto;
-    margin-top: -200px;
+    /* margin: 0 auto; */
+    margin-top: -100px;
 
     h2 {
       font-size: ${fontSize["5xl"]};
@@ -53,7 +53,14 @@ const Content = styled.div`
       line-height: ${spacing["8"]};
       padding-bottom: ${spacing["6"]};
     }
-  } ;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    margin-top: -200px;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    margin: 0 auto;
+    margin-top: -200px;
+  }
 `;
 const ContactUsRoot = styled.section`
   /* padding-top: ${spacing["1"]}; */
@@ -79,6 +86,11 @@ const ContactUs = ({ data }) => {
             person at the store during normal business hours, by phone, or
             through the form below. Sleep well!
           </p>
+          {/* <div>
+            <p>10121 Evergreen Way, #30, Everett, WA 98204</p>
+            <p>hours: Mon-Sat: Sunday: 10am - 7pm 10am - 6pm</p>
+            <p>Phone: (425) 512-0017</p>
+          </div> */}
           <ContactUsForm />
         </Content>
       </ContactUsRoot>

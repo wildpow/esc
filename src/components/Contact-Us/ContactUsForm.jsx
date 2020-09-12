@@ -41,7 +41,17 @@ const FormRoot = styled.form`
     min-height: 150px;
     font-size: ${fontSize.base};
     padding: ${spacing[2]};
-    border-color: ${colors.blue["400"]};
+    border: 1px solid ${colors.gray["500"]};
+
+    /* background: ${colors.gray[100]}; */
+    /* border-top: none; */
+    resize: none;
+    outline: none;
+    :focus {
+      box-shadow: 0px 5px 5px 0px ${colors.gray["500"]};
+      outline: 0;
+      transition: box-shadow 0.15s ease-in-out;
+    }
   }
   .user-box {
     position: relative;
@@ -53,7 +63,7 @@ const FormRoot = styled.form`
       color: ${colors.gray["900"]};
       margin-bottom: 30px;
       border: none;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid ${colors.gray["900"]};
       outline: none;
       background: transparent;
     }
@@ -63,7 +73,7 @@ const FormRoot = styled.form`
       left: 0;
       padding: 10px 0;
       font-size: 16px;
-      color: black;
+      color: ${colors.gray[900]};
       pointer-events: none;
       transition: 0.5s;
     }
@@ -71,7 +81,7 @@ const FormRoot = styled.form`
     input:valid ~ label {
       top: -20px;
       left: 0;
-      color: ${colors.blue["800"]};
+      color: ${colors.black};
       font-size: 12px;
     }
   }
@@ -81,8 +91,10 @@ const FormRoot = styled.form`
     padding-top: ${spacing["8"]};
   }
   .message {
-    font-size: ${fontSize["2xl"]};
-    font-weight: 700;
+    h3 {
+      border-bottom: 4px solid #9b2c2c;
+      /* margin-bottom: 0; */
+    }
   }
   @media (min-width: ${breakpoints.sm}) {
     border: 1px solid ${colors.gray["300"]};
@@ -97,6 +109,9 @@ const FormRoot = styled.form`
     }
     .message {
       font-size: ${fontSize["2xl"]};
+    }
+    textarea {
+      padding: ${spacing[6]};
     }
   }
 `;
@@ -227,7 +242,7 @@ const ContactUsForm = () => {
         </div>
 
         <label htmlFor="message" className="message">
-          How can We help?
+          <h3>How can We help?</h3>
           <textarea
             onChange={(e) =>
               dispatch({ type: "message", payload: e.target.value })
