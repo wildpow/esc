@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+
 import Img from "gatsby-image";
 import Layout from "../components/Layout";
 import {
@@ -71,6 +72,10 @@ const ContactUsRoot = styled.section`
     padding-top: ${spacing["4"]};
   }
 `;
+const Address = styled.address`
+  display: flex;
+  justify-content: space-around;
+`;
 const ContactUs = ({ data }) => {
   const { fluid } = data.file.childImageSharp;
   return (
@@ -86,11 +91,39 @@ const ContactUs = ({ data }) => {
             person at the store during normal business hours, by phone, or
             through the form below. Sleep well!
           </p>
-          {/* <div>
-            <p>10121 Evergreen Way, #30, Everett, WA 98204</p>
-            <p>hours: Mon-Sat: Sunday: 10am - 7pm 10am - 6pm</p>
-            <p>Phone: (425) 512-0017</p>
-          </div> */}
+          <Address>
+            <div>
+              <p>
+                address:
+                <br />
+                10121 Evergreen Way,
+                <br />
+                #30 Everett, WA 98204
+                <br />
+              </p>
+              <p>
+                hours:
+                <br />
+                Mon-Sat: 10am - 7pm
+                <br />
+                Sunday: 10am - 6pm
+              </p>
+            </div>
+            <div>
+              <p>
+                Phone:
+                <br />
+                (425) 512-0017
+              </p>
+              <p>
+                links:
+                <br />
+                <Link to="/policies">Terms/Policies</Link>
+                <br />
+                <Link to="/warranty"> Warranty Info</Link>
+              </p>
+            </div>
+          </Address>
           <ContactUsForm />
         </Content>
       </ContactUsRoot>
