@@ -12,10 +12,10 @@ import SendIcon from "../../assets/paper-plane-solid.svg";
 import ResetIcon from "../../assets/redo-solid.svg";
 
 const FormRoot = styled.form`
-  background: ${colors.gray["300"]};
-  border: 1px solid ${colors.gray["500"]};
+  /* background: ${colors.gray["100"]}; */
+  /* border: 1px solid ${colors.gray["300"]}; */
   border-radius: ${radius.large}px;
-  padding: ${spacing["6"]};
+  padding: ${spacing["1"]};
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -25,28 +25,23 @@ const FormRoot = styled.form`
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
     -webkit-transition-delay: 99999s;
-    -webkit-text-fill-color: #d7d8ce;
+    -webkit-text-fill-color: ${colors.blue["800"]};
   }
   .container {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
   }
-  @media (min-width: ${breakpoints.sm}) {
-    .container {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-    .user-box {
-      width: 40%;
-    }
-  }
+
   label {
     display: flex;
     flex-direction: column;
   }
   textarea {
     min-height: 150px;
+    font-size: ${fontSize.base};
+    padding: ${spacing[2]};
+    border-color: ${colors.blue["400"]};
   }
   .user-box {
     position: relative;
@@ -86,13 +81,22 @@ const FormRoot = styled.form`
     padding-top: ${spacing["8"]};
   }
   .message {
-    font-size: ${fontSize["3xl"]};
+    font-size: ${fontSize["2xl"]};
     font-weight: 700;
-    textarea {
-      /* border: 4px solid ${colors.gray[
-        "300"
-      ]};
-      border-top: 4px solid #9b2c2c; */
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    border: 1px solid ${colors.gray["300"]};
+    border-radius: ${radius.large}px;
+    padding: ${spacing["6"]};
+    .container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .user-box {
+      width: 45%;
+    }
+    .message {
+      font-size: ${fontSize["2xl"]};
     }
   }
 `;

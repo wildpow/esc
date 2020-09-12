@@ -18,7 +18,7 @@ const Content = styled.div`
   background-color: white;
   max-width: 1128px;
   margin: 0 auto;
-  margin-top: -50px;
+  margin-top: -40px;
   position: relative;
   margin-right: 5px;
   margin-left: 5px;
@@ -42,9 +42,9 @@ const Content = styled.div`
   }
   @media (min-width: ${breakpoints.sm}) {
     padding: ${spacing["12"]};
+    margin: 0 auto;
     margin-top: -200px;
-    margin-right: 0px;
-    margin-left: 0px;
+
     h2 {
       font-size: ${fontSize["5xl"]};
     }
@@ -56,11 +56,13 @@ const Content = styled.div`
   } ;
 `;
 const ContactUsRoot = styled.section`
-  padding-top: ${spacing["4"]};
+  /* padding-top: ${spacing["1"]}; */
   position: relative;
   padding-bottom: ${spacing["10"]};
   font-family: ${fonts.sans};
-  /* height: 100vh; */
+  @media (min-width: ${breakpoints.sm}) {
+    padding-top: ${spacing["4"]};
+  }
 `;
 const ContactUs = ({ data }) => {
   const { fluid } = data.file.childImageSharp;
@@ -71,7 +73,7 @@ const ContactUs = ({ data }) => {
         <Content>
           <h2>Contact Us</h2>
           <p>
-            Thank you for visiting ESC Mattress Center, Snohomish County's
+            Thank you for visiting ESC Mattress Center, Snohomish County&apos;s
             favorite mattress store. We strive to be the best mattress store we
             can be and are always here to help. Feel free to contact us in
             person at the store during normal business hours, by phone, or
