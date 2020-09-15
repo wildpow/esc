@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { graphql, Link } from "gatsby";
-
+import { graphql } from "gatsby";
+import PropTypes from "prop-types";
 import Img from "gatsby-image";
 import Layout from "../components/Layout";
 import {
@@ -14,6 +14,7 @@ import {
   boxShadow,
 } from "../utils/styles";
 import ContactUsForm from "../components/Contact-Us/ContactUsForm";
+import ContactInfo from "../components/Contact-Us/ContactInfo";
 
 const Content = styled.div`
   background-color: white;
@@ -43,7 +44,6 @@ const Content = styled.div`
   }
   @media (min-width: ${breakpoints.sm}) {
     padding: ${spacing["10"]};
-    /* margin: 0 auto; */
     margin-top: -100px;
     margin-right: 20px;
     margin-left: 20px;
@@ -61,20 +61,6 @@ const Content = styled.div`
     padding: ${spacing["10"]};
     margin-right: 20px;
     margin-left: 20px;
-    /* h2 {
-      font-size: ${fontSize[
-      "5xl"
-    ]};
-    }
-    p {
-      font-size: ${fontSize[
-      "2xl"
-    ]};
-      line-height: ${spacing["8"]};
-      padding-bottom: ${spacing[
-      "6"
-    ]};
-    } */
   }
   @media (min-width: ${breakpoints.lg}) {
     margin-top: -200px;
@@ -105,41 +91,7 @@ const ContactUsRoot = styled.section`
     font-size: ${fontSize["2xl"]};
   }
 `;
-const AddressRoot = styled.aside`
-  border-radius: ${radius.large};
-  border: 1px solid ${colors.gray["300"]};
 
-  position: relative;
-  padding: ${spacing["6"]};
-  margin-bottom: 20px;
-  h4,
-  h5 {
-    margin: 0;
-  }
-  h4 {
-    position: absolute;
-    left: 5%;
-    background: white;
-    padding: 0 20px;
-    border: 1px solid ${colors.gray["400"]};
-    top: -10px;
-    z-index: 1;
-    /* margin-bottom: 10px; */
-  }
-  address {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-column-gap: 0px;
-    grid-row-gap: 20px;
-  }
-  .address-wrap {
-    display: flex;
-    justify-content: space-around;
-    div {
-      width: 175px;
-    }
-  }
-`;
 const ContactUs = ({ data }) => {
   const { fluid } = data.file.childImageSharp;
   return (
@@ -155,39 +107,7 @@ const ContactUs = ({ data }) => {
             person at the store during normal business hours, by phone, or
             through the form below. Sleep well!
           </p>
-          <AddressRoot>
-            <h4>Contact Info</h4>
-            <address>
-              <div className="address-wrap">
-                <div>
-                  <h5>Address</h5>
-                  10121 Evergreen Way,
-                  <br />
-                  #30 Everett, WA 98204
-                  <br />
-                </div>
-                <div>
-                  <h5>Hours</h5>
-                  Mon-Sat: 10am - 7pm
-                  <br />
-                  Sunday: 10am - 6pm
-                </div>
-              </div>
-              <div className="address-wrap">
-                <div>
-                  <h5>Phone</h5>
-                  (425) 512-0017
-                </div>
-                <div>
-                  <h5>Links</h5>
-
-                  <Link to="/policies">Terms/Policies</Link>
-                  <br />
-                  <Link to="/warranty"> Warranty Info</Link>
-                </div>
-              </div>
-            </address>
-          </AddressRoot>
+          <ContactInfo />
           <h3 className="message">How can We help?</h3>
           <ContactUsForm />
         </Content>
@@ -208,4 +128,7 @@ export const contactUsQuery = graphql`
   }
 `;
 
+ContactUs.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 export default ContactUs;
