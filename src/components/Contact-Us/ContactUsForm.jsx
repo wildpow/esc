@@ -257,11 +257,12 @@ const ContactUsForm = () => {
         </div>
 
         <label htmlFor="message" className="message">
-          <h3>How can We help?</h3>
+          {/* <h3>How can We help?</h3> */}
           <textarea
             onChange={(e) =>
               dispatch({ type: "message", payload: e.target.value })
             }
+            placeholder="Enter your message here..."
             required
             type="text"
             value={state.message}

@@ -100,10 +100,14 @@ const ContactUsRoot = styled.section`
   @media (min-width: ${breakpoints.sm}) {
     padding-top: ${spacing["4"]};
   }
+  h3 {
+    border-bottom: 4px solid #9b2c2c;
+    font-size: ${fontSize["2xl"]};
+  }
 `;
 const AddressRoot = styled.aside`
   border-radius: ${radius.large};
-  border: 1px solid ${colors.gray["400"]};
+  border: 1px solid ${colors.gray["300"]};
 
   position: relative;
   padding: ${spacing["6"]};
@@ -125,12 +129,15 @@ const AddressRoot = styled.aside`
   address {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    grid-column-gap: 20px;
-    grid-row-gap: 6px;
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
   }
   .address-wrap {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    div {
+      width: 175px;
+    }
   }
 `;
 const ContactUs = ({ data }) => {
@@ -181,6 +188,7 @@ const ContactUs = ({ data }) => {
               </div>
             </address>
           </AddressRoot>
+          <h3 className="message">How can We help?</h3>
           <ContactUsForm />
         </Content>
       </ContactUsRoot>
