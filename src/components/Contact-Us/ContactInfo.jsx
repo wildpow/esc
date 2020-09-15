@@ -1,7 +1,13 @@
 import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { radius, colors, spacing, fontSize } from "../../utils/styles";
+import {
+  radius,
+  colors,
+  spacing,
+  fontSize,
+  breakpoints,
+} from "../../utils/styles";
 
 const ContactRoot = styled.aside`
   border-radius: ${radius.large};
@@ -31,14 +37,15 @@ const ContactRoot = styled.aside`
   }
   address {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-content: center;
   }
   .address-wrap {
     display: flex;
-    width: 50%;
+    width: 100%;
     justify-content: space-around;
     div {
-      width: 175px;
+      width: 45%;
       font-style: normal;
       p {
         padding-top: 5px;
@@ -47,8 +54,41 @@ const ContactRoot = styled.aside`
         margin: 0;
       }
     }
-    div div p {
-      font-size: ${fontSize.md};
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    h5 {
+      font-size: ${fontSize.lg};
+      border-bottom: 4px solid #9b2c2c;
+    }
+    .address-wrap {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      div {
+        width: 45%;
+        font-style: normal;
+        p {
+          padding-top: 5px;
+          line-height: 1.3em;
+          font-size: ${fontSize.base};
+          margin: 0;
+        }
+      }
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    address {
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+    .address-wrap {
+      width: 50%;
+      div {
+        width: 40%;
+        p {
+          font-size: ${fontSize.lg};
+        }
+      }
     }
   }
 `;
