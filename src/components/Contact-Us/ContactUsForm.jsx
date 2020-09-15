@@ -282,8 +282,6 @@ const ContactUsForm = () => {
             <SendIcon />
           </FormButtons>
         </div>
-
-        {console.log(state)}
       </feildset>
     </FormRoot>
   );

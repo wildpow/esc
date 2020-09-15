@@ -42,10 +42,42 @@ const Content = styled.div`
     font-size: ${fontSize.md};
   }
   @media (min-width: ${breakpoints.sm}) {
-    padding: ${spacing["12"]};
+    padding: ${spacing["10"]};
     /* margin: 0 auto; */
     margin-top: -100px;
-
+    margin-right: 20px;
+    margin-left: 20px;
+    h2 {
+      font-size: ${fontSize["3xl"]};
+    }
+    p {
+      font-size: ${fontSize.xl};
+      line-height: ${spacing["8"]};
+      padding-bottom: ${spacing["4"]};
+    }
+  }
+  @media (min-width: ${breakpoints.md}) {
+    margin-top: -100px;
+    padding: ${spacing["10"]};
+    margin-right: 20px;
+    margin-left: 20px;
+    /* h2 {
+      font-size: ${fontSize[
+      "5xl"
+    ]};
+    }
+    p {
+      font-size: ${fontSize[
+      "2xl"
+    ]};
+      line-height: ${spacing["8"]};
+      padding-bottom: ${spacing[
+      "6"
+    ]};
+    } */
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    margin-top: -200px;
     h2 {
       font-size: ${fontSize["5xl"]};
     }
@@ -55,10 +87,7 @@ const Content = styled.div`
       padding-bottom: ${spacing["6"]};
     }
   }
-  @media (min-width: ${breakpoints.md}) {
-    margin-top: -200px;
-  }
-  @media (min-width: ${breakpoints.lg}) {
+  @media (min-width: ${breakpoints.xl}) {
     margin: 0 auto;
     margin-top: -200px;
   }
@@ -72,9 +101,37 @@ const ContactUsRoot = styled.section`
     padding-top: ${spacing["4"]};
   }
 `;
-const Address = styled.address`
-  display: flex;
-  justify-content: space-around;
+const AddressRoot = styled.aside`
+  border-radius: ${radius.large};
+  border: 1px solid ${colors.gray["400"]};
+
+  position: relative;
+  padding: ${spacing["6"]};
+  margin-bottom: 20px;
+  h4,
+  h5 {
+    margin: 0;
+  }
+  h4 {
+    position: absolute;
+    left: 5%;
+    background: white;
+    padding: 0 20px;
+    border: 1px solid ${colors.gray["400"]};
+    top: -10px;
+    z-index: 1;
+    /* margin-bottom: 10px; */
+  }
+  address {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 6px;
+  }
+  .address-wrap {
+    display: flex;
+    justify-content: space-evenly;
+  }
 `;
 const ContactUs = ({ data }) => {
   const { fluid } = data.file.childImageSharp;
@@ -91,39 +148,39 @@ const ContactUs = ({ data }) => {
             person at the store during normal business hours, by phone, or
             through the form below. Sleep well!
           </p>
-          <Address>
-            <div>
-              <p>
-                address:
-                <br />
-                10121 Evergreen Way,
-                <br />
-                #30 Everett, WA 98204
-                <br />
-              </p>
-              <p>
-                hours:
-                <br />
-                Mon-Sat: 10am - 7pm
-                <br />
-                Sunday: 10am - 6pm
-              </p>
-            </div>
-            <div>
-              <p>
-                Phone:
-                <br />
-                (425) 512-0017
-              </p>
-              <p>
-                links:
-                <br />
-                <Link to="/policies">Terms/Policies</Link>
-                <br />
-                <Link to="/warranty"> Warranty Info</Link>
-              </p>
-            </div>
-          </Address>
+          <AddressRoot>
+            <h4>Contact Info</h4>
+            <address>
+              <div className="address-wrap">
+                <div>
+                  <h5>Address</h5>
+                  10121 Evergreen Way,
+                  <br />
+                  #30 Everett, WA 98204
+                  <br />
+                </div>
+                <div>
+                  <h5>Hours</h5>
+                  Mon-Sat: 10am - 7pm
+                  <br />
+                  Sunday: 10am - 6pm
+                </div>
+              </div>
+              <div className="address-wrap">
+                <div>
+                  <h5>Phone</h5>
+                  (425) 512-0017
+                </div>
+                <div>
+                  <h5>Links</h5>
+
+                  <Link to="/policies">Terms/Policies</Link>
+                  <br />
+                  <Link to="/warranty"> Warranty Info</Link>
+                </div>
+              </div>
+            </address>
+          </AddressRoot>
           <ContactUsForm />
         </Content>
       </ContactUsRoot>
