@@ -43,7 +43,7 @@ const ContactRoot = styled.aside`
   }
 
   address div {
-    width: 240px;
+    width: 95%;
     padding: 10px;
     padding-right: 15px;
     padding-left: 15px;
@@ -55,6 +55,13 @@ const ContactRoot = styled.aside`
       margin: 0;
       font-size: ${fontSize.base};
       line-height: ${spacing[5]};
+      a {
+        color: ${colors.blue[700]};
+        transition: color 0.2s ease-in-out;
+        :hover {
+          color: ${colors.red[700]};
+        }
+      }
     }
   }
 
@@ -67,17 +74,15 @@ const ContactRoot = styled.aside`
     }
   } */
 
-  /* @media (min-width: ${breakpoints.phablet}) {
+  @media (min-width: ${breakpoints.phablet}) {
     address div {
-      padding: 10px;
-      padding-right: 15px;
-      padding-left: 15px;
+      width: 240px;
     }
-  } */
-  @media (min-width: ${breakpoints.sm}) {
+  }
+  /* @media (min-width: ${breakpoints.sm}) {
     padding: ${spacing[4]};
     padding-top: ${spacing[10]};
-  }
+  } */
   @media (min-width: ${breakpoints.xl}) {
     h4 {
       font-size: ${fontSize.xl};
@@ -100,9 +105,16 @@ const ContactInfo = () => {
         <div>
           <h5>Address</h5>
           <p>
-            10121 Evergreen Way,
-            <br />
-            #30 Everett, WA 98204
+            <a
+              href="https://goo.gl/maps/nqXkkkAGRdu"
+              rel="noopener noreferrer"
+              target="_blank"
+              aria-label="Google maps link to our store"
+            >
+              10121 Evergreen Way,
+              <br />
+              #30 Everett, WA 98204
+            </a>
           </p>
         </div>
         <div>
@@ -115,7 +127,11 @@ const ContactInfo = () => {
         </div>
         <div>
           <h5>Phone</h5>
-          <p>(425) 512-0017</p>
+          <p>
+            <a href="tel:1-425-512-0017" aria-label="Store phone number">
+              (425) 512-0017
+            </a>
+          </p>
         </div>
         <div>
           <h5>Links</h5>

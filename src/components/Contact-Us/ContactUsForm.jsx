@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-newline */
 import React, { useReducer } from "react";
 import styled from "styled-components";
 import { navigate } from "gatsby-link";
@@ -13,21 +14,9 @@ import SendIcon from "../../assets/paper-plane-solid.svg";
 import ResetIcon from "../../assets/redo-solid.svg";
 
 const FormRoot = styled.form`
-  /* background: ${colors.gray["100"]}; */
-  /* border: 1px solid ${colors.gray["300"]}; */
   border-radius: ${radius.large}px;
   padding: ${spacing["1"]};
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active,
-  input:-webkit-autofill:valid,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus {
-    -webkit-transition-delay: 99999s;
-    -webkit-text-fill-color: ${colors.blue["800"]};
-  }
+
   .container {
     display: flex;
     justify-content: space-between;
@@ -43,9 +32,6 @@ const FormRoot = styled.form`
     font-size: ${fontSize.base};
     padding: ${spacing[2]};
     border: 1px solid ${colors.gray["500"]};
-
-    /* background: ${colors.gray[100]}; */
-    /* border-top: none; */
     resize: none;
     outline: none;
     :focus {
@@ -54,38 +40,49 @@ const FormRoot = styled.form`
       transition: box-shadow 0.15s ease-in-out;
     }
   }
-  .user-box {
-    position: relative;
+  .input-label {
+    input:-internal-autofill-selected {
+      background-color: transparent;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+      border: 1px solid ${colors.blue[900]};
+      -webkit-text-fill-color: ${colors.blue[800]};
+      box-shadow: 0 0 0px 1000px transparent inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+    /* input:focus,
+    input:valid {
+      font-size: 200px;
+    } */
     width: 100%;
+    font-size: ${fontSize.sm};
+    span {
+      padding-bottom: ${spacing[1]};
+    }
     input {
       width: 100%;
-      padding: 10px 0;
+      padding: 10px 5px;
       font-size: 16px;
       color: ${colors.gray["900"]};
       margin-bottom: 30px;
-      border: none;
-      border-bottom: 1px solid ${colors.gray["900"]};
+      border: 1px solid ${colors.gray["500"]};
       outline: none;
-      background: transparent;
-    }
-    label {
-      position: absolute;
-      top: 0;
-      left: 0;
-      padding: 10px 0;
-      font-size: 16px;
-      color: ${colors.gray[900]};
-      pointer-events: none;
-      transition: 0.5s;
-    }
-    input:focus ~ label,
-    input:valid ~ label {
-      top: -20px;
-      left: 0;
-      color: ${colors.black};
-      font-size: 12px;
+      :focus {
+        box-shadow: 0px 5px 5px 0px ${colors.gray["500"]};
+        outline: 0;
+        transition: box-shadow 0.15s ease-in-out;
+      }
     }
   }
+
   .bottom-buttons {
     display: flex;
     justify-content: space-between;
@@ -105,7 +102,7 @@ const FormRoot = styled.form`
       flex-direction: row;
       justify-content: space-between;
     }
-    .user-box {
+    .input-label {
       width: 45%;
     }
     .message {
@@ -113,6 +110,22 @@ const FormRoot = styled.form`
     }
     textarea {
       padding: ${spacing[6]};
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    .input-label {
+      font-size: ${fontSize.base};
+      font-weight: 700;
+      span {
+        padding-left: 2px;
+      }
+      input {
+        padding: 15px 10px;
+        font-size: ${fontSize.lg};
+      }
+    }
+    textarea {
+      font-size: ${fontSize.lg};
     }
   }
 `;
@@ -193,8 +206,10 @@ const ContactUsForm = () => {
 
       <feildset>
         <div className="container">
-          <div className="user-box">
+          <label htmlFor="firstName" id="firstName" className="input-label">
+            <span>Fist Name</span>
             <input
+              placeholder="Percival"
               required
               type="text"
               id="firstName"
@@ -205,45 +220,44 @@ const ContactUsForm = () => {
                 dispatch({ type: "firstName", payload: e.target.value })
               }
             />
-            <label htmlFor="firstName" id="firstName">
-              Fist Name
-            </label>
-          </div>
-          <div className="user-box">
+          </label>
+
+          <label htmlFor="lastName" id="lastName" className="input-label">
+            <span>Last Name</span>
             <input
               required
               type="text"
               id="lastName"
               name="lastName"
               autoComplete="family-name"
+              placeholder="Panda"
               value={state.lastName}
               onChange={(e) =>
                 dispatch({ type: "lastName", payload: e.target.value })
               }
             />
-            <label htmlFor="lastName" id="lastName">
-              Last Name
-            </label>
-          </div>
+          </label>
         </div>
         <div className="container">
-          <div className="user-box">
+          <label htmlFor="tel" className="input-label">
+            <span>Phone</span>
             <input
-              required
               autoComplete="tel-national"
               pattern="^[0-9-+s()]*$"
               type="tel"
               name="tel"
+              placeholder="***-***-****"
               value={state.tel}
               onChange={(e) =>
                 dispatch({ type: "tel", payload: e.target.value })
               }
             />
-            <label htmlFor="tel">Phone</label>
-          </div>
-          <div className="user-box">
+          </label>
+          <label htmlFor="email" className="input-label">
+            <span>Email</span>
             <input
               required
+              placeholder="youremail@email.com"
               type="email"
               name="email"
               autoComplete="email"
@@ -252,8 +266,7 @@ const ContactUsForm = () => {
                 dispatch({ type: "email", payload: e.target.value })
               }
             />
-            <label htmlFor="email">Email</label>
-          </div>
+          </label>
         </div>
 
         <label htmlFor="message" className="message">

@@ -93,11 +93,12 @@ const ContactUsRoot = styled.section`
 `;
 
 const ContactUs = ({ data }) => {
-  const { fluid } = data.file.childImageSharp;
+  const { test } = data;
+  const { test2 } = data;
   return (
     <Layout>
       <ContactUsRoot>
-        <Img fluid={fluid} />
+        <Img fluid={test.childImageSharp.fluid} />
         <Content>
           <h2>Contact Us</h2>
           <p>
@@ -118,7 +119,14 @@ const ContactUs = ({ data }) => {
 
 export const contactUsQuery = graphql`
   query {
-    file(relativePath: { eq: "contact-us.jpg" }) {
+    test: file(relativePath: { eq: "contact-us.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1440) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    test2: file(relativePath: { eq: "ContactUsHeader.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1440) {
           ...GatsbyImageSharpFluid
