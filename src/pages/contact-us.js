@@ -16,7 +16,7 @@ import {
 import ContactUsForm from "../components/Contact-Us/ContactUsForm";
 import ContactInfo from "../components/Contact-Us/ContactInfo";
 
-const Content = styled.div`
+export const Content = styled.div`
   background-color: white;
   max-width: 1128px;
   margin: 0 auto;
@@ -78,7 +78,7 @@ const Content = styled.div`
     margin-top: -200px;
   }
 `;
-const ContactUsRoot = styled.section`
+export const ContactUsRoot = styled.section`
   /* padding-top: ${spacing["1"]}; */
   position: relative;
   padding-bottom: ${spacing["10"]};
@@ -89,6 +89,11 @@ const ContactUsRoot = styled.section`
   h3 {
     border-bottom: 4px solid #9b2c2c;
     font-size: ${fontSize["2xl"]};
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    h3 {
+      font-size: ${fontSize["3xl"]};
+    }
   }
 `;
 

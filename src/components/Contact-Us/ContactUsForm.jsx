@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-curly-newline */
 import React, { useReducer } from "react";
 import styled from "styled-components";
-import { navigate } from "gatsby-link";
+import { navigate } from "gatsby";
 import {
   colors,
   spacing,
@@ -16,7 +16,9 @@ import ResetIcon from "../../assets/redo-solid.svg";
 const FormRoot = styled.form`
   border-radius: ${radius.large}px;
   padding: ${spacing["1"]};
-
+  fieldset {
+    border: none;
+  }
   .container {
     display: flex;
     justify-content: space-between;
@@ -188,7 +190,7 @@ const ContactUsForm = () => {
     <FormRoot
       name="contact"
       method="post"
-      action="/thanks/"
+      action="/thank-you"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
@@ -204,7 +206,7 @@ const ContactUsForm = () => {
         </label>
       </p>
 
-      <feildset>
+      <fieldset>
         <div className="container">
           <label htmlFor="firstName" id="firstName" className="input-label">
             <span>Fist Name</span>
@@ -296,7 +298,7 @@ const ContactUsForm = () => {
             <SendIcon />
           </FormButtons>
         </div>
-      </feildset>
+      </fieldset>
     </FormRoot>
   );
 };
