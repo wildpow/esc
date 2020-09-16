@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Aaron Wilder <element1028@gmail.com>",
   "dependencies": {
-    "@reach/visually-hidden": "^0.10.4",
+    "@reach/visually-hidden": "^0.11.1",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-canonical-urls": "^2.3.10",
@@ -33,7 +33,7 @@
     "react-move": "^6.0.0",
     "react-responsive-carousel": "^3.1.51",
     "react-truncate-markup": "^5.0.0",
-    "reactjs-popup": "^1.5.0",
+    "reactjs-popup": "^2.0.3",
     "shopify-buy": "^2.10.0",
     "styled-components": "^5.0.1",
     "styled-normalize": "^8.0.7",
@@ -54,11 +54,11 @@
     "snap": "percy exec -- cypress run"
   },
   "devDependencies": {
-    "@commitlint/cli": "^9.1.2",
-    "@commitlint/config-conventional": "^9.1.2",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@percy/cypress": "^2.3.0",
     "babel-plugin-styled-components": "^1.10.7",
-    "cypress": "^4.0.0",
+    "cypress": "^5.2.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-cypress": "^2.9.0",
@@ -67,7 +67,7 @@
     "husky": "^4.2.1",
     "lint-staged": "^10.0.7",
     "prettier": "^2.0.5",
-    "pretty-quick": "^2.0.1",
+    "pretty-quick": "^3.0.2",
     "webpack-monitor": "^1.0.14"
   },
   "husky": {
