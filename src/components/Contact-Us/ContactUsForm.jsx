@@ -273,7 +273,7 @@ const ContactUsForm = () => {
             required
             type="text"
             value={state.message}
-            name="note"
+            name="message"
           />
         </label>
         <div className="bottom-buttons">
