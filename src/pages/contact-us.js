@@ -32,6 +32,7 @@ export const Content = styled.div`
   h2 {
     margin-top: 0;
     color: inherit;
+    color: ${colors.blue[900]};
     font-size: ${fontSize["2xl"]};
     margin-bottom: 0;
     border-bottom: 4px solid #9b2c2c;
@@ -41,6 +42,7 @@ export const Content = styled.div`
     line-height: ${spacing["6"]};
     padding-bottom: ${spacing["2"]};
     font-size: ${fontSize.md};
+    color: ${colors.gray[800]};
   }
   @media (min-width: ${breakpoints.sm}) {
     padding: ${spacing["10"]};
@@ -87,6 +89,7 @@ export const ContactUsRoot = styled.section`
     padding-top: ${spacing["4"]};
   }
   h3 {
+    color: ${colors.blue[900]};
     border-bottom: 4px solid #9b2c2c;
     font-size: ${fontSize["2xl"]};
   }

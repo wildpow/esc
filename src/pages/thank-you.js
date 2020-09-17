@@ -1,18 +1,17 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import Layout from "../components/Layout";
 import { ContactUsRoot, Content } from "./contact-us";
-
-const ThankYouRoot = styled.section``;
+import ContactInfo from "../components/Contact-Us/ContactInfo";
+import TopBlogPosts from "../components/Contact-Us/TopBlogPosts";
 
 const ThankYou = ({ data }) => {
-  const { test } = data;
-  const { test2 } = data;
+  const { test, test2, clean, win, clothes, tips } = data;
   return (
     <Layout>
+      {console.log(data)}
       <ContactUsRoot>
         <Img fluid={test.childImageSharp.fluid} />
         <Content>
@@ -21,6 +20,9 @@ const ThankYou = ({ data }) => {
             We appreciate you contacting us at E.S.C Mattress Center. One of our
             colleagues will get back in touch with you soon! Have a great day!
           </p>
+          <ContactInfo />
+          <h3 className="message">Check out some of our blog posts.</h3>
+          <TopBlogPosts data={[clean, clothes, win, tips]} />
         </Content>
       </ContactUsRoot>
     </Layout>
@@ -41,6 +43,43 @@ export const ThankYouQuery = graphql`
         fluid(maxWidth: 1440) {
           ...GatsbyImageSharpFluid
         }
+      }
+    }
+
+    clean: datoCmsBlog(slug: { eq: "the-clean-shop-promise" }) {
+      description
+      slug
+      title
+      blogListImage {
+        alt
+        url
+      }
+    }
+    win: datoCmsBlog(slug: { eq: "esc-mattress-center-wins-again" }) {
+      description
+      slug
+      title
+      blogListImage {
+        alt
+        url
+      }
+    }
+    clothes: datoCmsBlog(slug: { eq: "clothes-for-kids" }) {
+      description
+      slug
+      title
+      blogListImage {
+        alt
+        url
+      }
+    }
+    tips: datoCmsBlog(slug: { eq: "five-mattress-shopping-tips" }) {
+      description
+      slug
+      title
+      blogListImage {
+        alt
+        url
       }
     }
   }

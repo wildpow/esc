@@ -68,6 +68,7 @@ const FormRoot = styled.form`
     font-size: ${fontSize.sm};
     span {
       padding-bottom: ${spacing[1]};
+      color: ${colors.gray[900]};
     }
     input {
       width: 100%;

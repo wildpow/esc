@@ -38,6 +38,7 @@ const ContactRoot = styled.aside`
     /* margin-bottom: 10px; */
   }
   h5 {
+    color: ${colors.gray[900]};
     font-size: ${fontSize.lg};
     border-bottom: 4px solid #9b2c2c;
   }
