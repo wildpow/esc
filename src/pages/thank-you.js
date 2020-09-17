@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import Img from "gatsby-image";
 import Layout from "../components/Layout";
 import { ContactUsRoot, Content } from "./contact-us";
@@ -8,9 +9,10 @@ import ContactInfo from "../components/Contact-Us/ContactInfo";
 import TopBlogPosts from "../components/Contact-Us/TopBlogPosts";
 
 const ThankYou = ({ data }) => {
-  const { panda } = data;
+  const { panda, seo } = data;
   return (
     <Layout>
+      <HelmetDatoCms seo={seo.seoMetaTags} />
       <ContactUsRoot>
         <Img fluid={panda.childImageSharp.fluid} />
         <Content>
@@ -35,6 +37,11 @@ export const ThankYouQuery = graphql`
         fluid(maxWidth: 1440) {
           ...GatsbyImageSharpFluid
         }
+      }
+    }
+    seo: datoCmsSeo(name: { eq: "thank you" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
       }
     }
   }
