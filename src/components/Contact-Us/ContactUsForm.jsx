@@ -60,10 +60,7 @@ const FormRoot = styled.form`
       box-shadow: 0 0 0px 1000px transparent inset;
       transition: background-color 5000s ease-in-out 0s;
     }
-    /* input:focus,
-    input:valid {
-      font-size: 200px;
-    } */
+
     width: 100%;
     font-size: ${fontSize.sm};
     span {
@@ -91,12 +88,7 @@ const FormRoot = styled.form`
     justify-content: space-between;
     padding-top: ${spacing["8"]};
   }
-  .message {
-    h3 {
-      border-bottom: 4px solid #9b2c2c;
-      /* margin-bottom: 0; */
-    }
-  }
+
   @media (min-width: ${breakpoints.sm}) {
     border: 1px solid ${colors.gray["300"]};
     border-radius: ${radius.large}px;
@@ -273,7 +265,6 @@ const ContactUsForm = () => {
         </div>
 
         <label htmlFor="message" className="message">
-          {/* <h3>How can We help?</h3> */}
           <textarea
             onChange={(e) =>
               dispatch({ type: "message", payload: e.target.value })

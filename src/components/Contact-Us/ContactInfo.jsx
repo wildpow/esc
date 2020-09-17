@@ -15,7 +15,6 @@ const ContactRoot = styled.aside`
   position: relative;
   padding: ${spacing[1]};
   padding-top: ${spacing[8]};
-  /* margin-bottom: 20px; */
   address {
     display: flex;
     flex-wrap: wrap;
@@ -35,7 +34,6 @@ const ContactRoot = styled.aside`
     border: 1px solid ${colors.gray["400"]};
     top: -14px;
     z-index: 1;
-    /* margin-bottom: 10px; */
   }
   h5 {
     color: ${colors.gray[900]};
@@ -66,24 +64,11 @@ const ContactRoot = styled.aside`
     }
   }
 
-  /* @media (min-width: 375px) {
-    address div {
-      padding-top: 10px;
-      padding-right: 0px;
-      padding-left: 0px;
-      padding-bottom: 10px;
-    }
-  } */
-
   @media (min-width: ${breakpoints.phablet}) {
     address div {
       width: 240px;
     }
   }
-  /* @media (min-width: ${breakpoints.sm}) {
-    padding: ${spacing[4]};
-    padding-top: ${spacing[10]};
-  } */
   @media (min-width: ${breakpoints.xl}) {
     h4 {
       font-size: ${fontSize.xl};

@@ -8,12 +8,11 @@ import ContactInfo from "../components/Contact-Us/ContactInfo";
 import TopBlogPosts from "../components/Contact-Us/TopBlogPosts";
 
 const ThankYou = ({ data }) => {
-  const { test, test2, clean, win, clothes, tips } = data;
+  const { panda } = data;
   return (
     <Layout>
-      {console.log(data)}
       <ContactUsRoot>
-        <Img fluid={test.childImageSharp.fluid} />
+        <Img fluid={panda.childImageSharp.fluid} />
         <Content>
           <h2>Thank you for getting in touch!</h2>
           <p>
@@ -22,7 +21,7 @@ const ThankYou = ({ data }) => {
           </p>
           <ContactInfo />
           <h3 className="message">Check out some of our blog posts.</h3>
-          <TopBlogPosts data={[clean, clothes, win, tips]} />
+          <TopBlogPosts />
         </Content>
       </ContactUsRoot>
     </Layout>
@@ -31,55 +30,11 @@ const ThankYou = ({ data }) => {
 
 export const ThankYouQuery = graphql`
   query {
-    test: file(relativePath: { eq: "contact-us.jpg" }) {
+    panda: file(relativePath: { eq: "contact-us.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1440) {
           ...GatsbyImageSharpFluid
         }
-      }
-    }
-    test2: file(relativePath: { eq: "ContactUsHeader.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1440) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-
-    clean: datoCmsBlog(slug: { eq: "the-clean-shop-promise" }) {
-      description
-      slug
-      title
-      blogListImage {
-        alt
-        url
-      }
-    }
-    win: datoCmsBlog(slug: { eq: "esc-mattress-center-wins-again" }) {
-      description
-      slug
-      title
-      blogListImage {
-        alt
-        url
-      }
-    }
-    clothes: datoCmsBlog(slug: { eq: "clothes-for-kids" }) {
-      description
-      slug
-      title
-      blogListImage {
-        alt
-        url
-      }
-    }
-    tips: datoCmsBlog(slug: { eq: "five-mattress-shopping-tips" }) {
-      description
-      slug
-      title
-      blogListImage {
-        alt
-        url
       }
     }
   }

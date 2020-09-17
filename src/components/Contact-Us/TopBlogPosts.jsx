@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-
+import useTopBlogPosts from "./useTopBlogPosts";
 import {
   colors,
   spacing,
@@ -55,10 +55,6 @@ const TopBlogRoot = styled.div`
       margin-top: 5px;
     }
     h4 {
-      /* white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow-y: hidden;
-      overflow: hidden; */
       margin-top: 17px;
       margin-bottom: 0;
       padding-left: 5px;
@@ -134,11 +130,11 @@ const TopBlogRoot = styled.div`
     }
   }
 `;
-const TopBlogPosts = (data) => {
+const TopBlogPosts = () => {
+  const topBlogData = useTopBlogPosts();
   return (
     <TopBlogRoot>
-      {console.log(data)}
-      {data.data.map((item) => {
+      {topBlogData.map((item) => {
         return (
           <Link
             key={item.slug}
