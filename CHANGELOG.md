@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - 🤖 Added pre-commit hook. Project now following Conventional Commit spec with [commitlint](https://github.com/conventional-changelog/commitlint) and [husk](https://github.com/typicode/husky). [ad43fa3](https://github.com/wildpow/new-esc-gatsby/commit/26dd5dd08fde77d6edbefa494f2c89ff86e2d25d)
 - Added new brand Nectar. Product list, landing and published products from CMS [ #119](https://github.com/wildpow/new-esc-gatsby/pull/118).
 - New contact us form (Netlify forms) and thank you page for submissions [#121](https://github.com/wildpow/new-esc-gatsby/pull/121).
+- Blog redesign🎉 Lazing load images in markdown with [gatsby-remark-images-datocms](https://github.com/datocms/gatsby-remark-images-datocms), local link catching with [gatsby-plugin-catch-links](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-catch-links), styling by [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography). PR [#122](https://github.com/wildpow/new-esc-gatsby/pull/122)
 
 ##### Bug Fixes
 
