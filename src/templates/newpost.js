@@ -6,7 +6,7 @@ import tw, { styled } from "twin.macro";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
-import { fonts } from "../utils/styles";
+import { fonts, colors } from "../utils/styles";
 import SuggestionBar from "../components/Blog/SuggestionBar";
 
 const PostRoot = styled.div`
@@ -26,6 +26,35 @@ const PostRoot = styled.div`
     font-family: ${fonts.serif};
     padding-left: 5px;
     padding-right: 5px;
+  }
+  article p a {
+    color: ${colors.blue[700]};
+    position: relative;
+    padding-left: 5px;
+    margin-right: 3px;
+    /* display: inline-block;
+    vertical-align: middle; */
+    padding-bottom: 0px;
+    overflow: hidden;
+    /* line-height: 1.3rem; */
+    text-decoration: none;
+    background-color: transparent;
+    ::before {
+      content: "";
+      position: absolute;
+      bottom: 1px;
+      width: 100%;
+      height: 4px;
+      background: ${colors.red[400]};
+      opacity: 0.6;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+  article p a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
   }
   article {
     margin: 0 auto;
@@ -51,12 +80,12 @@ const PostRoot = styled.div`
     margin-left: -5px;
   }
   img {
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
   }
 `;
 
 const Article = tw.article`
-  prose sm:prose-lg md:prose-xl lg:prose-2xl lg:pb-10
+  prose sm:prose-lg md:prose-xl lg:prose-2xl lg:pb-10 lg:pt-10
 `;
 
 const NewPost = ({ data, pageContext }) => {
