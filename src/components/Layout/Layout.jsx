@@ -12,14 +12,6 @@ import MenuOverLay from "../shared/MenuOverLay";
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
 import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
 
-// const FooterWrapper = styled.footer`
-//   bottom: 0;
-//   left: 0;
-//   top: 0;
-
-//   position: sticky;
-// `;
-
 const MainRoot = styled.div`
   max-width: 1440px;
   margin-left: auto;

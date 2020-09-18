@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import PropTypes from "prop-types";
-import { useWindowSize } from "../../context/WindowSizeContext";
 
-const buttonStyles = css`
+export const InBoundLink = styled(Link)`
   padding: 10px 25px;
   font-family: ${(props) => props.theme.MainFont1};
   text-decoration: none;
@@ -17,15 +16,8 @@ const buttonStyles = css`
     background: #c8645d;
   }
 `;
-const OutBoundLink = styled.a`
-  ${buttonStyles}
-`;
-export const InBoundLink = styled(Link)`
-  ${buttonStyles}
-`;
 
 const HeaderButtons = ({ buttonName, buttonURL }) => {
-  const { width } = useWindowSize();
   return (
     <div
       style={{
@@ -38,23 +30,7 @@ const HeaderButtons = ({ buttonName, buttonURL }) => {
       {buttonName && (
         <InBoundLink to={buttonURL}>{`Shop ${buttonName} now!`}</InBoundLink>
       )}
-      {width > 750 ? (
-        <OutBoundLink
-          href="mailto:info@escmattresscenter.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Contact Us Now!
-        </OutBoundLink>
-      ) : (
-        <OutBoundLink
-          href="tel:1-425-512-0017"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Contact Us Now!
-        </OutBoundLink>
-      )}
+      <InBoundLink to="/contact-us">Contact Us Now!</InBoundLink>
     </div>
   );
 };

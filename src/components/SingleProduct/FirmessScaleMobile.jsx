@@ -127,6 +127,9 @@ const contentStyle = {
   maxWidth: "600px",
   width: "90%",
   padding: "0px",
+  background: "white",
+  border: "1px solid lightgray",
+  borderRadius: "10px",
 };
 const OpenButton = styled.button`
   border: none;

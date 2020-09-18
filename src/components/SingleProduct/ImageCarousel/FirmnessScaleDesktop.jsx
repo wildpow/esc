@@ -118,9 +118,12 @@ const Article = styled.article`
   }
 `;
 const contentStyle = {
-  maxWidth: "600px",
-  width: "90%",
+  maxWidth: "400px",
+
   padding: "0px",
+  background: "white",
+  border: "1px solid lightgray",
+  borderRadius: "10px",
 };
 const FirmnessScale = ({ firmNum, isMobile }) => {
   let gradient =
@@ -156,7 +159,7 @@ const FirmnessScale = ({ firmNum, isMobile }) => {
           <div className="soft">Soft</div>
         </Firmness>
       }
-      position="bottom right"
+      position="top center"
       closeOnDocumentClick
       contentStyle={contentStyle}
       closeOnEscape
