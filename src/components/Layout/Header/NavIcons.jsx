@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { bool, string, func } from "prop-types";
+import { Link } from "gatsby";
 import styled from "styled-components";
 import VisuallyHidden from "@reach/visually-hidden";
 import StoreContext from "../../../context/StoreContext";
@@ -126,6 +127,7 @@ const StyledLinks = styled.a`
     color: ${colors.gray["600"]};
   }
 `;
+
 const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
   const {
     store: { checkout },
@@ -147,9 +149,8 @@ const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
         </span>
       </StyledLinks>
       <StyledLinks
-        href="mailto:info@escmattresscenter.com"
-        target="_blank"
-        rel="noopener noreferrer"
+        as={Link}
+        to="/contact-us"
         pin={pin}
         aria-label="get in contact with us via email"
       >
