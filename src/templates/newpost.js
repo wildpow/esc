@@ -27,7 +27,7 @@ const PostRoot = styled.div`
     padding-left: 5px;
     padding-right: 5px;
   }
-  article p a {
+  article a {
     color: ${colors.blue[700]};
     position: relative;
     padding-left: 5px;
@@ -52,7 +52,7 @@ const PostRoot = styled.div`
       transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
     }
   }
-  article p a:hover::before {
+  article a:hover::before {
     transform: scaleX(1);
     transform-origin: left;
   }
