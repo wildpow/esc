@@ -1,14 +1,29 @@
 import React from "react";
 import styled from "styled-components";
-import { string } from "prop-types";
+import PropTypes, { string } from "prop-types";
+import { FadeIn } from "../../styles/mainStyles";
 import {
   fonts,
   fontSize,
-  sizing,
-  breakpoints,
   colors,
-  spacing,
+  // breakpoints,
+  // spacing,
 } from "../../utils/styles";
+import ForwardArrow from "../../assets/arrow-right-solid.svg";
+import { PrimaryButton } from "../shared/Buttons";
+
+const FooterButton = styled(PrimaryButton)`
+  font-size: 1.25rem;
+  width: 100%;
+  padding: 25px;
+  .fa-arrow-right {
+    width: 15px;
+    margin-left: 10px;
+  }
+  @media (min-width: 1028px) {
+    width: initial;
+  }
+`;
 
 const TopItemsRoot = styled.article`
   display: flex;
@@ -104,23 +119,79 @@ const ItemsWrapper = styled.div`
   }
 `;
 
+const P = styled.p`
+  font-family: ${(props) => props.theme.MainFont3};
+  text-align: justify;
+  text-justify: inter-character !important;
+  margin-bottom: 0;
+  font-weight: 300;
+  margin-top: 0;
+  background-color: white;
+  padding: 5px 15px 5px 15px;
+  font-size: 1rem;
+  line-height: 1.55rem;
+  color: ${(props) => props.theme.newColor2};
+
+  @media (min-width: 640px) {
+    padding: 5px 15px 5px 15px;
+    line-height: 1.8rem;
+    font-size: 1.2rem;
+  }
+  @media (min-width: 768px) {
+    font-size: 1.3rem;
+    line-height: 2rem;
+  }
+  @media (min-width: 1024px) {
+    padding: 5px 15px 5px 15px;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+  }
+`;
+
+const FooterWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  background-color: ${colors.gray["100"]};
+  padding-top: 20px;
+`;
+
 const TopItems = ({
-  items,
-  typeOfItems,
+  paragraph,
   headerText,
-  footerUrl,
-  footerText,
+  footerButtonUrl,
+  footerButtonText,
+  children,
 }) => {
   return (
     <TopItemsRoot>
       <HeadLine>
         <h2>{headerText}</h2>
       </HeadLine>
-      <ItemsWrapper>
-        <p>bla</p>
-      </ItemsWrapper>
+      <ItemsWrapper>{children}</ItemsWrapper>
+      {paragraph && <P>{paragraph}</P>}
+      <FooterWrapper>
+        <FooterButton to={footerButtonUrl}>
+          {footerButtonText}
+          <ForwardArrow />
+        </FooterButton>
+      </FooterWrapper>
     </TopItemsRoot>
   );
+};
+
+TopItems.defaultProps = {
+  headerText: "This is The Header Text",
+  footerButtonText: "Footer button Text",
+  footerButtonUrl: "/about",
+  paragraph: undefined,
+};
+
+TopItems.propTypes = {
+  headerText: string,
+  footerButtonText: string,
+  footerButtonUrl: string,
+  paragraph: string,
+  children: PropTypes.element.isRequired,
 };
 
 export default TopItems;

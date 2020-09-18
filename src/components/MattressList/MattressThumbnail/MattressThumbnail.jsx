@@ -12,9 +12,9 @@ import {
 } from "./MattressThumbnail.styled";
 import FirmnessScale from "./FirmnessScale";
 
-const MattressThumbnail = ({ mattress, url }) => {
+const MattressThumbnail = ({ mattress, url, front }) => {
   return (
-    <StyledLink to={url}>
+    <StyledLink to={url} front={front}>
       <Topper>
         <BannerWrapper>
           {mattress.saleInfo[0].saleBanner.length > 3 && (
@@ -48,9 +48,13 @@ const MattressThumbnail = ({ mattress, url }) => {
   );
 };
 
+MattressThumbnail.defaultProps = {
+  front: false,
+};
 MattressThumbnail.propTypes = {
   mattress: PropTypes.instanceOf(Object).isRequired,
   url: PropTypes.string.isRequired,
+  front: PropTypes.bool,
 };
 
 export default MattressThumbnail;

@@ -8,8 +8,11 @@ import "../styles/carousel.css";
 import Layout from "../components/Layout";
 import { Main } from "../styles/homeStyles";
 import Front from "../components/Home/front";
-import TopThreeMatts from "../components/Home/Top3Mattress";
-import TopAccessories from "../components/Home/TopAccessories";
+// import TopThreeMatts from "../components/Home/Top3Mattress";
+// import TopAccessories from "../components/Home/TopAccessories";
+import TopItems from "../components/Home/TopItems";
+import MattressThumbnail from "../components/MattressList/MattressThumbnail";
+import AccThumb from "../components/Accessories/AccessoryList/AccThumb";
 
 const IndexPage = ({ data }) => {
   const {
@@ -17,12 +20,12 @@ const IndexPage = ({ data }) => {
     topAccessoryFooter,
     topAccessoryHeader,
     topAccessoryFooterUrl,
+    top3Mattress,
   } = data.datoCmsFrontPage;
   const { products } = data.shopifyCollection;
   let sources = [];
   return (
     <Layout>
-      {console.log(data.datoCmsFrontPage)}
       <HelmetDatoCms seo={data.datoCmsFrontPage.seoMetaTags} />
       <Main>
         <Carousel
@@ -59,13 +62,35 @@ const IndexPage = ({ data }) => {
           })}
         </Carousel>
         <Front />
-        <TopThreeMatts />
-        <TopAccessories
-          products={products}
-          topAccessoryFooter={topAccessoryFooter}
-          topAccessoryHeader={topAccessoryHeader}
-          topAccessoryFooterUrl={topAccessoryFooterUrl}
-        />
+        <TopItems
+          headerText={top3Mattress[0].header}
+          paragraph={`We believe that no mattress is a one-size-fits-all solution, which is
+        why we have over 50 mattresses to choose from at our Everett location.
+        If you’d like to browse our current sale mattresses you can click below,
+        or visit our showroom on Everett Mall Way. With a combined 25 years of
+        experience helping people find the right mattress for their sleep needs
+        we’re here to help you start sleeping better.`}
+          footerButtonText={top3Mattress[0].footer}
+          footerButtonUrl={top3Mattress[0].footerUrl}
+        >
+          {top3Mattress[0].mattresses.map((mattress) => (
+            <MattressThumbnail
+              key={mattress.id}
+              front
+              mattress={mattress}
+              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
+            />
+          ))}
+        </TopItems>
+        <TopItems
+          headerText={topAccessoryHeader}
+          footerButtonText={topAccessoryFooter}
+          footerButtonUrl={topAccessoryFooterUrl}
+        >
+          {products.map((item) => (
+            <AccThumb acc={item} key={item.shopifyId} front />
+          ))}
+        </TopItems>
       </Main>
     </Layout>
   );
@@ -99,6 +124,41 @@ export const carouselQuery = graphql`
       }
     }
     datoCmsFrontPage {
+      top3Mattress {
+        footer
+        footerUrl
+        header
+        mattresses {
+          slug
+          id
+          name
+          firmness
+          images {
+            coverImage {
+              fluid(
+                maxWidth: 250
+                imgixParams: { auto: "compress", lossless: true }
+              ) {
+                ...GatsbyDatoCmsFluid
+              }
+              alt
+            }
+          }
+          priceLow
+          priceHigh
+          saleInfo {
+            saleBanner
+          }
+          subline {
+            name
+          }
+          brand {
+            urlName
+            displayName
+          }
+        }
+      }
+
       topAccessoryFooter
       topAccessoryHeader
       topAccessoryFooterUrl
