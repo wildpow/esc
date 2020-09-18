@@ -142,10 +142,10 @@ const TopBlogPosts = () => {
             to={`/blog/${item.slug}`}
           >
             <div className="post-title">
-              <img src={item.blogListImage.url} alt={item.blogListImage.alt} />
+              <img src={item.excerptImage.url} alt={item.excerptImage.alt} />
               <h4>{item.title}</h4>
             </div>
-            <p>{item.description}</p>
+            <p>{item.excerpt}</p>
           </Link>
         );
       })}

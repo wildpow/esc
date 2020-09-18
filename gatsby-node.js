@@ -159,22 +159,7 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     });
   });
-  const posts = data.allDatoCmsBlog.edges;
   const newPosts = data.allDatoCmsNewBlog.edges;
-
-  posts.forEach((post, index) => {
-    const prev = index === 0 ? null : posts[index - 1].node;
-    const next = index === posts.length - 1 ? null : posts[index + 1].node;
-    actions.createPage({
-      path: `/blog/${post.node.slug}`,
-      component: path.resolve(`./src/templates/post.js`),
-      context: {
-        slug: post.node.slug,
-        prev,
-        next,
-      },
-    });
-  });
   newPosts.forEach((post, index) => {
     const prev = index === 0 ? null : newPosts[index - 1].node;
     const next =

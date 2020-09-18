@@ -31,8 +31,13 @@ const PageContentRoot = styled.main`
 
 const PageContent = ({ children, moved }) => {
   function testUrl(str) {
+    if (str.includes("/blog/")) {
+      if (str === "/blog/" || str === "/blog") {
+        return false;
+      }
+      return true;
+    }
     if (
-      str.includes("blog/") ||
       str.includes("/landing") ||
       str === "/accessories" ||
       str === "/brands/nectar"
