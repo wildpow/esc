@@ -188,6 +188,7 @@ export const query = graphql`
       metafields {
         key
         value
+        id
       }
       images {
         originalSrc
