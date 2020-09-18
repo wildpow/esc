@@ -21,7 +21,7 @@ export const Content = styled.div`
   background-color: white;
   max-width: 1128px;
   margin: 0 auto;
-  margin-top: -40px;
+  margin-top: -20px;
   position: relative;
   margin-right: 5px;
   margin-left: 5px;
@@ -45,9 +45,12 @@ export const Content = styled.div`
     font-size: ${fontSize.md};
     color: ${colors.gray[800]};
   }
+  @media (min-width: 540px) {
+    margin-top: -50px;
+  }
   @media (min-width: ${breakpoints.sm}) {
     padding: ${spacing["10"]};
-    margin-top: -100px;
+    margin-top: -50px;
     margin-right: 20px;
     margin-left: 20px;
     h2 {
@@ -60,13 +63,13 @@ export const Content = styled.div`
     }
   }
   @media (min-width: ${breakpoints.md}) {
-    margin-top: -100px;
+    margin-top: -50px;
     padding: ${spacing["10"]};
     margin-right: 20px;
     margin-left: 20px;
   }
   @media (min-width: ${breakpoints.lg}) {
-    margin-top: -200px;
+    margin-top: -80px;
     h2 {
       font-size: ${fontSize["5xl"]};
     }
@@ -78,16 +81,17 @@ export const Content = styled.div`
   }
   @media (min-width: ${breakpoints.xl}) {
     margin: 0 auto;
-    margin-top: -200px;
+    margin-top: -100px;
   }
 `;
+
 export const ContactUsRoot = styled.section`
   /* padding-top: ${spacing["1"]}; */
   position: relative;
   padding-bottom: ${spacing["10"]};
   font-family: ${fonts.sans};
   @media (min-width: ${breakpoints.sm}) {
-    padding-top: ${spacing["4"]};
+    /* padding-top: ${spacing["1"]}; */
   }
   h3 {
     color: ${colors.blue[900]};
@@ -129,7 +133,7 @@ const ContactUs = ({ data }) => {
 
 export const contactUsQuery = graphql`
   query {
-    panda: file(relativePath: { eq: "contact-us.jpg" }) {
+    panda: file(relativePath: { eq: "ContactUsHeader.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1440) {
           ...GatsbyImageSharpFluid

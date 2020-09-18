@@ -84,7 +84,24 @@ exports.createPages = async ({ actions, graphql }) => {
       allDatoCmsBlog {
         edges {
           node {
+            blogListImage {
+              alt
+              url
+            }
             slug
+            title
+          }
+        }
+      }
+      allDatoCmsNewBlog {
+        edges {
+          node {
+            excerptImage {
+              alt
+              url
+            }
+            slug
+            title
           }
         }
       }
@@ -142,12 +159,18 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     });
   });
-  data.allDatoCmsBlog.edges.forEach((blog) => {
+  const newPosts = data.allDatoCmsNewBlog.edges;
+  newPosts.forEach((post, index) => {
+    const prev = index === 0 ? null : newPosts[index - 1].node;
+    const next =
+      index === newPosts.length - 1 ? null : newPosts[index + 1].node;
     actions.createPage({
-      path: `/blog/${blog.node.slug}`,
-      component: path.resolve(`./src/templates/post.js`),
+      path: `/blog/${post.node.slug}`,
+      component: path.resolve(`./src/templates/newpost.js`),
       context: {
-        slug: blog.node.slug,
+        slug: post.node.slug,
+        prev,
+        next,
       },
     });
   });

@@ -13,7 +13,8 @@ function ifLavish(string) {
 
 export const BreadWrapper = styled.div`
   padding-top: 15px;
-  padding-bottom:  15px;
+  padding-bottom: 15px;
+  padding-left: 5px;
   font-size: 0.9rem;
   font-weight: 400;
   color: ${(props) => props.theme.newColor2};
@@ -23,6 +24,7 @@ export const BreadWrapper = styled.div`
   margin-left: ${(props) => (props.Brands ? "15px" : "5px")}; */
   @media (min-width: 568px) {
     font-size: 1rem;
+    padding-left: 7px;
     /* margin-right: ${(props) => (props.Brands ? "45px" : "5px")};
     margin-left: ${(props) => (props.Brands ? "45px" : "5px")}; */
   }
@@ -36,6 +38,9 @@ export const BreadWrapper = styled.div`
   @media (min-width: 1300px) {
     /* margin-right: ${(props) => (props.Brands ? "55px" : "85px")};
     margin-left: ${(props) => (props.Brands ? "55px" : "85px")}; */
+  }
+  @media (min-width: 1450px) {
+    margin-left: 0px;
   }
   ${DisplayNonePr1nt}
 `;

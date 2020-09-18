@@ -7,7 +7,10 @@ const PageContentRoot = styled.main`
   position: relative;
   z-index: 1;
   box-shadow: ${boxShadow.xl};
-  background-color: ${colors.gray["100"]};
+  background-color: ${({ url }) => (url ? "white" : colors.gray["100"])};
+  /* display: flex;
+  flex-direction: column; */
+  /* min-height: calc(100vh - 60px); */
   will-change: transform;
   opacity: 1;
   padding-left: 0;
@@ -27,7 +30,28 @@ const PageContentRoot = styled.main`
 `;
 
 const PageContent = ({ children, moved }) => {
-  return <PageContentRoot className={moved}>{children}</PageContentRoot>;
+  function testUrl(str) {
+    if (str.includes("/blog/")) {
+      if (str === "/blog/" || str === "/blog") {
+        return false;
+      }
+      return true;
+    }
+    if (
+      str.includes("/landing") ||
+      str === "/accessories" ||
+      str === "/brands/nectar"
+    ) {
+      return true;
+    }
+    return false;
+  }
+  const url = typeof window !== "undefined" ? window.location.pathname : "";
+  return (
+    <PageContentRoot className={moved} url={testUrl(url)}>
+      {children}
+    </PageContentRoot>
+  );
 };
 
 PageContent.defaultProps = {
