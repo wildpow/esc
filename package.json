@@ -7,6 +7,7 @@
     "@reach/visually-hidden": "^0.11.1",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
+    "gatsby-plugin-catch-links": "^2.3.11",
     "gatsby-plugin-canonical-urls": "^2.3.10",
     "gatsby-plugin-google-analytics": "^2.1.35",
     "gatsby-plugin-manifest": "^2.2.41",
@@ -18,10 +19,12 @@
     "gatsby-plugin-sharp": "^2.4.5",
     "gatsby-plugin-sitemap": "^2.2.27",
     "gatsby-plugin-styled-components": "^3.1.19",
+    "gatsby-remark-images-datocms": "^0.0.9",
     "gatsby-source-apiserver": "2.1.5",
     "gatsby-source-datocms": "^2.3.0",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-source-shopify": "^3.2.1",
+    "gatsby-transformer-remark": "^2.8.28",
     "gatsby-transformer-sharp": "^2.3.14",
     "react": "^16.10.1",
     "react-anchor-link-smooth-scroll": "^1.0.11",
@@ -57,6 +60,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@percy/cypress": "^2.3.0",
+    "@tailwindcss/typography": "^0.2.0",
     "babel-plugin-styled-components": "^1.10.7",
     "cypress": "^5.2.0",
     "eslint-config-airbnb": "^18.0.1",
@@ -67,6 +71,7 @@
     "husky": "^4.2.1",
     "lint-staged": "^10.0.7",
     "prettier": "^2.0.5",
+    "twin.macro": "^1.7.0",
     "pretty-quick": "^3.0.2",
     "webpack-monitor": "^1.0.14"
   },
@@ -79,5 +84,15 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/wildpow/new-esc-gatsby"
+  },
+  "babelMacros": {
+    "twin": {
+      "config": "tailwind.config.js",
+      "preset": "styled-components",
+      "autoCssProp": true,
+      "debugProp": true,
+      "debugPlugins": false,
+      "debug": false
+    }
   }
 }

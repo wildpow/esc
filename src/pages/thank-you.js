@@ -32,7 +32,7 @@ const ThankYou = ({ data }) => {
 
 export const ThankYouQuery = graphql`
   query {
-    panda: file(relativePath: { eq: "contact-us.jpg" }) {
+    panda: file(relativePath: { eq: "ContactUsHeader.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1440) {
           ...GatsbyImageSharpFluid

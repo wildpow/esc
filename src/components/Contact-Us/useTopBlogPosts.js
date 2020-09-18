@@ -4,38 +4,41 @@ export default () => {
   const { clean, win, clothes, tips } = useStaticQuery(
     graphql`
       query topblog {
-        clean: datoCmsBlog(slug: { eq: "the-clean-shop-promise" }) {
-          description
+        clean: datoCmsNewBlog(slug: { eq: "the-clean-shop-promise" }) {
+          excerpt
           slug
+          id
           title
-          blogListImage {
+          excerptImage {
             alt
             url
           }
         }
-        win: datoCmsBlog(slug: { eq: "esc-mattress-center-wins-again" }) {
-          description
+        win: datoCmsNewBlog(slug: { eq: "esc-mattress-center-wins-again" }) {
+          excerpt
           slug
+          id
           title
-          blogListImage {
+          excerptImage {
             alt
             url
           }
         }
-        clothes: datoCmsBlog(slug: { eq: "clothes-for-kids" }) {
-          description
+        clothes: datoCmsNewBlog(slug: { eq: "clothes-for-kids" }) {
+          excerpt
           slug
+          id
           title
-          blogListImage {
+          excerptImage {
             alt
             url
           }
         }
-        tips: datoCmsBlog(slug: { eq: "five-mattress-shopping-tips" }) {
-          description
+        tips: datoCmsNewBlog(slug: { eq: "five-mattress-shopping-tips" }) {
+          excerpt
           slug
           title
-          blogListImage {
+          excerptImage {
             alt
             url
           }

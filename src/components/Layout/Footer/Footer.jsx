@@ -19,9 +19,9 @@ import useReaders from "./use-readers-choice";
 import Bird from "./Bird";
 
 const FooterRoot = styled.footer`
-@media print {
-  display: none;
-}
+  @media print {
+    display: none;
+  }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -97,10 +97,10 @@ const FooterRoot = styled.footer`
     a {
       padding: 0 10px;
       color: ${colors.red["200"]};
-      transition: all .2s ease-in;
-        &:hover {
-          color: ${colors.gray["600"]};
-        }
+      transition: all 0.2s ease-in;
+      &:hover {
+        color: ${colors.gray["600"]};
+      }
     }
   }
   transition: 0.75s;
@@ -213,7 +213,7 @@ const FooterRoot = styled.footer`
       a {
         padding: 0 10px;
         color: ${colors.red["200"]};
-        transition: all .2s ease-in;
+        transition: all 0.2s ease-in;
         &:hover {
           color: ${colors.gray["600"]};
         }
@@ -281,16 +281,15 @@ const FooterRoot = styled.footer`
     }
   }
   .link {
-   
-      :focus {
-        box-shadow: 0 0 0 3px ${colors.blue["300"]};
-        outline: 0;
-        transition: box-shadow 0.15s ease-in-out;
-      }
-      transition: all 0.25s ease-in;
-  &:hover {
-    transform: scale3d(1.05, 1.05, 1);
-  }
+    :focus {
+      box-shadow: 0 0 0 3px ${colors.blue["300"]};
+      outline: 0;
+      transition: box-shadow 0.15s ease-in-out;
+    }
+    transition: all 0.25s ease-in;
+    &:hover {
+      transform: scale3d(1.05, 1.05, 1);
+    }
   }
 `;
 

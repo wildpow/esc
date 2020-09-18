@@ -12,17 +12,17 @@ const PostThumbnail = ({ post, isHovering, onMouseEnter, onMouseLeave }) => {
       onTouchEnd={onMouseLeave}
     >
       <ThumbImg
-        src={post.blogListImage.url}
+        src={post.excerptImage.url}
         alt={
-          post.blogListImage.alt === null
+          post.excerptImage.alt === null
             ? `The blog post called ${post.title}`
-            : post.blogListImage.alt
+            : post.excerptImage.alt
         }
         isHovering={isHovering}
       />
       <h3>{post.title}</h3>
       <span />
-      <Description isHovering={isHovering}>{post.description}</Description>
+      <Description isHovering={isHovering}>{post.excerpt}</Description>
     </StyledLink>
   );
 };
