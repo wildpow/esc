@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
 import styled from "styled-components";
@@ -6,7 +6,6 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import PostThumbnail from "../components/Blog/PostThumbnail";
 import { FadeIn } from "../styles/mainStyles";
-// import SEO from "../components/seo";
 import { colors } from "../utils/styles";
 
 const PostsContainer = styled.div`
@@ -71,7 +70,6 @@ const Header = styled.header`
   padding: 5px;
   font-size: 1rem;
   line-height: 1.4rem;
-  /* text-shadow: ${(props) => props.theme.newTextShadow}; */
   text-align: center;
   @media (min-width: 568px) {
     font-size: 1.2rem;
@@ -85,67 +83,40 @@ const Header = styled.header`
     line-height: 1.7rem;
   }
 `;
-class Blog extends React.Component {
-  constructor(...args) {
-    super(...args);
-    this.state = {
-      numberOfPosts: 6,
-      isHovered: {},
-    };
-  }
-
-  setNumberOfPosts = () => {
-    const { numberOfPosts } = this.state;
-    this.setState({ numberOfPosts: numberOfPosts + 4 });
-  };
-
-  handleMouseEnter = (index) => {
-    this.setState((prevState) => {
-      return { isHovered: { ...prevState.isHovered, [index]: true } };
-    });
-  };
-
-  handleMouseLeave = (index) => {
-    this.setState((prevState) => {
-      return { isHovered: { ...prevState.isHovered, [index]: false } };
-    });
-  };
-
-  render() {
-    const { data } = this.props;
-    const { isHovered, numberOfPosts } = this.state;
-    const posts = data.allDatoCmsNewBlog.nodes.slice(0, numberOfPosts);
-    return (
-      <Layout>
-        <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
-        <BlogContainer>
-          <Header>
-            Thank you for checking out our sleep blog. Below are some mattress
-            and sleep-related posts to help you research your better night’s
-            sleep; all brought to you from our team of local sleep experts with
-            over twenty years of mattress industry experience.
-          </Header>
-          <PostsContainer>
-            {posts.map((post, index) => (
-              <PostThumbnail
-                onMouseEnter={() => this.handleMouseEnter(index)}
-                onMouseLeave={() => this.handleMouseLeave(index)}
-                isHovering={isHovered[index]}
-                key={post.id}
-                post={post}
-              />
-            ))}
-          </PostsContainer>
-          {numberOfPosts < data.allDatoCmsNewBlog.nodes.length && (
-            <Button onClick={() => this.setNumberOfPosts()} type="button">
-              Show More Posts
-            </Button>
-          )}
-        </BlogContainer>
-      </Layout>
-    );
-  }
-}
+const Blog = ({ data }) => {
+  const [hover, setHover] = useState({});
+  const [numPosts, setNumPosts] = useState(6);
+  const posts = data.allDatoCmsNewBlog.nodes.slice(0, numPosts);
+  return (
+    <Layout>
+      <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
+      <BlogContainer>
+        <Header>
+          Thank you for checking out our sleep blog. Below are some mattress and
+          sleep-related posts to help you research your better night’s sleep;
+          all brought to you from our team of local sleep experts with over
+          twenty years of mattress industry experience.
+        </Header>
+        <PostsContainer>
+          {posts.map((post, index) => (
+            <PostThumbnail
+              onMouseEnter={() => setHover({ ...hover, [index]: true })}
+              onMouseLeave={() => setHover({ ...hover, [index]: false })}
+              isHovering={hover[index]}
+              key={post.id}
+              post={post}
+            />
+          ))}
+        </PostsContainer>
+        {numPosts < data.allDatoCmsNewBlog.nodes.length && (
+          <Button onClick={() => setNumPosts(numPosts + 4)} type="button">
+            Show More Posts
+          </Button>
+        )}
+      </BlogContainer>
+    </Layout>
+  );
+};
 
 export default Blog;
 
