@@ -114,7 +114,7 @@ class Blog extends React.Component {
   render() {
     const { data } = this.props;
     const { isHovered, numberOfPosts } = this.state;
-    const posts = data.allDatoCmsBlog.nodes.slice(0, numberOfPosts);
+    const posts = data.allDatoCmsNewBlog.nodes.slice(0, numberOfPosts);
     return (
       <Layout>
         <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
@@ -136,7 +136,7 @@ class Blog extends React.Component {
               />
             ))}
           </PostsContainer>
-          {numberOfPosts < data.allDatoCmsBlog.nodes.length && (
+          {numberOfPosts < data.allDatoCmsNewBlog.nodes.length && (
             <Button onClick={() => this.setNumberOfPosts()} type="button">
               Show More Posts
             </Button>
@@ -160,19 +160,16 @@ export const blogList = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    allDatoCmsBlog(sort: { fields: postDate, order: DESC }) {
+    allDatoCmsNewBlog(sort: { fields: date, order: DESC }) {
       nodes {
         id
         slug
         title
-        postDate
-        description
-        postContent
-        bottomImage {
-          url
-          alt
-        }
-        blogListImage {
+        date
+        excerpt
+        content
+
+        excerptImage {
           alt
           url
         }

@@ -7,7 +7,6 @@ const PageContentRoot = styled.main`
   position: relative;
   z-index: 1;
   box-shadow: ${boxShadow.xl};
-  /* padding-bottom: ${spacing["1"]}; */
   background-color: ${({ url }) => (url ? "white" : colors.gray["100"])};
   /* display: flex;
   flex-direction: column; */
