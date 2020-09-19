@@ -1,12 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
-
 import Img from "gatsby-image";
-
 import { string, bool, func } from "prop-types";
-
 import styled from "styled-components";
-import logo from "../../../images/header/logo2.png";
 import { useWindowSize } from "../../../context/WindowSizeContext";
 import {
   colors,
@@ -50,15 +46,15 @@ const HeaderRoot = styled.header`
     padding-left: ${spacing["2"]};
     a {
       :focus {
-      box-shadow: 0 0 0 2px ${colors.blue["300"]};
-      outline: 0;
-      transition: box-shadow 0.15s ease-in-out;
-    }
+        box-shadow: 0 0 0 2px ${colors.blue["300"]};
+        outline: 0;
+        transition: box-shadow 0.15s ease-in-out;
+      }
     }
   }
   .brand__anchor {
     width: 60px;
-      position: relative;
+    position: relative;
     /* pointer-events: ${({ cartStatus, menuStatus }) =>
       cartStatus === "open" || menuStatus === "open" ? "none" : "auto"}; */
     display: block;
@@ -73,7 +69,6 @@ const HeaderRoot = styled.header`
       outline: 0;
       transition: box-shadow 0.15s ease-in-out;
     }
-   
   }
   h1 {
     align-self: center;
@@ -86,10 +81,8 @@ const HeaderRoot = styled.header`
     color: ${colors.red["800"]};
     font-weight: 900;
     font-size: ${fontSize["2xl"]};
-    /* margin: 0; */
     line-height: 1;
     padding-left: ${spacing["2"]};
-    /* padding-bottom: 5px; */
     span {
       color: ${colors.blue["800"]};
       font-style: italic;
@@ -124,9 +117,7 @@ const HeaderRoot = styled.header`
       padding-left: ${spacing["3"]};
     }
     .brand__anchor {
-      
       width: 75px;
-      
     }
   }
   @media screen and (min-width: ${breakpoints.lg}) {
@@ -138,14 +129,12 @@ const HeaderRoot = styled.header`
       align-self: flex-end;
     }
     .brand__anchor {
-    
       width: 90px;
-      
     }
   }
   @media print {
     box-shadow: none;
-   
+
     border-bottom: 2px solid ${colors.gray["300"]};
   }
 `;
