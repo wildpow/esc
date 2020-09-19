@@ -133,7 +133,7 @@ const cfg = {
         background_color: `#ffffff`,
         theme_color: `#1565c0`,
         display: `minimal-ui`,
-        icon: `src/images/logo.png`, // This path is relative to the root of the site.
+        icon: `src/images/squarePanda.png`, // This path is relative to the root of the site.
       },
     },
     {
