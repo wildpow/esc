@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
@@ -9,12 +9,27 @@ import Layout from "../components/Layout";
 import { Main } from "../styles/homeStyles";
 import Front from "../components/Home/front";
 import TopThreeMatts from "../components/Home/Top3Mattress";
+import toast from "../components/Toast/Toast";
+import ToastContainer from "../components/Toast/ToastContainer";
 
 const IndexPage = ({ data }) => {
   const { carousel } = data.datoCmsFrontPage;
   let sources = [];
+  // useEffect(() => {
+  //   toast.show("You have successfully seen the toast notification.", {
+  //     timeout: 3000,
+  //   });
+  // }, []);
   return (
     <Layout>
+      <button
+        onClick={() =>
+          toast.show("Success", { variant: "success", position: "top-center" })
+        }
+      >
+        toast
+      </button>
+      <ToastContainer />
       <HelmetDatoCms seo={data.datoCmsFrontPage.seoMetaTags} />
       <Main>
         <Carousel
