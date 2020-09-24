@@ -23,6 +23,7 @@ const PageHit = ({ hit }) => (
   <div>
     <Link to={hit.slug}>
       <h4>
+        {/* {console.log("hit", hit)} */}
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h4>
     </Link>

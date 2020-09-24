@@ -1,4 +1,4 @@
-const indexName = `Pages`;
+const indexName = `Products`;
 const adjustables = `{
   adjustable: allDatoCmsAdjustableBase {
       nodes {
@@ -6,6 +6,7 @@ const adjustables = `{
         slug
         fullName
         id
+        description
       }
     }
   }
@@ -16,6 +17,7 @@ const mattress = `{
         slug
         name
         id
+        description
         brand {
           displayName
           urlName
@@ -32,15 +34,18 @@ function adjustableToAlgoliaRecord({ id, slug, fullName, brand, ...rest }) {
   return {
     objectID: id,
     slug: `/adjustable/${slug}`,
-    fullName,
+    title: fullName,
+    brand,
     ...rest,
   };
 }
-function pageToAlgoliaRecord({ id, slug, name, ...rest }) {
+function pageToAlgoliaRecord({ id, slug, name, brand, subline, ...rest }) {
   return {
     objectID: id,
-    slug: `/brands/${rest.brand.urlName}/${slug}`,
-    name,
+    slug: `/brands/${brand.urlName}/${slug}`,
+    title: name,
+    brand: brand.displayName,
+    subline: subline.name,
     ...rest,
   };
 }

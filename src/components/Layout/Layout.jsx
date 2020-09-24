@@ -8,9 +8,11 @@ import Headroom from "react-headroom";
 import { useOnClickOutside, useKeyboardEvent, useIntersect } from "../Hooks";
 import { useWindowSize } from "../../context/WindowSizeContext";
 import MenuOverLay from "../shared/MenuOverLay";
-
+import Search from "../Search";
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
 import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
+
+const searchIndices = [{ name: `Products`, title: `Products` }];
 
 const MainRoot = styled.div`
   max-width: 1440px;
@@ -154,6 +156,7 @@ function Layout({ children }) {
       <PageContent moved={moved}>
         <MainRoot cartStatus={cartStatus} menuStatus={menuStatus}>
           {children}
+          <Search indices={searchIndices} />
         </MainRoot>
       </PageContent>
       <div ref={ref}>
