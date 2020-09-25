@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import SearchResult from "./search-result";
+import { colors, dimensions, fonts } from "../../utils/styles";
 
 const Popover = css`
   max-height: 80vh;
@@ -18,6 +19,8 @@ const Popover = css`
   background: ${({ theme }) => theme.background};
 `;
 export default styled(SearchResult)`
+  font-family: ${fonts.sans};
+
   display: ${(props) => (props.show ? `block` : `none`)};
   ${Popover}
   .HitCount {

@@ -6,7 +6,7 @@ import StyledSearchResult from "./styled-search-result";
 import StyledSearchRoot from "./styled-search-root";
 import useClickOutside from "./use-click-outside";
 
-export default function Search({ indices }) {
+export default function Search({ indices, pin }) {
   const rootRef = createRef();
   const [query, setQuery] = useState();
   const [hasFocus, setFocus] = useState(false);
@@ -19,13 +19,17 @@ export default function Search({ indices }) {
 
   return (
     <StyledSearchRoot ref={rootRef}>
-      {console.log(indices)}
       <InstantSearch
         searchClient={searchClient}
         indexName={indices[0].name}
         onSearchStateChange={({ query }) => setQuery(query)}
       >
-        <StyledSearchBox onFocus={() => setFocus(true)} hasFocus={hasFocus} />
+        {console.log(pin, "Dont forget to delete this BRO!!!!")}
+        <StyledSearchBox
+          onFocus={() => setFocus(true)}
+          hasFocus={hasFocus}
+          setFocus={setFocus}
+        />
         <StyledSearchResult
           show={query && query.length > 0 && hasFocus}
           indices={indices}

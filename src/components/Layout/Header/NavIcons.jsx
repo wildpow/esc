@@ -10,6 +10,9 @@ import Map from "../../../assets/directions-solid.svg";
 import { iconEntry, numberEntry } from "../../../utils/keyframes";
 import { colors, dimensions, breakpoints, fonts } from "../../../utils/styles";
 import CartIcon from "../../../assets/shopping-cart-solid.svg";
+import Search from "../../Search";
+
+const searchIndices = [{ name: `Products`, title: `Products` }];
 
 // TODO Change name or combine and import from different file to avoid
 // TODO duplication in Cart component.
@@ -108,9 +111,9 @@ const StyledLinks = styled.a`
   border: none;
   border-radius: 0;
   display: flex;
-  height: ${dimensions.headerHeight};
   justify-content: center;
   padding: 0;
+  height: ${dimensions.headerHeight};
   width: ${dimensions.headerHeight};
   :focus {
     box-shadow: 0 0 0 1px ${colors.blue["300"]} inset;
@@ -138,6 +141,7 @@ const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
   );
   return (
     <ExtraNavRoot>
+      <Search pin={pin} indices={searchIndices} />
       <StyledLinks
         href="tel:1-425-512-0017"
         pin={pin}

@@ -23,11 +23,10 @@ const PageHit = ({ hit }) => (
   <div>
     <Link to={hit.slug}>
       <h4>
-        {/* {console.log("hit", hit)} */}
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h4>
     </Link>
-    <Snippet attribute="excerpt" hit={hit} tagName="mark" />
+    <Snippet attribute="description" hit={hit} tagName="mark" />
   </div>
 );
 const HitsInIndex = ({ index }) => (
