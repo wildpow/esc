@@ -34,11 +34,4 @@ export default styled(SearchBox)`
     }
     ${({ hasFocus }) => (hasFocus ? open : closed)}
   }
-  .SearchIcon {
-    height: 28px;
-    margin: 0;
-    width: 28px;
-    color: ${({ hasFocus }) => (!hasFocus ? colors.gray["600"] : colors.white)};
-    pointer-events: none;
-  }
 `;

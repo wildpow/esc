@@ -4,15 +4,42 @@ import styled from "styled-components";
 import VisuallyHidden from "@reach/visually-hidden";
 import SearchIcon from "../../assets/search-solid.svg";
 import { colors, dimensions } from "../../utils/styles";
+import { iconEntry } from "../../utils/keyframes";
+import CloseIcon from "../../assets/times-solid.svg";
 
 const SearchButton = styled.button`
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: ${dimensions.headerHeight};
   width: ${dimensions.headerHeight};
   padding: 0;
-  background: ${({ hasFocus }) =>
-    hasFocus ? colors.blue[800] : "transparent"};
+  background: ${({ hasFocus }) => (hasFocus ? colors.red[800] : "transparent")};
+  animation: ${iconEntry} 0.75s ease forwards;
+  :focus {
+    box-shadow: 0 0 0 1px ${colors.blue["300"]} inset;
+    outline: 0;
+    transition: box-shadow 0.15s ease-in-out;
+  }
+
+  :hover {
+    .SearchIcon {
+      transform: scale(1.2);
+      color: ${colors.blue["900"]};
+      color: ${({ hasFocus }) =>
+        !hasFocus ? colors.blue["900"] : colors.white};
+    }
+  }
+  .SearchIcon {
+    transition: all 0.2s ease;
+    height: 31px;
+    margin: 0;
+    width: 31px;
+    color: ${({ hasFocus }) => (!hasFocus ? colors.gray["600"] : colors.white)};
+    pointer-events: none;
+  }
 `;
 
 export default connectSearchBox(
@@ -27,7 +54,6 @@ export default connectSearchBox(
         value={currentRefinement}
         onFocus={onFocus}
       />
-      {console.log("ppop", hasFocus)}
       <SearchButton
         type="button"
         onClick={() => setFocus(!hasFocus)}
@@ -35,7 +61,11 @@ export default connectSearchBox(
       >
         <span aria-hidden>
           <VisuallyHidden>Search Our web site</VisuallyHidden>
-          <SearchIcon className="SearchIcon" />
+          {hasFocus ? (
+            <CloseIcon className="SearchIcon" />
+          ) : (
+            <SearchIcon className="SearchIcon" />
+          )}
         </span>
       </SearchButton>
     </form>
