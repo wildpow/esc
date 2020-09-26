@@ -27,6 +27,7 @@ export default function Search({ indices, pin }) {
         onSearchStateChange={({ query }) => setQuery(query)}
       >
         <StyledSearchBox
+          pin={pin}
           onFocus={() => setFocus(true)}
           hasFocus={hasFocus}
           setFocus={setFocus}

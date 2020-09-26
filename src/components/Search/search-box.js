@@ -17,34 +17,65 @@ const SearchButton = styled.button`
   width: ${dimensions.headerHeight};
   padding: 0;
   background: ${({ hasFocus }) => (hasFocus ? colors.red[800] : "transparent")};
-  animation: ${iconEntry} 0.75s ease forwards;
   :focus {
     box-shadow: 0 0 0 1px ${colors.blue["300"]} inset;
     outline: 0;
     transition: box-shadow 0.15s ease-in-out;
   }
+  transition: all 0.2s ease;
 
   :hover {
+    transform: scale(1.2);
     .SearchIcon {
-      transform: scale(1.2);
       color: ${colors.blue["900"]};
       color: ${({ hasFocus }) =>
         !hasFocus ? colors.blue["900"] : colors.white};
     }
   }
+  .closeIcon,
   .SearchIcon {
-    transition: all 0.2s ease;
     height: 31px;
+    transition: all 0.2s ease;
     margin: 0;
     width: 31px;
-    color: ${({ hasFocus }) => (!hasFocus ? colors.gray["600"] : colors.white)};
     pointer-events: none;
+  }
+  .SearchIcon {
+    animation: ${iconEntry} 0.75s ease forwards;
+
+    display: ${({ pin }) => (pin ? "initial" : "none")};
+    color: ${({ hasFocus }) => (!hasFocus ? colors.gray["600"] : colors.white)};
+  }
+  .closeIcon {
+    /* animation: ${iconEntry} 0.1s ease forwards; */
+
+    color: white;
   }
 `;
 
 export default connectSearchBox(
-  ({ refine, currentRefinement, className, onFocus, hasFocus, setFocus }) => (
+  ({
+    refine,
+    currentRefinement,
+    className,
+    onFocus,
+    hasFocus,
+    setFocus,
+    pin,
+  }) => (
     <form className={className}>
+      <SearchButton
+        type="button"
+        pin={pin}
+        onClick={() => setFocus(!hasFocus)}
+        hasFocus={hasFocus}
+      >
+        {hasFocus ? (
+          <CloseIcon className="SearchIcon" />
+        ) : (
+          <SearchIcon className="SearchIcon" />
+        )}
+      </SearchButton>
       <input
         className="SearchInput"
         type="text"
@@ -54,20 +85,6 @@ export default connectSearchBox(
         value={currentRefinement}
         onFocus={onFocus}
       />
-      <SearchButton
-        type="button"
-        onClick={() => setFocus(!hasFocus)}
-        hasFocus={hasFocus}
-      >
-        <span aria-hidden>
-          <VisuallyHidden>Search Our web site</VisuallyHidden>
-          {hasFocus ? (
-            <CloseIcon className="SearchIcon" />
-          ) : (
-            <SearchIcon className="SearchIcon" />
-          )}
-        </span>
-      </SearchButton>
     </form>
   ),
 );

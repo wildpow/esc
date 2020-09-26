@@ -85,6 +85,7 @@ const CartToggle = styled.button`
 
 const ExtraNavRoot = styled.div`
   display: flex;
+  position: relative;
   @media screen and (min-width: ${breakpoints.md}) {
     margin-right: 61px;
   }
