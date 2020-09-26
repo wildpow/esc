@@ -1,5 +1,5 @@
 import algoliasearch from "algoliasearch/lite";
-import React, { createRef, useState } from "react";
+import React, { createRef, useState, useEffect } from "react";
 import { InstantSearch } from "react-instantsearch-dom";
 import StyledSearchBox from "./styled-search-box";
 import StyledSearchResult from "./styled-search-result";
@@ -14,7 +14,9 @@ export default function Search({ indices, pin }) {
     process.env.GATSBY_ALGOLIA_APP_ID,
     process.env.GATSBY_ALGOLIA_SEARCH,
   );
-
+  useEffect(() => {
+    if (pin === false) setFocus(false);
+  }, [hasFocus, pin]);
   useClickOutside(rootRef, () => setFocus(false));
 
   return (
@@ -24,7 +26,6 @@ export default function Search({ indices, pin }) {
         indexName={indices[0].name}
         onSearchStateChange={({ query }) => setQuery(query)}
       >
-        {console.log(pin, "Dont forget to delete this BRO!!!!")}
         <StyledSearchBox
           onFocus={() => setFocus(true)}
           hasFocus={hasFocus}
