@@ -22,7 +22,7 @@ const SearchButton = styled.button`
     outline: 0;
     transition: box-shadow 0.15s ease-in-out;
   }
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease;
 
   :hover {
     transform: scale(1.2);
@@ -31,11 +31,14 @@ const SearchButton = styled.button`
       color: ${({ hasFocus }) =>
         !hasFocus ? colors.blue["900"] : colors.white};
     }
+    .closeIcon {
+    }
   }
   .closeIcon,
   .SearchIcon {
     height: 31px;
-    transition: all 0.2s ease;
+    transition: color 0.2s ease;
+    transition: transform 0.2s ease;
     margin: 0;
     width: 31px;
     pointer-events: none;
@@ -48,6 +51,7 @@ const SearchButton = styled.button`
   }
   .closeIcon {
     /* animation: ${iconEntry} 0.1s ease forwards; */
+    transition: all 0.2s ease;
 
     color: white;
   }
@@ -71,7 +75,7 @@ export default connectSearchBox(
         hasFocus={hasFocus}
       >
         {hasFocus ? (
-          <CloseIcon className="SearchIcon" />
+          <CloseIcon className="closeIcon" />
         ) : (
           <SearchIcon className="SearchIcon" />
         )}
