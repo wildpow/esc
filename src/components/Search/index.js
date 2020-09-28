@@ -4,7 +4,7 @@ import { InstantSearch } from "react-instantsearch-dom";
 import StyledSearchBox from "./styled-search-box";
 import StyledSearchResult from "./styled-search-result";
 import StyledSearchRoot from "./styled-search-root";
-import useClickOutside from "./use-click-outside";
+import { useKeyboardEvent, useOnClickOutside } from "../Hooks";
 
 export default function Search({ indices, pin }) {
   const rootRef = createRef();
@@ -17,8 +17,10 @@ export default function Search({ indices, pin }) {
   useEffect(() => {
     if (pin === false) setFocus(false);
   }, [hasFocus, pin]);
-  useClickOutside(rootRef, () => setFocus(false));
-
+  useKeyboardEvent("Escape", () => {
+    setFocus(false);
+  });
+  useOnClickOutside(rootRef, () => setFocus(false));
   return (
     <StyledSearchRoot ref={rootRef}>
       <InstantSearch

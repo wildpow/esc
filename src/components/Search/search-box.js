@@ -72,9 +72,15 @@ export default connectSearchBox(
         hasFocus={hasFocus}
       >
         {hasFocus ? (
-          <CloseIcon className="closeIcon" />
+          <span aria-hidden>
+            <VisuallyHidden>Search our site</VisuallyHidden>
+            <CloseIcon className="closeIcon" title="close search" />
+          </span>
         ) : (
-          <SearchIcon className="searchIcon" />
+          <span aria-hidden>
+            <VisuallyHidden>Close Search</VisuallyHidden>
+            <SearchIcon className="searchIcon" title="open search" />
+          </span>
         )}
       </SearchButton>
       <input
@@ -84,6 +90,7 @@ export default connectSearchBox(
         aria-label="Search"
         onChange={(e) => refine(e.target.value)}
         value={currentRefinement}
+        onFocus={onFocus}
       />
     </form>
   ),
