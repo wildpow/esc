@@ -80,11 +80,10 @@ export default connectSearchBox(
       <input
         className="SearchInput"
         type="text"
-        placeholder="Search"
+        placeholder="Product Search"
         aria-label="Search"
         onChange={(e) => refine(e.target.value)}
         value={currentRefinement}
-        onFocus={onFocus}
       />
     </form>
   ),

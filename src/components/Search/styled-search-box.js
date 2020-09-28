@@ -4,7 +4,7 @@ import { colors, dimensions, fonts } from "../../utils/styles";
 
 const open = css`
   width: calc(100% - 60px);
-  background: ${({ theme }) => theme.background};
+  background: ${colors.gray[100]};
   cursor: text;
   padding-left: 1.6em;
 `;
@@ -28,13 +28,14 @@ export default styled(SearchBox)`
     height: ${dimensions.headerHeight};
     outline: none;
     border: ${({ hasFocus }) => (hasFocus ? "auto" : "none")};
-    font-size: 1em;
+    font-size: 1.1em;
     transition: 100ms;
     border-radius: 2px;
-    color: ${({ theme }) => theme.foreground};
+    color: ${colors.gray[900]};
     ::placeholder {
-      color: ${({ theme }) => theme.faded};
+      color: ${colors.gray[600]};
     }
     ${({ hasFocus }) => (hasFocus ? open : closed)}
+    ${({ hasFocus }) => console.log(hasFocus)};
   }
 `;
