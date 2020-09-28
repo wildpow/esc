@@ -96,7 +96,7 @@ const HeaderRoot = styled.header`
       transform: translate3d(-400px, 0, 0);
     }
   }
-  @media screen and (min-width: ${breakpoints.md}) {
+  @media screen and (min-width: 835px) {
     box-shadow: ${boxShadow.md};
     .header__Wrapper {
       display: flex;

@@ -1,4 +1,5 @@
 import algoliasearch from "algoliasearch/lite";
+import PropTypes from "prop-types";
 import React, { createRef, useState, useEffect } from "react";
 import { InstantSearch } from "react-instantsearch-dom";
 import StyledSearchBox from "./styled-search-box";
@@ -42,3 +43,10 @@ export default function Search({ indices, pin, searchFocus, setSearchFocus }) {
     </StyledSearchRoot>
   );
 }
+
+Search.propTypes = {
+  indices: PropTypes.instanceOf(Array).isRequired,
+  pin: PropTypes.bool.isRequired,
+  searchFocus: PropTypes.bool.isRequired,
+  setSearchFocus: PropTypes.func.isRequired,
+};

@@ -135,33 +135,48 @@ const queries = [
     transformer: ({ data }) =>
       data.mattresses.nodes.map(mattressesToAlgoliaRecord),
     indexName,
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings: {
+      attributesToSnippet: [`description:20`],
+      searchableAttributes: [`brand`, `description`, `productType`, "title"],
+    },
   },
   {
     query: adjustables,
     transformer: ({ data }) =>
       data.adjustable.nodes.map(adjustableToAlgoliaRecord),
     indexName,
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings: {
+      attributesToSnippet: [`description:20`],
+      searchableAttributes: [`brand`, `description`, `productType`, "title"],
+    },
   },
   {
     query: pillows,
     transformer: ({ data }) => data.pillow.nodes.map(pillowToAlgoliaRecord),
     indexName,
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings: {
+      attributesToSnippet: [`description:20`],
+      searchableAttributes: [`brand`, `description`, `productType`, "title"],
+    },
   },
   {
     query: sheets,
     transformer: ({ data }) => data.sheets.nodes.map(sheetsToAlgoliaRecord),
     indexName,
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings: {
+      attributesToSnippet: [`description:20`],
+      searchableAttributes: [`brand`, `description`, `productType`, "title"],
+    },
   },
   {
     query: protector,
     transformer: ({ data }) =>
       data.protector.nodes.map(protectorToAlgoliaRecord),
     indexName,
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings: {
+      attributesToSnippet: [`description:20`],
+      searchableAttributes: [`brand`, `description`, `productType`, "title"],
+    },
   },
 ];
 module.exports = queries;

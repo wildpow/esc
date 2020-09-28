@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connectSearchBox } from "react-instantsearch-dom";
 import styled from "styled-components";
 import VisuallyHidden from "@reach/visually-hidden";
@@ -63,35 +63,43 @@ export default connectSearchBox(
     hasFocus,
     setFocus,
     pin,
-  }) => (
-    <form className={className}>
-      <SearchButton
-        type="button"
-        pin={pin}
-        onClick={() => setFocus(!hasFocus)}
-        hasFocus={hasFocus}
-      >
-        {hasFocus ? (
-          <span aria-hidden>
-            <VisuallyHidden>Search our site</VisuallyHidden>
-            <CloseIcon className="closeIcon" title="close search" />
-          </span>
-        ) : (
-          <span aria-hidden>
-            <VisuallyHidden>Close Search</VisuallyHidden>
-            <SearchIcon className="searchIcon" title="open search" />
-          </span>
-        )}
-      </SearchButton>
-      <input
-        className="SearchInput"
-        type="text"
-        placeholder="Product Search"
-        aria-label="Search"
-        onChange={(e) => refine(e.target.value)}
-        value={currentRefinement}
-        onFocus={onFocus}
-      />
-    </form>
-  ),
+  }) => {
+    const node = useRef(null);
+    const setOpen = () => {
+      node.current.focus();
+      setFocus(!hasFocus);
+    };
+    return (
+      <form className={className}>
+        <SearchButton
+          type="button"
+          pin={pin}
+          onClick={() => setOpen()}
+          hasFocus={hasFocus}
+        >
+          {hasFocus ? (
+            <span aria-hidden>
+              <VisuallyHidden>Search our site</VisuallyHidden>
+              <CloseIcon className="closeIcon" title="close search" />
+            </span>
+          ) : (
+            <span aria-hidden>
+              <VisuallyHidden>Close Search</VisuallyHidden>
+              <SearchIcon className="searchIcon" title="open search" />
+            </span>
+          )}
+        </SearchButton>
+        <input
+          className="SearchInput"
+          type="text"
+          placeholder="Product Search"
+          aria-label="Search"
+          onChange={(e) => refine(e.target.value)}
+          value={currentRefinement}
+          onFocus={onFocus}
+          ref={node}
+        />
+      </form>
+    );
+  },
 );
