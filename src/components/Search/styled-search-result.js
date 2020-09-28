@@ -34,18 +34,27 @@ export default styled(SearchResult)`
   .HitCount {
     display: flex;
     justify-content: flex-end;
+    border-bottom: 4px solid ${colors.red[800]};
   }
   .Hits {
     ul {
       list-style: none;
       margin-left: 0;
+      padding-left: 10px;
     }
     li.ais-Hits-item {
       margin-bottom: 1em;
+      line-height: 1.3rem;
+      font-family: ${fonts.serif};
       a {
-        color: ${({ theme }) => theme.foreground};
+        color: ${colors.blue[700]};
+        font-family: ${fonts.sans};
+        font-size: 1.2em;
         h4 {
           margin-bottom: 0.2em;
+        }
+        :hover {
+          color: ${colors.red[700]};
         }
       }
     }
