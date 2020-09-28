@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import SearchResult from "./search-result";
-import { colors, dimensions, fonts } from "../../utils/styles";
+import { colors, fonts } from "../../utils/styles";
 
 const Popover = css`
   max-height: 80vh;
@@ -47,6 +47,7 @@ export default styled(SearchResult)`
       line-height: 1.3rem;
       font-family: ${fonts.serif};
       a {
+        transition: all 0.2s ease;
         color: ${colors.blue[700]};
         font-family: ${fonts.sans};
         font-size: 1.2em;
