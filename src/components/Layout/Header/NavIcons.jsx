@@ -131,8 +131,19 @@ const StyledLinks = styled.a`
     color: ${colors.gray["600"]};
   }
 `;
-
-const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
+const ContactUS = styled(StyledLinks)`
+  @media (max-width: 360px) {
+    display: none;
+  }
+`;
+const NavIcons = ({
+  pin,
+  cartToggle,
+  menuStatus,
+  cartStatus,
+  searchFocus,
+  setSearchFocus,
+}) => {
   const {
     store: { checkout },
   } = useContext(StoreContext);
@@ -142,7 +153,12 @@ const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
   );
   return (
     <ExtraNavRoot>
-      <Search pin={pin} indices={searchIndices} />
+      <Search
+        pin={pin}
+        indices={searchIndices}
+        searchFocus={searchFocus}
+        setSearchFocus={setSearchFocus}
+      />
       <StyledLinks
         href="tel:1-425-512-0017"
         pin={pin}
@@ -153,7 +169,7 @@ const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
           <Phone className="fa-phone" title="call store" />
         </span>
       </StyledLinks>
-      <StyledLinks
+      <ContactUS
         as={Link}
         to="/contact-us"
         pin={pin}
@@ -163,7 +179,7 @@ const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
           <VisuallyHidden>Contact Us</VisuallyHidden>
           <Email className="fa-phone" title="Contact Us" />
         </span>
-      </StyledLinks>
+      </ContactUS>
       <StyledLinks
         href="https://goo.gl/maps/nqXkkkAGRdu"
         target="_blank"

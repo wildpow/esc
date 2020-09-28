@@ -11,12 +11,20 @@ const Popover = css`
   right: 0;
   top: 100%;
   margin-top: 0.5em;
-  width: 80vw;
+  width: 100vw;
   max-width: 30em;
   box-shadow: 0 0 5px 0;
   padding: 1em;
   border-radius: 2px;
+  margin-right: 5px;
+  margin-left: 5px;
   background: ${({ theme }) => theme.background};
+  @media (min-width: 560px) {
+    width: 80vw;
+    max-width: 30em;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
 `;
 export default styled(SearchResult)`
   font-family: ${fonts.sans};

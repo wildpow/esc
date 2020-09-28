@@ -36,6 +36,5 @@ export default styled(SearchBox)`
       color: ${colors.gray[600]};
     }
     ${({ hasFocus }) => (hasFocus ? open : closed)}
-    ${({ hasFocus }) => console.log(hasFocus)};
   }
 `;

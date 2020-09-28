@@ -6,21 +6,21 @@ import StyledSearchResult from "./styled-search-result";
 import StyledSearchRoot from "./styled-search-root";
 import { useKeyboardEvent, useOnClickOutside } from "../Hooks";
 
-export default function Search({ indices, pin }) {
+export default function Search({ indices, pin, searchFocus, setSearchFocus }) {
   const rootRef = createRef();
   const [query, setQuery] = useState();
-  const [hasFocus, setFocus] = useState(false);
+  // const [hasFocus, setFocus] = useState(false);
   const searchClient = algoliasearch(
     process.env.GATSBY_ALGOLIA_APP_ID,
     process.env.GATSBY_ALGOLIA_SEARCH,
   );
   useEffect(() => {
-    if (pin === false) setFocus(false);
-  }, [hasFocus, pin]);
+    if (pin === false) setSearchFocus(false);
+  }, [searchFocus, pin, setSearchFocus]);
   useKeyboardEvent("Escape", () => {
-    setFocus(false);
+    setSearchFocus(false);
   });
-  useOnClickOutside(rootRef, () => setFocus(false));
+  useOnClickOutside(rootRef, () => setSearchFocus(false));
   return (
     <StyledSearchRoot ref={rootRef}>
       <InstantSearch
@@ -30,12 +30,12 @@ export default function Search({ indices, pin }) {
       >
         <StyledSearchBox
           pin={pin}
-          onFocus={() => setFocus(true)}
-          hasFocus={hasFocus}
-          setFocus={setFocus}
+          onFocus={() => setSearchFocus(true)}
+          hasFocus={searchFocus}
+          setFocus={setSearchFocus}
         />
         <StyledSearchResult
-          show={query && query.length > 0 && hasFocus}
+          show={query && query.length > 0 && searchFocus}
           indices={indices}
         />
       </InstantSearch>
