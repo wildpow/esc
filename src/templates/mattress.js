@@ -113,7 +113,7 @@ const Mattress = ({ data }) => {
               )}
             </LeftSide>
             <MainInfo>
-              {width > 768 && (
+              {width > 767 && (
                 <List>
                   <h3>Features</h3>
                   <ul>
