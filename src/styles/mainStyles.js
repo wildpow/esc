@@ -38,6 +38,10 @@ export const theme = {
     "rgba(46, 41, 51, 0.08) 0px 1px 2px, rgba(71, 63, 79, 0.08) 0px 2px 4px",
   hoverBoxAfter: `0px 4px 8px rgba(46, 41, 51, 0.08), 0px 8px 16px rgba(71, 63, 79, 0.16)`,
   hoverTransform: `translateY(-4px)`,
+
+  foreground: "#050505",
+  background: "white",
+  faded: "#888",
 };
 
 export const FlexCol = styled.div`

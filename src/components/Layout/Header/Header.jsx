@@ -96,7 +96,7 @@ const HeaderRoot = styled.header`
       transform: translate3d(-400px, 0, 0);
     }
   }
-  @media screen and (min-width: ${breakpoints.md}) {
+  @media screen and (min-width: 835px) {
     box-shadow: ${boxShadow.md};
     .header__Wrapper {
       display: flex;
@@ -148,7 +148,15 @@ const PrintOnlyContact = styled.div`
     justify-content: space-between;
   }
 `;
-const Header = ({ cartStatus, menuStatus, pin, moved, cartToggle }) => {
+const Header = ({
+  cartStatus,
+  menuStatus,
+  pin,
+  moved,
+  cartToggle,
+  searchFocus,
+  setSearchFocus,
+}) => {
   const { width } = useWindowSize();
   const { pandaLogo } = useLogo();
   return (
@@ -181,6 +189,8 @@ const Header = ({ cartStatus, menuStatus, pin, moved, cartToggle }) => {
           cartToggle={cartToggle}
           menuStatus={menuStatus}
           cartStatus={cartStatus}
+          searchFocus={searchFocus}
+          setSearchFocus={setSearchFocus}
         />
         <PrintOnlyContact>
           <div>10121 Evergreen Way, #30, Everett, WA 98204</div>

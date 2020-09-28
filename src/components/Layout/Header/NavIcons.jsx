@@ -10,6 +10,9 @@ import Map from "../../../assets/directions-solid.svg";
 import { iconEntry, numberEntry } from "../../../utils/keyframes";
 import { colors, dimensions, breakpoints, fonts } from "../../../utils/styles";
 import CartIcon from "../../../assets/shopping-cart-solid.svg";
+import Search from "../../Search";
+
+const searchIndices = [{ name: `Products`, title: `Products` }];
 
 // TODO Change name or combine and import from different file to avoid
 // TODO duplication in Cart component.
@@ -82,6 +85,7 @@ const CartToggle = styled.button`
 
 const ExtraNavRoot = styled.div`
   display: flex;
+  position: relative;
   @media screen and (min-width: ${breakpoints.md}) {
     margin-right: 61px;
   }
@@ -108,9 +112,9 @@ const StyledLinks = styled.a`
   border: none;
   border-radius: 0;
   display: flex;
-  height: ${dimensions.headerHeight};
   justify-content: center;
   padding: 0;
+  height: ${dimensions.headerHeight};
   width: ${dimensions.headerHeight};
   :focus {
     box-shadow: 0 0 0 1px ${colors.blue["300"]} inset;
@@ -127,8 +131,19 @@ const StyledLinks = styled.a`
     color: ${colors.gray["600"]};
   }
 `;
-
-const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
+const ContactUS = styled(StyledLinks)`
+  @media (max-width: 360px) {
+    display: none;
+  }
+`;
+const NavIcons = ({
+  pin,
+  cartToggle,
+  menuStatus,
+  cartStatus,
+  searchFocus,
+  setSearchFocus,
+}) => {
   const {
     store: { checkout },
   } = useContext(StoreContext);
@@ -138,6 +153,12 @@ const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
   );
   return (
     <ExtraNavRoot>
+      <Search
+        pin={pin}
+        indices={searchIndices}
+        searchFocus={searchFocus}
+        setSearchFocus={setSearchFocus}
+      />
       <StyledLinks
         href="tel:1-425-512-0017"
         pin={pin}
@@ -148,7 +169,7 @@ const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
           <Phone className="fa-phone" title="call store" />
         </span>
       </StyledLinks>
-      <StyledLinks
+      <ContactUS
         as={Link}
         to="/contact-us"
         pin={pin}
@@ -158,7 +179,7 @@ const NavIcons = ({ pin, cartToggle, menuStatus, cartStatus }) => {
           <VisuallyHidden>Contact Us</VisuallyHidden>
           <Email className="fa-phone" title="Contact Us" />
         </span>
-      </StyledLinks>
+      </ContactUS>
       <StyledLinks
         href="https://goo.gl/maps/nqXkkkAGRdu"
         target="_blank"

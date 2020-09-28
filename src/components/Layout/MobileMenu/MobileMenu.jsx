@@ -16,6 +16,7 @@ const MobileMenuRoot = styled.div`
   display: ${({ pin }) => (pin ? "initial" : "none")};
   background: ${colors.blue["900"]};
   bottom: 0;
+  opacity: ${({ searchFocus }) => (searchFocus ? 0 : 1)};
   position: fixed;
   right: 0;
   /* top: -1px; */
@@ -99,12 +100,13 @@ const Heading = styled.header`
 //   }
 // `;
 
-const MobileMenu = ({ status, pin, toggle, menuId, ...props }) => {
+const MobileMenu = ({ status, pin, toggle, menuId, searchFocus, ...props }) => {
   const isHidden = status === "open";
   const tabIndex = isHidden ? 0 : -1;
 
   return (
     <MobileMenuRoot
+      searchFocus={searchFocus}
       className={status}
       aria-hidden={!isHidden}
       pin={pin}
