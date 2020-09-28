@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ##### Features
 
+- Site wide search powered by [Algolia](https://www.algolia.com/) PR [123](https://github.com/wildpow/new-esc-gatsby/pull/123).
 - 🤖 Added pre-commit hook. Project now following Conventional Commit spec with [commitlint](https://github.com/conventional-changelog/commitlint) and [husk](https://github.com/typicode/husky). [ad43fa3](https://github.com/wildpow/new-esc-gatsby/commit/26dd5dd08fde77d6edbefa494f2c89ff86e2d25d)
 - Added new brand Nectar. Product list, landing and published products from CMS [ #119](https://github.com/wildpow/new-esc-gatsby/pull/118).
 - New contact us form (Netlify forms) and thank you page for submissions [#121](https://github.com/wildpow/new-esc-gatsby/pull/121).
