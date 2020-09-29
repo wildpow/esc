@@ -193,7 +193,7 @@ const NavIcons = ({
         </span>
       </StyledLinks>
       <CartToggle
-        aria-label="Shopping cart with 1 items"
+        aria-label={`Shopping cart with ${itemsInCart} items`}
         onClick={cartToggle}
         pin={pin}
         menuStatus={menuStatus}
