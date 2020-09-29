@@ -11,6 +11,7 @@ const List = ({ location, data }) => {
     sealyHeader,
     stearnsHeader,
     tempurMattress,
+    sealyMattress,
   } = data;
   const allHeaders = [
     beautyrestHeader.headerLink,
@@ -20,10 +21,30 @@ const List = ({ location, data }) => {
     stearnsHeader.headerLink,
     tempurMattress.headerLink,
   ];
+  function sealySort(matts) {
+    const golden = [];
+    const essentials = [];
+    const performance = [];
+    const premium = [];
+    matts.nodes.map((matt) => {
+      if (matt.subline.name === "Golden Elegance") golden.push(matt);
+      if (matt.subline.name.includes("Essentials")) essentials.push(matt);
+      if (matt.subline.name.includes("Performance")) performance.push(matt);
+      if (matt.subline.name.includes("Posturepedic Plus"))
+        performance.push(matt);
+      if (matt.subline.name.includes("Premium")) premium.push(matt);
+      return [...golden, ...essentials, ...performance, ...premium];
+    });
+  }
+  const sealyMatt = sealySort(sealyMattress);
   return (
     <Layout>
-      {console.log(data)}
-      <MattressList headers={allHeaders} />
+      <MattressList
+        headers={allHeaders}
+        location={location}
+        tempur={tempurMattress}
+        sealy={sealyMatt}
+      />
     </Layout>
   );
 };
