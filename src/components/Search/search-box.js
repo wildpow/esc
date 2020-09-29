@@ -76,18 +76,19 @@ export default connectSearchBox(
           pin={pin}
           onClick={() => setOpen()}
           hasFocus={hasFocus}
+          title={hasFocus ? "close search" : "Search our site"}
+          aria-label={hasFocus ? "close search" : "Search our site"}
         >
-          {hasFocus ? (
-            <span aria-hidden>
-              <VisuallyHidden>Search our site</VisuallyHidden>
+          <span aria-hidden>
+            <VisuallyHidden>
+              {hasFocus ? "close search" : "Search our site"}
+            </VisuallyHidden>
+            {hasFocus ? (
               <CloseIcon className="closeIcon" title="close search" />
-            </span>
-          ) : (
-            <span aria-hidden>
-              <VisuallyHidden>Close Search</VisuallyHidden>
+            ) : (
               <SearchIcon className="searchIcon" title="open search" />
-            </span>
-          )}
+            )}
+          </span>
         </SearchButton>
         <input
           className="SearchInput"
