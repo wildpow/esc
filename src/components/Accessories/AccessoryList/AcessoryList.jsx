@@ -30,48 +30,44 @@ const AccessoryList = ({ location }) => {
   );
   const [state, dispatch] = useReducer(filterSortAcc, initialState);
   return (
-    <Layout>
-      <MattListWrapper>
-        <NewBread Brands>
-          <BreadCrumbs
-            next="Accessories"
-            here={
-              state.selectedAccInfo.title === "Accessories"
-                ? "All"
-                : state.selectedAccInfo.title
-            }
-          />
-        </NewBread>
-        <Header
-          title={state.selectedAccInfo.title}
-          description={state.selectedAccInfo.tagLine}
-          headerBG={state.selectedAccInfo.bgImg.url}
+    <MattListWrapper>
+      <NewBread Brands>
+        <BreadCrumbs
+          next="Accessories"
+          here={
+            state.selectedAccInfo.title === "Accessories"
+              ? "All"
+              : state.selectedAccInfo.title
+          }
         />
-        <div className="mattList__flex">
-          <FilterSortPanel
-            dispatch={dispatch}
-            typeCheckBoxs={state.typeCheckBoxs}
-          />
-          <div className="mattList__grid">
-            {state.acc
-              ? state.acc.map((acc) => (
-                  <AccThumb acc={acc} key={acc.shopifyId} />
-                ))
-              : null}
-          </div>
+      </NewBread>
+      <Header
+        title={state.selectedAccInfo.title}
+        description={state.selectedAccInfo.tagLine}
+        headerBG={state.selectedAccInfo.bgImg.url}
+      />
+      <div className="mattList__flex">
+        <FilterSortPanel
+          dispatch={dispatch}
+          typeCheckBoxs={state.typeCheckBoxs}
+        />
+        <div className="mattList__grid">
+          {state.acc
+            ? state.acc.map((acc) => <AccThumb acc={acc} key={acc.shopifyId} />)
+            : null}
         </div>
-        <NewBread Brands Bottom>
-          <BreadCrumbs
-            next="Accessories"
-            here={
-              state.selectedAccInfo.title === "Accessories"
-                ? "All"
-                : state.selectedAccInfo.title
-            }
-          />
-        </NewBread>
-      </MattListWrapper>
-    </Layout>
+      </div>
+      <NewBread Brands Bottom>
+        <BreadCrumbs
+          next="Accessories"
+          here={
+            state.selectedAccInfo.title === "Accessories"
+              ? "All"
+              : state.selectedAccInfo.title
+          }
+        />
+      </NewBread>
+    </MattListWrapper>
   );
 };
 
