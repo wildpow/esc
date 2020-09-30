@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { colors } from "../../utils/styles";
+import { colors } from "../../../utils/styles";
 
 const HeaderWrapper = styled.div`
   margin-top: 0px;

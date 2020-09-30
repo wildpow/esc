@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import propTypes from "prop-types";
 import BreadCrumbs from "../../BreadCrumbs";
-import Header from "../../MattressList/Header";
+import Header from "../../shared/ProductList/Header";
 import {
   NewBread,
   MattListWrapper,

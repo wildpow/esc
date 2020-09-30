@@ -1,8 +1,8 @@
 import React, { useReducer } from "react";
 import PropTypes from "prop-types";
-import Header from "./Header";
+import Header from "../shared/ProductList/Header";
 import MattressThumbnail from "./MattressThumbnail";
-import FilterSortPanel from "./FilterSortPanel";
+import FilterSortPanel from "./FilterSortPanelMatt";
 import filterSortReducer from "./FilterSortReducer";
 import BreadCrumbs from "../BreadCrumbs";
 import { NewBread, MattListWrapper } from "./MattressList.styled";
