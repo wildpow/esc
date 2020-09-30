@@ -37,7 +37,7 @@ const FilterSort = styled.div`
     background-image: url(${(props) => props.bg}),
       linear-gradient(
         to bottom,
-        ${colors.blue["700"]} 0%,
+        ${colors.blue["600"]} 0%,
         ${colors.blue["800"]} 100%
       );
     background-repeat: no-repeat, repeat;
@@ -57,7 +57,7 @@ const FilterSort = styled.div`
     background-image: url(${(props) => props.bg}),
       linear-gradient(
         to bottom,
-        ${colors.red["800"]} 0%,
+        ${colors.red["700"]} 0%,
         ${colors.red["900"]} 100%
       );
   }
@@ -65,7 +65,7 @@ const FilterSort = styled.div`
     background-image: url(${(props) => props.bg}),
       linear-gradient(
         to bottom,
-        ${colors.red["800"]} 0%,
+        ${colors.red["700"]} 0%,
         ${colors.red["900"]} 100%
       );
     border-color: white;
@@ -86,17 +86,17 @@ const FilterSort = styled.div`
     display: flex;
     flex-direction: column;
     h3 {
+      color: ${colors.blue["900"]};
       padding-left: 20px;
       font-weight: 400;
       padding-bottom: 10px;
       font-size: 1.3rem;
       border-bottom: 4px solid ${(props) => props.theme.mainColor2};
-      color: ${colors.blue["900"]};
     }
     label {
       padding-left: 20px;
       padding-bottom: 15px;
-      color: ${colors.gray["800"]};
+      color: ${colors.gray["700"]};
     }
     label:last-child {
       padding-bottom: 20px;
