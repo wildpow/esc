@@ -1,27 +1,12 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
+import propTypes from "prop-types";
 import Layout from "../../components/Layout";
 import MattressList from "../../components/Brands/list";
 
 const List = ({ location, data }) => {
-  const {
-    beautyrestHeader,
-    nectarHeader,
-    poshHeader,
-    sealyHeader,
-    stearnsHeader,
-    tempurMattress,
-    sealyMattress,
-  } = data;
-  const allHeaders = [
-    beautyrestHeader.headerLink,
-    nectarHeader.headerLink,
-    poshHeader.headerLink,
-    sealyHeader.headerLink,
-    stearnsHeader.headerLink,
-    tempurMattress.headerLink,
-  ];
-  function sealySort(matts) {
+  const sealySort = (matts) => {
     const golden = [];
     const essentials = [];
     const performance = [];
@@ -33,24 +18,60 @@ const List = ({ location, data }) => {
       if (matt.subline.name.includes("Posturepedic Plus"))
         performance.push(matt);
       if (matt.subline.name.includes("Premium")) premium.push(matt);
-      return [...golden, ...essentials, ...performance, ...premium];
+
+      const nodes = [...golden, ...essentials, ...performance, ...premium];
+      console.log(nodes);
+      return nodes;
     });
-  }
-  const sealyMatt = sealySort(sealyMattress);
+  };
+  const sealyMatt = sealySort(data.sealyMattress);
+  const combinedData = {
+    sealy: {
+      sealyMatt,
+      header: data.sealyHeader.headerLink,
+    },
+    beautyrest: {
+      ...data.beautyrestMattress,
+      header: data.beautyrestHeader.headerLink,
+    },
+    tempur: {
+      ...data.tempurMattress,
+      header: data.tempurHeader.headerLink,
+    },
+    serta: {
+      ...data.sertaMattress,
+      header: data.sertaHeader.headerLink,
+    },
+    stearns: {
+      ...data.stearnsMattress,
+      header: data.stearnsHeader.headerLink,
+    },
+    nectar: {
+      ...data.nectarMattress,
+      header: data.nectarHeader.headerLink,
+    },
+    posh: {
+      ...data.poshMattress,
+      header: data.poshHeader.headerLink,
+    },
+  };
+
   return (
     <Layout>
-      <MattressList
-        headers={allHeaders}
-        location={location}
-        tempur={tempurMattress}
-        sealy={sealyMatt}
-      />
+      <HelmetDatoCms seo={data.seo.seoMetaTags} />
+      {console.log(sealyMatt)}
+      <MattressList location={location} data={combinedData} />
     </Layout>
   );
 };
 
 export const list = graphql`
   query allMattresses {
+    seo: datoCmsSeo(name: { eq: "brands" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
     beautyrestHeader: datoCmsBrand(urlName: { eq: "beautyrest" }) {
       headerLink {
         title
@@ -166,6 +187,30 @@ export const list = graphql`
         ...mattressParts
       }
     }
+    sertaMattress: allDatoCmsMattress(
+      filter: { brand: { urlName: { eq: "serta" } } }
+      sort: { fields: priceLow, order: ASC }
+    ) {
+      nodes {
+        ...mattressParts
+      }
+    }
+    sertaHeader: datoCmsBrand(urlName: { eq: "serta" }) {
+      headerLink {
+        title
+        tagLine
+        bgImg {
+          url
+          alt
+          title
+        }
+      }
+    }
   }
 `;
+
+List.propTypes = {
+  data: propTypes.instanceOf(Object).isRequired,
+  location: propTypes.instanceOf(Object).isRequired,
+};
 export default List;
