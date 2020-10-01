@@ -6,60 +6,69 @@ import Layout from "../../components/Layout";
 import MattressList from "../../components/Brands/list";
 
 const List = ({ location, data }) => {
-  const sealySort = (matts) => {
+  const sealyMattressSort = (matts) => {
     const golden = [];
     const essentials = [];
     const performance = [];
     const premium = [];
-    matts.nodes.map((matt) => {
-      if (matt.subline.name === "Golden Elegance") golden.push(matt);
-      if (matt.subline.name.includes("Essentials")) essentials.push(matt);
-      if (matt.subline.name.includes("Performance")) performance.push(matt);
-      if (matt.subline.name.includes("Posturepedic Plus"))
-        performance.push(matt);
-      if (matt.subline.name.includes("Premium")) premium.push(matt);
-
-      const nodes = [...golden, ...essentials, ...performance, ...premium];
-      console.log(nodes);
-      return nodes;
+    matts.forEach((element) => {
+      if (element.subline.name === "Golden Elegance") golden.push(element);
+      if (element.subline.name.includes("Essentials")) essentials.push(element);
+      if (element.subline.name.includes("Performance"))
+        performance.push(element);
+      if (element.subline.name.includes("Posturepedic Plus"))
+        performance.push(element);
+      if (element.subline.name.includes("Premium")) premium.push(element);
     });
+    return [...golden, ...essentials, ...performance, ...premium];
   };
-  const sealyMatt = sealySort(data.sealyMattress);
   const combinedData = {
     sealy: {
-      sealyMatt,
+      mattresses: [...sealyMattressSort(data.sealyMattress.nodes)],
       header: data.sealyHeader.headerLink,
     },
     beautyrest: {
-      ...data.beautyrestMattress,
+      mattresses: [...data.beautyrestMattress.nodes],
       header: data.beautyrestHeader.headerLink,
     },
-    tempur: {
-      ...data.tempurMattress,
+    tempurpedic: {
+      mattresses: [...data.tempurMattress.nodes],
       header: data.tempurHeader.headerLink,
     },
     serta: {
-      ...data.sertaMattress,
+      mattresses: [...data.sertaMattress.nodes],
       header: data.sertaHeader.headerLink,
     },
     stearns: {
-      ...data.stearnsMattress,
+      mattresses: [...data.stearnsMattress.nodes],
       header: data.stearnsHeader.headerLink,
     },
     nectar: {
-      ...data.nectarMattress,
+      mattresses: [...data.nectarMattress.nodes],
       header: data.nectarHeader.headerLink,
     },
     posh: {
-      ...data.poshMattress,
+      mattresses: [...data.poshMattress.nodes],
       header: data.poshHeader.headerLink,
+    },
+    all: {
+      mattresses: [
+        ...sealyMattressSort(data.sealyMattress.nodes),
+        ...data.beautyrestMattress.nodes,
+        ...data.tempurMattress.nodes,
+        ...data.sertaMattress.nodes,
+        ...data.stearnsMattress.nodes,
+        ...data.nectarMattress.nodes,
+        ...data.poshMattress.nodes,
+      ],
+      header: data.all,
     },
   };
 
   return (
     <Layout>
+      {console.log(data.all)}
       <HelmetDatoCms seo={data.seo.seoMetaTags} />
-      {console.log(sealyMatt)}
       <MattressList location={location} data={combinedData} />
     </Layout>
   );
@@ -204,6 +213,15 @@ export const list = graphql`
           alt
           title
         }
+      }
+    }
+    all: datoCmsHeader(title: { eq: "AllMattressSort" }) {
+      title
+      tagLine
+      bgImg {
+        title
+        alt
+        url
       }
     }
   }
