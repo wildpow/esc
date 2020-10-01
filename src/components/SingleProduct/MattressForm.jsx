@@ -40,7 +40,7 @@ const PriceRange = styled.div`
     }
     small {
       font-size: ${fontSize.xl};
-    
+
       color: ${colors.red["900"]};
     }
   }
@@ -124,14 +124,14 @@ const AddToCartButton = styled(Submit)`
 
 const Errors = styled.div`
   /* display: ${(props) => (props.show ? "flex" : "none")}; */
-  display:flex;
+  display: flex;
   opacity: ${({ show }) => (show ? 1 : 0)};
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   flex-direction: row;
   margin-bottom: ${spacing["2"]};
   width: 100%;
   height: 50px;
-  @media (min-width: ${breakpoints.md}){
+  @media (min-width: ${breakpoints.md}) {
     margin-bottom: 0;
   }
   @media print {

@@ -10,7 +10,7 @@ const MattressList = ({ location, data }) => {
   const initialState = GenerateInitialState(location, data);
   return (
     <MattListWrapper>
-      {console.log(initialState)}
+      {/* {console.log(initialState)} */}
       <NewBread Brands>jdjd</NewBread>
     </MattListWrapper>
   );

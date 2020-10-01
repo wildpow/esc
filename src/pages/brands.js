@@ -6,6 +6,7 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
 import LifeStyleCard from "../components/Brands/LifeStyleCard";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
+import Header from "../components/shared/ProductList/Header";
 
 const SectionContainer = styled.div`
   /* min-height: 100vh; */
@@ -46,6 +47,12 @@ const SectionContainer = styled.div`
 const Brands = ({ data }) => {
   return (
     <Layout>
+      <Header
+        description={data.datoCmsHeader.tagLine}
+        headerBG={data.datoCmsHeader.bgImg.url}
+        button={{ label: "Shop all Mattresses", url: "/brands/list" }}
+        title="Our Brands"
+      />
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <BreadWrapper hidenLarge>
         <BreadCrumbs here="Brands" />
@@ -77,6 +84,15 @@ export const brandsSEO = graphql`
     datoCmsSeo(name: { eq: "brands" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+    datoCmsHeader(title: { eq: "AllMattressSort" }) {
+      title
+      tagLine
+      bgImg {
+        title
+        alt
+        url
       }
     }
     allDatoCmsBrand(sort: { fields: position }) {

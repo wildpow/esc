@@ -67,7 +67,6 @@ const List = ({ location, data }) => {
 
   return (
     <Layout>
-      {console.log(data.all)}
       <HelmetDatoCms seo={data.seo.seoMetaTags} />
       <MattressList location={location} data={combinedData} />
     </Layout>

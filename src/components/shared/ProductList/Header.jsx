@@ -2,8 +2,20 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { colors } from "../../../utils/styles";
+import { colors, spacing } from "../../../utils/styles";
+import { Button, PrimaryButton } from "../Buttons";
 
+const CheckOut = styled(PrimaryButton)`
+  font-size: 1.25rem;
+  padding: ${spacing[4]};
+  margin: 0;
+  /* width: 100%; */
+`;
+const BackLink = styled(Button)`
+  font-size: 1.25rem;
+  margin-bottom: ${spacing["4"]};
+  width: 100%;
+`;
 const HeaderWrapper = styled.div`
   margin-top: 0px;
   margin-bottom: 10px;
@@ -15,61 +27,12 @@ const HeaderWrapper = styled.div`
   align-content: center;
   align-items: center;
   font-family: ${(props) => props.theme.MainFont1};
-  a {
-    align-self: flex-end;
-    justify-self: flex-end;
-    text-decoration: none;
-    text-align: center;
-    background-color: ${(props) => props.theme.mainColor1};
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    color: white;
-    font-family: ${(props) => props.theme.MainFont1};
-    text-transform: uppercase;
-    transform-style: flat;
-    transition: all ease 0.3s;
-    letter-spacing: 0.18rem;
-    font-size: 0.8rem;
-    /* width: 120px; */
-    padding: 10px;
-    &:active {
-      box-shadow: 0 3px 0 #ccc;
-      top: 3px;
-      outline: none;
-    }
-    &:hover:enabled {
-      background-color: ${(props) => props.theme.mainColor2};
-      color: white;
-      cursor: pointer !important;
-    }
-    &:active:enabled {
-      background: ${(props) => props.theme.mainColor1} !important;
-      box-shadow: inset 0px 0px 5px #c1c1c1 !important;
-      outline: none;
-    }
-    @media (min-width: 360px) {
-      width: 130px;
-    }
-    @media (orientation: landscape) and (max-width: 568px) {
-      width: 160px;
-    }
-    @media (orientation: landscape) and (min-width: 569px) {
-      width: 180px;
-      padding: 12px;
-      margin-right: 20px;
-      margin-bottom: 8px;
-    }
-    /* @media screen and (max-width: 1024px) {
-      margin-top: 10px;
-    } */
-    @media screen and (max-width: 600px) {
-      align-self: center;
-      margin-top: 0px;
-    }
-  }
+
   .heading__content {
     display: flex;
-
+    /* new stuff */
+    align-items: flex-end;
+    /* new Stuff */
     flex-direction: column;
     justify-content: space-evenly;
     height: 100%;
@@ -138,15 +101,24 @@ const HeaderWrapper = styled.div`
     }
   }
 `;
-const Header = ({ description, title, headerBG, landing, brandName }) => {
+const Header = ({
+  description,
+  title,
+  headerBG,
+  landing,
+  brandName,
+  button,
+}) => {
   return (
     <HeaderWrapper headerBG={headerBG}>
+      {/* {console.log(description, title, headerBG, landing, brandName, button)} */}
       <div className="heading__content">
         <div>
           <h2>{title}</h2>
           <p>{description}</p>
         </div>
-        {landing && <Link to={`/brands/${brandName}/landing`}>Learn more</Link>}
+        {/* {landing && <Link to={`/brands/${brandName}/landing`}>Learn more</Link>} */}
+        {button && <CheckOut to={button.url}>{button.label}</CheckOut>}
       </div>
     </HeaderWrapper>
   );
@@ -157,12 +129,14 @@ Header.propTypes = {
   headerBG: PropTypes.string,
   landing: PropTypes.bool,
   brandName: PropTypes.string,
+  button: PropTypes.shape({ label: PropTypes.string, url: PropTypes.string }),
 };
 
 Header.defaultProps = {
   headerBG: "",
   landing: false,
   brandName: "Test",
+  button: null,
 };
 
 export default Header;
