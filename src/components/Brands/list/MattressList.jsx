@@ -8,6 +8,7 @@ import {
 import GenerateInitialState from "./generateInitialState";
 import reducer from "./reducer";
 import MattressThumbnail from "../../MattressList/MattressThumbnail";
+import FilterSortPanel from "./filterSortPanel";
 
 const MattressList = ({ location, data }) => {
   const initialState = GenerateInitialState(location, data);
@@ -31,10 +32,11 @@ const MattressList = ({ location, data }) => {
         headerBG={state.currentHeader.bgImg.url}
       />
       <div className="mattList__flex">
-        {/* <FilterSortPanel
+        <FilterSortPanel
           dispatch={dispatch}
-          typeCheckBoxs={state.typeCheckBoxs}
-        /> */}
+          comfortCheckBoxes={state.comfortCheckBoxes}
+          brandCheckBoxes={state.brandCheckBoxes}
+        />
         <div className="mattList__grid">
           {state.currentMattresses.map((mattress) => (
             <MattressThumbnail

@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Accordion from "../../MattressList/Accordion";
-import Checkbox from "../../MattressList/CheckBox";
 import {
   FilterByCard,
   SortBy,
   FilterSortRoot,
+  Accordion,
+  Checkbox,
 } from "../../shared/ProductList/FilterSortPanel";
 
 const FilterSortPanel = ({ dispatch, typeCheckBoxs }) => {

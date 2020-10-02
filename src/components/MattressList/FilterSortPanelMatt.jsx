@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Accordion from "./Accordion";
-import Checkbox from "./CheckBox";
 import {
   FilterByCard,
   SortBy,
   FilterSortRoot,
+  Accordion,
+  Checkbox,
 } from "../shared/ProductList/FilterSortPanel";
 
 const FilterSortPanel = ({ dispatch, checkBoxs }) => {
