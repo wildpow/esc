@@ -14,7 +14,7 @@ const MattressList = ({
   breadCrumbs,
   brandName,
   headerBG,
-  landing,
+  button,
 }) => {
   const initalState = {
     mattresses,
@@ -40,8 +40,8 @@ const MattressList = ({
         title={title}
         description={description}
         headerBG={headerBG}
-        landing={landing}
         brandName={brandName}
+        button={button}
       />
 
       <div className="mattList__flex">
@@ -75,11 +75,15 @@ MattressList.propTypes = {
   mattresses: PropTypes.instanceOf(Object).isRequired,
   breadCrumbs: PropTypes.bool,
   brandName: PropTypes.string,
+  button: PropTypes.shape({ label: PropTypes.string, url: PropTypes.string }),
+  headerBG: PropTypes.string,
 };
 
 MattressList.defaultProps = {
   breadCrumbs: false,
   brandName: "Nothing",
+  headerBG: "",
+  button: null,
 };
 
 export default MattressList;

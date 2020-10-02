@@ -1,25 +1,28 @@
 import React from "react";
-import { Link } from "gatsby";
+// import { Link } from "gatsby";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { colors, spacing } from "../../../utils/styles";
-import { Button, PrimaryButton } from "../Buttons";
+import { colors, spacing, boxShadow } from "../../../utils/styles";
+import { PrimaryButton } from "../Buttons";
 
-const CheckOut = styled(PrimaryButton)`
+const HeaderButton = styled(PrimaryButton)`
   font-size: 1.25rem;
   padding: ${spacing[4]};
   margin: 0;
-  /* width: 100%; */
+  margin-bottom: 10px;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+  :hover {
+    background: ${colors.red[800]};
+  }
 `;
-const BackLink = styled(Button)`
-  font-size: 1.25rem;
-  margin-bottom: ${spacing["4"]};
-  width: 100%;
-`;
+
 const HeaderWrapper = styled.div`
   margin-top: 0px;
+  box-shadow: ${boxShadow.md};
   margin-bottom: 10px;
   display: flex;
+  background-size: cover;
   background-color: white;
   flex-direction: column;
   background: white;
@@ -31,7 +34,7 @@ const HeaderWrapper = styled.div`
   .heading__content {
     display: flex;
     /* new stuff */
-    align-items: flex-end;
+    align-items: center;
     /* new Stuff */
     flex-direction: column;
     justify-content: space-evenly;
@@ -61,29 +64,57 @@ const HeaderWrapper = styled.div`
     font-family: ${(props) => props.theme.MainFont3};
     padding-right: 10px;
     padding-left: 10px;
+    font-weight: 700;
   }
   @media screen and (min-width: 360px) {
+    background: linear-gradient(
+        rgba(247, 250, 252, 0.85),
+        rgba(247, 250, 252, 0.45)
+      ),
+      url(${(props) => props.headerBG}) no-repeat;
+    background-size: cover;
     h2 {
       font-size: 1.65rem;
     }
   }
-  @media screen and (min-width: 730px) {
-    background: url(${(props) => props.headerBG}) no-repeat;
+  @media screen and (min-width: 760px) {
+    background: linear-gradient(
+        rgba(247, 250, 252, 0.45),
+        rgba(247, 250, 252, 0.45)
+      ),
+      url(${(props) => props.headerBG}) no-repeat;
+
     height: 200px;
     background-color: white;
     flex-direction: row;
     margin-bottom: 0px;
     .heading__content {
-      max-width: 350px;
+      align-items: flex-end;
+      max-width: 50%;
     }
-    a {
-      margin-right: 20px;
-      font-weight: 700;
-    }
+  }
+  @media screen and (min-width: 820px) {
+    background: url(${(props) => props.headerBG}) no-repeat;
+    background-size: cover;
   }
   @media screen and (min-width: 1000px) {
     .heading__content {
-      max-width: 550px;
+      align-items: flex-end;
+      max-width: 50%;
+    }
+    /* h2 {
+      font-size: 1.7rem;
+    }
+    p {
+      font-weight: 300;
+
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+    } */
+  }
+  @media screen and (min-width: 1300px) {
+    .heading__content {
+      max-width: 50%;
     }
     h2 {
       font-size: 1.7rem;
@@ -95,20 +126,8 @@ const HeaderWrapper = styled.div`
       line-height: 1.5rem;
     }
   }
-  @media screen and (min-width: 1300px) {
-    .heading__content {
-      max-width: 650px;
-    }
-  }
 `;
-const Header = ({
-  description,
-  title,
-  headerBG,
-  landing,
-  brandName,
-  button,
-}) => {
+const Header = ({ description, title, headerBG, button }) => {
   return (
     <HeaderWrapper headerBG={headerBG}>
       {/* {console.log(description, title, headerBG, landing, brandName, button)} */}
@@ -118,7 +137,7 @@ const Header = ({
           <p>{description}</p>
         </div>
         {/* {landing && <Link to={`/brands/${brandName}/landing`}>Learn more</Link>} */}
-        {button && <CheckOut to={button.url}>{button.label}</CheckOut>}
+        {button && <HeaderButton to={button.url}>{button.label}</HeaderButton>}
       </div>
     </HeaderWrapper>
   );
@@ -127,15 +146,11 @@ Header.propTypes = {
   description: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   headerBG: PropTypes.string,
-  landing: PropTypes.bool,
-  brandName: PropTypes.string,
   button: PropTypes.shape({ label: PropTypes.string, url: PropTypes.string }),
 };
 
 Header.defaultProps = {
   headerBG: "",
-  landing: false,
-  brandName: "Test",
   button: null,
 };
 

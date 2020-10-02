@@ -27,6 +27,7 @@ const SectionContainer = styled.div`
   justify-items: center;
   justify-content: center;
   align-content: flex-start;
+  padding-top: 10px;
   img {
     max-width: 100%;
     height: auto;
@@ -40,38 +41,47 @@ const SectionContainer = styled.div`
     padding-right: 5px;
   }
   @media screen and (min-width: 1022px) {
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 40px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+`;
+const BrandsRoot = styled.div`
+  @media (min-width: 1022px) {
+    padding-top: 20px;
   }
 `;
 const Brands = ({ data }) => {
   return (
     <Layout>
-      <Header
-        description={data.datoCmsHeader.tagLine}
-        headerBG={data.datoCmsHeader.bgImg.url}
-        button={{ label: "Shop all Mattresses", url: "/brands/list" }}
-        title="Our Brands"
-      />
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
       <BreadWrapper hidenLarge>
         <BreadCrumbs here="Brands" />
       </BreadWrapper>
-      <SectionContainer>
-        {data.allDatoCmsBrand.nodes.map((brand) => (
-          <LifeStyleCard
-            key={brand.id}
-            mobileHeight="228px"
-            height="228px"
-            title={brand.displayName}
-            bgImg={brand.lifeStyleImg}
-            logo={brand.brandLogo}
-            url={`/brands/${brand.urlName}`}
-          >
-            {brand.lifeStyleText}
-          </LifeStyleCard>
-        ))}
-      </SectionContainer>
+      <BrandsRoot>
+        <Header
+          description={data.datoCmsHeader.tagLine}
+          headerBG={data.datoCmsHeader.bgImg.url}
+          button={{ label: "Shop all Mattresses", url: "/brands/list" }}
+          title="Our Brands"
+        />
+        <SectionContainer>
+          {data.allDatoCmsBrand.nodes.map((brand) => (
+            <LifeStyleCard
+              key={brand.id}
+              mobileHeight="228px"
+              height="228px"
+              title={brand.displayName}
+              bgImg={brand.lifeStyleImg}
+              logo={brand.brandLogo}
+              url={`/brands/${brand.urlName}`}
+            >
+              {brand.lifeStyleText}
+            </LifeStyleCard>
+          ))}
+        </SectionContainer>
+      </BrandsRoot>
       <BreadWrapper hidenLarge Bottom>
         <BreadCrumbs here="Brands" />
       </BreadWrapper>

@@ -17,7 +17,10 @@ const Stearns = ({ data }) => {
         description={datoCmsBrand.headerLink.tagLine}
         breadCrumbs
         brandName={datoCmsBrand.urlName}
-        landing
+        button={{
+          label: "Learn More",
+          url: `/brands/${datoCmsBrand.urlName}/landing`,
+        }}
       />
     </Layout>
   );
