@@ -28,6 +28,7 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
   };
   return (
     <FilterSortRoot>
+      {console.log(comfortCheckBoxes, brandCheckBoxes)}
       <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
       <Accordion title="FILTER BY">
         <FilterByCard heading="Brand">
@@ -50,7 +51,7 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
               <label htmlFor={checkBox.displayName} key={checkBox.urlParam}>
                 <Checkbox
                   id={checkBox.urlParam}
-                  checked={checked[checkBox.id].checked}
+                  checked={checkBox.checked}
                   firmness={checkBox.firmness}
                   onChange={(e) =>
                     toggleCheck(e, checkBox.id, checkBox.firmness)
