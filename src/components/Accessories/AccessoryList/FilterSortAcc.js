@@ -1,4 +1,4 @@
-import { navigate, replace } from "gatsby";
+import { navigate } from "gatsby";
 
 const filterSortReducer = (state, action) => {
   let newTypeCheckBoxs;

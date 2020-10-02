@@ -1,6 +1,7 @@
 const GenerateInitialState = (location, data) => {
   const initialState = {
     currentMattresses: [],
+    beforeFilterMattresses: [],
     currentHeader: {},
     brandCheckBoxes: [
       { urlParam: "beautyrest", checked: false, displayName: "Beautyrest" },
@@ -32,6 +33,7 @@ const GenerateInitialState = (location, data) => {
   if (brand === null && comfort === null) {
     initialState.currentHeader = data.all.header;
     initialState.currentMattresses = data.all.mattresses;
+    initialState.beforeFilterMattresses = data.all.mattresses;
     if (typeof window !== `undefined`) {
       window.history.replaceState({}, "", `${location.pathname}`);
     }
