@@ -29,14 +29,27 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
   return (
     <FilterSortRoot>
       <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
-      {console.log(comfortCheckBoxes)}
       <Accordion title="FILTER BY">
+        <FilterByCard heading="Brand">
+          {brandCheckBoxes.map((type, index) => {
+            return (
+              <label htmlFor={type.displayName} key={type.displayName}>
+                <Checkbox
+                  id={type.urlParam}
+                  checked={type.checked}
+                  onChange={(e) => toggleCheck(e, index, type.value)}
+                />
+                <span style={{ marginLeft: 8 }}>{type.displayName}</span>
+              </label>
+            );
+          })}
+        </FilterByCard>
         <FilterByCard heading="Comfort">
           {comfortCheckBoxes.map((checkBox) => {
             return (
-              <label htmlFor={checkBox.value} key={checkBox.value}>
+              <label htmlFor={checkBox.displayName} key={checkBox.urlParam}>
                 <Checkbox
-                  id={checkBox.value}
+                  id={checkBox.urlParam}
                   checked={checked[checkBox.id].checked}
                   firmness={checkBox.firmness}
                   onChange={(e) =>
@@ -44,20 +57,6 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
                   }
                 />
                 <span style={{ marginLeft: 8 }}>{checkBox.displayName}</span>
-              </label>
-            );
-          })}
-        </FilterByCard>
-        <FilterByCard heading="Brand">
-          {brandCheckBoxes.map((type, index) => {
-            return (
-              <label htmlFor={type.value} key={type.value}>
-                <Checkbox
-                  id={type.value}
-                  checked={type.checked}
-                  onChange={(e) => toggleCheck(e, index, type.value)}
-                />
-                <span style={{ marginLeft: 8 }}>{type.displayName}</span>
               </label>
             );
           })}

@@ -26,30 +26,37 @@ const List = ({ location, data }) => {
     sealy: {
       mattresses: [...sealyMattressSort(data.sealyMattress.nodes)],
       header: data.sealyHeader.headerLink,
+      checkBoxIndex: 0,
     },
     beautyrest: {
       mattresses: [...data.beautyrestMattress.nodes],
       header: data.beautyrestHeader.headerLink,
+      checkBoxIndex: 1,
     },
     tempurpedic: {
       mattresses: [...data.tempurMattress.nodes],
       header: data.tempurHeader.headerLink,
+      checkBoxIndex: 2,
     },
     serta: {
       mattresses: [...data.sertaMattress.nodes],
       header: data.sertaHeader.headerLink,
+      checkBoxIndex: 3,
     },
     stearns: {
       mattresses: [...data.stearnsMattress.nodes],
       header: data.stearnsHeader.headerLink,
+      checkBoxIndex: 4,
     },
     nectar: {
       mattresses: [...data.nectarMattress.nodes],
       header: data.nectarHeader.headerLink,
+      checkBoxIndex: 5,
     },
     posh: {
       mattresses: [...data.poshMattress.nodes],
       header: data.poshHeader.headerLink,
+      checkBoxIndex: 6,
     },
     all: {
       mattresses: [

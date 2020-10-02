@@ -15,7 +15,7 @@ const MattressList = ({ location, data }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <MattListWrapper>
-      {console.log(initialState)}
+      {console.log("MMMMMMMMMMMM", state)}
       <NewBread Brands>
         <BreadCrumbs
           next="Brands"
