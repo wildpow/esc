@@ -45,8 +45,6 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
   return (
     <FilterSortRoot>
       <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
-      {console.log("brandCheckBoxes", brandCheckBoxes)}
-      {console.log("comfortCheckBoxes", comfortCheckBoxes)}
       <Accordion title="FILTER BY">
         <FilterByCard heading="Brand">
           {brandCheckBoxes.map((brandBox, index) => {
