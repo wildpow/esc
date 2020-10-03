@@ -16,29 +16,43 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
     { checked: false },
     { checked: false },
   ]);
-
+  const [brandCheck, setBrandCheck] = useState([
+    { checked: false },
+    { checked: false },
+    { checked: false },
+    { checked: false },
+    { checked: false },
+    { checked: false },
+    { checked: false },
+    { checked: false },
+  ]);
+  const toggleBrand = (e, index) => {
+    const newChecked = brandCheck;
+    newChecked[index].checked = e.target.checked;
+    setBrandCheck([...newChecked]);
+  };
   const toggleCheck = (e, index, firmness) => {
     const newChecked = checked;
     newChecked[index].checked = e.target.checked;
     setChecked([...newChecked]);
-    dispatch({
-      type: "check",
-      id: firmness,
-    });
+    // dispatch({
+    //   type: "check",
+    //   id: firmness,
+    // });
   };
   return (
     <FilterSortRoot>
-      {console.log(comfortCheckBoxes, brandCheckBoxes)}
       <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
+      {console.log(comfortCheckBoxes, brandCheckBoxes)}
       <Accordion title="FILTER BY">
         <FilterByCard heading="Brand">
           {brandCheckBoxes.map((type, index) => {
             return (
-              <label htmlFor={type.displayName} key={type.displayName}>
+              <label htmlFor={type.value} key={type.value}>
                 <Checkbox
-                  id={type.urlParam}
-                  checked={type.checked}
-                  onChange={(e) => toggleCheck(e, index, type.value)}
+                  id={type.value}
+                  checked={brandCheck[index].checked}
+                  onChange={(e) => toggleBrand(e, index, type.value)}
                 />
                 <span style={{ marginLeft: 8 }}>{type.displayName}</span>
               </label>
@@ -48,10 +62,10 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
         <FilterByCard heading="Comfort">
           {comfortCheckBoxes.map((checkBox) => {
             return (
-              <label htmlFor={checkBox.displayName} key={checkBox.urlParam}>
+              <label htmlFor={checkBox.value} key={checkBox.value}>
                 <Checkbox
-                  id={checkBox.urlParam}
-                  checked={checkBox.checked}
+                  id={checkBox.value}
+                  checked={checked[checkBox.id].checked}
                   firmness={checkBox.firmness}
                   onChange={(e) =>
                     toggleCheck(e, checkBox.id, checkBox.firmness)
