@@ -22,6 +22,7 @@ const FilterByCardRoot = styled.div`
     padding-left: 20px;
     padding-bottom: 15px;
     color: ${colors.gray["700"]};
+    pointer-events: none;
   }
   label:last-child {
     padding-bottom: 20px;

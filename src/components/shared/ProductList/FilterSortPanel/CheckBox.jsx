@@ -6,6 +6,8 @@ import { colors } from "../../../../utils/styles";
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
+  pointer-events: auto;
+  cursor: pointer;
 `;
 
 const Icon = styled.svg`
@@ -45,8 +47,9 @@ const StyledCheckbox = styled.div`
   }
 `;
 
-const Checkbox = ({ checked, ...props }) => (
-  <CheckboxContainer>
+const Checkbox = ({ checked, onChange, ...props }) => (
+  <CheckboxContainer onChange={onChange}>
+    {console.log(props)}
     <HiddenCheckbox checked={checked} {...props} />
     <StyledCheckbox checked={checked}>
       <Icon viewBox="0 0 24 24">

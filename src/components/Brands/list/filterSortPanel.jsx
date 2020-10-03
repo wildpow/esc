@@ -27,11 +27,13 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
     { checked: false },
   ]);
   const toggleBrand = (e, index) => {
+    e.stopPropagation();
     const newChecked = brandCheck;
     newChecked[index].checked = e.target.checked;
     setBrandCheck([...newChecked]);
   };
   const toggleCheck = (e, index, firmness) => {
+    e.stopPropagation();
     const newChecked = checked;
     newChecked[index].checked = e.target.checked;
     setChecked([...newChecked]);
@@ -43,18 +45,19 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
   return (
     <FilterSortRoot>
       <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
-      {console.log(comfortCheckBoxes, brandCheckBoxes)}
+      {console.log("brandCheckBoxes", brandCheckBoxes)}
+      {console.log("comfortCheckBoxes", comfortCheckBoxes)}
       <Accordion title="FILTER BY">
         <FilterByCard heading="Brand">
-          {brandCheckBoxes.map((type, index) => {
+          {brandCheckBoxes.map((brandBox, index) => {
             return (
-              <label htmlFor={type.value} key={type.value}>
+              <label htmlFor={brandBox.displayName} key={brandBox.displayName}>
                 <Checkbox
-                  id={type.value}
+                  id={brandBox.displayName}
                   checked={brandCheck[index].checked}
-                  onChange={(e) => toggleBrand(e, index, type.value)}
+                  onChange={(e) => toggleBrand(e, index, brandBox.value)}
                 />
-                <span style={{ marginLeft: 8 }}>{type.displayName}</span>
+                <span style={{ marginLeft: 8 }}>{brandBox.displayName}</span>
               </label>
             );
           })}
@@ -62,9 +65,9 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
         <FilterByCard heading="Comfort">
           {comfortCheckBoxes.map((checkBox) => {
             return (
-              <label htmlFor={checkBox.value} key={checkBox.value}>
+              <label htmlFor={checkBox.displayName} key={checkBox.displayName}>
                 <Checkbox
-                  id={checkBox.value}
+                  id={checkBox.displayName}
                   checked={checked[checkBox.id].checked}
                   firmness={checkBox.firmness}
                   onChange={(e) =>
