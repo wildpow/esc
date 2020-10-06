@@ -37,10 +37,10 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
     const newChecked = checked;
     newChecked[index].checked = e.target.checked;
     setChecked([...newChecked]);
-    // dispatch({
-    //   type: "check",
-    //   id: firmness,
-    // });
+    dispatch({
+      type: "comfort",
+      id: firmness,
+    });
   };
   return (
     <FilterSortRoot>

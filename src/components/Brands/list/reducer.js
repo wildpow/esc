@@ -1,6 +1,8 @@
 import { navigate } from "gatsby";
 
 export default function (state, action) {
+  let newComfortNumbers;
+
   switch (action.type) {
     case "low-high":
       return {
@@ -53,6 +55,29 @@ export default function (state, action) {
             return nameA > nameB ? -1 : 1;
           },
         ),
+      };
+    case "brand":
+      return {
+        ...state,
+      };
+    case "comfort":
+      newComfortNumbers = [...state.selectedComfortCheckBoxes];
+      if (newComfortNumbers.includes(action.id)) {
+        newComfortNumbers = newComfortNumbers.filter(
+          (item) => item !== action.id,
+        );
+      } else {
+        newComfortNumbers.push(action.id);
+      }
+      return {
+        ...state,
+        currentMattresses:
+          newComfortNumbers.length !== 0
+            ? state.beforeFilterMattresses.filter((matt) =>
+                newComfortNumbers.includes(matt.firmness),
+              )
+            : state.beforeFilterMattresses,
+        selectedComfortCheckBoxes: newComfortNumbers,
       };
     default:
       throw new Error();
