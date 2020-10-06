@@ -2,6 +2,9 @@ import { navigate } from "gatsby";
 
 export default function (state, action) {
   let newComfortNumbers;
+  let newBrandCheckBoxes;
+  let newSelectedBrand;
+  let newCurrentHeader;
 
   switch (action.type) {
     case "low-high":
@@ -57,8 +60,32 @@ export default function (state, action) {
         ),
       };
     case "brand":
+      newBrandCheckBoxes = [...state.brandCheckBoxes];
+      newBrandCheckBoxes[action.index].checked = action.checked;
+      newSelectedBrand = [...state.selectedBrandCheckBoxes];
+      if (newSelectedBrand.includes(action.value)) {
+        newSelectedBrand = newSelectedBrand.filter(
+          (item) => item !== action.value,
+        );
+      } else {
+        newSelectedBrand.push(action.value);
+      }
+      if (newSelectedBrand.length === 0 || newSelectedBrand.length > 1) {
+        newCurrentHeader = state.data.all.header;
+      } else {
+        newCurrentHeader = state.data[action.value].header;
+      }
       return {
         ...state,
+        currentMattresses:
+          newSelectedBrand.length !== 0
+            ? state.beforeFilterMattresses.filter((matt) =>
+                newSelectedBrand.includes(matt.brand.urlName),
+              )
+            : state.beforeFilterMattresses,
+        brandCheckBoxes: newBrandCheckBoxes,
+        selectedBrandCheckBoxes: newSelectedBrand,
+        currentHeader: newCurrentHeader,
       };
     case "comfort":
       newComfortNumbers = [...state.selectedComfortCheckBoxes];

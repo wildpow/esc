@@ -1,3 +1,5 @@
+import { Database } from "@styled-icons/fa-solid";
+
 const queryString = require("query-string");
 
 const GenerateInitialState = (location, data) => {
@@ -57,6 +59,7 @@ const GenerateInitialState = (location, data) => {
       },
     ],
     selectedComfortCheckBoxes: [],
+    // headers:  ,
   };
   if (Object.entries(query).length === 0) {
     initialState.currentHeader = data.all.header;
@@ -77,7 +80,6 @@ const GenerateInitialState = (location, data) => {
     return initialState;
   }
   if (query.brand === null && query.comfort === null) {
-    console.log("PPPPPPPPPPPPPPPP");
     initialState.currentHeader = data.all.header;
     initialState.currentMattresses = data.all.mattresses;
     initialState.beforeFilterMattresses = data.all.mattresses;

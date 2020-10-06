@@ -26,11 +26,14 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
     { checked: false },
     { checked: false },
   ]);
-  const toggleBrand = (e, index) => {
+  const toggleBrand = (e, index, value) => {
     e.stopPropagation();
-    const newChecked = brandCheck;
-    newChecked[index].checked = e.target.checked;
-    setBrandCheck([...newChecked]);
+    dispatch({
+      type: "brand",
+      index,
+      value,
+      checked: e.target.checked,
+    });
   };
   const toggleCheck = (e, index, firmness) => {
     e.stopPropagation();
@@ -52,8 +55,8 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
               <label htmlFor={brandBox.displayName} key={brandBox.displayName}>
                 <Checkbox
                   id={brandBox.displayName}
-                  checked={brandCheck[index].checked}
-                  onChange={(e) => toggleBrand(e, index, brandBox.value)}
+                  checked={brandBox.checked}
+                  onChange={(e) => toggleBrand(e, index, brandBox.urlParam)}
                 />
                 <span style={{ marginLeft: 8 }}>{brandBox.displayName}</span>
               </label>
