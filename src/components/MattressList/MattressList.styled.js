@@ -41,7 +41,7 @@ export const MattListWrapper = styled.div`
   .mattList__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-    grid-auto-rows: minmax(300px, auto);
+    grid-auto-rows: minmax(300px, 427px);
     grid-gap: 1rem;
     margin-left: 7px;
     margin-right: 7px;
