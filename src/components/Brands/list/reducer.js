@@ -1,5 +1,35 @@
 import { navigate } from "gatsby";
 
+function filterCurrentMattresses(mattresses, brands, comfort) {
+  let newMattresses = mattresses;
+  // console.log(mattresses, brands, comfort, "mattresses, brands, comfort");
+  if (brands.length === 0 && comfort.length === 0) {
+    // console.log("brands.length === 0 && comfort.length === 0");
+    return mattresses;
+  }
+  if (brands.length >= 1) {
+    // console.log("brands.length !== 0", brands.length);
+    newMattresses = newMattresses.filter((matt) =>
+      brands.includes(matt.brand.urlName),
+    );
+  }
+  if (comfort.length >= 1) {
+    // console.log("comfort !== 0", comfort.length, "KSKWKWKWKWKWKKWKWKKWKWK");
+    newMattresses = newMattresses.filter((matt) =>
+      comfort.includes(matt.firmness),
+    );
+  }
+  // newMattresses.map((a) =>
+  //   console.log(
+  //     "!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+  //     a.firmness,
+  //     a.brand.urlName,
+  //     "!!!!!!!!!!!!!!!",
+  //   ),
+  // );
+  // console.log("FINAL MATTRESSES", newMattresses);
+  return newMattresses;
+}
 export default function (state, action) {
   let newComfortNumbers;
   let newBrandCheckBoxes;
@@ -70,19 +100,43 @@ export default function (state, action) {
       } else {
         newSelectedBrand.push(action.value);
       }
-      if (newSelectedBrand.length === 0 || newSelectedBrand.length > 1) {
-        newCurrentHeader = state.data.all.header;
+      if (newSelectedBrand.length === 0 || newSelectedBrand.length >= 2) {
+        newCurrentHeader = state.headers.all;
       } else {
-        newCurrentHeader = state.data[action.value].header;
+        newCurrentHeader = state.headers[newSelectedBrand[0]];
       }
+      // console.log(
+      //   "!!!!!",
+      //   action.value,
+      //   newSelectedBrand,
+      //   newSelectedBrand.length,
+      //   "newSelectedBrand.length",
+      // );
+      // return {
+      //   ...state,
+      //   currentMattresses:
+      //     newSelectedBrand.length !== 0
+      //       ? state.beforeFilterMattresses.filter((matt) =>
+      //           newSelectedBrand.includes(matt.brand.urlName),
+      //         )
+      //       : state.beforeFilterMattresses,
+      //   brandCheckBoxes: newBrandCheckBoxes,
+      //   selectedBrandCheckBoxes: newSelectedBrand,
+      //   currentHeader: newCurrentHeader,
+      // };
       return {
         ...state,
-        currentMattresses:
-          newSelectedBrand.length !== 0
-            ? state.beforeFilterMattresses.filter((matt) =>
-                newSelectedBrand.includes(matt.brand.urlName),
-              )
-            : state.beforeFilterMattresses,
+        currentMattresses: filterCurrentMattresses(
+          state.beforeFilterMattresses,
+          newSelectedBrand,
+          state.selectedComfortCheckBoxes,
+        ),
+        // currentMattresses:
+        //   newSelectedBrand.length !== 0
+        //     ? state.currentMattresses.filter((matt) =>
+        //         newSelectedBrand.includes(matt.brand.urlName),
+        //       )
+        //     : state.currentMattresses,
         brandCheckBoxes: newBrandCheckBoxes,
         selectedBrandCheckBoxes: newSelectedBrand,
         currentHeader: newCurrentHeader,
@@ -98,12 +152,11 @@ export default function (state, action) {
       }
       return {
         ...state,
-        currentMattresses:
-          newComfortNumbers.length !== 0
-            ? state.beforeFilterMattresses.filter((matt) =>
-                newComfortNumbers.includes(matt.firmness),
-              )
-            : state.beforeFilterMattresses,
+        currentMattresses: filterCurrentMattresses(
+          state.beforeFilterMattresses,
+          state.selectedBrandCheckBoxes,
+          newComfortNumbers,
+        ),
         selectedComfortCheckBoxes: newComfortNumbers,
       };
     default:

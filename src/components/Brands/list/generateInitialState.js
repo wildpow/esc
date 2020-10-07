@@ -1,5 +1,3 @@
-import { Database } from "@styled-icons/fa-solid";
-
 const queryString = require("query-string");
 
 const GenerateInitialState = (location, data) => {
@@ -16,9 +14,13 @@ const GenerateInitialState = (location, data) => {
       { urlParam: "beautyrest", checked: false, displayName: "Beautyrest" },
       { urlParam: "tempurpedic", checked: false, displayName: "Tempur-PEDIC" },
       { urlParam: "serta", checked: false, displayName: "Serta" },
-      { urlParam: "sterns", checked: false, displayName: "Stearns & Foster" },
+      { urlParam: "stearns", checked: false, displayName: "Stearns & Foster" },
       { urlParam: "nectar", checked: false, displayName: "Nectar" },
-      { urlParam: "posh", checked: false, displayName: "Posh + Lavish" },
+      {
+        urlParam: "posh-and-lavish",
+        checked: false,
+        displayName: "Posh + Lavish",
+      },
     ],
     selectedBrandCheckBoxes: [],
     comfortCheckBoxes: [
@@ -59,7 +61,16 @@ const GenerateInitialState = (location, data) => {
       },
     ],
     selectedComfortCheckBoxes: [],
-    // headers:  ,
+    headers: {
+      sealy: data.sealy.header,
+      beautyrest: data.beautyrest.header,
+      tempurpedic: data.tempurpedic.header,
+      serta: data.serta.header,
+      stearns: data.stearns.header,
+      nectar: data.nectar.header,
+      "posh-and-lavish": data.posh.header,
+      all: data.all.header,
+    },
   };
   if (Object.entries(query).length === 0) {
     initialState.currentHeader = data.all.header;
