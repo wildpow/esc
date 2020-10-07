@@ -37,15 +37,21 @@ const MattressList = ({ location, data }) => {
           comfortCheckBoxes={state.comfortCheckBoxes}
           brandCheckBoxes={state.brandCheckBoxes}
         />
-        <div className="mattList__grid">
-          {state.currentMattresses.map((mattress) => (
-            <MattressThumbnail
-              key={mattress.id}
-              mattress={mattress}
-              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-            />
-          ))}
-        </div>
+        {state.currentMattresses.length > 0 ? (
+          <div className="mattList__grid">
+            {state.currentMattresses.map((mattress) => (
+              <MattressThumbnail
+                key={mattress.id}
+                mattress={mattress}
+                url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="noFilter">
+            <h3>No products match these filters</h3>
+          </div>
+        )}
       </div>
       <NewBread Brands>
         <BreadCrumbs

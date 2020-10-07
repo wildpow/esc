@@ -7,6 +7,9 @@ export default styled.div`
   padding-right: 7px;
   @media screen and (min-width: 768px) {
     padding-left: 0;
+    width: 30%;
+  }
+  @media screen and (min-width: 1024px) {
     width: 20%;
   }
 `;

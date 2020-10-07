@@ -67,6 +67,9 @@ const AccordionWrapper = styled.div`
     border-bottom: ${(props) =>
       props.active ? `4px solid ${props.theme.mainColor1}` : "white"};
   }
+  @media (min-width: 768px) {
+    margin-bottom: 0px;
+  }
 `;
 
 const Accordion = ({ title, children }) => {
