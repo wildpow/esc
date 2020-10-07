@@ -13,9 +13,22 @@ import FilterSortPanel from "./filterSortPanel";
 const MattressList = ({ location, data }) => {
   const initialState = GenerateInitialState(location, data);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const createButton = (checkBoxs) => {
+    if (
+      checkBoxs.length === 0 ||
+      checkBoxs.length > 1 ||
+      checkBoxs[0] === "serta"
+    ) {
+      return null;
+    }
+    return {
+      label: "Learn More",
+      url: `/brands/${checkBoxs[0]}/landing`,
+    };
+  };
   return (
     <MattListWrapper>
-      {/* {console.log("MMMMMMMMMMMM", state)} */}
+      {console.log("MMMMMMMMMMMM", state)}
       <NewBread Brands>
         <BreadCrumbs
           next="Brands"
@@ -30,6 +43,7 @@ const MattressList = ({ location, data }) => {
         title={state.currentHeader.title}
         description={state.currentHeader.tagLine}
         headerBG={state.currentHeader.bgImg.url}
+        button={createButton(state.selectedBrandCheckBoxes)}
       />
       <div className="mattList__flex">
         <FilterSortPanel
