@@ -71,6 +71,7 @@ const GenerateInitialState = (location, data) => {
       "posh-and-lavish": data.posh.header,
       all: data.all.header,
     },
+    locationPath: location.pathname,
   };
   if (Object.entries(query).length === 0) {
     initialState.currentHeader = data.all.header;
