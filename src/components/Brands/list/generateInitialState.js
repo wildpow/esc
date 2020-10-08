@@ -73,6 +73,7 @@ const GenerateInitialState = (location, data) => {
     },
     locationPath: location.pathname,
   };
+
   if (Object.entries(query).length === 0) {
     initialState.currentHeader = data.all.header;
     initialState.currentMattresses = data.all.mattresses;
@@ -101,6 +102,12 @@ const GenerateInitialState = (location, data) => {
     return initialState;
   }
   if (query.brand) {
+    // TODO: Need to filter bad queries!!!!!!
+    //   const filterBrandQuery = Object.keys(data).filter((a) =>
+    //   query.brand.includes(a),
+    // );
+    // console.log(filterBrandQuery);
+    // TODO
     let filteredMattresses = [];
     if (typeof query.brand === "string") {
       if (data[query.brand] !== undefined) {
