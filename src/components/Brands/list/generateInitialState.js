@@ -137,14 +137,19 @@ const GenerateInitialState = (location, data) => {
     filteredComfortQuery = filterComfortQuery(query.comfort);
     if (filteredComfortQuery.length === 0) allMattresses();
     if (filteredComfortQuery.length > 0) {
+      allMattresses(); // TODO REMOVE!!!!!!!!!!!
       const filteredMatts =
         initialState.currentMattresses.length === 0
           ? data.all.mattresses
           : initialState.currentMattresses;
-      initialState.selectedComfortCheckBoxes = filteredComfortQuery;
-      filteredComfortQuery.forEach((elm) => {
-        initialState.comfortCheckBoxes[elm].checked = true;
-      });
+      // TODO PROBLEM!!!!!! resaults of query string and checkboxs don't match when you have more then one item in the comfort query
+
+      // console.log("!!!", filteredComfortQuery, filteredMatts);
+      // initialState.selectedComfortCheckBoxes = [...filteredComfortQuery];
+      // filteredComfortQuery.forEach((elm) => {
+      //   console.log(elm, initialState.comfortCheckBoxes[elm]);
+      //   // initialState.comfortCheckBoxes[elm].checked = true;
+      // });
       initialState.currentMattresses = filteredMatts.filter((a) =>
         filteredComfortQuery.includes(a.firmness),
       );
