@@ -94,9 +94,9 @@ const GenerateInitialState = (location, data) => {
   const allMattresses = () => {
     initialState.currentHeader = data.all.header;
     initialState.currentMattresses = data.all.mattresses;
-    // if (typeof window !== `undefined`) {
-    //   window.history.replaceState({}, "", `${location.pathname}`);
-    // }
+    if (typeof window !== `undefined`) {
+      window.history.replaceState({}, "", `${location.pathname}`);
+    }
   };
   let filteredComfortQuery = null;
   let filteredBrandQuery = null;
@@ -137,72 +137,63 @@ const GenerateInitialState = (location, data) => {
     filteredComfortQuery = filterComfortQuery(query.comfort);
     if (filteredComfortQuery.length === 0) allMattresses();
     if (filteredComfortQuery.length > 0) {
-      allMattresses(); // TODO REMOVE!!!!!!!!!!!
+      // allMattresses(); // TODO REMOVE!!!!!!!!!!!
       const filteredMatts =
         initialState.currentMattresses.length === 0
           ? data.all.mattresses
           : initialState.currentMattresses;
       // TODO PROBLEM!!!!!! resaults of query string and checkboxs don't match when you have more then one item in the comfort query
 
-      // console.log("!!!", filteredComfortQuery, filteredMatts);
-      // initialState.selectedComfortCheckBoxes = [...filteredComfortQuery];
-      // filteredComfortQuery.forEach((elm) => {
-      //   console.log(elm, initialState.comfortCheckBoxes[elm]);
-      //   // initialState.comfortCheckBoxes[elm].checked = true;
-      // });
+      console.log("!!!", filteredComfortQuery, filteredMatts);
+      initialState.selectedComfortCheckBoxes = [...filteredComfortQuery];
+      filteredComfortQuery.forEach((elm) => {
+        initialState.comfortCheckBoxes[elm - 1].checked = true;
+      });
       initialState.currentMattresses = filteredMatts.filter((a) =>
         filteredComfortQuery.includes(a.firmness),
       );
     }
-
-    if (filteredBrandQuery !== null && filteredBrandQuery !== null) {
-      queryString.stringify(
-        { brand: filteredBrandQuery, comfort: filteredBrandQuery },
-        { arrayFormat: "comma" },
-      );
+    console.log("filteredBrandQuery", filteredBrandQuery);
+    console.log("filteredComfortQuery", filteredComfortQuery);
+    if (filteredComfortQuery !== null && filteredBrandQuery !== null) {
       if (typeof window !== `undefined`) {
         window.history.replaceState(
           {},
           "",
-          `${location.locationPath}?${queryString.stringify(
-            { brand: filteredBrandQuery, comfort: filteredBrandQuery },
+          `/brands/list?${queryString.stringify(
+            { brand: filteredBrandQuery, comfort: filteredComfortQuery },
             { arrayFormat: "comma" },
           )}`,
         );
       }
-    } else if (filteredBrandQuery === null && filteredBrandQuery !== null) {
+    } else if (filteredComfortQuery === null && filteredBrandQuery !== null) {
+      console.log("!!!!!!!!!!!!!!!!!!!!!!!!");
       if (typeof window !== `undefined`) {
         window.history.replaceState(
           {},
           "",
-          `${location.locationPath}?${queryString.stringify(
-            { comfort: filteredBrandQuery },
-            { arrayFormat: "comma" },
-          )}`,
-        );
-      }
-    } else if (filteredBrandQuery !== null && filteredBrandQuery === null) {
-      if (typeof window !== `undefined`) {
-        window.history.replaceState(
-          {},
-          "",
-          `${location.locationPath}?${queryString.stringify(
+          `/brands/list?${queryString.stringify(
             { brand: filteredBrandQuery },
             { arrayFormat: "comma" },
           )}`,
         );
       }
+    } else if (filteredComfortQuery !== null && filteredBrandQuery === null) {
+      console.log("!!!!@@#@##@#@@", location.locationPath, location);
+      // if (typeof window !== `undefined`) {
+      //   window.history.replaceState({}, "", `${location.pathname}`);
+      // }
+      if (typeof window !== `undefined`) {
+        window.history.replaceState(
+          {},
+          "",
+          `/brands/list?${queryString.stringify(
+            { comfort: filteredComfortQuery },
+            { arrayFormat: "comma" },
+          )}`,
+        );
+      }
     }
-    // console.log(
-    //   queryString.stringify(
-    //     { comfort: filteredComfortQuery },
-    //     { arrayFormat: "comma" },
-    //   ),
-    // );
-    // `${state.locationPath}?${queryString.stringify(
-    //   { brand: newSelectedBrand, comfort: state.selectedComfortCheckBoxes },
-    //   { arrayFormat: "comma" },
-    // )}`,
   }
   return initialState;
 };
