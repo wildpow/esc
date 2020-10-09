@@ -28,7 +28,7 @@ const MattressList = ({ location, data }) => {
   };
   return (
     <MattListWrapper>
-      {/* {console.log("MMMMMMMMMMMM", state)} */}
+      {console.log("MMMMMMMMMMMM", state, data)}
       <NewBread Brands>
         <BreadCrumbs
           next="Brands"

@@ -53,7 +53,7 @@ const List = ({ location, data }) => {
       header: data.nectarHeader.headerLink,
       checkBoxIndex: 5,
     },
-    posh: {
+    "posh-and-lavish": {
       mattresses: [...data.poshMattress.nodes],
       header: data.poshHeader.headerLink,
       checkBoxIndex: 6,

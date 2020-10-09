@@ -1,3 +1,5 @@
+// import { navigate } from "gatsby";
+
 const queryString = require("query-string");
 
 const GenerateInitialState = (location, data) => {
@@ -7,8 +9,8 @@ const GenerateInitialState = (location, data) => {
   });
   const initialState = {
     currentMattresses: [],
-    beforeFilterMattresses: [],
-    currentHeader: {},
+    beforeFilterMattresses: data.all.mattresses,
+    currentHeader: data.all.header,
     brandCheckBoxes: [
       { urlParam: "sealy", checked: false, displayName: "Sealy" },
       { urlParam: "beautyrest", checked: false, displayName: "Beautyrest" },
@@ -68,110 +70,134 @@ const GenerateInitialState = (location, data) => {
       serta: data.serta.header,
       stearns: data.stearns.header,
       nectar: data.nectar.header,
-      "posh-and-lavish": data.posh.header,
+      "posh-and-lavish": data["posh-and-lavish"].header,
       all: data.all.header,
     },
     locationPath: location.pathname,
   };
-
-  if (Object.entries(query).length === 0) {
+  const filterComfortQuery = (arr) => {
+    const comfortIndex = ["1", "2", "3", "4", "5"];
+    return comfortIndex.filter((index) => arr.includes(index)).map(Number);
+  };
+  const filterBrandQuery = (arr) => {
+    const brands = [
+      "sealy",
+      "beautyrest",
+      " tempurpedic",
+      "serta",
+      "stearns",
+      "nectar",
+      "posh-and-lavish",
+    ];
+    return brands.filter((brand) => arr.includes(brand));
+  };
+  const allMattresses = () => {
     initialState.currentHeader = data.all.header;
     initialState.currentMattresses = data.all.mattresses;
-    initialState.beforeFilterMattresses = data.all.mattresses;
-    if (typeof window !== `undefined`) {
-      window.history.replaceState({}, "", `${location.pathname}`);
-    }
-    return initialState;
-  }
-  if (query.brand === undefined && query.comfort === undefined) {
-    initialState.currentHeader = data.all.header;
-    initialState.currentMattresses = data.all.mattresses;
-    initialState.beforeFilterMattresses = data.all.mattresses;
-    if (typeof window !== `undefined`) {
-      window.history.replaceState({}, "", `${location.pathname}`);
-    }
-    return initialState;
-  }
-  if (query.brand === null && query.comfort === null) {
-    initialState.currentHeader = data.all.header;
-    initialState.currentMattresses = data.all.mattresses;
-    initialState.beforeFilterMattresses = data.all.mattresses;
-    if (typeof window !== `undefined`) {
-      window.history.replaceState({}, "", `${location.pathname}`);
-    }
+    // if (typeof window !== `undefined`) {
+    //   window.history.replaceState({}, "", `${location.pathname}`);
+    // }
+  };
+  let filteredComfortQuery = null;
+  let filteredBrandQuery = null;
+  if (
+    Object.entries(query).length === 0 ||
+    (query.brand === undefined && query.comfort === undefined) ||
+    (query.brand === null && query.comfort === null) ||
+    (query.brand === undefined && query.comfort === null) ||
+    (query.brand === null && query.comfort === undefined)
+  ) {
+    allMattresses();
     return initialState;
   }
   if (query.brand) {
-    // TODO: Need to filter bad queries!!!!!!
-    //   const filterBrandQuery = Object.keys(data).filter((a) =>
-    //   query.brand.includes(a),
-    // );
-    // console.log(filterBrandQuery);
-    // TODO
-    let filteredMattresses = [];
-    if (typeof query.brand === "string") {
-      if (data[query.brand] !== undefined) {
-        filteredMattresses = [
-          ...filteredMattresses,
-          ...data[query.brand].mattresses,
-        ];
-        initialState.selectedBrandCheckBoxes.push(query.brand);
-        initialState.brandCheckBoxes[
-          data[query.brand].checkBoxIndex
-        ].checked = true;
-      } else {
-        filteredMattresses = data.all.mattresses;
-      }
+    filteredBrandQuery = filterBrandQuery(query.brand);
+    // TODO Delete this line once done
+    if (filteredBrandQuery.length === 0) allMattresses();
+    // !!!!!!!!!!!!!!!!!!!!!TODO !!!!!!!!!!!!!!!!!
+    if (filteredBrandQuery.length === 1) {
+      initialState.currentMattresses = data[filteredBrandQuery[0]].mattresses;
+      initialState.currentHeader = data[filteredBrandQuery[0]].header;
+      initialState.selectedBrandCheckBoxes.push(filteredBrandQuery[0]);
+      initialState.brandCheckBoxes[
+        data[filteredBrandQuery[0]].checkBoxIndex
+      ].checked = true;
     } else {
-      query.brand.forEach((elm) => {
-        if (data[elm] !== undefined) {
-          filteredMattresses = [...filteredMattresses, ...data[elm].mattresses];
-          initialState.selectedBrandCheckBoxes.push(elm);
-          initialState.brandCheckBoxes[data[elm].checkBoxIndex].checked = true;
-        }
+      initialState.currentMattresses = data.all.mattresses.filter((matt) =>
+        filteredBrandQuery.includes(matt.brand.urlName),
+      );
+      initialState.currentHeader = data.all.header;
+      filteredBrandQuery.forEach((q) => {
+        initialState.brandCheckBoxes[data[q].checkBoxIndex].checked = true;
       });
     }
-    initialState.currentHeader =
-      initialState.selectedBrandCheckBoxes.length === 1
-        ? data[initialState.selectedBrandCheckBoxes[0]].header
-        : data.all.header;
-    initialState.currentMattresses = filteredMattresses;
-    initialState.beforeFilterMattresses = filteredMattresses;
   }
+
   if (query.comfort) {
-    const comfortNums = [];
-    let filteredMatts =
-      initialState.currentMattresses.length === 0
-        ? data.all.mattresses
-        : initialState.currentMattresses;
-    if (typeof query.comfort !== "string") {
-      query.comfort.forEach((elm) => {
-        if (1 + elm !== NaN) {
-          if (Number(elm) < 5 || Number(elm) === 0) {
-            initialState.comfortCheckBoxes[elm].checked = true;
-            comfortNums.push(Number(elm));
-          }
-        }
+    filteredComfortQuery = filterComfortQuery(query.comfort);
+    if (filteredComfortQuery.length === 0) allMattresses();
+    if (filteredComfortQuery.length > 0) {
+      const filteredMatts =
+        initialState.currentMattresses.length === 0
+          ? data.all.mattresses
+          : initialState.currentMattresses;
+      initialState.selectedComfortCheckBoxes = filteredComfortQuery;
+      filteredComfortQuery.forEach((elm) => {
+        initialState.comfortCheckBoxes[elm].checked = true;
       });
+      initialState.currentMattresses = filteredMatts.filter((a) =>
+        filteredComfortQuery.includes(a.firmness),
+      );
     }
-    if (Number(query.comfort) < 5 || Number(query.comfort) === 0) {
-      initialState.comfortCheckBoxes[Number(query.comfort)].checked = true;
-      comfortNums.push(Number(query.comfort));
+
+    if (filteredBrandQuery !== null && filteredBrandQuery !== null) {
+      queryString.stringify(
+        { brand: filteredBrandQuery, comfort: filteredBrandQuery },
+        { arrayFormat: "comma" },
+      );
+      if (typeof window !== `undefined`) {
+        window.history.replaceState(
+          {},
+          "",
+          `${location.locationPath}?${queryString.stringify(
+            { brand: filteredBrandQuery, comfort: filteredBrandQuery },
+            { arrayFormat: "comma" },
+          )}`,
+        );
+      }
+    } else if (filteredBrandQuery === null && filteredBrandQuery !== null) {
+      if (typeof window !== `undefined`) {
+        window.history.replaceState(
+          {},
+          "",
+          `${location.locationPath}?${queryString.stringify(
+            { comfort: filteredBrandQuery },
+            { arrayFormat: "comma" },
+          )}`,
+        );
+      }
+    } else if (filteredBrandQuery !== null && filteredBrandQuery === null) {
+      if (typeof window !== `undefined`) {
+        window.history.replaceState(
+          {},
+          "",
+          `${location.locationPath}?${queryString.stringify(
+            { brand: filteredBrandQuery },
+            { arrayFormat: "comma" },
+          )}`,
+        );
+      }
     }
-    filteredMatts =
-      comfortNums.length === 0 && initialState.currentMattresses.length === 0
-        ? [...data.all.mattresses]
-        : [
-            ...filteredMatts.filter(
-              (a) => comfortNums.includes(a.firmness) === true,
-            ),
-          ];
-    initialState.currentMattresses = filteredMatts;
-    initialState.beforeFilterMattresses = filteredMatts;
-    initialState.currentHeader =
-      Object.entries(initialState.currentHeader).length === 0
-        ? data.all.header
-        : initialState.currentHeader;
+    // console.log(
+    //   queryString.stringify(
+    //     { comfort: filteredComfortQuery },
+    //     { arrayFormat: "comma" },
+    //   ),
+    // );
+    // `${state.locationPath}?${queryString.stringify(
+    //   { brand: newSelectedBrand, comfort: state.selectedComfortCheckBoxes },
+    //   { arrayFormat: "comma" },
+    // )}`,
   }
   return initialState;
 };

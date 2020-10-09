@@ -69,7 +69,7 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
               <label htmlFor={checkBox.displayName} key={checkBox.displayName}>
                 <Checkbox
                   id={checkBox.displayName}
-                  checked={checked[checkBox.id].checked}
+                  checked={checkBox.checked}
                   firmness={checkBox.firmness}
                   onChange={(e) =>
                     toggleCheck(e, checkBox.id, checkBox.firmness)
