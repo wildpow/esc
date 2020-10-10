@@ -112,9 +112,6 @@ const GenerateInitialState = (location, data) => {
   }
   if (query.brand) {
     filteredBrandQuery = filterBrandQuery(query.brand);
-    // TODO Delete this line once done
-    if (filteredBrandQuery.length === 0) allMattresses();
-    // !!!!!!!!!!!!!!!!!!!!!TODO !!!!!!!!!!!!!!!!!
     if (filteredBrandQuery.length === 1) {
       initialState.currentMattresses = data[filteredBrandQuery[0]].mattresses;
       initialState.currentHeader = data[filteredBrandQuery[0]].header;
@@ -135,16 +132,12 @@ const GenerateInitialState = (location, data) => {
 
   if (query.comfort) {
     filteredComfortQuery = filterComfortQuery(query.comfort);
-    if (filteredComfortQuery.length === 0) allMattresses();
     if (filteredComfortQuery.length > 0) {
-      // allMattresses(); // TODO REMOVE!!!!!!!!!!!
       const filteredMatts =
         initialState.currentMattresses.length === 0
           ? data.all.mattresses
           : initialState.currentMattresses;
-      // TODO PROBLEM!!!!!! resaults of query string and checkboxs don't match when you have more then one item in the comfort query
 
-      console.log("!!!", filteredComfortQuery, filteredMatts);
       initialState.selectedComfortCheckBoxes = [...filteredComfortQuery];
       filteredComfortQuery.forEach((elm) => {
         initialState.comfortCheckBoxes[elm - 1].checked = true;
@@ -153,9 +146,12 @@ const GenerateInitialState = (location, data) => {
         filteredComfortQuery.includes(a.firmness),
       );
     }
-    console.log("filteredBrandQuery", filteredBrandQuery);
-    console.log("filteredComfortQuery", filteredComfortQuery);
+    if (filteredComfortQuery.length === 0 && filteredBrandQuery.length === 0)
+      allMattresses();
     if (filteredComfortQuery !== null && filteredBrandQuery !== null) {
+      console.log(
+        "filteredComfortQuery !== null && filteredBrandQuery !== null",
+      );
       if (typeof window !== `undefined`) {
         window.history.replaceState(
           {},
@@ -167,7 +163,9 @@ const GenerateInitialState = (location, data) => {
         );
       }
     } else if (filteredComfortQuery === null && filteredBrandQuery !== null) {
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!");
+      console.log(
+        "filteredComfortQuery === null && filteredBrandQuery !== null",
+      );
       if (typeof window !== `undefined`) {
         window.history.replaceState(
           {},
@@ -179,10 +177,11 @@ const GenerateInitialState = (location, data) => {
         );
       }
     } else if (filteredComfortQuery !== null && filteredBrandQuery === null) {
-      console.log("!!!!@@#@##@#@@", location.locationPath, location);
-      // if (typeof window !== `undefined`) {
-      //   window.history.replaceState({}, "", `${location.pathname}`);
-      // }
+      console.log(
+        "filteredComfortQuery !== null && filteredBrandQuery === null",
+        filteredComfortQuery,
+        filteredBrandQuery,
+      );
       if (typeof window !== `undefined`) {
         window.history.replaceState(
           {},
@@ -195,6 +194,13 @@ const GenerateInitialState = (location, data) => {
       }
     }
   }
+  // TODO filteredComfortQuery !== null && filteredBrandQuery === null
+  // TODO is firing but
+  // TODO filteredComfortQuery === null && filteredBrandQuery !== null
+  // TODO IS not!!!!!!!!!!!!
+  console.log("filteredBrandQuery", filteredBrandQuery);
+  console.log(filteredComfortQuery === null, filteredBrandQuery !== null);
+  console.log("filteredComfortQuery", filteredComfortQuery);
   return initialState;
 };
 
