@@ -6,11 +6,11 @@ All notable changes to this project will be documented in this file.
 
 ##### Features
 
-- Added 'apply now' button for Synchrony financing [f345d9a]()
+- Added 'apply now' button for Synchrony financing [f345d9a](https://github.com/wildpow/new-esc-gatsby/commit/f345d9a54df1a146cbf1f4653a2f9c9b8af4d593)
 
 ##### Bug Fix
 
-- Using a search proxy to help defray cost of [instasearch](https://github.com/algolia/react-instantsearch) sending empty search requests. Used [conditional requests](https://www.algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/react/)
+- Using a search proxy to help defray cost of [instasearch](https://github.com/algolia/react-instantsearch) sending empty search requests. Used [conditional requests](https://www.algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/react/) PR [126](https://github.com/wildpow/new-esc-gatsby/pull/126)
 
 ### September 2020
 
