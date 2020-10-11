@@ -1,6 +1,7 @@
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "styled-components";
 import { FlexCol, FadeIn, FlexRow } from "./mainStyles";
+import { boxShadow } from "../utils/styles";
 
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};
@@ -10,6 +11,7 @@ export const Main = styled(FlexCol)`
   margin-right: 0px;
   padding-left: 5px;
   padding-right: 5px;
+  padding-bottom: 20px;
   @media (min-width: 1022px) {
     margin-top: 0px;
     padding-top: 30px;
@@ -22,7 +24,6 @@ export const Main = styled(FlexCol)`
 
 export const CompanyWrapper = styled.article`
   box-shadow: ${(props) => props.theme.newBoxShadow};
-  /* border: ${(props) => props.theme.Border}; */
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 15px;
@@ -52,7 +53,6 @@ export const H3 = styled.h3`
   background-color: ${(props) => props.theme.mainColor1};
   color: ${(props) => props.theme.newColor1};
   margin-top: 0;
-  /* text-align: center; */
   margin-bottom: 0;
   font-size: 1rem;
   padding: 10px 5px 10px 5px;
@@ -152,14 +152,23 @@ export const P = styled.p`
 export const Footer = styled.footer`
   display: flex;
   justify-content: center;
+  padding-right: 0px;
+  flex-direction: column;
+  padding-bottom: 15px;
+  align-items: center;
+  @media (min-width: 767px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 25px;
+    padding-left: 10px;
+  }
 `;
 
 export const ApplyNow = styled(OutboundLink)`
   font-size: 1rem;
-  float: right;
-  margin-top: -30px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+  width: 90%;
+  text-decoration: none;
+  text-align: center;
   padding: 10px 15px 10px 15px;
   background-color: #66ccff;
   font-family: ${(props) => props.theme.MainFont1};
@@ -167,18 +176,18 @@ export const ApplyNow = styled(OutboundLink)`
   border: none;
   cursor: pointer;
   border-radius: 0.17rem;
-  transition: transform 0.25s ease-in;
+  transition: all 0.25s ease-in;
+  box-shadow: ${boxShadow.default};
+
   &:hover {
-    transform: scale3d(1.1, 1.1, 1);
+    box-shadow: ${boxShadow.md};
+    transform: scale3d(1.05, 1.05, 1);
   }
-  @media (min-width: 360px) {
-    margin-top: -10px;
-  }
+
   @media (min-width: 768px) {
     padding: 10px 15px 10px 15px;
-    margin-top: -10px;
-    margin-right: 20px;
     font-size: 1.2rem;
+    width: auto;
   }
   @media (min-width: 1028px) {
     font-size: 1.3rem;
@@ -191,8 +200,12 @@ export const BottomP = styled.p`
   padding-right: 5px;
   padding-left: 5px;
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   padding-bottom: 5px;
   font-weight: 300;
   font-family: ${(props) => props.theme.MainFont1};
+  @media (min-width: 768px) {
+    width: 50%;
+    margin-bottom: 0;
+  }
 `;
