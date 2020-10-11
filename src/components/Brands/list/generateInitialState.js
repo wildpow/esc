@@ -1,9 +1,6 @@
-// import { navigate } from "gatsby";
-
 const queryString = require("query-string");
 
 const GenerateInitialState = (location, data) => {
-  // const query = queryString.parse(location.search);
   const query = queryString.parse(location.search.toLowerCase(), {
     arrayFormat: "comma",
   });
@@ -76,20 +73,36 @@ const GenerateInitialState = (location, data) => {
     locationPath: location.pathname,
   };
   const filterComfortQuery = (arr) => {
+    const isItAnArray = typeof arr === "string" ? [arr] : arr;
     const comfortIndex = ["1", "2", "3", "4", "5"];
-    return comfortIndex.filter((index) => arr.includes(index)).map(Number);
+    const resault = [];
+    isItAnArray.forEach((a) =>
+      comfortIndex.forEach((c) => {
+        if (a === c) resault.push(c);
+      }),
+    );
+    // return comfortIndex.filter((index) => arr.includes(index)).map(Number);
+    return resault.map(Number);
   };
   const filterBrandQuery = (arr) => {
+    const resault = [];
+    const isItAnArray = typeof arr === "string" ? [arr] : arr;
     const brands = [
       "sealy",
       "beautyrest",
-      " tempurpedic",
+      "tempurpedic",
       "serta",
       "stearns",
       "nectar",
       "posh-and-lavish",
     ];
-    return brands.filter((brand) => arr.includes(brand));
+    isItAnArray.forEach((a) =>
+      brands.forEach((b) => {
+        if (a === b) resault.push(b);
+      }),
+    );
+    // return brands.filter((brand) => arr.includes(brand));
+    return resault;
   };
   const allMattresses = () => {
     initialState.currentHeader = data.all.header;
@@ -100,6 +113,8 @@ const GenerateInitialState = (location, data) => {
   };
   let filteredComfortQuery = null;
   let filteredBrandQuery = null;
+
+  // Build state for all mattress query conditions
   if (
     Object.entries(query).length === 0 ||
     (query.brand === undefined && query.comfort === undefined) ||
@@ -110,6 +125,8 @@ const GenerateInitialState = (location, data) => {
     allMattresses();
     return initialState;
   }
+
+  // build state for brand query
   if (query.brand) {
     filteredBrandQuery = filterBrandQuery(query.brand);
     if (filteredBrandQuery.length === 1) {
@@ -130,6 +147,7 @@ const GenerateInitialState = (location, data) => {
     }
   }
 
+  // build state for comfort query
   if (query.comfort) {
     filteredComfortQuery = filterComfortQuery(query.comfort);
     if (filteredComfortQuery.length > 0) {
@@ -146,61 +164,34 @@ const GenerateInitialState = (location, data) => {
         filteredComfortQuery.includes(a.firmness),
       );
     }
-    if (filteredComfortQuery.length === 0 && filteredBrandQuery.length === 0)
-      allMattresses();
-    if (filteredComfortQuery !== null && filteredBrandQuery !== null) {
-      console.log(
-        "filteredComfortQuery !== null && filteredBrandQuery !== null",
-      );
-      if (typeof window !== `undefined`) {
-        window.history.replaceState(
-          {},
-          "",
-          `/brands/list?${queryString.stringify(
-            { brand: filteredBrandQuery, comfort: filteredComfortQuery },
-            { arrayFormat: "comma" },
-          )}`,
-        );
-      }
-    } else if (filteredComfortQuery === null && filteredBrandQuery !== null) {
-      console.log(
-        "filteredComfortQuery === null && filteredBrandQuery !== null",
-      );
-      if (typeof window !== `undefined`) {
-        window.history.replaceState(
-          {},
-          "",
-          `/brands/list?${queryString.stringify(
-            { brand: filteredBrandQuery },
-            { arrayFormat: "comma" },
-          )}`,
-        );
-      }
-    } else if (filteredComfortQuery !== null && filteredBrandQuery === null) {
-      console.log(
-        "filteredComfortQuery !== null && filteredBrandQuery === null",
-        filteredComfortQuery,
-        filteredBrandQuery,
-      );
-      if (typeof window !== `undefined`) {
-        window.history.replaceState(
-          {},
-          "",
-          `/brands/list?${queryString.stringify(
-            { comfort: filteredComfortQuery },
-            { arrayFormat: "comma" },
-          )}`,
-        );
-      }
+  }
+
+  // Build Query String
+  const qStringResault = {};
+  if (filteredComfortQuery !== null) {
+    if (filteredComfortQuery.length !== 0) {
+      qStringResault.comfort = filteredComfortQuery;
     }
   }
-  // TODO filteredComfortQuery !== null && filteredBrandQuery === null
-  // TODO is firing but
-  // TODO filteredComfortQuery === null && filteredBrandQuery !== null
-  // TODO IS not!!!!!!!!!!!!
-  console.log("filteredBrandQuery", filteredBrandQuery);
-  console.log(filteredComfortQuery === null, filteredBrandQuery !== null);
-  console.log("filteredComfortQuery", filteredComfortQuery);
+  if (filteredBrandQuery !== null) {
+    if (filteredBrandQuery.length !== 0) {
+      qStringResault.brand = filteredBrandQuery;
+    }
+  }
+  if (Object.keys(qStringResault).length === 0) {
+    allMattresses();
+  } else {
+    // eslint-disable-next-line no-lonely-if
+    if (typeof window !== `undefined`) {
+      window.history.replaceState(
+        {},
+        "",
+        `/brands/list?${queryString.stringify(qStringResault, {
+          arrayFormat: "comma",
+        })}`,
+      );
+    }
+  }
   return initialState;
 };
 
