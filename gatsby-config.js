@@ -144,14 +144,15 @@ const cfg = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.GATSBY_ALGOLIA_ADMIN,
-        queries: require("./src/utils/algolia-queries"),
-      },
-    },
+    // TODO add back when search is fixed
+    // {
+    //   resolve: `gatsby-plugin-algolia`,
+    //   options: {
+    //     appId: process.env.GATSBY_ALGOLIA_APP_ID,
+    //     apiKey: process.env.GATSBY_ALGOLIA_ADMIN,
+    //     queries: require("./src/utils/algolia-queries"),
+    //   },
+    // },
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-netlify`,
     {
