@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### October 2020
+
+##### Features
+
+- Added 'apply now' button for Synchrony financing [f345d9a]()
+
 ### September 2020
 
 ##### Features
