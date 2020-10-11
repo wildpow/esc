@@ -10,9 +10,9 @@ import Map from "../../../assets/directions-solid.svg";
 import { iconEntry, numberEntry } from "../../../utils/keyframes";
 import { colors, dimensions, breakpoints, fonts } from "../../../utils/styles";
 import CartIcon from "../../../assets/shopping-cart-solid.svg";
-// TODO add back when search is fixed
-// import Search from "../../Search";
-// const searchIndices = [{ name: `Products`, title: `Products` }];
+import Search from "../../Search";
+
+const searchIndices = [{ name: `Products`, title: `Products` }];
 
 // TODO Change name or combine and import from different file to avoid
 // TODO duplication in Cart component.
@@ -131,11 +131,10 @@ const StyledLinks = styled.a`
     color: ${colors.gray["600"]};
   }
 `;
-// TODO Add back when search is fixed
 const ContactUS = styled(StyledLinks)`
-  /* @media (max-width: 360px) {
+  @media (max-width: 360px) {
     display: none;
-  } */
+  }
 `;
 const NavIcons = ({
   pin,
@@ -154,13 +153,12 @@ const NavIcons = ({
   );
   return (
     <ExtraNavRoot>
-      {/* Add back when search is fixed */}
-      {/* <Search
+      <Search
         pin={pin}
         indices={searchIndices}
         searchFocus={searchFocus}
         setSearchFocus={setSearchFocus}
-      /> */}
+      />
       <StyledLinks
         href="tel:1-425-512-0017"
         pin={pin}
