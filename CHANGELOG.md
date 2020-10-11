@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - Added 'apply now' button for Synchrony financing [f345d9a]()
 
+##### Bug Fix
+
+- Using a search proxy to help defray cost of [instasearch](https://github.com/algolia/react-instantsearch) sending empty search requests. Used [conditional requests](https://www.algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/react/)
+
 ### September 2020
 
 ##### Features
