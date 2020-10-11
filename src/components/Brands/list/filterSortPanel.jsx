@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {
   FilterByCard,
@@ -9,42 +9,6 @@ import {
 } from "../../shared/ProductList/FilterSortPanel";
 
 const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
-  const [checked, setChecked] = useState([
-    { checked: false },
-    { checked: false },
-    { checked: false },
-    { checked: false },
-    { checked: false },
-  ]);
-  const [brandCheck, setBrandCheck] = useState([
-    { checked: false },
-    { checked: false },
-    { checked: false },
-    { checked: false },
-    { checked: false },
-    { checked: false },
-    { checked: false },
-    { checked: false },
-  ]);
-  const toggleBrand = (e, index, value) => {
-    e.stopPropagation();
-    dispatch({
-      type: "brand",
-      index,
-      value,
-      checked: e.target.checked,
-    });
-  };
-  const toggleCheck = (e, index, firmness) => {
-    e.stopPropagation();
-    const newChecked = checked;
-    newChecked[index].checked = e.target.checked;
-    setChecked([...newChecked]);
-    dispatch({
-      type: "comfort",
-      id: firmness,
-    });
-  };
   return (
     <FilterSortRoot>
       <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
@@ -56,7 +20,14 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
                 <Checkbox
                   id={brandBox.displayName}
                   checked={brandBox.checked}
-                  onChange={(e) => toggleBrand(e, index, brandBox.urlParam)}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "brand",
+                      index,
+                      value: brandBox.urlParam,
+                      checked: e.target.checked,
+                    })
+                  }
                 />
                 <span style={{ marginLeft: 8 }}>{brandBox.displayName}</span>
               </label>
@@ -72,7 +43,12 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => {
                   checked={checkBox.checked}
                   firmness={checkBox.firmness}
                   onChange={(e) =>
-                    toggleCheck(e, checkBox.id, checkBox.firmness)
+                    dispatch({
+                      type: "comfort",
+                      index: checkBox.id,
+                      id: checkBox.firmness,
+                      checked: e.target.checked,
+                    })
                   }
                 />
                 <span style={{ marginLeft: 8 }}>{checkBox.displayName}</span>

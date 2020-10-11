@@ -21,10 +21,10 @@ function filterCurrentMattresses(mattresses, brands, comfort) {
 }
 export default function (state, action) {
   let newComfortNumbers;
+  let newComfortCheckBoxes;
   let newBrandCheckBoxes;
   let newSelectedBrand;
   let newCurrentHeader;
-
   switch (action.type) {
     case "low-high":
       return {
@@ -112,6 +112,9 @@ export default function (state, action) {
         currentHeader: newCurrentHeader,
       };
     case "comfort":
+      newComfortCheckBoxes = [...state.comfortCheckBoxes];
+      newComfortCheckBoxes[action.index].checked = action.checked;
+
       newComfortNumbers = [...state.selectedComfortCheckBoxes];
       if (newComfortNumbers.includes(action.id)) {
         newComfortNumbers = newComfortNumbers.filter(
@@ -128,6 +131,7 @@ export default function (state, action) {
       );
       return {
         ...state,
+        comfortCheckBoxes: newComfortCheckBoxes,
         currentMattresses: filterCurrentMattresses(
           state.beforeFilterMattresses,
           state.selectedBrandCheckBoxes,
