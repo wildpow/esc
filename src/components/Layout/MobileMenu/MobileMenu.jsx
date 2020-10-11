@@ -16,7 +16,10 @@ const MobileMenuRoot = styled.div`
   display: ${({ pin }) => (pin ? "initial" : "none")};
   background: ${colors.blue["900"]};
   bottom: 0;
-  opacity: ${({ searchFocus }) => (searchFocus ? 0 : 1)};
+  /* @media (max-width: 768px) {
+    opacity: ${({ searchFocus }) => (searchFocus ? 0 : 1)};
+  } */
+  /* opacity: ${({ searchFocus }) => (searchFocus ? 0 : 1)}; */
   position: fixed;
   right: 0;
   /* top: -1px; */
@@ -72,6 +75,7 @@ const MobileMenuRoot = styled.div`
 
     display: none;
   }
+  z-index: ${({ searchFocus }) => (searchFocus ? 0 : 10)};
 `;
 
 const Heading = styled.header`
