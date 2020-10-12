@@ -7,14 +7,32 @@ import StyledSearchResult from "./styled-search-result";
 import StyledSearchRoot from "./styled-search-root";
 import { useKeyboardEvent, useOnClickOutside } from "../Hooks";
 
+const algoliaClient = algoliasearch(
+  process.env.GATSBY_ALGOLIA_APP_ID,
+  process.env.GATSBY_ALGOLIA_SEARCH,
+);
+
+const searchClient = {
+  search(requests) {
+    if (requests.every(({ params }) => !params.query)) {
+      return Promise.resolve({
+        results: requests.map(() => ({
+          hits: [],
+          nbHits: 0,
+          nbPages: 0,
+          processingTimeMS: 0,
+        })),
+      });
+    }
+
+    return algoliaClient.search(requests);
+  },
+};
+
 export default function Search({ indices, pin, searchFocus, setSearchFocus }) {
   const rootRef = createRef();
   const [query, setQuery] = useState();
   // const [hasFocus, setFocus] = useState(false);
-  const searchClient = algoliasearch(
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.GATSBY_ALGOLIA_SEARCH,
-  );
   useEffect(() => {
     if (pin === false) setSearchFocus(false);
   }, [searchFocus, pin, setSearchFocus]);
