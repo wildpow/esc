@@ -4,7 +4,7 @@ import { colors, dimensions, fonts } from "../../utils/styles";
 
 const open = css`
   width: calc(100% - 60px);
-  width: 100%;
+  ${"" /* width: 100%; */}
   background: ${colors.gray[100]};
   cursor: text;
   padding-left: 1.6em;

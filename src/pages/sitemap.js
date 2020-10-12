@@ -20,7 +20,7 @@ const SiteMap = ({ data }) => {
     allDatoCmsMattress,
     datoCmsSeo,
     allDatoCmsAdjustableBase,
-    allDatoCmsBlog,
+    allDatoCmsNewBlog,
   } = data;
   return (
     <Layout>
@@ -130,7 +130,7 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/blog">Blog</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsBlog.nodes.map((base) => (
+            {allDatoCmsNewBlog.nodes.map((base) => (
               <li key={base.id}>
                 <SiteLinks to={`/blog/${base.slug}`}>{base.title}</SiteLinks>
               </li>
@@ -176,7 +176,7 @@ export const allMattressesSiteMap = graphql`
         id
       }
     }
-    allDatoCmsBlog {
+    allDatoCmsNewBlog {
       nodes {
         slug
         title

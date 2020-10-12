@@ -84,18 +84,6 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
-      allDatoCmsBlog {
-        edges {
-          node {
-            blogListImage {
-              alt
-              url
-            }
-            slug
-            title
-          }
-        }
-      }
       allDatoCmsNewBlog {
         edges {
           node {
