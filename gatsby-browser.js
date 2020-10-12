@@ -11,6 +11,7 @@ import { ThemeProvider } from "styled-components";
 import WindowSizeProvider from "./src/provider/WindowSizeProvider";
 import { theme } from "./src/styles/mainStyles";
 import StoreProvider from "./src/provider/StoreProvider";
+import MattressListProvider from "./src/components/Brands/list/mattressListProvider";
 
 require("typeface-roboto-slab");
 require("typeface-roboto");
@@ -18,9 +19,11 @@ require("typeface-roboto");
 export const wrapRootElement = ({ element }) => {
   return (
     <StoreProvider>
-      <ThemeProvider theme={theme}>
-        <WindowSizeProvider>{element}</WindowSizeProvider>
-      </ThemeProvider>
+      <MattressListProvider>
+        <ThemeProvider theme={theme}>
+          <WindowSizeProvider>{element}</WindowSizeProvider>
+        </ThemeProvider>
+      </MattressListProvider>
     </StoreProvider>
   );
 };

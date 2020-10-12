@@ -4,6 +4,7 @@ const MattressListCtx = React.createContext();
 
 const MattressListProvider = ({ children }) => {
   const [state, setState] = useState(null);
+  // const [state, setState] = useState({ brand: "sealy", comfort: ["1", "2"] });
   const writeState = (newState) => setState(newState);
   const getState = () => {
     if (state === null) return false;
@@ -11,7 +12,7 @@ const MattressListProvider = ({ children }) => {
   };
   return (
     <MattressListCtx.Provider value={{ writeState, getState }}>
-      {children}
+      {console.log(state)}}{children}
     </MattressListCtx.Provider>
   );
 };
