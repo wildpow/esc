@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import PropTypes from "prop-types";
 import BreadCrumbs from "../../BreadCrumbs";
 import Header from "../../shared/ProductList/Header";
 import {
@@ -28,7 +29,6 @@ const MattressList = ({ location, data }) => {
   };
   return (
     <MattListWrapper>
-      {/* {console.log("MMMMMMMMMMMM", state, data)} */}
       <NewBread Brands>
         <BreadCrumbs
           next="Brands"
@@ -80,5 +80,8 @@ const MattressList = ({ location, data }) => {
     </MattListWrapper>
   );
 };
-
+MattressList.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
+};
 export default MattressList;

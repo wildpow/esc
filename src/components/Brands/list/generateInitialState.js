@@ -1,15 +1,9 @@
-import { useMattressList } from "./mattressListProvider";
-
 const queryString = require("query-string");
 
 const GenerateInitialState = (location, data) => {
-  const { writeState, getState } = useMattressList();
-  const query = getState()
-    ? getState()
-    : queryString.parse(location.search.toLowerCase(), {
-        arrayFormat: "comma",
-      });
-  console.log(writeState, getState, query);
+  const query = queryString.parse(location.search.toLowerCase(), {
+    arrayFormat: "comma",
+  });
   const initialState = {
     currentMattresses: [],
     beforeFilterMattresses: data.all.mattresses,
