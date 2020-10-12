@@ -9,6 +9,7 @@ export const mattressParts = graphql`
     productType
     tags
     vendor
+    id
     availableForSale
     priceRange {
       minVariantPrice {

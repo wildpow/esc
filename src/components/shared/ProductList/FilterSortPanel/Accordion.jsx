@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import chevron from "../../images/new/chevron-down-solid.svg";
-import { useWindowSize } from "../../context/WindowSizeContext";
-import { colors } from "../../utils/styles";
+import chevron from "../../../../images/new/chevron-down-solid.svg";
+import { useWindowSize } from "../../../../context/WindowSizeContext";
+import { colors } from "../../../../utils/styles";
 
 const AccordionWrapper = styled.div`
   margin-bottom: 10px;
@@ -66,6 +66,9 @@ const AccordionWrapper = styled.div`
     max-height: 0;
     border-bottom: ${(props) =>
       props.active ? `4px solid ${props.theme.mainColor1}` : "white"};
+  }
+  @media (min-width: 768px) {
+    margin-bottom: 0px;
   }
 `;
 

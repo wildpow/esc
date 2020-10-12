@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ##### Features
 
 - Added 'apply now' button for Synchrony financing [f345d9a](https://github.com/wildpow/new-esc-gatsby/commit/f345d9a54df1a146cbf1f4653a2f9c9b8af4d593)
+- New route `/brands/list` lists all mattresses. Also works with url query strings. [PR 127](https://github.com/wildpow/new-esc-gatsby/pull/127)
 
 ##### Bug Fix
 

@@ -44,18 +44,21 @@ exports.createPages = async ({ actions, graphql }) => {
         nodes {
           handle
           shopifyId
+          id
         }
       }
       sheets: allShopifyProduct(filter: { productType: { eq: "Sheets" } }) {
         nodes {
           handle
           shopifyId
+          id
         }
       }
       pillow: allShopifyProduct(filter: { productType: { eq: "Pillow" } }) {
         nodes {
           handle
           shopifyId
+          id
         }
       }
       allDatoCmsAdjustableBase {

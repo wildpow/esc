@@ -1,6 +1,7 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
+const queries = require("./src/utils/algolia-queries");
 
 const {
   NODE_ENV,
@@ -149,7 +150,7 @@ const cfg = {
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
         apiKey: process.env.GATSBY_ALGOLIA_ADMIN,
-        queries: require("./src/utils/algolia-queries"),
+        queries,
       },
     },
     `gatsby-plugin-remove-serviceworker`,

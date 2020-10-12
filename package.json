@@ -5,7 +5,6 @@
   "author": "Aaron Wilder <element1028@gmail.com>",
   "dependencies": {
     "@reach/visually-hidden": "^0.11.1",
-    "@styled-icons/fa-solid": "^10.18.0",
     "algoliasearch": "^4.5.1",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
@@ -29,6 +28,7 @@
     "gatsby-source-shopify": "^3.2.1",
     "gatsby-transformer-remark": "^2.8.28",
     "gatsby-transformer-sharp": "^2.3.14",
+    "query-string": "^6.13.5",
     "react": "^16.10.1",
     "react-anchor-link-smooth-scroll": "^1.0.11",
     "react-dom": "^16.10.1",

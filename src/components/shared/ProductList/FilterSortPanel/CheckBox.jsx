@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { colors } from "../../utils/styles";
+import { colors } from "../../../../utils/styles";
 
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
+  pointer-events: auto;
+  cursor: pointer;
 `;
 
 const Icon = styled.svg`
@@ -39,6 +41,9 @@ const StyledCheckbox = styled.div`
   }
   ${Icon} {
     visibility: ${(props) => (props.checked ? "visible" : "hidden")};
+  }
+  :hover {
+    border-color: ${colors.gray[700]};
   }
 `;
 

@@ -1,8 +1,8 @@
 import React, { useReducer } from "react";
 import PropTypes from "prop-types";
-import Header from "./Header";
+import Header from "../shared/ProductList/Header";
 import MattressThumbnail from "./MattressThumbnail";
-import FilterSortPanel from "./FilterSortPanel";
+import FilterSortPanel from "./FilterSortPanelMatt";
 import filterSortReducer from "./FilterSortReducer";
 import BreadCrumbs from "../BreadCrumbs";
 import { NewBread, MattListWrapper } from "./MattressList.styled";
@@ -14,7 +14,7 @@ const MattressList = ({
   breadCrumbs,
   brandName,
   headerBG,
-  landing,
+  button,
 }) => {
   const initalState = {
     mattresses,
@@ -40,8 +40,8 @@ const MattressList = ({
         title={title}
         description={description}
         headerBG={headerBG}
-        landing={landing}
         brandName={brandName}
+        button={button}
       />
 
       <div className="mattList__flex">
@@ -50,15 +50,21 @@ const MattressList = ({
           checkBoxs={state.checkBoxs}
           length={state.mattresses.length}
         />
-        <div className="mattList__grid">
-          {state.mattresses.map((mattress) => (
-            <MattressThumbnail
-              key={mattress.id}
-              mattress={mattress}
-              url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-            />
-          ))}
-        </div>
+        {state.mattresses.length > 0 ? (
+          <div className="mattList__grid">
+            {state.mattresses.map((mattress) => (
+              <MattressThumbnail
+                key={mattress.id}
+                mattress={mattress}
+                url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="noFilter">
+            <h3>No products match these filters</h3>
+          </div>
+        )}
       </div>
       {breadCrumbs && (
         <NewBread Brands Bottom>
@@ -75,11 +81,15 @@ MattressList.propTypes = {
   mattresses: PropTypes.instanceOf(Object).isRequired,
   breadCrumbs: PropTypes.bool,
   brandName: PropTypes.string,
+  button: PropTypes.shape({ label: PropTypes.string, url: PropTypes.string }),
+  headerBG: PropTypes.string,
 };
 
 MattressList.defaultProps = {
   breadCrumbs: false,
   brandName: "Nothing",
+  headerBG: "",
+  button: null,
 };
 
 export default MattressList;

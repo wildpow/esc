@@ -15,6 +15,7 @@ const Sale = ({ data }) => {
         mattresses={allDatoCmsMattress.nodes}
         title={datoCmsFrontPage.currentSaleHeaderLink.title}
         description={datoCmsFrontPage.currentSaleHeaderLink.tagLine}
+        button={{ label: "Shop all Mattresses", url: "/brands/list" }}
       />
     </Layout>
   );
