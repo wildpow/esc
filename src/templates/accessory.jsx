@@ -25,7 +25,7 @@ import dateSEO from "../functions/dateSEO";
 
 const SmList = styled(List)`
   display: flex;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: none;
   }
 `;

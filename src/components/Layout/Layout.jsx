@@ -8,7 +8,6 @@ import Headroom from "react-headroom";
 import { useOnClickOutside, useKeyboardEvent, useIntersect } from "../Hooks";
 import { useWindowSize } from "../../context/WindowSizeContext";
 import MenuOverLay from "../shared/MenuOverLay";
-
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
 import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
 
@@ -29,6 +28,7 @@ function Layout({ children }) {
   const { width, height } = useWindowSize();
   const [cartStatus, setCartStatus] = useState("closed");
   const [menuStatus, setMenuStatus] = useState("closed");
+  const [searchFocus, setSearchFocus] = useState(false);
   const [pin, setpen] = useState(true);
   const [moved, setMoved] = useState("");
   const FocusLockSidecar = sidecar(() =>
@@ -124,6 +124,8 @@ function Layout({ children }) {
           cartStatus={cartStatus}
           menuStatus={menuStatus}
           cartToggle={cartToggle}
+          searchFocus={searchFocus}
+          setSearchFocus={setSearchFocus}
         />
       </Headroom>
       <div ref={node}>
@@ -143,6 +145,7 @@ function Layout({ children }) {
           sideCar={FocusLockSidecar}
         >
           <MobileMenu
+            searchFocus={searchFocus}
             id={menuId}
             status={menuStatus}
             toggle={menuToggle}

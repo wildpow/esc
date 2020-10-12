@@ -12,15 +12,6 @@ import {
   boxShadow,
 } from "../../../utils/styles";
 
-// const navEntry = keyframes`
-//   0% {
-//     transform: translateY(-100%)
-//   }
-//   100% {
-//     transform: translateY(0%);
-//   }
-// `;
-
 const menuData = [
   { name: "Mattresses", url: "/brands" },
   { name: "Adjustable Bases", url: "/adjustable" },

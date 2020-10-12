@@ -26,6 +26,7 @@ const PostRoot = styled.div`
     font-family: ${fonts.serif};
     padding-left: 5px;
     padding-right: 5px;
+    text-indent: 42px;
   }
   article a {
     color: ${colors.blue[700]};

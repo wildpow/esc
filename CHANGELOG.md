@@ -2,10 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+### October 2020
+
+##### Features
+
+- Added 'apply now' button for Synchrony financing [f345d9a](https://github.com/wildpow/new-esc-gatsby/commit/f345d9a54df1a146cbf1f4653a2f9c9b8af4d593)
+
+##### Bug Fix
+
+- Using a search proxy to help defray cost of [instasearch](https://github.com/algolia/react-instantsearch) sending empty search requests. Used [conditional requests](https://www.algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/react/) PR [126](https://github.com/wildpow/new-esc-gatsby/pull/126)
+
 ### September 2020
 
 ##### Features
 
+- Site wide search powered by [Algolia](https://www.algolia.com/) PR [123](https://github.com/wildpow/new-esc-gatsby/pull/123).
 - 🤖 Added pre-commit hook. Project now following Conventional Commit spec with [commitlint](https://github.com/conventional-changelog/commitlint) and [husk](https://github.com/typicode/husky). [ad43fa3](https://github.com/wildpow/new-esc-gatsby/commit/26dd5dd08fde77d6edbefa494f2c89ff86e2d25d)
 - Added new brand Nectar. Product list, landing and published products from CMS [ #119](https://github.com/wildpow/new-esc-gatsby/pull/118)
 - New contact us form (Netlify forms) and thank you page for submissions [#121](https://github.com/wildpow/new-esc-gatsby/pull/121)
@@ -13,6 +24,7 @@ All notable changes to this project will be documented in this file.
 
 ##### Bug Fixes
 
+- Added missing meta tags for accessories list page.
 - Updated all instances of `Brands` link text to `Mattresses`. [a115f0c](https://github.com/wildpow/new-esc-gatsby/commit/ad43fa3003f07aa94dd07b225bb38844ef55db8b), [786e9ca](https://github.com/wildpow/new-esc-gatsby/commit/a115f0c9eae7fe132ff4fa90fd311f0a6dd6357d)
 - Webkit mobile now displays carousel correctly. [43b5f1e](https://github.com/wildpow/new-esc-gatsby/commit/51c5d0fb12899bee366bb5e290a4a7e3cfbf81e3)
 - Aria-label in cart now displays correct item number. [5d18e3b](https://github.com/wildpow/new-esc-gatsby/commit/a9b5f6eed878e5cb87b327cd6fa12d69eb05767d)
