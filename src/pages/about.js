@@ -1,148 +1,173 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import { HelmetDatoCms } from "gatsby-source-datocms";
 import styled from "styled-components";
-import {
-  Main,
-  PicHolder,
-  StoreImg,
-  MapImg,
-  Address,
-  Span,
-  RegularParagraph,
-  BlueWrapper,
-  SecondP,
-  PopImg,
-} from "../styles/aboutStyles";
-import { H2 } from "../styles/mainStyles";
+import Img from "gatsby-image";
+import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import AboutReview from "../components/ReviewView";
+import { fonts, fontSize, spacing, colors } from "../utils/styles";
 
-const AboutH2 = styled(H2)`
-  @media (min-width: 768px) {
-    font-size: 1.4rem;
+const HeroWrapper = styled.div`
+  position: relative;
+  ::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 1;
+    left: 0;
+    background-image: linear-gradient(
+      270deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.7) 60%,
+      rgba(255, 255, 255, 0.75) 65%,
+      rgba(255, 255, 255, 0.8) 70%,
+      rgba(255, 255, 255, 0.85) 75%,
+      rgba(255, 255, 255, 0.9) 80%,
+      rgba(255, 255, 255, 0.95) 85%,
+      /* rgba(255, 255, 255, 0.8) 90%,
+      rgba(255, 255, 255, 0.9) 95%, */
+        rgba(255, 255, 255, 0.95) 90%,
+      /* rgba(255, 255, 255, 0.9) 95%, */ rgba(255, 255, 255, 0.95) 100%
+    );
   }
-
-  @media (min-width: 1024px) {
-    font-size: 1.5rem;
+  img {
+    width: 100%;
   }
-  @media (min-width: 1300px) {
-    font-size: 1.8rem;
+  .content-wrapper {
+    position: absolute;
+    z-index: 100;
+    color: black;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    blockquote {
+      margin-top: 0;
+      width: 40%;
+      font-size: 2.4rem;
+      font-family: ${fonts.serif};
+      line-height: ${spacing[12]};
+    }
+  }
+  .cite {
+    padding-top: 20px;
+    font-family: ${fonts.sans};
+    span {
+      display: block;
+      line-height: ${spacing[5]};
+      font-size: ${fontSize.base};
+    }
+  }
+`;
+const ThreeImageWrapper = styled.article`
+  align-items: center;
+  p {
+    color: white;
+    font-family: ${fonts.serif};
+    padding-top: 40px;
+    padding-bottom: 40px;
+    max-width: 768px;
+    line-height: ${spacing[8]};
+  }
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, ${colors.blue[900]} 50%, white 0%);
+  .threeImageContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+    .image {
+      /* height: 376px;
+      width: 413px;
+      max-width: 400px;
+      max-height: 370px; */
+    }
   }
 `;
 const About = ({ data }) => {
-  const content = data.allAboutReviews.nodes.filter(
-    (val) => val.comments !== null,
-  );
-  const maxIndex = content.length - 1;
-  let funCoPop;
-  let escNight;
-  let escDay;
-  let escMap;
-  data.datoCmsImage.images.map((img) => {
-    if (img.title === "panda_map") escMap = img;
-    if (img.title === "ESC Mattress Center") escNight = img;
-    if (img.title === "fun_co") funCoPop = img;
-    if (img.title === "outside_light") escDay = img;
-    return null;
-  });
+  const { datoCmsAboutPage } = data;
   return (
     <Layout>
-      <div style={{ paddingTop: "25px" }}>
-        <Main>
-          <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
-          <header>
-            <AboutH2>
-              Our goal is to help Snohomish County sleep like the experts do and
-              wake up feeling better.
-            </AboutH2>
-          </header>
-          <AboutReview maxIndex={maxIndex} content={content} />
-          <PicHolder>
-            <StoreImg fluid={escNight.fluid} alt={escNight.alt} />
-            <MapImg fluid={escMap.fluid} alt={escMap.alt} />
-            <StoreImg fluid={escDay.fluid} alt={escDay.alt} />
-          </PicHolder>
-
-          <Address>
-            <Span>
-              We are located at 10121 Evergreen Way #30, Everett WA 98204.
-            </Span>
-            <br />
-            We are on Everett Mall Way next to Outback Steakhouse and across the
-            street from Enterprise car rentals.
-          </Address>
-
-          <RegularParagraph>
-            We started our own mattress store to do things differently. Instead
-            of focusing on commissions or the lowest priced rectangle, we want
-            to focus on you and getting you the best night’s sleep possible.
-            With over twenty years of combined industry experience we take pride
-            in helping you find the “bed of your dreams” so that you can wake up
-            feeling rested and ready to take on all that your day has to offer.
-          </RegularParagraph>
-
-          <RegularParagraph>
-            We’re here to help advise you by having our non-commissioned staff
-            ask you some questions and listen to your answers to help recommend
-            products that suit your needs. “ESC” stands for Expert Sleep
-            Centers, and with over twenty years of industry experience we know
-            all about sleep and mattresses so you don’t have to. We believe
-            sleep is an important part of everyone’s day, and people have a
-            better life when they’re waking up every morning feeling rested,
-            rejuvenated and refreshed.
-          </RegularParagraph>
-
-          <BlueWrapper>
-            <SecondP>
-              We offer almost fifty mattresses in a wide range of prices to fit
-              every budget. Our mattresses are made in the USA -- with most of
-              them coming from local manufacturing plants -- and are brands that
-              most people know and trust
-              <br />
-              (Sealy, Stearns & Foster, Tempur-Pedic).
-            </SecondP>
-          </BlueWrapper>
-
-          <RegularParagraph>
-            We are locally owned and operated, and even do most of our own
-            delivery service ourselves to save you money. If you live outside
-            Snohomish County, Skagit County, or King County and want us to
-            deliver just call ahead and we’ll do everything we can to make it
-            happen (we go to Whidbey Island all the time).
-          </RegularParagraph>
-          <PopImg fluid={funCoPop.fluid} alt={funCoPop.alt} />
-        </Main>
-      </div>
+      {console.log(data)}
+      <HeroWrapper>
+        <Img fluid={datoCmsAboutPage.hero.fluid} />
+        <div className="content-wrapper">
+          <blockquote>
+            {datoCmsAboutPage.heroText}
+            <div className="cite">
+              <span>- William Wellauer Co-owner</span>
+              <span>&nbsp;&nbsp;E.S.C. Mattress Center</span>
+            </div>
+          </blockquote>
+        </div>
+      </HeroWrapper>
+      <ThreeImageWrapper>
+        <p>{datoCmsAboutPage.threeImageText}</p>
+        <div className="threeImageContainer">
+          {datoCmsAboutPage.threeImage.map((img) => (
+            <div className="image">
+              <Img fixed={img.fixed} alt={img.alt} />
+            </div>
+          ))}
+        </div>
+      </ThreeImageWrapper>
     </Layout>
   );
 };
-
-About.propTypes = {
-  data: PropTypes.instanceOf(Object).isRequired,
-};
-export const aboutSEO = graphql`
-  query aboutSEO {
-    datoCmsSeo(name: { eq: "about" }) {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-    }
-    allAboutReviews {
-      nodes {
-        comments
-        reviewId
-        reviewer {
-          firstName
-          lastName
+export const about = graphql`
+  query about {
+    datoCmsAboutPage {
+      heroText
+      hero {
+        alt
+        fluid(maxWidth: 1440, imgixParams: { auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
         }
       }
-    }
-    datoCmsImage(uniqueName: { eq: "about" }) {
-      uniqueName
-      images {
-        title
+      threeImageText
+      threeImage {
+        alt
+        fluid(
+          maxWidth: 420
+          maxHeight: 380
+          imgixParams: { auto: "compress" }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
+        fixed(width: 413) {
+          ...GatsbyDatoCmsFixed
+        }
+      }
+      firstImageText
+      firstImage {
+        alt
+        fluid(maxWidth: 420, imgixParams: { auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+      brands {
+        alt
+        fluid(maxWidth: 425, imgixParams: { auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+      reviews {
+        comment
+        nameOfReviewer
+      }
+      seoLink {
+        seoMetaTags {
+          ...GatsbyDatoCmsSeoMetaTags
+        }
+      }
+      secondText
+      secondImage {
         alt
         fluid(maxWidth: 420, imgixParams: { auto: "compress" }) {
           ...GatsbyDatoCmsFluid
@@ -151,5 +176,4 @@ export const aboutSEO = graphql`
     }
   }
 `;
-
 export default About;
