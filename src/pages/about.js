@@ -70,6 +70,7 @@ const ThreeImageWrapper = styled.article`
     color: white;
     font-family: ${fonts.serif};
     padding-top: 40px;
+    font-size: ${fontSize.lg};
     padding-bottom: 40px;
     max-width: 768px;
     line-height: ${spacing[8]};
@@ -81,12 +82,56 @@ const ThreeImageWrapper = styled.article`
     display: flex;
     height: 100%;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: space-between;
     .image {
-      /* height: 376px;
+      height: 376px;
       width: 413px;
       max-width: 400px;
-      max-height: 370px; */
+      max-height: 370px;
+    }
+    .n {
+      margin-top: 30px;
+    }
+  }
+`;
+const ArticleWrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  ::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 20%;
+    width: 100%;
+    height: 30%;
+    background-color: ${colors.red[900]};
+    z-index: 0;
+  }
+  article {
+    display: flex;
+    max-width: 1320px;
+    justify-content: space-between;
+  }
+  /* height: 100%;
+  width: 100%; */
+  /* justify-content: center; */
+  .image-wrapper {
+    z-index: 1;
+    /* flex: 1; */
+    height: 400px;
+    width: 48%;
+  }
+  .para-wrapper {
+    width: 48%;
+    height: 50%;
+    font-family: ${fonts.serif};
+    font-size: ${fontSize.lg};
+    line-height: ${spacing[8]};
+    z-index: 1;
+    p {
+      margin-top: 0;
     }
   }
 `;
@@ -109,14 +154,28 @@ const About = ({ data }) => {
       </HeroWrapper>
       <ThreeImageWrapper>
         <p>{datoCmsAboutPage.threeImageText}</p>
-        <div className="threeImageContainer">
-          {datoCmsAboutPage.threeImage.map((img) => (
-            <div className="image">
-              <Img fixed={img.fixed} alt={img.alt} />
+        <div className="threeImageContainer" style={{ maxWidth: "1320px" }}>
+          {datoCmsAboutPage.threeImage.map((img, index) => (
+            <div className={`image ${index === 1 && "n"}`}>
+              <Img fluid={img.fluid} alt={img.alt} />
             </div>
           ))}
         </div>
       </ThreeImageWrapper>
+      <ArticleWrapper>
+        <article>
+          <div className="para-wrapper">
+            <p>{datoCmsAboutPage.firstImageText}</p>
+          </div>
+          <div className="image-wrapper">
+            <Img
+              style={{ width: "100%", height: "100%" }}
+              fluid={datoCmsAboutPage.firstImage.fluid}
+              alt={datoCmsAboutPage.firstImage.alt}
+            />
+          </div>
+        </article>
+      </ArticleWrapper>
     </Layout>
   );
 };
