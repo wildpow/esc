@@ -4,6 +4,8 @@ import Img from "gatsby-image";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import { fonts, fontSize, spacing, colors } from "../utils/styles";
+import Article from "../components/About/article";
+import Reviews from "../components/About/reviews";
 
 const HeroWrapper = styled.div`
   position: relative;
@@ -98,47 +100,7 @@ const ThreeImageWrapper = styled.article`
     }
   }
 `;
-const ArticleWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  background-color: white;
-  ::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 20%;
-    width: 100%;
-    height: 30%;
-    background-color: ${colors.red[900]};
-    z-index: 0;
-  }
-  article {
-    display: flex;
-    max-width: 1320px;
-    justify-content: space-between;
-  }
-  /* height: 100%;
-  width: 100%; */
-  /* justify-content: center; */
-  .image-wrapper {
-    z-index: 1;
-    /* flex: 1; */
-    height: 400px;
-    width: 48%;
-  }
-  .para-wrapper {
-    width: 48%;
-    height: 50%;
-    font-family: ${fonts.serif};
-    font-size: ${fontSize.lg};
-    line-height: ${spacing[8]};
-    z-index: 1;
-    p {
-      margin-top: 0;
-    }
-  }
-`;
+
 const About = ({ data }) => {
   const { datoCmsAboutPage } = data;
   return (
@@ -160,26 +122,28 @@ const About = ({ data }) => {
         <p>{datoCmsAboutPage.threeImageText}</p>
         <div className="threeImageContainer" style={{ maxWidth: "1320px" }}>
           {datoCmsAboutPage.threeImage.map((img, index) => (
-            <div className={`image ${index === 1 && "n"}`}>
+            <div className={`image ${index === 1 && "n"}`} key={img.filename}>
               <Img fluid={img.fluid} alt={img.alt} />
             </div>
           ))}
         </div>
       </ThreeImageWrapper>
-      <ArticleWrapper>
-        <article>
-          <div className="para-wrapper">
-            <p>{datoCmsAboutPage.firstImageText}</p>
-          </div>
-          <div className="image-wrapper">
-            <Img
-              style={{ width: "100%", height: "100%" }}
-              fluid={datoCmsAboutPage.firstImage.fluid}
-              alt={datoCmsAboutPage.firstImage.alt}
-            />
-          </div>
-        </article>
-      </ArticleWrapper>
+      <Article
+        text={datoCmsAboutPage.firstImageText}
+        image={datoCmsAboutPage.firstImage.fluid}
+        alt={datoCmsAboutPage.firstImage.alt}
+      />
+      <Reviews
+        maxIndex={datoCmsAboutPage.reviews.length - 1}
+        content={datoCmsAboutPage.reviews}
+      />
+
+      <Article
+        rotate
+        text={datoCmsAboutPage.secondText}
+        image={datoCmsAboutPage.secondImage.fluid}
+        alt={datoCmsAboutPage.secondImage.alt}
+      />
     </Layout>
   );
 };
@@ -196,6 +160,7 @@ export const about = graphql`
       threeImageText
       threeImage {
         alt
+        filename
         fluid(
           maxWidth: 420
           maxHeight: 380
