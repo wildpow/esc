@@ -13,6 +13,8 @@ All notable changes to this project will be documented in this file.
 
 - Using a search proxy to help defray cost of [instasearch](https://github.com/algolia/react-instantsearch) sending empty search requests. Used [conditional requests](https://www.algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/react/) PR [126](https://github.com/wildpow/new-esc-gatsby/pull/126)
 
+- Update all dependencies and remove old ones [PR 129](https://github.com/wildpow/new-esc-gatsby/pull/129)
+
 ### September 2020
 
 ##### Features
