@@ -36,23 +36,19 @@ const HeroWrapper = styled.div`
     width: 100%;
   }
   .content-wrapper {
-    top: 50%; /* position the top  edge of the element at the middle of the parent */
-    left: 50%; /* position the left edge of the element at the middle of the parent */
-    max-width: 1320px;
-    transform: translate(-50%, -50%);
     position: absolute;
     z-index: 100;
     color: black;
-    /* top: 0;
-    left: 0; */
+    top: 0;
+    left: 0;
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: flex-start;
     align-items: center;
     blockquote {
-      margin: 0;
-      width: 48%;
+      margin-top: 0;
+      width: 40%;
       font-size: 2.4rem;
       font-family: ${fonts.serif};
       line-height: ${spacing[12]};
