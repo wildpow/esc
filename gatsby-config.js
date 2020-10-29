@@ -152,7 +152,7 @@ const cfg = {
         apiKey: process.env.GATSBY_ALGOLIA_ADMIN,
         queries,
         enablePartialUpdates: true,
-        matchFields: ["modified"],
+        matchFields: ["slug", "modified", "description"],
       },
     },
     `gatsby-plugin-remove-serviceworker`,
