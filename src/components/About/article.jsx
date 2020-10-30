@@ -2,7 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import PropTypes from "prop-types";
-import { fonts, fontSize, spacing, colors } from "../../utils/styles";
+import {
+  fonts,
+  fontSize,
+  spacing,
+  colors,
+  breakpoints,
+  radius,
+  boxShadow,
+} from "../../utils/styles";
 
 const ArticleWrapper = styled.div`
   position: relative;
@@ -14,36 +22,67 @@ const ArticleWrapper = styled.div`
     content: "";
     position: absolute;
     left: 0;
-    bottom: 20%;
+    top: 20%;
     width: 100%;
     height: 30%;
     background-color: ${colors.red[900]};
     z-index: 0;
   }
   article {
-    flex-direction: ${({ rotate }) => (rotate ? "row-reverse" : "row")};
+    flex-direction: column-reverse;
     display: flex;
     max-width: 1320px;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid ${colors.gray[500]};
+    border-radius: ${radius.large}px;
+    width: 85%;
+    background-color: white;
+    box-shadow: ${boxShadow.md};
   }
   /* height: 100%;
   width: 100%; */
   /* justify-content: center; */
   .image-wrapper {
+    background-color: white;
     z-index: 1;
     /* flex: 1; */
-    height: 400px;
-    width: 48%;
+    height: 200px;
+    width: 100%;
   }
   .para-wrapper {
-    width: 48%;
-    height: 50%;
+    width: 100%;
+    /* height: 50%; */
     font-family: ${fonts.serif};
-    font-size: ${fontSize.lg};
+    font-size: ${fontSize.base};
     line-height: ${spacing[6]};
     z-index: 1;
+    padding: 5px;
+    background-color: white;
     p {
       margin-top: 0;
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    ::after {
+      bottom: 20%;
+      width: 100%;
+      height: 30%;
+    }
+    article {
+      justify-content: space-between;
+      flex-direction: ${({ rotate }) => (rotate ? "row-reverse" : "row")};
+    }
+    .image-wrapper {
+      height: 400px;
+      width: 48%;
+    }
+    .para-wrapper {
+      font-size: ${fontSize.lg};
+      line-height: ${spacing[6]};
+      width: 48%;
+      height: 50%;
+      padding: 0;
     }
   }
 `;

@@ -18,24 +18,11 @@ const HeroWrapper = styled.div`
     top: 0;
     z-index: 1;
     left: 0;
-    background-image: linear-gradient(
-      270deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0) 30%,
-      rgba(255, 255, 255, 0.7) 60%,
-      rgba(255, 255, 255, 0.75) 65%,
-      rgba(255, 255, 255, 0.8) 70%,
-      rgba(255, 255, 255, 0.85) 75%,
-      rgba(255, 255, 255, 0.9) 80%,
-      rgba(255, 255, 255, 0.95) 85%,
-      /* rgba(255, 255, 255, 0.8) 90%,
-      rgba(255, 255, 255, 0.9) 95%, */
-        rgba(255, 255, 255, 0.95) 90%,
-      /* rgba(255, 255, 255, 0.9) 95%, */ rgba(255, 255, 255, 0.95) 100%
-    );
+
+    background: rgba(255, 255, 255, 0.75);
   }
-  img {
-    width: 100%;
+  .hero_img {
+    height: 200px;
   }
   .content-wrapper {
     top: 50%; /* position the top  edge of the element at the middle of the parent */
@@ -54,10 +41,11 @@ const HeroWrapper = styled.div`
     align-items: center;
     blockquote {
       margin: 0;
-      width: 48%;
-      font-size: 2.4rem;
+      width: 100%;
+      font-size: ${fontSize.base};
       font-family: ${fonts.serif};
-      line-height: ${spacing[12]};
+      line-height: ${spacing[5]};
+      padding-left: 5px;
     }
   }
   .cite {
@@ -66,20 +54,55 @@ const HeroWrapper = styled.div`
     span {
       display: block;
       line-height: ${spacing[5]};
-      font-size: ${fontSize.base};
+      font-size: ${fontSize.sm};
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    .hero_img {
+      height: 100%;
+    }
+    ::before {
+      background: none;
+      background-image: linear-gradient(
+        270deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.7) 60%,
+        rgba(255, 255, 255, 0.75) 65%,
+        rgba(255, 255, 255, 0.8) 70%,
+        rgba(255, 255, 255, 0.85) 75%,
+        rgba(255, 255, 255, 0.9) 80%,
+        rgba(255, 255, 255, 0.95) 85%,
+        /* rgba(255, 255, 255, 0.8) 90%,
+      rgba(255, 255, 255, 0.9) 95%, */
+          rgba(255, 255, 255, 0.95) 90%,
+        /* rgba(255, 255, 255, 0.9) 95%, */ rgba(255, 255, 255, 0.95) 100%
+      );
+    }
+    .content-wrapper {
+      blockquote {
+        padding-left: 0px;
+        font-size: 2.4rem;
+        width: 48%;
+        line-height: ${spacing[12]};
+      }
     }
   }
 `;
 const ThreeImageWrapper = styled.article`
   align-items: center;
+
   p {
     color: white;
     font-family: ${fonts.serif};
     padding-top: 40px;
-    font-size: ${fontSize.lg};
+    font-size: ${fontSize.base};
     padding-bottom: 40px;
     max-width: 768px;
-    line-height: ${spacing[8]};
+    line-height: ${spacing[6]};
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: ${colors.blue[900]};
   }
   display: flex;
   flex-direction: column;
@@ -88,15 +111,40 @@ const ThreeImageWrapper = styled.article`
     display: flex;
     height: 100%;
     width: 100%;
+    /* flex-wrap: wrap; */
     justify-content: space-between;
     .image {
-      height: 376px;
+      height: 100%;
       width: 413px;
       max-width: 400px;
       max-height: 370px;
     }
     .n {
+      display: none;
       margin-top: 30px;
+      /* width: 500px; */
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    .threeImageContainer {
+      .image {
+        height: 376px;
+        width: 413px;
+        max-width: 400px;
+        max-height: 370px;
+      }
+    }
+    p {
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 40px;
+      font-size: ${fontSize.lg};
+      padding-bottom: 40px;
+      max-width: 768px;
+      line-height: ${spacing[8]};
+    }
+    .n {
+      display: initial;
     }
   }
 `;
@@ -213,7 +261,11 @@ const About = ({ data }) => {
       <AboutRoot>
         {console.log(data)}
         <HeroWrapper>
-          <Img fluid={datoCmsAboutPage.hero.fluid} />
+          <Img
+            fluid={datoCmsAboutPage.hero.fluid}
+            // style={{ height: "200px" }}
+            className="hero_img"
+          />
           <div className="content-wrapper">
             <blockquote>
               {datoCmsAboutPage.heroText}
@@ -251,7 +303,7 @@ const About = ({ data }) => {
           alt={datoCmsAboutPage.secondImage.alt}
         />
 
-        <BrandsWrapper>
+        {/* <BrandsWrapper>
           <div className="brand__container">
             {datoCmsAboutPage.brands.map((img) => (
               <div className="brand_img">
@@ -260,7 +312,7 @@ const About = ({ data }) => {
             ))}
           </div>
           <p>{datoCmsAboutPage.brandText}</p>
-        </BrandsWrapper>
+        </BrandsWrapper> */}
       </AboutRoot>
     </Layout>
   );
