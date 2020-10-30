@@ -91,7 +91,7 @@ const HeroWrapper = styled.div`
 `;
 const ThreeImageWrapper = styled.article`
   align-items: center;
-
+  margin-bottom: 60px;
   p {
     color: white;
     font-family: ${fonts.serif};
@@ -103,9 +103,11 @@ const ThreeImageWrapper = styled.article`
     padding-left: 5px;
     padding-right: 5px;
     background-color: ${colors.blue[900]};
+    margin: 0;
   }
   display: flex;
   flex-direction: column;
+  flex-direction: column-reverse;
   background: linear-gradient(to bottom, ${colors.blue[900]} 50%, white 0%);
   .threeImageContainer {
     display: flex;
@@ -120,18 +122,23 @@ const ThreeImageWrapper = styled.article`
       max-height: 370px;
     }
     .n {
-      display: none;
-      margin-top: 30px;
+      /* display: none;
+      margin-top: 30px; */
       /* width: 500px; */
     }
   }
   @media (min-width: ${breakpoints.lg}) {
+    flex-direction: column;
     .threeImageContainer {
       .image {
         height: 376px;
         width: 413px;
         max-width: 400px;
         max-height: 370px;
+      }
+      .n {
+        /* display: block; */
+        margin-top: 30px;
       }
     }
     p {
@@ -142,9 +149,6 @@ const ThreeImageWrapper = styled.article`
       padding-bottom: 40px;
       max-width: 768px;
       line-height: ${spacing[8]};
-    }
-    .n {
-      display: initial;
     }
   }
 `;

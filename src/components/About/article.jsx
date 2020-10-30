@@ -30,6 +30,7 @@ const ArticleWrapper = styled.div`
   }
   article {
     flex-direction: column-reverse;
+
     display: flex;
     max-width: 1320px;
     justify-content: center;
@@ -65,6 +66,7 @@ const ArticleWrapper = styled.div`
   }
   @media (min-width: ${breakpoints.lg}) {
     ::after {
+      top: auto;
       bottom: 20%;
       width: 100%;
       height: 30%;
@@ -72,17 +74,26 @@ const ArticleWrapper = styled.div`
     article {
       justify-content: space-between;
       flex-direction: ${({ rotate }) => (rotate ? "row-reverse" : "row")};
+      border: none;
+      border-radius: none;
+      box-shadow: none;
+      background-color: transparent;
     }
     .image-wrapper {
       height: 400px;
       width: 48%;
     }
     .para-wrapper {
+      align-self: flex-start;
       font-size: ${fontSize.lg};
       line-height: ${spacing[6]};
       width: 48%;
       height: 50%;
       padding: 0;
+      background-color: transparent;
+      p {
+        margin: auto;
+      }
     }
   }
 `;
