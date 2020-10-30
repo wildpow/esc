@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import { graphql } from "gatsby";
+import { Carousel } from "react-responsive-carousel";
 import Layout from "../components/Layout";
 import { fonts, fontSize, spacing, colors, breakpoints } from "../utils/styles";
 import Article from "../components/About/article";
@@ -258,6 +259,18 @@ const AboutRoot = styled.div`
   padding-bottom: 50px;
   background-color: white;
 `;
+const StyledCarousel = styled.div`
+  background-color: ${colors.blue[900]};
+  width: 100%;
+  margin-top: 40px;
+  padding: 20px 0;
+
+  .brand_img {
+    padding-right: 40px;
+    padding-left: 40px;
+    background-color: ${colors.blue[900]};
+  }
+`;
 const About = ({ data }) => {
   const { datoCmsAboutPage } = data;
   return (
@@ -306,6 +319,27 @@ const About = ({ data }) => {
           image={datoCmsAboutPage.secondImage.fluid}
           alt={datoCmsAboutPage.secondImage.alt}
         />
+        <StyledCarousel>
+          <Carousel
+            infiniteLoop
+            autoPlay
+            showThumbs={false}
+            interval={2000}
+            centerMode
+            centerSlidePercentage={100}
+            showStatus={false}
+            showArrows={false}
+            showIndicators={false}
+            // dynamicHeight
+            // style={{ minHeight: "140px", height: "auto" }}
+          >
+            {datoCmsAboutPage.brands.map((img) => (
+              <div className="brand_img">
+                <Img fluid={img.fluid} />
+              </div>
+            ))}
+          </Carousel>
+        </StyledCarousel>
 
         {/* <BrandsWrapper>
           <div className="brand__container">
