@@ -8,10 +8,13 @@ import { FadeIn } from "../../styles/mainStyles";
 const ReviewWrapper = styled.div`
   animation-name: ${FadeIn};
   ${(props) => props.theme.Animation};
-  padding-top: 80px;
-  padding-bottom: 80px;
-  margin-bottom: 120px;
-  margin-top: 10px;
+  /* padding-top: 80px;
+  padding-bottom: 80px; */
+  /* margin-bottom: 120px;
+  margin-top: 10px; */
+  margin-bottom: 50px;
+  margin-top: 60px;
+  height: 180px;
   .stars-image {
     height: 22px;
     align-self: center;
@@ -25,6 +28,8 @@ const ReviewWrapper = styled.div`
     }
   }
   @media (min-width: 1024px) {
+    margin-bottom: 120px;
+    margin-top: 120px;
     .stars-image {
       height: 35px;
     }

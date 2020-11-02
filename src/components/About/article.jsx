@@ -30,14 +30,14 @@ const ArticleWrapper = styled.div`
   }
   article {
     flex-direction: column-reverse;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     max-width: 1320px;
     justify-content: center;
     align-items: center;
     border: 1px solid ${colors.gray[300]};
     border-radius: ${radius.large}px;
-    width: 85%;
+    width: 90%;
     background-color: white;
     box-shadow: ${boxShadow.md};
     z-index: 1;
@@ -56,7 +56,7 @@ const ArticleWrapper = styled.div`
     width: 100%;
     /* height: 50%; */
     font-family: ${fonts.serif};
-    font-size: ${fontSize.base};
+    font-size: ${fontSize.sm};
     line-height: ${spacing[6]};
     z-index: 1;
     padding: 0px;
@@ -65,6 +65,15 @@ const ArticleWrapper = styled.div`
       margin-top: 0;
       margin-bottom: 0;
       padding-top: 20px;
+    }
+  }
+  @media (min-width: ${breakpoints.md}) {
+    .para-wrapper {
+      font-size: ${fontSize.base};
+    }
+    article {
+      width: 85%;
+      padding: 20px;
     }
   }
   @media (min-width: ${breakpoints.lg}) {
@@ -77,10 +86,12 @@ const ArticleWrapper = styled.div`
     article {
       justify-content: space-between;
       flex-direction: ${({ rotate }) => (rotate ? "row-reverse" : "row")};
-      border: none;
+      /* border: none;
       border-radius: none;
-      box-shadow: none;
-      background-color: transparent;
+      box-shadow: none; */
+      /* background-color: transparent;
+      border: 1px solid ${colors.gray[300]};
+      border-radius: ${radius.large}px; */
     }
     .image-wrapper {
       height: 400px;
@@ -88,13 +99,16 @@ const ArticleWrapper = styled.div`
     }
     .para-wrapper {
       align-self: flex-start;
-      font-size: ${fontSize.lg};
-      line-height: ${spacing[6]};
+      /* font-size: ${fontSize.lg}; */
+      font-size: ${fontSize["2xl"]};
+      /* line-height: ${spacing[6]}; */
+      line-height: ${spacing[8]};
       width: 48%;
-      height: 50%;
+      /* height: 50%; */
       padding: 0;
       background-color: transparent;
       p {
+        font-weight: 300;
         padding-top: 0;
         margin: auto;
       }
