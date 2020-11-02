@@ -42,11 +42,11 @@ const HeroWrapper = styled.div`
     align-items: center;
     blockquote {
       margin: 0;
-      width: 100%;
+      width: 50%;
       font-size: ${fontSize.base};
       font-family: ${fonts.serif};
-      line-height: ${spacing[5]};
-      padding-left: 5px;
+      line-height: ${spacing[6]};
+      padding-left: 15px;
     }
   }
   .cite {
@@ -109,7 +109,7 @@ const ThreeImageWrapper = styled.article`
   display: flex;
   flex-direction: column;
   flex-direction: column-reverse;
-  background: linear-gradient(to bottom, ${colors.blue[900]} 50%, white 0%);
+  background: ${colors.blue[900]};
   .threeImageContainer {
     display: flex;
     height: 100%;
@@ -129,8 +129,10 @@ const ThreeImageWrapper = styled.article`
     }
   }
   @media (min-width: ${breakpoints.lg}) {
+    background: linear-gradient(to bottom, ${colors.blue[900]} 50%, white 0%);
     flex-direction: column;
     .threeImageContainer {
+      background-color: transparent;
       .image {
         height: 376px;
         width: 413px;
@@ -269,6 +271,25 @@ const StyledCarousel = styled.div`
     padding-right: 40px;
     padding-left: 40px;
     background-color: ${colors.blue[900]};
+    display: flex;
+    justify-content: center;
+    img {
+      width: 400px;
+    }
+  }
+  p {
+    color: white;
+    font-family: ${fonts.serif};
+    padding-top: 40px;
+    font-size: ${fontSize.base};
+    padding-bottom: 40px;
+    max-width: 768px;
+    line-height: ${spacing[6]};
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: ${colors.blue[900]};
+    margin: 0 auto;
+    text-align: center;
   }
 `;
 const About = ({ data }) => {
@@ -326,7 +347,7 @@ const About = ({ data }) => {
             showThumbs={false}
             interval={2000}
             centerMode
-            centerSlidePercentage={100}
+            centerSlidePercentage={60}
             showStatus={false}
             showArrows={false}
             showIndicators={false}
@@ -335,10 +356,11 @@ const About = ({ data }) => {
           >
             {datoCmsAboutPage.brands.map((img) => (
               <div className="brand_img">
-                <Img fluid={img.fluid} />
+                <Img fluid={img.fluid} style={{ width: "400px" }} />
               </div>
             ))}
           </Carousel>
+          <p>{datoCmsAboutPage.brandText}</p>
         </StyledCarousel>
 
         {/* <BrandsWrapper>

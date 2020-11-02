@@ -24,22 +24,23 @@ const ArticleWrapper = styled.div`
     left: 0;
     top: 20%;
     width: 100%;
-    height: 30%;
+    height: 150px;
     background-color: ${colors.red[900]};
     z-index: 0;
   }
   article {
     flex-direction: column-reverse;
-
+    padding: 20px;
     display: flex;
     max-width: 1320px;
     justify-content: center;
     align-items: center;
-    border: 1px solid ${colors.gray[500]};
+    border: 1px solid ${colors.gray[300]};
     border-radius: ${radius.large}px;
     width: 85%;
     background-color: white;
     box-shadow: ${boxShadow.md};
+    z-index: 1;
   }
   /* height: 100%;
   width: 100%; */
@@ -58,10 +59,12 @@ const ArticleWrapper = styled.div`
     font-size: ${fontSize.base};
     line-height: ${spacing[6]};
     z-index: 1;
-    padding: 5px;
+    padding: 0px;
     background-color: white;
     p {
       margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 20px;
     }
   }
   @media (min-width: ${breakpoints.lg}) {
@@ -92,6 +95,7 @@ const ArticleWrapper = styled.div`
       padding: 0;
       background-color: transparent;
       p {
+        padding-top: 0;
         margin: auto;
       }
     }
