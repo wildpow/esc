@@ -22,8 +22,8 @@ const HeroRoot = styled.div`
     height: 200px;
   }
   .content-wrapper {
-    top: 50%; /* position the top  edge of the element at the middle of the parent */
-    left: 50%; /* position the left edge of the element at the middle of the parent */
+    top: 50%;
+    left: 50%;
     max-width: 1320px;
     transform: translate(-50%, -50%);
     position: absolute;

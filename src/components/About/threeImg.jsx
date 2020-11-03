@@ -13,7 +13,6 @@ import {
 
 const ThreeImageRoot = styled.article`
   align-items: center;
-  /* margin-bottom: 60px; */
   p {
     color: white;
     font-family: ${fonts.serif};
@@ -65,7 +64,6 @@ const ThreeImageRoot = styled.article`
     .threeImageContainer {
       background-color: transparent;
       .image {
-        /* height: 376px; */
         width: 413px;
         max-width: 400px;
         max-height: 370px;

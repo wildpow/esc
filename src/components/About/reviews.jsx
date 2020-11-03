@@ -4,25 +4,14 @@ import styled from "styled-components";
 import { NodeGroup } from "react-move";
 import star from "../../images/stars.svg";
 import { FadeIn } from "../../styles/mainStyles";
-import {
-  breakpoints,
-  fontSize,
-  spacing,
-  colors,
-  radius,
-  boxShadow,
-} from "../../utils/styles";
+import { breakpoints, fontSize, spacing, colors } from "../../utils/styles";
 
 const ReviewWrapper = styled.div`
-  height: 400px;
-  padding: 4em 30px;
-  width: 85%;
+  height: 350px;
+  padding: 4em 10px;
+  width: 90%;
   margin: 0 auto;
-  border-top: 20px solid ${colors.blue[900]};
-  border-bottom: 20px solid ${colors.blue[900]};
-  /* border-radius: ${radius.large}px; */
-  /* box-shadow: ${boxShadow.sm}; */
-  border: 20px solid ${colors.blue[900]};
+  border: 10px solid ${colors.blue[900]};
   .relativeWrapper {
     height: 100%;
   }
@@ -36,6 +25,10 @@ const ReviewWrapper = styled.div`
     justify-self: center;
   }
   @media (min-width: ${breakpoints.sm}) {
+    width: 85%;
+    border: 20px solid ${colors.blue[900]};
+    padding: 4em 30px;
+    height: 400px;
   }
   @media (min-width: 768px) {
     .stars-image {
@@ -58,24 +51,15 @@ const InsideWrapper = styled.div`
   position: absolute;
   left: 0;
   right: 0;
-  /* margin: 0 auto; */
-  /* max-width: 680px; */
   text-align: center;
-  /* padding-right: 5px;
-  padding-left: 5px; */
+
   @media (min-width: 568px) {
-    /* padding-right: 20px;
-    padding-left: 20px; */
   }
   @media (min-width: ${breakpoints.md}) {
-    /* height: calc(300px - 27px); */
   }
   @media (min-width: ${breakpoints.lg}) {
-    /* max-width: 900px; */
-    /* height: calc(300px - 27px); */
   }
   @media (min-width: ${breakpoints.xl}) {
-    /* max-width: 1100px; */
   }
 `;
 
@@ -102,8 +86,6 @@ const Review = styled.p`
     line-height: ${spacing[8]};
   }
   @media (min-width: ${breakpoints.lg}) {
-    /* line-height: 1.4em;
-    font-size: 28px; */
   }
 `;
 const Name = styled.span`

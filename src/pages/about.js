@@ -19,17 +19,11 @@ import ThreeImage from "../components/About/threeImg";
 import Brands from "../components/About/brands";
 
 const AboutRoot = styled.div`
-  .flow > * + * {
-    margin-top: var(--flow-space, 1em);
-  }
-  /* margin-bottom: 50px; */
-  /* max-width: 1440px; */
   background-color: white;
   box-shadow: ${boxShadow.default};
 `;
 
 const PopWrapper = styled.div`
-  /* padding-top: 80px; */
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -44,7 +38,6 @@ const PopWrapper = styled.div`
     width: 100%;
   }
   .paragraph {
-    /* background-color: ${colors.red[900]}; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -56,6 +49,8 @@ const PopWrapper = styled.div`
       font-family: ${fonts.sans};
       text-align: center;
       width: 100%;
+      padding-left: 5px;
+      padding-right: 5px;
     }
   }
   @media (min-width: ${breakpoints.xsm}) {
@@ -63,6 +58,8 @@ const PopWrapper = styled.div`
   }
   @media (min-width: ${breakpoints.sm}) {
     background: linear-gradient(to top, ${colors.red[900]} 52%, white 0%);
+    padding-left: 0px;
+    padding-right: 0px;
   }
   @media (min-width: ${breakpoints.md}) {
     background: linear-gradient(to top, ${colors.red[900]} 46%, white 0%);
@@ -85,11 +82,9 @@ const Flow = styled.div`
 `;
 const About = ({ data }) => {
   const { datoCmsAboutPage } = data;
-  const flow = "7em";
   return (
     <Layout>
       <AboutRoot>
-        {console.log(data)}
         <Hero
           heroAlt={datoCmsAboutPage.hero.alt}
           heroText={datoCmsAboutPage.heroText}

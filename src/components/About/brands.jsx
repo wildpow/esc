@@ -12,9 +12,6 @@ import {
   colors,
 } from "../../utils/styles";
 
-const BrandsRoot = styled.div`
-  /* padding: 15% 0; */
-`;
 const BrandsWrapper = styled.div`
   background-color: ${colors.blue[900]};
 
@@ -53,8 +50,6 @@ const BrandsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* margin-top: 60px; */
-    /* margin-bottom: 60px; */
     align-items: center;
     padding-top: 30px;
     .brand__container {
@@ -79,7 +74,6 @@ const BrandsWrapper = styled.div`
       padding-top: 40px;
       font-size: ${fontSize["2xl"]};
       padding-bottom: 40px;
-      /* max-width: 768px; */
       max-width: 1320px;
       width: 85%;
       text-align: center;
@@ -91,8 +85,7 @@ const BrandsWrapper = styled.div`
 const StyledCarousel = styled.div`
   background-color: ${colors.blue[900]};
   width: 100%;
-  /* margin-top: 40px; */
-  padding: 6em 0;
+  padding: 4em 0;
 
   .brand_img {
     padding-right: 40px;
@@ -109,7 +102,6 @@ const StyledCarousel = styled.div`
     font-family: ${fonts.serif};
     padding-top: 6em;
     font-size: ${fontSize.base};
-    /* padding-bottom: 40px; */
     max-width: 768px;
     line-height: ${spacing[6]};
     padding-left: 5px;
@@ -119,6 +111,7 @@ const StyledCarousel = styled.div`
     text-align: center;
   }
   @media (min-width: ${breakpoints.sm}) {
+    padding: 6em 0;
     p {
       max-width: 1320px;
       width: 90%;

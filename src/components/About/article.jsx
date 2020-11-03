@@ -42,19 +42,14 @@ const ArticleWrapper = styled.div`
     box-shadow: ${boxShadow.md};
     z-index: 1;
   }
-  /* height: 100%;
-  width: 100%; */
-  /* justify-content: center; */
   .image-wrapper {
     background-color: white;
     z-index: 1;
-    /* flex: 1; */
     height: 200px;
     width: 100%;
   }
   .para-wrapper {
     width: 100%;
-    /* height: 50%; */
     font-family: ${fonts.serif};
     font-size: ${fontSize.sm};
     line-height: ${spacing[6]};
@@ -105,12 +100,6 @@ const ArticleWrapper = styled.div`
     article {
       justify-content: space-between;
       flex-direction: ${({ rotate }) => (rotate ? "row-reverse" : "row")};
-      /* border: none;
-      border-radius: none;
-      box-shadow: none; */
-      /* background-color: transparent;
-      border: 1px solid ${colors.gray[300]};
-      border-radius: ${radius.large}px; */
     }
     .image-wrapper {
       height: 400px;
@@ -118,12 +107,9 @@ const ArticleWrapper = styled.div`
     }
     .para-wrapper {
       align-self: flex-start;
-      /* font-size: ${fontSize.lg}; */
       font-size: ${fontSize["2xl"]};
-      /* line-height: ${spacing[6]}; */
       line-height: ${spacing[8]};
       width: 48%;
-      /* height: 50%; */
       padding: 0;
       background-color: transparent;
       p {
