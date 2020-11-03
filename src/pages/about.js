@@ -4,7 +4,14 @@ import styled from "styled-components";
 import Img from "gatsby-image";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import { fonts, fontSize, spacing, colors, breakpoints } from "../utils/styles";
+import {
+  fonts,
+  fontSize,
+  spacing,
+  colors,
+  breakpoints,
+  boxShadow,
+} from "../utils/styles";
 import Article from "../components/About/article";
 import Reviews from "../components/About/reviews";
 import Hero from "../components/About/hero";
@@ -12,8 +19,10 @@ import ThreeImage from "../components/About/threeImg";
 import Brands from "../components/About/brands";
 
 const AboutRoot = styled.div`
-  padding-bottom: 50px;
+  /* margin-bottom: 50px; */
+  /* max-width: 1440px; */
   background-color: white;
+  box-shadow: ${boxShadow.default};
 `;
 
 const PopWrapper = styled.div`
@@ -23,13 +32,16 @@ const PopWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background: linear-gradient(to top, ${colors.red[900]} 55%, white 0%);
+  padding-bottom: 40px;
   .popImg {
     max-width: 400px;
     flex: 1;
     width: 100%;
   }
   .paragraph {
-    background-color: ${colors.red[900]};
+    /* background-color: ${colors.red[900]}; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -43,7 +55,18 @@ const PopWrapper = styled.div`
       width: 100%;
     }
   }
+  @media (min-width: ${breakpoints.xsm}) {
+    background: linear-gradient(to top, ${colors.red[900]} 50%, white 0%);
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    background: linear-gradient(to top, ${colors.red[900]} 52%, white 0%);
+  }
+  @media (min-width: ${breakpoints.md}) {
+    background: linear-gradient(to top, ${colors.red[900]} 46%, white 0%);
+  }
   @media (min-width: ${breakpoints.lg}) {
+    background: linear-gradient(to top, ${colors.red[900]} 40%, white 0%);
+
     .paragraph {
       p {
         font-size: ${fontSize["2xl"]};

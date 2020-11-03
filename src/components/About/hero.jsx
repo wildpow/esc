@@ -61,7 +61,7 @@ const HeroRoot = styled.div`
       }
     }
   }
-  @media (min-width: ${breakpoints.lg}) {
+  @media (min-width: ${breakpoints.md}) {
     .hero_img {
       height: 100%;
     }
@@ -81,6 +81,16 @@ const HeroRoot = styled.div`
         rgba(255, 255, 255, 0.95) 100%
       );
     }
+    .content-wrapper {
+      blockquote {
+        padding-left: 10px;
+        font-size: ${fontSize.lg};
+        width: 48%;
+        line-height: ${spacing[6]};
+      }
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
     .content-wrapper {
       blockquote {
         padding-left: 5px;

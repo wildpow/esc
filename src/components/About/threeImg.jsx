@@ -8,6 +8,7 @@ import {
   spacing,
   breakpoints,
   colors,
+  boxShadow,
 } from "../../utils/styles";
 
 const ThreeImageRoot = styled.article`
@@ -39,6 +40,7 @@ const ThreeImageRoot = styled.article`
       width: 413px;
       max-width: 400px;
       max-height: 370px;
+      box-shadow: ${boxShadow.md};
     }
   }
   @media (min-width: ${breakpoints.md}) {
@@ -49,12 +51,12 @@ const ThreeImageRoot = styled.article`
     }
   }
   @media (min-width: ${breakpoints.lg}) {
-    background: linear-gradient(to bottom, ${colors.blue[900]} 50%, white 0%);
+    background: linear-gradient(to bottom, ${colors.blue[900]} 65%, white 0%);
     flex-direction: column;
     .threeImageContainer {
       background-color: transparent;
       .image {
-        height: 376px;
+        /* height: 376px; */
         width: 413px;
         max-width: 400px;
         max-height: 370px;

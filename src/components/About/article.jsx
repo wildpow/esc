@@ -35,7 +35,7 @@ const ArticleWrapper = styled.div`
     max-width: 1320px;
     justify-content: center;
     align-items: center;
-    border: 1px solid ${colors.gray[300]};
+    border: 1px solid ${colors.gray[400]};
     border-radius: ${radius.large}px;
     width: 90%;
     background-color: white;
@@ -70,13 +70,26 @@ const ArticleWrapper = styled.div`
   @media (min-width: ${breakpoints.md}) {
     .para-wrapper {
       font-size: ${fontSize.base};
+      font-weight: 300;
+      p {
+        font-size: ${fontSize.lg};
+        line-height: ${spacing[8]};
+      }
     }
     article {
       width: 85%;
       padding: 20px;
     }
+    .image-wrapper {
+      height: 300px;
+    }
   }
   @media (min-width: ${breakpoints.lg}) {
+    article {
+      padding: 30px;
+    }
+  }
+  @media (min-width: ${breakpoints.xl}) {
     ::after {
       top: auto;
       bottom: 20%;

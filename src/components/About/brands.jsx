@@ -77,7 +77,9 @@ const BrandsWrapper = styled.div`
       padding-top: 40px;
       font-size: ${fontSize["2xl"]};
       padding-bottom: 40px;
-      max-width: 768px;
+      /* max-width: 768px; */
+      max-width: 1320px;
+      width: 85%;
       text-align: center;
       margin-top: 0;
       line-height: ${spacing[10]};
@@ -113,6 +115,13 @@ const StyledCarousel = styled.div`
     background-color: ${colors.blue[900]};
     margin: 0 auto;
     text-align: center;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    p {
+      width: 85%;
+      font-size: ${fontSize.lg};
+      line-height: ${spacing[8]};
+    }
   }
 `;
 const Brands = ({ brandImages, brandText }) => {

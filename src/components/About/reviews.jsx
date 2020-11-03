@@ -6,35 +6,46 @@ import star from "../../images/stars.svg";
 import { FadeIn } from "../../styles/mainStyles";
 
 const ReviewWrapper = styled.div`
+  .relativeWrapper {
+    height: 150px;
+  }
+  /* height: 200px; */
+  margin-top: 14%;
+  margin-bottom: 0%;
   animation-name: ${FadeIn};
   ${(props) => props.theme.Animation};
   /* padding-top: 80px;
   padding-bottom: 80px; */
   /* margin-bottom: 120px;
   margin-top: 10px; */
-  margin-bottom: 50px;
+  /* margin-bottom: 50px;
   margin-top: 60px;
-  height: 180px;
+  height: 180px; */
   .stars-image {
     height: 22px;
     align-self: center;
     justify-self: center;
   }
   @media (min-width: 768px) {
-    margin-bottom: 170px;
-    margin-top: 20px;
+    /* margin-bottom: 170px;
+    margin-top: 20px; */
+    margin-top: 10%;
+    margin-bottom: 8%;
     .stars-image {
       height: 30px;
     }
   }
   @media (min-width: 1024px) {
-    margin-bottom: 120px;
-    margin-top: 120px;
+    /* margin-bottom: 120px;
+    margin-top: 120px; */
+    /* height: 300px; */
+    margin-bottom: 15%;
     .stars-image {
       height: 35px;
     }
   }
   @media (min-width: 1366px) {
+    margin-bottom: 10%;
     .stars-image {
       height: 45px;
     }
@@ -47,7 +58,7 @@ const InsideWrapper = styled.div`
   right: 0;
   margin: 0 auto;
   max-width: 680px;
-  height: 300px;
+  height: 150px;
   text-align: center;
   padding-right: 5px;
   padding-left: 5px;
@@ -57,6 +68,7 @@ const InsideWrapper = styled.div`
   }
   @media (min-width: 1024px) {
     max-width: 900px;
+    height: calc(300px - 27px);
   }
   @media (min-width: 1366px) {
     max-width: 1100px;
@@ -165,9 +177,13 @@ const Reviews = ({ maxIndex, content }) => {
           })}
         >
           {(nodes) => (
-            <div style={{ position: "relative" }}>
+            <div style={{ position: "relative" }} className="relativeWrapper">
               {nodes.map(({ key, data, state: { opacity } }) => (
-                <div key={key} style={{ opacity, position: "relative" }}>
+                <div
+                  key={key}
+                  style={{ opacity, position: "relative" }}
+                  className="relativeWrapper"
+                >
                   <InsideWrapper>
                     <Review>{content[data].comment}</Review>
                     <Name>{`- ${content[data].nameOfReviewer} `}</Name>
