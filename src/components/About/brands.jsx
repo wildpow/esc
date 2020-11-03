@@ -46,6 +46,7 @@ const BrandsWrapper = styled.div`
     margin-top: 0;
     line-height: ${spacing[10]};
   }
+
   @media (min-width: ${breakpoints.lg}) {
     background-color: ${colors.blue[900]};
     display: flex;
@@ -115,6 +116,14 @@ const StyledCarousel = styled.div`
     background-color: ${colors.blue[900]};
     margin: 0 auto;
     text-align: center;
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    p {
+      max-width: 1320px;
+      width: 90%;
+      font-size: ${fontSize.lg};
+      line-height: ${spacing[8]};
+    }
   }
   @media (min-width: ${breakpoints.md}) {
     p {

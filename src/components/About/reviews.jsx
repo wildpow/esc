@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { NodeGroup } from "react-move";
 import star from "../../images/stars.svg";
 import { FadeIn } from "../../styles/mainStyles";
+import { breakpoints, fontSize, spacing } from "../../utils/styles";
 
 const ReviewWrapper = styled.div`
   .relativeWrapper {
@@ -25,6 +26,10 @@ const ReviewWrapper = styled.div`
     height: 22px;
     align-self: center;
     justify-self: center;
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    margin-top: 10%;
+    margin-bottom: 10%;
   }
   @media (min-width: 768px) {
     /* margin-bottom: 170px;
@@ -66,11 +71,14 @@ const InsideWrapper = styled.div`
     padding-right: 20px;
     padding-left: 20px;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: ${breakpoints.md}) {
+    height: calc(300px - 27px);
+  }
+  @media (min-width: ${breakpoints.lg}) {
     max-width: 900px;
     height: calc(300px - 27px);
   }
-  @media (min-width: 1366px) {
+  @media (min-width: ${breakpoints.xl}) {
     max-width: 1100px;
   }
 `;
@@ -88,14 +96,18 @@ const Review = styled.p`
   justify-items: center;
   align-items: center;
   margin: 14px auto;
-  @media (min-width: 768px) {
-    margin: 22px auto;
-    font-size: 22px;
-    line-height: 1.2em;
+  @media (min-width: ${breakpoints.sm}) {
+    font-size: ${fontSize.lg};
+    line-height: ${spacing[8]};
   }
-  @media (min-width: 1024px) {
-    line-height: 1.4em;
-    font-size: 28px;
+  @media (min-width: ${breakpoints.md}) {
+    margin: 22px auto;
+    font-size: ${fontSize["2xl"]};
+    line-height: ${spacing[8]};
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    /* line-height: 1.4em;
+    font-size: 28px; */
   }
 `;
 const Name = styled.span`
@@ -106,13 +118,15 @@ const Name = styled.span`
   color: ${(props) => props.theme.newColor2};
   text-align: center;
   justify-self: center;
-
-  @media (min-width: 768px) {
-    font-size: 15px;
+  @media (min-width: ${breakpoints.sm}) {
+    font-size: ${fontSize.base};
+    line-height: ${spacing[8]};
+  }
+  @media (min-width: ${breakpoints.md}) {
     letter-spacing: 0.05rem;
   }
-  @media (min-width: 1024px) {
-    font-size: 21px;
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: ${fontSize.lg};
     letter-spacing: 0.05rem;
   }
 `;

@@ -67,6 +67,12 @@ const ArticleWrapper = styled.div`
       padding-top: 20px;
     }
   }
+  @media (min-width: ${breakpoints.sm}) {
+    .para-wrapper {
+      font-size: ${fontSize.base};
+      line-height: ${spacing[8]};
+    }
+  }
   @media (min-width: ${breakpoints.md}) {
     .para-wrapper {
       font-size: ${fontSize.base};

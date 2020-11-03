@@ -43,6 +43,15 @@ const ThreeImageRoot = styled.article`
       box-shadow: ${boxShadow.md};
     }
   }
+  @media (min-width: ${breakpoints.xsm}) {
+    p {
+      max-width: 1320px;
+      font-size: ${fontSize.base};
+      line-height: ${spacing[8]};
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
   @media (min-width: ${breakpoints.md}) {
     p {
       padding-top: 40px;
