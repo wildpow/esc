@@ -13,10 +13,11 @@ import {
 } from "../../utils/styles";
 
 const BrandsRoot = styled.div`
-  padding: 15% 0;
+  /* padding: 15% 0; */
 `;
 const BrandsWrapper = styled.div`
   background-color: ${colors.blue[900]};
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -90,8 +91,8 @@ const BrandsWrapper = styled.div`
 const StyledCarousel = styled.div`
   background-color: ${colors.blue[900]};
   width: 100%;
-  margin-top: 40px;
-  padding: 20px 0;
+  /* margin-top: 40px; */
+  padding: 6em 0;
 
   .brand_img {
     padding-right: 40px;
@@ -106,9 +107,9 @@ const StyledCarousel = styled.div`
   p {
     color: white;
     font-family: ${fonts.serif};
-    padding-top: 40px;
+    padding-top: 6em;
     font-size: ${fontSize.base};
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
     max-width: 768px;
     line-height: ${spacing[6]};
     padding-left: 5px;
@@ -136,7 +137,7 @@ const StyledCarousel = styled.div`
 const Brands = ({ brandImages, brandText }) => {
   const { width } = useWindowSize();
   return (
-    <BrandsRoot>
+    <>
       {width < 1100 ? (
         <StyledCarousel>
           <Carousel
@@ -174,7 +175,7 @@ const Brands = ({ brandImages, brandText }) => {
           <p>{brandText}</p>
         </BrandsWrapper>
       )}
-    </BrandsRoot>
+    </>
   );
 };
 Brands.propTypes = {

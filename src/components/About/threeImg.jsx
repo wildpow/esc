@@ -13,7 +13,7 @@ import {
 
 const ThreeImageRoot = styled.article`
   align-items: center;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; */
   p {
     color: white;
     font-family: ${fonts.serif};

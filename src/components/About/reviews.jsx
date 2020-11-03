@@ -4,53 +4,50 @@ import styled from "styled-components";
 import { NodeGroup } from "react-move";
 import star from "../../images/stars.svg";
 import { FadeIn } from "../../styles/mainStyles";
-import { breakpoints, fontSize, spacing } from "../../utils/styles";
+import {
+  breakpoints,
+  fontSize,
+  spacing,
+  colors,
+  radius,
+  boxShadow,
+} from "../../utils/styles";
 
 const ReviewWrapper = styled.div`
+  height: 400px;
+  padding: 4em 30px;
+  width: 85%;
+  margin: 0 auto;
+  border-top: 20px solid ${colors.blue[900]};
+  border-bottom: 20px solid ${colors.blue[900]};
+  /* border-radius: ${radius.large}px; */
+  /* box-shadow: ${boxShadow.sm}; */
+  border: 20px solid ${colors.blue[900]};
   .relativeWrapper {
-    height: 150px;
+    height: 100%;
   }
-  /* height: 200px; */
-  margin-top: 14%;
-  margin-bottom: 0%;
+
   animation-name: ${FadeIn};
   ${(props) => props.theme.Animation};
-  /* padding-top: 80px;
-  padding-bottom: 80px; */
-  /* margin-bottom: 120px;
-  margin-top: 10px; */
-  /* margin-bottom: 50px;
-  margin-top: 60px;
-  height: 180px; */
+
   .stars-image {
     height: 22px;
     align-self: center;
     justify-self: center;
   }
   @media (min-width: ${breakpoints.sm}) {
-    margin-top: 10%;
-    margin-bottom: 10%;
   }
   @media (min-width: 768px) {
-    /* margin-bottom: 170px;
-    margin-top: 20px; */
-    margin-top: 10%;
-    margin-bottom: 8%;
     .stars-image {
       height: 30px;
     }
   }
   @media (min-width: 1024px) {
-    /* margin-bottom: 120px;
-    margin-top: 120px; */
-    /* height: 300px; */
-    margin-bottom: 15%;
     .stars-image {
       height: 35px;
     }
   }
   @media (min-width: 1366px) {
-    margin-bottom: 10%;
     .stars-image {
       height: 45px;
     }
@@ -61,25 +58,24 @@ const InsideWrapper = styled.div`
   position: absolute;
   left: 0;
   right: 0;
-  margin: 0 auto;
-  max-width: 680px;
-  height: 150px;
+  /* margin: 0 auto; */
+  /* max-width: 680px; */
   text-align: center;
-  padding-right: 5px;
-  padding-left: 5px;
+  /* padding-right: 5px;
+  padding-left: 5px; */
   @media (min-width: 568px) {
-    padding-right: 20px;
-    padding-left: 20px;
+    /* padding-right: 20px;
+    padding-left: 20px; */
   }
   @media (min-width: ${breakpoints.md}) {
-    height: calc(300px - 27px);
+    /* height: calc(300px - 27px); */
   }
   @media (min-width: ${breakpoints.lg}) {
-    max-width: 900px;
-    height: calc(300px - 27px);
+    /* max-width: 900px; */
+    /* height: calc(300px - 27px); */
   }
   @media (min-width: ${breakpoints.xl}) {
-    max-width: 1100px;
+    /* max-width: 1100px; */
   }
 `;
 
@@ -167,6 +163,7 @@ const Reviews = ({ maxIndex, content }) => {
     >
       <div style={{ display: "flex", flexDirection: "column" }}>
         <img
+          className="stars-image"
           src={star}
           alt="E.S.C mattress centers average review is 5 stars"
         />

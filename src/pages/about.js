@@ -19,6 +19,9 @@ import ThreeImage from "../components/About/threeImg";
 import Brands from "../components/About/brands";
 
 const AboutRoot = styled.div`
+  .flow > * + * {
+    margin-top: var(--flow-space, 1em);
+  }
   /* margin-bottom: 50px; */
   /* max-width: 1440px; */
   background-color: white;
@@ -74,8 +77,15 @@ const PopWrapper = styled.div`
     }
   }
 `;
+const Flow = styled.div`
+  margin-top: ${({ mt }) => mt}em;
+  @media (min-width: ${breakpoints.lg}) {
+    margin-top: ${({ mt }) => mt + 5}em;
+  }
+`;
 const About = ({ data }) => {
   const { datoCmsAboutPage } = data;
+  const flow = "7em";
   return (
     <Layout>
       <AboutRoot>
@@ -89,36 +99,46 @@ const About = ({ data }) => {
           threeImage={datoCmsAboutPage.threeImage}
           threeImageText={datoCmsAboutPage.threeImageText}
         />
-        <Article
-          text={datoCmsAboutPage.firstImageText}
-          image={datoCmsAboutPage.firstImage.fluid}
-          alt={datoCmsAboutPage.firstImage.alt}
-        />
-        <Reviews
-          maxIndex={datoCmsAboutPage.reviews.length - 1}
-          content={datoCmsAboutPage.reviews}
-        />
-        <Article
-          rotate
-          text={datoCmsAboutPage.secondText}
-          image={datoCmsAboutPage.secondImage.fluid}
-          alt={datoCmsAboutPage.secondImage.alt}
-        />
-        <Brands
-          brandImages={datoCmsAboutPage.brands}
-          brandText={datoCmsAboutPage.brandText}
-        />
-        <PopWrapper>
-          <Img fluid={data.datoCmsAboutPage.pop.fluid} className="popImg" />
-          <div className="paragraph">
-            <p>
-              We are located at 10121 Evergreen Way #30, Everett WA 98204.
-              <br />
-              We are on Everett Mall Way next to Outback Steakhouse and across
-              the street from Enterprise car rentals.
-            </p>
-          </div>
-        </PopWrapper>
+        <Flow mt={7}>
+          <Article
+            text={datoCmsAboutPage.firstImageText}
+            image={datoCmsAboutPage.firstImage.fluid}
+            alt={datoCmsAboutPage.firstImage.alt}
+          />
+        </Flow>
+        <Flow mt={7}>
+          <Reviews
+            maxIndex={datoCmsAboutPage.reviews.length - 1}
+            content={datoCmsAboutPage.reviews}
+          />
+        </Flow>
+        <Flow mt={7}>
+          <Article
+            rotate
+            text={datoCmsAboutPage.secondText}
+            image={datoCmsAboutPage.secondImage.fluid}
+            alt={datoCmsAboutPage.secondImage.alt}
+          />
+        </Flow>
+        <Flow mt={7}>
+          <Brands
+            brandImages={datoCmsAboutPage.brands}
+            brandText={datoCmsAboutPage.brandText}
+          />
+        </Flow>
+        <Flow mt={7}>
+          <PopWrapper>
+            <Img fluid={data.datoCmsAboutPage.pop.fluid} className="popImg" />
+            <div className="paragraph">
+              <p>
+                We are located at 10121 Evergreen Way #30, Everett WA 98204.
+                <br />
+                We are on Everett Mall Way next to Outback Steakhouse and across
+                the street from Enterprise car rentals.
+              </p>
+            </div>
+          </PopWrapper>
+        </Flow>
       </AboutRoot>
     </Layout>
   );
