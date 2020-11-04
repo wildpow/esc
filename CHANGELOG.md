@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ### November 2020
 
+#### Features
+
+- Redesigned 'About Us' page 🎉 🎉 🎉 [PR 130](https://github.com/wildpow/new-esc-gatsby/pull/130)
+
 ##### Bug Fix
 
 - Algolia now doesn't delete all records on build when there is records already published by running a fork of [gatsby-plugin-algolia](https://github.com/algolia/gatsby-plugin-algolia) with a PR that hasn't been merged. [issue: 105](https://github.com/algolia/gatsby-plugin-algolia/issues/105) , [How i did it](https://dev.to/dannyaziz97/how-the-hell-do-i-use-my-forked-npm-package-4pei)

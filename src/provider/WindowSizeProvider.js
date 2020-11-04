@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-
+import PropTypes from "prop-types";
 import WindowSizeCtx from "../context/WindowSizeContext";
 
 const WindowSizeProvider = ({ children }) => {
@@ -38,5 +38,7 @@ const WindowSizeProvider = ({ children }) => {
     </WindowSizeCtx.Provider>
   );
 };
-
+WindowSizeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default WindowSizeProvider;

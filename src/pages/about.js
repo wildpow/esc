@@ -1,148 +1,262 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import { HelmetDatoCms } from "gatsby-source-datocms";
 import styled from "styled-components";
-import {
-  Main,
-  PicHolder,
-  StoreImg,
-  MapImg,
-  Address,
-  Span,
-  RegularParagraph,
-  BlueWrapper,
-  SecondP,
-  PopImg,
-} from "../styles/aboutStyles";
-import { H2 } from "../styles/mainStyles";
+import Img from "gatsby-image";
+import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import AboutReview from "../components/ReviewView";
+import {
+  fonts,
+  fontSize,
+  spacing,
+  colors,
+  breakpoints,
+  boxShadow,
+} from "../utils/styles";
+import Article from "../components/About/article";
+import Reviews from "../components/About/reviews";
+import Hero from "../components/About/hero";
+import ThreeImage from "../components/About/threeImg";
+import Brands from "../components/About/brands";
+import TabBox from "../components/Landing/TabBox";
 
-const AboutH2 = styled(H2)`
-  @media (min-width: 768px) {
-    font-size: 1.4rem;
-  }
+const AboutRoot = styled.div`
+  background-color: white;
+  box-shadow: ${boxShadow.default};
+`;
 
-  @media (min-width: 1024px) {
-    font-size: 1.5rem;
+const PopWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(to top, ${colors.red[900]} 55%, white 0%);
+  padding-bottom: 40px;
+  .popImg {
+    max-width: 400px;
+    flex: 1;
+    width: 100%;
   }
-  @media (min-width: 1300px) {
-    font-size: 1.8rem;
+  .paragraph {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    p {
+      line-height: ${spacing[8]};
+      font-size: ${fontSize.lg};
+      max-width: 1320px;
+      color: white;
+      font-family: ${fonts.sans};
+      text-align: center;
+      width: 100%;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+  @media (min-width: ${breakpoints.xsm}) {
+    background: linear-gradient(to top, ${colors.red[900]} 50%, white 0%);
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    background: linear-gradient(to top, ${colors.red[900]} 52%, white 0%);
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    background: linear-gradient(to top, ${colors.red[900]} 46%, white 0%);
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    background: linear-gradient(to top, ${colors.red[900]} 45%, white 0%);
+
+    .paragraph {
+      p {
+        font-size: ${fontSize["2xl"]};
+      }
+    }
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    background: linear-gradient(to top, ${colors.red[900]} 42%, white 0%);
+  }
+`;
+const Flow = styled.div`
+  margin-top: ${({ mt }) => mt}em;
+  @media (min-width: ${breakpoints.lg}) {
+    margin-top: ${({ mt }) => mt + 5}em;
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    margin-top: ${({ mt }) => mt + 8}em;
+  }
+`;
+
+const CleanStoreFlow = styled(Flow)`
+  max-width: 1320px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  @media (min-width: ${breakpoints.md}) {
+    width: 85%;
   }
 `;
 const About = ({ data }) => {
-  const content = data.allAboutReviews.nodes.filter(
-    (val) => val.comments !== null,
-  );
-  const maxIndex = content.length - 1;
-  let funCoPop;
-  let escNight;
-  let escDay;
-  let escMap;
-  data.datoCmsImage.images.map((img) => {
-    if (img.title === "panda_map") escMap = img;
-    if (img.title === "ESC Mattress Center") escNight = img;
-    if (img.title === "fun_co") funCoPop = img;
-    if (img.title === "outside_light") escDay = img;
-    return null;
-  });
+  const { datoCmsAboutPage } = data;
   return (
     <Layout>
-      <div style={{ paddingTop: "25px" }}>
-        <Main>
-          <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
-          <header>
-            <AboutH2>
-              Our goal is to help Snohomish County sleep like the experts do and
-              wake up feeling better.
-            </AboutH2>
-          </header>
-          <AboutReview maxIndex={maxIndex} content={content} />
-          <PicHolder>
-            <StoreImg fluid={escNight.fluid} alt={escNight.alt} />
-            <MapImg fluid={escMap.fluid} alt={escMap.alt} />
-            <StoreImg fluid={escDay.fluid} alt={escDay.alt} />
-          </PicHolder>
+      {console.log(datoCmsAboutPage.optionalTabComponent)}
+      <AboutRoot>
+        <Hero
+          heroAlt={datoCmsAboutPage.hero.alt}
+          heroText={datoCmsAboutPage.heroText}
+          heroImg={datoCmsAboutPage.hero.fluid}
+        />
+        <ThreeImage
+          threeImage={datoCmsAboutPage.threeImage}
+          threeImageText={datoCmsAboutPage.threeImageText}
+        />
 
-          <Address>
-            <Span>
-              We are located at 10121 Evergreen Way #30, Everett WA 98204.
-            </Span>
-            <br />
-            We are on Everett Mall Way next to Outback Steakhouse and across the
-            street from Enterprise car rentals.
-          </Address>
-
-          <RegularParagraph>
-            We started our own mattress store to do things differently. Instead
-            of focusing on commissions or the lowest priced rectangle, we want
-            to focus on you and getting you the best night’s sleep possible.
-            With over twenty years of combined industry experience we take pride
-            in helping you find the “bed of your dreams” so that you can wake up
-            feeling rested and ready to take on all that your day has to offer.
-          </RegularParagraph>
-
-          <RegularParagraph>
-            We’re here to help advise you by having our non-commissioned staff
-            ask you some questions and listen to your answers to help recommend
-            products that suit your needs. “ESC” stands for Expert Sleep
-            Centers, and with over twenty years of industry experience we know
-            all about sleep and mattresses so you don’t have to. We believe
-            sleep is an important part of everyone’s day, and people have a
-            better life when they’re waking up every morning feeling rested,
-            rejuvenated and refreshed.
-          </RegularParagraph>
-
-          <BlueWrapper>
-            <SecondP>
-              We offer almost fifty mattresses in a wide range of prices to fit
-              every budget. Our mattresses are made in the USA -- with most of
-              them coming from local manufacturing plants -- and are brands that
-              most people know and trust
-              <br />
-              (Sealy, Stearns & Foster, Tempur-Pedic).
-            </SecondP>
-          </BlueWrapper>
-
-          <RegularParagraph>
-            We are locally owned and operated, and even do most of our own
-            delivery service ourselves to save you money. If you live outside
-            Snohomish County, Skagit County, or King County and want us to
-            deliver just call ahead and we’ll do everything we can to make it
-            happen (we go to Whidbey Island all the time).
-          </RegularParagraph>
-          <PopImg fluid={funCoPop.fluid} alt={funCoPop.alt} />
-        </Main>
-      </div>
+        <Flow mt={7}>
+          <Article
+            text={datoCmsAboutPage.articleSection[0].text}
+            image={datoCmsAboutPage.articleSection[0].image.fluid}
+            alt={datoCmsAboutPage.articleSection[0].image.alt}
+          />
+        </Flow>
+        <Flow mt={7}>
+          <Reviews
+            maxIndex={datoCmsAboutPage.reviews.length - 1}
+            content={datoCmsAboutPage.reviews}
+          />
+        </Flow>
+        <Flow mt={7}>
+          <Article
+            rotate
+            text={datoCmsAboutPage.articleSection[1].text}
+            image={datoCmsAboutPage.articleSection[1].image.fluid}
+            alt={datoCmsAboutPage.articleSection[1].image.alt}
+          />
+        </Flow>
+        <Flow mt={7}>
+          <Brands
+            brandImages={datoCmsAboutPage.brands}
+            brandText={datoCmsAboutPage.brandText}
+          />
+        </Flow>
+        {datoCmsAboutPage.optionalTabComponent && (
+          <CleanStoreFlow mt={7}>
+            <TabBox
+              about
+              tabs={datoCmsAboutPage.optionalTabComponent.box}
+              hero={datoCmsAboutPage.optionalTabComponent.topImage}
+              heroText={datoCmsAboutPage.optionalTabComponent.topText}
+              topButtonName={
+                datoCmsAboutPage.optionalTabComponent.topButtonName
+              }
+              topButtonUrl={datoCmsAboutPage.optionalTabComponent.topButtonUrl}
+            />
+          </CleanStoreFlow>
+        )}
+        <Flow mt={7}>
+          <PopWrapper>
+            <Img
+              fluid={datoCmsAboutPage.pop.fluid}
+              className="popImg"
+              alt={datoCmsAboutPage.pop.alt}
+            />
+            <div className="paragraph">
+              <p>
+                We are located at 10121 Evergreen Way #30, Everett WA 98204.
+                <br />
+                We are on Everett Mall Way next to Outback Steakhouse and across
+                the street from Enterprise car rentals.
+              </p>
+            </div>
+          </PopWrapper>
+        </Flow>
+      </AboutRoot>
     </Layout>
   );
 };
-
 About.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
 };
-export const aboutSEO = graphql`
-  query aboutSEO {
-    datoCmsSeo(name: { eq: "about" }) {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-    }
-    allAboutReviews {
-      nodes {
-        comments
-        reviewId
-        reviewer {
-          firstName
-          lastName
+export const about = graphql`
+  query about {
+    datoCmsAboutPage {
+      articleSection {
+        text
+        image {
+          alt
+          fluid(maxWidth: 420, imgixParams: { auto: "compress" }) {
+            ...GatsbyDatoCmsFluid
+          }
         }
       }
-    }
-    datoCmsImage(uniqueName: { eq: "about" }) {
-      uniqueName
-      images {
-        title
+      optionalTabComponent {
+        name
+        topText
+        topImage {
+          fluid(
+            maxWidth: 458 # maxHeight: 126
+          ) {
+            ...GatsbyDatoCmsFluid
+          }
+          alt
+        }
+        box {
+          title
+          description
+          picture {
+            fluid(
+              maxWidth: 528
+              # maxHeight: 316
+              imgixParams: { auto: "compress", lossless: true }
+            ) {
+              ...GatsbyDatoCmsFluid
+            }
+            alt
+          }
+        }
+        topButtonUrl
+        topButtonName
+      }
+      heroText
+      hero {
+        alt
+        fluid(maxWidth: 1440, imgixParams: { auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+      threeImageText
+      threeImage {
+        alt
+        filename
+        fluid(
+          maxWidth: 420
+          maxHeight: 380
+          imgixParams: { auto: "compress" }
+        ) {
+          ...GatsbyDatoCmsFluid
+        }
+        fixed(width: 413) {
+          ...GatsbyDatoCmsFixed
+        }
+      }
+      brandText
+      brands {
+        alt
+        fluid(maxWidth: 425, imgixParams: { auto: "compress" }) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+      reviews {
+        comment
+        nameOfReviewer
+      }
+      seoLink {
+        seoMetaTags {
+          ...GatsbyDatoCmsSeoMetaTags
+        }
+      }
+      pop {
         alt
         fluid(maxWidth: 420, imgixParams: { auto: "compress" }) {
           ...GatsbyDatoCmsFluid
@@ -151,5 +265,4 @@ export const aboutSEO = graphql`
     }
   }
 `;
-
 export default About;

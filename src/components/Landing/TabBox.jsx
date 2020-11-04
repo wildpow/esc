@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
@@ -9,7 +9,25 @@ import arrowDown from "../../images/whitedownArrow.png";
 import AnimatedBox from "./AnimatedBox";
 import { P } from "./Landing.styled";
 import { InBoundLink } from "./HeaderButtons";
+import { colors } from "../../utils/styles";
 
+const aboutCSS = css`
+  @media screen and (max-width: 981px) {
+    height: initial;
+    margin-bottom: 0px;
+  }
+  @media screen and (max-width: 568px) {
+    height: initial;
+    margin-bottom: 0px;
+  }
+  @media screen and (max-width: 320px) {
+    height: initial;
+    margin-bottom: 0px;
+  }
+  @media screen and (orientation: landscape) {
+    height: initial;
+  }
+`;
 const TabHeroImg = styled(Img)`
   /* max-width: 100%;
   height: auto;
@@ -24,7 +42,8 @@ const TabHeroImg = styled(Img)`
 const Select = styled.select`
   font-weight: 500;
   letter-spacing: 0.1rem;
-  background-color: rgb(200, 100, 93);
+  background-color: ${({ about }) =>
+    about ? colors.red[900] : "rgb(200, 100, 93)"};
   color: rgb(255, 255, 255);
   width: 100%;
   margin-bottom: 1em;
@@ -65,15 +84,24 @@ const Holder = styled.div`
     flex-direction: column;
     align-items: center;
   }
+  ${({ about }) => about && aboutCSS};
 `;
-const TabBox = ({ tabs, hero, heroText, topButtonName, topButtonUrl }) => {
+const TabBox = ({
+  tabs,
+  hero,
+  heroText,
+  topButtonName,
+  topButtonUrl,
+  about,
+}) => {
   const [current, setCurrent] = useState(0);
   const { width } = useWindowSize();
   const hasTopButton = !!(
     topButtonName.length !== 0 || topButtonUrl.length !== 0
   );
   return (
-    <Holder>
+    <Holder about={about}>
+      {console.log(about)}
       <header>
         <TabHeroImg
           fluid={hero.fluid}
@@ -113,7 +141,7 @@ const TabBox = ({ tabs, hero, heroText, topButtonName, topButtonUrl }) => {
               })}
             </>
           ) : (
-            <Select onChange={(e) => setCurrent(e.target.value)}>
+            <Select onChange={(e) => setCurrent(e.target.value)} about>
               {tabs.map((data, i) => (
                 <option value={i} key={data.title}>
                   {data.title}
