@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### November 2020
+
+#### Features
+
+- Redesigned 'About Us' page 🎉 🎉 🎉 [PR 130](https://github.com/wildpow/new-esc-gatsby/pull/130)
+
 ### October 2020
 
 ##### Features

@@ -126,7 +126,11 @@ const About = ({ data }) => {
         </Flow>
         <Flow mt={7}>
           <PopWrapper>
-            <Img fluid={data.datoCmsAboutPage.pop.fluid} className="popImg" />
+            <Img
+              fluid={datoCmsAboutPage.pop.fluid}
+              className="popImg"
+              alt={datoCmsAboutPage.pop.alt}
+            />
             <div className="paragraph">
               <p>
                 We are located at 10121 Evergreen Way #30, Everett WA 98204.
