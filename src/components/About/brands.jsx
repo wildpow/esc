@@ -10,11 +10,12 @@ import {
   spacing,
   breakpoints,
   colors,
+  boxShadow,
 } from "../../utils/styles";
 
 const BrandsWrapper = styled.div`
   background-color: ${colors.blue[900]};
-
+  box-shadow: ${boxShadow["2xl"]};
   display: flex;
   flex-direction: column;
   justify-content: center;

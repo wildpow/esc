@@ -17,6 +17,7 @@ import Reviews from "../components/About/reviews";
 import Hero from "../components/About/hero";
 import ThreeImage from "../components/About/threeImg";
 import Brands from "../components/About/brands";
+import TabBox from "../components/Landing/TabBox";
 
 const AboutRoot = styled.div`
   background-color: white;
@@ -82,11 +83,25 @@ const Flow = styled.div`
   @media (min-width: ${breakpoints.lg}) {
     margin-top: ${({ mt }) => mt + 5}em;
   }
+  @media (min-width: ${breakpoints.xl}) {
+    margin-top: ${({ mt }) => mt + 8}em;
+  }
+`;
+
+const CleanStoreFlow = styled(Flow)`
+  max-width: 1320px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  @media (min-width: ${breakpoints.md}) {
+    width: 85%;
+  }
 `;
 const About = ({ data }) => {
   const { datoCmsAboutPage } = data;
   return (
     <Layout>
+      {console.log(datoCmsAboutPage.optionalTabComponent)}
       <AboutRoot>
         <Hero
           heroAlt={datoCmsAboutPage.hero.alt}
@@ -97,11 +112,12 @@ const About = ({ data }) => {
           threeImage={datoCmsAboutPage.threeImage}
           threeImageText={datoCmsAboutPage.threeImageText}
         />
+
         <Flow mt={7}>
           <Article
-            text={datoCmsAboutPage.firstImageText}
-            image={datoCmsAboutPage.firstImage.fluid}
-            alt={datoCmsAboutPage.firstImage.alt}
+            text={datoCmsAboutPage.articleSection[0].text}
+            image={datoCmsAboutPage.articleSection[0].image.fluid}
+            alt={datoCmsAboutPage.articleSection[0].image.alt}
           />
         </Flow>
         <Flow mt={7}>
@@ -113,9 +129,9 @@ const About = ({ data }) => {
         <Flow mt={7}>
           <Article
             rotate
-            text={datoCmsAboutPage.secondText}
-            image={datoCmsAboutPage.secondImage.fluid}
-            alt={datoCmsAboutPage.secondImage.alt}
+            text={datoCmsAboutPage.articleSection[1].text}
+            image={datoCmsAboutPage.articleSection[1].image.fluid}
+            alt={datoCmsAboutPage.articleSection[1].image.alt}
           />
         </Flow>
         <Flow mt={7}>
@@ -124,6 +140,20 @@ const About = ({ data }) => {
             brandText={datoCmsAboutPage.brandText}
           />
         </Flow>
+        {datoCmsAboutPage.optionalTabComponent && (
+          <CleanStoreFlow mt={7}>
+            <TabBox
+              about
+              tabs={datoCmsAboutPage.optionalTabComponent.box}
+              hero={datoCmsAboutPage.optionalTabComponent.topImage}
+              heroText={datoCmsAboutPage.optionalTabComponent.topText}
+              topButtonName={
+                datoCmsAboutPage.optionalTabComponent.topButtonName
+              }
+              topButtonUrl={datoCmsAboutPage.optionalTabComponent.topButtonUrl}
+            />
+          </CleanStoreFlow>
+        )}
         <Flow mt={7}>
           <PopWrapper>
             <Img
@@ -151,6 +181,43 @@ About.propTypes = {
 export const about = graphql`
   query about {
     datoCmsAboutPage {
+      articleSection {
+        text
+        image {
+          alt
+          fluid(maxWidth: 420, imgixParams: { auto: "compress" }) {
+            ...GatsbyDatoCmsFluid
+          }
+        }
+      }
+      optionalTabComponent {
+        name
+        topText
+        topImage {
+          fluid(
+            maxWidth: 458 # maxHeight: 126
+          ) {
+            ...GatsbyDatoCmsFluid
+          }
+          alt
+        }
+        box {
+          title
+          description
+          picture {
+            fluid(
+              maxWidth: 528
+              # maxHeight: 316
+              imgixParams: { auto: "compress", lossless: true }
+            ) {
+              ...GatsbyDatoCmsFluid
+            }
+            alt
+          }
+        }
+        topButtonUrl
+        topButtonName
+      }
       heroText
       hero {
         alt
@@ -173,13 +240,6 @@ export const about = graphql`
           ...GatsbyDatoCmsFixed
         }
       }
-      firstImageText
-      firstImage {
-        alt
-        fluid(maxWidth: 420, imgixParams: { auto: "compress" }) {
-          ...GatsbyDatoCmsFluid
-        }
-      }
       brandText
       brands {
         alt
@@ -194,13 +254,6 @@ export const about = graphql`
       seoLink {
         seoMetaTags {
           ...GatsbyDatoCmsSeoMetaTags
-        }
-      }
-      secondText
-      secondImage {
-        alt
-        fluid(maxWidth: 420, imgixParams: { auto: "compress" }) {
-          ...GatsbyDatoCmsFluid
         }
       }
       pop {
