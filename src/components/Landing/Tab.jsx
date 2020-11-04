@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { colors } from "../../utils/styles";
 
 const Button = styled.button`
   color: ${(props) => (props.isActive ? "white" : "#93959b")};
@@ -9,11 +10,11 @@ const Button = styled.button`
   font-family: ${(props) => props.theme.MainFont1};
   text-decoration: none;
   background-color: none;
-  background: ${(props) => (props.isActive ? "#c8645d" : "none")};
+  background: ${(props) => (props.isActive ? colors.red[800] : "none")};
   border: none;
   transition: all 0.2s ease;
   :hover {
-    background-color: #c8645d;
+    background-color: ${colors.blue[800]};
     color: white;
   }
 `;

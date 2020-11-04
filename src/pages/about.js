@@ -101,7 +101,6 @@ const About = ({ data }) => {
   const { datoCmsAboutPage } = data;
   return (
     <Layout>
-      {console.log(datoCmsAboutPage.optionalTabComponent)}
       <AboutRoot>
         <Hero
           heroAlt={datoCmsAboutPage.hero.alt}
@@ -200,6 +199,10 @@ export const about = graphql`
             ...GatsbyDatoCmsFluid
           }
           alt
+          height
+          url
+          width
+          title
         }
         box {
           title
@@ -213,6 +216,8 @@ export const about = graphql`
               ...GatsbyDatoCmsFluid
             }
             alt
+            title
+            url
           }
         }
         topButtonUrl

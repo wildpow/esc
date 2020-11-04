@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
-import { Link } from "gatsby";
 import Img from "gatsby-image";
 import { useWindowSize } from "../../context/WindowSizeContext";
 import Tab from "./Tab";
@@ -101,7 +100,6 @@ const TabBox = ({
   );
   return (
     <Holder about={about}>
-      {console.log(about)}
       <header>
         <TabHeroImg
           fluid={hero.fluid}
@@ -130,6 +128,7 @@ const TabBox = ({
               {tabs.map((data, i) => {
                 return (
                   <Tab
+                    about
                     tabID={i}
                     key={data.title}
                     setActiveTab={setCurrent}
@@ -159,15 +158,19 @@ const TabBox = ({
 TabBox.defaultProps = {
   topButtonUrl: null,
   topButtonName: null,
+  about: false,
 };
 
 TabBox.propTypes = {
+  about: PropTypes.bool,
   heroText: PropTypes.string.isRequired,
   hero: PropTypes.shape({
     fluid: PropTypes.instanceOf(Object),
     height: PropTypes.number,
     width: PropTypes.number,
     url: PropTypes.string,
+    title: PropTypes.string,
+    alt: PropTypes.string,
   }).isRequired,
   tabs: PropTypes.instanceOf(Array).isRequired,
   topButtonUrl: PropTypes.string,
