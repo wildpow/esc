@@ -196,15 +196,6 @@ const cfg = {
             },
             name: `widget`,
           },
-          {
-            url: process.env.GATSBY_REST,
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              accept: "application/json",
-            },
-            name: `aboutReviews`,
-          },
         ],
       },
     },
