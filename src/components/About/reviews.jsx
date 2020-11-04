@@ -24,23 +24,31 @@ const ReviewWrapper = styled.div`
     align-self: center;
     justify-self: center;
   }
+  @media (min-width: ${breakpoints.phablet}) {
+    height: 300px;
+  }
   @media (min-width: ${breakpoints.sm}) {
-    width: 85%;
+    width: 90%;
     border: 20px solid ${colors.blue[900]};
     padding: 4em 30px;
-    height: 400px;
+    height: 350px;
   }
-  @media (min-width: 768px) {
+  @media (min-width: ${breakpoints.md}) {
+    width: 85%;
+    height: 400px;
+    padding: 3em 20px;
     .stars-image {
       height: 30px;
     }
   }
-  @media (min-width: 1024px) {
+  @media (min-width: ${breakpoints.lg}) {
     .stars-image {
       height: 35px;
     }
   }
   @media (min-width: 1366px) {
+    border: 30px solid ${colors.blue[900]};
+
     .stars-image {
       height: 45px;
     }

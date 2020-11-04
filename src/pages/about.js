@@ -65,13 +65,16 @@ const PopWrapper = styled.div`
     background: linear-gradient(to top, ${colors.red[900]} 46%, white 0%);
   }
   @media (min-width: ${breakpoints.lg}) {
-    background: linear-gradient(to top, ${colors.red[900]} 40%, white 0%);
+    background: linear-gradient(to top, ${colors.red[900]} 45%, white 0%);
 
     .paragraph {
       p {
         font-size: ${fontSize["2xl"]};
       }
     }
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    background: linear-gradient(to top, ${colors.red[900]} 42%, white 0%);
   }
 `;
 const Flow = styled.div`

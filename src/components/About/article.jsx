@@ -59,7 +59,7 @@ const ArticleWrapper = styled.div`
     p {
       margin-top: 0;
       margin-bottom: 0;
-      padding-top: 20px;
+      padding-top: 10px;
     }
   }
   @media (min-width: ${breakpoints.sm}) {
@@ -75,6 +75,7 @@ const ArticleWrapper = styled.div`
       p {
         font-size: ${fontSize.lg};
         line-height: ${spacing[8]};
+        padding-top: 20px;
       }
     }
     article {
@@ -88,6 +89,11 @@ const ArticleWrapper = styled.div`
   @media (min-width: ${breakpoints.lg}) {
     article {
       padding: 30px;
+    }
+    .para-wrapper {
+      p {
+        padding-top: 30px;
+      }
     }
   }
   @media (min-width: ${breakpoints.xl}) {
@@ -103,14 +109,16 @@ const ArticleWrapper = styled.div`
     }
     .image-wrapper {
       height: 400px;
-      width: 48%;
+      width: 50%;
     }
     .para-wrapper {
       align-self: flex-start;
       font-size: ${fontSize["2xl"]};
       line-height: ${spacing[8]};
-      width: 48%;
+      width: 50%;
       padding: 0;
+      padding-right: ${({ rotate }) => (rotate ? "0px" : "30px")};
+      padding-left: ${({ rotate }) => (rotate ? "30px" : "0px")};
       background-color: transparent;
       p {
         font-weight: 300;
