@@ -83,7 +83,7 @@ const ArticleWrapper = styled.div`
       padding: 20px;
     }
     .image-wrapper {
-      height: 300px;
+      height: 350px;
     }
   }
   @media (min-width: ${breakpoints.lg}) {
@@ -108,7 +108,7 @@ const ArticleWrapper = styled.div`
       flex-direction: ${({ rotate }) => (rotate ? "row-reverse" : "row")};
     }
     .image-wrapper {
-      height: 400px;
+      height: 350px;
       width: 50%;
     }
     .para-wrapper {
