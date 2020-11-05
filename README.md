@@ -1,13 +1,22 @@
 # E.S.C Mattress Center
 
-This project uses [Gatsby](https://www.gatsbyjs.org/) for the front-end, [GraphCMS](https://graphcms.com/) for the back-end and is deployed on [Netlify](https://www.netlify.com/).
+A JAM Stack solution for a local mattress company.
+
+### Services
+
+- Headless CMS: [DatoCMS](https://www.datocms.com/)
+- Shopping Cart: [Shopify](https://www.shopify.com/)
+- Search: [Algolia](https://www.algolia.com/)
+- Deployment: [Netlify](https://www.netlify.com/)
+- Customer chat: [Bird Eye](https://birdeye.com/)
+- Static generator: [Gatsby](https://www.gatsbyjs.org/),
 
 ### Other Technologies
 
-- [Styled-Components](https://www.styled-components.com/) for styling.
-- [React-Move](https://react-move.js.org/#/) for animations.
-- [Axios](https://github.com/axios/axios) for dynamic REST endpoints.
-- [Cypress](https://www.cypress.io/) for visual regression testing.
-- [AirBnB](https://github.com/airbnb/javascript) for style guide.
-- [Prettier](https://prettier.io/) for code formatting.
-- [Husky](https://github.com/typicode/husky) for Git hooks.
+- CSS: [Styled-Components](https://www.styled-components.com/)
+- Animation: [React-Move](https://react-move.js.org/#/)
+- Visual regression testing: [Cypress](https://www.cypress.io/)
+- Style Guide: [AirBnB](https://github.com/airbnb/javascript)
+- Commit guide: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+- Code formatting: [Prettier](https://prettier.io/)
+- Precommit hooks: [Husky](https://github.com/typicode/husky)
