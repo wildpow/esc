@@ -88,7 +88,7 @@ const Accessory = ({ data }) => {
     "image": "${product.images[0].originalSrc}",
     "description": "${product.description}",
     "brand": {
-        "@type": "${product.type}",
+        "@type": "${product.productType}",
         "name": "${product.title}"
     },
     "sku": "ESC${product.title}",
@@ -109,6 +109,7 @@ const Accessory = ({ data }) => {
       </Helmet>
       <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
         <BreadWrapper>
+          {console.log(product)}
           <BreadCrumbs
             acc
             next="Accessories"
