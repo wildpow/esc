@@ -99,6 +99,7 @@ const cfg = {
         shopName: `${process.env.GATSBY_SHOPIFY_STORE}.myshopify.com`,
         accessToken: process.env.GATSBY_SHOPIFY_API,
         verbose: true,
+        apiVersion: "2020-10",
       },
     },
     // {
