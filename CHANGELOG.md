@@ -1,10 +1,19 @@
 # Change log
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### December 2020
+
+##### Features
+
+- Updated Policies and warranty verbiage.
+- Added alt data to almost all CMS hosted images.
+
+---
 
 ### November 2020
 
-#### Features
+##### Features
 
 - Redesigned 'About Us' page 🎉 🎉 🎉 [PR 130](https://github.com/wildpow/new-esc-gatsby/pull/130)
 
@@ -12,6 +21,8 @@ All notable changes to this project will be documented in this file.
 
 - Algolia now doesn't delete all records on build when there is records already published. [issue: 105](https://github.com/algolia/gatsby-plugin-algolia/issues/105)
 - Rewrote unparsable structured data reported by Google Search console.
+
+---
 
 ### October 2020
 
@@ -23,8 +34,9 @@ All notable changes to this project will be documented in this file.
 ##### Bug Fix
 
 - Using a search proxy to help defray cost of [instasearch](https://github.com/algolia/react-instantsearch) sending empty search requests. Used [conditional requests](https://www.algolia.com/doc/guides/building-search-ui/going-further/conditional-requests/react/) PR [126](https://github.com/wildpow/new-esc-gatsby/pull/126)
-
 - Update all dependencies and remove old ones [PR 129](https://github.com/wildpow/new-esc-gatsby/pull/129)
+
+---
 
 ### September 2020
 

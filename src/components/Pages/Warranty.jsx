@@ -27,11 +27,10 @@ const WarrantyComponent = ({ seo }) => (
       The four things to be aware of that will void a mattress warranty are:
       improper support from the frame, improper support from the foundation,
       stains and soils, or removing the law label. Remember, body impressions up
-      to 1-1/2” (3/4” on most memory foam mattresses) are a considered a normal
-      occurrence with any new mattress and is not an indication of structural
-      failure. The comfort layer of the mattress is simply contouring to your
-      natural curves, to give you the proper support and comfort that your body
-      needs.
+      to 1-1/2” are a considered a normal occurrence with any new mattress and
+      is not an indication of structural failure. The comfort layer of the
+      mattress is simply contouring to your natural curves, to give you the
+      proper support and comfort that your body needs.
     </P>
     <WarrantyTopper>
       To initiate a mattress warranty claim you may contact your mattress

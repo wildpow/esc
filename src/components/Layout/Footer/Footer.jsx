@@ -452,7 +452,7 @@ const Footer = ({ moved }) => {
         </section>
         <section>
           <div>
-            <h3>Reviews / Rewards</h3>
+            <h3>Reviews / Awards</h3>
             <div className="iconWrapper">
               <Bird />
               <Link
