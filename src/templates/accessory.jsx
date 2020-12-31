@@ -109,7 +109,6 @@ const Accessory = ({ data }) => {
       </Helmet>
       <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
         <BreadWrapper>
-          {console.log(product)}
           <BreadCrumbs
             acc
             next="Accessories"
