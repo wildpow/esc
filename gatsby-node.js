@@ -69,18 +69,15 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
-      allDatoCmsMattress {
-        edges {
-          node {
-            slug
-            adjBaseShop
-            shopMattConnection
-            brand {
-              shopify2Inch
-              shopify5Inch
-              shopify9Inch
-              urlName
-            }
+      allDatoCmsNewMattress {
+        nodes {
+          slug
+          shopifyAdjustableBase
+          brand {
+            shopify2Inch
+            shopify5Inch
+            shopify9Inch
+            urlName
           }
         }
       }
@@ -136,17 +133,16 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     });
   });
-  data.allDatoCmsMattress.edges.forEach((mattress) => {
+  data.allDatoCmsNewMattress.nodes.forEach((mattress) => {
     actions.createPage({
-      path: `/brands/${mattress.node.brand.urlName}/${mattress.node.slug}`,
+      path: `/brands/${mattress.brand.urlName}/${mattress.slug}`,
       component: path.resolve(`./src/templates/mattress.js`),
       context: {
-        slug: mattress.node.slug,
-        shopifyBase: mattress.node.adjBaseShop,
-        shopifyMatt: mattress.node.shopMattConnection,
-        shopify2Inch: mattress.node.brand.shopify2Inch,
-        shopify5Inch: mattress.node.brand.shopify5Inch,
-        shopify9Inch: mattress.node.brand.shopify9Inch,
+        slug: mattress.slug,
+        shopifyBase: mattress.shopifyAdjustableBase,
+        shopify2Inch: mattress.brand.shopify2Inch,
+        shopify5Inch: mattress.brand.shopify5Inch,
+        shopify9Inch: mattress.brand.shopify9Inch,
       },
     });
   });

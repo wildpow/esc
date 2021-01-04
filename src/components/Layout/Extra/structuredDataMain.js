@@ -18,20 +18,26 @@ const StructuredDataMain = () => (
     "https://www.instagram.com/centeresc/",
     "https://www.yelp.com/biz/esc-mattress-center-everett-3"
   ],
-  "brand": [{"@type": "Brand", "name": "Sealy", "url": "https://www.sealy.com"},
+  "brand": [
+    {"@type": "Brand", "name": "Sealy", "url": "https://www.sealy.com"},
+    {"@type": "Brand", "name":"Serta", "url": "https://www.serta.com/"},
+    {"@type": "Brand", "name":"Beautyrest", "url": "https://www.beautyrest.com/"},
+		{"@type": "Brand", "name":"Stearns & Foster", "url": "https://www.stearnsandfoster.com"}
+		{"@type": "Brand", "name":"Tempur-Pedic", "url": "https://www.tempurpedic.com"},
+    {"@type": "Brand", "name":"Nectar", "url": "https://www.nectarsleep.com/"},
+    {"@type": "Brand", "name":"Posh + Lavish", "url": "http://www.poshandlavish.com/"},
 		{"@type": "Brand", "name":"BedTech", "url": "https://www.mybedtech.com"},
 		{"@type": "Brand", "name": "Malouf", "url": "https://www.maloufsleep.com"},
-		{"@type": "Brand", "name":"Tempur-Pedic", "url": "https://www.tempurpedic.com"},
-		{"@type": "Brand", "name":"Stearns & Foster", "url": "https://www.stearnsandfoster.com"}
 	],
   "award": [
 		"Herald Readers Choice “Best Mattress Store” in 2018",
-		"Herald Readers Choice “Best Mattress Store” in 2019"
+		"Herald Readers Choice “Best Mattress Store” in 2019",
+    "Herald Readers Choice “Best Mattress Store” in 2020"
 	],
   "aggregateRating": {
 		"@type": "AggregateRating",
-		"ratingCount": "104",
-		"reviewCount": "133",
+		"ratingCount": "216",
+		"reviewCount": "150",
     "worstRating": "1",
 		"bestRating": "5",
 		"ratingValue": "4.9"
@@ -120,26 +126,12 @@ const StructuredDataMain = () => (
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": [
         "Monday",
-        "Tuesday"
-      ],
-      "opens": "11:30",
-      "closes": "22:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday"
+        "Saturday"
       ],
-      "opens": "10:00",
-      "closes": "20:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
       "opens": "10:00",
       "closes": "19:00"
     },
@@ -150,7 +142,7 @@ const StructuredDataMain = () => (
       "closes": "18:00"
     }
   ],
-  "openingHours": "Mo 10:00-20:00 Tu 10:00-20:00 We 10:00-20:00 Th 10:00-20:00 Fr 10:00-20:00 Sa 10:00-19:00 Su 10:00-18:00",
+  "openingHours": "Mo 10:00-19:00 Tu 10:00-19:00 We 10:00-19:00 Th 10:00-19:00 Fr 10:00-19:00 Sa 10:00-19:00 Su 10:00-18:00",
   "telephone": "4257600875",
   "priceRange": "$149.99 - $6000.00"
 }

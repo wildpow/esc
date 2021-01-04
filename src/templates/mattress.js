@@ -35,7 +35,7 @@ const LeftSide = styled.div`
 
 const Mattress = ({ data }) => {
   const {
-    datoCmsMattress: mattress,
+    datoCmsNewMattress: mattress,
     shopifyBase,
     shopify2Inch,
     shopify5Inch,
@@ -46,6 +46,7 @@ const Mattress = ({ data }) => {
   const { width } = useWindowSize();
   return (
     <Layout>
+      {console.log(mattress.shopifyInfo[0])}
       <HelmetDatoCms seo={mattress.seoMetaTags}>
         <script type="application/ld+json">
           {`
@@ -54,7 +55,7 @@ const Mattress = ({ data }) => {
     "@context": "http://schema.org/",
     "@type": "Product",
     "name": "${mattress.brand.displayName} ${mattress.subline.name} ${
-            mattress.name
+            mattress.nameWithout
           }",
     "url": "https://www.escmattresscenter.com/brands/${
       mattress.brand.urlName
@@ -65,17 +66,23 @@ const Mattress = ({ data }) => {
         "@type": "Brand",
         "name": "${mattress.brand.displayName}"
     },
-    "sku": "ESC${mattress.brand.urlName.toUpperCase()}.${mattress.name}",
+    "sku": "ESC${mattress.brand.urlName.toUpperCase()}.${mattress.nameWithout}",
     "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
-        "highPrice": ${mattress.priceHigh},
-        "lowPrice": ${mattress.priceLow},
+        "highPrice": ${
+          mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount
+        },
+        "lowPrice": ${
+          mattress.shopifyInfo[0].priceRange.minVariantPrice.amount
+        },
         "priceValidUntil": "${dateSEO()}",
         "itemCondition": "New",
         "availability": "InStock",
         "offerCount": "${
-          Object.values(mattress.price[0]).filter((value) => value !== 0).length
+          Object.values(mattress.shopifyInfo[0].variants).filter(
+            (value) => value !== 0,
+          ).length
         }"
 
     }
@@ -83,7 +90,7 @@ const Mattress = ({ data }) => {
         `}
         </script>
       </HelmetDatoCms>
-      <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
+      {/* <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
         <BreadWrapper>
           <BreadCrumbs
             next="Brands"
@@ -177,7 +184,7 @@ const Mattress = ({ data }) => {
             here={`${mattress.subline.name} ${mattress.name}`}
           />
         </BreadWrapper>
-      </div>
+      </div> */}
     </Layout>
   );
 };
@@ -187,33 +194,13 @@ Mattress.propTypes = {
 export default Mattress;
 
 export const query = graphql`
-  query SingleMattress(
+  query singleMattress(
     $slug: String!
-    $shopifyMatt: String!
     $shopifyBase: String!
     $shopify2Inch: String!
     $shopify5Inch: String!
     $shopify9Inch: String!
   ) {
-    shopifyMattress: shopifyProduct(shopifyId: { eq: $shopifyMatt }) {
-      title
-      vendor
-      shopifyId
-      priceRange {
-        minVariantPrice {
-          amount
-        }
-        maxVariantPrice {
-          amount
-        }
-      }
-      variants {
-        compareAtPrice
-        price
-        title
-        shopifyId
-      }
-    }
     shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
       title
       vendor
@@ -258,37 +245,29 @@ export const query = graphql`
         shopifyId
       }
     }
-    datoCmsMattress(slug: { eq: $slug }) {
-      shopMattConnection
-      priceLow
-      priceHigh
-      slug
-      name
+    datoCmsNewMattress(slug: { eq: $slug }) {
+      nameWithout
       firmness
-      id
+      slug
       description
       profile
-      warranty
-      listFeature {
-        feature
+      warrantyTitle
+      subline {
+        name
+      }
+      brand {
+        urlName
+        displayName
+      }
+      topSmallFeatureList {
         id
+        title
+        description
       }
-      construction {
-        feature
+      bottomFeatureList {
         id
-      }
-      saleInfo {
-        saleBanner
-        discount
-        typeOfDiscount
-        freeBox
-      }
-      price {
-        twin
-        twinxl
-        full
-        queen
-        king
+        title
+        description
       }
       images {
         coverImage {
@@ -325,20 +304,181 @@ export const query = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      subline {
-        name
-      }
-      brand {
-        displayName
-        urlName
-        boxPrice {
-          twin
-          twinxl
-          full
-          queen
-          king
+      shopifyInfo {
+        title
+        vendor
+        shopifyId
+        priceRange {
+          minVariantPrice {
+            amount
+          }
+          maxVariantPrice {
+            amount
+          }
+        }
+        variants {
+          compareAtPrice
+          price
+          title
+          shopifyId
         }
       }
     }
   }
 `;
+// export const query = graphql`
+//   query SingleMattress(
+//     $slug: String!
+//     // $shopifyMatt: String!
+//     $shopifyBase: String!
+//     $shopify2Inch: String!
+//     $shopify5Inch: String!
+//     $shopify9Inch: String!
+//   ) {
+//     shopifyMattress: shopifyProduct(shopifyId: { eq: $shopifyMatt }) {
+//       title
+//       vendor
+//       shopifyId
+//       priceRange {
+//         minVariantPrice {
+//           amount
+//         }
+//         maxVariantPrice {
+//           amount
+//         }
+//       }
+//       variants {
+//         compareAtPrice
+//         price
+//         title
+//         shopifyId
+//       }
+//     }
+//     shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
+//       title
+//       vendor
+//       shopifyId
+//       variants {
+//         compareAtPrice
+//         price
+//         title
+//         shopifyId
+//       }
+//     }
+//     shopify2Inch: shopifyProduct(shopifyId: { eq: $shopify2Inch }) {
+//       title
+//       vendor
+//       shopifyId
+//       variants {
+//         compareAtPrice
+//         price
+//         title
+//         shopifyId
+//       }
+//     }
+//     shopify5Inch: shopifyProduct(shopifyId: { eq: $shopify5Inch }) {
+//       title
+//       vendor
+//       shopifyId
+//       variants {
+//         compareAtPrice
+//         price
+//         title
+//         shopifyId
+//       }
+//     }
+//     shopify9Inch: shopifyProduct(shopifyId: { eq: $shopify9Inch }) {
+//       title
+//       vendor
+//       shopifyId
+//       variants {
+//         compareAtPrice
+//         price
+//         title
+//         shopifyId
+//       }
+//     }
+//     datoCmsMattress(slug: { eq: $slug }) {
+//       shopMattConnection
+//       priceLow
+//       priceHigh
+//       slug
+//       name
+//       firmness
+//       id
+//       description
+//       profile
+//       warranty
+//       listFeature {
+//         feature
+//         id
+//       }
+//       construction {
+//         feature
+//         id
+//       }
+//       saleInfo {
+//         saleBanner
+//         discount
+//         typeOfDiscount
+//         freeBox
+//       }
+//       price {
+//         twin
+//         twinxl
+//         full
+//         queen
+//         king
+//       }
+//       images {
+//         coverImage {
+//           fluid(
+//             maxWidth: 500
+//             imgixParams: { auto: "compress", lossless: true }
+//           ) {
+//             ...GatsbyDatoCmsFluid
+//           }
+//           alt
+//           url
+//         }
+//         image2 {
+//           fluid(
+//             maxWidth: 500
+//             imgixParams: { auto: "compress", lossless: true }
+//           ) {
+//             ...GatsbyDatoCmsFluid
+//           }
+//           alt
+//           url
+//         }
+//         image3 {
+//           fluid(
+//             maxWidth: 500
+//             imgixParams: { auto: "compress", lossless: true }
+//           ) {
+//             ...GatsbyDatoCmsFluid
+//           }
+//           alt
+//           url
+//         }
+//       }
+//       seoMetaTags {
+//         ...GatsbyDatoCmsSeoMetaTags
+//       }
+//       subline {
+//         name
+//       }
+//       brand {
+//         displayName
+//         urlName
+//         boxPrice {
+//           twin
+//           twinxl
+//           full
+//           queen
+//           king
+//         }
+//       }
+//     }
+//   }
+// `;
