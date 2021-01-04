@@ -20,7 +20,7 @@ import {
   Wrapper,
 } from "../components/SingleProduct/SingleProduct.styled";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
-import DropDown from "../components/SingleProduct/priceDropDown.mattress";
+// import DropDown from "../components/SingleProduct/priceDropDown.mattress";
 // import ShopifyDropDown from "../components/SingleProduct/priceDropdownShopify.matt";
 import dateSEO from "../functions/dateSEO";
 import ImageCarousel from "../components/SingleProduct/ImageCarousel";
@@ -40,13 +40,14 @@ const Mattress = ({ data }) => {
     shopify2Inch,
     shopify5Inch,
     shopify9Inch,
-    shopifyMattress,
   } = data;
   const detectMobile = useMobileDetect();
   const { width } = useWindowSize();
+  const saleBanner = mattress.shopifyInfo[0].metafields.filter(
+    (item) => item.key === "saleBanner",
+  );
   return (
     <Layout>
-      {console.log(mattress.shopifyInfo[0])}
       <HelmetDatoCms seo={mattress.seoMetaTags}>
         <script type="application/ld+json">
           {`
@@ -90,7 +91,7 @@ const Mattress = ({ data }) => {
         `}
         </script>
       </HelmetDatoCms>
-      {/* <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
+      <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
         <BreadWrapper>
           <BreadCrumbs
             next="Brands"
@@ -101,7 +102,7 @@ const Mattress = ({ data }) => {
         <Wrapper>
           <header>
             <MainTitle>
-              {`${mattress.brand.displayName} ${mattress.subline.name} ${mattress.name}`}
+              {`${mattress.brand.displayName} ${mattress.subline.name} ${mattress.nameWithout}`}
             </MainTitle>
           </header>
           <Main>
@@ -111,8 +112,8 @@ const Mattress = ({ data }) => {
                 cover={mattress.images[0].coverImage}
                 img1={mattress.images[0].image2}
                 img2={mattress.images[0].image3}
-                saleBanner={mattress.saleInfo[0].saleBanner}
-                mattName={`${mattress.brand.displayName} ${mattress.name}`}
+                saleBanner={saleBanner.length === 1 ? saleBanner[0].value : ""}
+                mattName={`${mattress.brand.displayName} ${mattress.nameWithout}`}
                 firmness={mattress.firmness}
               />
               {detectMobile.isMobile() && (
@@ -124,8 +125,8 @@ const Mattress = ({ data }) => {
                 <List>
                   <h3>Features</h3>
                   <ul>
-                    {mattress.listFeature.map((item) => (
-                      <li key={item.id}>{item.feature}</li>
+                    {mattress.topSmallFeatureList.map((item) => (
+                      <li key={item.id}>{item.title}</li>
                     ))}
                     <Info>
                       <AnchorLink href="#moreInfo">See more details</AnchorLink>
@@ -133,31 +134,19 @@ const Mattress = ({ data }) => {
                   </ul>
                 </List>
               )}
-              {shopifyMattress === null ? (
-                <DropDown
-                  typeOfDiscount={mattress.saleInfo[0].typeOfDiscount}
-                  freeBoxSpring={mattress.saleInfo[0].freeBox}
-                  discount={mattress.saleInfo[0].discount}
-                  prices={mattress.price[0]}
-                  boxPrices={
-                    mattress.subline.name === "iComfort"
-                      ? mattress.brand.boxPrice[1]
-                      : mattress.brand.boxPrice[0]
-                  }
-                  mattress={mattress.name}
-                  subline={mattress.subline.name}
-                />
-              ) : (
-                <MattressForm
-                  variants={shopifyMattress.variants}
-                  priceMin={shopifyMattress.priceRange.minVariantPrice.amount}
-                  priceMax={shopifyMattress.priceRange.maxVariantPrice.amount}
-                  matt
-                  maxQty={4}
-                  boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
-                  shopifyBase={shopifyBase}
-                />
-              )}
+              <MattressForm
+                variants={mattress.shopifyInfo[0].variants}
+                priceMin={
+                  mattress.shopifyInfo[0].priceRange.minVariantPrice.amount
+                }
+                priceMax={
+                  mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                }
+                matt
+                maxQty={4}
+                boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
+                shopifyBase={shopifyBase}
+              />
             </MainInfo>
           </Main>
           <header id="moreInfo">
@@ -169,22 +158,22 @@ const Mattress = ({ data }) => {
             <Construction>
               <h3>Key Features:</h3>
               <ul>
-                {mattress.construction.map((item) => (
-                  <li key={item.id}>{item.feature}</li>
+                {mattress.bottomFeatureList.map((item) => (
+                  <li key={item.id}>{item.title}</li>
                 ))}
               </ul>
             </Construction>
-            <Warranty>{mattress.warranty}</Warranty>
+            <Warranty>{mattress.warrantyTitle}</Warranty>
           </Article>
         </Wrapper>
         <BreadWrapper>
           <BreadCrumbs
             next="Brands"
             next2={mattress.brand.urlName}
-            here={`${mattress.subline.name} ${mattress.name}`}
+            here={`${mattress.subline.name} ${mattress.nameWithout}`}
           />
         </BreadWrapper>
-      </div> */}
+      </div>
     </Layout>
   );
 };
@@ -305,6 +294,10 @@ export const query = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       shopifyInfo {
+        metafields {
+          key
+          value
+        }
         title
         vendor
         shopifyId
@@ -326,159 +319,3 @@ export const query = graphql`
     }
   }
 `;
-// export const query = graphql`
-//   query SingleMattress(
-//     $slug: String!
-//     // $shopifyMatt: String!
-//     $shopifyBase: String!
-//     $shopify2Inch: String!
-//     $shopify5Inch: String!
-//     $shopify9Inch: String!
-//   ) {
-//     shopifyMattress: shopifyProduct(shopifyId: { eq: $shopifyMatt }) {
-//       title
-//       vendor
-//       shopifyId
-//       priceRange {
-//         minVariantPrice {
-//           amount
-//         }
-//         maxVariantPrice {
-//           amount
-//         }
-//       }
-//       variants {
-//         compareAtPrice
-//         price
-//         title
-//         shopifyId
-//       }
-//     }
-//     shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
-//       title
-//       vendor
-//       shopifyId
-//       variants {
-//         compareAtPrice
-//         price
-//         title
-//         shopifyId
-//       }
-//     }
-//     shopify2Inch: shopifyProduct(shopifyId: { eq: $shopify2Inch }) {
-//       title
-//       vendor
-//       shopifyId
-//       variants {
-//         compareAtPrice
-//         price
-//         title
-//         shopifyId
-//       }
-//     }
-//     shopify5Inch: shopifyProduct(shopifyId: { eq: $shopify5Inch }) {
-//       title
-//       vendor
-//       shopifyId
-//       variants {
-//         compareAtPrice
-//         price
-//         title
-//         shopifyId
-//       }
-//     }
-//     shopify9Inch: shopifyProduct(shopifyId: { eq: $shopify9Inch }) {
-//       title
-//       vendor
-//       shopifyId
-//       variants {
-//         compareAtPrice
-//         price
-//         title
-//         shopifyId
-//       }
-//     }
-//     datoCmsMattress(slug: { eq: $slug }) {
-//       shopMattConnection
-//       priceLow
-//       priceHigh
-//       slug
-//       name
-//       firmness
-//       id
-//       description
-//       profile
-//       warranty
-//       listFeature {
-//         feature
-//         id
-//       }
-//       construction {
-//         feature
-//         id
-//       }
-//       saleInfo {
-//         saleBanner
-//         discount
-//         typeOfDiscount
-//         freeBox
-//       }
-//       price {
-//         twin
-//         twinxl
-//         full
-//         queen
-//         king
-//       }
-//       images {
-//         coverImage {
-//           fluid(
-//             maxWidth: 500
-//             imgixParams: { auto: "compress", lossless: true }
-//           ) {
-//             ...GatsbyDatoCmsFluid
-//           }
-//           alt
-//           url
-//         }
-//         image2 {
-//           fluid(
-//             maxWidth: 500
-//             imgixParams: { auto: "compress", lossless: true }
-//           ) {
-//             ...GatsbyDatoCmsFluid
-//           }
-//           alt
-//           url
-//         }
-//         image3 {
-//           fluid(
-//             maxWidth: 500
-//             imgixParams: { auto: "compress", lossless: true }
-//           ) {
-//             ...GatsbyDatoCmsFluid
-//           }
-//           alt
-//           url
-//         }
-//       }
-//       seoMetaTags {
-//         ...GatsbyDatoCmsSeoMetaTags
-//       }
-//       subline {
-//         name
-//       }
-//       brand {
-//         displayName
-//         urlName
-//         boxPrice {
-//           twin
-//           twinxl
-//           full
-//           queen
-//           king
-//         }
-//       }
-//     }
-//   }
-// `;
