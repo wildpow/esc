@@ -85,12 +85,12 @@ const Rating = styled.div`
   }
 `;
 
-const BigWrapper = styled.div`
-  display: none;
-  @media (min-width: 1366px) {
-    display: initial;
-  }
-`;
+// const BigWrapper = styled.div`
+//   display: none;
+//   @media (min-width: 1366px) {
+//     display: initial;
+//   }
+// `;
 
 const AvgContainer = styled.div`
   margin-top: 2px;
@@ -127,7 +127,6 @@ const Bird = () => {
         }
         return (
           <>
-            {console.log(avgRating, reviewCount)}
             <BirdLink
               href="https://birdeye.com/esc-mattress-center-154743411347922"
               target="_blank"

@@ -36,7 +36,7 @@ const PriceRange = styled.div`
   }
   @media (min-width: ${breakpoints.xsm}) {
     h4 {
-      font-size: ${fontSize["4xl"]};
+      font-size: ${fontSize["2xl"]};
     }
     small {
       font-size: ${fontSize.xl};
@@ -44,17 +44,17 @@ const PriceRange = styled.div`
       color: ${colors.red["900"]};
     }
   }
-  /* @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.lg}) {
     h4 {
-      font-size: ${fontSize["3xl"]};
+      font-size: ${fontSize["4xl"]};
     }
     small {
       font-size: ${fontSize.xl};
       font-weight: 300;
       color: ${colors.red["900"]};
     }
-  } */
-  @media (min-width: ${breakpoints.lg}) {
+  }
+  @media (min-width: ${breakpoints.xl}) {
     h4 {
       font-size: ${fontSize["5xl"]};
     }

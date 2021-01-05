@@ -27,6 +27,7 @@ import ImageCarousel from "../components/SingleProduct/ImageCarousel";
 import FirmnessScale from "../components/SingleProduct/FirmessScaleMobile";
 import MattressForm from "../components/SingleProduct/MattressForm";
 import { useWindowSize } from "../context/WindowSizeContext";
+import FeatureList from "../components/SingleProduct/FeatureList";
 
 const LeftSide = styled.div`
   display: flex;
@@ -46,6 +47,10 @@ const Mattress = ({ data }) => {
   const saleBanner = mattress.shopifyInfo[0].metafields.filter(
     (item) => item.key === "saleBanner",
   );
+  const mergeFeatureLists = (smallList, bigList) => {
+    const ids = new Set(bigList.map((d) => d.id));
+    return [...bigList, ...smallList.filter((d) => !ids.has(d.id))];
+  };
   return (
     <Layout>
       <HelmetDatoCms seo={mattress.seoMetaTags}>
@@ -96,7 +101,7 @@ const Mattress = ({ data }) => {
           <BreadCrumbs
             next="Brands"
             next2={mattress.brand.urlName}
-            here={`${mattress.subline.name} ${mattress.name}`}
+            here={`${mattress.subline.name} ${mattress.nameWithout}`}
           />
         </BreadWrapper>
         <Wrapper>
@@ -122,17 +127,9 @@ const Mattress = ({ data }) => {
             </LeftSide>
             <MainInfo>
               {width > 767 && (
-                <List>
-                  <h3>Features</h3>
-                  <ul>
-                    {mattress.topSmallFeatureList.map((item) => (
-                      <li key={item.id}>{item.title}</li>
-                    ))}
-                    <Info>
-                      <AnchorLink href="#moreInfo">See more details</AnchorLink>
-                    </Info>
-                  </ul>
-                </List>
+                <>
+                  <FeatureList top list={mattress.topSmallFeatureList} />
+                </>
               )}
               <MattressForm
                 variants={mattress.shopifyInfo[0].variants}
@@ -155,14 +152,16 @@ const Mattress = ({ data }) => {
           <Article>
             <Description>{mattress.description}</Description>
             <Profile>{`Profile: ${mattress.profile}`}</Profile>
-            <Construction>
-              <h3>Key Features:</h3>
-              <ul>
-                {mattress.bottomFeatureList.map((item) => (
-                  <li key={item.id}>{item.title}</li>
-                ))}
-              </ul>
-            </Construction>
+            {width < 767 ? (
+              <FeatureList
+                list={mergeFeatureLists(
+                  mattress.topSmallFeatureList,
+                  mattress.bottomFeatureList,
+                )}
+              />
+            ) : (
+              <FeatureList list={mattress.bottomFeatureList} />
+            )}
             <Warranty>{mattress.warrantyTitle}</Warranty>
           </Article>
         </Wrapper>
