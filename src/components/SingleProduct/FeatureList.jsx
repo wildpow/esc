@@ -3,22 +3,108 @@ import styled, { css } from "styled-components";
 import Popup from "reactjs-popup";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import PropTypes from "prop-types";
-// import "reactjs-popup/dist/index.css";
+import "reactjs-popup/dist/index.css";
 import { ListPr1nt, DisplayNonePr1nt } from "../../styles/_pr1nt/main";
-import { colors } from "../../utils/styles";
+import { colors, fonts, boxShadow } from "../../utils/styles";
+import { FadeIn } from "../../styles/mainStyles";
+import "./css.css";
+import DownArrow from "../../assets/arrow-down-solid.svg";
+
+const Popper = styled.div`
+  transition: all 0.25s ease-in-out;
+  opacity: 1;
+  animation-name: ${FadeIn};
+  display: flex;
+  justify-content: center;
+  /* box-shadow: ${boxShadow.md}; */
+  .button {
+    font-family: ${(props) => props.theme.MainFont1};
+    color: #000000;
+    cursor: pointer;
+    padding: 0px 30px;
+    display: inline-block;
+    margin: 10px 15px;
+    text-transform: uppercase;
+    line-height: 2em;
+    letter-spacing: 1.5px;
+    font-size: 1em;
+    outline: none;
+    position: relative;
+    font-size: 14px;
+    font-weight: 700;
+    border: 3px solid ${colors.blue[800]};
+    background-color: #ffffff;
+    border-radius: 15px 15px 15px 15px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    :hover {
+      border: 3px solid ${colors.red[800]};
+      box-shadow: ${boxShadow.default};
+    }
+  }
+  .modal {
+    font-size: 12px;
+  }
+  .modal > .header {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    font-family: ${fonts.serif};
+    border-bottom: 4px solid ${colors.red[800]};
+    padding-bottom: 2px;
+    font-size: 1.4rem;
+    padding-left: 15px;
+    font-weight: 400;
+    color: ${colors.gray["800"]};
+  }
+  .modal > .content {
+    font-family: ${(props) => props.theme.MainFont1};
+    color: ${colors.blue[900]};
+    font-size: 1rem;
+    line-height: 1.3rem;
+    font-weight: 400;
+    width: 100%;
+    padding: 10px 15px 10px 15px;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .modal > .actions {
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+  }
+  .modal > .actions {
+    width: 100%;
+    padding: 0px 5px 10px 5px;
+    text-align: center;
+  }
+`;
 
 const Info = styled.li`
   padding-top: 10px;
   list-style: none;
+  display: flex;
+  flex-direction: row;
+  .left,
+  .right {
+    display: inline-block;
+  }
+  .left {
+    padding-right: 10px;
+  }
+  .right {
+    padding-left: 10px;
+  }
   a {
     display: none;
     font-size: 0.9rem;
     font-family: ${(props) => props.theme.MainFont1};
     font-weight: 700;
     letter-spacing: 0.05rem;
-    color: ${colors.red["500"]};
+    color: ${colors.blue["800"]};
     &:hover {
-      color: ${(props) => props.theme.mainColor1};
+      color: ${colors.red[800]};
     }
     @media (orientation: landscape) {
       display: block;
@@ -34,6 +120,9 @@ const Info = styled.li`
       font-size: 1.6rem;
     }
     ${DisplayNonePr1nt}
+  }
+  .fa-arrow-down {
+    width: 14px;
   }
 `;
 
@@ -70,7 +159,7 @@ const List = styled.div`
     margin-top: 0;
     margin-bottom: 0;
     color: ${colors.blue["900"]};
-    border-bottom: 4px solid ${(props) => props.theme.mainColor2};
+    border-bottom: 4px solid ${colors.red[800]};
     padding-bottom: 2px;
     padding-left: 20px;
   }
@@ -146,6 +235,34 @@ const List = styled.div`
   ${ListPr1nt}
   ${({ top }) => !top && BottomList}
 `;
+const contentStyle = {
+  maxWidth: "600px",
+  width: "90%",
+  padding: "0px",
+  background: "white",
+  border: "1px solid lightgray",
+  borderRadius: "10px",
+};
+const OpenButton = styled.button`
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  font-family: ${(props) => props.theme.MainFont2};
+  text-decoration: underline;
+  /* color: ${(props) => props.theme.mainColor1}; */
+  color: ${colors.blue["800"]};
+
+  /* text-align: center; */
+  :hover,
+  :active {
+    color: ${(props) => props.theme.mainColor2};
+  }
+`;
 export default function FeatureList({ list, top }) {
   function listItem(item) {
     if (item.description.length < 1) return item.title;
@@ -157,18 +274,25 @@ export default function FeatureList({ list, top }) {
         closeOnEscape
         repositionOnResize
         keepTooltipInside
-        // contentStyle={contentStyle}
-        trigger={<button type="button">{item.title}</button>}
+        contentStyle={contentStyle}
+        trigger={
+          <OpenButton className="openButton" type="button">
+            {item.title}
+          </OpenButton>
+        }
       >
         {(close) => (
-          <div>
-            {console.log(item.description.length)}
-            <h3>Feature Description</h3>
-            <p>{item.description}</p>
-            <button onClick={close} type="button">
-              close
-            </button>
-          </div>
+          <Popper>
+            <article className="modal">
+              <h3 className="header">Feature Description</h3>
+              <p className="content">{item.description}</p>
+              <div className="actions">
+                <button onClick={close} type="button" className="button">
+                  close
+                </button>
+              </div>
+            </article>
+          </Popper>
         )}
       </Popup>
     );
@@ -183,7 +307,15 @@ export default function FeatureList({ list, top }) {
           ))}
           {top && (
             <Info>
-              <AnchorLink href="#moreInfo">See more details</AnchorLink>
+              <AnchorLink href="#moreInfo">
+                <div className="left">
+                  <DownArrow />
+                </div>
+                See more details
+                <div className="right">
+                  <DownArrow />
+                </div>
+              </AnchorLink>
             </Info>
           )}
         </ul>
