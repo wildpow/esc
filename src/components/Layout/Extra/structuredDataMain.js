@@ -22,7 +22,7 @@ const StructuredDataMain = () => (
     {"@type": "Brand", "name": "Sealy", "url": "https://www.sealy.com"},
     {"@type": "Brand", "name":"Serta", "url": "https://www.serta.com/"},
     {"@type": "Brand", "name":"Beautyrest", "url": "https://www.beautyrest.com/"},
-		{"@type": "Brand", "name":"Stearns & Foster", "url": "https://www.stearnsandfoster.com"}
+		{"@type": "Brand", "name":"Stearns & Foster", "url": "https://www.stearnsandfoster.com"},
 		{"@type": "Brand", "name":"Tempur-Pedic", "url": "https://www.tempurpedic.com"},
     {"@type": "Brand", "name":"Nectar", "url": "https://www.nectarsleep.com/"},
     {"@type": "Brand", "name":"Posh + Lavish", "url": "http://www.poshandlavish.com/"},

@@ -130,7 +130,6 @@ const HeaderWrapper = styled.div`
 const Header = ({ description, title, headerBG, button }) => {
   return (
     <HeaderWrapper headerBG={headerBG}>
-      {/* {console.log(description, title, headerBG, landing, brandName, button)} */}
       <div className="heading__content">
         <div>
           <h2>{title}</h2>

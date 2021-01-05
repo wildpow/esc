@@ -10,11 +10,11 @@ const PoliciesComponent = ({ seo }) => (
     <header>
       <H2>Terms and Policies</H2>
     </header>
-    <Heading>90 Day Comfort Guarantee</Heading>
+    <Heading>365 Day Comfort Guarantee</Heading>
     <P>
       It will take anywhere from 30 to 90 nights for your new mattress to break
       in and for your body to adjust to the new support and comfort. Because of
-      this, we ask that you sleep on your new mattress for a minimum of 30
+      this, we require that you sleep on your new mattress for a minimum of 30
       nights to allow for adjustment. However, if you are not comfortable within
       90 days of your original mattress’s delivery date, you may exchange or
       return your mattress one time in this period.
@@ -23,12 +23,15 @@ const PoliciesComponent = ({ seo }) => (
       Delivery and set up fees are non-refundable. We do not charge restocking
       fees, only a redelivery fee of $79.99. E.S.C. Mattress Center is unable to
       exchange or refund any mattress that is stained, soiled, or in any way
-      damaged by you under this guarantee. Do not remove the Law Label from your
-      mattress or foundation, doing so will void your 90 Day Comfort Guarantee.
-      Please be aware that our Comfort Guarantee does not cover clearance
-      merchandise, floor models, warranty exchanges, furniture, adjustable
-      bases, pillows, mattress protectors, or other accessories. See associate
-      for more details.
+      damaged under this guarantee. Do not remove the Law Label from your
+      mattress or foundation, doing so will void your 365 Day Comfort Guarantee.
+      Any mattress purchase $699 and above also receives an additional 275 days
+      of exchange only guarantee for equal or greater value (total of 365 day).
+      Please be aware that our Comfort Guarantee does not cover, Clearance
+      merchandise, Floor models, Warranty exchanges, Furniture (Headboards,
+      Footboards, other), Adjustable bases, Pillows, Mattress protectors,
+      X-Chair, CordaRoy’s, Futons, or other accessories. See associate for more
+      details.
     </P>
     <Heading>Low Price Guarantee</Heading>
     <P>
@@ -41,12 +44,12 @@ const PoliciesComponent = ({ seo }) => (
     </P>
     <Heading>Delivery</Heading>
     <P>
-      We use a professional, licensed, outside delivery service for our
-      deliveries. E.S.C. Mattress Center is not responsible for any loss or
-      damage caused during delivery. Please make sure there is a clear path from
-      the door to the area you would like your mattress set placed. Removal is
-      limited to number of pieces being delivered and is limited to mattresses
-      and foundations. Frames, furniture, waterbeds, etc. cannot be removed.
+      As a small business, we do most of our deliveries ourselves. E.S.C.
+      Mattress Center is not responsible for any loss or damage caused during
+      delivery. Please make sure there is a clear path from the door to the area
+      you would like your mattress set placed. Removal is limited to number of
+      pieces being delivered and is limited to mattresses and foundations.
+      Frames, furniture, waterbeds, etc. cannot be removed.
     </P>
     <P>
       If you choose to pick up your product, you should inspect your items
