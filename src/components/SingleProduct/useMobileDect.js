@@ -30,7 +30,7 @@ const getMobileDetect = (userAgent) => {
   };
 };
 const useMobileDetect = () => {
-  // useEffect(() => {}, []);
+  useEffect(() => {}, []);
   const userAgent =
     typeof window !== "undefined" ? window.navigator.userAgent : null;
   return getMobileDetect(userAgent);

@@ -263,14 +263,14 @@ const OpenButton = styled.button`
     color: ${(props) => props.theme.mainColor2};
   }
 `;
-export default function FeatureList({ list, top }) {
+export default function FeatureList({ list, top, width }) {
   function listItem(item) {
     if (item.description.length < 1) return item.title;
     return (
       <Popup
         closeOnDocumentClick
         position="top center"
-        // modal
+        modal={width < 600}
         closeOnEscape
         repositionOnResize
         keepTooltipInside
@@ -327,6 +327,7 @@ export default function FeatureList({ list, top }) {
 FeatureList.propTypes = {
   top: PropTypes.bool,
   list: PropTypes.instanceOf(Object).isRequired,
+  width: PropTypes.number.isRequired,
 };
 
 FeatureList.defaultProps = {

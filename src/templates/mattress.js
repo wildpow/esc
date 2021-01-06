@@ -127,9 +127,7 @@ const Mattress = ({ data }) => {
             </LeftSide>
             <MainInfo>
               {width > 767 && (
-                <>
-                  <FeatureList top list={mattress.topSmallFeatureList} />
-                </>
+                <FeatureList top list={mattress.topSmallFeatureList} />
               )}
               <MattressForm
                 variants={mattress.shopifyInfo[0].variants}
@@ -158,6 +156,7 @@ const Mattress = ({ data }) => {
                   mattress.topSmallFeatureList,
                   mattress.bottomFeatureList,
                 )}
+                width={width}
               />
             ) : (
               <FeatureList list={mattress.bottomFeatureList} />
