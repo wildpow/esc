@@ -6,13 +6,18 @@ import Layout from "../../../components/Layout";
 import MattressList from "../../../components/MattressList";
 
 const PoshAndLavish = ({ data }) => {
-  const { datoCmsBrand, allDatoCmsMattress } = data;
+  const { datoCmsBrand, allDatoCmsNewMattress } = data;
+  const sortedMatt = allDatoCmsNewMattress.nodes.sort(
+    (a, b) =>
+      Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
+  );
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsBrand.seoLink.seoMetaTags} />
       <MattressList
         headerBG={datoCmsBrand.headerLink.bgImg.url}
-        mattresses={allDatoCmsMattress.nodes}
+        mattresses={sortedMatt}
         title={datoCmsBrand.displayName}
         description={datoCmsBrand.headerLink.tagLine}
         breadCrumbs
@@ -35,12 +40,11 @@ export const beautyrestMatt = graphql`
     datoCmsBrand(urlName: { eq: "posh-and-lavish" }) {
       ...brandList
     }
-    allDatoCmsMattress(
+    allDatoCmsNewMattress(
       filter: { brand: { urlName: { eq: "posh-and-lavish" } } }
-      sort: { fields: priceLow, order: ASC }
     ) {
       nodes {
-        ...mattressParts
+        ...newMattressList
       }
     }
   }

@@ -293,6 +293,7 @@ export const query = graphql`
       }
       shopifyInfo {
         metafields {
+          id
           key
           value
         }

@@ -12,41 +12,39 @@ import {
 } from "./MattressThumbnail.styled";
 import FirmnessScale from "./FirmnessScale";
 
-const MattressThumbnail = ({ mattress, url }) => {
-  return (
-    <StyledLink to={url}>
-      <Topper>
-        <BannerWrapper>
-          {mattress.saleInfo[0].saleBanner.length > 3 && (
-            <Banner>{mattress.saleInfo[0].saleBanner}</Banner>
-          )}
-          <MattImgContainer>
-            <Img
-              fluid={mattress.images[0].coverImage.fluid}
-              alt={
-                mattress.images[0].coverImage.alt === null
-                  ? `${mattress.brand.displayName} ${mattress.subline.name} ${mattress.name} mattress`
-                  : mattress.images[0].coverImage.alt
-              }
-            />
-          </MattImgContainer>
-          <FirmnessScale firmNum={mattress.firmness} />
-        </BannerWrapper>
-        <PriceRange>
-          {`$${mattress.priceLow}
-          - $${mattress.priceHigh}`}
-        </PriceRange>
-      </Topper>
-      <Name>
-        {mattress.brand.displayName}
-        <br />
-        {mattress.subline.name}
-        <br />
-        {mattress.name}
-      </Name>
-    </StyledLink>
-  );
-};
+const MattressThumbnail = ({ mattress, url }) => (
+  <StyledLink to={url}>
+    <Topper>
+      <BannerWrapper>
+        {mattress.shopifyInfo[0].metafields[0].value.length > 3 && (
+          <Banner>{mattress.shopifyInfo[0].metafields[0].value}</Banner>
+        )}
+        <MattImgContainer>
+          <Img
+            fluid={mattress.images[0].coverImage.fluid}
+            alt={
+              mattress.images[0].coverImage.alt === null
+                ? `${mattress.brand.displayName} ${mattress.subline.name} ${mattress.nameWithout} mattress`
+                : mattress.images[0].coverImage.alt
+            }
+          />
+        </MattImgContainer>
+        <FirmnessScale firmNum={mattress.firmness} />
+      </BannerWrapper>
+      <PriceRange>
+        {`$${mattress.shopifyInfo[0].priceRange.minVariantPrice.amount}
+          - $${mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount}`}
+      </PriceRange>
+    </Topper>
+    <Name>
+      {mattress.brand.displayName}
+      <br />
+      {mattress.subline.name}
+      <br />
+      {mattress.name}
+    </Name>
+  </StyledLink>
+);
 
 MattressThumbnail.propTypes = {
   mattress: PropTypes.instanceOf(Object).isRequired,
