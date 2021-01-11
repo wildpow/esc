@@ -34,6 +34,7 @@ const ItemsNumber = styled.span`
 // TODO Change name or combine and import from different file to avoid
 // TODO duplication in Cart component.
 const CartToggle = styled.button`
+  cursor: pointer;
   .fa-shopping-cart {
     animation: ${iconEntry} 0.75s ease forwards;
     height: 28px;
