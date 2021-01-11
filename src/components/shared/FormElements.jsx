@@ -24,6 +24,8 @@ export const Input = styled(`input`)`
 export const Select = styled(Input.withComponent("select"))`
   font-family: ${fonts.sans};
   appearance: none;
+  cursor: pointer;
+
   /* stylelint-disable */
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%232a4365' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
   /* stylelint-enable */

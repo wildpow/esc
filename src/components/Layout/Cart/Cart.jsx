@@ -96,6 +96,7 @@ const Heading = styled.div`
 `;
 
 const CartToggle = styled.button`
+  cursor: pointer;
   .fa-shopping-cart,
   .fa-times {
     animation: ${iconEntry} 0.75s ease forwards;

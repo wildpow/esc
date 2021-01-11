@@ -20,6 +20,9 @@ const CartListItemRoot = styled.li`
   display: flex;
   justify-content: space-between;
   padding: ${spacing["4"]} 0;
+  input[type="number"]::-webkit-inner-spin-button {
+    cursor: pointer;
+  }
 `;
 
 const Thumbnail = styled(CartThumbnail)`
@@ -92,6 +95,7 @@ const Remove = styled.button`
   padding: 0;
   width: 44px;
   background: white;
+  cursor: pointer;
   svg {
     height: 24px;
     margin: 0;

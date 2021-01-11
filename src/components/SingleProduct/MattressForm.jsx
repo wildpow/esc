@@ -113,6 +113,9 @@ const QtyFieldset = styled(Fieldset)`
     padding: ${spacing["3"]} ${spacing["3"]};
     text-align: center;
   }
+  input[type="number"]::-webkit-inner-spin-button {
+    cursor: pointer;
+  }
 `;
 
 const SizeFieldset = styled(Fieldset)`
