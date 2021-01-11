@@ -9,7 +9,7 @@ export default () => {
             footer
             footerUrl
             header
-            mattresses {
+            newmattress {
               slug
               id
               name
@@ -25,10 +25,20 @@ export default () => {
                   alt
                 }
               }
-              priceLow
-              priceHigh
-              saleInfo {
-                saleBanner
+              shopifyInfo {
+                metafields {
+                  id
+                  value
+                  key
+                }
+                priceRange {
+                  minVariantPrice {
+                    amount
+                  }
+                  maxVariantPrice {
+                    amount
+                  }
+                }
               }
               subline {
                 name

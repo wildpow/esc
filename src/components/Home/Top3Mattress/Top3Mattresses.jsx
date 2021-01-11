@@ -62,12 +62,12 @@ const ThreeMattWrapper = styled(Wrapper)`
 `;
 
 const TopThreeMatts = () => {
-  const { header, mattresses, footerUrl, footer } = useTop3();
+  const { header, newmattress, footerUrl, footer } = useTop3();
   return (
     <NewWrapper>
       <Headline>{header}</Headline>
       <ThreeMattWrapper>
-        {mattresses.map((mattress) => (
+        {newmattress.map((mattress) => (
           <MattressThumbnail
             key={mattress.id}
             mattress={mattress}
