@@ -178,53 +178,79 @@ const ImageWrapper = styled.div`
     width: 50%;
   }
 `;
-const Adjustables = ({ data }) => (
-  <Layout>
-    <Main MarginTop>
-      <BreadWrapper hidenLarge>
-        <BreadCrumbs here="Adjustable" />
-      </BreadWrapper>
-      <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
-      {data.allDatoCmsAdjustableBase.edges.map((base) => (
-        <StyledLink to={`/adjustable/${base.node.slug}`} key={base.node.id}>
-          <H3>{base.node.fullName}</H3>
-          <InfoWrapper>
-            <ImageWrapper>
-              <BannerWrapper>
-                {base.node.sale[0].saleBanner.length > 3 && (
-                  <Banner>{base.node.sale[0].saleBanner}</Banner>
-                )}
-                <ImageContainer>
-                  <Img
-                    fluid={base.node.images3[0].fluid}
-                    alt={base.node.images3[0].alt}
-                  />
-                </ImageContainer>
-              </BannerWrapper>
-            </ImageWrapper>
-            <AdjMarkdown>
-              <h3>Features</h3>
-              <ul>
-                {base.node.smallFeatureList.map((item) => (
-                  <li key={item.id}>{item.feature}</li>
-                ))}
-              </ul>
-            </AdjMarkdown>
-          </InfoWrapper>
-        </StyledLink>
-      ))}
-      <BreadWrapper hidenLarge Bottom>
-        <BreadCrumbs here="Adjustable" />
-      </BreadWrapper>
-    </Main>
-  </Layout>
-);
-
-Adjustables.propTypes = {
-  data: PropTypes.instanceOf(Object).isRequired,
+// ADD PRICE RANGE TO ADJUSTABLE LIST
+// export const PriceRange = styled.div`
+//   color: ${(props) => props.theme.newColor2};
+//   font-weight: 400;
+//   font-family: ${(props) => props.theme.MainFont1};
+//   text-align: center;
+//   z-index: 5;
+//   font-weight: 700;
+//   @media (min-width: 768px) {
+//     letter-spacing: 0.05rem;
+//   }
+// `;
+const Adjustables = ({ data }) => {
+  const { allDatoCmsProduct } = data;
+  const sortedBases = allDatoCmsProduct.nodes.sort(
+    (a, b) =>
+      Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
+  );
+  return (
+    <Layout>
+      {sortedBases.map((base) =>
+        console.log(base.shopifyInfo[0].metafields[0].value),
+      )}
+      <Main MarginTop>
+        <BreadWrapper hidenLarge>
+          <BreadCrumbs here="Adjustable" />
+        </BreadWrapper>
+        <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
+        {sortedBases.map((base) => (
+          <StyledLink to={`/adjustable/${base.slug}`} key={base.id}>
+            <H3>{base.title}</H3>
+            <InfoWrapper>
+              <ImageWrapper>
+                <BannerWrapper>
+                  {base.shopifyInfo[0].metafields[0].value.length > 3 && (
+                    <Banner>{base.shopifyInfo[0].metafields[0].value}</Banner>
+                  )}
+                  <ImageContainer>
+                    <Img
+                      fluid={base.threeImageBlock[0].coverImage.fluid}
+                      alt={base.threeImageBlock[0].coverImage.alt}
+                    />
+                  </ImageContainer>
+                </BannerWrapper>
+              </ImageWrapper>
+              <AdjMarkdown>
+                <h3>Features</h3>
+                <ul>
+                  {base.productFeatures.map((item) => (
+                    <li key={item.id}>{item.title}</li>
+                  ))}
+                </ul>
+                {/* <PriceRange>
+                  {`$${base.shopifyInfo[0].priceRange.minVariantPrice.amount}
+          - $${base.shopifyInfo[0].priceRange.maxVariantPrice.amount}`}
+                </PriceRange> */}
+              </AdjMarkdown>
+            </InfoWrapper>
+          </StyledLink>
+        ))}
+        <BreadWrapper hidenLarge Bottom>
+          <BreadCrumbs here="Adjustable" />
+        </BreadWrapper>
+      </Main>
+    </Layout>
+  );
 };
 
 export default Adjustables;
+Adjustables.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+};
 
 export const allAdjustables = graphql`
   query allAjustables {
@@ -233,27 +259,43 @@ export const allAdjustables = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    allDatoCmsAdjustableBase(sort: { fields: position }) {
-      edges {
-        node {
+
+    allDatoCmsProduct(
+      filter: { typeOfProduct: { title: { eq: "Adjustable Base" } } }
+    ) {
+      nodes {
+        title
+        id
+        slug
+        productFeatures {
+          title
+          description
           id
-          fullName
-          smallFeatureList {
-            feature
+        }
+        shopifyInfo {
+          priceRange {
+            minVariantPrice {
+              amount
+            }
+            maxVariantPrice {
+              amount
+            }
+          }
+          metafields {
             id
+            key
+            value
           }
-          slug
-          sale {
-            saleBanner
-          }
-          images3 {
+        }
+        threeImageBlock {
+          coverImage {
+            alt
             fluid(
               maxWidth: 350
               imgixParams: { auto: "compress", lossless: true }
             ) {
               ...GatsbyDatoCmsFluid
             }
-            alt
           }
         }
       }

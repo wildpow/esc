@@ -178,5 +178,18 @@ exports.createResolvers = ({ createResolvers }) => {
         },
       },
     },
+    DatoCmsProduct: {
+      shopifyInfo: {
+        type: [`ShopifyProduct`],
+        resolve(source, args, context, info) {
+          const fieldValue = source.entityPayload.attributes.shopify_connection;
+          return context.nodeModel.runQuery({
+            query: { filter: { shopifyId: { eq: fieldValue } } },
+            type: `ShopifyProduct`,
+            // firstOnly: true,
+          });
+        },
+      },
+    },
   });
 };
