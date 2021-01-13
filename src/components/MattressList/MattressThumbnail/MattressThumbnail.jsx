@@ -32,8 +32,12 @@ const MattressThumbnail = ({ mattress, url }) => (
         <FirmnessScale firmNum={mattress.firmness} />
       </BannerWrapper>
       <PriceRange>
-        {`$${mattress.shopifyInfo[0].priceRange.minVariantPrice.amount}
-          - $${mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount}`}
+        {`$${Math.trunc(
+          mattress.shopifyInfo[0].priceRange.minVariantPrice.amount,
+        )}
+          - $${Math.trunc(
+            mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount,
+          )}`}
       </PriceRange>
     </Topper>
     <Name>
