@@ -14,14 +14,15 @@ import {
 } from "../styles/adjustableStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import Layout from "../components/Layout";
-import { colors } from "../utils/styles";
+import { colors, fonts, fontSize } from "../utils/styles";
 
 export const AdjMarkdown = styled.div`
   font-family: ${(props) => props.theme.MainFont3};
   padding: 0px;
-  margin-top: 7%;
-  width: 50%;
-  display: none;
+  /* margin-top: 7%;
+  width: 50%; */
+  /* display: none; */
+  padding-top: 10px;
   h3 {
     border-bottom: 4px solid ${(props) => props.theme.mainColor2};
     font-size: 1.3rem;
@@ -30,7 +31,7 @@ export const AdjMarkdown = styled.div`
     margin-bottom: 0;
     padding-bottom: 2px;
     padding-left: 20px;
-    margin-left: 20px;
+    /* margin-left: 20px; */
   }
   ul {
     list-style: square;
@@ -44,16 +45,16 @@ export const AdjMarkdown = styled.div`
     font-size: 0.9rem;
     color: ${colors.gray["700"]};
   }
-  @media (min-width: 568px) {
+  /* @media (min-width: 568px) {
     display: block;
-  }
+  } */
   @media (min-width: 640px) {
     h3 {
       font-size: 1.4rem;
     }
   }
   @media (min-width: 731px) {
-    margin-top: 5%;
+    /* margin-top: 5%; */
     h3 {
       padding-bottom: 3px;
       font-size: 1.6rem;
@@ -79,6 +80,7 @@ export const AdjMarkdown = styled.div`
     }
   }
   @media (min-width: 1024px) {
+    padding-top: 20px;
     h3 {
       font-size: 2rem;
       padding-bottom: 4px;
@@ -179,17 +181,59 @@ const ImageWrapper = styled.div`
   }
 `;
 // ADD PRICE RANGE TO ADJUSTABLE LIST
-// export const PriceRange = styled.div`
-//   color: ${(props) => props.theme.newColor2};
-//   font-weight: 400;
-//   font-family: ${(props) => props.theme.MainFont1};
-//   text-align: center;
-//   z-index: 5;
-//   font-weight: 700;
-//   @media (min-width: 768px) {
-//     letter-spacing: 0.05rem;
-//   }
-// `;
+export const PriceRange = styled.div`
+  color: ${(props) => props.theme.newColor2};
+  font-weight: 400;
+  font-family: ${(props) => props.theme.MainFont1};
+  /* text-align: center;
+  z-index: 5; */
+  padding-left: 20px;
+  font-size: ${fontSize.xl};
+  padding-bottom: 20px;
+  font-weight: 700;
+  align-self: flex-start;
+  @media (min-width: 768px) {
+    letter-spacing: 0.05rem;
+    align-self: flex-end;
+    padding-right: 20px;
+  }
+  @media (min-width: 1024px) {
+    font-size: ${fontSize["3xl"]};
+    align-self: flex-end;
+    padding-right: 20px;
+  }
+`;
+const PriceRangeer = styled.div`
+  color: ${(props) => props.theme.newColor2};
+  font-weight: 400;
+  font-family: ${(props) => props.theme.MainFont1};
+  /* text-align: center;
+  z-index: 5; */
+  font-size: ${fontSize.xl};
+  padding-right: 20px;
+  /* padding-top: 20px; */
+  padding-bottom: 20px;
+  font-weight: 700;
+  text-align: end;
+  align-self: flex-end;
+  @media (min-width: 568px) {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    letter-spacing: 0.05rem;
+  }
+`;
+const Stuff = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 50%;
+  display: none;
+
+  @media (min-width: 568px) {
+    display: flex;
+  }
+`;
 const Adjustables = ({ data }) => {
   const { allDatoCmsProduct } = data;
   const sortedBases = allDatoCmsProduct.nodes.sort(
@@ -199,9 +243,6 @@ const Adjustables = ({ data }) => {
   );
   return (
     <Layout>
-      {sortedBases.map((base) =>
-        console.log(base.shopifyInfo[0].metafields[0].value),
-      )}
       <Main MarginTop>
         <BreadWrapper hidenLarge>
           <BreadCrumbs here="Adjustable" />
@@ -224,19 +265,33 @@ const Adjustables = ({ data }) => {
                   </ImageContainer>
                 </BannerWrapper>
               </ImageWrapper>
-              <AdjMarkdown>
-                <h3>Features</h3>
-                <ul>
-                  {base.productFeatures.map((item) => (
-                    <li key={item.id}>{item.title}</li>
-                  ))}
-                </ul>
-                {/* <PriceRange>
-                  {`$${base.shopifyInfo[0].priceRange.minVariantPrice.amount}
-          - $${base.shopifyInfo[0].priceRange.maxVariantPrice.amount}`}
-                </PriceRange> */}
-              </AdjMarkdown>
+              <Stuff>
+                <AdjMarkdown>
+                  <h3>Features</h3>
+                  <ul>
+                    {base.productFeatures.map((item) => (
+                      <li key={item.id}>{item.title}</li>
+                    ))}
+                  </ul>
+                </AdjMarkdown>
+                <PriceRange>
+                  {`$${Math.trunc(
+                    base.shopifyInfo[0].priceRange.minVariantPrice.amount,
+                  )}
+          - $${Math.trunc(
+            base.shopifyInfo[0].priceRange.maxVariantPrice.amount,
+          )}`}
+                </PriceRange>
+              </Stuff>
             </InfoWrapper>
+            <PriceRangeer>
+              {`$${Math.trunc(
+                base.shopifyInfo[0].priceRange.minVariantPrice.amount,
+              )}
+          - $${Math.trunc(
+            base.shopifyInfo[0].priceRange.maxVariantPrice.amount,
+          )}`}
+            </PriceRangeer>
           </StyledLink>
         ))}
         <BreadWrapper hidenLarge Bottom>
