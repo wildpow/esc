@@ -3,85 +3,85 @@ import { Link } from "gatsby";
 import { FadeIn, FlexCol, FlexRow } from "./mainStyles";
 import { colors } from "../utils/styles";
 
-export const AdjMarkdown = styled.div`
-  font-family: ${(props) => props.theme.MainFont3};
-  padding: 0px;
-  margin-top: 7%;
-  width: 50%;
-  display: none;
-  p {
-    border-bottom: 4px solid ${(props) => props.theme.mainColor2};
-    font-size: 1.3rem;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-bottom: 2px;
-    padding-left: 20px;
-    margin-left: 20px;
-  }
-  ul {
-    list-style: square;
-    margin-top: 10px;
-    padding-right: 10px;
-    font-size: 1rem;
-  }
-  li {
-    line-height: 1.35rem;
-    padding-bottom: 2px;
-    font-size: 0.9rem;
-  }
-  @media (min-width: 568px) {
-    display: block;
-  }
-  @media (min-width: 640px) {
-    p {
-      font-size: 1.4rem;
-    }
-  }
-  @media (min-width: 731px) {
-    margin-top: 5%;
-    p {
-      padding-bottom: 3px;
-      font-size: 1.6rem;
-    }
-    li {
-      font-size: 1.2rem;
-      line-height: 1.6rem;
-    }
-  }
-  @media (min-width: 992px) {
-    p {
-      font-size: 1.8rem;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding-bottom: 2px;
-    }
-    ul {
-      margin-top: 10px;
-    }
-    li {
-      padding-bottom: 2px;
-      font-size: 1.2rem;
-    }
-  }
-  @media (min-width: 1024px) {
-    p {
-      font-size: 2rem;
-      padding-bottom: 4px;
-      font-weight: 700;
-    }
-    li {
-      font-size: 1.4rem;
-      line-height: 2.1rem;
-      letter-spacing: 0.03rem;
-    }
-  }
-  @media (min-width: 1300px) {
-    p {
-      font-size: 2rem;
-      padding-left: 7%;
-    }
-  }
-`;
+// export const AdjMarkdown = styled.div`
+//   font-family: ${(props) => props.theme.MainFont3};
+//   padding: 0px;
+//   margin-top: 7%;
+//   width: 50%;
+//   display: none;
+//   p {
+//     border-bottom: 4px solid ${(props) => props.theme.mainColor2};
+//     font-size: 1.3rem;
+//     margin-top: 0;
+//     margin-bottom: 0;
+//     padding-bottom: 2px;
+//     padding-left: 20px;
+//     margin-left: 20px;
+//   }
+//   ul {
+//     list-style: square;
+//     margin-top: 10px;
+//     padding-right: 10px;
+//     font-size: 1rem;
+//   }
+//   li {
+//     line-height: 1.35rem;
+//     padding-bottom: 2px;
+//     font-size: 0.9rem;
+//   }
+//   @media (min-width: 568px) {
+//     display: block;
+//   }
+//   @media (min-width: 640px) {
+//     p {
+//       font-size: 1.4rem;
+//     }
+//   }
+//   @media (min-width: 731px) {
+//     margin-top: 5%;
+//     p {
+//       padding-bottom: 3px;
+//       font-size: 1.6rem;
+//     }
+//     li {
+//       font-size: 1.2rem;
+//       line-height: 1.6rem;
+//     }
+//   }
+//   @media (min-width: 992px) {
+//     p {
+//       font-size: 1.8rem;
+//       margin-top: 0;
+//       margin-bottom: 0;
+//       padding-bottom: 2px;
+//     }
+//     ul {
+//       margin-top: 10px;
+//     }
+//     li {
+//       padding-bottom: 2px;
+//       font-size: 1.2rem;
+//     }
+//   }
+//   @media (min-width: 1024px) {
+//     p {
+//       font-size: 2rem;
+//       padding-bottom: 4px;
+//       font-weight: 700;
+//     }
+//     li {
+//       font-size: 1.4rem;
+//       line-height: 2.1rem;
+//       letter-spacing: 0.03rem;
+//     }
+//   }
+//   @media (min-width: 1300px) {
+//     p {
+//       font-size: 2rem;
+//       padding-left: 7%;
+//     }
+//   }
+// `;
 
 export const Main = styled(FlexCol)`
   animation-name: ${FadeIn};

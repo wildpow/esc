@@ -6,11 +6,9 @@ import { breakpoints } from "../utils/styles";
 export const Main = styled.div`
   animation-name: ${FadeIn};
   ${(props) => props.theme.Animation}
-  /* background-color: white; */
   margin-right: auto;
   margin-left: auto;
   padding-top: 1px;
-  /* max-width: 980px; */
   padding-left: 5px;
   padding-right: 5px;
   padding-bottom: 15px;
@@ -23,9 +21,6 @@ export const Main = styled.div`
   }
 `;
 
-// export const Linky = styled(Link)`
-//   margin: auto !important;
-// `;
 export const OneImg = styled.img`
   color: white;
   background-color: white;
@@ -38,8 +33,6 @@ export const OneImg = styled.img`
 export const Wrapper = styled(FlexCol)`
   background-color: ${(props) => props.theme.newColor1};
   box-shadow: ${(props) => props.theme.newBoxShadow};
-  /* justify-content: center; */
-
   margin-top: 10px;
   margin-right: 0px;
   margin-left: 0px;
@@ -120,13 +113,11 @@ export const Links = styled(Link)`
 `;
 
 export const FooterLink = styled(Link)`
-  /* text-decoration: none; */
   text-decoration-color: white;
   transition: all 0.25s ease-in;
   color: white;
   :hover {
     transform: scale(1.04);
     text-decoration-color: ${(props) => props.theme.newColor2};
-    /* color: ${(props) => props.theme.mainColor1}; */
   }
 `;
