@@ -1,12 +1,10 @@
 import React from "react";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import ImageCarousel from "../components/SingleProduct/ImageCarousel";
-// import PriceDropDown from "../components/SingleProduct/PriceDropDown.base";
 import {
   Wrapper,
   Main,
@@ -16,52 +14,63 @@ import {
   Article,
   Profile,
   MainTitle,
-  List,
+  // List,
   Construction,
-  Info,
+  // Info,
 } from "../components/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
 import MattressForm from "../components/SingleProduct/MattressForm";
 import { useWindowSize } from "../context/WindowSizeContext";
+import FeatureList from "../components/SingleProduct/FeatureList";
 
 const Base = ({ data }) => {
   const { width } = useWindowSize();
-  const { datoCmsAdjustableBase: adjBase, shopifyBase } = data;
-  const removeZeroPrices = Object.values(adjBase.price[0]).filter(
-    (value) => value !== 0,
-  );
+  const { datoCmsProduct: product } = data;
+  const mergeFeatureLists = (smallList, bigList) => {
+    const ids = new Set(bigList.map((d) => d.id));
+    return [...bigList, ...smallList.filter((d) => !ids.has(d.id))];
+  };
   return (
     <Layout>
       <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
         <BreadWrapper>
-          <BreadCrumbs next="Adjustable" here={adjBase.fullName} />
+          <BreadCrumbs
+            next={product.typeOfProduct.title}
+            here={product.title}
+          />
         </BreadWrapper>
         <Wrapper>
-          <HelmetDatoCms seo={adjBase.seoMetaTags}>
+          <HelmetDatoCms seo={product.seoMetaTags}>
             <script type="application/ld+json">
               {`
 
         {
     "@context": "http://schema.org/",
     "@type": "Product",
-    "name": "${adjBase.fullName}",
-    "url": "https://www.escmattresscenter.com/adjustable/${adjBase.slug}",
-    "image": "${adjBase.images3[0].url}",
-    "description": "${adjBase.description}",
+    "name": "${product.title}",
+    "url": "https://www.escmattresscenter.com/${product.typeOfProduct.title.toLowerCase()}/${
+                product.slug
+              }",
+    "image": "${product.threeImageBlock[0].coverImage.url}",
+    "description": "${product.description}",
     "brand": {
         "@type": "Brand",
-        "name": "${adjBase.brand}"
+        "name": "${product.brand}"
     },
-    "sku": "ESC${adjBase.brand.toUpperCase()}.${adjBase.slug}",
+    "sku": "ESC${product.brand.toUpperCase()}.${product.slug}",
     "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
-        "highPrice": "${removeZeroPrices[0]}",
-        "lowPrice": "${removeZeroPrices[removeZeroPrices.length - 1]}",
+        "highPrice": "${Math.trunc(
+          product.shopifyInfo[0].priceRange.maxVariantPrice.amount,
+        )}",
+        "lowPrice": "${Math.trunc(
+          product.shopifyInfo[0].priceRange.minVariantPrice.amount,
+        )}",
         "priceValidUntil": "${dateSEO()}",
         "itemCondition": "New",
         "availability": "InStock",
-        "offerCount": "${removeZeroPrices.length}"
+        "offerCount": "${product.shopifyInfo[0].variants.length}"
 
     }
 }
@@ -69,34 +78,28 @@ const Base = ({ data }) => {
             </script>
           </HelmetDatoCms>
           <header>
-            <MainTitle>{adjBase.fullName}</MainTitle>
+            <MainTitle>{product.title}</MainTitle>
           </header>
           <Main>
             <ImageCarousel
-              saleBanner={adjBase.sale[0].saleBanner}
-              cover={adjBase.images3[0]}
-              img1={adjBase.images3[1]}
-              img2={adjBase.images3[2]}
+              saleBanner={product.shopifyInfo[0].metafields[0].value}
+              cover={product.threeImageBlock[0].coverImage}
+              img1={product.threeImageBlock[0].image2}
+              img2={product.threeImageBlock[0].image3}
               base
             />
             <MainInfo>
               {width > 768 && (
-                <List>
-                  <h3>Features</h3>
-                  <ul>
-                    {adjBase.smallFeatureList.map((item) => (
-                      <li key={item.id}>{item.feature}</li>
-                    ))}
-                    <Info>
-                      <AnchorLink href="#moreInfo">See more details</AnchorLink>
-                    </Info>
-                  </ul>
-                </List>
+                <FeatureList top list={product.productFeatures} />
               )}
               <MattressForm
-                variants={shopifyBase.variants}
-                priceMin={shopifyBase.priceRange.minVariantPrice.amount}
-                priceMax={shopifyBase.priceRange.maxVariantPrice.amount}
+                variants={product.shopifyInfo[0].variants}
+                priceMin={
+                  product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                }
+                priceMax={
+                  product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                }
                 maxQty={4}
               />
             </MainInfo>
@@ -105,21 +108,29 @@ const Base = ({ data }) => {
             <MainTitle red>OVERVIEW & SPECS</MainTitle>
           </header>
           <Article>
-            <Description>{adjBase.description}</Description>
-            <Profile>{`Profile: ${adjBase.height}`}</Profile>
+            <Description>{product.description}</Description>
+            <Profile>{`Profile: ${product.height}`}</Profile>
             <Construction>
-              <h3>Key Features:</h3>
-              <ul>
-                {adjBase.fullFeatureList.map((item) => (
-                  <li key={item.id}>{item.feature}</li>
-                ))}
-              </ul>
+              {width < 767 ? (
+                <FeatureList
+                  list={mergeFeatureLists(
+                    product.productFeatures,
+                    product.fullFeatureList,
+                  )}
+                  width={width}
+                />
+              ) : (
+                <FeatureList list={product.fullFeatureList} />
+              )}
             </Construction>
-            <Warranty>{adjBase.warranty}</Warranty>
+            <Warranty>{product.warranty}</Warranty>
           </Article>
         </Wrapper>
         <BreadWrapper>
-          <BreadCrumbs next="adjustable" here={adjBase.fullName} />
+          <BreadCrumbs
+            next={product.typeOfProduct.title}
+            here={product.title}
+          />
         </BreadWrapper>
       </div>
     </Layout>
@@ -131,65 +142,81 @@ Base.propTypes = {
 export default Base;
 
 export const query = graphql`
-  query singleAdjustable($slug: String!, $shopifyBase: String!) {
-    shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
-      title
-      vendor
-      shopifyId
-      priceRange {
-        minVariantPrice {
-          amount
-        }
-        maxVariantPrice {
-          amount
-        }
-      }
-      variants {
-        compareAtPrice
-        price
+  query singleProduct($slug: String!) {
+    datoCmsProduct(slug: { eq: $slug }) {
+      typeOfProduct {
         title
-        shopifyId
-        compareAtPrice
-      }
-    }
-    datoCmsAdjustableBase(slug: { eq: $slug }) {
-      brand
-      slug
-      fullName
-      description
-      images3 {
-        fluid(
-          maxWidth: 500
-          imgixParams: { auto: "compress", lossless: true }
-        ) {
-          ...GatsbyDatoCmsFluid
-        }
-        url
-        alt
-      }
-      warranty
-      height
-      price {
-        twin
-        twinxl
-        full
-        queen
-        king
-      }
-      sale {
-        saleBanner
-        discount
       }
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      smallFeatureList {
-        feature
+      title
+      brand
+      description
+      slug
+      warranty
+      height
+      productFeatures {
         id
+        title
+        description
       }
       fullFeatureList {
-        feature
         id
+        title
+        description
+      }
+      threeImageBlock {
+        coverImage {
+          alt
+          url
+          fluid(
+            maxWidth: 500
+            imgixParams: { auto: "compress", lossless: true }
+          ) {
+            ...GatsbyDatoCmsFluid
+          }
+        }
+        image2 {
+          alt
+          fluid(
+            maxWidth: 500
+            imgixParams: { auto: "compress", lossless: true }
+          ) {
+            ...GatsbyDatoCmsFluid
+          }
+        }
+        image3 {
+          alt
+          fluid(
+            maxWidth: 500
+            imgixParams: { auto: "compress", lossless: true }
+          ) {
+            ...GatsbyDatoCmsFluid
+          }
+        }
+      }
+      shopifyInfo {
+        variants {
+          compareAtPrice
+          price
+          title
+          shopifyId
+          compareAtPrice
+        }
+        metafields {
+          value
+          key
+          id
+        }
+        priceRange {
+          minVariantPrice {
+            amount
+          }
+          maxVariantPrice {
+            amount
+          }
+        }
       }
     }
   }

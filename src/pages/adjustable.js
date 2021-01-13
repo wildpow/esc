@@ -2,7 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 import {
   Main,
@@ -14,14 +14,12 @@ import {
 } from "../styles/adjustableStyles";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import Layout from "../components/Layout";
-import { colors, fonts, fontSize } from "../utils/styles";
+import { colors, fonts, fontSize, spacing } from "../utils/styles";
 
 export const AdjMarkdown = styled.div`
   font-family: ${(props) => props.theme.MainFont3};
+  font-family: ${fonts.serif};
   padding: 0px;
-  /* margin-top: 7%;
-  width: 50%; */
-  /* display: none; */
   padding-top: 10px;
   h3 {
     border-bottom: 4px solid ${(props) => props.theme.mainColor2};
@@ -31,7 +29,6 @@ export const AdjMarkdown = styled.div`
     margin-bottom: 0;
     padding-bottom: 2px;
     padding-left: 20px;
-    /* margin-left: 20px; */
   }
   ul {
     list-style: square;
@@ -45,16 +42,12 @@ export const AdjMarkdown = styled.div`
     font-size: 0.9rem;
     color: ${colors.gray["700"]};
   }
-  /* @media (min-width: 568px) {
-    display: block;
-  } */
   @media (min-width: 640px) {
     h3 {
       font-size: 1.4rem;
     }
   }
   @media (min-width: 731px) {
-    /* margin-top: 5%; */
     h3 {
       padding-bottom: 3px;
       font-size: 1.6rem;
@@ -180,50 +173,38 @@ const ImageWrapper = styled.div`
     width: 50%;
   }
 `;
-// ADD PRICE RANGE TO ADJUSTABLE LIST
-export const PriceRange = styled.div`
-  color: ${(props) => props.theme.newColor2};
-  font-weight: 400;
-  font-family: ${(props) => props.theme.MainFont1};
-  /* text-align: center;
-  z-index: 5; */
-  padding-left: 20px;
+
+const priceRange = css`
+  color: ${colors.gray[700]};
+  font-family: ${fonts.sans};
   font-size: ${fontSize.xl};
-  padding-bottom: 20px;
   font-weight: 700;
-  align-self: flex-start;
+  padding-bottom: ${spacing[5]};
   @media (min-width: 768px) {
     letter-spacing: 0.05rem;
+  }
+`;
+const PriceRangeLg = styled.div`
+  ${priceRange}
+  padding-left: 20px;
+  align-self: flex-start;
+  @media (min-width: 768px) {
     align-self: flex-end;
     padding-right: 20px;
   }
   @media (min-width: 1024px) {
     font-size: ${fontSize["3xl"]};
-    align-self: flex-end;
-    padding-right: 20px;
   }
 `;
-const PriceRangeer = styled.div`
-  color: ${(props) => props.theme.newColor2};
-  font-weight: 400;
-  font-family: ${(props) => props.theme.MainFont1};
-  /* text-align: center;
-  z-index: 5; */
-  font-size: ${fontSize.xl};
+const PriceRangeSm = styled.div`
+  ${priceRange}
   padding-right: 20px;
-  /* padding-top: 20px; */
-  padding-bottom: 20px;
-  font-weight: 700;
-  text-align: end;
   align-self: flex-end;
   @media (min-width: 568px) {
     display: none;
   }
-  @media (min-width: 768px) {
-    letter-spacing: 0.05rem;
-  }
 `;
-const Stuff = styled.div`
+const FeaturePriceWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -265,7 +246,7 @@ const Adjustables = ({ data }) => {
                   </ImageContainer>
                 </BannerWrapper>
               </ImageWrapper>
-              <Stuff>
+              <FeaturePriceWrapper>
                 <AdjMarkdown>
                   <h3>Features</h3>
                   <ul>
@@ -274,24 +255,24 @@ const Adjustables = ({ data }) => {
                     ))}
                   </ul>
                 </AdjMarkdown>
-                <PriceRange>
+                <PriceRangeLg>
                   {`$${Math.trunc(
                     base.shopifyInfo[0].priceRange.minVariantPrice.amount,
                   )}
           - $${Math.trunc(
             base.shopifyInfo[0].priceRange.maxVariantPrice.amount,
           )}`}
-                </PriceRange>
-              </Stuff>
+                </PriceRangeLg>
+              </FeaturePriceWrapper>
             </InfoWrapper>
-            <PriceRangeer>
+            <PriceRangeSm>
               {`$${Math.trunc(
                 base.shopifyInfo[0].priceRange.minVariantPrice.amount,
               )}
           - $${Math.trunc(
             base.shopifyInfo[0].priceRange.maxVariantPrice.amount,
           )}`}
-            </PriceRangeer>
+            </PriceRangeSm>
           </StyledLink>
         ))}
         <BreadWrapper hidenLarge Bottom>
