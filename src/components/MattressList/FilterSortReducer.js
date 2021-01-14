@@ -5,33 +5,41 @@ const filterSortReducer = (state, action) => {
       return {
         ...state,
         mattresses: [...state.mattresses].sort(
-          (a, b) => a.priceLow - b.priceLow,
+          (a, b) =>
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
         beforeFilter: [...state.beforeFilter].sort(
-          (a, b) => a.priceLow - b.priceLow,
+          (a, b) =>
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
       };
     case "high-low":
       return {
         ...state,
         mattresses: [...state.mattresses].sort(
-          (a, b) => b.priceLow - a.priceLow,
+          (a, b) =>
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
         beforeFilter: [...state.beforeFilter].sort(
-          (a, b) => b.priceLow - a.priceLow,
+          (a, b) =>
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
       };
     case "name a-z":
       return {
         ...state,
         mattresses: [...state.mattresses].sort((a, b) => {
-          const nameA = `${a.subline.name} ${a.name}`;
-          const nameB = `${b.subline.name} ${a.name}`;
+          const nameA = `${a.subline.name} ${a.nameWithout}`;
+          const nameB = `${b.subline.name} ${a.nameWithout}`;
           return nameA > nameB ? 1 : -1;
         }),
         beforeFilter: [...state.beforeFilter].sort((a, b) => {
-          const nameA = `${a.subline.name} ${a.name}`;
-          const nameB = `${b.subline.name} ${a.name}`;
+          const nameA = `${a.subline.name} ${a.nameWithout}`;
+          const nameB = `${b.subline.name} ${a.nameWithout}`;
           return nameA > nameB ? 1 : -1;
         }),
       };
@@ -39,14 +47,14 @@ const filterSortReducer = (state, action) => {
       return {
         ...state,
         mattresses: [...state.mattresses].sort((a, b) => {
-          const nameA = `${a.subline.name} ${a.name}`;
-          const nameB = `${b.subline.name} ${a.name}`;
-          return nameA > nameB ? -1 : 1;
+          const nameA = `${a.subline.name} ${a.nameWithout}`;
+          const nameB = `${b.subline.name} ${a.nameWithout}`;
+          return nameB > nameA ? 1 : -1;
         }),
         beforeFilter: [...state.beforeFilter].sort((a, b) => {
-          const nameA = `${a.subline.name} ${a.name}`;
-          const nameB = `${b.subline.name} ${a.name}`;
-          return nameA > nameB ? -1 : 1;
+          const nameA = `${a.subline.name} ${a.nameWithout}`;
+          const nameB = `${b.subline.name} ${a.nameWithout}`;
+          return nameB > nameA ? 1 : -1;
         }),
       };
     case "check":

@@ -45,7 +45,7 @@ const MattressThumbnail = ({ mattress, url }) => (
       <br />
       {mattress.subline.name}
       <br />
-      {mattress.name}
+      {mattress.nameWithout}
     </Name>
   </StyledLink>
 );
