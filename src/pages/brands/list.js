@@ -221,7 +221,7 @@ export const list = graphql`
         }
       }
     }
-    all: datoCmsHeader(title: { eq: "AllMattressSort" }) {
+    all: datoCmsHeader(title: { eq: "Shop All Mattresses" }) {
       title
       tagLine
       bgImg {
