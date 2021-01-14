@@ -41,12 +41,12 @@ const filterSortReducer = (state, action) => {
         mattresses: [...state.mattresses].sort((a, b) => {
           const nameA = `${a.subline.name} ${a.name}`;
           const nameB = `${b.subline.name} ${a.name}`;
-          return nameA > nameB ? -1 : 1;
+          return nameB > nameA ? 1 : -1;
         }),
         beforeFilter: [...state.beforeFilter].sort((a, b) => {
           const nameA = `${a.subline.name} ${a.name}`;
           const nameB = `${b.subline.name} ${a.name}`;
-          return nameA > nameB ? -1 : 1;
+          return nameB > nameA ? 1 : -1;
         }),
       };
     case "check":
