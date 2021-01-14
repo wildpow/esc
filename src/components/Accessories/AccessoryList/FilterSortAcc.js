@@ -53,12 +53,12 @@ const filterSortReducer = (state, action) => {
         acc: [...state.acc].sort((a, b) => {
           const nameA = a.title;
           const nameB = b.title;
-          return nameA > nameB ? -1 : 1;
+          return nameB > nameA ? 1 : -1;
         }),
         accBeforeFilter: [...state.accBeforeFilter].sort((a, b) => {
           const nameA = a.title;
           const nameB = b.title;
-          return nameA > nameB ? -1 : 1;
+          return nameB > nameA ? 1 : -1;
         }),
       };
     case "type":

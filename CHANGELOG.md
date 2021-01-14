@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### January 2021
+
+##### Features
+
+-
+
+##### Bug Fix
+
+- Addressed structured data errors in Google Search console. [a8780d3]()
+- Curser now displays as 'pointer' in single product view, shopping cart and nav icons [89cb345]()
+- Product list sorting from Z-A now works as expected. [4723e8b]()
+- Single product tri-image component does not get cut off at the bottom anymore. [1d5b64e]()
+
 ### December 2020
 
 ##### Features
