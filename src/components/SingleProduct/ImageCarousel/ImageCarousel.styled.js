@@ -17,6 +17,7 @@ export const ImgWrapper = styled.div`
 export const SmallImgHolder = styled.div`
   display: flex;
   width: 100%;
+  padding: 2px 0;
   justify-content: center;
   align-self: center;
   ${SmallImgHolderPr1nt}
@@ -26,6 +27,7 @@ export const SmImgWrap = styled.div`
   color: white;
   width: 83px;
   height: 83px;
+  padding: 1px;
   @media (min-width: 360px) {
     width: 60px;
     height: 60px;
@@ -37,6 +39,7 @@ export const SmImgWrap = styled.div`
   @media (min-width: 768px) {
     width: calc(450px / 3);
     height: 148px;
+    padding: 2px;
   }
   @media (min-width: 1024px) {
     width: 168px;
