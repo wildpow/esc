@@ -90,7 +90,7 @@ const Base = ({ data }) => {
             />
             <MainInfo>
               {width > 768 && (
-                <FeatureList top list={product.productFeatures} />
+                <FeatureList top list={product.productFeatures} width={width} />
               )}
               <MattressForm
                 variants={product.shopifyInfo[0].variants}
@@ -120,7 +120,7 @@ const Base = ({ data }) => {
                   width={width}
                 />
               ) : (
-                <FeatureList list={product.fullFeatureList} />
+                <FeatureList list={product.fullFeatureList} width={width} />
               )}
             </Construction>
             <Warranty>{product.warranty}</Warranty>

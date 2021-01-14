@@ -52,7 +52,7 @@ const AccessoryList = ({ location }) => {
         />
         <div className="mattList__grid">
           {state.acc
-            ? state.acc.map((acc) => <AccThumb acc={acc} key={acc.shopifyId} />)
+            ? state.acc.map((acc) => <AccThumb acc={acc} key={acc.id} />)
             : null}
         </div>
       </div>

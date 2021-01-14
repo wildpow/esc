@@ -297,7 +297,7 @@ export const allAdjustables = graphql`
     }
 
     allDatoCmsProduct(
-      filter: { typeOfProduct: { title: { eq: "Adjustable Base" } } }
+      filter: { typeOfProduct: { title: { eq: "Adjustable" } } }
     ) {
       nodes {
         title

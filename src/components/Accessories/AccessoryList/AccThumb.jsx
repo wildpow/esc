@@ -11,18 +11,18 @@ import {
 
 const AccThumb = ({ acc }) => {
   return (
-    <StyledLink to={`/accessories/${acc.handle}`}>
+    <StyledLink to={`/accessories/${acc.slug}`}>
       <Topper>
         <MattImgContainer>
           <Img
-            fluid={acc.images[0].localFile.childImageSharp.fluid}
-            alt={acc.title}
+            fluid={acc.threeImageBlock[0].coverImage.fluid}
+            alt={acc.threeImageBlock[0].coverImage.alt}
           />
         </MattImgContainer>
       </Topper>
       <PriceRange>
-        {`$${Number(acc.priceRange.minVariantPrice.amount).toFixed(2)}
-          - $${Number(acc.priceRange.maxVariantPrice.amount).toFixed(2)}`}
+        {`$${acc.shopifyInfo[0].priceRange.minVariantPrice.amount}
+          - $${acc.shopifyInfo[0].priceRange.maxVariantPrice.amount}`}
       </PriceRange>
       <Name>{acc.title}</Name>
     </StyledLink>
