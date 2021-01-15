@@ -21,8 +21,10 @@ const AccThumb = ({ acc }) => {
         </MattImgContainer>
       </Topper>
       <PriceRange>
-        {`$${acc.shopifyInfo[0].priceRange.minVariantPrice.amount}
-          - $${acc.shopifyInfo[0].priceRange.maxVariantPrice.amount}`}
+        {`$${Math.trunc(acc.shopifyInfo[0].priceRange.minVariantPrice.amount)}
+          - $${Math.trunc(
+            acc.shopifyInfo[0].priceRange.maxVariantPrice.amount,
+          )}`}
       </PriceRange>
       <Name>{acc.title}</Name>
     </StyledLink>
