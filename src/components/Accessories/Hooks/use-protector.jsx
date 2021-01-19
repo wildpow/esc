@@ -5,7 +5,7 @@ const useProtector = () => {
     graphql`
       query Protectors {
         allDatoCmsProduct(
-          filter: { typeOfProduct: { title: { eq: "Protectors" } } }
+          filter: { typeOfProduct: { title: { eq: "Protector" } } }
         ) {
           nodes {
             title
@@ -27,6 +27,7 @@ const useProtector = () => {
               }
             }
             shopifyInfo {
+              productType
               metafields {
                 key
                 value

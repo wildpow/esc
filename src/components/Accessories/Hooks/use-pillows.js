@@ -5,7 +5,7 @@ const usePillows = () => {
     graphql`
       query Pillows {
         allDatoCmsProduct(
-          filter: { typeOfProduct: { title: { eq: "Pillows" } } }
+          filter: { typeOfProduct: { title: { eq: "Pillow" } } }
         ) {
           nodes {
             title
@@ -27,6 +27,7 @@ const usePillows = () => {
               }
             }
             shopifyInfo {
+              productType
               metafields {
                 key
                 value

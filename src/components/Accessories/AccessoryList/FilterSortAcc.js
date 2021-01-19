@@ -10,13 +10,13 @@ const filterSortReducer = (state, action) => {
         ...state,
         acc: [...state.acc].sort(
           (a, b) =>
-            a.priceRange.minVariantPrice.amount -
-            b.priceRange.minVariantPrice.amount,
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
         accBeforeFilter: [...state.accBeforeFilter].sort(
           (a, b) =>
-            a.priceRange.minVariantPrice.amount -
-            b.priceRange.minVariantPrice.amount,
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
       };
     case "high-low":
@@ -24,13 +24,13 @@ const filterSortReducer = (state, action) => {
         ...state,
         acc: [...state.acc].sort(
           (a, b) =>
-            b.priceRange.minVariantPrice.amount -
-            a.priceRange.minVariantPrice.amount,
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
         accBeforeFilter: [...state.accBeforeFilter].sort(
           (a, b) =>
-            b.priceRange.minVariantPrice.amount -
-            a.priceRange.minVariantPrice.amount,
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
       };
     case "name a-z":
@@ -95,7 +95,7 @@ const filterSortReducer = (state, action) => {
         acc:
           newSelectedTypes.length !== 0
             ? state.accBeforeFilter.filter((acc) =>
-                newSelectedTypes.includes(acc.productType),
+                newSelectedTypes.includes(acc.shopifyInfo[0].productType),
               )
             : state.accBeforeFilter,
         selectedAccInfo: newInfo,
