@@ -5,6 +5,7 @@ import { colors } from "../../../../utils/styles";
 import chevron from "../../../../images/new/chevron-down-solid.svg";
 
 const SortBySelect = styled.select`
+  cursor: pointer;
   display: block;
   font-size: 16px;
   font-family: ${(props) => props.theme.MainFont1};
