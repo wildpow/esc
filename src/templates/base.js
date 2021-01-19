@@ -30,6 +30,8 @@ const Base = ({ data }) => {
     const ids = new Set(bigList.map((d) => d.id));
     return [...bigList, ...smallList.filter((d) => !ids.has(d.id))];
   };
+  const brand =
+    product.brand.length > 1 ? product.brand : product.shopifyInfo[0].vender;
   return (
     <Layout>
       <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
@@ -55,9 +57,9 @@ const Base = ({ data }) => {
     "description": "${product.description}",
     "brand": {
         "@type": "Brand",
-        "name": "${product.brand}"
+        "name": "${brand}"
     },
-    "sku": "ESC${product.brand.toUpperCase()}.${product.slug}",
+    "sku": "ESC${brand.toUpperCase()}.${product.slug}",
     "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
@@ -109,7 +111,9 @@ const Base = ({ data }) => {
           </header>
           <Article>
             <Description>{product.description}</Description>
-            <Profile>{`Profile: ${product.height}`}</Profile>
+            {product.height.length > 0 && (
+              <Profile>{`Profile: ${product.height}`}</Profile>
+            )}
             <Construction>
               {width < 767 ? (
                 <FeatureList
@@ -120,10 +124,19 @@ const Base = ({ data }) => {
                   width={width}
                 />
               ) : (
-                <FeatureList list={product.fullFeatureList} width={width} />
+                <FeatureList
+                  list={
+                    product.fullFeatureList.length !== 0
+                      ? product.fullFeatureList
+                      : product.productFeatures
+                  }
+                  width={width}
+                />
               )}
             </Construction>
-            <Warranty>{product.warranty}</Warranty>
+            {product.warranty.length > 0 && (
+              <Warranty>{product.warranty}</Warranty>
+            )}
           </Article>
         </Wrapper>
         <BreadWrapper>
