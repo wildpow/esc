@@ -297,6 +297,7 @@ export default function FeatureList({ list, top, width }) {
       </Popup>
     );
   }
+  if (list.length === 0) return null;
   return (
     <>
       <List top>

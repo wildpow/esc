@@ -38,35 +38,18 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {
-      protector: allShopifyProduct(
-        filter: { productType: { eq: "Protector" } }
+      adjustables: allDatoCmsProduct(
+        filter: { typeOfProduct: { title: { eq: "Adjustable" } } }
       ) {
         nodes {
-          handle
-          shopifyId
-          id
+          slug
         }
       }
-      sheets: allShopifyProduct(filter: { productType: { eq: "Sheets" } }) {
+      products: allDatoCmsProduct(
+        filter: { typeOfProduct: { title: { ne: "Adjustable" } } }
+      ) {
         nodes {
-          handle
-          shopifyId
-          id
-        }
-      }
-      pillow: allShopifyProduct(filter: { productType: { eq: "Pillow" } }) {
-        nodes {
-          handle
-          shopifyId
-          id
-        }
-      }
-      allDatoCmsAdjustableBase {
-        edges {
-          node {
-            shopifyLink
-            slug
-          }
+          slug
         }
       }
       allDatoCmsNewMattress {
@@ -95,44 +78,25 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `);
-  data.protector.nodes.forEach((pro) => {
+  data.products.nodes.forEach((product) => {
     actions.createPage({
-      path: `/accessories/${pro.handle}`,
-      component: path.resolve(`src/templates/accessory.jsx`),
+      path: `/accessories/${product.slug}`,
+      component: path.resolve(`src/templates/base.js`),
       context: {
-        id: pro.shopifyId,
+        slug: product.slug,
       },
     });
   });
-  data.sheets.nodes.forEach((sheet) => {
+  data.adjustables.nodes.forEach((adjustable) => {
     actions.createPage({
-      path: `/accessories/${sheet.handle}`,
-      component: path.resolve(`src/templates/accessory.jsx`),
+      path: `/adjustable/${adjustable.slug}`,
+      component: path.resolve(`src/templates/base.js`),
       context: {
-        id: sheet.shopifyId,
+        slug: adjustable.slug,
       },
     });
   });
-  data.pillow.nodes.forEach((pill) => {
-    actions.createPage({
-      path: `/accessories/${pill.handle}`,
-      component: path.resolve(`src/templates/accessory.jsx`),
-      context: {
-        id: pill.shopifyId,
-      },
-    });
-  });
-  data.allDatoCmsAdjustableBase.edges.forEach((base) => {
-    actions.createPage({
-      path: `/adjustable/${base.node.slug}`,
 
-      component: path.resolve(`./src/templates/base.js`),
-      context: {
-        slug: base.node.slug,
-        shopifyBase: base.node.shopifyLink,
-      },
-    });
-  });
   data.allDatoCmsNewMattress.nodes.forEach((mattress) => {
     actions.createPage({
       path: `/brands/${mattress.brand.urlName}/${mattress.slug}`,
@@ -193,3 +157,12 @@ exports.createResolvers = ({ createResolvers }) => {
     },
   });
 };
+
+// allDatoCmsAdjustableBase {
+//   edges {
+//     node {
+//       shopifyLink
+//       slug
+//     }
+//   }
+// }

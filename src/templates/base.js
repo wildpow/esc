@@ -30,8 +30,11 @@ const Base = ({ data }) => {
     const ids = new Set(bigList.map((d) => d.id));
     return [...bigList, ...smallList.filter((d) => !ids.has(d.id))];
   };
+  const saleBanner = product.shopifyInfo[0].metafields.filter(
+    (item) => item.key === "saleBanner",
+  );
   const brand =
-    product.brand.length > 1 ? product.brand : product.shopifyInfo[0].vender;
+    product.brand.length > 1 ? product.brand : product.shopifyInfo[0].vendor;
   return (
     <Layout>
       <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
@@ -84,7 +87,7 @@ const Base = ({ data }) => {
           </header>
           <Main>
             <ImageCarousel
-              saleBanner={product.shopifyInfo[0].metafields[0].value}
+              saleBanner={saleBanner.length === 1 ? saleBanner[0].value : ""}
               cover={product.threeImageBlock[0].coverImage}
               img1={product.threeImageBlock[0].image2}
               img2={product.threeImageBlock[0].image3}
@@ -115,20 +118,15 @@ const Base = ({ data }) => {
               <Profile>{`Profile: ${product.height}`}</Profile>
             )}
             <Construction>
-              {width < 767 ? (
-                <FeatureList
-                  list={mergeFeatureLists(
-                    product.productFeatures,
-                    product.fullFeatureList,
-                  )}
-                  width={width}
-                />
-              ) : (
+              {width > 768 && product.fullFeatureList.length === 0 ? null : (
                 <FeatureList
                   list={
-                    product.fullFeatureList.length !== 0
-                      ? product.fullFeatureList
-                      : product.productFeatures
+                    width < 767
+                      ? mergeFeatureLists(
+                          product.productFeatures,
+                          product.fullFeatureList,
+                        )
+                      : product.fullFeatureList
                   }
                   width={width}
                 />
@@ -210,6 +208,7 @@ export const query = graphql`
         }
       }
       shopifyInfo {
+        vendor
         variants {
           compareAtPrice
           price
