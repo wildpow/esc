@@ -7,6 +7,7 @@ export const newMattressList = graphql`
     slug
     firmness
     id
+    saleBanner
     images {
       coverImage {
         alt

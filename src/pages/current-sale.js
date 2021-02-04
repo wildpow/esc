@@ -16,10 +16,10 @@ const BrandsRoot = styled.div`
 
 const Sale = ({ data }) => {
   const { allDatoCmsNewMattress, datoCmsFrontPage } = data;
-  const allSaleMattresses = allDatoCmsNewMattress.nodes.filter(
-    (matt) =>
-      matt.shopifyInfo[0].metafields[0].key === "saleBanner" &&
-      matt.shopifyInfo[0].metafields[0].value.length > 3,
+  const sortedMatt = allDatoCmsNewMattress.nodes.sort(
+    (a, b) =>
+      Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
   );
   return (
     <Layout>
@@ -30,7 +30,7 @@ const Sale = ({ data }) => {
       <BrandsRoot>
         <MattressList
           headerBG={datoCmsFrontPage.currentSaleHeaderLink.bgImg.url}
-          mattresses={allSaleMattresses}
+          mattresses={sortedMatt}
           title={datoCmsFrontPage.currentSaleHeaderLink.title}
           description={datoCmsFrontPage.currentSaleHeaderLink.tagLine}
           button={{ label: "Shop all Mattresses", url: "/brands/list" }}
@@ -49,7 +49,12 @@ Sale.propTypes = {
 
 export const currentSaleQuery = graphql`
   query currentSaleQuery {
-    allDatoCmsNewMattress(filter: { meta: { status: { eq: "published" } } }) {
+    allDatoCmsNewMattress(
+      filter: {
+        meta: { status: { eq: "published" } }
+        saleBanner: { ne: "NEW MODEL", regex: "/[a-z]/gi" }
+      }
+    ) {
       nodes {
         ...newMattressList
       }
