@@ -10,6 +10,7 @@ export default () => {
             footerUrl
             header
             newmattress {
+              saleBanner
               slug
               id
               name

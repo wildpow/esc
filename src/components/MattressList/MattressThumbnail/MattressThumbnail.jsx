@@ -16,8 +16,8 @@ const MattressThumbnail = ({ mattress, url }) => (
   <StyledLink to={url}>
     <Topper>
       <BannerWrapper>
-        {mattress.shopifyInfo[0].metafields[0].value.length > 3 && (
-          <Banner>{mattress.shopifyInfo[0].metafields[0].value}</Banner>
+        {mattress.saleBanner.length > 3 && (
+          <Banner>{mattress.saleBanner}</Banner>
         )}
         <MattImgContainer>
           <Img
