@@ -30,9 +30,6 @@ const Base = ({ data }) => {
     const ids = new Set(bigList.map((d) => d.id));
     return [...bigList, ...smallList.filter((d) => !ids.has(d.id))];
   };
-  const saleBanner = product.shopifyInfo[0].metafields.filter(
-    (item) => item.key === "saleBanner",
-  );
   const brand =
     product.brand.length > 1 ? product.brand : product.shopifyInfo[0].vendor;
   return (
@@ -87,7 +84,9 @@ const Base = ({ data }) => {
           </header>
           <Main>
             <ImageCarousel
-              saleBanner={saleBanner.length === 1 ? saleBanner[0].value : ""}
+              saleBanner={
+                product.saleBanner.length > 3 ? product.saleBanner : ""
+              }
               cover={product.threeImageBlock[0].coverImage}
               img1={product.threeImageBlock[0].image2}
               img2={product.threeImageBlock[0].image3}
@@ -163,6 +162,7 @@ export const query = graphql`
       }
       title
       brand
+      saleBanner
       description
       slug
       warranty

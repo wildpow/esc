@@ -11,6 +11,7 @@ const useSheets = () => {
             title
             id
             slug
+            saleBanner
             description
             typeOfProduct {
               title

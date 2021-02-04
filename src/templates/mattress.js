@@ -44,9 +44,6 @@ const Mattress = ({ data }) => {
   } = data;
   const detectMobile = useMobileDetect();
   const { width } = useWindowSize();
-  const saleBanner = mattress.shopifyInfo[0].metafields.filter(
-    (item) => item.key === "saleBanner",
-  );
   const mergeFeatureLists = (smallList, bigList) => {
     const ids = new Set(bigList.map((d) => d.id));
     return [...bigList, ...smallList.filter((d) => !ids.has(d.id))];
@@ -117,7 +114,9 @@ const Mattress = ({ data }) => {
                 cover={mattress.images[0].coverImage}
                 img1={mattress.images[0].image2}
                 img2={mattress.images[0].image3}
-                saleBanner={saleBanner.length === 1 ? saleBanner[0].value : ""}
+                saleBanner={
+                  mattress.saleBanner.length > 3 ? mattress.saleBanner : ""
+                }
                 mattName={`${mattress.brand.displayName} ${mattress.nameWithout}`}
                 firmness={mattress.firmness}
               />
@@ -242,6 +241,7 @@ export const query = graphql`
       slug
       description
       profile
+      saleBanner
       warrantyTitle
       subline {
         name

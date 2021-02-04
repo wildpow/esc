@@ -9,6 +9,7 @@ const usePillows = () => {
         ) {
           nodes {
             title
+            saleBanner
             id
             slug
             description

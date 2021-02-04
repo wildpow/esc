@@ -10,6 +10,7 @@ const useProtector = () => {
           nodes {
             title
             id
+            saleBanner
             slug
             description
             typeOfProduct {
