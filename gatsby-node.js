@@ -81,7 +81,7 @@ exports.createPages = async ({ actions, graphql }) => {
   data.products.nodes.forEach((product) => {
     actions.createPage({
       path: `/accessories/${product.slug}`,
-      component: path.resolve(`src/templates/base.js`),
+      component: path.resolve(`src/templates/product.js`),
       context: {
         slug: product.slug,
       },
@@ -90,7 +90,7 @@ exports.createPages = async ({ actions, graphql }) => {
   data.adjustables.nodes.forEach((adjustable) => {
     actions.createPage({
       path: `/adjustable/${adjustable.slug}`,
-      component: path.resolve(`src/templates/base.js`),
+      component: path.resolve(`src/templates/product.js`),
       context: {
         slug: adjustable.slug,
       },
