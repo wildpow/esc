@@ -235,8 +235,8 @@ const Adjustables = ({ data }) => {
             <InfoWrapper>
               <ImageWrapper>
                 <BannerWrapper>
-                  {base.shopifyInfo[0].metafields[0].value.length > 3 && (
-                    <Banner>{base.shopifyInfo[0].metafields[0].value}</Banner>
+                  {base.saleBanner.length > 3 && (
+                    <Banner>{base.saleBanner}</Banner>
                   )}
                   <ImageContainer>
                     <Img
@@ -301,6 +301,7 @@ export const allAdjustables = graphql`
     ) {
       nodes {
         title
+        saleBanner
         id
         slug
         productFeatures {
@@ -316,11 +317,6 @@ export const allAdjustables = graphql`
             maxVariantPrice {
               amount
             }
-          }
-          metafields {
-            id
-            key
-            value
           }
         }
         threeImageBlock {
