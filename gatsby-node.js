@@ -157,12 +157,3 @@ exports.createResolvers = ({ createResolvers }) => {
     },
   });
 };
-
-// allDatoCmsAdjustableBase {
-//   edges {
-//     node {
-//       shopifyLink
-//       slug
-//     }
-//   }
-// }

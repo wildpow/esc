@@ -27,11 +27,6 @@ export default () => {
                 }
               }
               shopifyInfo {
-                metafields {
-                  id
-                  value
-                  key
-                }
                 priceRange {
                   minVariantPrice {
                     amount
