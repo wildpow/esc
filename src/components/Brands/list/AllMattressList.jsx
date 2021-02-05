@@ -5,10 +5,10 @@ import Header from "../../shared/ProductList/Header";
 import {
   NewBread,
   MattListWrapper,
-} from "../../MattressList/MattressList.styled";
+} from "../../shared/ProductList/ProductList.styled";
 import GenerateInitialState from "./generateInitialState";
 import reducer from "./reducer";
-import MattressThumbnail from "../../MattressList/MattressThumbnail";
+import ProductThumbnail from "../../shared/ProductList/ProductThumbnail";
 import FilterSortPanel from "./filterSortPanel";
 
 const MattressList = ({ location, data }) => {
@@ -54,9 +54,10 @@ const MattressList = ({ location, data }) => {
         {state.currentMattresses.length > 0 ? (
           <div className="mattList__grid">
             {state.currentMattresses.map((mattress) => (
-              <MattressThumbnail
+              <ProductThumbnail
                 key={mattress.id}
-                mattress={mattress}
+                product={mattress}
+                mattress
                 url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
               />
             ))}

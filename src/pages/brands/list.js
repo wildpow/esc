@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import propTypes from "prop-types";
 import Layout from "../../components/Layout";
-import MattressList from "../../components/Brands/list";
+import AllMattressList from "../../components/Brands/list";
 
 const List = ({ location, data }) => {
   const sortedMatt = (list) =>
@@ -81,7 +81,7 @@ const List = ({ location, data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={data.seo.seoMetaTags} />
-      <MattressList location={location} data={combinedData} />
+      <AllMattressList location={location} data={combinedData} />
     </Layout>
   );
 };

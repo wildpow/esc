@@ -1,1 +1,1 @@
-export { default } from "./MattressList";
+export { default } from "./AllMattressList";
