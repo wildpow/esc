@@ -216,11 +216,6 @@ export const query = graphql`
           shopifyId
           compareAtPrice
         }
-        metafields {
-          value
-          key
-          id
-        }
         priceRange {
           minVariantPrice {
             amount

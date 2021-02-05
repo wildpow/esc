@@ -28,11 +28,6 @@ export const newMattressList = graphql`
       displayName
     }
     shopifyInfo {
-      metafields {
-        id
-        key
-        value
-      }
       priceRange {
         minVariantPrice {
           amount

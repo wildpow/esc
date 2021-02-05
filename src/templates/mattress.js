@@ -296,11 +296,6 @@ export const query = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       shopifyInfo {
-        metafields {
-          id
-          key
-          value
-        }
         title
         vendor
         shopifyId
