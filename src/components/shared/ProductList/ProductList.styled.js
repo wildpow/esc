@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { BreadWrapper } from "../BreadCrumbs";
-import { colors, fontSize, fonts, boxShadow } from "../../utils/styles";
+import { BreadWrapper } from "../../BreadCrumbs";
+import { colors, fonts, boxShadow } from "../../../utils/styles";
 
 export const NewBread = styled(BreadWrapper)`
   margin-left: 0;

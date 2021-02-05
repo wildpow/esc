@@ -1,11 +1,14 @@
 import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import Header from "../shared/ProductList/Header";
-import MattressThumbnail from "./MattressThumbnail";
 import FilterSortPanel from "./FilterSortPanelMatt";
 import filterSortReducer from "./FilterSortReducer";
 import BreadCrumbs from "../BreadCrumbs";
-import { NewBread, MattListWrapper } from "./MattressList.styled";
+import {
+  NewBread,
+  MattListWrapper,
+} from "../shared/ProductList/ProductList.styled";
+import ProductThumbnail from "../shared/ProductList/ProductThumbnail";
 
 const MattressList = ({
   mattresses,
@@ -53,9 +56,10 @@ const MattressList = ({
         {state.mattresses.length > 0 ? (
           <div className="mattList__grid">
             {state.mattresses.map((mattress) => (
-              <MattressThumbnail
+              <ProductThumbnail
+                mattress
                 key={mattress.id}
-                mattress={mattress}
+                product={mattress}
                 url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
               />
             ))}
