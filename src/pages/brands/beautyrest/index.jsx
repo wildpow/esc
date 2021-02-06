@@ -17,7 +17,7 @@ const Beautyrest = ({ data }) => {
       <HelmetDatoCms seo={datoCmsBrand.seoLink.seoMetaTags} />
       <MattressList
         headerBG={datoCmsBrand.headerLink.bgImg.url}
-        mattresses={sortedMatt}
+        mattresses={sortedMatt.nodes}
         title={datoCmsBrand.displayName}
         description={datoCmsBrand.headerLink.tagLine}
         breadCrumbs
