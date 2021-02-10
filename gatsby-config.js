@@ -21,7 +21,7 @@ const cfg = {
     {
       resolve: `gatsby-source-datocms`,
       options: {
-        apiToken: process.env.GATSBY_DATO_API,
+        apiToken: process.env.DATO_API,
         preview: false,
         disableLiveReload: false,
       },
@@ -69,7 +69,7 @@ const cfg = {
               // withWebp: false,
               // quality: 80,
               // You need to specify your project read-only API token here!
-              apiToken: process.env.GATSBY_DATO_API,
+              apiToken: process.env.DATO_API,
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
               // base for generating different widths of each image.
@@ -96,8 +96,8 @@ const cfg = {
     {
       resolve: `gatsby-source-shopify`,
       options: {
-        shopName: `${process.env.GATSBY_SHOPIFY_STORE}.myshopify.com`,
-        accessToken: process.env.GATSBY_SHOPIFY_API,
+        shopName: `${process.env.SHOPIFY_STORE}.myshopify.com`,
+        accessToken: process.env.SHOPIFY_API,
         verbose: true,
         apiVersion: "2020-10",
       },
@@ -150,10 +150,14 @@ const cfg = {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.GATSBY_ALGOLIA_ADMIN,
+        apiKey: process.env.ALGOLIA_API_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        // concurrentQueries: false,
+        // appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        // apiKey: process.env.GATSBY_ALGOLIA_ADMIN,
         queries,
-        enablePartialUpdates: true,
-        matchFields: ["slug", "description", "objectID"],
+        // enablePartialUpdates: true,
+        // matchFields: ["slug", "description", "objectID"],
       },
     },
     `gatsby-plugin-remove-serviceworker`,
@@ -188,7 +192,7 @@ const cfg = {
 
         entitiesArray: [
           {
-            url: process.env.GATSBY_REST2,
+            url: process.env.REST2,
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -209,7 +213,7 @@ if (process.env.CONTEXT === "production") {
   const googleAnalyticsCfg = {
     resolve: "gatsby-plugin-google-analytics",
     options: {
-      trackingId: process.env.GATSBY_GOOGLE_ANALYTICS,
+      trackingId: process.env.GOOGLE_ANALYTICS,
     },
   };
   cfg.plugins.push(googleAnalyticsCfg);
