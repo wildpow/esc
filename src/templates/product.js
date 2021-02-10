@@ -121,7 +121,7 @@ const Base = ({ data }) => {
           <Article>
             <Description>{product.description}</Description>
             {product.height.length > 0 && (
-              <Profile>{`Profile: ${product.height}`}</Profile>
+              <Profile>{`Profile: ${product.height}"`}</Profile>
             )}
             <Construction>
               {width > 768 && product.fullFeatureList.length === 0 ? null : (

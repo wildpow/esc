@@ -152,7 +152,7 @@ const Mattress = ({ data }) => {
           </header>
           <Article>
             <Description>{mattress.description}</Description>
-            <Profile>{`Profile: ${mattress.profile}`}</Profile>
+            <Profile>{`Profile: ${mattress.profile}"`}</Profile>
             {width < 767 ? (
               <FeatureList
                 list={mergeFeatureLists(
