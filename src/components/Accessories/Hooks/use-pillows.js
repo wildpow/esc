@@ -29,11 +29,6 @@ const usePillows = () => {
             }
             shopifyInfo {
               productType
-              metafields {
-                key
-                value
-                id
-              }
               vendor
               priceRange {
                 minVariantPrice {

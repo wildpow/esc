@@ -29,11 +29,6 @@ const useSheets = () => {
             }
             shopifyInfo {
               productType
-              metafields {
-                key
-                value
-                id
-              }
               vendor
               priceRange {
                 minVariantPrice {

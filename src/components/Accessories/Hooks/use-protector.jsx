@@ -29,11 +29,6 @@ const useProtector = () => {
             }
             shopifyInfo {
               productType
-              metafields {
-                key
-                value
-                id
-              }
               vendor
               priceRange {
                 minVariantPrice {
