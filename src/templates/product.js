@@ -30,16 +30,23 @@ const Base = ({ data }) => {
     const ids = new Set(bigList.map((d) => d.id));
     return [...bigList, ...smallList.filter((d) => !ids.has(d.id))];
   };
-  const brand =
-    product.brand.length > 1 ? product.brand : product.shopifyInfo[0].vendor;
   return (
     <Layout>
       <div style={{ paddingLeft: "5px", paddingRight: "5px" }}>
         <BreadWrapper>
-          <BreadCrumbs
-            next={product.typeOfProduct.title}
-            here={product.title}
-          />
+          {product.typeOfProduct.title === "Adjustable" ? (
+            <BreadCrumbs
+              next={product.typeOfProduct.title}
+              here={product.title}
+            />
+          ) : (
+            <BreadCrumbs
+              acc
+              next="Accessories"
+              next2={product.typeOfProduct.title}
+              here={product.title}
+            />
+          )}
         </BreadWrapper>
         <Wrapper>
           <HelmetDatoCms seo={product.seoMetaTags}>
@@ -57,9 +64,9 @@ const Base = ({ data }) => {
     "description": "${product.description}",
     "brand": {
         "@type": "Brand",
-        "name": "${brand}"
+        "name": "${product.brand.title}"
     },
-    "sku": "ESC${brand.toUpperCase()}.${product.slug}",
+    "sku": "ESC${product.brand.title.toUpperCase()}.${product.slug}",
     "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
@@ -137,10 +144,19 @@ const Base = ({ data }) => {
           </Article>
         </Wrapper>
         <BreadWrapper>
-          <BreadCrumbs
-            next={product.typeOfProduct.title}
-            here={product.title}
-          />
+          {product.typeOfProduct.title === "Adjustable" ? (
+            <BreadCrumbs
+              next={product.typeOfProduct.title}
+              here={product.title}
+            />
+          ) : (
+            <BreadCrumbs
+              acc
+              next="Accessories"
+              next2={product.typeOfProduct.title}
+              here={product.title}
+            />
+          )}
         </BreadWrapper>
       </div>
     </Layout>
@@ -161,7 +177,9 @@ export const query = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       title
-      brand
+      brand {
+        title
+      }
       saleBanner
       description
       slug
