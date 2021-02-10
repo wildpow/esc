@@ -75,15 +75,17 @@ const filterSortReducer = (state, action) => {
       }
 
       if (newSelectedTypes.length !== 1) {
-        newInfo = state.accInfo[3];
+        newInfo = state.accInfo[4];
         window.history.replaceState({}, "", `${state.locationPath}`);
       } else {
         if (newSelectedTypes[0] === "Sheets") {
           newInfo = state.accInfo[0];
         } else if (newSelectedTypes[0] === "Pillow") {
           newInfo = state.accInfo[1];
-        } else {
+        } else if (newSelectedTypes[0] === "Protector") {
           newInfo = state.accInfo[2];
+        } else {
+          newInfo = state.accInfo[3];
         }
         navigate(
           `${state.locationPath}?type=${newSelectedTypes[0].toLowerCase()}`,
@@ -95,7 +97,7 @@ const filterSortReducer = (state, action) => {
         acc:
           newSelectedTypes.length !== 0
             ? state.accBeforeFilter.filter((acc) =>
-                newSelectedTypes.includes(acc.shopifyInfo[0].productType),
+                newSelectedTypes.includes(acc.typeOfProduct.title),
               )
             : state.accBeforeFilter,
         selectedAccInfo: newInfo,

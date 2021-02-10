@@ -15,11 +15,13 @@ import usePillows from "../Hooks/use-pillows";
 import GenerateInitialState from "./Utils/generateInitialState";
 import useHeaders from "../Hooks/use-headers";
 import ProductThumbnail from "../../shared/ProductList/ProductThumbnail";
+import useFoundations from "../Hooks/use-foundation";
 
 const AccessoryList = ({ location }) => {
   const protectors = useProtector();
   const sheets = useSheets();
   const pillows = usePillows();
+  const foundations = useFoundations();
   const headers = useHeaders();
   const initialState = GenerateInitialState(
     location,
@@ -27,6 +29,7 @@ const AccessoryList = ({ location }) => {
     sheets,
     protectors,
     headers,
+    foundations,
   );
   const [state, dispatch] = useReducer(filterSortAcc, initialState);
   return (

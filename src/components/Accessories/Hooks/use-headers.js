@@ -1,7 +1,13 @@
 import { useStaticQuery, graphql } from "gatsby";
 
 const useHeaders = () => {
-  const { sheets, pillows, protectors, accessories } = useStaticQuery(
+  const {
+    sheets,
+    pillows,
+    protectors,
+    foundation,
+    accessories,
+  } = useStaticQuery(
     graphql`
       query Headers {
         sheets: datoCmsHeader(title: { eq: "Sheets" }) {
@@ -32,6 +38,15 @@ const useHeaders = () => {
             title
           }
         }
+        foundation: datoCmsHeader(title: { eq: "Foundation" }) {
+          title
+          tagLine
+          bgImg {
+            url
+            alt
+            title
+          }
+        }
         accessories: datoCmsHeader(title: { eq: "Accessories" }) {
           title
           tagLine
@@ -44,6 +59,6 @@ const useHeaders = () => {
       }
     `,
   );
-  return [sheets, pillows, protectors, accessories];
+  return [sheets, pillows, protectors, foundation, accessories];
 };
 export default useHeaders;
