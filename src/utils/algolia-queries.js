@@ -1,113 +1,125 @@
 const indexName = `Products`;
 const protector = `{
-  protector: allShopifyProduct(filter: { productType: { eq: "Protector" } }) {
+  protector:  allDatoCmsProduct(filter: {typeOfProduct: {title: {eq: "Protector"}}}) {
     nodes {
-      handle
+      brand {
+        title
+      }
+      slug
       description
-      vendor
-      shopifyId
+      id
       title
+      shopifyInfo {
+        vendor
+      }
     }
   }
 }`;
 const sheets = `{
-  sheets: allShopifyProduct(filter: { productType: { eq: "Sheets" } }) {
+  sheets:  allDatoCmsProduct(filter: {typeOfProduct: {title: {eq: "Sheets"}}}) {
     nodes {
-      handle
+      brand {
+        title
+      }
+      slug
       description
-      vendor
-      shopifyId
+      id
       title
+      shopifyInfo {
+        vendor
+      }
     }
   }
 }`;
 const pillows = `{
-  pillow: allShopifyProduct(filter: { productType: { eq: "Pillow" } }) {
+  pillow:  allDatoCmsProduct(filter: {typeOfProduct: {title: {eq: "Pillow"}}}) {
     nodes {
-      handle
+      brand {
+        title
+      }
+      slug
       description
-      vendor
-      shopifyId
+      id
       title
+      shopifyInfo {
+        vendor
+      }
     }
   }
 }`;
 const adjustables = `{
-  adjustable: allDatoCmsAdjustableBase {
-      nodes {
-        brand
-        slug
-        fullName
-        id
-        description
+  adjustable: allDatoCmsProduct(filter: {typeOfProduct: {title: {eq: "Adjustable"}}}) {
+    nodes {
+      brand {
+        title
       }
+      slug
+      id
+      title
+      description
     }
   }
+}
 `;
 const mattress = `{
-  mattresses: allDatoCmsMattress {
-      nodes {
-        slug
-        name
-        id
-        description
-        brand {
-          displayName
-          urlName
-        }
-        subline {
-          name
-        }
+  mattresses:  allDatoCmsNewMattress {
+    nodes {
+      slug
+      name
+      id
+      description
+      brand {
+        displayName
+        urlName
       }
+      subline {
+        name
+      }
+      name
     }
   }
+}
 `;
 
-function protectorToAlgoliaRecord({
-  shopifyId,
-  handle,
-  title,
-  vendor,
-  ...rest
-}) {
+function protectorToAlgoliaRecord({ id, slug, title, brand, ...rest }) {
   return {
-    objectID: shopifyId,
-    slug: `/accessories/${handle}`,
+    objectID: id,
+    slug: `/accessories/${slug}`,
     title,
     productType: "protectors",
-    brand: vendor,
+    brand: brand.title,
     ...rest,
   };
 }
 
-function sheetsToAlgoliaRecord({ shopifyId, handle, title, vendor, ...rest }) {
+function sheetsToAlgoliaRecord({ id, slug, title, brand, ...rest }) {
   return {
-    objectID: shopifyId,
-    slug: `/accessories/${handle}`,
+    objectID: id,
+    slug: `/accessories/${slug}`,
     title,
     productType: "sheets",
-    brand: vendor,
+    brand: brand.title,
     ...rest,
   };
 }
 
-function pillowToAlgoliaRecord({ shopifyId, handle, title, vendor, ...rest }) {
+function pillowToAlgoliaRecord({ id, slug, title, brand, ...rest }) {
   return {
-    objectID: shopifyId,
-    slug: `/accessories/${handle}`,
+    objectID: id,
+    slug: `/accessories/${slug}`,
     title,
     productType: "pillows",
-    brand: vendor,
+    brand: brand.title,
     ...rest,
   };
 }
-function adjustableToAlgoliaRecord({ id, slug, fullName, brand, ...rest }) {
+function adjustableToAlgoliaRecord({ id, slug, title, brand, ...rest }) {
   return {
     objectID: id,
     slug: `/adjustable/${slug}`,
-    title: fullName,
+    title,
     productType: "adjustable base",
-    brand,
+    brand: brand.title,
     ...rest,
   };
 }
