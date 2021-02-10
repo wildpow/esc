@@ -1,7 +1,11 @@
 const indexName = `Products`;
-const protector = `{
-  protector:  allDatoCmsProduct(filter: {typeOfProduct: {title: {eq: "Protector"}}}) {
+
+const products = `{
+  products: allDatoCmsProduct {
     nodes {
+      typeOfProduct {
+        title
+      }
       brand {
         title
       }
@@ -9,58 +13,10 @@ const protector = `{
       description
       id
       title
-      shopifyInfo {
-        vendor
-      }
     }
   }
 }`;
-const sheets = `{
-  sheets:  allDatoCmsProduct(filter: {typeOfProduct: {title: {eq: "Sheets"}}}) {
-    nodes {
-      brand {
-        title
-      }
-      slug
-      description
-      id
-      title
-      shopifyInfo {
-        vendor
-      }
-    }
-  }
-}`;
-const pillows = `{
-  pillow:  allDatoCmsProduct(filter: {typeOfProduct: {title: {eq: "Pillow"}}}) {
-    nodes {
-      brand {
-        title
-      }
-      slug
-      description
-      id
-      title
-      shopifyInfo {
-        vendor
-      }
-    }
-  }
-}`;
-const adjustables = `{
-  adjustable: allDatoCmsProduct(filter: {typeOfProduct: {title: {eq: "Adjustable"}}}) {
-    nodes {
-      brand {
-        title
-      }
-      slug
-      id
-      title
-      description
-    }
-  }
-}
-`;
+
 const mattress = `{
   mattresses:  allDatoCmsNewMattress {
     nodes {
@@ -81,48 +37,28 @@ const mattress = `{
 }
 `;
 
-function protectorToAlgoliaRecord({ id, slug, title, brand, ...rest }) {
+function productToAlgoliaRecord({
+  id,
+  slug,
+  title,
+  brand,
+  typeOfProduct,
+  ...rest
+}) {
+  const fullSlug =
+    typeOfProduct.title === "Adjustable"
+      ? `/adjustable/${slug}`
+      : `/accessories/${slug}`;
   return {
     objectID: id,
-    slug: `/accessories/${slug}`,
+    slug: fullSlug,
     title,
-    productType: "protectors",
+    productType: typeOfProduct.title,
     brand: brand.title,
     ...rest,
   };
 }
 
-function sheetsToAlgoliaRecord({ id, slug, title, brand, ...rest }) {
-  return {
-    objectID: id,
-    slug: `/accessories/${slug}`,
-    title,
-    productType: "sheets",
-    brand: brand.title,
-    ...rest,
-  };
-}
-
-function pillowToAlgoliaRecord({ id, slug, title, brand, ...rest }) {
-  return {
-    objectID: id,
-    slug: `/accessories/${slug}`,
-    title,
-    productType: "pillows",
-    brand: brand.title,
-    ...rest,
-  };
-}
-function adjustableToAlgoliaRecord({ id, slug, title, brand, ...rest }) {
-  return {
-    objectID: id,
-    slug: `/adjustable/${slug}`,
-    title,
-    productType: "adjustable base",
-    brand: brand.title,
-    ...rest,
-  };
-}
 function mattressesToAlgoliaRecord({
   id,
   slug,
@@ -149,45 +85,16 @@ const queries = [
     indexName,
     settings: {
       attributesToSnippet: [`description:20`],
-      searchableAttributes: [`brand`, `description`, `productType`, "title"],
+      searchableAttributes: ["title", `productType`, `brand`, `description`],
     },
   },
   {
-    query: adjustables,
-    transformer: ({ data }) =>
-      data.adjustable.nodes.map(adjustableToAlgoliaRecord),
+    query: products,
+    transformer: ({ data }) => data.products.nodes.map(productToAlgoliaRecord),
     indexName,
     settings: {
       attributesToSnippet: [`description:20`],
-      searchableAttributes: [`brand`, `description`, `productType`, "title"],
-    },
-  },
-  {
-    query: pillows,
-    transformer: ({ data }) => data.pillow.nodes.map(pillowToAlgoliaRecord),
-    indexName,
-    settings: {
-      attributesToSnippet: [`description:20`],
-      searchableAttributes: [`brand`, `description`, `productType`, "title"],
-    },
-  },
-  {
-    query: sheets,
-    transformer: ({ data }) => data.sheets.nodes.map(sheetsToAlgoliaRecord),
-    indexName,
-    settings: {
-      attributesToSnippet: [`description:20`],
-      searchableAttributes: [`brand`, `description`, `productType`, "title"],
-    },
-  },
-  {
-    query: protector,
-    transformer: ({ data }) =>
-      data.protector.nodes.map(protectorToAlgoliaRecord),
-    indexName,
-    settings: {
-      attributesToSnippet: [`description:20`],
-      searchableAttributes: [`brand`, `description`, `productType`, "title"],
+      searchableAttributes: ["title", `productType`, `brand`, `description`],
     },
   },
 ];
