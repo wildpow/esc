@@ -20,10 +20,10 @@ const CertReview = styled.div`
     transform: scale3d(1.05, 1.05, 1);
   }
   :focus {
-        box-shadow: 0 0 0 3px ${colors.blue["300"]};
-        outline: 0;
-        transition: box-shadow 0.15s ease-in-out;
-      }
+    box-shadow: 0 0 0 3px ${colors.blue["300"]};
+    outline: 0;
+    transition: box-shadow 0.15s ease-in-out;
+  }
   width: 145px;
   height: 96.656px;
   /* width: 270px;
@@ -85,12 +85,12 @@ const Rating = styled.div`
   }
 `;
 
-const BigWrapper = styled.div`
-  display: none;
-  @media (min-width: 1366px) {
-    display: initial;
-  }
-`;
+// const BigWrapper = styled.div`
+//   display: none;
+//   @media (min-width: 1366px) {
+//     display: initial;
+//   }
+// `;
 
 const AvgContainer = styled.div`
   margin-top: 2px;

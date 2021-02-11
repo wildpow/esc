@@ -1,20 +1,54 @@
 import { useStaticQuery, graphql } from "gatsby";
 
 const usePillows = () => {
-  const { allShopifyProduct } = useStaticQuery(
+  const { allDatoCmsProduct } = useStaticQuery(
     graphql`
       query Pillows {
-        allShopifyProduct(
-          filter: { productType: { eq: "Pillow" } }
-          sort: { fields: priceRange___minVariantPrice___amount, order: DESC }
+        allDatoCmsProduct(
+          filter: { typeOfProduct: { title: { eq: "Pillow" } } }
         ) {
           nodes {
-            ...accessoryParts
+            title
+            saleBanner
+            id
+            slug
+            description
+            typeOfProduct {
+              title
+            }
+            threeImageBlock {
+              coverImage {
+                alt
+                fluid(
+                  maxWidth: 250
+                  imgixParams: { auto: "compress", lossless: true }
+                ) {
+                  ...GatsbyDatoCmsFluid
+                }
+              }
+            }
+            shopifyInfo {
+              productType
+              vendor
+              priceRange {
+                minVariantPrice {
+                  amount
+                }
+                maxVariantPrice {
+                  amount
+                }
+              }
+            }
           }
         }
       }
     `,
   );
-  return allShopifyProduct.nodes;
+  const sortedProduct = allDatoCmsProduct.nodes.sort(
+    (a, b) =>
+      Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
+  );
+  return sortedProduct;
 };
 export default usePillows;

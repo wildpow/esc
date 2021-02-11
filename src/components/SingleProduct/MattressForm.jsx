@@ -27,34 +27,45 @@ const PriceRange = styled.div`
     color: ${colors.red["900"]};
     text-decoration: ${({ compareAtPrice }) =>
       compareAtPrice ? "line-through" : "initial"};
+    font-size: ${fontSize.lg};
   }
   h4 {
-    font-size: ${fontSize["2xl"]};
+    font-size: ${fontSize["3xl"]};
     margin-top: 0;
     color: ${colors.blue["900"]};
     margin-bottom: 0;
   }
-  @media (min-width: ${breakpoints.xsm}) {
+  /* @media (min-width: ${breakpoints.xsm}) {
     h4 {
-      font-size: ${fontSize["4xl"]};
+      font-size: ${fontSize["2xl"]};
     }
     small {
       font-size: ${fontSize.xl};
 
       color: ${colors.red["900"]};
     }
+  } */
+  @media (min-width: ${breakpoints.md}) {
+    h4 {
+      font-size: ${fontSize["2xl"]};
+    }
   }
-  /* @media (min-width: ${breakpoints.md}) {
+  @media (min-width: 840px) {
     h4 {
       font-size: ${fontSize["3xl"]};
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    h4 {
+      font-size: ${fontSize["4xl"]};
     }
     small {
       font-size: ${fontSize.xl};
       font-weight: 300;
       color: ${colors.red["900"]};
     }
-  } */
-  @media (min-width: ${breakpoints.lg}) {
+  }
+  @media (min-width: ${breakpoints.xl}) {
     h4 {
       font-size: ${fontSize["5xl"]};
     }

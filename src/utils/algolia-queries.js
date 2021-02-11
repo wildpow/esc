@@ -1,116 +1,64 @@
 const indexName = `Products`;
-const protector = `{
-  protector: allShopifyProduct(filter: { productType: { eq: "Protector" } }) {
+
+const products = `{
+  products: allDatoCmsProduct {
     nodes {
-      handle
-      description
-      vendor
-      shopifyId
-      title
-    }
-  }
-}`;
-const sheets = `{
-  sheets: allShopifyProduct(filter: { productType: { eq: "Sheets" } }) {
-    nodes {
-      handle
-      description
-      vendor
-      shopifyId
-      title
-    }
-  }
-}`;
-const pillows = `{
-  pillow: allShopifyProduct(filter: { productType: { eq: "Pillow" } }) {
-    nodes {
-      handle
-      description
-      vendor
-      shopifyId
-      title
-    }
-  }
-}`;
-const adjustables = `{
-  adjustable: allDatoCmsAdjustableBase {
-      nodes {
-        brand
-        slug
-        fullName
-        id
-        description
+      typeOfProduct {
+        title
       }
+      brand {
+        title
+      }
+      slug
+      description
+      id
+      title
     }
   }
-`;
+}`;
+
 const mattress = `{
-  mattresses: allDatoCmsMattress {
-      nodes {
-        slug
-        name
-        id
-        description
-        brand {
-          displayName
-          urlName
-        }
-        subline {
-          name
-        }
+  mattresses:  allDatoCmsNewMattress {
+    nodes {
+      slug
+      name
+      id
+      description
+      brand {
+        displayName
+        urlName
       }
+      subline {
+        name
+      }
+      name
     }
   }
+}
 `;
 
-function protectorToAlgoliaRecord({
-  shopifyId,
-  handle,
+function productToAlgoliaRecord({
+  id,
+  slug,
   title,
-  vendor,
+  brand,
+  typeOfProduct,
   ...rest
 }) {
-  return {
-    objectID: shopifyId,
-    slug: `/accessories/${handle}`,
-    title,
-    productType: "protectors",
-    brand: vendor,
-    ...rest,
-  };
-}
-
-function sheetsToAlgoliaRecord({ shopifyId, handle, title, vendor, ...rest }) {
-  return {
-    objectID: shopifyId,
-    slug: `/accessories/${handle}`,
-    title,
-    productType: "sheets",
-    brand: vendor,
-    ...rest,
-  };
-}
-
-function pillowToAlgoliaRecord({ shopifyId, handle, title, vendor, ...rest }) {
-  return {
-    objectID: shopifyId,
-    slug: `/accessories/${handle}`,
-    title,
-    productType: "pillows",
-    brand: vendor,
-    ...rest,
-  };
-}
-function adjustableToAlgoliaRecord({ id, slug, fullName, brand, ...rest }) {
+  const fullSlug =
+    typeOfProduct.title === "Adjustable"
+      ? `/adjustable/${slug}`
+      : `/accessories/${slug}`;
   return {
     objectID: id,
-    slug: `/adjustable/${slug}`,
-    title: fullName,
-    productType: "adjustable base",
-    brand,
+    slug: fullSlug,
+    title,
+    productType: typeOfProduct.title,
+    brand: brand.title,
     ...rest,
   };
 }
+
 function mattressesToAlgoliaRecord({
   id,
   slug,
@@ -137,45 +85,16 @@ const queries = [
     indexName,
     settings: {
       attributesToSnippet: [`description:20`],
-      searchableAttributes: [`brand`, `description`, `productType`, "title"],
+      searchableAttributes: ["title", `productType`, `brand`, `description`],
     },
   },
   {
-    query: adjustables,
-    transformer: ({ data }) =>
-      data.adjustable.nodes.map(adjustableToAlgoliaRecord),
+    query: products,
+    transformer: ({ data }) => data.products.nodes.map(productToAlgoliaRecord),
     indexName,
     settings: {
       attributesToSnippet: [`description:20`],
-      searchableAttributes: [`brand`, `description`, `productType`, "title"],
-    },
-  },
-  {
-    query: pillows,
-    transformer: ({ data }) => data.pillow.nodes.map(pillowToAlgoliaRecord),
-    indexName,
-    settings: {
-      attributesToSnippet: [`description:20`],
-      searchableAttributes: [`brand`, `description`, `productType`, "title"],
-    },
-  },
-  {
-    query: sheets,
-    transformer: ({ data }) => data.sheets.nodes.map(sheetsToAlgoliaRecord),
-    indexName,
-    settings: {
-      attributesToSnippet: [`description:20`],
-      searchableAttributes: [`brand`, `description`, `productType`, "title"],
-    },
-  },
-  {
-    query: protector,
-    transformer: ({ data }) =>
-      data.protector.nodes.map(protectorToAlgoliaRecord),
-    indexName,
-    settings: {
-      attributesToSnippet: [`description:20`],
-      searchableAttributes: [`brand`, `description`, `productType`, "title"],
+      searchableAttributes: ["title", `productType`, `brand`, `description`],
     },
   },
 ];

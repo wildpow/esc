@@ -1,14 +1,13 @@
+/* eslint-disable import/prefer-default-export */
 import { graphql } from "gatsby";
 
-// eslint-disable-next-line import/prefer-default-export
-export const mattressParts = graphql`
-  fragment mattressParts on DatoCmsMattress {
+export const newMattressList = graphql`
+  fragment newMattressList on DatoCmsNewMattress {
+    nameWithout
     slug
-    name
     firmness
     id
-    priceLow
-    priceHigh
+    saleBanner
     images {
       coverImage {
         alt
@@ -21,15 +20,22 @@ export const mattressParts = graphql`
         }
       }
     }
-    saleInfo {
-      saleBanner
-    }
     subline {
       name
     }
     brand {
       urlName
       displayName
+    }
+    shopifyInfo {
+      priceRange {
+        minVariantPrice {
+          amount
+        }
+        maxVariantPrice {
+          amount
+        }
+      }
     }
   }
 `;

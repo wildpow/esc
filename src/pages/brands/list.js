@@ -3,9 +3,15 @@ import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import propTypes from "prop-types";
 import Layout from "../../components/Layout";
-import MattressList from "../../components/Brands/list";
+import AllMattressList from "../../components/Brands/list";
 
 const List = ({ location, data }) => {
+  const sortedMatt = (list) =>
+    list.sort(
+      (a, b) =>
+        Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+        Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
+    );
   const sealyMattressSort = (matts) => {
     const golden = [];
     const essentials = [];
@@ -20,7 +26,7 @@ const List = ({ location, data }) => {
         performance.push(element);
       if (element.subline.name.includes("Premium")) premium.push(element);
     });
-    return [...golden, ...essentials, ...performance, ...premium];
+    return sortedMatt([...golden, ...essentials, ...performance, ...premium]);
   };
   const combinedData = {
     sealy: {
@@ -29,37 +35,37 @@ const List = ({ location, data }) => {
       checkBoxIndex: 0,
     },
     beautyrest: {
-      mattresses: [...data.beautyrestMattress.nodes],
+      mattresses: sortedMatt([...data.beautyrestMattress.nodes]),
       header: data.beautyrestHeader.headerLink,
       checkBoxIndex: 1,
     },
     tempurpedic: {
-      mattresses: [...data.tempurMattress.nodes],
+      mattresses: sortedMatt([...data.tempurMattress.nodes]),
       header: data.tempurHeader.headerLink,
       checkBoxIndex: 2,
     },
     serta: {
-      mattresses: [...data.sertaMattress.nodes],
+      mattresses: sortedMatt([...data.sertaMattress.nodes]),
       header: data.sertaHeader.headerLink,
       checkBoxIndex: 3,
     },
     stearns: {
-      mattresses: [...data.stearnsMattress.nodes],
+      mattresses: sortedMatt([...data.stearnsMattress.nodes]),
       header: data.stearnsHeader.headerLink,
       checkBoxIndex: 4,
     },
     nectar: {
-      mattresses: [...data.nectarMattress.nodes],
+      mattresses: sortedMatt([...data.nectarMattress.nodes]),
       header: data.nectarHeader.headerLink,
       checkBoxIndex: 5,
     },
     "posh-and-lavish": {
-      mattresses: [...data.poshMattress.nodes],
+      mattresses: sortedMatt([...data.poshMattress.nodes]),
       header: data.poshHeader.headerLink,
       checkBoxIndex: 6,
     },
     all: {
-      mattresses: [
+      mattresses: sortedMatt([
         ...sealyMattressSort(data.sealyMattress.nodes),
         ...data.beautyrestMattress.nodes,
         ...data.tempurMattress.nodes,
@@ -67,7 +73,7 @@ const List = ({ location, data }) => {
         ...data.stearnsMattress.nodes,
         ...data.nectarMattress.nodes,
         ...data.poshMattress.nodes,
-      ],
+      ]),
       header: data.all,
     },
   };
@@ -75,7 +81,7 @@ const List = ({ location, data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={data.seo.seoMetaTags} />
-      <MattressList location={location} data={combinedData} />
+      <AllMattressList location={location} data={combinedData} />
     </Layout>
   );
 };
@@ -87,6 +93,60 @@ export const list = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
+
+    beautyrestMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "beautyrest" } } }
+    ) {
+      nodes {
+        ...newMattressList
+      }
+    }
+    nectarMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "nectar" } } }
+    ) {
+      nodes {
+        ...newMattressList
+      }
+    }
+    poshMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "posh-and-lavish" } } }
+    ) {
+      nodes {
+        ...newMattressList
+      }
+    }
+
+    sealyMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "sealy" } } }
+    ) {
+      nodes {
+        ...newMattressList
+      }
+    }
+
+    stearnsMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "stearns" } } }
+    ) {
+      nodes {
+        ...newMattressList
+      }
+    }
+
+    tempurMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "tempurpedic" } } }
+    ) {
+      nodes {
+        ...newMattressList
+      }
+    }
+    sertaMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "serta" } } }
+    ) {
+      nodes {
+        ...newMattressList
+      }
+    }
+
     beautyrestHeader: datoCmsBrand(urlName: { eq: "beautyrest" }) {
       headerLink {
         title
@@ -96,14 +156,6 @@ export const list = graphql`
           alt
           title
         }
-      }
-    }
-    beautyrestMattress: allDatoCmsMattress(
-      filter: { brand: { urlName: { eq: "beautyrest" } } }
-      sort: { fields: priceLow, order: ASC }
-    ) {
-      nodes {
-        ...mattressParts
       }
     }
     nectarHeader: datoCmsBrand(urlName: { eq: "nectar" }) {
@@ -117,14 +169,6 @@ export const list = graphql`
         }
       }
     }
-    nectarMattress: allDatoCmsMattress(
-      filter: { brand: { urlName: { eq: "nectar" } } }
-      sort: { fields: priceLow, order: ASC }
-    ) {
-      nodes {
-        ...mattressParts
-      }
-    }
     poshHeader: datoCmsBrand(urlName: { eq: "posh-and-lavish" }) {
       headerLink {
         title
@@ -134,14 +178,6 @@ export const list = graphql`
           alt
           title
         }
-      }
-    }
-    poshMattress: allDatoCmsMattress(
-      filter: { brand: { urlName: { eq: "posh-and-lavish" } } }
-      sort: { fields: priceLow, order: ASC }
-    ) {
-      nodes {
-        ...mattressParts
       }
     }
     sealyHeader: datoCmsBrand(urlName: { eq: "sealy" }) {
@@ -155,15 +191,6 @@ export const list = graphql`
         }
       }
     }
-
-    sealyMattress: allDatoCmsMattress(
-      filter: { brand: { urlName: { eq: "sealy" } } }
-      sort: { fields: priceLow, order: ASC }
-    ) {
-      nodes {
-        ...mattressParts
-      }
-    }
     stearnsHeader: datoCmsBrand(urlName: { eq: "stearns" }) {
       headerLink {
         title
@@ -175,14 +202,6 @@ export const list = graphql`
         }
       }
     }
-    stearnsMattress: allDatoCmsMattress(
-      filter: { brand: { urlName: { eq: "stearns" } } }
-      sort: { fields: priceLow, order: ASC }
-    ) {
-      nodes {
-        ...mattressParts
-      }
-    }
     tempurHeader: datoCmsBrand(urlName: { eq: "tempurpedic" }) {
       headerLink {
         title
@@ -192,22 +211,6 @@ export const list = graphql`
           alt
           title
         }
-      }
-    }
-    tempurMattress: allDatoCmsMattress(
-      filter: { brand: { urlName: { eq: "tempurpedic" } } }
-      sort: { fields: priceLow, order: ASC }
-    ) {
-      nodes {
-        ...mattressParts
-      }
-    }
-    sertaMattress: allDatoCmsMattress(
-      filter: { brand: { urlName: { eq: "serta" } } }
-      sort: { fields: priceLow, order: ASC }
-    ) {
-      nodes {
-        ...mattressParts
       }
     }
     sertaHeader: datoCmsBrand(urlName: { eq: "serta" }) {

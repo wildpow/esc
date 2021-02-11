@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Img from "gatsby-image";
 import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
 import {
   fonts,
@@ -101,6 +102,7 @@ const About = ({ data }) => {
   const { datoCmsAboutPage } = data;
   return (
     <Layout>
+      <HelmetDatoCms seo={datoCmsAboutPage.seoLink.seoMetaTags} />
       <AboutRoot>
         <Hero
           heroAlt={datoCmsAboutPage.hero.alt}
@@ -177,9 +179,15 @@ const About = ({ data }) => {
 About.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
 };
+
 export const about = graphql`
   query about {
     datoCmsAboutPage {
+      seoLink {
+        seoMetaTags {
+          ...GatsbyDatoCmsSeoMetaTags
+        }
+      }
       articleSection {
         text
         image {

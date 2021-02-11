@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FadeIn } from "../../../styles/mainStyles";
 import { P, Headline, FooterLink } from "../../../styles/homeStyles";
-import MattressThumbnail from "../../MattressList/MattressThumbnail";
+import ProductThumbnail from "../../shared/ProductList/ProductThumbnail";
 import useTop3 from "./use-top-3";
 
 const Wrapper = styled.div`
@@ -62,15 +62,21 @@ const ThreeMattWrapper = styled(Wrapper)`
 `;
 
 const TopThreeMatts = () => {
-  const { header, mattresses, footerUrl, footer } = useTop3();
+  const { header, newmattress, footerUrl, footer } = useTop3();
+  const sortedMatt = newmattress.sort(
+    (a, b) =>
+      Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
+  );
   return (
     <NewWrapper>
       <Headline>{header}</Headline>
       <ThreeMattWrapper>
-        {mattresses.map((mattress) => (
-          <MattressThumbnail
+        {sortedMatt.map((mattress) => (
+          <ProductThumbnail
             key={mattress.id}
-            mattress={mattress}
+            product={mattress}
+            mattress
             url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
           />
         ))}

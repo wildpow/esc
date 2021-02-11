@@ -8,6 +8,7 @@ import { colors } from "../../../../utils/styles";
 const AccordionWrapper = styled.div`
   margin-bottom: 10px;
   button {
+    cursor: pointer;
     transition: background 250ms ease-in-out, transform 150ms ease;
     display: block;
     font-size: 16px;

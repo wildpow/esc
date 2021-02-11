@@ -1,17 +1,17 @@
 import { useStaticQuery, graphql } from "gatsby";
 
-const useSheets = () => {
+const useFoundation = () => {
   const { allDatoCmsProduct } = useStaticQuery(
     graphql`
-      query Sheets {
+      query Frame {
         allDatoCmsProduct(
-          filter: { typeOfProduct: { title: { eq: "Sheets" } } }
+          filter: { typeOfProduct: { title: { eq: "Foundation" } } }
         ) {
           nodes {
             title
+            saleBanner
             id
             slug
-            saleBanner
             description
             typeOfProduct {
               title
@@ -51,4 +51,4 @@ const useSheets = () => {
   );
   return sortedProduct;
 };
-export default useSheets;
+export default useFoundation;

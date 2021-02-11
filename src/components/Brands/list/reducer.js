@@ -30,34 +30,42 @@ export default function (state, action) {
       return {
         ...state,
         currentMattresses: [...state.currentMattresses].sort(
-          (a, b) => a.priceLow - b.priceLow,
+          (a, b) =>
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
         beforeFilterMattresses: [...state.beforeFilterMattresses].sort(
-          (a, b) => a.priceLow - b.priceLow,
+          (a, b) =>
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
       };
     case "high-low":
       return {
         ...state,
         currentMattresses: [...state.currentMattresses].sort(
-          (a, b) => b.priceLow - a.priceLow,
+          (a, b) =>
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
         beforeFilterMattresses: [...state.beforeFilterMattresses].sort(
-          (a, b) => b.priceLow - a.priceLow,
+          (a, b) =>
+            Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+            Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount),
         ),
       };
     case "name a-z":
       return {
         ...state,
         currentMattresses: [...state.currentMattresses].sort((a, b) => {
-          const nameA = `${a.subline.name} ${a.name}`;
-          const nameB = `${b.subline.name} ${a.name}`;
+          const nameA = `${a.subline.name} ${a.nameWithout}`;
+          const nameB = `${b.subline.name} ${a.nameWithout}`;
           return nameA > nameB ? 1 : -1;
         }),
         beforeFilterMattresses: [...state.beforeFilterMattresses].sort(
           (a, b) => {
-            const nameA = `${a.subline.name} ${a.name}`;
-            const nameB = `${b.subline.name} ${a.name}`;
+            const nameA = `${a.subline.name} ${a.nameWithout}`;
+            const nameB = `${b.subline.name} ${a.nameWithout}`;
             return nameA > nameB ? 1 : -1;
           },
         ),
@@ -66,15 +74,15 @@ export default function (state, action) {
       return {
         ...state,
         currentMattresses: [...state.currentMattresses].sort((a, b) => {
-          const nameA = `${a.subline.name} ${a.name}`;
-          const nameB = `${b.subline.name} ${a.name}`;
-          return nameA > nameB ? -1 : 1;
+          const nameA = `${a.subline.name} ${a.nameWithout}`;
+          const nameB = `${b.subline.name} ${a.nameWithout}`;
+          return nameB > nameA ? 1 : -1;
         }),
         beforeFilterMattresses: [...state.beforeFilterMattresses].sort(
           (a, b) => {
-            const nameA = `${a.subline.name} ${a.name}`;
-            const nameB = `${b.subline.name} ${a.name}`;
-            return nameA > nameB ? -1 : 1;
+            const nameA = `${a.subline.name} ${a.nameWithout}`;
+            const nameB = `${b.subline.name} ${a.nameWithout}`;
+            return nameB > nameA ? 1 : -1;
           },
         ),
       };

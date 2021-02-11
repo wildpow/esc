@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### February 2021
+
+#### Features
+
+- [PR #133](https://github.com/wildpow/new-esc-gatsby/pull/133) landed!!!
+  - Complete over hull of back-end. All product data is now in DatoCMS leaving Shopify to just deal with pricing.
+  - Product features now have descriptions.
+  - Foundations/frames/boxsprings have been added to accessories.
+  - Both product feature lists combine on mobile.
+  - Now using one templet for all products besides mattresses.
+  - Search should come back with more relevant results.
+  - Tons of clean up and removal of dead code.
+  - Sale banner for accessories.
+
+##### Bug Fix
+
+- Inch marker for profile in single product.
+- About page now displays proper SEO tags for page.
+- Env vars updated with out `GATSBY_` pre-fix if they don't need to be exposed at the component level.
+
 ### January 2021
 
 ##### Bug Fix

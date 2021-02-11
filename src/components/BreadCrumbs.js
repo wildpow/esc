@@ -13,7 +13,7 @@ function ifLavish(string) {
 
 export const BreadWrapper = styled.div`
   padding-top: 15px;
-  padding-bottom:  15px;
+  padding-bottom: 15px;
   padding-left: 5px;
   font-size: 0.9rem;
   font-weight: 400;
@@ -76,12 +76,14 @@ const BreadCrumbs = (props) => {
     if (propStr === "Pillow") return `/accessories/list?type=pillow`;
     if (propStr === "Sheets") return `/accessories/list?type=sheets`;
     if (propStr === "Protector") return `/accessories/list?type=protector`;
+    if (propStr === "Foundation") return `/accessories/list?type=foundation`;
     return null;
   };
   const accessoryDisplay = (propStr) => {
     if (propStr === "Pillow") return `Pillows`;
     if (propStr === "Sheets") return propStr;
     if (propStr === "Protector") return `Protectors`;
+    if (propStr === "Foundation") return "Foundation";
     return null;
   };
   // to="/accessories/list?type=pillow"

@@ -6,12 +6,12 @@ import Layout from "../../../components/Layout";
 import MattressList from "../../../components/MattressList";
 
 const Sealy = ({ data }) => {
-  const { datoCmsBrand, allDatoCmsMattress } = data;
+  const { datoCmsBrand, allDatoCmsNewMattress } = data;
   const golden = [];
   const essentials = [];
   const performance = [];
   const premium = [];
-  allDatoCmsMattress.nodes.map((matt) => {
+  allDatoCmsNewMattress.nodes.map((matt) => {
     if (matt.subline.name === "Golden Elegance") golden.push(matt);
     if (matt.subline.name.includes("Essentials")) essentials.push(matt);
     if (matt.subline.name.includes("Performance")) performance.push(matt);
@@ -19,12 +19,24 @@ const Sealy = ({ data }) => {
     if (matt.subline.name.includes("Premium")) premium.push(matt);
     return null;
   });
+  const sortedMatt = (list) =>
+    list.sort(
+      (a, b) =>
+        Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
+        Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
+    );
+  const combinedMatts = sortedMatt([
+    ...golden,
+    ...essentials,
+    ...performance,
+    ...premium,
+  ]);
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsBrand.seoLink.seoMetaTags} />
       <MattressList
         headerBG={datoCmsBrand.headerLink.bgImg.url}
-        mattresses={[...golden, ...essentials, ...performance, ...premium]}
+        mattresses={combinedMatts}
         title={datoCmsBrand.displayName}
         description={datoCmsBrand.headerLink.tagLine}
         breadCrumbs
@@ -49,12 +61,9 @@ export const allSealyMattresses = graphql`
       ...brandList
     }
 
-    allDatoCmsMattress(
-      filter: { brand: { urlName: { eq: "sealy" } } }
-      sort: { fields: priceLow, order: ASC }
-    ) {
+    allDatoCmsNewMattress(filter: { brand: { urlName: { eq: "sealy" } } }) {
       nodes {
-        ...mattressParts
+        ...newMattressList
       }
     }
   }
