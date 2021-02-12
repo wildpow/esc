@@ -24,7 +24,14 @@ const path = require("path");
 //   modules: true,
 //   chunks: true,
 // }),
-
+exports.onCreateBabelConfig = ({ actions }) => {
+  actions.setBabelPlugin({
+    name: "@babel/plugin-transform-react-jsx",
+    options: {
+      runtime: "automatic",
+    },
+  });
+};
 exports.onCreateWebpackConfig = ({ actions, stage }) => {
   // If production JavaScript and CSS build
   if (stage === "build-javascript") {

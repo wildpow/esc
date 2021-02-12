@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { func, string, bool } from "prop-types";
 import VisuallyHidden from "@reach/visually-hidden";
 import styled from "styled-components";

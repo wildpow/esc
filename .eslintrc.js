@@ -23,6 +23,8 @@ module.exports = {
     ],
     "import/imports-first": ["error", "absolute-first"],
     "import/newline-after-import": "error",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "react/prop-types": 1,
     // "trailingComma": 1,
     "react/jsx-filename-extension": [

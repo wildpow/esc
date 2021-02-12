@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-curly-newline */
-import React, { useReducer } from "react";
+import { useReducer } from "react";
 import styled from "styled-components";
 import { navigate } from "gatsby";
 import {

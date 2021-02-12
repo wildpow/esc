@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import { useReducer } from "react";
 import propTypes from "prop-types";
 import BreadCrumbs from "../../BreadCrumbs";
 import Header from "../../shared/ProductList/Header";

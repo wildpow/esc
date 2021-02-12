@@ -1,4 +1,3 @@
-import React from "react";
 import { node, bool, string } from "prop-types";
 import styled from "styled-components";
 import { Link } from "gatsby";

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { connectSearchBox } from "react-instantsearch-dom";
 import styled from "styled-components";
 import VisuallyHidden from "@reach/visually-hidden";

@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import React, { useContext, useState, useReducer } from "react";
+import { useContext, useState, useReducer } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Fieldset, Input, Label, Select, Submit } from "../shared/FormElements";

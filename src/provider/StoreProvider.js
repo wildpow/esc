@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Client from "shopify-buy";
 
 import StoreContext from "../context/StoreContext";
