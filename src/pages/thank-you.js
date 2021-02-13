@@ -3,7 +3,10 @@ import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Img from "gatsby-image";
 import Layout from "../components/Layout";
-import { ContactUsRoot, Content } from "./contact-us";
+import {
+  ContactUsRoot,
+  Content,
+} from "../components/shared/ContactUs/contactUs.styled";
 import ContactInfo from "../components/Contact-Us/ContactInfo";
 import TopBlogPosts from "../components/Contact-Us/TopBlogPosts";
 
