@@ -4,8 +4,8 @@ import Client from "shopify-buy";
 import StoreContext from "../context/StoreContext";
 
 const client = Client.buildClient({
-  storefrontAccessToken: process.env.SHOPIFY_API,
-  domain: `${process.env.SHOPIFY_STORE}.myshopify.com`,
+  storefrontAccessToken: process.env.GATSBY_SHOPIFY_API,
+  domain: `${process.env.GATSBY_SHOPIFY_STORE}.myshopify.com`,
 });
 
 const StoreProvider = ({ children }) => {
