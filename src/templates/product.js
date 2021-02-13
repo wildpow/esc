@@ -21,6 +21,7 @@ import dateSEO from "../functions/dateSEO";
 import MattressForm from "../components/SingleProduct/MattressForm";
 import { useWindowSize } from "../context/WindowSizeContext";
 import FeatureList from "../components/SingleProduct/FeatureList";
+import ProductForm from "../components/shared/ProductForm";
 
 const Base = ({ data }) => {
   const { width } = useWindowSize();
@@ -106,7 +107,7 @@ const Base = ({ data }) => {
                   width={width}
                 />
               )}
-              <MattressForm
+              <ProductForm
                 variants={product.shopifyInfo[0].variants}
                 priceMin={
                   product.shopifyInfo[0].priceRange.minVariantPrice.amount
