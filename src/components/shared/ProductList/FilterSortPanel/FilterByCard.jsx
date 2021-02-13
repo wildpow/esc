@@ -1,4 +1,4 @@
-import React from "react";
+import { Children } from "react";
 import PropTypes from "prop-types";
 
 import styled from "styled-components";
@@ -41,7 +41,7 @@ const FilterByCard = ({ children, heading }) => {
 const childrenPropTypeLogic = (props, propName, componentName) => {
   const prop = props[propName];
   return (
-    React.Children.toArray(prop).find((child) => child.type !== "label") &&
+    Children.toArray(prop).find((child) => child.type !== "label") &&
     new Error(`${componentName} only accepts "label" elements`)
   );
 };

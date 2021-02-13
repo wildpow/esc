@@ -1,4 +1,3 @@
-import React from "react";
 import { NodeGroup } from "react-move";
 import styled from "styled-components";
 import Img from "gatsby-image";

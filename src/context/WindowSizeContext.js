@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import { createContext, useContext } from "react";
 
-const WindowSizeCtx = React.createContext();
+const WindowSizeCtx = createContext();
 
 export const useWindowSize = () => useContext(WindowSizeCtx);
 

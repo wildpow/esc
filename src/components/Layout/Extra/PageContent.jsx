@@ -1,4 +1,3 @@
-import React from "react";
 import { node, string } from "prop-types";
 import styled from "styled-components";
 import { breakpoints, colors, boxShadow } from "../../../utils/styles";

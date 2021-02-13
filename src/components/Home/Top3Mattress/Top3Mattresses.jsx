@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { FadeIn } from "../../../styles/mainStyles";
 import { P, Headline, FooterLink } from "../../../styles/homeStyles";

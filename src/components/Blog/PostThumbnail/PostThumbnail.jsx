@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { StyledLink, ThumbImg, Description } from "./PostThumbnail.styled";
 

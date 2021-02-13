@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { bool, string, func } from "prop-types";
 import { Link } from "gatsby";
 import styled from "styled-components";

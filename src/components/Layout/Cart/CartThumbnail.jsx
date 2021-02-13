@@ -1,4 +1,3 @@
-import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import styled from "styled-components";
 import Image from "gatsby-image";

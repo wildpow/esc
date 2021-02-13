@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { func, string, bool } from "prop-types";
 import Hamburger from "./Hamburger";

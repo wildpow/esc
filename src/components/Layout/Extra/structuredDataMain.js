@@ -1,4 +1,3 @@
-import React from "react";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 
 const StructuredDataMain = () => (

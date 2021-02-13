@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { bool, number } from "prop-types";
 import styled from "styled-components";
 import usePrevious from "../../Hooks/use-previous";

@@ -1,5 +1,3 @@
-import React from "react";
-// import { Link } from "gatsby";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { colors, spacing, boxShadow } from "../../../utils/styles";

@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import {

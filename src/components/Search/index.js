@@ -1,6 +1,6 @@
 import algoliasearch from "algoliasearch/lite";
 import PropTypes from "prop-types";
-import React, { createRef, useState, useEffect } from "react";
+import { createRef, useState, useEffect } from "react";
 import { InstantSearch } from "react-instantsearch-dom";
 import StyledSearchBox from "./styled-search-box";
 import StyledSearchResult from "./styled-search-result";

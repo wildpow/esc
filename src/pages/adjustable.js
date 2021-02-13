@@ -1,4 +1,3 @@
-import React from "react";
 import Img from "gatsby-image";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
@@ -16,7 +15,7 @@ import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import Layout from "../components/Layout";
 import { colors, fonts, fontSize, spacing } from "../utils/styles";
 
-export const AdjMarkdown = styled.div`
+const AdjMarkdown = styled.div`
   font-family: ${(props) => props.theme.MainFont3};
   font-family: ${fonts.serif};
   padding: 0px;
@@ -93,11 +92,11 @@ export const AdjMarkdown = styled.div`
   }
 `;
 
-export const BannerWrapper = styled.div`
+const BannerWrapper = styled.div`
   position: relative;
   display: flex;
 `;
-export const Banner = styled.div`
+const Banner = styled.div`
   font-family: ${(props) => props.theme.MainFont1};
   font-weight: 400;
   text-align: center;

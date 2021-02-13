@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import { NodeGroup } from "react-move";
