@@ -18,7 +18,7 @@ import {
   // Info,
 } from "../components/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
-import MattressForm from "../components/SingleProduct/MattressForm";
+// import MattressForm from "../components/SingleProduct/MattressForm";
 import { useWindowSize } from "../context/WindowSizeContext";
 import FeatureList from "../components/SingleProduct/FeatureList";
 import ProductForm from "../components/shared/ProductForm";
