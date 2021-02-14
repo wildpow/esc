@@ -65,14 +65,12 @@ const sheets = {
   "DreamFit MicroTencel/Supima Cotton Sheet Set": degree6,
 };
 export default function sheetColors(colors, title) {
-  const finalColorPalette = [];
   const degreeOfSheets = sheets[title];
-  colors.forEach((element, index) => {
-    finalColorPalette.push({
+  return colors.map((element, index) => {
+    return {
       title: element,
       colorImg: degreeOfSheets[element],
       index,
-    });
+    };
   });
-  return finalColorPalette;
 }

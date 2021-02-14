@@ -13,20 +13,18 @@ export default function ProductForm({
   const handleSubmit = () => console.log("SUBMIT!");
   const generateInitialState = (products, title) => {
     const sortedProductsByColor = {};
-    const productColorTitles = [];
     let temp;
     products.forEach((product) => {
       temp = product.title.split(" / ");
       if (sortedProductsByColor[temp[1]] === undefined) {
         sortedProductsByColor[temp[1]] = [];
         sortedProductsByColor[temp[1]].push(product);
-        productColorTitles.push(temp[1]);
       } else {
         sortedProductsByColor[temp[1]].push(product);
       }
     });
-    const colorPalette = sheetColors(productColorTitles, title);
-    return { sortedProductsByColor, productColorTitles, colorPalette };
+    const colorPalette = sheetColors(Object.keys(sortedProductsByColor), title);
+    return { sortedProductsByColor, colorPalette };
   };
   const stuff = generateInitialState(variants, titleOfProduct);
   return (
