@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { ProductFormRoot } from "./ProductForm.styled";
 import sheetColors from "./sheetColors";
@@ -26,10 +27,32 @@ export default function ProductForm({
     const colorPalette = sheetColors(Object.keys(sortedProductsByColor), title);
     return { sortedProductsByColor, colorPalette };
   };
-  const stuff = generateInitialState(variants, titleOfProduct);
+  const test = generateInitialState(variants, titleOfProduct);
+  const [state, setState] = useState({ activeColor: "", colorList: null });
   return (
     <ProductFormRoot onSubmit={handleSubmit}>
-      {console.log(stuff)}
+      {console.log(state)}
+      {test.colorPalette.map((color) => (
+        <label
+          onChange={() => setState(color.title)}
+          key={color.title}
+          htmlFor={color.title}
+          style={{
+            width: "40px",
+            height: "40px",
+            backgroundSize: "auto 100%",
+            backgroundImage: `url(${color.colorImg})`,
+          }}
+        >
+          <input
+            checked={color.title === state.activeColor}
+            type="checkbox"
+            style={{ display: "none" }}
+            id={color.title}
+            label={color.title}
+          />
+        </label>
+      ))}
 
       <h1>Product Form</h1>
     </ProductFormRoot>
