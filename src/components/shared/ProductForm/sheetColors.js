@@ -57,9 +57,22 @@ const degree6 = {
   Green: greenDegree6,
   Gray: grayDegree6,
 };
-const colorKeys = {};
-export default function sheetColors({ colors, title }) {
-  if (title === "DreamFit Fine Combed Cotton Sheet Set") {
-    return true;
-  }
+const sheets = {
+  "DreamFit Fine Combed Cotton Sheet Set": degree2,
+  "DreamFit Pima Cotton Sheet Set": degree3,
+  "DreamFit Egyptian Cotton Sheet Set": degree4,
+  "DreamFit Bamboo Sheet Set": degree5,
+  "DreamFit MicroTencel/Supima Cotton Sheet Set": degree6,
+};
+export default function sheetColors(colors, title) {
+  const finalColorPalette = [];
+  const degreeOfSheets = sheets[title];
+  colors.forEach((element, index) => {
+    finalColorPalette.push({
+      title: element,
+      colorImg: degreeOfSheets[element],
+      index,
+    });
+  });
+  return finalColorPalette;
 }

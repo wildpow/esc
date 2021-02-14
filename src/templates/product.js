@@ -108,6 +108,8 @@ const Base = ({ data }) => {
                 />
               )}
               <ProductForm
+                titleOfProduct={product.title}
+                typeOfProduct={product.typeOfProduct.title}
                 variants={product.shopifyInfo[0].variants}
                 priceMin={
                   product.shopifyInfo[0].priceRange.minVariantPrice.amount

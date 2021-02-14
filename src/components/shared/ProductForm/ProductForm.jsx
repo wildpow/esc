@@ -1,49 +1,37 @@
 import PropTypes from "prop-types";
 import { ProductFormRoot } from "./ProductForm.styled";
+import sheetColors from "./sheetColors";
 
 export default function ProductForm({
   variants,
+  typeOfProduct,
+  titleOfProduct,
   priceMin,
   priceMax,
-  sheets,
   maxQty,
 }) {
   const handleSubmit = () => console.log("SUBMIT!");
-  const generateInitialState = (products) => {
-    const product = {};
+  const generateInitialState = (products, title) => {
+    const sortedProductsByColor = {};
+    const productColorTitles = [];
     let temp;
-    products.map((p) => {
-      temp = p.title.split(" / ");
-      if (product[temp[1]] === undefined) {
-        product[temp[1]] = [];
-        product[temp[1]].push(p);
+    products.forEach((product) => {
+      temp = product.title.split(" / ");
+      if (sortedProductsByColor[temp[1]] === undefined) {
+        sortedProductsByColor[temp[1]] = [];
+        sortedProductsByColor[temp[1]].push(product);
+        productColorTitles.push(temp[1]);
       } else {
-        product[temp[1]].push(p);
+        sortedProductsByColor[temp[1]].push(product);
       }
-
-      return null;
     });
-    console.log(product);
+    const colorPalette = sheetColors(productColorTitles, title);
+    return { sortedProductsByColor, productColorTitles, colorPalette };
   };
-  const stuff = generateInitialState(variants);
+  const stuff = generateInitialState(variants, titleOfProduct);
   return (
     <ProductFormRoot onSubmit={handleSubmit}>
-      {/* {console.log(
-        "🚀 ~ file: ProductForm.jsx ~ line 4 ~ ProductForm ~ sheets",
-        sheets,
-      )}
-      {console.log(
-        "🚀 ~ file: ProductForm.jsx ~ line 4 ~ ProductForm ~ priceMax",
-        priceMax,
-      )}
-      {console.log(
-        "🚀 ~ file: ProductForm.jsx ~ line 4 ~ ProductForm ~ variants",
-        variants,
-      )}
-      {console.log(
-        "🚀 ~ file: ProductForm.jsx ~ line 4 ~ ProductForm ~ priceMin",
-        priceMin,
-      )} */}
+      {console.log(stuff)}
 
       <h1>Product Form</h1>
     </ProductFormRoot>
@@ -51,14 +39,14 @@ export default function ProductForm({
 }
 
 ProductForm.defaultProps = {
-  sheets: false,
   maxQty: 10,
 };
 
 ProductForm.propTypes = {
   variants: PropTypes.instanceOf(Object).isRequired,
+  titleOfProduct: PropTypes.string.isRequired,
+  typeOfProduct: PropTypes.string.isRequired,
   priceMin: PropTypes.string.isRequired,
   priceMax: PropTypes.string.isRequired,
-  sheets: PropTypes.bool,
   maxQty: PropTypes.number,
 };
