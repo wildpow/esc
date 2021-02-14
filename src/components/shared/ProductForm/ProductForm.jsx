@@ -12,7 +12,6 @@ export default function ProductForm({
   const generateInitialState = (products) => {
     const product = {};
     let temp;
-
     products.map((p) => {
       temp = p.title.split(" / ");
       if (product[temp[1]] === undefined) {
