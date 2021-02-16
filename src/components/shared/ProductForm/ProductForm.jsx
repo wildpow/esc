@@ -1,7 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { Fieldset, Input, Label, Select, Submit } from "../FormElements";
+import {
+  Fieldset,
+  Input,
+  Label,
+  Select,
+  Submit,
+  Submit2,
+} from "../FormElements";
 
 import {
   colors,
@@ -16,8 +23,7 @@ import sheetColors from "./sheetColors";
 import ShopingCart from "../../../assets/shopping-cart-solid.svg";
 import StoreContext from "../../../context/StoreContext";
 import ErrorIcon from "../../../assets/exclamation-triangle-solid.svg";
-// className="color_label"
-// className="color_input"
+
 const ColorWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,7 +37,6 @@ const ColorWrapper = styled.div`
   .colorPalette {
     display: flex;
     width: 100%;
-    /* justify-content: space-between; */
   }
   .color_input {
     display: none;
@@ -42,23 +47,25 @@ const ColorWrapper = styled.div`
     height: 40px;
     background-size: auto 100%;
     padding: 10px;
+    cursor: pointer;
   }
-  /* .color_input {
-    border: 2px solid black;
-  } */
 `;
 const ColorLabel = styled.label`
   border: ${({ title, activeTitle }) =>
     title === activeTitle
       ? `2px solid ${colors.gray[900]}`
       : "1px solid #979797"};
+  :hover {
+    border: ${({ title, activeTitle }) =>
+      title === activeTitle
+        ? `2px solid ${colors.gray[900]}`
+        : "1px solid #979797"};
+  }
 `;
 
-const AddToCartButton = styled(Submit)`
+const AddToCartButton = styled(Submit2)`
   align-self: flex-end;
   flex-grow: 1;
-  /* height: ${(props) => (props.fullWidth ? "auto" : "")};
-  width: ${(props) => (props.fullWidth ? "100%" : "auto")}; */
   @media print {
     display: none;
   }
@@ -90,7 +97,6 @@ const SizeFieldset = styled(Fieldset)`
 `;
 export default function ProductForm({
   variants,
-  typeOfProduct,
   titleOfProduct,
   priceMin,
   priceMax,
@@ -116,6 +122,7 @@ export default function ProductForm({
   const [activeColor, setActiveColor] = useState("");
   const [colorList, setColorList] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const [sizeIndex, setSizeIndex] = useState("");
   const colorHandler = (title) => {
     setActiveColor(title);
     setColorList(test.sortedProductsByColor[title]);
@@ -123,7 +130,11 @@ export default function ProductForm({
   return (
     <ProductFormRoot onSubmit={handleSubmit}>
       <ColorWrapper>
-        <h5>{`Color: ${activeColor}`}</h5>
+        <h5>
+          {activeColor.length === 0
+            ? `Choose a color below.`
+            : `Color: ${activeColor}`}
+        </h5>
         <div className="colorPalette">
           {test.colorPalette.map((color) => (
             <ColorLabel
@@ -154,12 +165,12 @@ export default function ProductForm({
           type="number"
           inputmode="numeric"
           id="quantity"
-          // disabled={state.qtyDisabled}
+          disabled={!colorList}
           name="quantity"
           min="1"
           step="1"
           max={maxQty}
-          onChange={(e) => console.log(e)}
+          onChange={(e) => setQuantity(e.target.value)}
           value={quantity}
         />
       </QtyFieldset>
@@ -168,9 +179,10 @@ export default function ProductForm({
         <Select
           as="select"
           id="variant"
-          value={activeColor}
+          value={sizeIndex}
           name="variant"
-          onChange={(e) => console.log(e)}
+          onChange={(e) => setSizeIndex(e.target.value)}
+          disabled={activeColor.length === 0}
         >
           <option disabled value="">
             Choose Size
@@ -186,7 +198,11 @@ export default function ProductForm({
             })}
         </Select>
       </SizeFieldset>
-      <AddToCartButton type="submit">
+      {console.log(sizeIndex.length === 0, activeColor.length === 0)}
+      <AddToCartButton
+        type="submit"
+        disabled={activeColor.length === 0 || sizeIndex.length === 0}
+      >
         Add to Cart
         <ShopingCart />
       </AddToCartButton>
@@ -201,7 +217,6 @@ ProductForm.defaultProps = {
 ProductForm.propTypes = {
   variants: PropTypes.instanceOf(Object).isRequired,
   titleOfProduct: PropTypes.string.isRequired,
-  typeOfProduct: PropTypes.string.isRequired,
   priceMin: PropTypes.string.isRequired,
   priceMax: PropTypes.string.isRequired,
   maxQty: PropTypes.number,

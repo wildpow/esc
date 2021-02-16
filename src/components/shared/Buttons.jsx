@@ -9,9 +9,9 @@ export const ButtonBase = styled.button`
     props.inverse ? colors.colors.blue["900"] : colors.white};
   border: 1px solid
     ${(props) => (props.inverse ? colors.blue["700"] : colors.blue["800"])};
-  border-radius: ${radius.default}px;
   color: ${(props) =>
     props.inverse ? colors.blue["800"] : colors.blue["700"]};
+  border-radius: ${radius.default}px;
   cursor: pointer;
   display: inline-flex;
   font-family: ${fonts.sans};

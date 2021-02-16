@@ -18,7 +18,7 @@ import {
   // Info,
 } from "../components/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
-// import MattressForm from "../components/SingleProduct/MattressForm";
+import MattressForm from "../components/SingleProduct/MattressForm";
 import { useWindowSize } from "../context/WindowSizeContext";
 import FeatureList from "../components/SingleProduct/FeatureList";
 import ProductForm from "../components/shared/ProductForm";
@@ -107,18 +107,30 @@ const Base = ({ data }) => {
                   width={width}
                 />
               )}
-              <ProductForm
-                titleOfProduct={product.title}
-                typeOfProduct={product.typeOfProduct.title}
-                variants={product.shopifyInfo[0].variants}
-                priceMin={
-                  product.shopifyInfo[0].priceRange.minVariantPrice.amount
-                }
-                priceMax={
-                  product.shopifyInfo[0].priceRange.maxVariantPrice.amount
-                }
-                maxQty={4}
-              />
+              {product.typeOfProduct.title === "Sheets" ? (
+                <ProductForm
+                  titleOfProduct={product.title}
+                  variants={product.shopifyInfo[0].variants}
+                  priceMin={
+                    product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                  }
+                  priceMax={
+                    product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                  }
+                  maxQty={4}
+                />
+              ) : (
+                <MattressForm
+                  variants={product.shopifyInfo[0].variants}
+                  priceMin={
+                    product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                  }
+                  priceMax={
+                    product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                  }
+                  maxQty={4}
+                />
+              )}
             </MainInfo>
           </Main>
           <header id="moreInfo">
