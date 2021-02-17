@@ -1,4 +1,5 @@
-import { useContext, useState, useReducer } from "react";
+/* eslint-disable react/jsx-curly-newline */
+import { useContext, useReducer } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import {
@@ -75,11 +76,13 @@ const ColorWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
   h5 {
     font-family: ${fonts.serif};
     font-size: ${fontSize.xl};
     margin-bottom: 10px;
     color: ${colors.blue[900]};
+    margin-top: 0;
   }
   .colorPalette {
     display: flex;
@@ -162,6 +165,7 @@ export default function ProductForm({
   const reducer = (state, action) => {
     let newPrice;
     let newCompareAtPrice = null;
+    let newQuantity = "1";
     switch (action.type) {
       case "color":
         return {
@@ -170,14 +174,16 @@ export default function ProductForm({
           colorList: colorInfo.sortedProductsByColor[action.payload],
         };
       case "quantity":
+        newQuantity = action.payload === "0" ? "1" : action.payload;
+        newQuantity = Number(action.payload) > maxQty ? maxQty : newQuantity;
         newCompareAtPrice =
           state.compareAtPrice === null
             ? null
-            : action.payload * state.colorList[state.sizeIndex].compareAtPrice;
-        newPrice = action.payload * state.colorList[state.sizeIndex].price;
+            : newQuantity * state.colorList[state.sizeIndex].compareAtPrice;
+        newPrice = newQuantity * state.colorList[state.sizeIndex].price;
         return {
           ...state,
-          quantity: action.payload,
+          quantity: newQuantity,
           compareAtPrice: newCompareAtPrice
             ? newCompareAtPrice.toFixed(2)
             : null,
