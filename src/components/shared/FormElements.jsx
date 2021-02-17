@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NewButton from "./ProductForm/NewButton";
+import Button from "./SingleProduct/Button.styled";
 import { PrimaryButton } from "./Buttons";
 
 import { colors, radius, spacing, fonts } from "../../utils/styles";
@@ -69,7 +69,7 @@ export const Submit = styled(PrimaryButton)`
   font-family: ${fonts.sans};
 `;
 
-export const Submit2 = styled(NewButton)`
+export const SubmitButton = styled(Button)`
   font-size: 1.25rem;
   margin-top: ${spacing["4"]};
   width: 100%;

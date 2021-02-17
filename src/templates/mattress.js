@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
-// import AnchorLink from "react-anchor-link-smooth-scroll";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
 import useMobileDetect from "../components/SingleProduct/useMobileDect";
@@ -8,25 +7,20 @@ import Layout from "../components/Layout";
 import {
   Article,
   Description,
-  // List,
-  // Construction,
-  // Info,
   Main,
   MainInfo,
   MainTitle,
   Profile,
   Warranty,
   Wrapper,
-} from "../components/SingleProduct/SingleProduct.styled";
+} from "../components/shared/SingleProduct/SingleProduct.styled";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
-// import DropDown from "../components/SingleProduct/priceDropDown.mattress";
-// import ShopifyDropDown from "../components/SingleProduct/priceDropdownShopify.matt";
 import dateSEO from "../functions/dateSEO";
 import ImageCarousel from "../components/SingleProduct/ImageCarousel";
 import FirmnessScale from "../components/SingleProduct/FirmessScaleMobile";
-import MattressForm from "../components/SingleProduct/MattressForm";
 import { useWindowSize } from "../context/WindowSizeContext";
-import FeatureList from "../components/SingleProduct/FeatureList";
+import FeatureList from "../components/shared/SingleProduct/FeatureList";
+import ProductForm from "../components/shared/ProductForm";
 
 const LeftSide = styled.div`
   display: flex;
@@ -131,7 +125,7 @@ const Mattress = ({ data }) => {
                   width={width}
                 />
               )}
-              <MattressForm
+              <ProductForm
                 variants={mattress.shopifyInfo[0].variants}
                 priceMin={
                   mattress.shopifyInfo[0].priceRange.minVariantPrice.amount

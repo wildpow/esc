@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { FadeIn, H2 } from "../../styles/mainStyles";
+import { FadeIn, H2 } from "../../../styles/mainStyles";
 import {
   MainTitlePr1nt,
   WrapperSingleMattPr1nt,
   ListPr1nt,
-  DisplayNonePr1nt,
+  // DisplayNonePr1nt,
   DescriptionPr1nt,
-} from "../../styles/_pr1nt/main";
-import { colors } from "../../utils/styles";
+} from "../../../styles/_pr1nt/main";
+import { colors } from "../../../utils/styles";
 
 export const Article = styled.article`
   display: flex;
@@ -198,35 +198,35 @@ export const Main = styled.div`
   }
 `;
 
-export const Info = styled.li`
-  padding-top: 10px;
-  list-style: none;
-  a {
-    display: none;
-    font-size: 0.9rem;
-    font-family: ${(props) => props.theme.MainFont1};
-    font-weight: 700;
-    letter-spacing: 0.05rem;
-    color: ${colors.red["500"]};
-    &:hover {
-      color: ${(props) => props.theme.mainColor1};
-    }
-    @media (orientation: landscape) {
-      display: block;
-    }
-    @media (min-width: 568px) {
-      font-size: 1rem;
-    }
-    @media (min-width: 768px) {
-      display: block;
-      font-size: 1.2rem;
-    }
-    @media (min-width: 1024px) {
-      font-size: 1.6rem;
-    }
-    ${DisplayNonePr1nt}
-  }
-`;
+// export const Info = styled.li`
+//   padding-top: 10px;
+//   list-style: none;
+//   a {
+//     display: none;
+//     font-size: 0.9rem;
+//     font-family: ${(props) => props.theme.MainFont1};
+//     font-weight: 700;
+//     letter-spacing: 0.05rem;
+//     color: ${colors.red["500"]};
+//     &:hover {
+//       color: ${(props) => props.theme.mainColor1};
+//     }
+//     @media (orientation: landscape) {
+//       display: block;
+//     }
+//     @media (min-width: 568px) {
+//       font-size: 1rem;
+//     }
+//     @media (min-width: 768px) {
+//       display: block;
+//       font-size: 1.2rem;
+//     }
+//     @media (min-width: 1024px) {
+//       font-size: 1.6rem;
+//     }
+//     ${DisplayNonePr1nt}
+//   }
+// `;
 
 export const MainTitle = styled(H2)`
   font-weight: 700;

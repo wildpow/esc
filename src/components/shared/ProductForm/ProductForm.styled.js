@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {
   colors,
-  // radius,
   spacing,
   fonts,
   breakpoints,
@@ -19,17 +18,8 @@ export const ProductFormRoot = styled.form`
   @media (min-width: ${breakpoints.md}) {
     padding: ${spacing["10"]} ${spacing["8"]} 0;
   }
-
-  @media (min-width: ${breakpoints.lg}) {
-    /* justify-content: flex-start;
-    min-width: 420px; */
-  }
   @media (min-width: ${breakpoints.xl}) {
     max-width: 600px;
-    /* flex-wrap: nowrap;
-    flex-direction: column;
-    justify-content: center;
-    justify-content: flex-start; */
   }
 `;
 

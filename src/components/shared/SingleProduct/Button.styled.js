@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors, fonts, radius } from "../../../utils/styles";
 
-const NewButton = styled.button`
+const Button = styled.button`
   background: ${(props) => (props.inverse ? colors.white : colors.blue["700"])};
   border: 1px solid
     ${(props) => (props.inverse ? colors.blue["400"] : colors.blue["900"])};
@@ -47,4 +47,4 @@ const NewButton = styled.button`
   }
 `;
 
-export default NewButton;
+export default Button;

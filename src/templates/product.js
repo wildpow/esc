@@ -13,14 +13,12 @@ import {
   Article,
   Profile,
   MainTitle,
-  // List,
   Construction,
-  // Info,
-} from "../components/SingleProduct/SingleProduct.styled";
+} from "../components/shared/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
-import MattressForm from "../components/SingleProduct/MattressForm";
 import { useWindowSize } from "../context/WindowSizeContext";
-import FeatureList from "../components/SingleProduct/FeatureList";
+import FeatureList from "../components/shared/SingleProduct/FeatureList";
+import SheetForm from "../components/SingleProduct/SheetForm";
 import ProductForm from "../components/shared/ProductForm";
 
 const Base = ({ data }) => {
@@ -108,7 +106,7 @@ const Base = ({ data }) => {
                 />
               )}
               {product.typeOfProduct.title === "Sheets" ? (
-                <ProductForm
+                <SheetForm
                   titleOfProduct={product.title}
                   variants={product.shopifyInfo[0].variants}
                   priceMin={
@@ -120,7 +118,7 @@ const Base = ({ data }) => {
                   maxQty={4}
                 />
               ) : (
-                <MattressForm
+                <ProductForm
                   variants={product.shopifyInfo[0].variants}
                   priceMin={
                     product.shopifyInfo[0].priceRange.minVariantPrice.amount

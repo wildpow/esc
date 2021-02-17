@@ -1,16 +1,9 @@
 /* eslint-disable react/jsx-curly-newline */
+/* eslint-disable react/no-danger */
 import { useContext, useReducer } from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-import {
-  Fieldset,
-  Input,
-  Label,
-  Select,
-  // Submit,
-  Submit2,
-} from "../FormElements";
-
+import styled from "styled-components";
+import { Fieldset, Input, Label, Select, SubmitButton } from "../FormElements";
 import {
   colors,
   // radius,
@@ -19,11 +12,9 @@ import {
   breakpoints,
   fontSize,
 } from "../../../utils/styles";
-import { ProductFormRoot } from "./ProductForm.styled";
-import generateColors from "./sheetColors";
 import ShopingCart from "../../../assets/shopping-cart-solid.svg";
 import StoreContext from "../../../context/StoreContext";
-// import ErrorIcon from "../../../assets/exclamation-triangle-solid.svg";
+import { ProductFormRoot } from "./ProductForm.styled";
 
 const PriceRange = styled.div`
   font-family: ${fonts.sans};
@@ -72,54 +63,6 @@ const PriceRange = styled.div`
   }
 `;
 
-const ColorWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  h5 {
-    font-family: ${fonts.serif};
-    font-size: ${fontSize.xl};
-    margin-bottom: 10px;
-    color: ${colors.blue[900]};
-    margin-top: 0;
-  }
-  .colorPalette {
-    display: flex;
-    width: 100%;
-  }
-  .color_input {
-    display: none;
-  }
-  .color_label {
-    margin-right: 15px;
-    width: 40px;
-    height: 40px;
-    background-size: auto 100%;
-    padding: 10px;
-    cursor: pointer;
-  }
-`;
-const ColorLabel = styled.label`
-  border: ${({ title, activeTitle }) =>
-    title === activeTitle
-      ? `2px solid ${colors.gray[900]}`
-      : "1px solid #979797"};
-  :hover {
-    border: ${({ title, activeTitle }) =>
-      title === activeTitle
-        ? `2px solid ${colors.gray[900]}`
-        : `2px solid ${colors.gray[800]}`};
-  }
-`;
-
-const AddToCartButton = styled(Submit2)`
-  align-self: flex-end;
-  flex-grow: 1;
-  @media print {
-    display: none;
-  }
-`;
 const QtyFieldset = styled(Fieldset)`
   flex-basis: 65px;
   flex-grow: 0;
@@ -138,6 +81,7 @@ const QtyFieldset = styled(Fieldset)`
     cursor: pointer;
   }
 `;
+
 const SizeFieldset = styled(Fieldset)`
   flex-basis: calc(100% - ${spacing["3"]} - 70px);
 
@@ -145,168 +89,305 @@ const SizeFieldset = styled(Fieldset)`
     justify-content: space-between;
   }
 `;
-export default function ProductForm({
+
+const AddToCartButton = styled(SubmitButton)`
+  align-self: flex-end;
+  flex-grow: 1;
+  @media print {
+    display: none;
+  }
+`;
+
+const ProductForm = ({
   variants,
-  titleOfProduct,
   priceMin,
   priceMax,
+  matt,
+  boxVariants,
+  shopifyBase,
   maxQty,
-}) {
-  const colorInfo = generateColors(variants, titleOfProduct);
-  const { addVariantToCart } = useContext(StoreContext);
+}) => {
   const initialState = {
-    activeColor: "",
-    colorList: null,
+    boxIndex: "",
+    boxVariants: null,
+    boxDisabled: true,
+    adjBase: shopifyBase ? shopifyBase.variants : null,
+    twoInchBox: boxVariants ? boxVariants[0].variants : null,
+    fiveInchBox: boxVariants ? boxVariants[1].variants : null,
+    nineInchBox: boxVariants ? boxVariants[2].variants : null,
     quantity: 1,
-    sizeIndex: "",
+
+    price:
+      variants.length === 1
+        ? variants[0].price
+        : `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
+    variantIndex: variants.length === 1 ? 0 : "",
     compareAtPrice: null,
-    price: `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
   };
+  const { addVariantToCart } = useContext(StoreContext);
+  function comparePrice(price, compare) {
+    if (compare) {
+      return Number(compare);
+    }
+    return Number(price);
+  }
+  function doesBoxExist(bool, index) {
+    if (bool) {
+      if (index === "" || index === "4") {
+        return false;
+      }
+      return true;
+    }
+    return false;
+  }
   const reducer = (state, action) => {
+    let newBoxs;
     let newPrice;
-    let newCompareAtPrice = null;
+    let newBoxPrice;
+    let newAdj;
+    let newCompareAtPrice;
+    let newCompareBoxPrice;
     let newQuantity = "1";
     switch (action.type) {
-      case "color":
+      case "variant":
+        newAdj = shopifyBase
+          ? state.adjBase.filter(
+              (a) => a.title === variants[action.payload].title,
+            )
+          : null;
+
+        newBoxs = boxVariants
+          ? [
+              ...state.twoInchBox.filter(
+                (a) => a.title === variants[action.payload].title,
+              ),
+              ...state.fiveInchBox.filter(
+                (a) => a.title === variants[action.payload].title,
+              ),
+              ...state.nineInchBox.filter(
+                (a) => a.title === variants[action.payload].title,
+              ),
+            ]
+          : null;
+        if (newAdj) newBoxs.push(newAdj[0]);
+        newPrice = Number(variants[action.payload].price);
+        newCompareAtPrice =
+          variants[action.payload].compareAtPrice !== null
+            ? variants[action.payload].compareAtPrice
+            : null;
         return {
           ...state,
-          activeColor: action.payload,
-          colorList: colorInfo.sortedProductsByColor[action.payload],
+          boxVariants: newBoxs,
+          variantIndex: action.payload,
+          quantity: 1,
+          boxIndex: "",
+          boxDisabled: false,
+          price: newPrice.toFixed(2),
+          compareAtPrice: newCompareAtPrice,
+        };
+      case "foundation":
+        newPrice =
+          action.payload !== "4"
+            ? (Number(variants[state.variantIndex].price) +
+                Number(state.boxVariants[action.payload].price)) *
+              state.quantity
+            : Number(variants[state.variantIndex].price) * state.quantity;
+
+        newCompareAtPrice =
+          action.payload !== "4"
+            ? (comparePrice(
+                variants[state.variantIndex].price,
+                variants[state.variantIndex].compareAtPrice,
+              ) +
+                comparePrice(
+                  state.boxVariants[action.payload].price,
+                  state.boxVariants[action.payload].compareAtPrice,
+                )) *
+              state.quantity
+            : comparePrice(
+                variants[state.variantIndex].price,
+                variants[state.variantIndex].compareAtPrice,
+              ) * state.quantity;
+        return {
+          ...state,
+          boxIndex: action.payload,
+          price: newPrice.toFixed(2),
+          compareAtPrice:
+            newPrice === newCompareAtPrice
+              ? null
+              : newCompareAtPrice.toFixed(2),
         };
       case "quantity":
         newQuantity = action.payload === "0" ? "1" : action.payload;
         newQuantity = Number(action.payload) > maxQty ? maxQty : newQuantity;
+        newBoxPrice = doesBoxExist(matt, state.boxIndex)
+          ? Number(state.boxVariants[state.boxIndex].price)
+          : 0;
+        newCompareBoxPrice = doesBoxExist(matt, state.boxIndex)
+          ? comparePrice(
+              state.boxVariants[state.boxIndex].price,
+              state.boxVariants[state.boxIndex].compareAtPrice,
+            )
+          : 0;
+        newPrice =
+          variants.length === 1
+            ? Number(variants[0].price) * Number(newQuantity)
+            : (Number(variants[state.variantIndex].price) + newBoxPrice) *
+              Number(newQuantity);
         newCompareAtPrice =
-          state.compareAtPrice === null
-            ? null
-            : newQuantity * state.colorList[state.sizeIndex].compareAtPrice;
-        newPrice = newQuantity * state.colorList[state.sizeIndex].price;
+          variants.length === 1
+            ? comparePrice(variants[0].price, variants[0].compareAtPrice) *
+              Number(newQuantity)
+            : (comparePrice(
+                variants[state.variantIndex].price,
+                variants[state.variantIndex].compareAtPrice,
+              ) +
+                newCompareBoxPrice) *
+              Number(newQuantity);
         return {
           ...state,
+          price: newPrice.toFixed(2),
           quantity: newQuantity,
-          compareAtPrice: newCompareAtPrice
-            ? newCompareAtPrice.toFixed(2)
-            : null,
-          price: newPrice.toFixed(2),
-        };
-      case "size":
-        newPrice = state.colorList[action.payload].price * state.quantity;
-        if (state.colorList[action.payload].compareAtPrice !== null) {
-          newCompareAtPrice =
-            state.colorList[action.payload].compareAtPrice * state.quantity;
-        }
-        return {
-          ...state,
-          sizeIndex: action.payload,
-          price: newPrice.toFixed(2),
-          compareAtPrice: newCompareAtPrice
-            ? newCompareAtPrice.toFixed(2)
-            : null,
+          compareAtPrice:
+            newPrice === newCompareAtPrice
+              ? null
+              : newCompareAtPrice.toFixed(2),
         };
       default:
         throw new Error();
     }
   };
-
   const [state, dispatch] = useReducer(reducer, initialState);
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addVariantToCart(
-      state.colorList[state.sizeIndex].shopifyId,
-      state.quantity,
-    );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (state.boxIndex === "" || state.boxIndex === "4") {
+      addVariantToCart(variants[state.variantIndex].shopifyId, state.quantity);
+    } else {
+      const extra = {
+        variantId: state.boxVariants[state.boxIndex].shopifyId,
+        quantity: parseInt(state.quantity, 10),
+      };
+      addVariantToCart(
+        variants[state.variantIndex].shopifyId,
+        state.quantity,
+        extra,
+      );
+    }
   };
 
+  const hasVariants = variants.length > 1;
   return (
     <ProductFormRoot onSubmit={handleSubmit}>
-      <ColorWrapper>
-        <h5>
-          {state.activeColor.length === 0
-            ? `Choose a color below.`
-            : `Color: ${state.activeColor}`}
-        </h5>
-        <div className="colorPalette">
-          {colorInfo.colorPalette.map((color) => (
-            <ColorLabel
-              title={color.title}
-              activeTitle={state.activeColor}
-              key={color.title}
-              htmlFor={color.title}
-              className="color_label"
-              style={{
-                backgroundImage: `url(${color.colorImg})`,
-              }}
+      {hasVariants && (
+        <>
+          <QtyFieldset>
+            <Label htmlFor="quantity">Qty.</Label>
+            <Input
+              type="number"
+              inputmode="numeric"
+              id="quantity"
+              disabled={state.variantIndex.length === 0}
+              name="quantity"
+              min="1"
+              step="1"
+              max={maxQty}
+              onChange={(e) =>
+                dispatch({ type: e.target.name, payload: e.target.value })
+              }
+              value={state.quantity}
+            />
+          </QtyFieldset>
+          <SizeFieldset>
+            <Label htmlFor="variant">Size</Label>
+            <Select
+              as="select"
+              id="variant"
+              value={state.variantIndex}
+              name="variant"
+              onChange={(e) =>
+                dispatch({ type: e.target.name, payload: e.target.value })
+              }
             >
-              <input
-                value={color.title}
-                className="color_input"
-                onChange={(e) =>
-                  dispatch({ type: e.target.name, payload: e.target.value })
-                }
-                checked={color.title === state.activeColor}
-                type="checkbox"
-                name="color"
-                id={color.title}
-                label={color.title}
-              />
-            </ColorLabel>
-          ))}
-        </div>
-      </ColorWrapper>
-      <QtyFieldset>
-        <Label htmlFor="quantity">Qty.</Label>
-        <Input
-          type="number"
-          inputmode="numeric"
-          id="quantity"
-          disabled={!state.colorList || state.sizeIndex.length === 0}
-          name="quantity"
-          min="1"
-          step="1"
-          max={maxQty}
-          onChange={(e) =>
-            dispatch({ type: e.target.name, payload: e.target.value })
-          }
-          value={state.quantity}
-        />
-      </QtyFieldset>
-      <SizeFieldset>
-        <Label htmlFor="size">Size</Label>
-        <Select
-          as="select"
-          id="size"
-          value={state.sizeIndex}
-          name="size"
-          onChange={(e) =>
-            dispatch({ type: e.target.name, payload: e.target.value })
-          }
-          disabled={state.activeColor.length === 0}
-        >
-          <option disabled value="">
-            Choose Size
-          </option>
-          {state.activeColor.length !== 0 &&
-            state.colorList.map((item, index) => {
-              const temp = item.title.split(" / ");
-              return (
+              <option disabled value="">
+                Choose Size
+              </option>
+              {variants.map((item, index) => (
                 <option value={index} key={item.shopifyId}>
-                  {`${temp[0]} - $${item.price}`}
+                  {`${item.title} - $${item.price}`}
                 </option>
-              );
-            })}
-        </Select>
-      </SizeFieldset>
-      <AddToCartButton
-        type="submit"
-        disabled={
-          state.activeColor.length === 0 || state.sizeIndex.length === 0
-        }
-      >
-        Add to Cart
-        <ShopingCart />
-      </AddToCartButton>
+              ))}
+            </Select>
+          </SizeFieldset>
+        </>
+      )}
+
+      {matt && (
+        <SizeFieldset>
+          <Label htmlFor="foundation">Foundation</Label>
+          <Select
+            as="select"
+            id="foundation"
+            value={state.boxIndex}
+            name="foundation"
+            disabled={state.boxDisabled}
+            onChange={(e) =>
+              dispatch({ type: e.target.name, payload: e.target.value })
+            }
+          >
+            <option disabled value="">
+              Choose Foundation
+              {state.boxVariants ? ` - $${state.boxVariants[0].price}` : null}
+            </option>
+            <option value={4}>No Foundation - $0</option>
+            <option value={0}>2&quot; Low Foundation</option>
+            <option value={1}>5&quot; Flat Foundation</option>
+            <option value={2}>9&quot; Flat Foundation</option>
+            {shopifyBase && <option disabled>──────────</option>}
+            {shopifyBase && (
+              <option value={3}>
+                {`${shopifyBase.title} - 
+              $${state.boxVariants && state.boxVariants[3].price}`}
+              </option>
+            )}
+          </Select>
+        </SizeFieldset>
+      )}
+      {!hasVariants ? (
+        <div style={{ display: "flex", width: "100%" }}>
+          <QtyFieldset>
+            <Label htmlFor="quantity">Qty.</Label>
+            <Input
+              type="number"
+              inputmode="numeric"
+              id="quantity"
+              disabled={state.variantIndex.length === 0}
+              name="quantity"
+              min="1"
+              step="1"
+              max={maxQty}
+              onChange={(e) =>
+                dispatch({ type: e.target.name, payload: e.target.value })
+              }
+              value={state.quantity}
+            />
+          </QtyFieldset>
+          <AddToCartButton type="submit">
+            Add to Cart
+            <ShopingCart />
+          </AddToCartButton>
+        </div>
+      ) : (
+        <AddToCartButton
+          type="submit"
+          disabled={state.variantIndex.length === 0}
+        >
+          Add to Cart
+          <ShopingCart />
+        </AddToCartButton>
+      )}
       <PriceRange compareAtPrice={state.compareAtPrice}>
-        {state.sizeIndex === "" ? (
+        {state.variantIndex === "" ? (
           <>
             <small>Price Range</small>
             <h4>{state.price}</h4>
@@ -324,16 +405,20 @@ export default function ProductForm({
       </PriceRange>
     </ProductFormRoot>
   );
-}
-
+};
 ProductForm.defaultProps = {
+  matt: false,
+  boxVariants: null,
+  shopifyBase: null,
   maxQty: 10,
 };
-
 ProductForm.propTypes = {
   variants: PropTypes.instanceOf(Object).isRequired,
-  titleOfProduct: PropTypes.string.isRequired,
   priceMin: PropTypes.string.isRequired,
   priceMax: PropTypes.string.isRequired,
+  matt: PropTypes.bool,
+  boxVariants: PropTypes.instanceOf(Object),
+  shopifyBase: PropTypes.instanceOf(Object),
   maxQty: PropTypes.number,
 };
+export default ProductForm;
