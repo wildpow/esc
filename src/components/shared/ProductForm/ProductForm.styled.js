@@ -11,8 +11,8 @@ import {
 export const ProductFormRoot = styled.form`
   display: flex;
   flex-wrap: wrap;
-  padding: ${spacing["2"]} ${spacing["2"]} 0;
-  padding-top: 0;
+  padding: ${spacing["8"]} ${spacing["2"]};
+
   .fieldset {
     display: flex;
   }
@@ -53,16 +53,6 @@ export const PriceRange = styled.div`
     color: ${colors.blue["900"]};
     margin-bottom: 0;
   }
-  /* @media (min-width: ${breakpoints.xsm}) {
-    h4 {
-      font-size: ${fontSize["2xl"]};
-    }
-    small {
-      font-size: ${fontSize.xl};
-
-      color: ${colors.red["900"]};
-    }
-  } */
   @media (min-width: ${breakpoints.md}) {
     h4 {
       font-size: ${fontSize["2xl"]};
