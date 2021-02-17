@@ -6,6 +6,15 @@ All notable changes to this project will be documented in this file. See [Conven
 
 #### Features
 
+- Sheets now have a color picker instead of a variants being in one drop down.
+- Redesign on single product form:
+
+  - Less code.
+  - Mo error message components required due to better form disable state and validation.
+  - Can't pick a quantity below 1 or above max qty. passed to component.
+  - Positioning of form fields change based on product type and number of variants.
+  - Uniform focus state of all form fields.
+
 - [PR #133](https://github.com/wildpow/new-esc-gatsby/pull/133) landed!!!
   - Complete over hull of back-end. All product data is now in DatoCMS leaving Shopify to just deal with pricing.
   - Product features now have descriptions.
