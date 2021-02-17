@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState, useReducer } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import {
@@ -6,13 +6,13 @@ import {
   Input,
   Label,
   Select,
-  Submit,
+  // Submit,
   Submit2,
 } from "../FormElements";
 
 import {
   colors,
-  radius,
+  // radius,
   spacing,
   fonts,
   breakpoints,
@@ -22,7 +22,64 @@ import { ProductFormRoot } from "./ProductForm.styled";
 import sheetColors from "./sheetColors";
 import ShopingCart from "../../../assets/shopping-cart-solid.svg";
 import StoreContext from "../../../context/StoreContext";
-import ErrorIcon from "../../../assets/exclamation-triangle-solid.svg";
+// import ErrorIcon from "../../../assets/exclamation-triangle-solid.svg";
+
+const PriceRange = styled.div`
+  font-family: ${fonts.sans};
+  padding-top: 20px;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  small {
+    font-weight: ${({ compareAtPrice }) => (compareAtPrice ? 500 : 300)};
+    color: ${colors.red["900"]};
+    text-decoration: ${({ compareAtPrice }) =>
+      compareAtPrice ? "line-through" : "initial"};
+    font-size: ${fontSize.lg};
+  }
+  h4 {
+    font-size: ${fontSize["3xl"]};
+    margin-top: 0;
+    color: ${colors.blue["900"]};
+    margin-bottom: 0;
+  }
+  /* @media (min-width: ${breakpoints.xsm}) {
+    h4 {
+      font-size: ${fontSize["2xl"]};
+    }
+    small {
+      font-size: ${fontSize.xl};
+
+      color: ${colors.red["900"]};
+    }
+  } */
+  @media (min-width: ${breakpoints.md}) {
+    h4 {
+      font-size: ${fontSize["2xl"]};
+    }
+  }
+  @media (min-width: 840px) {
+    h4 {
+      font-size: ${fontSize["3xl"]};
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    h4 {
+      font-size: ${fontSize["4xl"]};
+    }
+    small {
+      font-size: ${fontSize.xl};
+      font-weight: 300;
+      color: ${colors.red["900"]};
+    }
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    h4 {
+      font-size: ${fontSize["5xl"]};
+    }
+  }
+`;
 
 const ColorWrapper = styled.div`
   display: flex;
@@ -59,7 +116,7 @@ const ColorLabel = styled.label`
     border: ${({ title, activeTitle }) =>
       title === activeTitle
         ? `2px solid ${colors.gray[900]}`
-        : "1px solid #979797"};
+        : `2px solid ${colors.gray[800]}`};
   }
 `;
 
@@ -102,7 +159,14 @@ export default function ProductForm({
   priceMax,
   maxQty,
 }) {
-  const handleSubmit = () => console.log("SUBMIT!");
+  const initialState = {
+    activeColor: "",
+    colorList: null,
+    quantity: 1,
+    sizeIndex: "",
+    compareAtPrice: null,
+    price: `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
+  };
   const generateInitialState = (products, title) => {
     const sortedProductsByColor = {};
     let temp;
@@ -119,27 +183,53 @@ export default function ProductForm({
     return { sortedProductsByColor, colorPalette };
   };
   const test = generateInitialState(variants, titleOfProduct);
-  const [activeColor, setActiveColor] = useState("");
-  const [colorList, setColorList] = useState(null);
-  const [quantity, setQuantity] = useState(1);
-  const [sizeIndex, setSizeIndex] = useState("");
-  const colorHandler = (title) => {
-    setActiveColor(title);
-    setColorList(test.sortedProductsByColor[title]);
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "color":
+        return {
+          ...state,
+          // quantity: 1,
+          // sizeIndex: "",
+          activeColor: action.payload,
+          colorList: test.sortedProductsByColor[action.payload],
+        };
+      case "quantity":
+        return {
+          ...state,
+          quantity: action.payload,
+        };
+      case "size":
+        return {
+          ...state,
+          sizeIndex: action.payload,
+        };
+      default:
+        throw new Error();
+    }
   };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    dispatch({ type: event.target.name, payload: event.target.value });
+  };
+  const { addVariantToCart } = useContext(StoreContext);
+  const handleSubmit = () => console.log("SUBMIT!");
+
   return (
     <ProductFormRoot onSubmit={handleSubmit}>
       <ColorWrapper>
         <h5>
-          {activeColor.length === 0
+          {state.activeColor.length === 0
             ? `Choose a color below.`
-            : `Color: ${activeColor}`}
+            : `Color: ${state.activeColor}`}
         </h5>
         <div className="colorPalette">
           {test.colorPalette.map((color) => (
             <ColorLabel
               title={color.title}
-              activeTitle={activeColor}
+              activeTitle={state.activeColor}
               key={color.title}
               htmlFor={color.title}
               className="color_label"
@@ -148,13 +238,16 @@ export default function ProductForm({
               }}
             >
               <input
+                value={color.title}
                 className="color_input"
-                onChange={() => colorHandler(color.title)}
-                checked={color.title === activeColor}
+                onChange={(e) => handleChange(e)}
+                checked={color.title === state.activeColor}
                 type="checkbox"
+                name="color"
                 id={color.title}
                 label={color.title}
               />
+              {console.log(state)}
             </ColorLabel>
           ))}
         </div>
@@ -165,30 +258,30 @@ export default function ProductForm({
           type="number"
           inputmode="numeric"
           id="quantity"
-          disabled={!colorList}
+          disabled={!state.colorList || state.sizeIndex.length === 0}
           name="quantity"
           min="1"
           step="1"
           max={maxQty}
-          onChange={(e) => setQuantity(e.target.value)}
-          value={quantity}
+          onChange={(e) => handleChange(e)}
+          value={state.quantity}
         />
       </QtyFieldset>
       <SizeFieldset>
-        <Label htmlFor="variant">Size</Label>
+        <Label htmlFor="size">Size</Label>
         <Select
           as="select"
-          id="variant"
-          value={sizeIndex}
-          name="variant"
-          onChange={(e) => setSizeIndex(e.target.value)}
-          disabled={activeColor.length === 0}
+          id="size"
+          value={state.sizeIndex}
+          name="size"
+          onChange={(e) => handleChange(e)}
+          disabled={state.activeColor.length === 0}
         >
           <option disabled value="">
             Choose Size
           </option>
-          {activeColor.length !== 0 &&
-            colorList.map((item, index) => {
+          {state.activeColor.length !== 0 &&
+            state.colorList.map((item, index) => {
               const temp = item.title.split(" / ");
               return (
                 <option value={index} key={item.shopifyId}>
@@ -198,14 +291,32 @@ export default function ProductForm({
             })}
         </Select>
       </SizeFieldset>
-      {console.log(sizeIndex.length === 0, activeColor.length === 0)}
       <AddToCartButton
         type="submit"
-        disabled={activeColor.length === 0 || sizeIndex.length === 0}
+        disabled={
+          state.activeColor.length === 0 || state.sizeIndex.length === 0
+        }
       >
         Add to Cart
         <ShopingCart />
       </AddToCartButton>
+      <PriceRange compareAtPrice={state.compareAtPrice}>
+        {state.sizeIndex === "" ? (
+          <>
+            <small>Price Range</small>
+            <h4>{state.price}</h4>
+          </>
+        ) : (
+          <>
+            <small>
+              {state.compareAtPrice === null
+                ? "Total"
+                : `$${state.compareAtPrice}`}
+            </small>
+            <h4>{`$${state.price ? state.price : "error"}`}</h4>
+          </>
+        )}
+      </PriceRange>
     </ProductFormRoot>
   );
 }
