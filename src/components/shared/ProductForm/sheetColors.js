@@ -64,7 +64,7 @@ const sheets = {
   "DreamFit Bamboo Sheet Set": degree5,
   "DreamFit MicroTencel/Supima Cotton Sheet Set": degree6,
 };
-export default function sheetColors(colors, title) {
+const sheetColors = (colors, title) => {
   const degreeOfSheets = sheets[title];
   return colors.map((element, index) => {
     return {
@@ -73,4 +73,22 @@ export default function sheetColors(colors, title) {
       index,
     };
   });
-}
+};
+
+const generateColors = (products, title) => {
+  const sortedProductsByColor = {};
+  let temp;
+  products.forEach((product) => {
+    temp = product.title.split(" / ");
+    if (sortedProductsByColor[temp[1]] === undefined) {
+      sortedProductsByColor[temp[1]] = [];
+      sortedProductsByColor[temp[1]].push(product);
+    } else {
+      sortedProductsByColor[temp[1]].push(product);
+    }
+  });
+  const colorPalette = sheetColors(Object.keys(sortedProductsByColor), title);
+  return { sortedProductsByColor, colorPalette };
+};
+
+export default generateColors;

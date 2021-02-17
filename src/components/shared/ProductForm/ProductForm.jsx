@@ -19,7 +19,7 @@ import {
   fontSize,
 } from "../../../utils/styles";
 import { ProductFormRoot } from "./ProductForm.styled";
-import sheetColors from "./sheetColors";
+import generateColors from "./sheetColors";
 import ShopingCart from "../../../assets/shopping-cart-solid.svg";
 import StoreContext from "../../../context/StoreContext";
 // import ErrorIcon from "../../../assets/exclamation-triangle-solid.svg";
@@ -44,16 +44,6 @@ const PriceRange = styled.div`
     color: ${colors.blue["900"]};
     margin-bottom: 0;
   }
-  /* @media (min-width: ${breakpoints.xsm}) {
-    h4 {
-      font-size: ${fontSize["2xl"]};
-    }
-    small {
-      font-size: ${fontSize.xl};
-
-      color: ${colors.red["900"]};
-    }
-  } */
   @media (min-width: ${breakpoints.md}) {
     h4 {
       font-size: ${fontSize["2xl"]};
@@ -99,7 +89,7 @@ const ColorWrapper = styled.div`
     display: none;
   }
   .color_label {
-    margin-right: 10px;
+    margin-right: 15px;
     width: 40px;
     height: 40px;
     background-size: auto 100%;
@@ -159,6 +149,8 @@ export default function ProductForm({
   priceMax,
   maxQty,
 }) {
+  const colorInfo = generateColors(variants, titleOfProduct);
+  const { addVariantToCart } = useContext(StoreContext);
   const initialState = {
     activeColor: "",
     colorList: null,
@@ -167,41 +159,43 @@ export default function ProductForm({
     compareAtPrice: null,
     price: `$${Number(priceMin).toFixed(2)} - $${Number(priceMax).toFixed(2)}`,
   };
-  const generateInitialState = (products, title) => {
-    const sortedProductsByColor = {};
-    let temp;
-    products.forEach((product) => {
-      temp = product.title.split(" / ");
-      if (sortedProductsByColor[temp[1]] === undefined) {
-        sortedProductsByColor[temp[1]] = [];
-        sortedProductsByColor[temp[1]].push(product);
-      } else {
-        sortedProductsByColor[temp[1]].push(product);
-      }
-    });
-    const colorPalette = sheetColors(Object.keys(sortedProductsByColor), title);
-    return { sortedProductsByColor, colorPalette };
-  };
-  const test = generateInitialState(variants, titleOfProduct);
   const reducer = (state, action) => {
+    let newPrice;
+    let newCompareAtPrice = null;
     switch (action.type) {
       case "color":
         return {
           ...state,
-          // quantity: 1,
-          // sizeIndex: "",
           activeColor: action.payload,
-          colorList: test.sortedProductsByColor[action.payload],
+          colorList: colorInfo.sortedProductsByColor[action.payload],
         };
       case "quantity":
+        newCompareAtPrice =
+          state.compareAtPrice === null
+            ? null
+            : action.payload * state.colorList[state.sizeIndex].compareAtPrice;
+        newPrice = action.payload * state.colorList[state.sizeIndex].price;
         return {
           ...state,
           quantity: action.payload,
+          compareAtPrice: newCompareAtPrice
+            ? newCompareAtPrice.toFixed(2)
+            : null,
+          price: newPrice.toFixed(2),
         };
       case "size":
+        newPrice = state.colorList[action.payload].price * state.quantity;
+        if (state.colorList[action.payload].compareAtPrice !== null) {
+          newCompareAtPrice =
+            state.colorList[action.payload].compareAtPrice * state.quantity;
+        }
         return {
           ...state,
           sizeIndex: action.payload,
+          price: newPrice.toFixed(2),
+          compareAtPrice: newCompareAtPrice
+            ? newCompareAtPrice.toFixed(2)
+            : null,
         };
       default:
         throw new Error();
@@ -209,13 +203,13 @@ export default function ProductForm({
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  const handleChange = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch({ type: event.target.name, payload: event.target.value });
+    addVariantToCart(
+      state.colorList[state.sizeIndex].shopifyId,
+      state.quantity,
+    );
   };
-  const { addVariantToCart } = useContext(StoreContext);
-  const handleSubmit = () => console.log("SUBMIT!");
 
   return (
     <ProductFormRoot onSubmit={handleSubmit}>
@@ -226,7 +220,7 @@ export default function ProductForm({
             : `Color: ${state.activeColor}`}
         </h5>
         <div className="colorPalette">
-          {test.colorPalette.map((color) => (
+          {colorInfo.colorPalette.map((color) => (
             <ColorLabel
               title={color.title}
               activeTitle={state.activeColor}
@@ -240,14 +234,15 @@ export default function ProductForm({
               <input
                 value={color.title}
                 className="color_input"
-                onChange={(e) => handleChange(e)}
+                onChange={(e) =>
+                  dispatch({ type: e.target.name, payload: e.target.value })
+                }
                 checked={color.title === state.activeColor}
                 type="checkbox"
                 name="color"
                 id={color.title}
                 label={color.title}
               />
-              {console.log(state)}
             </ColorLabel>
           ))}
         </div>
@@ -263,7 +258,9 @@ export default function ProductForm({
           min="1"
           step="1"
           max={maxQty}
-          onChange={(e) => handleChange(e)}
+          onChange={(e) =>
+            dispatch({ type: e.target.name, payload: e.target.value })
+          }
           value={state.quantity}
         />
       </QtyFieldset>
@@ -274,7 +271,9 @@ export default function ProductForm({
           id="size"
           value={state.sizeIndex}
           name="size"
-          onChange={(e) => handleChange(e)}
+          onChange={(e) =>
+            dispatch({ type: e.target.name, payload: e.target.value })
+          }
           disabled={state.activeColor.length === 0}
         >
           <option disabled value="">
