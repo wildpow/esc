@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file. See [Conven
     - Qty and Submit display on the same line when only one variant exists.
     - Single product form handling is now done by validation and disabling of form elements.
     - Removal of dedicated error components.
+    - Added aria-labels to qty and sheet picker fields.
 - [PR #133](https://github.com/wildpow/new-esc-gatsby/pull/133)
   - Complete over hull of back-end. All product data is now in DatoCMS leaving Shopify to just deal with pricing.
   - Product features now have descriptions.
