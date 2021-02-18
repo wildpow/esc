@@ -204,6 +204,7 @@ const ProductForm = ({
               id="quantity"
               disabled={state.variantIndex.length === 0}
               name="quantity"
+              aria-label="Pick quantity"
               min="1"
               step="1"
               max={maxQty}
@@ -220,6 +221,8 @@ const ProductForm = ({
               id="variant"
               value={state.variantIndex}
               name="variant"
+              aria-required="true"
+              aria-label="Pick a size"
               onChange={(e) =>
                 dispatch({ type: e.target.name, payload: e.target.value })
               }
@@ -228,7 +231,11 @@ const ProductForm = ({
                 Choose Size
               </option>
               {variants.map((item, index) => (
-                <option value={index} key={item.shopifyId}>
+                <option
+                  value={index}
+                  key={item.shopifyId}
+                  aria-label={`${item.title} - $${item.price}`}
+                >
                   {`${item.title} - $${item.price}`}
                 </option>
               ))}
@@ -276,6 +283,7 @@ const ProductForm = ({
               type="number"
               inputmode="numeric"
               id="quantity"
+              aria-label="Pick quantity"
               disabled={state.variantIndex.length === 0}
               name="quantity"
               min="1"

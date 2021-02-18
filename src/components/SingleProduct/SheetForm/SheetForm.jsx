@@ -159,6 +159,8 @@ export default function ProductForm({
                 name="color"
                 id={color.title}
                 label={color.title}
+                aria-required="true"
+                aria-label={`Color - ${color.title}`}
               />
             </ColorLabel>
           ))}
@@ -175,6 +177,7 @@ export default function ProductForm({
           min="1"
           step="1"
           max={maxQty}
+          aria-label="Pick quantity"
           onChange={(e) =>
             dispatch({ type: e.target.name, payload: e.target.value })
           }
@@ -188,6 +191,8 @@ export default function ProductForm({
           id="size"
           value={state.sizeIndex}
           name="size"
+          aria-required="true"
+          aria-label="Pick a size"
           onChange={(e) =>
             dispatch({ type: e.target.name, payload: e.target.value })
           }
@@ -200,7 +205,11 @@ export default function ProductForm({
             state.colorList.map((item, index) => {
               const temp = item.title.split(" / ");
               return (
-                <option value={index} key={item.shopifyId}>
+                <option
+                  value={index}
+                  key={item.shopifyId}
+                  aria-label={`${temp[0]} - $${item.price}`}
+                >
                   {`${temp[0]} - $${item.price}`}
                 </option>
               );
