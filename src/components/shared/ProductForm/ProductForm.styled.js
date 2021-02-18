@@ -6,6 +6,7 @@ import {
   breakpoints,
   fontSize,
 } from "../../../utils/styles";
+import { Fieldset, Input, Label, SubmitButton } from "../FormElements";
 
 export const ProductFormRoot = styled.form`
   display: flex;
@@ -67,5 +68,40 @@ export const PriceRange = styled.div`
     h4 {
       font-size: ${fontSize["5xl"]};
     }
+  }
+`;
+
+export const QtyFieldset = styled(Fieldset)`
+  flex-basis: 65px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: ${spacing["3"]};
+
+  ${Label} {
+    text-align: center;
+  }
+
+  ${Input} {
+    padding: ${spacing["3"]} ${spacing["3"]};
+    text-align: center;
+  }
+  input[type="number"]::-webkit-inner-spin-button {
+    cursor: pointer;
+  }
+`;
+
+export const SizeFieldset = styled(Fieldset)`
+  flex-basis: calc(100% - ${spacing["3"]} - 70px);
+
+  ${Label} {
+    justify-content: space-between;
+  }
+`;
+
+export const AddToCartButton = styled(SubmitButton)`
+  align-self: flex-end;
+  flex-grow: 1;
+  @media print {
+    display: none;
   }
 `;

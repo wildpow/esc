@@ -2,101 +2,16 @@
 /* eslint-disable react/no-danger */
 import { useContext, useReducer } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { Fieldset, Input, Label, Select, SubmitButton } from "../FormElements";
-import {
-  colors,
-  // radius,
-  spacing,
-  fonts,
-  breakpoints,
-  fontSize,
-} from "../../../utils/styles";
+import { Input, Label, Select } from "../FormElements";
 import ShopingCart from "../../../assets/shopping-cart-solid.svg";
 import StoreContext from "../../../context/StoreContext";
-import { ProductFormRoot } from "./ProductForm.styled";
-
-const PriceRange = styled.div`
-  font-family: ${fonts.sans};
-  padding-top: 20px;
-  flex: 1;
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  small {
-    font-weight: ${({ compareAtPrice }) => (compareAtPrice ? 500 : 300)};
-    color: ${colors.red["900"]};
-    text-decoration: ${({ compareAtPrice }) =>
-      compareAtPrice ? "line-through" : "initial"};
-    font-size: ${fontSize.lg};
-  }
-  h4 {
-    font-size: ${fontSize["3xl"]};
-    margin-top: 0;
-    color: ${colors.blue["900"]};
-    margin-bottom: 0;
-  }
-  @media (min-width: ${breakpoints.md}) {
-    h4 {
-      font-size: ${fontSize["2xl"]};
-    }
-  }
-  @media (min-width: 840px) {
-    h4 {
-      font-size: ${fontSize["3xl"]};
-    }
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    h4 {
-      font-size: ${fontSize["4xl"]};
-    }
-    small {
-      font-size: ${fontSize.xl};
-      font-weight: 300;
-      color: ${colors.red["900"]};
-    }
-  }
-  @media (min-width: ${breakpoints.xl}) {
-    h4 {
-      font-size: ${fontSize["5xl"]};
-    }
-  }
-`;
-
-const QtyFieldset = styled(Fieldset)`
-  flex-basis: 65px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin-right: ${spacing["3"]};
-
-  ${Label} {
-    text-align: center;
-  }
-
-  ${Input} {
-    padding: ${spacing["3"]} ${spacing["3"]};
-    text-align: center;
-  }
-  input[type="number"]::-webkit-inner-spin-button {
-    cursor: pointer;
-  }
-`;
-
-const SizeFieldset = styled(Fieldset)`
-  flex-basis: calc(100% - ${spacing["3"]} - 70px);
-
-  ${Label} {
-    justify-content: space-between;
-  }
-`;
-
-const AddToCartButton = styled(SubmitButton)`
-  align-self: flex-end;
-  flex-grow: 1;
-  @media print {
-    display: none;
-  }
-`;
+import {
+  ProductFormRoot,
+  PriceRange,
+  QtyFieldset,
+  SizeFieldset,
+  AddToCartButton,
+} from "./ProductForm.styled";
 
 const ProductForm = ({
   variants,
