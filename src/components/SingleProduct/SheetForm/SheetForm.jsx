@@ -44,6 +44,7 @@ const ColorWrapper = styled.div`
   }
 `;
 const ColorLabel = styled.label`
+  -webkit-print-color-adjust: exact;
   border: ${({ title, activeTitle }) =>
     title === activeTitle
       ? `2px solid ${colors.gray[900]}`
