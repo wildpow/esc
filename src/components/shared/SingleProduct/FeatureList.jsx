@@ -1,13 +1,14 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import styled, { css } from "styled-components";
 import Popup from "reactjs-popup";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import PropTypes from "prop-types";
 import "reactjs-popup/dist/index.css";
-import { ListPr1nt, DisplayNonePr1nt } from "../../styles/_pr1nt/main";
-import { colors, fonts, boxShadow } from "../../utils/styles";
-import { FadeIn } from "../../styles/mainStyles";
-import "./css.css";
-import DownArrow from "../../assets/arrow-down-solid.svg";
+import { ListPr1nt, DisplayNonePr1nt } from "../../../styles/_pr1nt/main";
+import { colors, fonts, boxShadow } from "../../../utils/styles";
+import { FadeIn } from "../../../styles/mainStyles";
+import "./featureList.css";
+import DownArrow from "../../../assets/arrow-down-solid.svg";
 
 const Popper = styled.div`
   transition: all 0.25s ease-in-out;
@@ -15,7 +16,6 @@ const Popper = styled.div`
   animation-name: ${FadeIn};
   display: flex;
   justify-content: center;
-  /* box-shadow: ${boxShadow.md}; */
   .button {
     font-family: ${(props) => props.theme.MainFont1};
     color: #000000;
@@ -253,10 +253,7 @@ const OpenButton = styled.button`
   background: transparent;
   font-family: ${(props) => props.theme.MainFont2};
   text-decoration: underline;
-  /* color: ${(props) => props.theme.mainColor1}; */
   color: ${colors.blue["800"]};
-
-  /* text-align: center; */
   :hover,
   :active {
     color: ${(props) => props.theme.mainColor2};

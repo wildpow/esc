@@ -1,190 +1,19 @@
+/* eslint-disable react/jsx-curly-newline */
 /* eslint-disable react/no-danger */
-import { useContext, useState, useReducer } from "react";
+import { useContext, useReducer } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { Fieldset, Input, Label, Select, Submit } from "../shared/FormElements";
+import { Input, Label, Select } from "../FormElements";
+import ShopingCart from "../../../assets/shopping-cart-solid.svg";
+import StoreContext from "../../../context/StoreContext";
 import {
-  colors,
-  radius,
-  spacing,
-  fonts,
-  breakpoints,
-  fontSize,
-} from "../../utils/styles";
-import ShopingCart from "../../assets/shopping-cart-solid.svg";
-import StoreContext from "../../context/StoreContext";
-import ErrorIcon from "../../assets/exclamation-triangle-solid.svg";
+  ProductFormRoot,
+  PriceRange,
+  QtyFieldset,
+  SizeFieldset,
+  AddToCartButton,
+} from "./ProductForm.styled";
 
-const PriceRange = styled.div`
-  font-family: ${fonts.sans};
-  padding-top: 20px;
-  flex: 1;
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  small {
-    font-weight: ${({ compareAtPrice }) => (compareAtPrice ? 500 : 300)};
-    color: ${colors.red["900"]};
-    text-decoration: ${({ compareAtPrice }) =>
-      compareAtPrice ? "line-through" : "initial"};
-    font-size: ${fontSize.lg};
-  }
-  h4 {
-    font-size: ${fontSize["3xl"]};
-    margin-top: 0;
-    color: ${colors.blue["900"]};
-    margin-bottom: 0;
-  }
-  /* @media (min-width: ${breakpoints.xsm}) {
-    h4 {
-      font-size: ${fontSize["2xl"]};
-    }
-    small {
-      font-size: ${fontSize.xl};
-
-      color: ${colors.red["900"]};
-    }
-  } */
-  @media (min-width: ${breakpoints.md}) {
-    h4 {
-      font-size: ${fontSize["2xl"]};
-    }
-  }
-  @media (min-width: 840px) {
-    h4 {
-      font-size: ${fontSize["3xl"]};
-    }
-  }
-  @media (min-width: ${breakpoints.lg}) {
-    h4 {
-      font-size: ${fontSize["4xl"]};
-    }
-    small {
-      font-size: ${fontSize.xl};
-      font-weight: 300;
-      color: ${colors.red["900"]};
-    }
-  }
-  @media (min-width: ${breakpoints.xl}) {
-    h4 {
-      font-size: ${fontSize["5xl"]};
-    }
-  }
-`;
-
-const Form = styled.form`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
-  display: flex;
-  flex-wrap: wrap;
-  padding: ${spacing["2"]} ${spacing["2"]} 0;
-  padding-top: 0;
-  .fieldset {
-    display: flex;
-  }
-  @media (min-width: ${breakpoints.md}) {
-    padding: ${spacing["10"]} ${spacing["8"]} 0;
-  }
-
-  @media (min-width: ${breakpoints.lg}) {
-    /* justify-content: flex-start;
-    min-width: 420px; */
-  }
-  @media (min-width: ${breakpoints.xl}) {
-    max-width: 600px;
-    /* flex-wrap: nowrap;
-    flex-direction: column;
-    justify-content: center;
-    justify-content: flex-start; */
-  }
-`;
-const QtyFieldset = styled(Fieldset)`
-  flex-basis: 65px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin-right: ${spacing["3"]};
-
-  ${Label} {
-    text-align: center;
-  }
-
-  ${Input} {
-    padding: ${spacing["3"]} ${spacing["3"]};
-    text-align: center;
-  }
-  input[type="number"]::-webkit-inner-spin-button {
-    cursor: pointer;
-  }
-`;
-
-const SizeFieldset = styled(Fieldset)`
-  flex-basis: calc(100% - ${spacing["3"]} - 70px);
-
-  ${Label} {
-    justify-content: space-between;
-  }
-`;
-
-const AddToCartButton = styled(Submit)`
-  align-self: flex-end;
-  flex-grow: 1;
-  /* height: ${(props) => (props.fullWidth ? "auto" : "")};
-  width: ${(props) => (props.fullWidth ? "100%" : "auto")}; */
-  @media print {
-    display: none;
-  }
-`;
-
-const Errors = styled.div`
-  /* display: ${(props) => (props.show ? "flex" : "none")}; */
-  display: flex;
-  opacity: ${({ show }) => (show ? 1 : 0)};
-  transition: all 0.2s ease-in-out;
-  flex-direction: row;
-  margin-bottom: ${spacing["2"]};
-  width: 100%;
-  height: 50px;
-  @media (min-width: ${breakpoints.md}) {
-    margin-bottom: 0;
-  }
-  @media print {
-    display: none;
-  }
-`;
-
-const ErrorSign = styled.div`
-  align-items: center;
-  background: ${colors.red["700"]};
-  border-radius: ${radius.default}px 0 0 ${radius.default}px;
-  color: ${colors.white};
-  display: flex;
-  flex-basis: 40px;
-  justify-content: center;
-
-  svg {
-    height: 20px;
-    width: 20px;
-  }
-`;
-
-const ErrorMsgs = styled.ul`
-  border: 1px dashed ${colors.red["700"]};
-  border-left: none;
-  border-radius: 0 ${radius.default}px ${radius.default}px 0;
-  color: ${colors.red["700"]};
-  flex-grow: 1;
-  margin: 0;
-  list-style: none;
-  font-family: ${fonts.sans};
-  padding: ${spacing["2"]};
-  padding-left: ${spacing["3"]};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const MattressForm = ({
+const ProductForm = ({
   variants,
   priceMin,
   priceMax,
@@ -202,7 +31,7 @@ const MattressForm = ({
     fiveInchBox: boxVariants ? boxVariants[1].variants : null,
     nineInchBox: boxVariants ? boxVariants[2].variants : null,
     quantity: 1,
-    qtyDisabled: variants.length !== 1,
+
     price:
       variants.length === 1
         ? variants[0].price
@@ -233,6 +62,7 @@ const MattressForm = ({
     let newAdj;
     let newCompareAtPrice;
     let newCompareBoxPrice;
+    let newQuantity = "1";
     switch (action.type) {
       case "variant":
         newAdj = shopifyBase
@@ -267,7 +97,6 @@ const MattressForm = ({
           quantity: 1,
           boxIndex: "",
           boxDisabled: false,
-          qtyDisabled: false,
           price: newPrice.toFixed(2),
           compareAtPrice: newCompareAtPrice,
         };
@@ -304,6 +133,8 @@ const MattressForm = ({
               : newCompareAtPrice.toFixed(2),
         };
       case "quantity":
+        newQuantity = action.payload === "0" ? "1" : action.payload;
+        newQuantity = Number(action.payload) > maxQty ? maxQty : newQuantity;
         newBoxPrice = doesBoxExist(matt, state.boxIndex)
           ? Number(state.boxVariants[state.boxIndex].price)
           : 0;
@@ -315,23 +146,23 @@ const MattressForm = ({
           : 0;
         newPrice =
           variants.length === 1
-            ? Number(variants[0].price) * Number(action.payload)
+            ? Number(variants[0].price) * Number(newQuantity)
             : (Number(variants[state.variantIndex].price) + newBoxPrice) *
-              Number(action.payload);
+              Number(newQuantity);
         newCompareAtPrice =
           variants.length === 1
             ? comparePrice(variants[0].price, variants[0].compareAtPrice) *
-              Number(action.payload)
+              Number(newQuantity)
             : (comparePrice(
                 variants[state.variantIndex].price,
                 variants[state.variantIndex].compareAtPrice,
               ) +
                 newCompareBoxPrice) *
-              Number(action.payload);
+              Number(newQuantity);
         return {
           ...state,
           price: newPrice.toFixed(2),
-          quantity: action.payload,
+          quantity: newQuantity,
           compareAtPrice:
             newPrice === newCompareAtPrice
               ? null
@@ -342,47 +173,8 @@ const MattressForm = ({
     }
   };
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [errors, setErrors] = useState([]);
-  const handleChange = (event) => {
-    event.preventDefault();
-    if (event.target.value) {
-      const newErrors = errors;
-
-      const errorIdx = newErrors.findIndex(
-        (error) => error.field === event.target.name,
-      );
-
-      newErrors.splice(errorIdx, 1);
-
-      if (~errorIdx) {
-        setErrors(newErrors);
-      }
-    }
-    dispatch({ type: event.target.name, payload: event.target.value });
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newErrors = [];
-
-    if (state.quantity < 1) {
-      newErrors.push({
-        field: "quantity",
-        msg: "Choose a <b>quantity</b> of 1 or more.",
-      });
-    }
-
-    if (state.variantIndex === "" || state.variantIndex === ".") {
-      newErrors.push({
-        field: "variant",
-        msg: "Please select a <b>size</b>.",
-      });
-    }
-
-    if (newErrors.length) {
-      setErrors(newErrors);
-      return;
-    }
 
     if (state.boxIndex === "" || state.boxIndex === "4") {
       addVariantToCart(variants[state.variantIndex].shopifyId, state.quantity);
@@ -401,42 +193,55 @@ const MattressForm = ({
 
   const hasVariants = variants.length > 1;
   return (
-    <Form onSubmit={handleSubmit} noValidate>
-      <QtyFieldset>
-        <Label htmlFor="quantity">Qty.</Label>
-        <Input
-          type="number"
-          inputmode="numeric"
-          id="quantity"
-          disabled={state.qtyDisabled}
-          name="quantity"
-          min="1"
-          step="1"
-          max={maxQty}
-          onChange={(e) => handleChange(e)}
-          value={state.quantity}
-        />
-      </QtyFieldset>
+    <ProductFormRoot onSubmit={handleSubmit}>
       {hasVariants && (
-        <SizeFieldset>
-          <Label htmlFor="variant">Size</Label>
-          <Select
-            as="select"
-            id="variant"
-            value={state.variantIndex}
-            name="variant"
-            onChange={(e) => handleChange(e)}
-          >
-            <option disabled value="">
-              Choose Size
-            </option>
-            {variants.map((item, index) => (
-              <option value={index} key={item.shopifyId}>
-                {`${item.title} - $${item.price}`}
+        <>
+          <QtyFieldset>
+            <Label htmlFor="quantity">Qty.</Label>
+            <Input
+              type="number"
+              inputmode="numeric"
+              id="quantity"
+              disabled={state.variantIndex.length === 0}
+              name="quantity"
+              aria-label="Pick quantity"
+              min="1"
+              step="1"
+              max={maxQty}
+              onChange={(e) =>
+                dispatch({ type: e.target.name, payload: e.target.value })
+              }
+              value={state.quantity}
+            />
+          </QtyFieldset>
+          <SizeFieldset>
+            <Label htmlFor="variant">Size</Label>
+            <Select
+              as="select"
+              id="variant"
+              value={state.variantIndex}
+              name="variant"
+              aria-required="true"
+              aria-label="Pick a size"
+              onChange={(e) =>
+                dispatch({ type: e.target.name, payload: e.target.value })
+              }
+            >
+              <option disabled value="">
+                Choose Size
               </option>
-            ))}
-          </Select>
-        </SizeFieldset>
+              {variants.map((item, index) => (
+                <option
+                  value={index}
+                  key={item.shopifyId}
+                  aria-label={`${item.title} - $${item.price}`}
+                >
+                  {`${item.title} - $${item.price}`}
+                </option>
+              ))}
+            </Select>
+          </SizeFieldset>
+        </>
       )}
 
       {matt && (
@@ -448,7 +253,9 @@ const MattressForm = ({
             value={state.boxIndex}
             name="foundation"
             disabled={state.boxDisabled}
-            onChange={(e) => handleChange(e)}
+            onChange={(e) =>
+              dispatch({ type: e.target.name, payload: e.target.value })
+            }
           >
             <option disabled value="">
               Choose Foundation
@@ -468,11 +275,40 @@ const MattressForm = ({
           </Select>
         </SizeFieldset>
       )}
-      <AddToCartButton type="submit" fullWidth={hasVariants}>
-        Add to Cart
-        <ShopingCart />
-      </AddToCartButton>
-
+      {!hasVariants ? (
+        <div style={{ display: "flex", width: "100%" }}>
+          <QtyFieldset>
+            <Label htmlFor="quantity">Qty.</Label>
+            <Input
+              type="number"
+              inputmode="numeric"
+              id="quantity"
+              aria-label="Pick quantity"
+              disabled={state.variantIndex.length === 0}
+              name="quantity"
+              min="1"
+              step="1"
+              max={maxQty}
+              onChange={(e) =>
+                dispatch({ type: e.target.name, payload: e.target.value })
+              }
+              value={state.quantity}
+            />
+          </QtyFieldset>
+          <AddToCartButton type="submit">
+            Add to Cart
+            <ShopingCart />
+          </AddToCartButton>
+        </div>
+      ) : (
+        <AddToCartButton
+          type="submit"
+          disabled={state.variantIndex.length === 0}
+        >
+          Add to Cart
+          <ShopingCart />
+        </AddToCartButton>
+      )}
       <PriceRange compareAtPrice={state.compareAtPrice}>
         {state.variantIndex === "" ? (
           <>
@@ -490,29 +326,16 @@ const MattressForm = ({
           </>
         )}
       </PriceRange>
-      <Errors show={errors.length}>
-        <ErrorSign>
-          <ErrorIcon />
-        </ErrorSign>
-        <ErrorMsgs>
-          {errors.map((error) => (
-            <li
-              key={error.field}
-              dangerouslySetInnerHTML={{ __html: error.msg }}
-            />
-          ))}
-        </ErrorMsgs>
-      </Errors>
-    </Form>
+    </ProductFormRoot>
   );
 };
-MattressForm.defaultProps = {
+ProductForm.defaultProps = {
   matt: false,
   boxVariants: null,
   shopifyBase: null,
   maxQty: 10,
 };
-MattressForm.propTypes = {
+ProductForm.propTypes = {
   variants: PropTypes.instanceOf(Object).isRequired,
   priceMin: PropTypes.string.isRequired,
   priceMax: PropTypes.string.isRequired,
@@ -521,4 +344,4 @@ MattressForm.propTypes = {
   shopifyBase: PropTypes.instanceOf(Object),
   maxQty: PropTypes.number,
 };
-export default MattressForm;
+export default ProductForm;

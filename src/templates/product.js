@@ -13,14 +13,13 @@ import {
   Article,
   Profile,
   MainTitle,
-  // List,
   Construction,
-  // Info,
-} from "../components/SingleProduct/SingleProduct.styled";
+} from "../components/shared/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
-import MattressForm from "../components/SingleProduct/MattressForm";
 import { useWindowSize } from "../context/WindowSizeContext";
-import FeatureList from "../components/SingleProduct/FeatureList";
+import FeatureList from "../components/shared/SingleProduct/FeatureList";
+import SheetForm from "../components/SingleProduct/SheetForm";
+import ProductForm from "../components/shared/ProductForm";
 
 const Base = ({ data }) => {
   const { width } = useWindowSize();
@@ -106,16 +105,30 @@ const Base = ({ data }) => {
                   width={width}
                 />
               )}
-              <MattressForm
-                variants={product.shopifyInfo[0].variants}
-                priceMin={
-                  product.shopifyInfo[0].priceRange.minVariantPrice.amount
-                }
-                priceMax={
-                  product.shopifyInfo[0].priceRange.maxVariantPrice.amount
-                }
-                maxQty={4}
-              />
+              {product.typeOfProduct.title === "Sheets" ? (
+                <SheetForm
+                  titleOfProduct={product.title}
+                  variants={product.shopifyInfo[0].variants}
+                  priceMin={
+                    product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                  }
+                  priceMax={
+                    product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                  }
+                  maxQty={4}
+                />
+              ) : (
+                <ProductForm
+                  variants={product.shopifyInfo[0].variants}
+                  priceMin={
+                    product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                  }
+                  priceMax={
+                    product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                  }
+                  maxQty={4}
+                />
+              )}
             </MainInfo>
           </Main>
           <header id="moreInfo">

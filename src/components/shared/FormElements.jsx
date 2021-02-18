@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import Button from "./SingleProduct/Button.styled";
 import { PrimaryButton } from "./Buttons";
 
 import { colors, radius, spacing, fonts } from "../../utils/styles";
@@ -15,9 +15,18 @@ export const Input = styled(`input`)`
   width: 100%;
   font-family: ${fonts.sans};
   :focus {
-    box-shadow: 0 0 0 3px ${colors.yellow["300"]};
+    box-shadow: 0 0 0 3px ${colors.blue["200"]};
     outline: 0;
     transition: box-shadow 0.15s ease-in-out;
+  }
+  :disabled,
+  :disabled:focus {
+    cursor: not-allowed;
+    color: ${colors.blue["700"]};
+    opacity: 0.3;
+    border: 1px solid ${colors.blue["400"]};
+    background: ${colors.white};
+    box-shadow: none;
   }
 `;
 
@@ -54,6 +63,13 @@ export const Label = styled.label`
 `;
 
 export const Submit = styled(PrimaryButton)`
+  font-size: 1.25rem;
+  margin-top: ${spacing["4"]};
+  width: 100%;
+  font-family: ${fonts.sans};
+`;
+
+export const SubmitButton = styled(Button)`
   font-size: 1.25rem;
   margin-top: ${spacing["4"]};
   width: 100%;

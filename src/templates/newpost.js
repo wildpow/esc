@@ -32,11 +32,8 @@ const PostRoot = styled.div`
     position: relative;
     padding-left: 5px;
     margin-right: 3px;
-    /* display: inline-block;
-    vertical-align: middle; */
     padding-bottom: 0px;
     overflow: hidden;
-    /* line-height: 1.3rem; */
     text-decoration: none;
     background-color: transparent;
     ::before {
@@ -74,13 +71,8 @@ const PostRoot = styled.div`
   }
 
   article a {
-    /* margin-bottom: 10px; */
-    /* margin-top: 10px; */
     margin-right: -5px;
     margin-left: -5px;
-  }
-  img {
-    /* padding-bottom: 20px; */
   }
 `;
 
