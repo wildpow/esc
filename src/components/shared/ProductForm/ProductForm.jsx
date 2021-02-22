@@ -84,7 +84,7 @@ const ProductForm = ({
               ),
             ]
           : null;
-        if (newAdj) newBoxs.push(newAdj[0]);
+        if (newAdj && newAdj.length !== 0) newBoxs.push(newAdj[0]);
         newPrice = Number(variants[action.payload].price);
         newCompareAtPrice =
           variants[action.payload].compareAtPrice !== null
@@ -265,13 +265,19 @@ const ProductForm = ({
             <option value={0}>2&quot; Low Foundation</option>
             <option value={1}>5&quot; Flat Foundation</option>
             <option value={2}>9&quot; Flat Foundation</option>
-            {shopifyBase && <option disabled>──────────</option>}
-            {shopifyBase && (
-              <option value={3}>
-                {`${shopifyBase.title} - 
+            {shopifyBase &&
+              state.boxVariants &&
+              state.boxVariants.length === 4 && (
+                <option disabled>──────────</option>
+              )}
+            {shopifyBase &&
+              state.boxVariants &&
+              state.boxVariants.length === 4 && (
+                <option value={3}>
+                  {`${shopifyBase.title} - 
               $${state.boxVariants && state.boxVariants[3].price}`}
-              </option>
-            )}
+                </option>
+              )}
           </Select>
         </SizeFieldset>
       )}
