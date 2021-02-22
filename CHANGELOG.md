@@ -26,7 +26,7 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ##### Bug Fix
 
-- Stopped crash if mattress variant does not have a corresponding foundation to size chosen.
+- Stopped crash if mattress variant does not have a corresponding foundation to size chosen [baf90d8]().
 - Inch marker for profile in single product.
 - About page now displays proper SEO tags for page.
 - Env vars updated with out `GATSBY_` pre-fix if they don't need to be exposed at the component level.
