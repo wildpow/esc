@@ -88,7 +88,7 @@ const Toast = styled.div`
     width: auto;
   }
   @media (min-width: 768px) {
-    padding: 20px 25px;
+    padding: 15px 20px;
   }
   .notification-title {
     font-weight: 700;
