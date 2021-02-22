@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Client from "shopify-buy";
+import { useToasts } from "../components/Toast/ToastProvider";
 
 import StoreContext from "../context/StoreContext";
 
@@ -9,6 +10,8 @@ const client = Client.buildClient({
 });
 
 const StoreProvider = ({ children }) => {
+  const { addToast } = useToasts();
+
   const initialStoreState = {
     client,
     adding: false,
@@ -79,13 +82,17 @@ const StoreProvider = ({ children }) => {
             console.error("Both a size and quantity are required.");
             return;
           }
-
           updateStore((prevState) => {
+            const qtyWithExtra = extra ? extra.quantity + quantity : quantity;
+            const newMessage =
+              qtyWithExtra > 1
+                ? `${qtyWithExtra} new items have been added to your cart`
+                : `${qtyWithExtra} new item has been added to your cart`;
+            addToast("Cart updated", newMessage);
             return { ...prevState, adding: true };
           });
 
           const { checkout, client } = store;
-
           const checkoutId = checkout.id;
           const lineItemsToUpdate = extra
             ? [{ variantId, quantity: parseInt(quantity, 10) }, extra]

@@ -6,8 +6,17 @@ import {
   useCallback,
 } from "react";
 import styled, { keyframes } from "styled-components";
-import { colors } from "../../utils/styles";
+import { colors, fonts } from "../../utils/styles";
+import Check from "../../assets/check.svg";
 
+// const toastInLeft = keyframes`
+// 	from {
+// 		transform: translateX(-100%);
+
+// 	}
+// 	to {
+// 		transform: translateX(0);
+// 	}`;
 const toastInRight = keyframes`
 	from {
 	  transform: translateX(100%);
@@ -21,13 +30,25 @@ const Ctx = createContext();
 
 const ToastContainer = styled.div`
   font-size: 14px;
+  font-family: ${fonts.sans};
   box-sizing: border-box;
   position: fixed;
   z-index: 999999;
-  top: 12px;
-  right: 12px;
+  top: 3%;
+  right: 0px;
   transition: transform 0.6s ease-in-out;
   animation: ${toastInRight} 0.7s;
+
+  width: 100%;
+
+  /* new shit */
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 540px) {
+    top: 4%;
+    right: 3%;
+    align-items: flex-end;
+  }
 `;
 
 const Toast = styled.div`
@@ -36,91 +57,134 @@ const Toast = styled.div`
   position: relative;
   pointer-events: auto;
   overflow: hidden;
-  margin: 0 0 6px;
   padding: 30px;
+  /* margin: 0 0 6px; */
   margin-bottom: 15px;
-  width: 300px;
+  /* width: 300px; */
   max-height: 100px;
   border-radius: 3px 3px 3px 3px;
   box-shadow: 0 0 10px #999;
-  color: #000;
-  opacity: 0.9;
+  color: ${colors.gray["900"]};
+  opacity: 1;
   background-position: 15px;
   background-repeat: no-repeat;
-  background-color: ${colors.green[500]};
-  top: 12px;
-  right: 12px;
+  background-color: ${colors.yellow["400"]};
+  top: 0px;
+  right: 0px;
   transition: transform 0.6s ease-in-out;
   animation: ${toastInRight} 0.7s;
+  max-width: 400px;
   :hover {
     box-shadow: 0 0 12px #fff;
     opacity: 1;
     cursor: pointer;
   }
-  height: 50px;
-  width: 365px;
-  color: #fff;
+  width: 90%;
+  margin: 0 auto 15px auto;
+  color: ${colors.gray["900"]};
   padding: 20px 15px 10px 10px;
-`;
-// const Toast = ({ children, onDismiss }) => (
-//   <div
-//     role="textbox"
-//     style={{
-//       background: "LemonChiffon",
-//       cursor: "pointer",
-//       fontSize: 14,
-//       margin: 10,
-//       padding: 10,
-//     }}
-//     onKeyDown={() => console.log("POOP")}
-//     onClick={onDismiss}
-//     tabIndex={0}
-//   >
-//     {children}
-//   </div>
-// );
+  @media (min-width: 540px) {
+    margin: 0 0 15px 0;
+    width: auto;
+  }
+  @media (min-width: 768px) {
+    padding: 20px 25px;
+  }
+  .notification-title {
+    font-weight: 700;
+    font-size: 16px;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 6px;
+    /* width: 300px; */
+    height: 18px;
+  }
 
-let toastCount = 0;
+  .notification-message {
+    margin: 0;
+    text-align: left;
+    height: 18px;
+    margin-left: -1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  button {
+    position: relative;
+    right: -0.3em;
+    top: -0.3em;
+    float: right;
+    font-weight: 700;
+    color: #fff;
+    outline: none;
+    border: none;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.8;
+    line-height: 1;
+    font-size: 16px;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+  }
+  .content {
+    display: flex;
+  }
+  .notification-image {
+    /* float: left; */
+    padding-right: 15px;
+  }
+`;
 
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
 
-  const add = (content) => {
-    console.log(toastCount, "!!!");
-
-    const id = toastCount++;
-    const toast = { content, id };
+  const addToast = (
+    title = "Default title",
+    description = "Default description for a toast notification",
+  ) => {
+    const id = Math.floor(Math.random() * 101 + 1);
+    const toast = { title, description, id };
     setToasts([...toasts, toast]);
   };
-  const remove = useCallback(
+  const removeToast = useCallback(
     (id) => {
       const newToasts = toasts.filter((t) => t.id !== id);
       setToasts(newToasts);
     },
     [toasts],
   );
-  const onDismiss = (id) => () => remove(id);
+  const onDismiss = (id) => () => removeToast(id);
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (toasts.length) {
-        remove(toasts[0].id);
+        removeToast(toasts[0].id);
       }
     }, 3000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [remove, toasts]);
+  }, [removeToast, toasts]);
   return (
-    <Ctx.Provider value={{ add, remove }}>
+    <Ctx.Provider value={{ addToast, removeToast }}>
       {children}
-      {console.log("render")}
-      <ToastContainer>
-        {toasts.map(({ content, id, ...rest }) => (
-          <Toast key={id} Toast={Toast} onDismiss={onDismiss(id)} {...rest}>
-            {id + 1} &mdash;
-            {content}
+      <ToastContainer className="notification-container top-right">
+        {toasts.map((toast) => (
+          <Toast key={toast.id} onClick={onDismiss(toast.id)}>
+            {/* <button type="button" onClick={() => removeToast(toast.id)}>
+              X
+            </button> */}
+            <div className="content">
+              <div className="notification-image">
+                <Check />
+              </div>
+              <div>
+                <p className="notification-title">{toast.title}</p>
+                <p className="notification-message">{toast.description}</p>
+              </div>
+            </div>
           </Toast>
         ))}
       </ToastContainer>

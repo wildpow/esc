@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { StaticQuery, graphql, Link } from "gatsby";
 import { Headline, Wrapper, P } from "../../styles/homeStyles";
 import SocialIcons from "../SocialIcons";
-import ToastTest from "../Toast/ToastTest";
 
 export const BottomLinks = styled(Link)`
   color: ${(props) => props.theme.mainColor1};
@@ -29,7 +28,6 @@ const FrontRoot = styled.div`
 
 const Front = () => (
   <FrontRoot>
-    <ToastTest />
     <Wrapper>
       <StaticQuery
         query={graphql`

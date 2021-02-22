@@ -17,12 +17,12 @@ require("typeface-roboto");
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <StoreProvider>
-      <ThemeProvider theme={theme}>
-        <ToastProvider>
+    <ToastProvider>
+      <StoreProvider>
+        <ThemeProvider theme={theme}>
           <WindowSizeProvider>{element}</WindowSizeProvider>
-        </ToastProvider>
-      </ThemeProvider>
-    </StoreProvider>
+        </ThemeProvider>
+      </StoreProvider>
+    </ToastProvider>
   );
 };

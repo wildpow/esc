@@ -20,12 +20,6 @@ import { useWindowSize } from "../context/WindowSizeContext";
 import FeatureList from "../components/shared/SingleProduct/FeatureList";
 import SheetForm from "../components/SingleProduct/SheetForm";
 import ProductForm from "../components/shared/ProductForm";
-import { useToasts } from "../components/Toast/ToastProvider";
-
-function Demo() {
-  const { add } = useToasts();
-  return <button onClick={() => add("Click to dismiss!")}>Add toast</button>;
-}
 
 const Base = ({ data }) => {
   const { width } = useWindowSize();
@@ -159,7 +153,6 @@ const Base = ({ data }) => {
                   width={width}
                 />
               )}
-              <Demo />
             </Construction>
             {product.warranty.length > 0 && (
               <Warranty>{product.warranty}</Warranty>
