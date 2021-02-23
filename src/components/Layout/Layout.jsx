@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import FocusLockUI from "react-focus-lock/UI";
@@ -10,6 +10,8 @@ import { useWindowSize } from "../../context/WindowSizeContext";
 import MenuOverLay from "../shared/MenuOverLay";
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
 import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
+import CartIndicator from "./Cart/newCartIndicator";
+import StoreContext from "../../context/StoreContext";
 
 const MainRoot = styled.div`
   max-width: 1440px;
@@ -34,7 +36,13 @@ function Layout({ children }) {
   const FocusLockSidecar = sidecar(() =>
     import(/* webpackPrefetch: true */ "react-focus-lock/sidecar"),
   );
-
+  const {
+    store: { checkout, adding },
+  } = useContext(StoreContext);
+  const itemsInCart = checkout.lineItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
   function menuToggle(e) {
     e.preventDefault();
     if (menuStatus !== "open") {
@@ -111,6 +119,13 @@ function Layout({ children }) {
   }, []);
   return (
     <>
+      <CartIndicator
+        adding={adding}
+        itemsInCart={itemsInCart}
+        pin={pin}
+        cartStatus={cartStatus}
+        menuStatus={menuStatus}
+      />
       <StructuredDataMain />
       <GlobalStyle />
       <Headroom
