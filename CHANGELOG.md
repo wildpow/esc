@@ -34,6 +34,7 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ##### Bug Fix
 
+- Switched `react-focus-lock` import to avoid React rendering errors.
 - Stopped crash if mattress variant does not have a corresponding foundation to size chosen [baf90d8]().
 - Inch marker for profile in single product.
 - About page now displays proper SEO tags for page.
