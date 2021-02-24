@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { bool, number } from "prop-types";
-import styled, { keyframes, css } from "styled-components";
+import { bool, number, string } from "prop-types";
+import styled, { css } from "styled-components";
 import usePrevious from "../../Hooks/use-previous";
 // import { numberEntry } from "../../../utils/keyframes";
 import {
@@ -12,16 +12,6 @@ import {
   boxShadow,
 } from "../../../utils/styles";
 
-const toastInRight = keyframes`
-	from {
-	  transform: translateX(100%);
-
-	}
-	to {
-	  transform: translateX(0);
-    
-	}
-`;
 const medScreens = css`
   transform: ${(props) =>
     props.visible ? `translateX(0%) scale(1.2)` : `translateX(100%) scale(1)`};
@@ -136,6 +126,10 @@ CartIndicator.defaultProps = {
 CartIndicator.propTypes = {
   adding: bool,
   itemsInCart: number,
+  cartStatus: string.isRequired,
+  menuStatus: string.isRequired,
+  width: number.isRequired,
+  pin: bool.isRequired,
 };
 
 export default CartIndicator;
