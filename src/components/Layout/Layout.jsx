@@ -120,6 +120,7 @@ function Layout({ children }) {
   return (
     <>
       <CartIndicator
+        width={width}
         adding={adding}
         itemsInCart={itemsInCart}
         pin={pin}
