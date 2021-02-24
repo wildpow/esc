@@ -10,6 +10,7 @@ import ForwardArrow from "../../../assets/arrow-right-solid.svg";
 import BackArrow from "../../../assets/arrow-left-solid.svg";
 import { iconEntry, numberEntry } from "../../../utils/keyframes";
 import CartList from "./CartList";
+import CartIndicator from "./CartIndicator";
 import { PrimaryButton, Button } from "../../shared/Buttons";
 import {
   dimensions,
@@ -359,6 +360,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
             />
           </span>
         </CartToggle>
+        <CartIndicator adding={adding} itemsInCart={itemsInCart} />
         <Title>Your Cart</Title>
         <ItemsInCart>
           items

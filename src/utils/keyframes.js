@@ -14,14 +14,12 @@ export const iconEntry = keyframes`
 
 export const numberEntry = keyframes`
   0%{
-    opacity: 0;
     transform: scale(0)
   }
   90% {
     transform: scale(0.7);
   }
   100% {
-    opacity: 1;
     transform: scale(0.6);
   }
 `;
