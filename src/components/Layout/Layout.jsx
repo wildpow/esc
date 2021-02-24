@@ -1,15 +1,18 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import FocusLockUI from "react-focus-lock/UI";
-import { sidecar } from "use-sidecar";
+// import FocusLockUI from "react-focus-lock/UI";
+// import { sidecar } from "use-sidecar";
 import Headroom from "react-headroom";
 // import ModalContextProvider from "./ModalContext";
+import FocusLock from "react-focus-lock";
 import { useOnClickOutside, useKeyboardEvent, useIntersect } from "../Hooks";
 import { useWindowSize } from "../../context/WindowSizeContext";
 import MenuOverLay from "../shared/MenuOverLay";
 import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
 import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
+import CartIndicator from "./Cart/CartIndicator";
+import StoreContext from "../../context/StoreContext";
 
 const MainRoot = styled.div`
   max-width: 1440px;
@@ -31,10 +34,16 @@ function Layout({ children }) {
   const [searchFocus, setSearchFocus] = useState(false);
   const [pin, setpen] = useState(true);
   const [moved, setMoved] = useState("");
-  const FocusLockSidecar = sidecar(() =>
-    import(/* webpackPrefetch: true */ "react-focus-lock/sidecar"),
+  // const FocusLockSidecar = sidecar(() =>
+  //   import(/* webpackPrefetch: true */ "react-focus-lock/sidecar"),
+  // );
+  const {
+    store: { checkout, adding },
+  } = useContext(StoreContext);
+  const itemsInCart = checkout.lineItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
   );
-
   function menuToggle(e) {
     e.preventDefault();
     if (menuStatus !== "open") {
@@ -111,6 +120,14 @@ function Layout({ children }) {
   }, []);
   return (
     <>
+      <CartIndicator
+        width={width}
+        adding={adding}
+        itemsInCart={itemsInCart}
+        pin={pin}
+        cartStatus={cartStatus}
+        menuStatus={menuStatus}
+      />
       <StructuredDataMain />
       <GlobalStyle />
       <Headroom
@@ -129,21 +146,15 @@ function Layout({ children }) {
         />
       </Headroom>
       <div ref={node}>
-        <FocusLockUI
-          disabled={cartStatus === "closed"}
-          sideCar={FocusLockSidecar}
-        >
+        <FocusLock disabled={cartStatus === "closed"}>
           <Cart
             status={cartStatus}
             toggle={cartToggle}
             menuStatus={menuStatus}
             pin={pin}
           />
-        </FocusLockUI>
-        <FocusLockUI
-          disabled={menuStatus === "closed"}
-          sideCar={FocusLockSidecar}
-        >
+        </FocusLock>
+        <FocusLock disabled={menuStatus === "closed"}>
           <MobileMenu
             searchFocus={searchFocus}
             id={menuId}
@@ -152,7 +163,7 @@ function Layout({ children }) {
             cartStatus={cartStatus}
             pin={pin}
           />
-        </FocusLockUI>
+        </FocusLock>
       </div>
       <PageContent moved={moved}>
         <MainRoot cartStatus={cartStatus} menuStatus={menuStatus}>

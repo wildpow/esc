@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file. See [Conven
 
 #### Features
 
+- [PR #136](https://github.com/wildpow/new-esc-gatsby/pull/136)
+
+  - Rewrote 'add to cart' notification.
+  - Rewrote cart item indicator.
+  - Cart UI clean up on mobile.
+  - Cart now displays estimated tax per store location.
+  - Cart is now disabled when empty.
+
 - [PR #135](https://github.com/wildpow/new-esc-gatsby/pull/135)
   - Sheets now have a color picker instead of a variants being in one drop down.
   - Redesign on single product form:
@@ -26,6 +34,7 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ##### Bug Fix
 
+- Switched `react-focus-lock` import to avoid React rendering errors. [PR #136](https://github.com/wildpow/new-esc-gatsby/pull/136)
 - Stopped crash if mattress variant does not have a corresponding foundation to size chosen [baf90d8]().
 - Inch marker for profile in single product.
 - About page now displays proper SEO tags for page.

@@ -10,13 +10,14 @@ import ForwardArrow from "../../../assets/arrow-right-solid.svg";
 import BackArrow from "../../../assets/arrow-left-solid.svg";
 import { iconEntry, numberEntry } from "../../../utils/keyframes";
 import CartList from "./CartList";
-import CartIndicator from "./CartIndicator";
+// import CartIndicator from "./CartIndicator";
 import { PrimaryButton, Button } from "../../shared/Buttons";
 import {
   dimensions,
   colors,
   breakpoints,
   fonts,
+  boxShadow,
   spacing,
 } from "../../../utils/styles";
 
@@ -93,6 +94,7 @@ const Heading = styled.div`
   height: ${dimensions.headerHeight};
   justify-content: flex-start;
   color: ${colors.gray["900"]};
+  box-shadow: ${boxShadow.sm};
 `;
 
 const CartToggle = styled.button`
@@ -168,17 +170,27 @@ const CartToggle = styled.button`
 `;
 const Title = styled.h2`
   flex-grow: 1;
+  /* new */
+  text-align: center;
+  /* ____ */
   font-family: ${fonts.sans};
   font-size: 1.8rem;
-  left: -${dimensions.headerHeight};
+  /* left: -${dimensions.headerHeight}; */
   margin: 0;
-  margin-left: ${spacing["4"]};
+  /* margin-left: ${spacing["4"]}; */
   position: relative;
   color: ${colors.blue["900"]};
-  margin-left: calc(${dimensions.headerHeight} + ${spacing["4"]});
+  /* margin-left: calc(${dimensions.headerHeight} + ${spacing["4"]}); */
+  @media (min-width: 560px) {
+    margin-left: ${spacing["5"]};
+    text-align: left;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    left: -${dimensions.headerHeight};
+  }
   .open & {
     @media (min-width: ${breakpoints.lg}) {
-      margin-left: ${spacing["4"]};
+      margin-left: ${spacing["6"]};
     }
   }
 `;
@@ -187,7 +199,7 @@ const ItemsInCart = styled.div`
   display: flex;
   font-size: 0.8rem;
   line-height: 1.2;
-  text-align: right;
+  /* text-align: right; */
   font-family: ${fonts.sans};
   color: ${colors.gray["700"]};
   ${ItemsNumber} {
@@ -241,9 +253,13 @@ const Cost = styled.div`
     color: ${colors.gray["700"]};
     flex-basis: 60%;
     font-size: 0.9rem;
-    text-align: right;
+    /* text-align: right; */
   }
-
+  @media (min-width: 560px) {
+    span {
+      text-align: right;
+    }
+  }
   strong {
     color: ${colors.gray["800"]};
     flex-basis: 40%;
@@ -298,7 +314,7 @@ const EmptyCartRoot = styled.div`
 const Cart = ({ toggle, status, menuStatus, pin }) => {
   const [loading, setLoading] = useState(false);
   const {
-    store: { checkout, client, adding },
+    store: { checkout, client },
     removeLineItem,
     updateLineItem,
   } = useContext(StoreContext);
@@ -336,6 +352,12 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     return () => clearTimeout(zIndexTimer);
   }, [status]);
   const isHidden = status === "open";
+  const taxCheck = (subTotal, totalTax) => {
+    if (totalTax !== "0.00") return totalTax;
+    const tax = Number(subTotal) * 0.098;
+    return tax.toFixed(2);
+  };
+
   return (
     <CartRoot
       className={`${status} ${loading ? "loading" : ""}`}
@@ -360,7 +382,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
             />
           </span>
         </CartToggle>
-        <CartIndicator adding={adding} itemsInCart={itemsInCart} />
+        {/* <CartIndicator adding={adding} itemsInCart={itemsInCart} /> */}
         <Title>Your Cart</Title>
         <ItemsInCart>
           items
@@ -382,11 +404,13 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
             <Costs>
               <Cost>
                 <span>Subtotal:</span>
-                <strong>USD ${checkout.subtotalPrice}</strong>
+                <strong> ${checkout.subtotalPrice}</strong>
               </Cost>
               <Cost>
-                <span>Taxes:</span>
-                <strong>{checkout.totalTax}</strong>
+                <span>Est. Taxes:</span>
+                <strong>
+                  {taxCheck(checkout.subtotalPrice, checkout.totalTax)}
+                </strong>
               </Cost>
               {/* <Cost>
                 <span>Shipping (nationwide):</span>
@@ -394,7 +418,14 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
               </Cost> */}
               <Total>
                 <span>Total Price:</span>
-                <strong>USD ${checkout.totalPrice}</strong>
+                <strong>
+                  USD $
+                  {checkout.totalTax !== "0.00"
+                    ? checkout.totalPrice
+                    : Number(
+                        taxCheck(checkout.subtotalPrice, checkout.totalTax),
+                      ) + Number(checkout.subtotalPrice)}
+                </strong>
               </Total>
             </Costs>
             <CheckOut href={checkout.webUrl}>
