@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file. See [Conven
 
 #### Features
 
+- [PR #136]()
+
+  - Rewrote 'add to cart' notification.
+  - Rewrote cart item indicator.
+  - Cart UI clean up on mobile.
+  - Cart now displays estimated tax per store location.
+  - Cart is now disabled when empty.
+
 - [PR #135](https://github.com/wildpow/new-esc-gatsby/pull/135)
   - Sheets now have a color picker instead of a variants being in one drop down.
   - Redesign on single product form:
