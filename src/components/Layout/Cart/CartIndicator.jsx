@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { bool, number } from "prop-types";
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import usePrevious from "../../Hooks/use-previous";
 // import { numberEntry } from "../../../utils/keyframes";
 import {
@@ -9,9 +9,34 @@ import {
   radius,
   spacing,
   fonts,
+  boxShadow,
 } from "../../../utils/styles";
 
+const toastInRight = keyframes`
+	from {
+	  transform: translateX(100%);
+
+	}
+	to {
+	  transform: translateX(0);
+    
+	}
+`;
+const medScreens = css`
+  transform: ${(props) =>
+    props.visible ? `translateX(0%) scale(1.2)` : `translateX(100%) scale(1)`};
+  width: auto;
+  left: auto;
+  right: 5%;
+`;
+const mobileScreens = css`
+  left: 50%;
+  transform: ${({ visible }) =>
+    visible ? `translateX(-50%) scale(1)` : `translateX(100%) scale(.8)`};
+  width: 95%;
+`;
 const CartIndicatorRoot = styled.div`
+  box-shadow: ${boxShadow.md};
   font-family: ${fonts.sans};
   pointer-events: none;
   background: ${colors.yellow["400"]};
@@ -20,19 +45,44 @@ const CartIndicatorRoot = styled.div`
   display: flex;
   opacity: ${(props) => (props.visible ? 1 : 0)};
   transform: ${(props) =>
-    props.visible
-      ? `translateX(calc((100% + ${spacing["12"]}) * -1)) scale(1.2)`
-      : `translateX(calc((100% + ${spacing["4"]}) * -1)) scale(1)`};
+    props.visible ? `translateX(0%) scale(1.2)` : `translateX(100%) scale(1)`};
   justify-content: center;
-  left: 0;
-  padding: ${spacing["2"]} ${spacing["4"]};
-  position: absolute;
-  top: calc(${dimensions.headerHeight} + ${spacing["4"]});
-  transform: translateX(calc((100% + ${spacing["4"]}) * -1));
-  transition: all 0.2s ease-in-out;
+  right: 5%;
+  z-index: 99999;
+  padding: ${spacing["3"]} ${spacing["4"]};
+  position: fixed;
+  top: ${({ pin }) =>
+    pin ? `calc(${dimensions.headerHeight} + ${spacing["4"]})` : spacing["4"]};
+  transition: all 0.3s ease-in-out;
+  @media (min-width: 1550px) {
+    right: 10%;
+  }
+  @media (min-width: 1900px) {
+    right: 15%;
+  }
+  @media (min-width: 2150px) {
+    right: 20%;
+  }
+  @media (min-width: 2350px) {
+    right: 23%;
+  }
+  ${({ width }) => (width < 650 ? mobileScreens : medScreens)}
 `;
 
-const CartIndicator = ({ adding, itemsInCart }) => {
+// width={width}
+// adding={adding}
+// itemsInCart={itemsInCart}
+// pin={pin}
+// cartStatus={cartStatus}
+// menuStatus={menuStatus}
+const CartIndicator = ({
+  adding,
+  itemsInCart,
+  pin,
+  width,
+  cartStatus,
+  menuStatus,
+}) => {
   const [visible, setVisible] = useState(false);
   const [message, setMessage] = useState("");
   const prevAdding = usePrevious(adding);
@@ -55,11 +105,27 @@ const CartIndicator = ({ adding, itemsInCart }) => {
     const timer = setTimeout(() => {
       setVisible(false);
       // setMessage("");
-    }, 3000);
+    }, 3500);
     return () => clearTimeout(timer);
   }, [adding, itemsInCart, prevAdding, prevItemsInCart]);
-
-  return <CartIndicatorRoot visible={visible}>{message}</CartIndicatorRoot>;
+  useEffect(() => {
+    if (cartStatus || menuStatus) {
+      setVisible(false);
+    }
+  }, [menuStatus, cartStatus]);
+  return (
+    <>
+      <CartIndicatorRoot
+        visible={visible}
+        pin={pin}
+        width={width}
+        cartStatus={cartStatus}
+        menuStatus={menuStatus}
+      >
+        {message}
+      </CartIndicatorRoot>
+    </>
+  );
 };
 
 CartIndicator.defaultProps = {
