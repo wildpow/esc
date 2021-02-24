@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { bool, number } from "prop-types";
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import usePrevious from "../../Hooks/use-previous";
 // import { numberEntry } from "../../../utils/keyframes";
 import {
@@ -21,19 +21,7 @@ const toastInRight = keyframes`
     
 	}
 `;
-const medScreens = css`
-  transform: ${(props) =>
-    props.visible ? `translateX(0%) scale(1.2)` : `translateX(100%) scale(1)`};
-  width: auto;
-  left: auto;
-  right: 5%;
-`;
-const mobileScreens = css`
-  left: 50%;
-  transform: ${({ visible }) =>
-    visible ? `translateX(-50%) scale(1)` : `translateX(100%) scale(.8)`};
-  width: 95%;
-`;
+
 const CartIndicatorRoot = styled.div`
   font-family: ${fonts.sans};
   pointer-events: none;
@@ -51,36 +39,11 @@ const CartIndicatorRoot = styled.div`
   position: fixed;
   top: ${({ pin }) =>
     pin ? `calc(${dimensions.headerHeight} + ${spacing["4"]})` : spacing["4"]};
-  transition: all 0.2s ease-in-out;
-  @media (min-width: 1550px) {
-    right: 10%;
-  }
-  @media (min-width: 1900px) {
-    right: 15%;
-  }
-  @media (min-width: 2150px) {
-    right: 20%;
-  }
-  @media (min-width: 2350px) {
-    right: 23%;
-  }
-  ${({ width }) => (width < 650 ? mobileScreens : medScreens)}
-`;
 
-// width={width}
-// adding={adding}
-// itemsInCart={itemsInCart}
-// pin={pin}
-// cartStatus={cartStatus}
-// menuStatus={menuStatus}
-const CartIndicator = ({
-  adding,
-  itemsInCart,
-  pin,
-  width,
-  cartStatus,
-  menuStatus,
-}) => {
+  transition: all 0.2s ease-in-out;
+  animation: ${toastInRight} 0.1s;
+`;
+const CartIndicator = ({ adding, itemsInCart, pin }) => {
   const [visible, setVisible] = useState(false);
   const [message, setMessage] = useState("");
   const prevAdding = usePrevious(adding);
@@ -100,29 +63,19 @@ const CartIndicator = ({
           : `${num} new item has been added to the cart`;
       setMessage(newMessage);
     }
-    // const timer = setTimeout(() => {
-    //   setVisible(false);
-    //   // setMessage("");
-    // }, 3000);
-    // return () => clearTimeout(timer);
-  }, [adding, itemsInCart, prevAdding, prevItemsInCart]);
-  useEffect(() => {
-    if (cartStatus || menuStatus) {
+    const timer = setTimeout(() => {
       setVisible(false);
-    }
-  }, [menuStatus, cartStatus]);
+      // setMessage("");
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [adding, itemsInCart, prevAdding, prevItemsInCart]);
+
   return (
     <>
-      <CartIndicatorRoot
-        visible={visible}
-        pin={pin}
-        width={width}
-        cartStatus={cartStatus}
-        menuStatus={menuStatus}
-      >
+      <CartIndicatorRoot visible={visible} pin={pin}>
         {message}
       </CartIndicatorRoot>
-      {console.log(width)}
+      {console.log(typeof pin)}
     </>
   );
 };
