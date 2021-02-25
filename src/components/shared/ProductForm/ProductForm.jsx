@@ -12,6 +12,7 @@ import {
   SizeFieldset,
   AddToCartButton,
 } from "./ProductForm.styled";
+import Another from "./fancySubmit/AnotherFancyButton";
 
 const ProductForm = ({
   variants,
@@ -307,13 +308,16 @@ const ProductForm = ({
           </AddToCartButton>
         </div>
       ) : (
-        <AddToCartButton
-          type="submit"
-          disabled={state.variantIndex.length === 0}
-        >
-          Add to Cart
-          <ShopingCart />
-        </AddToCartButton>
+        <>
+          <Another />
+          {/* <AddToCartButton
+            type="submit"
+            disabled={state.variantIndex.length === 0}
+          >
+            Add to Cart
+            <ShopingCart />
+          </AddToCartButton> */}
+        </>
       )}
       <PriceRange compareAtPrice={state.compareAtPrice}>
         {state.variantIndex === "" ? (
