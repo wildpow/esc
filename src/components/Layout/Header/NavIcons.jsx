@@ -71,7 +71,8 @@ const CartToggle = styled.button`
 
 const ExtraNavRoot = styled.div`
   display: flex;
-  overflow: hidden;
+  overflow: ${({ adding }) => (adding ? "hidden" : "initial")};
+
   position: relative;
   @media screen and (min-width: ${breakpoints.md}) {
     margin-right: 61px;
@@ -158,7 +159,7 @@ const NavIcons = ({
     0,
   );
   return (
-    <ExtraNavRoot>
+    <ExtraNavRoot adding={adding}>
       <Search
         pin={pin}
         indices={searchIndices}
