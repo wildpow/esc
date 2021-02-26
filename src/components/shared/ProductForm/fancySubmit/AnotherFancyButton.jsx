@@ -38,9 +38,13 @@ const addedKey = keyframes`
 const Button = styled.button`
   .start {
     transition: all 0.4s ease-in-out;
-    opacity: ${({ added, checkCart }) => (added || checkCart ? 0 : 1)};
+    opacity: ${({ added, checkCart, disabled }) =>
+      (added || checkCart) && !disabled ? 0 : 1};
     transform: ${({ added }) =>
       added ? "translateY(110%)" : "translateY(0%)"};
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .add {
     /* opacity: ${({ added }) => (added ? 1 : 0)}; */
@@ -152,7 +156,7 @@ const Button = styled.button`
   }
 `;
 
-export default function Another() {
+export default function Another({ disabled }) {
   const [added, setAdded] = useState(false);
   const [checkCart, setCheckCart] = useState(false);
   const submit = () => {
@@ -170,7 +174,13 @@ export default function Another() {
     }
   };
   return (
-    <Button onClick={submit} type="button" added={added} checkCart={checkCart}>
+    <Button
+      onClick={submit}
+      type="submit"
+      added={added}
+      checkCart={checkCart}
+      disabled={disabled}
+    >
       <div className="start">
         Add to Cart
         {console.log(added, "added")}

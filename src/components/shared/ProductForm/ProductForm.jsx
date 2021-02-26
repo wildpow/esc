@@ -309,7 +309,7 @@ const ProductForm = ({
         </div>
       ) : (
         <>
-          <Another />
+          <Another disabled={state.variantIndex.length === 0} />
           {/* <AddToCartButton
             type="submit"
             disabled={state.variantIndex.length === 0}
