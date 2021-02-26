@@ -7,21 +7,21 @@ import Arrow from "../../../../assets/arrow-right-solid.svg";
 
 const addedKey = keyframes`
 0% {
-  opacity: 0;
+  opacity: .1;
   transform: translateY(-110%) scale(1.4);
 }
 20% {
   opacity: 1;
   transform: translateY(-10%) scale(1.4);
 }
-40% {
+30% {
   transform: translateY(0%) scale(1.4);
 }
 50% {
   transform: translateY(0%) scale(1.4);
   opacity: 1;
 }
-60% {
+70% {
   transform: translateY(0%) scale(1.4);
 }
 80% {
@@ -31,15 +31,15 @@ const addedKey = keyframes`
 
 100% {
   transform: translateY(110%) scale(1.4);
-  opacity: 0;
+  opacity: .1;
 }
 
 `;
 const Button = styled.button`
   .start {
-    transition: all 0.4s ease-in-out;
-    opacity: ${({ added, checkCart, disabled }) =>
-      (added || checkCart) && !disabled ? 0 : 1};
+    transition: ${({ added, checkCart }) =>
+      added || checkCart ? "all 0.4s ease-in-out" : "transform 0s ease"};
+    opacity: ${({ added, checkCart }) => (added || checkCart ? 0 : 1)};
     transform: ${({ added }) =>
       added ? "translateY(110%)" : "translateY(0%)"};
     display: flex;
@@ -57,8 +57,8 @@ const Button = styled.button`
     align-items: center;
     right: 0;
     background-color: ${colors.blue[500]};
-    transition: all 0.3s ease-in-out;
-    animation: ${addedKey} 2500ms ease-in-out;
+    /* transition: all 0.3s ease-in-out; */
+    animation: ${addedKey} 2100ms ease-in-out;
     transform: translateY(-110%) scale(1.4);
     opacity: 0;
     /* transform: ${({ added }) =>
@@ -83,9 +83,9 @@ const Button = styled.button`
     color: ${colors.gray[900]};
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease-in-out;
     background-color: ${colors.yellow[400]};
-    transform: translateY(0%);
+    /* transform: translateY(0%); */
     transform: ${({ checkCart }) =>
       checkCart ? "translateY(0%)" : "translateY(-110%)"};
 
@@ -116,7 +116,8 @@ const Button = styled.button`
   justify-content: center;
   font-family: ${fonts.sans};
   border-radius: ${radius.default}px;
-  pointer-events: ${({ added }) => (added ? "none" : "auto")};
+  pointer-events: ${({ added, checkCartEnd }) =>
+    added || checkCartEnd ? "none" : "auto"};
   @media (hover: hover) {
     &:hover {
       background: ${({ inverse }) =>
@@ -156,30 +157,38 @@ const Button = styled.button`
   }
 `;
 
-export default function Another({ disabled }) {
+export default function Another({ disabled, cb }) {
   const [added, setAdded] = useState(false);
   const [checkCart, setCheckCart] = useState(false);
-  const submit = () => {
+  const [checkCartEnd, setCheckCartEnd] = useState(false);
+  const submit = (e) => {
     if (checkCart) {
       console.log("Go to cart");
     } else {
+      cb(e);
       setAdded(true);
       setTimeout(() => {
-        setAdded(false);
         setCheckCart(true);
+        setAdded(false);
         setTimeout(() => {
           setCheckCart(false);
+          setCheckCartEnd(true);
+          setTimeout(() => setCheckCartEnd(false), 420);
         }, 6500);
-      }, 2800);
+      }, 2000);
     }
+  };
+  const stuff = {
+    transform: "translateY(110%)",
   };
   return (
     <Button
-      onClick={submit}
-      type="submit"
+      onClick={(e) => submit(e)}
+      type="button"
       added={added}
       checkCart={checkCart}
       disabled={disabled}
+      checkCartEnd={checkCartEnd}
     >
       <div className="start">
         Add to Cart
@@ -193,8 +202,11 @@ export default function Another({ disabled }) {
           <Check />
         </div>
       )}
-      <div className="check">
-        Go To Cart
+      <div
+        className="check"
+        style={{ transform: checkCartEnd && "translateY(110%)" }}
+      >
+        Go to Cart
         <Arrow />
       </div>
     </Button>
