@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { bool, func } from "prop-types";
 import { useState } from "react";
 import { colors, fonts, radius, spacing } from "../../../../utils/styles";
-import ShopingCart from "../../../../assets/shopping-cart-solid.svg";
+import ShoppingCart from "../../../../assets/shopping-cart-solid.svg";
 import Check from "../../../../assets/check-solid.svg";
 import Arrow from "../../../../assets/arrow-right-solid.svg";
 
@@ -157,7 +157,10 @@ const Button = styled.button`
     display: none;
   }
 `;
-
+// Button has 3 stages. 2 boolean values 'added' and 'checkCart'
+//  move the corresponding text through each animation.
+//  The 3rd 'checkCartEnd' sets transform to the opposite
+//  direction of where the text came in from.
 export default function Another({ disabled, cb }) {
   const [added, setAdded] = useState(false);
   const [checkCart, setCheckCart] = useState(false);
@@ -191,7 +194,7 @@ export default function Another({ disabled, cb }) {
     >
       <div className="start">
         Add to Cart
-        <ShopingCart />
+        <ShoppingCart />
       </div>
       {added && (
         <div className="add">
