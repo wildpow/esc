@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { bool, func } from "prop-types";
 import { useState } from "react";
 import { colors, fonts, radius, spacing } from "../../../../utils/styles";
 import ShopingCart from "../../../../assets/shopping-cart-solid.svg";
@@ -178,9 +179,7 @@ export default function Another({ disabled, cb }) {
       }, 2000);
     }
   };
-  const stuff = {
-    transform: "translateY(110%)",
-  };
+
   return (
     <Button
       onClick={(e) => submit(e)}
@@ -192,8 +191,6 @@ export default function Another({ disabled, cb }) {
     >
       <div className="start">
         Add to Cart
-        {console.log(added, "added")}
-        {console.log("checkCart", checkCart)}
         <ShopingCart />
       </div>
       {added && (
@@ -212,3 +209,7 @@ export default function Another({ disabled, cb }) {
     </Button>
   );
 }
+Another.propTypes = {
+  disabled: bool.isRequired,
+  cb: func.isRequired,
+};
