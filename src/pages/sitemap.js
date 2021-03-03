@@ -16,10 +16,21 @@ import { H2 } from "../styles/mainStyles";
 
 const SiteMap = ({ data }) => {
   const {
-    allDatoCmsMattress,
     datoCmsSeo,
-    allDatoCmsAdjustableBase,
+    allDatoCmsMattress,
     allDatoCmsNewBlog,
+    adjustables,
+    pillows,
+    sheets,
+    protectors,
+    foundations,
+    beautyrestMattress,
+    nectarMattress,
+    poshMattress,
+    sealyMattress,
+    sertaMattress,
+    stearnsMattress,
+    tempurMattress,
   } = data;
   return (
     <Layout>
@@ -115,10 +126,10 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/adjustable">Adjustable Bases</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsAdjustableBase.nodes.map((base) => (
+            {adjustables.nodes.map((base) => (
               <li key={base.id}>
                 <SiteLinks to={`/adjustable/${base.slug}`}>
-                  {base.fullName}
+                  {base.title}
                 </SiteLinks>
               </li>
             ))}
@@ -148,6 +159,13 @@ export default SiteMap;
 
 export const allMattressesSiteMap = graphql`
   query sitmap {
+    allDatoCmsNewBlog {
+      nodes {
+        slug
+        title
+        id
+      }
+    }
     allDatoCmsMattress(sort: { fields: priceHigh }) {
       nodes {
         slug
@@ -163,19 +181,100 @@ export const allMattressesSiteMap = graphql`
         }
       }
     }
+    beautyrestMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "beautyrest" } } }
+    ) {
+      nodes {
+        ...mattressSiteMap
+      }
+    }
+    nectarMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "nectar" } } }
+    ) {
+      nodes {
+        ...mattressSiteMap
+      }
+    }
+    poshMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "posh-and-lavish" } } }
+    ) {
+      nodes {
+        ...mattressSiteMap
+      }
+    }
+    sealyMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "sealy" } } }
+    ) {
+      nodes {
+        ...mattressSiteMap
+      }
+    }
+    sertaMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "serta" } } }
+    ) {
+      nodes {
+        ...mattressSiteMap
+      }
+    }
+    stearnsMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "stearns" } } }
+    ) {
+      nodes {
+        ...mattressSiteMap
+      }
+    }
+    tempurMattress: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "tempurpedic" } } }
+    ) {
+      nodes {
+        ...mattressSiteMap
+      }
+    }
     datoCmsSeo(name: { eq: "siteMap" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    allDatoCmsAdjustableBase {
+    adjustables: allDatoCmsProduct(
+      filter: { typeOfProduct: { title: { eq: "Adjustable" } } }
+    ) {
       nodes {
         slug
-        fullName
+        title
         id
       }
     }
-    allDatoCmsNewBlog {
+
+    pillows: allDatoCmsProduct(
+      filter: { typeOfProduct: { title: { eq: "Pillow" } } }
+    ) {
+      nodes {
+        slug
+        title
+        id
+      }
+    }
+    foundations: allDatoCmsProduct(
+      filter: { typeOfProduct: { title: { eq: "Foundation" } } }
+    ) {
+      nodes {
+        slug
+        title
+        id
+      }
+    }
+    protectors: allDatoCmsProduct(
+      filter: { typeOfProduct: { title: { eq: "Protector" } } }
+    ) {
+      nodes {
+        slug
+        title
+        id
+      }
+    }
+    sheets: allDatoCmsProduct(
+      filter: { typeOfProduct: { title: { eq: "Sheets" } } }
+    ) {
       nodes {
         slug
         title
