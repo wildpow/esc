@@ -6,6 +6,7 @@ export const mattressSiteMap = graphql`
     slug
     name
     id
+    nameWithout
     subline {
       name
     }

@@ -1,23 +1,24 @@
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import styled from "styled-components";
+import { graphql, Link } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
-import {
-  Main,
-  SiteLinks,
-  MainLinks,
-  MattLinksWrapper,
-  BrandLinks,
-  UnList,
-  Lilist,
-  BottomLinks,
-} from "../styles/siteMapStyles";
-import { H2 } from "../styles/mainStyles";
+import MatttressListSitemap from "../components/Sitemap/MattressListSiteMap";
+// import {
+//   Main,
+//   SiteLinks,
+//   MainLinks,
+//   MattLinksWrapper,
+//   BrandLinks,
+//   UnList,
+//   Lilist,
+//   BottomLinks,
+// } from "../styles/siteMapStyles";
+// import { H2 } from "../styles/mainStyles";
 
 const SiteMap = ({ data }) => {
   const {
     datoCmsSeo,
-    allDatoCmsMattress,
     allDatoCmsNewBlog,
     adjustables,
     pillows,
@@ -35,119 +36,79 @@ const SiteMap = ({ data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
-      <MainLinks>
-        <H2>Main Site Links</H2>
-        <UnList>
-          <Lilist>
-            <SiteLinks to="/">Home</SiteLinks>
-          </Lilist>
-          <Lilist>
-            <SiteLinks to="/current-sale">Sale</SiteLinks>
-          </Lilist>
-          <Lilist>
-            <SiteLinks to="/about">About</SiteLinks>
-          </Lilist>
-          <Lilist>
-            <SiteLinks to="/accessories">Accessories</SiteLinks>
-          </Lilist>
-          <Lilist>
-            <SiteLinks to="/financing">Financing</SiteLinks>
-          </Lilist>
-          <Lilist>
-            <SiteLinks to="/adjustable">Adjustable</SiteLinks>
-          </Lilist>
-          <Lilist>
-            <SiteLinks to="/brands">Mattresses</SiteLinks>
-          </Lilist>
-        </UnList>
-      </MainLinks>
-      <MattLinksWrapper>
-        <Main>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/current-sale">Current Sale</Link>
+        </li>
+        <li>
+          <Link to="/financing">Financing</Link>
+        </li>
+        <li>
+          <Link to="/policies">Terms/Policies</Link>
+        </li>
+        <li>
+          <Link to="/warranty">Warranty Info </Link>
+        </li>
+        <li>
+          <Link to="/contact-us">Contact Us </Link>
+        </li>
+      </ul>
+
+      <div>
+        <header>
           <h3>
-            <BrandLinks to="/brands/sealy">Sealy</BrandLinks>
+            <Link to="/brands">Mattresses</Link>
           </h3>
-          <ul>
-            {allDatoCmsMattress.nodes.map((mattress) => {
-              if (mattress.brand.urlName === "sealy") {
-                return (
-                  <li key={mattress.id}>
-                    <SiteLinks to={`/brands/sealy/${mattress.slug}`}>
-                      {`${mattress.subline.name} ${mattress.name}`}
-                    </SiteLinks>
-                  </li>
-                );
-              }
-              return null;
-            })}
-          </ul>
-        </Main>
-        <Main>
+          <div>
+            <Link to="/brands/list">Shop All Mattresses</Link>
+          </div>
+        </header>
+        <div>
+          <MatttressListSitemap
+            mattresses={beautyrestMattress.nodes}
+            learnMore
+          />
+          <MatttressListSitemap mattresses={nectarMattress.nodes} learnMore />
+          <MatttressListSitemap mattresses={poshMattress.nodes} learnMore />
+          <MatttressListSitemap mattresses={sealyMattress.nodes} learnMore />
+          <MatttressListSitemap mattresses={sertaMattress.nodes} />
+          <MatttressListSitemap mattresses={stearnsMattress.nodes} learnMore />
+          <MatttressListSitemap mattresses={tempurMattress.nodes} learnMore />
+        </div>
+      </div>
+
+      <div>
+        <header>
           <h3>
-            <BrandLinks to="/brands/tempurpedic">Tempurpedic</BrandLinks>
+            <Link to="/accessories">Accessories</Link>
           </h3>
-          <ul>
-            {allDatoCmsMattress.nodes.map((mattress) => {
-              if (mattress.brand.urlName === "tempurpedic") {
-                return (
-                  <li key={mattress.id}>
-                    <SiteLinks to={`/brands/tempurpedic/${mattress.slug}`}>
-                      {`${mattress.subline.name} ${mattress.name}`}
-                    </SiteLinks>
-                  </li>
-                );
-              }
-              return null;
-            })}
-          </ul>
-        </Main>
-        <Main>
-          <h3>
-            <BrandLinks to="/brands/stearns">Stearns & Foster</BrandLinks>
-          </h3>
-          <ul>
-            {allDatoCmsMattress.nodes.map((mattress) => {
-              if (mattress.brand.urlName === "stearns") {
-                return (
-                  <li key={mattress.id}>
-                    <SiteLinks to={`/brands/stearns/${mattress.slug}`}>
-                      {`${mattress.subline.name} ${mattress.name}`}
-                    </SiteLinks>
-                  </li>
-                );
-              }
-              return null;
-            })}
-          </ul>
-        </Main>
-      </MattLinksWrapper>
-      <BottomLinks>
-        <Main>
-          <h3>
-            <BrandLinks to="/adjustable">Adjustable Bases</BrandLinks>
-          </h3>
-          <ul>
-            {adjustables.nodes.map((base) => (
-              <li key={base.id}>
-                <SiteLinks to={`/adjustable/${base.slug}`}>
-                  {base.title}
-                </SiteLinks>
-              </li>
-            ))}
-          </ul>
-        </Main>
-        <Main>
-          <h3>
-            <BrandLinks to="/blog">Blog</BrandLinks>
-          </h3>
-          <ul>
-            {allDatoCmsNewBlog.nodes.map((base) => (
-              <li key={base.id}>
-                <SiteLinks to={`/blog/${base.slug}`}>{base.title}</SiteLinks>
-              </li>
-            ))}
-          </ul>
-        </Main>
-      </BottomLinks>
+          <div>
+            <Link to="/accessories/list">Shop All Accessories</Link>
+          </div>
+        </header>
+        <div>
+          <article>
+            <header>
+              <h4>
+                <Link to="/accessories/list?type=sheets">Sheets</Link>
+              </h4>
+            </header>
+            <ul>
+              {sheets.nodes.map((sheet) => (
+                <li key={sheet.id}>
+                  <Link to={`/accessories/${sheet.slug}`}>{sheet.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </article>
+        </div>
+      </div>
     </Layout>
   );
 };
@@ -159,26 +120,16 @@ export default SiteMap;
 
 export const allMattressesSiteMap = graphql`
   query sitmap {
+    datoCmsSeo(name: { eq: "siteMap" }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
     allDatoCmsNewBlog {
       nodes {
         slug
         title
         id
-      }
-    }
-    allDatoCmsMattress(sort: { fields: priceHigh }) {
-      nodes {
-        slug
-        name
-        id
-        priceLow
-        subline {
-          name
-        }
-        brand {
-          urlName
-          displayName
-        }
       }
     }
     beautyrestMattress: allDatoCmsNewMattress(
@@ -230,11 +181,7 @@ export const allMattressesSiteMap = graphql`
         ...mattressSiteMap
       }
     }
-    datoCmsSeo(name: { eq: "siteMap" }) {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-    }
+
     adjustables: allDatoCmsProduct(
       filter: { typeOfProduct: { title: { eq: "Adjustable" } } }
     ) {
