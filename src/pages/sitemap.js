@@ -18,7 +18,7 @@ const SiteMap = ({ data }) => {
   const {
     allDatoCmsMattress,
     datoCmsSeo,
-    allDatoCmsAdjustableBase,
+    adjustables,
     allDatoCmsNewBlog,
   } = data;
   return (
@@ -115,10 +115,10 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/adjustable">Adjustable Bases</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsAdjustableBase.nodes.map((base) => (
+            {adjustables.nodes.map((base) => (
               <li key={base.id}>
                 <SiteLinks to={`/adjustable/${base.slug}`}>
-                  {base.fullName}
+                  {base.title}
                 </SiteLinks>
               </li>
             ))}
@@ -168,10 +168,13 @@ export const allMattressesSiteMap = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    allDatoCmsAdjustableBase {
+
+    adjustables: allDatoCmsProduct(
+      filter: { typeOfProduct: { title: { eq: "Adjustable" } } }
+    ) {
       nodes {
         slug
-        fullName
+        title
         id
       }
     }
