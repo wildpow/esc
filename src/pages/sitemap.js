@@ -3,7 +3,12 @@ import styled from "styled-components";
 import { graphql, Link } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
-import MatttressListSitemap from "../components/Sitemap/MattressListSiteMap";
+import {
+  MatttressListSitemap,
+  ProductListSitemap,
+  OtherListSitemap,
+} from "../components/Sitemap/MattressListSiteMap";
+import { radius, colors, spacing, fonts } from "../utils/styles";
 // import {
 //   Main,
 //   SiteLinks,
@@ -15,6 +20,197 @@ import MatttressListSitemap from "../components/Sitemap/MattressListSiteMap";
 //   BottomLinks,
 // } from "../styles/siteMapStyles";
 // import { H2 } from "../styles/mainStyles";
+import MattressStuff from "../components/Sitemap/MattressStuff";
+
+const SitemapRoot = styled.div`
+  padding: 40px 10px;
+  font-family: ${fonts.sans};
+  display: flex;
+  flex-direction: column;
+  .quickLinks {
+    position: relative;
+    padding: ${spacing[1]};
+    padding-top: ${spacing[4]};
+    margin-bottom: ${spacing[4]};
+    border-radius: ${radius.large};
+    border: 1px solid ${colors.gray["500"]};
+    background-color: white;
+    h3 {
+      position: absolute;
+      left: 20px;
+      background: white;
+      padding: 5px 20px;
+      background: ${colors.blue[900]};
+      color: white;
+      border: 1px solid ${colors.gray["400"]};
+      top: -14px;
+      z-index: 1;
+      margin: 0;
+    }
+    ul {
+      display: flex;
+
+      flex-wrap: wrap;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+    li {
+      list-style: none;
+      padding-right: 15px;
+      padding-bottom: 10px;
+    }
+  }
+`;
+
+const HeaderRoot = styled.div`
+  --border-width: 3px;
+  --border-color: ${colors.gray[700]};
+  position: relative;
+
+  .second {
+    padding-left: 20px;
+  }
+
+  .wrapper {
+    border-left: var(--border-width) solid var(--border-color);
+    margin-left: 0px;
+    padding-top: 25px;
+    ul {
+      position: relative;
+      list-style: none;
+      margin-left: 20px;
+      border-left: var(--border-width) solid var(--border-color);
+      padding-left: 25px;
+      margin-top: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 0;
+      :before {
+        content: "";
+        position: absolute;
+        width: var(--border-width);
+        height: 35px;
+        background-color: var(--border-color);
+        left: -3px;
+        top: -30px;
+      }
+      :after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 41px;
+        background-color: #f7fafc;
+        left: -4px;
+        bottom: -5px;
+      }
+      li {
+        text-align: center;
+        position: relative;
+        padding: 7px 5px;
+        margin-bottom: 20px;
+
+        border: var(--border-width) solid var(--border-color);
+        :before {
+          content: "";
+          position: absolute;
+          width: 25px;
+          height: var(--border-width);
+          background-color: var(--border-color);
+          left: -28px;
+          top: 50%;
+        }
+        a {
+          color: ${colors.blue[700]};
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .top {
+    width: 100%;
+    position: relative;
+    display: flex;
+    /* justify-content: space-between; */
+    /* left: 20px; */
+    /* background: white; */
+    color: white;
+    /* top: -14px; */
+    z-index: 1;
+    margin: 0;
+    .first {
+      position: relative;
+
+      :after {
+        position: absolute;
+        content: "";
+        bottom: 50%;
+        left: -25px;
+        width: 25px;
+        background-color: var(--border-color);
+        height: var(--border-width);
+      }
+    }
+    a {
+      /* width: 47%; */
+      padding: 7px 10px;
+      border: var(--border-width) solid var(--border-color);
+      /* background: ${colors.blue[400]}; */
+      background: white;
+      text-decoration: none;
+      color: ${colors.blue[700]};
+      justify-self: center;
+      align-self: center;
+      text-align: center;
+      /* font-size: 0.9rem; */
+      @media (min-width: 568px) {
+        padding: 15px 25px;
+      }
+    }
+  }
+  .divider {
+    align-self: center;
+    height: var(--border-width);
+    width: 25px;
+    background-color: var(--border-color);
+  }
+
+  .lastWrapper {
+    border-left: none;
+    position: relative;
+    padding-left: 5px;
+    :before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 44px;
+      background-color: var(--border-color);
+    }
+  }
+
+  @media screen and (min-width: 568px) {
+    .lastWrapper {
+      :before {
+        height: 52px;
+      }
+    }
+    .wrapper {
+      margin-left: 65px;
+      ul {
+        margin-left: 88px;
+        :after {
+          bottom: -2px;
+        }
+        li {
+          padding: 10px 10px;
+        }
+      }
+    }
+  }
+`;
 
 const SiteMap = ({ data }) => {
   const {
@@ -36,79 +232,62 @@ const SiteMap = ({ data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsSeo.seoMetaTags} />
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/current-sale">Current Sale</Link>
-        </li>
-        <li>
-          <Link to="/financing">Financing</Link>
-        </li>
-        <li>
-          <Link to="/policies">Terms/Policies</Link>
-        </li>
-        <li>
-          <Link to="/warranty">Warranty Info </Link>
-        </li>
-        <li>
-          <Link to="/contact-us">Contact Us </Link>
-        </li>
-      </ul>
-
-      <div>
-        <header>
-          <h3>
+      <SitemapRoot>
+        <div className="quickLinks">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/current-sale">Current Sale</Link>
+            </li>
+            <li>
+              <Link to="/financing">Financing</Link>
+            </li>
+            <li>
+              <Link to="/policies">Terms/Policies</Link>
+            </li>
+            <li>
+              <Link to="/warranty">Warranty Info </Link>
+            </li>
+            <li>
+              <Link to="/contact-us">Contact Us </Link>
+            </li>
+          </ul>
+        </div>
+        <HeaderRoot>
+          <header className="top">
             <Link to="/brands">Mattresses</Link>
-          </h3>
-          <div>
+            <div className="divider" />
             <Link to="/brands/list">Shop All Mattresses</Link>
+          </header>
+          <div className="wrapper">
+            <MattressStuff mattresses={beautyrestMattress.nodes} learnMore />
           </div>
-        </header>
-        <div>
-          <MatttressListSitemap
-            mattresses={beautyrestMattress.nodes}
-            learnMore
-          />
-          <MatttressListSitemap mattresses={nectarMattress.nodes} learnMore />
-          <MatttressListSitemap mattresses={poshMattress.nodes} learnMore />
-          <MatttressListSitemap mattresses={sealyMattress.nodes} learnMore />
-          <MatttressListSitemap mattresses={sertaMattress.nodes} />
-          <MatttressListSitemap mattresses={stearnsMattress.nodes} learnMore />
-          <MatttressListSitemap mattresses={tempurMattress.nodes} learnMore />
-        </div>
-      </div>
-
-      <div>
-        <header>
-          <h3>
-            <Link to="/accessories">Accessories</Link>
-          </h3>
-          <div>
-            <Link to="/accessories/list">Shop All Accessories</Link>
+          <div className="wrapper">
+            <MattressStuff mattresses={nectarMattress.nodes} learnMore />
           </div>
-        </header>
-        <div>
-          <article>
-            <header>
-              <h4>
-                <Link to="/accessories/list?type=sheets">Sheets</Link>
-              </h4>
-            </header>
-            <ul>
-              {sheets.nodes.map((sheet) => (
-                <li key={sheet.id}>
-                  <Link to={`/accessories/${sheet.slug}`}>{sheet.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </article>
-        </div>
-      </div>
+          <div className="wrapper">
+            <MattressStuff mattresses={poshMattress.nodes} learnMore />
+          </div>
+          <div className="wrapper">
+            <MattressStuff mattresses={sealyMattress.nodes} learnMore />
+          </div>
+          <div className="wrapper">
+            <MattressStuff mattresses={sertaMattress.nodes} />
+          </div>
+          <div className="wrapper">
+            <MattressStuff mattresses={stearnsMattress.nodes} learnMore />
+          </div>
+          <div className="wrapper lastWrapper">
+            <MattressStuff mattresses={tempurMattress.nodes} learnMore />
+          </div>
+        </HeaderRoot>
+      </SitemapRoot>
     </Layout>
   );
 };
