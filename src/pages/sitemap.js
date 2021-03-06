@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { graphql, Link } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
-import {
-  MatttressListSitemap,
-  ProductListSitemap,
-  OtherListSitemap,
-} from "../components/Sitemap/MattressListSiteMap";
-import { radius, colors, spacing, fonts } from "../utils/styles";
+// import {
+//   MatttressListSitemap,
+//   ProductListSitemap,
+//   OtherListSitemap,
+// } from "../components/Sitemap/MattressListSiteMap";
+import { radius, colors, spacing, fonts, boxShadow } from "../utils/styles";
 // import {
 //   Main,
 //   SiteLinks,
@@ -21,6 +21,7 @@ import { radius, colors, spacing, fonts } from "../utils/styles";
 // } from "../styles/siteMapStyles";
 // import { H2 } from "../styles/mainStyles";
 import MattressStuff from "../components/Sitemap/MattressStuff";
+import ProductStuff from "../components/Sitemap/ProductStuff";
 
 const SitemapRoot = styled.div`
   padding: 40px 10px;
@@ -109,7 +110,8 @@ const HeaderRoot = styled.div`
         position: relative;
         padding: 7px 5px;
         margin-bottom: 20px;
-
+        box-shadow: ${boxShadow.md};
+        background-color: white;
         border: var(--border-width) solid var(--border-color);
         :before {
           content: "";
@@ -153,11 +155,13 @@ const HeaderRoot = styled.div`
       }
     }
     a {
+      box-shadow: ${boxShadow.md};
+
       /* width: 47%; */
       padding: 7px 10px;
       border: var(--border-width) solid var(--border-color);
-      /* background: ${colors.blue[400]}; */
-      background: white;
+      background: ${colors.gray[300]};
+      /* background: white; */
       text-decoration: none;
       color: ${colors.blue[700]};
       justify-self: center;
@@ -259,34 +263,71 @@ const SiteMap = ({ data }) => {
             </li>
           </ul>
         </div>
-        <HeaderRoot>
-          <header className="top">
-            <Link to="/brands">Mattresses</Link>
-            <div className="divider" />
-            <Link to="/brands/list">Shop All Mattresses</Link>
-          </header>
-          <div className="wrapper">
-            <MattressStuff mattresses={beautyrestMattress.nodes} learnMore />
-          </div>
-          <div className="wrapper">
-            <MattressStuff mattresses={nectarMattress.nodes} learnMore />
-          </div>
-          <div className="wrapper">
-            <MattressStuff mattresses={poshMattress.nodes} learnMore />
-          </div>
-          <div className="wrapper">
-            <MattressStuff mattresses={sealyMattress.nodes} learnMore />
-          </div>
-          <div className="wrapper">
-            <MattressStuff mattresses={sertaMattress.nodes} />
-          </div>
-          <div className="wrapper">
-            <MattressStuff mattresses={stearnsMattress.nodes} learnMore />
-          </div>
-          <div className="wrapper lastWrapper">
-            <MattressStuff mattresses={tempurMattress.nodes} learnMore />
-          </div>
-        </HeaderRoot>
+        <div style={{ display: "flex" }}>
+          <HeaderRoot>
+            <header className="top">
+              <Link to="/brands">Mattresses</Link>
+              <div className="divider" />
+              <Link to="/brands/list">Shop All Mattresses</Link>
+            </header>
+            <div className="wrapper">
+              <MattressStuff mattresses={beautyrestMattress.nodes} learnMore />
+            </div>
+            <div className="wrapper">
+              <MattressStuff mattresses={nectarMattress.nodes} learnMore />
+            </div>
+            <div className="wrapper">
+              <MattressStuff mattresses={poshMattress.nodes} learnMore />
+            </div>
+            <div className="wrapper">
+              <MattressStuff mattresses={sealyMattress.nodes} learnMore />
+            </div>
+            <div className="wrapper">
+              <MattressStuff mattresses={sertaMattress.nodes} />
+            </div>
+            <div className="wrapper">
+              <MattressStuff mattresses={stearnsMattress.nodes} learnMore />
+            </div>
+            <div className="wrapper lastWrapper">
+              <MattressStuff mattresses={tempurMattress.nodes} learnMore />
+            </div>
+          </HeaderRoot>
+          <HeaderRoot>
+            <header className="top">
+              <Link to="/accessories">Accessories</Link>
+              <div className="divider" />
+              <Link to="/accessories/list">Shop All Accessories</Link>
+            </header>
+            <div className="wrapper">
+              <ProductStuff
+                products={foundations.nodes}
+                productUrl="list?type=foundation"
+                productTitle="Foundations"
+              />
+            </div>
+            <div className="wrapper">
+              <ProductStuff
+                products={protectors.nodes}
+                productUrl="list?type=protector"
+                productTitle="Protectors"
+              />
+            </div>
+            <div className="wrapper">
+              <ProductStuff
+                products={sheets.nodes}
+                productUrl="list?type=sheets"
+                productTitle="Sheets"
+              />
+            </div>
+            <div className="wrapper lastWrapper">
+              <ProductStuff
+                products={pillows.nodes}
+                productUrl="list?type=pillow"
+                productTitle="Pillows"
+              />
+            </div>
+          </HeaderRoot>
+        </div>
       </SitemapRoot>
     </Layout>
   );
