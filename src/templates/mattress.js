@@ -21,6 +21,7 @@ import FirmnessScale from "../components/SingleProduct/FirmessScaleMobile";
 import { useWindowSize } from "../context/WindowSizeContext";
 import FeatureList from "../components/shared/SingleProduct/FeatureList";
 import ProductForm from "../components/shared/ProductForm";
+import FoundationCompat from "../components/SingleProduct/FoundationCompat";
 
 const LeftSide = styled.div`
   display: flex;
@@ -159,6 +160,7 @@ const Mattress = ({ data }) => {
             )}
             <Warranty>{mattress.warrantyTitle}</Warranty>
           </Article>
+          <FoundationCompat />
         </Wrapper>
         <BreadWrapper>
           <BreadCrumbs
