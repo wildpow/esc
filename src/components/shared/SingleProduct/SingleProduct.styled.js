@@ -300,4 +300,5 @@ export const MainInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  max-width: 600px;
 `;
