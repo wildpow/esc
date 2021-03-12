@@ -7,7 +7,7 @@ const FoundationRoot = styled.div`
   font-family: ${fonts.sans};
 
   background-color: ${colors.gray[200]};
-  padding: ${spacing[10]} 0;
+  /* padding: ${spacing[10]} 0; */
   margin: 0 auto;
   /* display: flex;
   flex-direction: column; */

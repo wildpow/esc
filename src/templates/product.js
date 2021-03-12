@@ -20,6 +20,7 @@ import { useWindowSize } from "../context/WindowSizeContext";
 import FeatureList from "../components/shared/SingleProduct/FeatureList";
 import SheetForm from "../components/SingleProduct/SheetForm";
 import ProductForm from "../components/shared/ProductForm";
+import DescriptionSection from "../components/SingleProduct/Description/Description";
 
 const Base = ({ data }) => {
   const { width } = useWindowSize();
@@ -131,7 +132,23 @@ const Base = ({ data }) => {
               )}
             </MainInfo>
           </Main>
-          <header id="moreInfo">
+          <DescriptionSection
+            description={product.description}
+            profile={product.height}
+            warranty={product.warranty}
+            featureList={
+              width > 768 && product.fullFeatureList.length === 0
+                ? null
+                : width < 768
+                ? mergeFeatureLists(
+                    product.productFeatures,
+                    product.fullFeatureList,
+                  )
+                : product.fullFeatureList
+            }
+            width={width}
+          />
+          {/* <header id="moreInfo">
             <MainTitle red>OVERVIEW & SPECS</MainTitle>
           </header>
           <Article>
@@ -157,7 +174,7 @@ const Base = ({ data }) => {
             {product.warranty.length > 0 && (
               <Warranty>{product.warranty}</Warranty>
             )}
-          </Article>
+          </Article> */}
         </Wrapper>
         <BreadWrapper>
           {product.typeOfProduct.title === "Adjustable" ? (

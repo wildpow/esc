@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { colors, fonts, fontSize, spacing } from "../../../utils/styles";
 import FoundationCompat from "../FoundationCompat";
 import FeatureList from "../../shared/SingleProduct/FeatureList";
@@ -15,7 +16,7 @@ import {
 
 const DescriptionRoot = styled.section`
   .bottomSpacing {
-    margin-bottom: 20px;
+    margin-bottom: 65px;
   }
   .extra {
     display: flex;
@@ -23,7 +24,8 @@ const DescriptionRoot = styled.section`
     justify-content: flex-start;
     font-family: ${fonts.sans};
     h5 {
-      margin-right: 20px;
+      margin-bottom: 0;
+      /* margin-right: 20px; */
       font-weight: 500;
       padding-bottom: 2px;
       border-bottom: 4px solid ${colors.blue[800]};
@@ -31,10 +33,11 @@ const DescriptionRoot = styled.section`
   }
   background-color: ${colors.gray[200]};
   header {
+    margin-bottom: 20px;
     background-color: ${colors.red[800]};
     h3 {
       text-align: center;
-      padding-left: 8px;
+      /* padding-left: 8px; */
       margin: 0 auto;
       max-width: 1000px;
     }
@@ -46,17 +49,26 @@ const DescriptionRoot = styled.section`
     padding-left: 8px;
   }
   @media (min-width: 768px) {
-    header {
+    /* header {
       h3 {
         padding-left: 20px;
       }
-    }
+    } */
     .wrapper {
       padding-right: 20px;
       padding-left: 20px;
     }
     .extra {
       justify-content: flex-end;
+      h5 {
+        margin: 0;
+      }
+    }
+  }
+  @media (min-width: 1024px) {
+    .wrapper {
+      padding-right: 0;
+      padding-left: 0;
     }
   }
   @media print {
@@ -85,7 +97,9 @@ const DescriptionBottom = styled(Description)`
 `;
 const MainTitleBottom = styled(MainTitle)`
   padding-left: 0px;
+  padding-right: 0px;
   text-align: start;
+
   @media (max-width: 1000px) {
     padding-right: 20px;
     padding-left: 20px;
@@ -97,6 +111,7 @@ export default function DescriptionSection({
   description,
   featureList,
   width,
+  mattress,
 }) {
   return (
     <DescriptionRoot>
@@ -108,16 +123,38 @@ export default function DescriptionSection({
       <div className="wrapper">
         <DescriptionBottom>{description}</DescriptionBottom>
         <div className="extra bottomSpacing">
-          <h5>{`Warranty: ${warranty}`}</h5>
-          <h5>{`Profile: ${profile}"`}</h5>
+          {warranty && (
+            <h5 style={{ marginRight: "20px" }}>{`Warranty: ${warranty}`}</h5>
+          )}
+          {profile && <h5>{`Profile: ${profile}"`}</h5>}
         </div>
-        <div className="bottomSpacing">
-          <FeatureList list={featureList} width={width} />
-        </div>
-        <div className="bottomSpacing">
-          <FoundationCompat />
-        </div>
+        {featureList && (
+          <div className="bottomSpacing">
+            <FeatureList list={featureList} width={width} />
+          </div>
+        )}
+        {mattress && (
+          <div className="bottomSpacing">
+            <FoundationCompat />
+          </div>
+        )}
       </div>
     </DescriptionRoot>
   );
 }
+
+DescriptionSection.defaultProps = {
+  mattress: false,
+  warranty: null,
+  profile: null,
+  featureList: null,
+};
+
+DescriptionSection.propTypes = {
+  mattress: PropTypes.bool,
+  warranty: PropTypes.string,
+  profile: PropTypes.number,
+  description: PropTypes.string.isRequired,
+  featureList: PropTypes.instanceOf(Object),
+  width: PropTypes.number.isRequired,
+};

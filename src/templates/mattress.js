@@ -142,6 +142,7 @@ const Mattress = ({ data }) => {
             </MainInfo>
           </Main>
           <DescriptionSection
+            mattress
             description={mattress.description}
             profile={mattress.profile}
             warranty={mattress.warrantyTitle}
