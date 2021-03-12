@@ -101,7 +101,8 @@ const Base = ({ data }) => {
             <MainInfo>
               {width > 768 && (
                 <FeatureList
-                  top={product.fullFeatureList.length !== 0}
+                  top
+                  listText={product.fullFeatureList.length !== 0}
                   list={product.productFeatures}
                   width={width}
                 />

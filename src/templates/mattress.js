@@ -122,6 +122,7 @@ const Mattress = ({ data }) => {
               {width > 767 && (
                 <FeatureList
                   top
+                  listText
                   list={mattress.topSmallFeatureList}
                   width={width}
                 />

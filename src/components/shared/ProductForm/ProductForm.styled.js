@@ -11,17 +11,18 @@ import { Fieldset, Input, Label, SubmitButton } from "../FormElements";
 export const ProductFormRoot = styled.form`
   display: flex;
   flex-wrap: wrap;
-  padding: ${spacing["8"]} ${spacing["2"]};
+  max-width: 600px;
+  /* padding: ${spacing["8"]} ${spacing["2"]}; */
 
   .fieldset {
     display: flex;
   }
-  @media (min-width: ${breakpoints.md}) {
+  /* @media (min-width: ${breakpoints.md}) {
     padding: ${spacing["10"]} ${spacing["8"]} 0;
   }
   @media (min-width: ${breakpoints.xl}) {
     max-width: 600px;
-  }
+  } */
 `;
 
 export const PriceRange = styled.div`

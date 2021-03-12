@@ -178,7 +178,7 @@ const List = styled.div`
   }
 
   @media (min-width: 550px) {
-    padding: 0px 0px 0px 10px;
+    /* padding: 0px 0px 0px 10px; */
     h3 {
       font-size: 2rem;
       margin-top: 0;
@@ -198,7 +198,7 @@ const List = styled.div`
   }
 
   @media (min-width: 992px) {
-    padding: 0px 32px 10px 32px;
+    /* padding: 0px 32px 10px 32px; */
 
     h3 {
       padding-left: 20px;
@@ -253,7 +253,7 @@ const OpenButton = styled.button`
     color: ${(props) => props.theme.mainColor2};
   }
 `;
-export default function FeatureList({ list, top, width }) {
+export default function FeatureList({ list, top, width, listText }) {
   function listItem(item) {
     if (item.description.length < 1) return item.title;
     return (
@@ -291,12 +291,12 @@ export default function FeatureList({ list, top, width }) {
   return (
     <>
       <List top={top}>
-        <h3>{top ? "Features" : "Key Features"}</h3>
+        <h3>{listText ? "Features" : "Key Features"}</h3>
         <ul>
           {list.map((item) => (
             <li key={item.id}>{listItem(item)}</li>
           ))}
-          {top && (
+          {listText && (
             <Info>
               <AnchorLink href="#moreInfo">
                 <div className="left">
