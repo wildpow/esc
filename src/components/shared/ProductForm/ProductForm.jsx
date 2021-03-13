@@ -21,6 +21,7 @@ const ProductForm = ({
   boxVariants,
   shopifyBase,
   maxQty,
+  children,
 }) => {
   const initialState = {
     boxIndex: "",
@@ -194,127 +195,135 @@ const ProductForm = ({
   const hasVariants = variants.length > 1;
   return (
     <ProductFormRoot onSubmit={handleSubmit}>
-      {hasVariants && (
-        <>
-          <QtyFieldset>
-            <Label htmlFor="quantity">Qty.</Label>
-            <Input
-              type="number"
-              inputmode="numeric"
-              id="quantity"
-              disabled={state.variantIndex.length === 0}
-              name="quantity"
-              aria-label="Pick quantity"
-              min="1"
-              step="1"
-              max={maxQty}
-              onChange={(e) =>
-                dispatch({ type: e.target.name, payload: e.target.value })
-              }
-              value={state.quantity}
-            />
-          </QtyFieldset>
-          <SizeFieldset>
-            <Label htmlFor="variant">Size</Label>
-            <Select
-              as="select"
-              id="variant"
-              value={state.variantIndex}
-              name="variant"
-              aria-required="true"
-              aria-label="Pick a size"
-              onChange={(e) =>
-                dispatch({ type: e.target.name, payload: e.target.value })
-              }
-            >
-              <option disabled value="">
-                Choose Size
-              </option>
-              {variants.map((item, index) => (
-                <option
-                  value={index}
-                  key={item.shopifyId}
-                  aria-label={`${item.title} - $${item.price}`}
+      <div className="children">
+        {children}
+        <div className="formItems">
+          {hasVariants && (
+            <>
+              <QtyFieldset>
+                <Label htmlFor="quantity">Qty.</Label>
+                <Input
+                  type="number"
+                  inputmode="numeric"
+                  id="quantity"
+                  disabled={state.variantIndex.length === 0}
+                  name="quantity"
+                  aria-label="Pick quantity"
+                  min="1"
+                  step="1"
+                  max={maxQty}
+                  onChange={(e) =>
+                    dispatch({ type: e.target.name, payload: e.target.value })
+                  }
+                  value={state.quantity}
+                />
+              </QtyFieldset>
+              <SizeFieldset>
+                <Label htmlFor="variant">Size</Label>
+                <Select
+                  as="select"
+                  id="variant"
+                  value={state.variantIndex}
+                  name="variant"
+                  aria-required="true"
+                  aria-label="Pick a size"
+                  onChange={(e) =>
+                    dispatch({ type: e.target.name, payload: e.target.value })
+                  }
                 >
-                  {`${item.title} - $${item.price}`}
-                </option>
-              ))}
-            </Select>
-          </SizeFieldset>
-        </>
-      )}
+                  <option disabled value="">
+                    Choose Size
+                  </option>
+                  {variants.map((item, index) => (
+                    <option
+                      value={index}
+                      key={item.shopifyId}
+                      aria-label={`${item.title} - $${item.price}`}
+                    >
+                      {`${item.title} - $${item.price}`}
+                    </option>
+                  ))}
+                </Select>
+              </SizeFieldset>
+            </>
+          )}
 
-      {matt && (
-        <SizeFieldset>
-          <Label htmlFor="foundation">Foundation</Label>
-          <Select
-            as="select"
-            id="foundation"
-            value={state.boxIndex}
-            name="foundation"
-            disabled={state.boxDisabled}
-            onChange={(e) =>
-              dispatch({ type: e.target.name, payload: e.target.value })
-            }
-          >
-            <option disabled value="">
-              Choose Foundation
-              {state.boxVariants ? ` - $${state.boxVariants[0].price}` : null}
-            </option>
-            <option value={4}>No Foundation - $0</option>
-            <option value={0}>2&quot; Low Foundation</option>
-            <option value={1}>5&quot; Flat Foundation</option>
-            <option value={2}>9&quot; Flat Foundation</option>
-            {shopifyBase &&
-              state.boxVariants &&
-              state.boxVariants.length === 4 && (
-                <option disabled>──────────</option>
-              )}
-            {shopifyBase &&
-              state.boxVariants &&
-              state.boxVariants.length === 4 && (
-                <option value={3}>
-                  {`${shopifyBase.title} - 
-              $${state.boxVariants && state.boxVariants[3].price}`}
+          {matt && (
+            <SizeFieldset>
+              <Label htmlFor="foundation">Foundation</Label>
+              <Select
+                as="select"
+                id="foundation"
+                value={state.boxIndex}
+                name="foundation"
+                disabled={state.boxDisabled}
+                onChange={(e) =>
+                  dispatch({ type: e.target.name, payload: e.target.value })
+                }
+              >
+                <option disabled value="">
+                  Choose Foundation
+                  {state.boxVariants
+                    ? ` - $${state.boxVariants[0].price}`
+                    : null}
                 </option>
-              )}
-          </Select>
-        </SizeFieldset>
-      )}
-      {!hasVariants ? (
-        <div style={{ display: "flex", width: "100%" }}>
-          <QtyFieldset>
-            <Label htmlFor="quantity">Qty.</Label>
-            <Input
-              type="number"
-              inputmode="numeric"
-              id="quantity"
-              aria-label="Pick quantity"
+                <option value={4}>No Foundation - $0</option>
+                <option value={0}>2&quot; Low Foundation</option>
+                <option value={1}>5&quot; Flat Foundation</option>
+                <option value={2}>9&quot; Flat Foundation</option>
+                {shopifyBase &&
+                  state.boxVariants &&
+                  state.boxVariants.length === 4 && (
+                    <option disabled>──────────</option>
+                  )}
+                {shopifyBase &&
+                  state.boxVariants &&
+                  state.boxVariants.length === 4 && (
+                    <option value={3}>
+                      {`${shopifyBase.title} - 
+              $${state.boxVariants && state.boxVariants[3].price}`}
+                    </option>
+                  )}
+              </Select>
+            </SizeFieldset>
+          )}
+          {!hasVariants ? (
+            <div style={{ display: "flex", width: "100%" }}>
+              <QtyFieldset>
+                <Label htmlFor="quantity">Qty.</Label>
+                <Input
+                  type="number"
+                  inputmode="numeric"
+                  id="quantity"
+                  aria-label="Pick quantity"
+                  disabled={state.variantIndex.length === 0}
+                  name="quantity"
+                  min="1"
+                  step="1"
+                  max={maxQty}
+                  onChange={(e) =>
+                    dispatch({ type: e.target.name, payload: e.target.value })
+                  }
+                  value={state.quantity}
+                />
+              </QtyFieldset>
+              <AddToCartButton type="submit">
+                Add to Cart
+                <ShopingCart />
+              </AddToCartButton>
+            </div>
+          ) : (
+            <AddToCartButton
+              type="submit"
               disabled={state.variantIndex.length === 0}
-              name="quantity"
-              min="1"
-              step="1"
-              max={maxQty}
-              onChange={(e) =>
-                dispatch({ type: e.target.name, payload: e.target.value })
-              }
-              value={state.quantity}
-            />
-          </QtyFieldset>
-          <AddToCartButton type="submit">
-            Add to Cart
-            <ShopingCart />
-          </AddToCartButton>
+            >
+              Add to Cart
+              <ShopingCart />
+            </AddToCartButton>
+          )}
         </div>
-      ) : (
-        <AddToCartButton
-          type="submit"
-          disabled={state.variantIndex.length === 0}
-        >
-          Add to Cart
-          <ShopingCart />
-        </AddToCartButton>
-      )}
+      </div>
+
       <PriceRange compareAtPrice={state.compareAtPrice}>
         {state.variantIndex === "" ? (
           <>

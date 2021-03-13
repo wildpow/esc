@@ -9,9 +9,14 @@ import {
 import { Fieldset, Input, Label, SubmitButton } from "../FormElements";
 
 export const ProductFormRoot = styled.form`
+  justify-content: space-between;
+  width: 100%;
+  /* height: 100%; */
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   max-width: 600px;
+  padding-right: 10px;
+  padding-left: 10px;
   /* padding: ${spacing["8"]} ${spacing["2"]}; */
 
   .fieldset {
@@ -23,15 +28,41 @@ export const ProductFormRoot = styled.form`
   @media (min-width: ${breakpoints.xl}) {
     max-width: 600px;
   } */
+  flex-direction: column;
+  .children {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    max-height: 500px;
+    flex: 1;
+    margin-bottom: 30px;
+  }
+  .formItems {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @media (min-width: 768px) {
+    .children {
+      margin-bottom: 0;
+    }
+  }
+  @media (min-width: 1150px) {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
 `;
 
 export const PriceRange = styled.div`
+  align-items: flex-end;
   font-family: ${fonts.sans};
-  padding-top: 20px;
+  /* padding-top: 20px; */
+  justify-content: center;
+  max-height: 167px;
   flex: 1;
   display: flex;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   flex-direction: column;
+
   small {
     font-weight: ${({ compareAtPrice }) => (compareAtPrice ? 500 : 300)};
     color: ${colors.red["900"]};

@@ -8,7 +8,7 @@ import {
   // Article,
   // Description,
   Main,
-  MainInfo,
+  // MainInfo,
   MainTitle,
   // Profile,
   // Warranty,
@@ -26,6 +26,11 @@ import DescriptionSection from "../components/SingleProduct/Description/Descript
 const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
+  align-items: center;
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 const Mattress = ({ data }) => {
@@ -104,7 +109,7 @@ const Mattress = ({ data }) => {
           <Main>
             <LeftSide>
               <ImageCarousel
-                isMobile={detectMobile.isMobile()}
+                isMobile={detectMobile.isMobile() && width < 768}
                 cover={mattress.images[0].coverImage}
                 img1={mattress.images[0].image2}
                 img2={mattress.images[0].image3}
@@ -114,11 +119,24 @@ const Mattress = ({ data }) => {
                 mattName={`${mattress.brand.displayName} ${mattress.nameWithout}`}
                 firmness={mattress.firmness}
               />
-              {detectMobile.isMobile() && (
+              {detectMobile.isMobile() && width < 768 && (
                 <FirmnessScale firmness={mattress.firmness} />
               )}
             </LeftSide>
-            <MainInfo>
+            {/* <MainInfo> */}
+            <ProductForm
+              variants={mattress.shopifyInfo[0].variants}
+              priceMin={
+                mattress.shopifyInfo[0].priceRange.minVariantPrice.amount
+              }
+              priceMax={
+                mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount
+              }
+              matt
+              maxQty={4}
+              boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
+              shopifyBase={shopifyBase}
+            >
               {width > 767 && (
                 <FeatureList
                   top
@@ -127,20 +145,8 @@ const Mattress = ({ data }) => {
                   width={width}
                 />
               )}
-              <ProductForm
-                variants={mattress.shopifyInfo[0].variants}
-                priceMin={
-                  mattress.shopifyInfo[0].priceRange.minVariantPrice.amount
-                }
-                priceMax={
-                  mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount
-                }
-                matt
-                maxQty={4}
-                boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
-                shopifyBase={shopifyBase}
-              />
-            </MainInfo>
+            </ProductForm>
+            {/* </MainInfo> */}
           </Main>
           <DescriptionSection
             mattress

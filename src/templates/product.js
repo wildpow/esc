@@ -98,40 +98,47 @@ const Base = ({ data }) => {
               img2={product.threeImageBlock[0].image3}
               base
             />
-            <MainInfo>
-              {width > 768 && (
+            {/* <MainInfo> */}
+            {/* {width > 768 && (
                 <FeatureList
                   top
                   listText={product.fullFeatureList.length !== 0}
                   list={product.productFeatures}
                   width={width}
                 />
-              )}
-              {product.typeOfProduct.title === "Sheets" ? (
-                <SheetForm
-                  titleOfProduct={product.title}
-                  variants={product.shopifyInfo[0].variants}
-                  priceMin={
-                    product.shopifyInfo[0].priceRange.minVariantPrice.amount
-                  }
-                  priceMax={
-                    product.shopifyInfo[0].priceRange.maxVariantPrice.amount
-                  }
-                  maxQty={4}
+              )} */}
+            {product.typeOfProduct.title === "Sheets" ? (
+              <SheetForm
+                titleOfProduct={product.title}
+                variants={product.shopifyInfo[0].variants}
+                priceMin={
+                  product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                }
+                priceMax={
+                  product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                }
+                maxQty={4}
+              />
+            ) : (
+              <ProductForm
+                variants={product.shopifyInfo[0].variants}
+                priceMin={
+                  product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                }
+                priceMax={
+                  product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                }
+                maxQty={4}
+              >
+                <FeatureList
+                  top
+                  listText={product.fullFeatureList.length !== 0}
+                  list={product.productFeatures}
+                  width={width}
                 />
-              ) : (
-                <ProductForm
-                  variants={product.shopifyInfo[0].variants}
-                  priceMin={
-                    product.shopifyInfo[0].priceRange.minVariantPrice.amount
-                  }
-                  priceMax={
-                    product.shopifyInfo[0].priceRange.maxVariantPrice.amount
-                  }
-                  maxQty={4}
-                />
-              )}
-            </MainInfo>
+              </ProductForm>
+            )}
+            {/* </MainInfo> */}
           </Main>
           <DescriptionSection
             description={product.description}

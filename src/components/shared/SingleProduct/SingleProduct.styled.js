@@ -172,19 +172,24 @@ export const Construction = styled(List)`
 `;
 
 export const Main = styled.div`
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  /* align-items: center; */
   /* margin-top: 2px; */
   background-color: white;
-  padding-bottom: 25px;
+  /* padding-bottom: 25px; */
   padding-top: 5px;
-  justify-content: space-around;
+  margin-bottom: 30px;
+  /* justify-content: space-around; */
   @media (min-width: 360px) {
     /* margin-top: 4px; */
     /* margin-bottom: 12px; */
   }
   @media (min-width: 768px) {
+    margin-bottom: 0;
     /* margin-bottom: 10px; */
     flex-direction: row;
     align-items: initial;
@@ -192,7 +197,7 @@ export const Main = styled.div`
     padding-right: 5px;
   }
   @media (min-width: 1024px) {
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     /* margin-left: 5px; */
     /* margin-bottom: 10px; */
   }
