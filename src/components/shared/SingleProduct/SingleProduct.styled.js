@@ -9,15 +9,15 @@ import {
 } from "../../../styles/_pr1nt/main";
 import { colors } from "../../../utils/styles";
 
-export const Article = styled.article`
-  display: flex;
-  background: ${colors.gray["200"]};
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  padding-left: 0px;
-`;
+// export const Article = styled.article`
+//   display: flex;
+//   background: ${colors.gray["200"]};
+//   flex-direction: column;
+//   justify-content: center;
+//   align-content: center;
+//   align-items: center;
+//   padding-left: 0px;
+// `;
 
 export const Description = styled.p`
   font-weight: 400;
@@ -61,115 +61,115 @@ export const Description = styled.p`
   ${DescriptionPr1nt}
 `;
 
-export const List = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-family: ${(props) => props.theme.MainFont3};
-  font-weight: 400;
-  margin-left: 5px;
-  color: ${(props) => props.theme.newColor2};
-  padding: 0px;
-  h3 {
-    font-size: 0.9rem;
-    margin-top: 0;
-    margin-bottom: 0;
-    color: ${colors.blue["900"]};
-    border-bottom: 4px solid ${(props) => props.theme.mainColor2};
-    padding-bottom: 2px;
-    padding-left: 20px;
-  }
-  ul {
-    list-style: square;
-    margin-top: 2px;
-    font-size: 0.7rem;
-    padding-left: 20px;
-    margin-bottom: 5px;
-  }
-  ul li {
-    padding-bottom: 2px;
-    color: ${colors.gray["700"]};
-  }
+// export const List = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   font-family: ${(props) => props.theme.MainFont3};
+//   font-weight: 400;
+//   margin-left: 5px;
+//   color: ${(props) => props.theme.newColor2};
+//   padding: 0px;
+//   h3 {
+//     font-size: 0.9rem;
+//     margin-top: 0;
+//     margin-bottom: 0;
+//     color: ${colors.blue["900"]};
+//     border-bottom: 4px solid ${(props) => props.theme.mainColor2};
+//     padding-bottom: 2px;
+//     padding-left: 20px;
+//   }
+//   ul {
+//     list-style: square;
+//     margin-top: 2px;
+//     font-size: 0.7rem;
+//     padding-left: 20px;
+//     margin-bottom: 5px;
+//   }
+//   ul li {
+//     padding-bottom: 2px;
+//     color: ${colors.gray["700"]};
+//   }
 
-  @media (min-width: 360px) {
-    ul {
-      margin-top: 10px;
-      font-size: 1rem;
-    }
-    h3 {
-      font-size: 1.2rem;
-    }
-  }
+//   @media (min-width: 360px) {
+//     ul {
+//       margin-top: 10px;
+//       font-size: 1rem;
+//     }
+//     h3 {
+//       font-size: 1.2rem;
+//     }
+//   }
 
-  @media (min-width: 550px) {
-    padding: 0px 0px 0px 10px;
-    h3 {
-      font-size: 2rem;
-      margin-top: 0;
-      margin-bottom: 0;
-      border-bottom: 4px solid ${(props) => props.theme.mainColor2};
-      padding-bottom: 2px;
-      padding-left: 20px;
-    }
-    ul {
-      list-style: square;
-      margin-top: 10px;
-    }
-    ul li {
-      padding-bottom: 4px;
-      font-size: 1.5rem;
-    }
-  }
+//   @media (min-width: 550px) {
+//     padding: 0px 0px 0px 10px;
+//     h3 {
+//       font-size: 2rem;
+//       margin-top: 0;
+//       margin-bottom: 0;
+//       border-bottom: 4px solid ${(props) => props.theme.mainColor2};
+//       padding-bottom: 2px;
+//       padding-left: 20px;
+//     }
+//     ul {
+//       list-style: square;
+//       margin-top: 10px;
+//     }
+//     ul li {
+//       padding-bottom: 4px;
+//       font-size: 1.5rem;
+//     }
+//   }
 
-  @media (min-width: 992px) {
-    padding: 0px 30px 10px 30px;
+//   @media (min-width: 992px) {
+//     padding: 0px 30px 10px 30px;
 
-    h3 {
-      padding-left: 20px;
-      font-size: 2.4rem;
-      margin-top: 0;
-      margin-bottom: 0;
-      padding-bottom: 2px;
-    }
-    ul {
-      margin-top: 10px;
-      font-size: 1.8rem;
-    }
-    ul li {
-      padding-bottom: 2px;
-      font-size: 1.8rem;
-    }
-  }
+//     h3 {
+//       padding-left: 20px;
+//       font-size: 2.4rem;
+//       margin-top: 0;
+//       margin-bottom: 0;
+//       padding-bottom: 2px;
+//     }
+//     ul {
+//       margin-top: 10px;
+//       font-size: 1.8rem;
+//     }
+//     ul li {
+//       padding-bottom: 2px;
+//       font-size: 1.8rem;
+//     }
+//   }
 
-  @media (min-width: 1300px) {
-    h3 {
-      padding-left: 20px;
-      font-weight: 700;
-      font-size: 2.1rem;
-    }
-  }
-  ${ListPr1nt}
-`;
+//   @media (min-width: 1300px) {
+//     h3 {
+//       padding-left: 20px;
+//       font-weight: 700;
+//       font-size: 2.1rem;
+//     }
+//   }
+//   ${ListPr1nt}
+// `;
 
-export const Construction = styled(List)`
-  @media (min-width: 992px) {
-    h3 {
-      font-size: 1.8rem;
-    }
-    ul {
-      font-size: 1.6rem;
-    }
-    ul li {
-      font-size: 1.4rem;
-    }
-  }
-  @media (min-width: 1300px) {
-    h3 {
-      font-weight: 700;
-      font-size: 1.8rem;
-    }
-  }
-`;
+// export const Construction = styled(List)`
+//   @media (min-width: 992px) {
+//     h3 {
+//       font-size: 1.8rem;
+//     }
+//     ul {
+//       font-size: 1.6rem;
+//     }
+//     ul li {
+//       font-size: 1.4rem;
+//     }
+//   }
+//   @media (min-width: 1300px) {
+//     h3 {
+//       font-weight: 700;
+//       font-size: 1.8rem;
+//     }
+//   }
+// `;
 
 export const Main = styled.div`
   align-items: center;
@@ -254,40 +254,40 @@ export const MainTitle = styled(H2)`
   ${MainTitlePr1nt}
 `;
 
-export const Profile = styled.p`
-  color: ${colors.gray["700"]};
+// export const Profile = styled.p`
+//   color: ${colors.gray["700"]};
 
-  font-family: ${(props) => props.theme.MainFont1};
-  margin-top: 0;
-  font-size: 0.9rem;
-  @media (min-width: 768px) {
-    font-size: 1rem;
-  }
-  @media (min-width: 1024px) {
-    font-size: 1.2rem;
-  }
-  @media (min-width: 1300px) {
-    font-size: 1.4rem;
-  }
-`;
+//   font-family: ${(props) => props.theme.MainFont1};
+//   margin-top: 0;
+//   font-size: 0.9rem;
+//   @media (min-width: 768px) {
+//     font-size: 1rem;
+//   }
+//   @media (min-width: 1024px) {
+//     font-size: 1.2rem;
+//   }
+//   @media (min-width: 1300px) {
+//     font-size: 1.4rem;
+//   }
+// `;
 
-export const Warranty = styled.p`
-  font-family: ${(props) => props.theme.MainFont1};
-  text-align: center;
-  font-weight: 300;
-  font-size: 0.5rem;
-  padding-right: 5px;
-  padding-left: 5px;
-  @media (min-width: 768px) {
-    font-size: 1rem;
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-  @media (min-width: 1024px) {
-    font-size: 1rem;
-    line-height: 1.6rem;
-  }
-`;
+// export const Warranty = styled.p`
+//   font-family: ${(props) => props.theme.MainFont1};
+//   text-align: center;
+//   font-weight: 300;
+//   font-size: 0.5rem;
+//   padding-right: 5px;
+//   padding-left: 5px;
+//   @media (min-width: 768px) {
+//     font-size: 1rem;
+//     padding-right: 20px;
+//     padding-left: 20px;
+//   }
+//   @media (min-width: 1024px) {
+//     font-size: 1rem;
+//     line-height: 1.6rem;
+//   }
+// `;
 
 export const Wrapper = styled.div`
   display: flex;
@@ -305,18 +305,18 @@ export const Wrapper = styled.div`
   ${WrapperSingleMattPr1nt}
 `;
 
-export const MainInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  max-width: 600px;
-  padding: 18px 7px 0px 7px;
-  @media (min-width: 768px) {
-    /* padding-left: 10px; */
-    padding: 18px 0px 0px 10px;
-  }
-  @media (min-width: 1024px) {
-    padding-top: 14px;
-    padding-left: 20px;
-  }
-`;
+// export const MainInfo = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   max-width: 600px;
+//   padding: 18px 7px 0px 7px;
+//   @media (min-width: 768px) {
+//     /* padding-left: 10px; */
+//     padding: 18px 0px 0px 10px;
+//   }
+//   @media (min-width: 1024px) {
+//     padding-top: 14px;
+//     padding-left: 20px;
+//   }
+// `;

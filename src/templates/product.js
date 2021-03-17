@@ -118,7 +118,16 @@ const Base = ({ data }) => {
                   product.shopifyInfo[0].priceRange.maxVariantPrice.amount
                 }
                 maxQty={4}
-              />
+              >
+                {width > 767 && (
+                  <FeatureList
+                    top
+                    listText={product.fullFeatureList.length !== 0}
+                    list={product.productFeatures}
+                    width={width}
+                  />
+                )}
+              </SheetForm>
             ) : (
               <ProductForm
                 variants={product.shopifyInfo[0].variants}
@@ -130,12 +139,14 @@ const Base = ({ data }) => {
                 }
                 maxQty={4}
               >
-                <FeatureList
-                  top
-                  listText={product.fullFeatureList.length !== 0}
-                  list={product.productFeatures}
-                  width={width}
-                />
+                {width > 767 && (
+                  <FeatureList
+                    top
+                    listText={product.fullFeatureList.length !== 0}
+                    list={product.productFeatures}
+                    width={width}
+                  />
+                )}
               </ProductForm>
             )}
             {/* </MainInfo> */}

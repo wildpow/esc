@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { colors, fonts, fontSize, spacing } from "../../../utils/styles";
+import { colors, fonts } from "../../../utils/styles";
 import FoundationCompat from "../FoundationCompat";
 import FeatureList from "../../shared/SingleProduct/FeatureList";
 import {
@@ -61,7 +61,7 @@ const DescriptionRoot = styled.section`
     .extra {
       justify-content: flex-end;
       h5 {
-        margin: 0;
+        /* margin: 0; */
       }
     }
   }

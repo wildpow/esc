@@ -194,7 +194,7 @@ const ProductForm = ({
 
   const hasVariants = variants.length > 1;
   return (
-    <ProductFormRoot onSubmit={handleSubmit}>
+    <ProductFormRoot onSubmit={handleSubmit} matt={matt}>
       <div className="children">
         {children}
         <div className="formItems">

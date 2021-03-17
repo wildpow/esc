@@ -109,7 +109,7 @@ const Mattress = ({ data }) => {
           <Main>
             <LeftSide>
               <ImageCarousel
-                isMobile={detectMobile.isMobile() && width < 768}
+                isMobile={detectMobile.isMobile() && width < 1024}
                 cover={mattress.images[0].coverImage}
                 img1={mattress.images[0].image2}
                 img2={mattress.images[0].image3}
@@ -119,7 +119,7 @@ const Mattress = ({ data }) => {
                 mattName={`${mattress.brand.displayName} ${mattress.nameWithout}`}
                 firmness={mattress.firmness}
               />
-              {detectMobile.isMobile() && width < 768 && (
+              {detectMobile.isMobile() && width < 1024 && (
                 <FirmnessScale firmness={mattress.firmness} />
               )}
             </LeftSide>
