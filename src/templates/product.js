@@ -139,14 +139,12 @@ const Base = ({ data }) => {
                 }
                 maxQty={4}
               >
-                {width > 767 && (
-                  <FeatureList
-                    top
-                    listText={product.fullFeatureList.length !== 0}
-                    list={product.productFeatures}
-                    width={width}
-                  />
-                )}
+                <FeatureList
+                  top
+                  listText={product.fullFeatureList.length !== 0}
+                  list={product.productFeatures}
+                  width={width}
+                />
               </ProductForm>
             )}
             {/* </MainInfo> */}

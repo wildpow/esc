@@ -136,7 +136,8 @@ const BottomList = css`
   }
 `;
 const List = styled.div`
-  display: flex;
+  display: ${({ top }) => (top ? "none" : "flex")};
+
   flex-direction: column;
   justify-content: center;
   font-family: ${(props) => props.theme.MainFont3};
@@ -196,7 +197,9 @@ const List = styled.div`
       font-size: 1.5rem;
     }
   }
-
+  @media (min-width: 768px) {
+    display: flex;
+  }
   @media (min-width: 992px) {
     /* padding: 0px 32px 10px 32px; */
 
@@ -287,29 +290,32 @@ export default function FeatureList({ list, top, width, listText }) {
       </Popup>
     );
   }
-  if (list.length === 0) return null;
   return (
     <>
-      <List top={top}>
-        <h3>{listText ? "Features" : "Key Features"}</h3>
-        <ul>
-          {list.map((item) => (
-            <li key={item.id}>{listItem(item)}</li>
-          ))}
-          {listText && (
-            <Info>
-              <AnchorLink href="#moreInfo">
-                <div className="left">
-                  <DownArrow />
-                </div>
-                See more details
-                <div className="right">
-                  <DownArrow />
-                </div>
-              </AnchorLink>
-            </Info>
-          )}
-        </ul>
+      <List top={top} width={width}>
+        {list.length === 0 ? null : (
+          <>
+            <h3>{listText ? "Features" : "Key Features"}</h3>
+            <ul>
+              {list.map((item) => (
+                <li key={item.id}>{listItem(item)}</li>
+              ))}
+              {listText && (
+                <Info>
+                  <AnchorLink href="#moreInfo">
+                    <div className="left">
+                      <DownArrow />
+                    </div>
+                    See more details
+                    <div className="right">
+                      <DownArrow />
+                    </div>
+                  </AnchorLink>
+                </Info>
+              )}
+            </ul>
+          </>
+        )}
       </List>
     </>
   );
