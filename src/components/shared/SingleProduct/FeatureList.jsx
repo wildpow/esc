@@ -126,22 +126,13 @@ const Info = styled.li`
 `;
 
 const BottomList = css`
-  @media (min-width: 992px) {
-    h3 {
-      font-size: 1.8rem;
-    }
-    ul {
-      font-size: 1.6rem;
-    }
-    ul li {
-      font-size: 1.4rem;
-    }
+  max-width: initial;
+  padding: 0 !important;
+  ul {
+    padding-top: 5px;
   }
-  @media (min-width: 1300px) {
-    h3 {
-      font-weight: 700;
-      font-size: 1.8rem;
-    }
+  ul li {
+    padding-bottom: 7px;
   }
 `;
 const List = styled.div`
@@ -150,7 +141,8 @@ const List = styled.div`
   justify-content: center;
   font-family: ${(props) => props.theme.MainFont3};
   font-weight: 400;
-  margin-left: 5px;
+  margin-left: 0px;
+  max-width: 600px;
   color: ${(props) => props.theme.newColor2};
   padding: 0px;
   h3 {
@@ -163,6 +155,7 @@ const List = styled.div`
     padding-left: 20px;
   }
   ul {
+    margin-left: 7px;
     list-style: square;
     margin-top: 2px;
     font-size: 0.7rem;
@@ -185,7 +178,7 @@ const List = styled.div`
   }
 
   @media (min-width: 550px) {
-    padding: 0px 0px 0px 10px;
+    /* padding: 0px 0px 0px 10px; */
     h3 {
       font-size: 2rem;
       margin-top: 0;
@@ -205,7 +198,7 @@ const List = styled.div`
   }
 
   @media (min-width: 992px) {
-    padding: 0px 30px 10px 30px;
+    /* padding: 0px 32px 10px 32px; */
 
     h3 {
       padding-left: 20px;
@@ -221,6 +214,7 @@ const List = styled.div`
     ul li {
       padding-bottom: 2px;
       font-size: 1.8rem;
+      /* margin-left: 10px; */
     }
   }
 
@@ -259,7 +253,7 @@ const OpenButton = styled.button`
     color: ${(props) => props.theme.mainColor2};
   }
 `;
-export default function FeatureList({ list, top, width }) {
+export default function FeatureList({ list, top, width, listText }) {
   function listItem(item) {
     if (item.description.length < 1) return item.title;
     return (
@@ -296,13 +290,13 @@ export default function FeatureList({ list, top, width }) {
   if (list.length === 0) return null;
   return (
     <>
-      <List top>
-        <h3>{top ? "Features" : "Key Features"}</h3>
+      <List top={top}>
+        <h3>{listText ? "Features" : "Key Features"}</h3>
         <ul>
           {list.map((item) => (
             <li key={item.id}>{listItem(item)}</li>
           ))}
-          {top && (
+          {listText && (
             <Info>
               <AnchorLink href="#moreInfo">
                 <div className="left">

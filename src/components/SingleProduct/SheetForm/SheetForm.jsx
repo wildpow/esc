@@ -63,6 +63,7 @@ export default function ProductForm({
   priceMin,
   priceMax,
   maxQty,
+  children,
 }) {
   const colorInfo = generateColors(variants, titleOfProduct);
   const { addVariantToCart } = useContext(StoreContext);
@@ -131,101 +132,106 @@ export default function ProductForm({
 
   return (
     <ProductFormRoot onSubmit={handleSubmit}>
-      <ColorWrapper>
-        <h5>
-          {state.activeColor.length === 0
-            ? `Choose a color below.`
-            : `Color: ${state.activeColor}`}
-        </h5>
-        <div className="colorPalette">
-          {colorInfo.colorPalette.map((color) => (
-            <ColorLabel
-              title={color.title}
-              activeTitle={state.activeColor}
-              key={color.title}
-              htmlFor={color.title}
-              className="color_label"
-              style={{
-                backgroundImage: `url(${color.colorImg})`,
-              }}
-            >
-              <input
-                value={color.title}
-                className="color_input"
-                onChange={(e) =>
-                  dispatch({ type: e.target.name, payload: e.target.value })
-                }
-                checked={color.title === state.activeColor}
-                type="checkbox"
-                name="color"
-                id={color.title}
-                label={color.title}
-                aria-required="true"
-                aria-label={`Color - ${color.title}`}
-              />
-            </ColorLabel>
-          ))}
-        </div>
-      </ColorWrapper>
-      <QtyFieldset>
-        <Label htmlFor="quantity">Qty.</Label>
-        <Input
-          type="number"
-          inputmode="numeric"
-          id="quantity"
-          disabled={!state.colorList || state.sizeIndex.length === 0}
-          name="quantity"
-          min="1"
-          step="1"
-          max={maxQty}
-          aria-label="Pick quantity"
-          onChange={(e) =>
-            dispatch({ type: e.target.name, payload: e.target.value })
-          }
-          value={state.quantity}
-        />
-      </QtyFieldset>
-      <SizeFieldset>
-        <Label htmlFor="size">Size</Label>
-        <Select
-          as="select"
-          id="size"
-          value={state.sizeIndex}
-          name="size"
-          aria-required="true"
-          aria-label="Pick a size"
-          onChange={(e) =>
-            dispatch({ type: e.target.name, payload: e.target.value })
-          }
-          disabled={state.activeColor.length === 0}
-        >
-          <option disabled value="">
-            Choose Size
-          </option>
-          {state.activeColor.length !== 0 &&
-            state.colorList.map((item, index) => {
-              const temp = item.title.split(" / ");
-              return (
-                <option
-                  value={index}
-                  key={item.shopifyId}
-                  aria-label={`${temp[0]} - $${item.price}`}
+      <div className="children">
+        {children}
+        <div className="formItems">
+          <ColorWrapper>
+            <h5>
+              {state.activeColor.length === 0
+                ? `Choose a color below.`
+                : `Color: ${state.activeColor}`}
+            </h5>
+            <div className="colorPalette">
+              {colorInfo.colorPalette.map((color) => (
+                <ColorLabel
+                  title={color.title}
+                  activeTitle={state.activeColor}
+                  key={color.title}
+                  htmlFor={color.title}
+                  className="color_label"
+                  style={{
+                    backgroundImage: `url(${color.colorImg})`,
+                  }}
                 >
-                  {`${temp[0]} - $${item.price}`}
-                </option>
-              );
-            })}
-        </Select>
-      </SizeFieldset>
-      <AddToCartButton
-        type="submit"
-        disabled={
-          state.activeColor.length === 0 || state.sizeIndex.length === 0
-        }
-      >
-        Add to Cart
-        <ShoppingCart />
-      </AddToCartButton>
+                  <input
+                    value={color.title}
+                    className="color_input"
+                    onChange={(e) =>
+                      dispatch({ type: e.target.name, payload: e.target.value })
+                    }
+                    checked={color.title === state.activeColor}
+                    type="checkbox"
+                    name="color"
+                    id={color.title}
+                    label={color.title}
+                    aria-required="true"
+                    aria-label={`Color - ${color.title}`}
+                  />
+                </ColorLabel>
+              ))}
+            </div>
+          </ColorWrapper>
+          <QtyFieldset>
+            <Label htmlFor="quantity">Qty.</Label>
+            <Input
+              type="number"
+              inputmode="numeric"
+              id="quantity"
+              disabled={!state.colorList || state.sizeIndex.length === 0}
+              name="quantity"
+              min="1"
+              step="1"
+              max={maxQty}
+              aria-label="Pick quantity"
+              onChange={(e) =>
+                dispatch({ type: e.target.name, payload: e.target.value })
+              }
+              value={state.quantity}
+            />
+          </QtyFieldset>
+          <SizeFieldset>
+            <Label htmlFor="size">Size</Label>
+            <Select
+              as="select"
+              id="size"
+              value={state.sizeIndex}
+              name="size"
+              aria-required="true"
+              aria-label="Pick a size"
+              onChange={(e) =>
+                dispatch({ type: e.target.name, payload: e.target.value })
+              }
+              disabled={state.activeColor.length === 0}
+            >
+              <option disabled value="">
+                Choose Size
+              </option>
+              {state.activeColor.length !== 0 &&
+                state.colorList.map((item, index) => {
+                  const temp = item.title.split(" / ");
+                  return (
+                    <option
+                      value={index}
+                      key={item.shopifyId}
+                      aria-label={`${temp[0]} - $${item.price}`}
+                    >
+                      {`${temp[0]} - $${item.price}`}
+                    </option>
+                  );
+                })}
+            </Select>
+          </SizeFieldset>
+          <AddToCartButton
+            type="submit"
+            disabled={
+              state.activeColor.length === 0 || state.sizeIndex.length === 0
+            }
+          >
+            Add to Cart
+            <ShoppingCart />
+          </AddToCartButton>
+        </div>
+      </div>
       <PriceRange compareAtPrice={state.compareAtPrice}>
         {state.sizeIndex === "" ? (
           <>

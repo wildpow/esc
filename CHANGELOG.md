@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### March 2021
+
+#### Features
+
+- [PR #137](https://github.com/wildpow/new-esc-gatsby/pull/137)
+  - Added foundation compatibility chart to mattresses in single product view.
+  - New CSS of below the fold single product description.
+  - Updated alignment and general CSS for single product feature list and form.
+
 ### February 2021
 
 #### Features

@@ -20,6 +20,7 @@ import { useWindowSize } from "../context/WindowSizeContext";
 import FeatureList from "../components/shared/SingleProduct/FeatureList";
 import SheetForm from "../components/SingleProduct/SheetForm";
 import ProductForm from "../components/shared/ProductForm";
+import DescriptionSection from "../components/SingleProduct/Description/Description";
 
 const Base = ({ data }) => {
   const { width } = useWindowSize();
@@ -97,41 +98,76 @@ const Base = ({ data }) => {
               img2={product.threeImageBlock[0].image3}
               base
             />
-            <MainInfo>
-              {width > 768 && (
+            {/* <MainInfo> */}
+            {/* {width > 768 && (
                 <FeatureList
-                  top={product.fullFeatureList.length !== 0}
+                  top
+                  listText={product.fullFeatureList.length !== 0}
                   list={product.productFeatures}
                   width={width}
                 />
-              )}
-              {product.typeOfProduct.title === "Sheets" ? (
-                <SheetForm
-                  titleOfProduct={product.title}
-                  variants={product.shopifyInfo[0].variants}
-                  priceMin={
-                    product.shopifyInfo[0].priceRange.minVariantPrice.amount
-                  }
-                  priceMax={
-                    product.shopifyInfo[0].priceRange.maxVariantPrice.amount
-                  }
-                  maxQty={4}
-                />
-              ) : (
-                <ProductForm
-                  variants={product.shopifyInfo[0].variants}
-                  priceMin={
-                    product.shopifyInfo[0].priceRange.minVariantPrice.amount
-                  }
-                  priceMax={
-                    product.shopifyInfo[0].priceRange.maxVariantPrice.amount
-                  }
-                  maxQty={4}
-                />
-              )}
-            </MainInfo>
+              )} */}
+            {product.typeOfProduct.title === "Sheets" ? (
+              <SheetForm
+                titleOfProduct={product.title}
+                variants={product.shopifyInfo[0].variants}
+                priceMin={
+                  product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                }
+                priceMax={
+                  product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                }
+                maxQty={4}
+              >
+                {width > 767 && (
+                  <FeatureList
+                    top
+                    listText={product.fullFeatureList.length !== 0}
+                    list={product.productFeatures}
+                    width={width}
+                  />
+                )}
+              </SheetForm>
+            ) : (
+              <ProductForm
+                variants={product.shopifyInfo[0].variants}
+                priceMin={
+                  product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                }
+                priceMax={
+                  product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                }
+                maxQty={4}
+              >
+                {width > 767 && (
+                  <FeatureList
+                    top
+                    listText={product.fullFeatureList.length !== 0}
+                    list={product.productFeatures}
+                    width={width}
+                  />
+                )}
+              </ProductForm>
+            )}
+            {/* </MainInfo> */}
           </Main>
-          <header id="moreInfo">
+          <DescriptionSection
+            description={product.description}
+            profile={product.height}
+            warranty={product.warranty}
+            featureList={
+              width > 768 && product.fullFeatureList.length === 0
+                ? null
+                : width < 768
+                ? mergeFeatureLists(
+                    product.productFeatures,
+                    product.fullFeatureList,
+                  )
+                : product.fullFeatureList
+            }
+            width={width}
+          />
+          {/* <header id="moreInfo">
             <MainTitle red>OVERVIEW & SPECS</MainTitle>
           </header>
           <Article>
@@ -157,7 +193,7 @@ const Base = ({ data }) => {
             {product.warranty.length > 0 && (
               <Warranty>{product.warranty}</Warranty>
             )}
-          </Article>
+          </Article> */}
         </Wrapper>
         <BreadWrapper>
           {product.typeOfProduct.title === "Adjustable" ? (

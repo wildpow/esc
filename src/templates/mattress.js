@@ -5,13 +5,13 @@ import { graphql } from "gatsby";
 import useMobileDetect from "../components/SingleProduct/useMobileDect";
 import Layout from "../components/Layout";
 import {
-  Article,
-  Description,
+  // Article,
+  // Description,
   Main,
-  MainInfo,
+  // MainInfo,
   MainTitle,
-  Profile,
-  Warranty,
+  // Profile,
+  // Warranty,
   Wrapper,
 } from "../components/shared/SingleProduct/SingleProduct.styled";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
@@ -21,10 +21,16 @@ import FirmnessScale from "../components/SingleProduct/FirmessScaleMobile";
 import { useWindowSize } from "../context/WindowSizeContext";
 import FeatureList from "../components/shared/SingleProduct/FeatureList";
 import ProductForm from "../components/shared/ProductForm";
+import DescriptionSection from "../components/SingleProduct/Description/Description";
 
 const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
+  align-items: center;
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 const Mattress = ({ data }) => {
@@ -103,7 +109,7 @@ const Mattress = ({ data }) => {
           <Main>
             <LeftSide>
               <ImageCarousel
-                isMobile={detectMobile.isMobile()}
+                isMobile={detectMobile.isMobile() && width < 1024}
                 cover={mattress.images[0].coverImage}
                 img1={mattress.images[0].image2}
                 img2={mattress.images[0].image3}
@@ -113,52 +119,50 @@ const Mattress = ({ data }) => {
                 mattName={`${mattress.brand.displayName} ${mattress.nameWithout}`}
                 firmness={mattress.firmness}
               />
-              {detectMobile.isMobile() && (
+              {detectMobile.isMobile() && width < 1024 && (
                 <FirmnessScale firmness={mattress.firmness} />
               )}
             </LeftSide>
-            <MainInfo>
+            {/* <MainInfo> */}
+            <ProductForm
+              variants={mattress.shopifyInfo[0].variants}
+              priceMin={
+                mattress.shopifyInfo[0].priceRange.minVariantPrice.amount
+              }
+              priceMax={
+                mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount
+              }
+              matt
+              maxQty={4}
+              boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
+              shopifyBase={shopifyBase}
+            >
               {width > 767 && (
                 <FeatureList
                   top
+                  listText
                   list={mattress.topSmallFeatureList}
                   width={width}
                 />
               )}
-              <ProductForm
-                variants={mattress.shopifyInfo[0].variants}
-                priceMin={
-                  mattress.shopifyInfo[0].priceRange.minVariantPrice.amount
-                }
-                priceMax={
-                  mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount
-                }
-                matt
-                maxQty={4}
-                boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
-                shopifyBase={shopifyBase}
-              />
-            </MainInfo>
+            </ProductForm>
+            {/* </MainInfo> */}
           </Main>
-          <header id="moreInfo">
-            <MainTitle red>OVERVIEW & SPECS</MainTitle>
-          </header>
-          <Article>
-            <Description>{mattress.description}</Description>
-            <Profile>{`Profile: ${mattress.profile}"`}</Profile>
-            {width < 767 ? (
-              <FeatureList
-                list={mergeFeatureLists(
-                  mattress.topSmallFeatureList,
-                  mattress.bottomFeatureList,
-                )}
-                width={width}
-              />
-            ) : (
-              <FeatureList list={mattress.bottomFeatureList} width={width} />
-            )}
-            <Warranty>{mattress.warrantyTitle}</Warranty>
-          </Article>
+          <DescriptionSection
+            mattress
+            description={mattress.description}
+            profile={mattress.profile}
+            warranty={mattress.warrantyTitle}
+            featureList={
+              width < 768
+                ? mergeFeatureLists(
+                    mattress.topSmallFeatureList,
+                    mattress.bottomFeatureList,
+                  )
+                : mattress.bottomFeatureList
+            }
+            width={width}
+          />
         </Wrapper>
         <BreadWrapper>
           <BreadCrumbs

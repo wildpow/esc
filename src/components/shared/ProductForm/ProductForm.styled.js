@@ -9,28 +9,74 @@ import {
 import { Fieldset, Input, Label, SubmitButton } from "../FormElements";
 
 export const ProductFormRoot = styled.form`
+  justify-content: space-between;
+  width: 100%;
+  /* height: 100%; */
   display: flex;
-  flex-wrap: wrap;
-  padding: ${spacing["8"]} ${spacing["2"]};
+  /* flex-wrap: wrap; */
+  max-width: 600px;
+  padding-right: 10px;
+  padding-left: 10px;
+  /* padding: ${spacing["8"]} ${spacing["2"]}; */
 
   .fieldset {
     display: flex;
   }
-  @media (min-width: ${breakpoints.md}) {
+  /* @media (min-width: ${breakpoints.md}) {
     padding: ${spacing["10"]} ${spacing["8"]} 0;
   }
   @media (min-width: ${breakpoints.xl}) {
     max-width: 600px;
+  } */
+  flex-direction: column;
+  .children {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    /* max-height: 250px; */
+    flex: 1;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .formItems {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  @media (min-width: 768px) {
+    .children {
+      /* padding-bottom: ${({ matt }) => (matt ? "0px" : "6px")}; */
+      padding-top: ${({ matt }) => (matt ? "0px" : "14px")};
+      margin-top: 0;
+      margin-bottom: 0;
+      max-height: ${({ matt }) => !matt && "450px"};
+    }
+  }
+  @media (min-width: 1024px) {
+    .children {
+      max-height: 500px;
+    }
+  }
+  @media (min-width: 1150px) {
+    padding-right: 0px;
+    padding-left: 0px;
+    .children {
+      padding-top: 14px;
+      /* padding-bottom: 0px; */
+    }
   }
 `;
 
 export const PriceRange = styled.div`
+  align-items: flex-end;
   font-family: ${fonts.sans};
-  padding-top: 20px;
+  /* padding-top: 20px; */
+  justify-content: center;
+  /* max-height: 83px; */
   flex: 1;
   display: flex;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   flex-direction: column;
+
   small {
     font-weight: ${({ compareAtPrice }) => (compareAtPrice ? 500 : 300)};
     color: ${colors.red["900"]};
@@ -44,7 +90,14 @@ export const PriceRange = styled.div`
     color: ${colors.blue["900"]};
     margin-bottom: 0;
   }
+  @media (min-width: 360px) {
+    /* max-height: 60px; */
+  }
+  @media (min-width: 500px) {
+    /* max-height: 117pxpx; */
+  }
   @media (min-width: ${breakpoints.md}) {
+    max-height: 148px;
     h4 {
       font-size: ${fontSize["2xl"]};
     }
@@ -55,6 +108,7 @@ export const PriceRange = styled.div`
     }
   }
   @media (min-width: ${breakpoints.lg}) {
+    max-height: 167px;
     h4 {
       font-size: ${fontSize["4xl"]};
     }
