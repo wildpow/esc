@@ -7,13 +7,13 @@ import ImageCarousel from "../components/SingleProduct/ImageCarousel";
 import {
   Wrapper,
   Main,
-  MainInfo,
-  Warranty,
-  Description,
-  Article,
-  Profile,
+  // MainInfo,
+  // Warranty,
+  // Description,
+  // Article,
+  // Profile,
   MainTitle,
-  Construction,
+  // Construction,
 } from "../components/shared/SingleProduct/SingleProduct.styled";
 import dateSEO from "../functions/dateSEO";
 import { useWindowSize } from "../context/WindowSizeContext";
@@ -119,14 +119,12 @@ const Base = ({ data }) => {
                 }
                 maxQty={4}
               >
-                {width > 767 && (
-                  <FeatureList
-                    top
-                    listText={product.fullFeatureList.length !== 0}
-                    list={product.productFeatures}
-                    width={width}
-                  />
-                )}
+                <FeatureList
+                  top
+                  listText={product.fullFeatureList.length !== 0}
+                  list={product.productFeatures}
+                  width={width}
+                />
               </SheetForm>
             ) : (
               <ProductForm

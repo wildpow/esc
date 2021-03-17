@@ -137,14 +137,12 @@ const Mattress = ({ data }) => {
               boxVariants={[shopify2Inch, shopify5Inch, shopify9Inch]}
               shopifyBase={shopifyBase}
             >
-              {width > 767 && (
-                <FeatureList
-                  top
-                  listText
-                  list={mattress.topSmallFeatureList}
-                  width={width}
-                />
-              )}
+              <FeatureList
+                top
+                listText
+                list={mattress.topSmallFeatureList}
+                width={width}
+              />
             </ProductForm>
             {/* </MainInfo> */}
           </Main>
