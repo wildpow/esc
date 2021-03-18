@@ -222,6 +222,9 @@ const List = styled.div`
   }
 
   @media (min-width: 1300px) {
+    ul {
+      margin-left: 8px;
+    }
     h3 {
       font-weight: 700;
       font-size: 2.1rem;
