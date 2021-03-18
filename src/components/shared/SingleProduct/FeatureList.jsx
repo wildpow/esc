@@ -153,10 +153,10 @@ const List = styled.div`
     color: ${colors.blue["900"]};
     border-bottom: 4px solid ${colors.red[800]};
     padding-bottom: 2px;
-    padding-left: 20px;
+    padding-left: 23px;
   }
   ul {
-    margin-left: 7px;
+    margin-left: 3px;
     list-style: square;
     margin-top: 2px;
     font-size: 0.7rem;
@@ -186,7 +186,6 @@ const List = styled.div`
       margin-bottom: 0;
       border-bottom: 4px solid ${(props) => props.theme.mainColor2};
       padding-bottom: 2px;
-      padding-left: 20px;
     }
     ul {
       list-style: square;
@@ -204,13 +203,14 @@ const List = styled.div`
     /* padding: 0px 32px 10px 32px; */
 
     h3 {
-      padding-left: 20px;
       font-size: 2.4rem;
       margin-top: 0;
       margin-bottom: 0;
       padding-bottom: 2px;
+      padding-left: 27px;
     }
     ul {
+      margin-left: 7px;
       margin-top: 10px;
       font-size: 1.8rem;
     }
@@ -223,7 +223,6 @@ const List = styled.div`
 
   @media (min-width: 1300px) {
     h3 {
-      padding-left: 20px;
       font-weight: 700;
       font-size: 2.1rem;
     }

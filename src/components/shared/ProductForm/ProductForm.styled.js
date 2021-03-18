@@ -43,6 +43,7 @@ export const ProductFormRoot = styled.form`
     flex-wrap: wrap;
   }
   @media (min-width: 768px) {
+    padding-left: 15px;
     .children {
       /* padding-bottom: ${({ matt }) => (matt ? "0px" : "6px")}; */
       padding-top: ${({ matt }) => (matt ? "0px" : "14px")};
@@ -57,12 +58,14 @@ export const ProductFormRoot = styled.form`
     }
   }
   @media (min-width: 1150px) {
-    padding-right: 0px;
-    padding-left: 0px;
     .children {
       padding-top: 14px;
       /* padding-bottom: 0px; */
     }
+  }
+  @media (min-width: 1250px) {
+    padding-right: 0px;
+    padding-left: 0px;
   }
 `;
 
