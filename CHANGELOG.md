@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### April 2021
+
+#### Bug Fix
+
+- Fixed errors in main json-ld. Testing with Google now passes again. [dd84f52](https://github.com/wildpow/new-esc-gatsby/commit/dd84f52a29cc145cc9820dcbdbe165da1ff580ae)
+- Updated visual sitemap with new mattress model from CMS. Complete rewrite is comming! [d08e7e7](https://github.com/wildpow/new-esc-gatsby/commit/dd84f52a29cc145cc9820dcbdbe165da1ff580ae)
+
 ### March 2021
 
 #### Features
