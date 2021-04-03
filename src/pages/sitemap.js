@@ -16,7 +16,7 @@ import { H2 } from "../styles/mainStyles";
 
 const SiteMap = ({ data }) => {
   const {
-    allDatoCmsMattress,
+    allDatoCmsNewMattress,
     datoCmsSeo,
     adjustables,
     allDatoCmsNewBlog,
@@ -56,12 +56,12 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/brands/sealy">Sealy</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsMattress.nodes.map((mattress) => {
+            {allDatoCmsNewMattress.nodes.map((mattress) => {
               if (mattress.brand.urlName === "sealy") {
                 return (
                   <li key={mattress.id}>
                     <SiteLinks to={`/brands/sealy/${mattress.slug}`}>
-                      {`${mattress.subline.name} ${mattress.name}`}
+                      {`${mattress.subline.name} ${mattress.nameWithout}`}
                     </SiteLinks>
                   </li>
                 );
@@ -75,12 +75,51 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/brands/tempurpedic">Tempurpedic</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsMattress.nodes.map((mattress) => {
+            {allDatoCmsNewMattress.nodes.map((mattress) => {
               if (mattress.brand.urlName === "tempurpedic") {
                 return (
                   <li key={mattress.id}>
                     <SiteLinks to={`/brands/tempurpedic/${mattress.slug}`}>
-                      {`${mattress.subline.name} ${mattress.name}`}
+                      {`${mattress.subline.name} ${mattress.nameWithout}`}
+                    </SiteLinks>
+                  </li>
+                );
+              }
+              return null;
+            })}
+          </ul>
+        </Main>
+
+        <Main>
+          <h3>
+            <BrandLinks to="/brands/posh-and-lavish">Posh + Lavish</BrandLinks>
+          </h3>
+          <ul>
+            {allDatoCmsNewMattress.nodes.map((mattress) => {
+              if (mattress.brand.urlName === "posh-and-lavish") {
+                return (
+                  <li key={mattress.id}>
+                    <SiteLinks to={`/brands/posh-and-lavish/${mattress.slug}`}>
+                      {`${mattress.subline.name} ${mattress.nameWithout}`}
+                    </SiteLinks>
+                  </li>
+                );
+              }
+              return null;
+            })}
+          </ul>
+        </Main>
+        <Main>
+          <h3>
+            <BrandLinks to="/brands/nectar">Nectar</BrandLinks>
+          </h3>
+          <ul>
+            {allDatoCmsNewMattress.nodes.map((mattress) => {
+              if (mattress.brand.urlName === "nectar") {
+                return (
+                  <li key={mattress.id}>
+                    <SiteLinks to={`/brands/nectar/${mattress.slug}`}>
+                      {`${mattress.subline.name} ${mattress.nameWithout}`}
                     </SiteLinks>
                   </li>
                 );
@@ -94,12 +133,31 @@ const SiteMap = ({ data }) => {
             <BrandLinks to="/brands/stearns">Stearns & Foster</BrandLinks>
           </h3>
           <ul>
-            {allDatoCmsMattress.nodes.map((mattress) => {
+            {allDatoCmsNewMattress.nodes.map((mattress) => {
               if (mattress.brand.urlName === "stearns") {
                 return (
                   <li key={mattress.id}>
                     <SiteLinks to={`/brands/stearns/${mattress.slug}`}>
-                      {`${mattress.subline.name} ${mattress.name}`}
+                      {`${mattress.subline.name} ${mattress.nameWithout}`}
+                    </SiteLinks>
+                  </li>
+                );
+              }
+              return null;
+            })}
+          </ul>
+        </Main>
+        <Main>
+          <h3>
+            <BrandLinks to="/brands/beautyrest">Beautyrest</BrandLinks>
+          </h3>
+          <ul>
+            {allDatoCmsNewMattress.nodes.map((mattress) => {
+              if (mattress.brand.urlName === "beautyrest") {
+                return (
+                  <li key={mattress.id}>
+                    <SiteLinks to={`/brands/beautyrest/${mattress.slug}`}>
+                      {`${mattress.subline.name} ${mattress.nameWithout}`}
                     </SiteLinks>
                   </li>
                 );
@@ -148,12 +206,22 @@ export default SiteMap;
 
 export const allMattressesSiteMap = graphql`
   query sitmap {
-    allDatoCmsMattress(sort: { fields: priceHigh }) {
+    allDatoCmsNewMattress {
       nodes {
         slug
+        shopifyInfo {
+          priceRange {
+            minVariantPrice {
+              amount
+            }
+            maxVariantPrice {
+              amount
+            }
+          }
+        }
         name
         id
-        priceLow
+        nameWithout
         subline {
           name
         }
