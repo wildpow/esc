@@ -60,7 +60,7 @@ const Base = ({ data }) => {
                 product.slug
               }",
     "image": "${product.threeImageBlock[0].coverImage.url}",
-    "description": "${product.description}",
+    "description": "${product.description.replace(/['"]+/g, " ")}",
     "brand": {
         "@type": "Brand",
         "name": "${product.brand.title}"

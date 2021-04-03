@@ -63,7 +63,7 @@ const Mattress = ({ data }) => {
       mattress.brand.urlName
     }/${mattress.slug}",
     "image": "${mattress.images[0].coverImage.url}",
-    "description": "${mattress.description}",
+    "description": "${mattress.description.replace(/['"]+/g, " ")}",
     "brand": {
         "@type": "Brand",
         "name": "${mattress.brand.displayName}"
