@@ -79,13 +79,40 @@ const PostRoot = styled.div`
 const Article = tw.article`
   prose sm:prose-lg md:prose-xl lg:prose-2xl lg:pb-10 lg:pt-10
 `;
-
 const NewPost = ({ data, pageContext }) => {
   const { datoCmsNewBlog } = data;
   const { next, prev } = pageContext;
+  let dateModified = null;
+  datoCmsNewBlog.seoMetaTags.tags.forEach((element) => {
+    if (element.hasOwnProperty("attributes")) {
+      if (element.attributes.hasOwnProperty("property")) {
+        if (element.attributes.property === "article:modified_time") {
+          dateModified = element.attributes.content;
+        }
+      }
+    }
+  });
   return (
     <Layout>
-      <HelmetDatoCms seo={datoCmsNewBlog.seoMetaTags} />
+      <HelmetDatoCms seo={datoCmsNewBlog.seoMetaTags}>
+        <script type="application/ld+json">
+          {`
+        {
+          "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "url": "https://www.escmattresscenter.com/blog/${datoCmsNewBlog.slug}",
+      "headline": "${datoCmsNewBlog.title}",
+      "inLanguage": "en-US",
+		"isFamilyFriendly": "true",
+      "image": "${datoCmsNewBlog.coverImage.url}",
+      "datePublished": "${datoCmsNewBlog.date}",
+      "dateModified": "${dateModified || datoCmsNewBlog.date}",
+      "description": "${datoCmsNewBlog.excerpt.replace(/['"]+/g, " ")}",
+      "articleBody": "${datoCmsNewBlog.content.replace(/['"]+/g, " ")}"
+        }
+        `}
+        </script>
+      </HelmetDatoCms>
       <BreadWrapper>
         <BreadCrumbs next="Blog" here={datoCmsNewBlog.title} />
       </BreadWrapper>
@@ -120,7 +147,10 @@ export const newPostQuery = graphql`
       slug
       title
       date
+      content
+      excerpt
       coverImage {
+        url
         alt
         fluid(
           maxWidth: 1440

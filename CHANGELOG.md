@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ### April 2021
 
+#### Features
+
+- Added JSON-LD to blog posts
+
 #### Bug Fix
 
 - Fixed errors in main json-ld. Remove trailing commons. [dd84f52](https://github.com/wildpow/new-esc-gatsby/commit/dd84f52a29cc145cc9820dcbdbe165da1ff580ae)
