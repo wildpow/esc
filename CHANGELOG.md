@@ -6,8 +6,9 @@ All notable changes to this project will be documented in this file. See [Conven
 
 #### Bug Fix
 
-- Fixed errors in main json-ld. Testing with Google now passes again. [dd84f52](https://github.com/wildpow/new-esc-gatsby/commit/dd84f52a29cc145cc9820dcbdbe165da1ff580ae)
+- Fixed errors in main json-ld. Remove trailing commons. [dd84f52](https://github.com/wildpow/new-esc-gatsby/commit/dd84f52a29cc145cc9820dcbdbe165da1ff580ae)
 - Updated visual sitemap with new mattress model from CMS. Complete rewrite is comming! [d08e7e7](https://github.com/wildpow/new-esc-gatsby/commit/dd84f52a29cc145cc9820dcbdbe165da1ff580ae)
+- Fixed errors in product json-dl. Remove double quotes from descriptions of products. [2849033](https://github.com/wildpow/new-esc-gatsby/commit/28490339d8286351f83ce84fd97536bbd15ab0c8)
 
 ### March 2021
 
