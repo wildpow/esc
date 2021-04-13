@@ -6,5 +6,5 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [],
-}
+  plugins: [`gatsby-plugin-goober`, `gatsby-plugin-webpack-bundle-analyser-v2`],
+};

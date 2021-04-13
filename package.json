@@ -18,12 +18,15 @@
     "@fontsource/roboto": "^4.2.3",
     "@fontsource/roboto-slab": "^4.2.2",
     "gatsby": "^3.2.1",
+    "gatsby-plugin-goober": "^2.4.0",
+    "goober": "^2.0.37",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
+    "@tailwindcss/typography": "^0.4.0",
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.2.0",
@@ -34,13 +37,20 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.22",
     "husky": "^6.0.0",
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "tailwindcss": "^2.1.1",
+    "twin.macro": "^2.3.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/wildpow/esc"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/wildpow/esc/issues"
+  },
+  "babelMacros": {
+    "twin": {
+      "preset": "goober"
+    }
   }
 }
