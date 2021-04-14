@@ -1,18 +1,6 @@
 import React from "react";
-import { css, theme } from "twin.macro";
+import Layout from "../components/Layout";
 
-const divCss = css`
-  font-size: 200px;
-  text-align: center;
-  font-family: ${theme`fontFamily.sans`};
-  .poop {
-    background-color: blue;
-  }
-`;
-export default function Home() {
-  return (
-    <div className={divCss}>
-      <div className="poop">Hello world!</div>Hello world!
-    </div>
-  );
-}
+const IndexPage = ({ data }) => <Layout>index</Layout>;
+
+export default IndexPage;
