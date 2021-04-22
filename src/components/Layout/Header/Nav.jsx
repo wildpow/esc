@@ -3,9 +3,7 @@ import { string } from "prop-types";
 import styled from "styled-components";
 import {
   colors,
-  // dimensions,
   breakpoints,
-  // spacing,
   fontSize,
   fonts,
   boxShadow,
@@ -25,6 +23,7 @@ const NavRoot = styled.nav`
   background: ${colors.blue["700"]};
   z-index: 0;
   box-shadow: ${boxShadow.md};
+  display: none;
   ul {
     max-width: 1440px;
     justify-content: space-evenly;
@@ -58,9 +57,13 @@ const NavRoot = styled.nav`
         }
       }
     }
+
     @media print {
       display: none;
     }
+  }
+  @media (min-width: 1024px) {
+    display: block;
   }
   @media (min-width: ${breakpoints.xl}) {
     ul li a {

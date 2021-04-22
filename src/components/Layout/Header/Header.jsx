@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
 import { string, bool, func } from "prop-types";
 import styled from "styled-components";
-import { useWindowSize } from "../../../context/WindowSizeContext";
 import {
   colors,
   dimensions,
@@ -155,7 +154,6 @@ const Header = ({
   searchFocus,
   setSearchFocus,
 }) => {
-  const { width } = useWindowSize();
   const { pandaLogo } = useLogo();
   return (
     <HeaderRoot
@@ -201,7 +199,7 @@ const Header = ({
         </PrintOnlyContact>
       </div>
       {/* (425) 512.0017 */}
-      {width >= 1024 ? <Nav cartStatus={cartStatus} /> : null}
+      <Nav cartStatus={cartStatus} />
       {/* {width < 768 ? <ExtraNavIcons /> : null} */}
     </HeaderRoot>
   );
