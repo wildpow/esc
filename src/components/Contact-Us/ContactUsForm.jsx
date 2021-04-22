@@ -202,7 +202,7 @@ const ContactUsForm = () => {
       <fieldset>
         <div className="container">
           <label htmlFor="firstName" id="firstName" className="input-label">
-            <span>Fist Name</span>
+            <span>First Name</span>
             <input
               placeholder="Percival"
               required
