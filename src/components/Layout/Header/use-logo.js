@@ -6,14 +6,8 @@ const useLogo = () => {
       query logoImage {
         datoCmsFrontPage {
           pandaLogo {
+            url
             alt
-            fluid(
-              maxWidth: 180
-              maxHeight: 110
-              imgixParams: { auto: "compress" }
-            ) {
-              ...GatsbyDatoCmsFluid
-            }
           }
         }
       }

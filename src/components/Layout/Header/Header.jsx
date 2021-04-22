@@ -1,5 +1,4 @@
 import { Link } from "gatsby";
-import Img from "gatsby-image";
 import { string, bool, func } from "prop-types";
 import styled from "styled-components";
 import { useWindowSize } from "../../../context/WindowSizeContext";
@@ -169,7 +168,12 @@ const Header = ({
       <div className="header__Wrapper">
         <div className="header__flex">
           <Link className="brand__anchor" to="/" title="Back to home page">
-            <Img fluid={pandaLogo.fluid} alt={pandaLogo.alt} />
+            <img
+              loading="eager"
+              src={pandaLogo.url}
+              alt={pandaLogo.alt}
+              style={{ maxWidth: "180px", maxHeight: "110px", width: "100%" }}
+            />
           </Link>
           <Link
             title="Back to home page"
