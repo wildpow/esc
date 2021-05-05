@@ -1,5 +1,6 @@
 const { screens } = require("tailwindcss/defaultTheme");
 const typography = require("@tailwindcss/typography");
+const colors = require("tailwindcss/colors");
 
 module.exports = {
   theme: {
@@ -36,18 +37,28 @@ module.exports = {
       ],
     },
     extend: {
-      keyframes: {
-        fadeIn: {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
-        },
-      },
-      animation: {
-        fadeIn: `fadeIn 0.35s linear normal`,
-      },
+      // keyframes: {
+      //   fadeIn: {
+      //     from: { opacity: 0 },
+      //     to: { opacity: 1 },
+      //   },
+      // },
+      // animation: {
+      //   fadeIn: `fadeIn 0.35s linear normal`,
+      // },
       colors: {
-        brandRed: "#9b2c2c",
-        brandBlue: "#2c5282",
+        brandBackground: colors.gray[100],
+        brandBlue: colors.lightBlue[900],
+        brandRed: colors.red[900],
+        coolGray: colors.coolGray,
+        blueGray: colors.blueGray,
+        warmGray: colors.warmGray,
+        lightBlue: colors.lightBlue,
+        rose: colors.rose,
+        cyan: colors.cyan,
+        indigo: colors.indigo,
+        oldBrandRed: "#9b2c2c",
+        oldBrandBlue: "#2c5282",
       },
     },
   },

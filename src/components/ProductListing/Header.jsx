@@ -1,19 +1,20 @@
 import * as React from "react";
 import { styled, theme } from "twin.macro";
 import PropTypes from "prop-types";
-// import { PrimaryButton } from "../Old/Button";
+import Button from "../Old/Button";
 
-// const HeaderButton = styled(PrimaryButton)`
-//   font-size: 1.25rem;
-//   padding: ${theme`spacing[4]`};
-//   margin: 0;
-//   margin-bottom: 10px;
-//   margin-right: 10px;
-//   transition: all 0.2s ease;
-//   :hover {
-//     background: ${theme`colors.red.800`};
-//   }
-// `;
+const HeaderButton = styled(Button)`
+  font-size: 1.25rem;
+  padding: ${theme`spacing[4]`};
+  margin: 0;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+  &:hover {
+    background: ${theme`colors.red.900`};
+    box-shadow: ${theme`boxShadow.lg`};
+  }
+`;
 
 const HeaderWrapper = styled(`div`)`
   margin-top: 0px;
@@ -37,7 +38,8 @@ const HeaderWrapper = styled(`div`)`
     height: 100%;
   }
   h2 {
-    color: ${theme`colors.blue.900`};
+    font-family: ${theme`fontFamily.sans`};
+    color: ${theme`colors.blueGray.700`};
     font-size: 1.35rem;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -52,7 +54,7 @@ const HeaderWrapper = styled(`div`)`
     height: auto;
   }
   p {
-    color: ${theme`colors.gray.900`};
+    color: ${theme`colors.blueGray.900`};
     margin-bottom: 10px;
     margin-top: 10px;
     line-height: 1.25rem;
@@ -120,7 +122,7 @@ const Header = ({ description, title, headerBG, button }) => (
         <h2>{title}</h2>
         <p>{description}</p>
       </div>
-      {/* {button && <HeaderButton to={button.url}>{button.label}</HeaderButton>} */}
+      {button && <HeaderButton to={button.url}>{button.label}</HeaderButton>}
     </div>
   </HeaderWrapper>
 );
