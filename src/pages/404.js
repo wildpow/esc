@@ -2,10 +2,10 @@ import * as React from "react";
 import { Link } from "gatsby";
 import { styled, theme } from "twin.macro";
 import Layout from "../components/Layout";
-import H2 from "../components/Old/H2.styled";
+import H2 from "../Old/h2.styled";
 import image from "../images/ezgif.com-optimize.gif";
 import BreadCrumbs from "../components/BreadCrumbs";
-import FadeIn from "../components/Old/fadeIn.styled";
+import FadeIn from "../keyframes/fadeIn.styled";
 
 const Main = styled("section")`
   box-shadow: ${theme`boxShadow.md`};

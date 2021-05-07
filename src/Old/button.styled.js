@@ -1,5 +1,6 @@
 import { styled, theme } from "twin.macro";
 
+// mattress-list__header
 const Button = styled(`button`)`
   background: ${(props) =>
     props.inverse ? theme`colors.white` : theme`colors.lightBlue["800"]`};

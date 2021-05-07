@@ -1,7 +1,7 @@
 import * as React from "react";
 import { styled, theme } from "twin.macro";
 import PropTypes from "prop-types";
-import Button from "../Old/Button";
+import Button from "../../Old/button.styled";
 
 const HeaderButton = styled(Button)`
   font-size: 1.25rem;
@@ -11,7 +11,7 @@ const HeaderButton = styled(Button)`
   margin-right: 10px;
   transition: all 0.2s ease;
   &:hover {
-    background: ${theme`colors.red.900`};
+    background: ${theme`colors.rose.900`};
     box-shadow: ${theme`boxShadow.lg`};
   }
 `;
@@ -44,7 +44,7 @@ const HeaderWrapper = styled(`div`)`
     margin-bottom: 0px;
     margin-top: 0px;
     padding-top: 10px;
-    border-bottom: 4px solid ${theme`colors.brandRed`};
+    border-bottom: 4px solid ${theme`colors.rose.800`};
     justify-self: flex-start;
     align-self: flex-start;
     padding-left: 10px;
