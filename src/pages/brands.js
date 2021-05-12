@@ -6,17 +6,18 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
 import BreadCrumbs from "../components/BreadCrumbs";
 import Header from "../components/ProductListing/Header";
+import LifeStyleCard from "../components/Brands";
 
 const SectionContainer = styled(`div`)`
   padding-left: 5px;
   padding-right: 5px;
   min-width: 320px;
-  max-width: 1440px;
+  max-width: 1536px;
   margin: auto;
   padding-top: 0px;
   scroll-behavior: smooth;
   display: grid;
-  grid-template-columns: repeat(2, minmax(300px, 720px));
+  grid-template-columns: repeat(2, minmax(300px, 760px));
   grid-gap: 20px;
   align-items: stretch;
   justify-items: center;
@@ -60,7 +61,7 @@ export default function Brands({ data }) {
           title="Our Brands"
         />
         <SectionContainer>
-          {/* {data.allDatoCmsBrand.nodes.map((brand) => (
+          {data.allDatoCmsBrand.nodes.map((brand) => (
             <LifeStyleCard
               key={brand.id}
               mobileHeight="228px"
@@ -72,7 +73,7 @@ export default function Brands({ data }) {
             >
               {brand.lifeStyleText}
             </LifeStyleCard>
-          ))} */}
+          ))}
         </SectionContainer>
       </BrandsRoot>
       <BreadCrumbs here="Brands" hiddenLarge />
