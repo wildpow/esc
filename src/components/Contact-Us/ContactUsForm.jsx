@@ -28,12 +28,12 @@ const FormRoot = styled.form`
   textarea {
     min-height: 150px;
     font-size: ${fontSize.base};
-    padding: ${spacing[2]};
-    border: 1px solid ${colors.gray["500"]};
+    padding: ${theme`spacing[2]`};
+    border: 1px solid ${theme`colors.gray["500"]`};
     resize: none;
     outline: none;
     :focus {
-      box-shadow: 0px 5px 5px 0px ${colors.gray["500"]};
+      box-shadow: 0px 5px 5px 0px ${theme`colors.gray["500"]`};
       outline: 0;
       transition: box-shadow 0.15s ease-in-out;
     }
@@ -51,8 +51,8 @@ const FormRoot = styled.form`
     select:-webkit-autofill,
     select:-webkit-autofill:hover,
     select:-webkit-autofill:focus {
-      border: 1px solid ${colors.blue[900]};
-      -webkit-text-fill-color: ${colors.blue[800]};
+      border: 1px solid ${theme`colors.blue[900]`};
+      -webkit-text-fill-color: ${theme`colors.blue[800]`};
       box-shadow: 0 0 0px 1000px transparent inset;
       transition: background-color 5000s ease-in-out 0s;
     }
@@ -67,12 +67,12 @@ const FormRoot = styled.form`
       width: 100%;
       padding: 10px 5px;
       font-size: 16px;
-      color: ${colors.gray["900"]};
+      color: ${theme`colors.gray["900"]`};
       margin-bottom: 30px;
-      border: 1px solid ${colors.gray["500"]};
+      border: 1px solid ${theme`colors.gray["500"]`};
       outline: none;
       :focus {
-        box-shadow: 0px 5px 5px 0px ${colors.gray["500"]};
+        box-shadow: 0px 5px 5px 0px ${theme`colors.gray["500"]`};
         outline: 0;
         transition: box-shadow 0.15s ease-in-out;
       }
@@ -82,11 +82,11 @@ const FormRoot = styled.form`
   .bottom-buttons {
     display: flex;
     justify-content: space-between;
-    padding-top: ${spacing["8"]};
+    padding-top: ${theme`spacing["8"]`};
   }
 
   @media (min-width: ${breakpoints.sm}) {
-    border: 1px solid ${colors.gray["300"]};
+    border: 1px solid ${theme`colors.gray["300"]`};
     border-radius: ${radius.large}px;
     padding: ${spacing["6"]};
     .container {

@@ -9,15 +9,15 @@ const TopBlogRoot = styled.div`
   flex-direction: column;
   padding-bottom: 20px;
   .post-wrapper {
-    margin-bottom: ${spacing[4]};
-    border: 1px solid ${colors.gray[500]};
-    border-radius: ${radius.large}px;
-    padding: ${spacing[4]};
+    margin-bottom: ${theme`spacing[4]`};
+    border: 1px solid ${theme`colors.gray[500]`};
+    border-radius: ${theme`radius.large`}px;
+    padding: ${theme`spacing[4]`};
     padding-top: 5px;
     padding-bottom: 5px;
     text-decoration: none;
     :hover {
-      box-shadow: 0px 5px 5px 0px ${colors.gray["500"]};
+      box-shadow: 0px 5px 5px 0px ${theme`colors.gray["500"]`};
       transition: box-shadow 0.15s ease-in-out;
     }
     p {
@@ -25,7 +25,7 @@ const TopBlogRoot = styled.div`
       padding-bottom: 5px;
       padding-top: 5px;
       font-size: ${fontSize.root};
-      line-height: ${spacing[5]};
+      line-height: ${theme`spacing[5]`};
     }
     position: relative;
     ::after {
@@ -36,7 +36,7 @@ const TopBlogRoot = styled.div`
       height: 50px;
       width: 100%;
       z-index: 0;
-      background-color: ${colors.red[900]};
+      background-color: ${theme`colors.red[900]`};
       opacity: 0.9;
     }
   }
@@ -58,7 +58,7 @@ const TopBlogRoot = styled.div`
     }
   }
 
-  @media (min-width: ${breakpoints.xsm}) {
+  @media (min-width: ${theme`screens.xsm`}) {
     .post-title {
       h4 {
         white-space: nowrap;
@@ -71,18 +71,18 @@ const TopBlogRoot = styled.div`
     }
   }
 
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${theme`screens.md`}) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    grid-column-gap: ${spacing[4]};
-    grid-row-gap: ${spacing[4]};
+    grid-column-gap: ${theme`spacing[4]`};
+    grid-row-gap: ${theme`spacing[4]`};
     .post-wrapper {
       margin-bottom: 0px;
       p {
         padding-bottom: 15px;
         padding-top: 10px;
         font-size: ${fontSize.lg};
-        line-height: ${spacing[6]};
+        line-height: ${theme`spacing[6]`};
       }
       ::after {
         top: 34px;
@@ -102,7 +102,7 @@ const TopBlogRoot = styled.div`
       }
     }
   }
-  @media (min-width: ${breakpoints.lg}) {
+  @media (min-width: ${theme`screens.lg`}) {
     .post-title {
       h4 {
         padding-top: 12px;
