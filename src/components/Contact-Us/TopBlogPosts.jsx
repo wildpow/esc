@@ -7,6 +7,7 @@ import {
   fontSize,
   breakpoints,
   radius,
+  boxShadowHover,
 } from "../../styles/theme.styled";
 
 const TopBlogRoot = styled.div`
@@ -21,10 +22,11 @@ const TopBlogRoot = styled.div`
     padding-top: 5px;
     padding-bottom: 5px;
     text-decoration: none;
-    :hover {
+    ${boxShadowHover}
+    /* :hover {
       box-shadow: 0px 5px 5px 0px ${colors.gray["500"]};
       transition: box-shadow 0.15s ease-in-out;
-    }
+    } */
     p {
       margin: 0;
       padding-bottom: 5px;
