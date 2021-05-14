@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
 import BreadCrumbs from "../components/BreadCrumbs";
-import Header from "../components/ProductListing/ListingHeader";
+import Header from "../components/ProductListing/ProductListingHeader";
 import LifeStyleCard from "../components/BrandsCard";
 
 const SectionContainer = styled.div`

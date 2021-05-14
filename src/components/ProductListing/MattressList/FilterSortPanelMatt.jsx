@@ -6,7 +6,7 @@ import {
   FilterSortRoot,
   Accordion,
   Checkbox,
-} from "../shared/ProductList/FilterSortPanel";
+} from "../FilterSortPanel";
 
 const FilterSortPanel = ({ dispatch, checkBoxs }) => {
   const [checked, setChecked] = useState([
@@ -31,22 +31,18 @@ const FilterSortPanel = ({ dispatch, checkBoxs }) => {
       <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
       <Accordion title="FILTER BY">
         <FilterByCard heading="Comfort">
-          {checkBoxs.map((checkBox) => {
-            return (
-              <label htmlFor={checkBox.value} key={checkBox.value}>
-                <Checkbox
-                  key={checkBox.value}
-                  id={checkBox.value}
-                  checked={checked[checkBox.id].checked}
-                  firmness={checkBox.firmness}
-                  onChange={(e) =>
-                    toggleCheck(e, checkBox.id, checkBox.firmness)
-                  }
-                />
-                <span style={{ marginLeft: 8 }}>{checkBox.value}</span>
-              </label>
-            );
-          })}
+          {checkBoxs.map((checkBox) => (
+            <label htmlFor={checkBox.value} key={checkBox.value}>
+              <Checkbox
+                key={checkBox.value}
+                id={checkBox.value}
+                checked={checked[checkBox.id].checked}
+                firmness={checkBox.firmness}
+                onChange={(e) => toggleCheck(e, checkBox.id, checkBox.firmness)}
+              />
+              <span style={{ marginLeft: 8 }}>{checkBox.value}</span>
+            </label>
+          ))}
         </FilterByCard>
       </Accordion>
     </FilterSortRoot>

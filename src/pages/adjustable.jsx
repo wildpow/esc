@@ -14,7 +14,7 @@ import {
   FadeInAnimation,
 } from "../styles/theme.styled";
 
-export const Main = styled.section`
+const Main = styled.section`
   display: flex;
   flex-direction: column;
   ${FadeInAnimation}
@@ -32,7 +32,7 @@ export const Main = styled.section`
   }
 `;
 
-export const StyledLink = styled(Link)`
+const StyledLink = styled(Link)`
   text-decoration: none;
   margin-left: 2px;
   margin-right: 2px;
@@ -46,7 +46,7 @@ export const StyledLink = styled(Link)`
   ${boxShadowHover}
 `;
 
-export const H3 = styled.h3`
+const H3 = styled.h3`
   font-family: ${fonts.sans};
   background-color: ${colors.blue["900"]};
   color: ${colors.gray["100"]};

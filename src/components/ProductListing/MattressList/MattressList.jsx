@@ -1,14 +1,11 @@
 import { useReducer } from "react";
 import PropTypes from "prop-types";
-import Header from "../ListingHeader";
+import Header from "../ProductListingHeader";
 import FilterSortPanel from "./FilterSortPanelMatt";
-import filterSortReducer from "./FilterSortReducer";
-import BreadCrumbs from "../BreadCrumbs";
-import {
-  NewBread,
-  MattListWrapper,
-} from "../shared/ProductList/ProductList.styled";
-import ProductThumbnail from "../shared/ProductList/ProductThumbnail";
+import filterSortReducer from "./mattressList.reducer";
+import BreadCrumbs from "../../BreadCrumbs";
+import { NewBread, MattListWrapper } from "../productListing.styled";
+import ProductThumbnail from "../ProductThumbnail";
 
 const MattressList = ({
   mattresses,
@@ -33,7 +30,7 @@ const MattressList = ({
   };
   const [state, dispatch] = useReducer(filterSortReducer, initalState);
   return (
-    <MattListWrapper breadCrumbs={breadCrumbs}>
+    <MattListWrapper>
       {breadCrumbs && (
         <NewBread>
           <BreadCrumbs next="Brands" here={brandName} />
