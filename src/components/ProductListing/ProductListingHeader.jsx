@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { colors, spacing, boxShadow, fonts } from "../../styles/theme.styled";
-import { PrimaryButton } from "../../styles/buttons.styled";
+import { PrimaryButton } from "../../styles/buttons.old.styled";
 
 const HeaderButton = styled(PrimaryButton)`
   font-size: 1.25rem;

@@ -8,7 +8,7 @@ import {
   Banner,
   PriceRange,
   Name,
-} from "./ProductThumbnail.styled";
+} from "./productThumbnail.styled";
 import FirmnessScale from "./FirmnessScale";
 
 export default function ProductThumbnail({ product, url, mattress }) {

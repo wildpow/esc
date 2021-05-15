@@ -47,7 +47,8 @@
       "prop-types",
       "dotenv",
       "@reach/router",
-      "slash"
+      "slash",
+      "twin.macro"
     ]
   }
 }

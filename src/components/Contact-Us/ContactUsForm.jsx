@@ -9,7 +9,7 @@ import {
   breakpoints,
   radius,
 } from "../../styles/theme.styled";
-import { PrimaryButton } from "../../styles/buttons.styled";
+import { PrimaryButton } from "../../styles/buttons.old.styled";
 import SendIcon from "../../svgs/paper-plane-solid.svg";
 import ResetIcon from "../../svgs/redo-solid.svg";
 
