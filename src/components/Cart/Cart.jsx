@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-one-expression-per-line */
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { func, string, bool } from "prop-types";
 import VisuallyHidden from "@reach/visually-hidden";
 import styled from "styled-components";
-import StoreContext from "../../../context/StoreContext";
+import { useStore } from "../../contexts/Store.ctx";
 import CloseIcon from "../../svgs/times-solid.svg";
 import CartIcon from "../../svgs/shopping-cart-solid.svg";
 import ForwardArrow from "../../svgs/arrow-right-solid.svg";
@@ -317,7 +317,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     store: { checkout, client },
     removeLineItem,
     updateLineItem,
-  } = useContext(StoreContext);
+  } = useStore();
 
   const handleRemove = (itemID) => async (event) => {
     event.preventDefault();

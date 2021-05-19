@@ -1,7 +1,7 @@
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { boxShadowHover } from "../../styles/theme.styled";
+import { boxShadowHover, fonts } from "../../styles/theme.styled";
 
 const BrandLink = styled(Link)`
   position: relative;
@@ -25,13 +25,6 @@ const BrandLink = styled(Link)`
     }
     .brand {
       transform: translate(-50%, -80%);
-    }
-
-    :hover {
-      /* transform: scale3d(1.03, 1.03, 1); */
-
-      transform: ${(props) => props.theme.hoverTransform};
-      /* box-shadow: ${(props) => props.theme.hoverBoxAfter}; */
     }
   }
 `;
@@ -92,7 +85,7 @@ const Content = styled.div`
   justify-content: center;
   align-content: flex-end;
   align-items: flex-end;
-  font-family: ${(props) => props.theme.MainFont3};
+  font-family: ${fonts.serif};
   font-size: 1.1rem;
   line-height: 1.7rem;
   text-shadow: 2px 2px 4px rgba(10, 10, 10, 1);

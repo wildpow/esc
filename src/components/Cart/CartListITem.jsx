@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import CloseIcon from "../../../assets/times-solid.svg";
+import CloseIcon from "../../svgs/times-solid.svg";
 
 import CartThumbnail from "./CartThumbnail";
 // import { Button } from "../shared/Buttons";
@@ -12,7 +12,7 @@ import {
   spacing,
   radius,
   fonts,
-} from "../../../utils/styles";
+} from "../../styles/theme.styled";
 
 const CartListItemRoot = styled.li`
   align-items: center;

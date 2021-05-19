@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fonts } from "../../styles/theme.styled";
 
 // eslint-disable-next-line import/prefer-default-export
 export const P = styled.p`
@@ -12,7 +13,7 @@ export const P = styled.p`
   font-size: 18px;
   line-height: 1.6rem;
   text-align: center;
-  font-family: ${(props) => props.theme.MainFont3};
+  font-family: ${fonts.serif};
   @media screen and (max-width: 375px) {
     font-size: 16px;
     /* margin-top: 36px; */

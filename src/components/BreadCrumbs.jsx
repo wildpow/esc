@@ -30,7 +30,7 @@ export const BreadWrapper = styled.div`
   }
   @media (min-width: 1022px) {
     font-size: 1.2rem;
-    display: ${(props) => (props.hiddenLarge ? "none" : "flex")};
+    display: ${({ hiddenLarge }) => (hiddenLarge ? "none" : "flex")};
   }
 
   @media (min-width: 1450px) {

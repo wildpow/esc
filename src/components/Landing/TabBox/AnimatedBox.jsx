@@ -2,6 +2,7 @@ import { NodeGroup } from "react-move";
 import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
+import { fonts } from "../../../styles/theme.styled";
 
 const Holder = styled.div`
   position: relative;
@@ -38,7 +39,7 @@ const TabContent = styled.div`
     padding-left: 10px;
   }
   h4 {
-    font-family: ${(props) => props.theme.MainFont3};
+    font-family: ${fonts.serif};
     font-size: 1.6rem;
     font-weight: 400;
     margin-bottom: 10px;
@@ -46,7 +47,7 @@ const TabContent = styled.div`
   }
   p {
     margin-top: 0;
-    font-family: ${(props) => props.theme.MainFont1};
+    font-family: ${fonts.sans};
     font-weight: 300;
     line-height: 1.9rem;
     font-size: 1.2rem;
@@ -58,7 +59,7 @@ const TabContent = styled.div`
   }
   ul {
     line-height: 1.6rem;
-    font-family: ${(props) => props.theme.MainFont1};
+    font-family: ${fonts.sans};
     font-weight: 400;
     list-style: none;
     padding-left: 0;

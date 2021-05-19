@@ -20,7 +20,7 @@ const DIVY = styled.div`
     width: 60%;
   }
   @media (min-width: 900px) {
-    width: ${(props) => (props.bottom ? "400px" : "60%")};
+    width: ${({ bottom }) => (bottom ? "400px" : "60%")};
   }
 `;
 

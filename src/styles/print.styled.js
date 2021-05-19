@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { css } from "styled-components";
+import { colors } from "./theme.styled";
 
 export const DisplayNonePrint = css`
   @media print {
@@ -31,7 +32,7 @@ export const MainTitlePrint = css`
   @media print {
     color: black;
     text-shadow: none;
-    border-bottom: 3px solid ${(props) => props.theme.mainColor1};
+    border-bottom: 3px solid ${colors.brandBlue};
     text-align: left;
     padding-bottom: 1px;
     margin-top: 2px;

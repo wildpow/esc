@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { colors, fonts, radius } from "./theme.styled";
 
 const Button = styled.button`
-  background: ${(props) => (props.inverse ? colors.white : colors.blue["700"])};
+  background: ${({ inverse }) => (inverse ? colors.white : colors.blue["700"])};
   border: 1px solid
-    ${(props) => (props.inverse ? colors.blue["400"] : colors.blue["900"])};
-  color: ${(props) =>
-    props.inverse ? colors.blue["800"] : colors.blue["100"]};
+    ${({ inverse }) => (inverse ? colors.blue["400"] : colors.blue["900"])};
+  color: ${({ inverse }) =>
+    inverse ? colors.blue["800"] : colors.blue["100"]};
   font-size: 1.1rem;
   padding: 0.5em 0.75rem;
   transition: 0.5s;
@@ -32,8 +32,8 @@ const Button = styled.button`
   }
   svg {
     height: 1.1em;
-    margin-left: ${(props) => (props.iconOnLeft ? 0 : "0.5em")};
-    margin-right: ${(props) => (props.iconOnLeft ? "0.5em" : 0)};
+    margin-left: ${({ iconOnLeft }) => (iconOnLeft ? 0 : "0.5em")};
+    margin-right: ${({ iconOnLeft }) => (iconOnLeft ? "0.5em" : 0)};
     width: 1.1em;
   }
   :disabled,

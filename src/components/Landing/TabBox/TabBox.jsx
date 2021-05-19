@@ -8,7 +8,7 @@ import arrowDown from "../../../images/whitedownArrow.png";
 import AnimatedBox from "./AnimatedBox";
 import { P } from "../landing.styled";
 import { InBoundLink } from "../LandingHeaderButtons";
-import { colors } from "../../../styles/theme.styled";
+import { colors, fonts } from "../../../styles/theme.styled";
 
 const aboutCSS = css`
   @media screen and (max-width: 981px) {
@@ -31,8 +31,7 @@ const TabHeroImg = styled(GatsbyImage)`
   /* max-width: 100%;
   height: auto;
   vertical-align: middle; */
-  max-width: ${(props) => props.width}px;
-  /* width: ${(props) => props.width}px; */
+  max-width: ${({ width }) => width}px;
   margin: 0 auto;
   text-align: center;
   margin-bottom: 10px;
@@ -47,7 +46,7 @@ const Select = styled.select`
   width: 100%;
   margin-bottom: 1em;
   font-size: 18px;
-  font-family: ${(props) => props.theme.MainFont1};
+  font-family: ${fonts.sans};
   background-image: url(${arrowDown});
   background-size: 17px;
   border-width: 0px;
@@ -163,7 +162,6 @@ TabBox.propTypes = {
   about: PropTypes.bool,
   heroText: PropTypes.string.isRequired,
   hero: PropTypes.shape({
-    fluid: PropTypes.instanceOf(Object),
     height: PropTypes.number,
     width: PropTypes.number,
     url: PropTypes.string,

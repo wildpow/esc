@@ -69,7 +69,7 @@ const HeaderWrapper = styled.div`
         rgba(247, 250, 252, 0.85),
         rgba(247, 250, 252, 0.45)
       ),
-      url(${(props) => props.headerBG}) no-repeat;
+      url(${({ headerBG }) => headerBG}) no-repeat;
     background-size: cover;
     h2 {
       font-size: 1.65rem;
@@ -80,7 +80,7 @@ const HeaderWrapper = styled.div`
         rgba(247, 250, 252, 0.45),
         rgba(247, 250, 252, 0.45)
       ),
-      url(${(props) => props.headerBG}) no-repeat;
+      url(${({ headerBG }) => headerBG}) no-repeat;
 
     height: 200px;
     background-color: white;
@@ -92,7 +92,7 @@ const HeaderWrapper = styled.div`
     }
   }
   @media screen and (min-width: 820px) {
-    background: url(${(props) => props.headerBG}) no-repeat;
+    background: url(${({ headerBG }) => headerBG}) no-repeat;
     background-size: cover;
   }
   @media screen and (min-width: 1000px) {

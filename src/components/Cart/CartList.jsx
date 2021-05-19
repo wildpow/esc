@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import CartListItem from "./CartListITem";
 
-import { colors, spacing, fonts } from "../../../utils/styles";
+import { colors, spacing, fonts } from "../../styles/theme.styled";
 
 const CartListRoot = styled.ul`
   list-style: none;

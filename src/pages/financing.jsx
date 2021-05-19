@@ -192,7 +192,7 @@ const MainFinancingRoot = styled.section`
 `;
 
 const FinancingCard = styled.article`
-  box-shadow: ${(props) => props.theme.newBoxShadow};
+  box-shadow: ${boxShadow.md};
   margin-left: 0px;
   margin-right: 0px;
   margin-bottom: 15px;

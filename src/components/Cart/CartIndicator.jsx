@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { bool, number, string } from "prop-types";
 import styled, { css } from "styled-components";
-import usePrevious from "../../Hooks/use-previous";
+import usePrevious from "../../hooks";
 // import { numberEntry } from "../../../utils/keyframes";
 import {
   colors,
@@ -10,11 +10,11 @@ import {
   spacing,
   fonts,
   boxShadow,
-} from "../../../utils/styles";
+} from "../../styles/theme.styled";
 
 const medScreens = css`
-  transform: ${(props) =>
-    props.visible ? `translateX(0%) scale(1.2)` : `translateX(100%) scale(1)`};
+  transform: ${({ visible }) =>
+    visible ? `translateX(0%) scale(1.2)` : `translateX(100%) scale(1)`};
   width: auto;
   left: auto;
   right: 5%;
@@ -33,9 +33,9 @@ const CartIndicatorRoot = styled.div`
   border-radius: ${radius.large}px;
   color: ${colors.blue["900"]};
   display: flex;
-  opacity: ${(props) => (props.visible ? 1 : 0)};
-  transform: ${(props) =>
-    props.visible ? `translateX(0%) scale(1.2)` : `translateX(100%) scale(1)`};
+  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  transform: ${({ visible }) =>
+    visible ? `translateX(0%) scale(1.2)` : `translateX(100%) scale(1)`};
   justify-content: center;
   right: 5%;
   z-index: 99999;

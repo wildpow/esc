@@ -1,10 +1,10 @@
 import { graphql, StaticQuery } from "gatsby";
 import styled from "styled-components";
-import Image from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
-import { colors, radius } from "../../../utils/styles";
+import { colors, radius } from "../../styles/theme.styled";
 
-const CartThumbnailRoot = styled(Image)`
+const CartThumbnailRoot = styled(GatsbyImage)`
   border: 1px solid ${colors.gray["100"]};
   border-radius: ${radius.default}px;
   height: 36px;

@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { number, bool } from "prop-types";
-import { fonts, colors } from "../../../utils/styles";
-import { numberEntry2 } from "../../../utils/keyframes";
+import { fonts, colors } from "../../styles/theme.styled";
+import { numberEntry2 } from "../../styles/keyframes.styled";
 
 const notAddingProduct = css`
   animation: ${numberEntry2} 0.75s ease forwards;

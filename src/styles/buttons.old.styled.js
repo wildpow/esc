@@ -5,12 +5,12 @@ import { colors, fonts, radius } from "./theme.styled";
 
 export const ButtonBase = styled.button`
   align-items: center;
-  background: ${(props) =>
-    props.inverse ? colors.colors.blue["900"] : colors.white};
+  background: ${({ inverse }) =>
+    inverse ? colors.colors.blue["900"] : colors.white};
   border: 1px solid
-    ${(props) => (props.inverse ? colors.blue["700"] : colors.blue["800"])};
-  color: ${(props) =>
-    props.inverse ? colors.blue["800"] : colors.blue["700"]};
+    ${({ inverse }) => (inverse ? colors.blue["700"] : colors.blue["800"])};
+  color: ${({ inverse }) =>
+    inverse ? colors.blue["800"] : colors.blue["700"]};
   border-radius: ${radius.default}px;
   cursor: pointer;
   display: inline-flex;
@@ -27,8 +27,8 @@ export const ButtonBase = styled.button`
 
   svg {
     height: 1.1em;
-    margin-left: ${(props) => (props.iconOnLeft ? 0 : "0.5em")};
-    margin-right: ${(props) => (props.iconOnLeft ? "0.5em" : 0)};
+    margin-left: ${({ iconOnLeft }) => (iconOnLeft ? 0 : "0.5em")};
+    margin-right: ${({ iconOnLeft }) => (iconOnLeft ? "0.5em" : 0)};
     width: 1.1em;
   }
 

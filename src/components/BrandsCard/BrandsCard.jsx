@@ -11,7 +11,6 @@ const LifeStyleCard = ({
   url,
 }) => (
   <Styled.BrandLink to={url}>
-    {console.log(bgImg)}
     <Styled.BgImage
       image={bgImg.gatsbyImageData}
       title={title}

@@ -3,7 +3,11 @@ import { Link } from "gatsby";
 import { P, Headline } from "../home.styled";
 import ProductThumbnail from "../../ProductListing/ProductThumbnail";
 import useTop3 from "./getTopMattresses.query";
-import { FadeInAnimation } from "../../../styles/theme.styled";
+import {
+  boxShadow,
+  colors,
+  FadeInAnimation,
+} from "../../../styles/theme.styled";
 
 const FooterLink = styled(Link)`
   text-decoration-color: white;
@@ -11,7 +15,7 @@ const FooterLink = styled(Link)`
   color: white;
   :hover {
     transform: scale(1.04);
-    text-decoration-color: ${(props) => props.theme.newColor2};
+    text-decoration-color: ${colors.gray["500"]};
   }
 `;
 const Wrapper = styled.div`
@@ -36,11 +40,11 @@ const MainWrapper = styled.div`
 `;
 
 const NewWrapper = styled(MainWrapper)`
-  background-color: ${(props) => props.theme.newColor1};
+  background-color: ${colors.gray["500"]};
 
   margin-top: 15px;
   @media (min-width: 1024px) {
-    box-shadow: ${(props) => props.theme.newBoxShadow};
+    box-shadow: ${boxShadow.md};
   }
 `;
 

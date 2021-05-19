@@ -1,11 +1,12 @@
 /* eslint-disable import/prefer-default-export */
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
-
-// You can delete this file if you're not using it
+import "@fontsource/roboto";
+import "@fontsource/roboto/300.css"; // footer brand_text
+import "@fontsource/roboto/500.css"; // footer
+import "@fontsource/roboto/700.css"; // Contact-us h2 -
+import "@fontsource/roboto/900.css"; // logo
+import "@fontsource/roboto/900-italic.css"; // logo
+import "@fontsource/roboto-slab";
+import "@fontsource/roboto-slab/300.css"; // warrant-p
 
 import WindowSizeProvider from "./src/contexts/WindowSize.ctx";
 import StoreProvider from "./src/contexts/Store.ctx";
