@@ -1,9 +1,11 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
+
 import styled from "styled-components";
 
 import CloseIcon from "../../svgs/times-solid.svg";
 
-import CartThumbnail from "./CartThumbnail";
+// import CartThumbnail from "./CartThumbnail";
 // import { Button } from "../shared/Buttons";
 
 import {
@@ -13,6 +15,18 @@ import {
   radius,
   fonts,
 } from "../../styles/theme.styled";
+
+const Thumbnail = styled.img`
+  border: 1px solid ${colors.gray["100"]};
+  border-radius: ${radius.default}px;
+  height: 36px;
+  width: 36px;
+  height: 46px;
+  width: 46px;
+  flex-grow: 0;
+  margin-left: ${spacing["1"]};
+  margin-right: ${spacing["4"]};
+`;
 
 const CartListItemRoot = styled.li`
   align-items: center;
@@ -25,11 +39,11 @@ const CartListItemRoot = styled.li`
   }
 `;
 
-const Thumbnail = styled(CartThumbnail)`
-  flex-grow: 0;
-  margin-left: ${spacing["1"]};
-  margin-right: ${spacing["4"]};
-`;
+// const Thumbnail = styled(CartThumbnailRoot)`
+//   flex-grow: 0;
+//   margin-left: ${spacing["1"]};
+//   margin-right: ${spacing["4"]};
+// `;
 
 const Info = styled.div`
   flex-grow: 1;
@@ -104,7 +118,7 @@ const Remove = styled.button`
   }
 `;
 
-export default ({
+const CartListItem = ({
   item,
   setCartLoading,
   updateQuantity,
@@ -112,7 +126,6 @@ export default ({
   isCartLoading,
 }) => {
   const [quantity, setQuantity] = useState(1);
-
   if (item.quantity !== quantity && quantity !== "" && !isCartLoading) {
     setQuantity(item.quantity);
   }
@@ -159,11 +172,7 @@ export default ({
 
   return (
     <CartListItemRoot>
-      <Thumbnail
-        id={item.variant.image.id}
-        fallback={item.variant.image.src}
-        alt={item.variant.image.altText}
-      />
+      <Thumbnail src={item.variant.image.src} alt={item.title} />
       <Info>
         <Name>{item.title}</Name>
         <Meta>
@@ -188,3 +197,15 @@ export default ({
     </CartListItemRoot>
   );
 };
+
+CartListItem.defaultProps = {
+  isCartLoading: false,
+};
+CartListItem.propTypes = {
+  item: PropTypes.instanceOf(Object).isRequired,
+  handleRemove: PropTypes.func.isRequired,
+  updateQuantity: PropTypes.func.isRequired,
+  setCartLoading: PropTypes.func.isRequired,
+  isCartLoading: PropTypes.bool,
+};
+export default CartListItem;

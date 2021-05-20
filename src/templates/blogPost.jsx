@@ -93,7 +93,7 @@ const NewPost = ({ data, pageContext }) => {
     }
   });
   return (
-    <Layout>
+    <Layout bgWhite>
       <HelmetDatoCms seo={datoCmsNewBlog.seoMetaTags}>
         <script type="application/ld+json">
           {`

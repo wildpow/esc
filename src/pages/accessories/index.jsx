@@ -5,7 +5,7 @@ import Landing from "../../components/Landing";
 import BreadCrumbs, { BreadWrapper } from "../../components/BreadCrumbs";
 
 const AccessoryLanding = ({ data }) => (
-  <Layout>
+  <Layout bgWhite>
     <BreadWrapper hidenLarge>
       <BreadCrumbs here="Accessories" />
     </BreadWrapper>

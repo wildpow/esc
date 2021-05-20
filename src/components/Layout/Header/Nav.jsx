@@ -25,7 +25,7 @@ const NavRoot = styled.nav`
   box-shadow: ${boxShadow.md};
   display: none;
   ul {
-    max-width: 1440px;
+    max-width: ${breakpoints["2xl"]};
     justify-content: space-evenly;
     margin: 0 auto;
     /* margin: 0; */

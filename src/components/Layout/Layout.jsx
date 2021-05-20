@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from "react";
+import styled from "styled-components";
+
 import PropTypes from "prop-types";
 import FocusLock from "react-focus-lock";
 import Headroom from "react-headroom";
@@ -8,12 +10,37 @@ import MobileMenu from "./MobileMenu";
 import Cart from "../Cart";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import GlobalStyle from "../../styles/global.styled";
-import { breakpoints } from "../../styles/theme.styled";
 import { useWindowSize } from "../../contexts/WindowSize.ctx";
 import MenuOverLay from "../../styles/menuOverlay.styled";
 import Footer from "./Footer";
+import { breakpoints, colors, boxShadow } from "../../styles/theme.styled";
+import StructuredDataMain from "./structuredDataMain";
 
-export default function Layout({ children }) {
+const PageContentRoot = styled.main`
+  position: relative;
+  z-index: 1;
+  box-shadow: ${boxShadow.xl};
+  background-color: ${({ bgWhite }) =>
+    bgWhite ? "white" : colors.gray["100"]};
+
+  will-change: transform;
+  opacity: 1;
+  padding-left: 0;
+  width: 100%;
+  transition: all 0.75s;
+
+  @media (min-width: ${breakpoints.sm}) {
+    transform: translate3d(0vw, 0, 0);
+    &.moved {
+      /* filter: blur(1px); */
+      transform: translate3d(-400px, 0, 0);
+    }
+  }
+  @media print {
+    box-shadow: none;
+  }
+`;
+export default function Layout({ children, bgWhite }) {
   const { width, height } = useWindowSize();
 
   // Birdeye customer chat
@@ -112,7 +139,7 @@ export default function Layout({ children }) {
   return (
     <>
       <GlobalStyle />
-
+      <StructuredDataMain />
       <Headroom
         onPin={() => setHeaderVisible(true)}
         onUnpin={() => setHeaderVisible(false)}
@@ -148,9 +175,11 @@ export default function Layout({ children }) {
           />
         </FocusLock>
       </div>
-      <div style={{ margin: "0 auto", maxWidth: breakpoints["2xl"] }}>
-        {children}
-      </div>
+      <PageContentRoot bgWhite={bgWhite} className={moved}>
+        <div style={{ margin: "0 auto", maxWidth: breakpoints["2xl"] }}>
+          {children}
+        </div>
+      </PageContentRoot>
       <div ref={ref}>
         <Footer moved={moved} />
       </div>
@@ -159,6 +188,10 @@ export default function Layout({ children }) {
   );
 }
 
+Layout.defaultProps = {
+  bgWhite: false,
+};
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  bgWhite: PropTypes.bool,
 };

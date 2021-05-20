@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import CartListItem from "./CartListITem";
-
+import PropTypes from "prop-types";
+import CartListItem from "./CartListItem";
 import { colors, spacing, fonts } from "../../styles/theme.styled";
 
 const CartListRoot = styled.ul`
@@ -57,5 +57,14 @@ const CartList = ({
     </CartListRoot>
   </>
 );
-
+CartList.defaultProps = {
+  isCartLoading: false,
+};
+CartList.propTypes = {
+  items: PropTypes.instanceOf(Object).isRequired,
+  handleRemove: PropTypes.func.isRequired,
+  updateQuantity: PropTypes.func.isRequired,
+  setCartLoading: PropTypes.func.isRequired,
+  isCartLoading: PropTypes.bool,
+};
 export default CartList;

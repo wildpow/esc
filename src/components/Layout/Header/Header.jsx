@@ -30,7 +30,7 @@ const HeaderRoot = styled.header`
   .header__Wrapper {
     display: flex;
     flex-direction: column-reverse;
-    max-width: 1440px;
+    max-width: ${breakpoints["2xl"]};
     margin: 0 auto;
     width: 100%;
   }
