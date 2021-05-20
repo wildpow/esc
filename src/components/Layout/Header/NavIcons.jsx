@@ -31,7 +31,7 @@ const emptyCart = css`
 const CartToggle = styled.button`
   cursor: not-allowed;
   .fa-shopping-cart {
-    animation: ${iconEntry} 0.75s ease forwards;
+    animation: ${iconEntry} 0.35s ease forwards;
     height: 28px;
     margin: 0;
     width: 28px;
@@ -111,7 +111,7 @@ const StyledLinks = styled.a`
 
   .fa-phone {
     display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
-    animation: ${iconEntry} 0.75s ease forwards;
+    animation: ${iconEntry} 0.35s ease forwards;
     height: 28px;
     margin: 0;
     width: 28px;

@@ -46,7 +46,7 @@ const SearchButton = styled.button`
   .searchIcon {
     display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
     color: ${({ hasFocus }) => (!hasFocus ? colors.gray["600"] : colors.white)};
-    animation: ${iconEntry} 0.75s ease forwards;
+    animation: ${iconEntry} 0.35s ease forwards;
   }
   .closeIcon {
     /* animation: ${iconEntry} 0.75s ease forwards;

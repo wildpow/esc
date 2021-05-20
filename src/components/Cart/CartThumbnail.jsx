@@ -20,7 +20,7 @@ const CartThumbnail = ({
   ...imageProps
 }) => {
   const image = shopifyImages.find(({ id }) => id === imageId);
-
+  console.log(imageProps);
   if (image) {
     imageProps.fluid = image.localFile.childImageSharp.fluid;
   } else {

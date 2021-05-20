@@ -41,8 +41,10 @@ const CartIndicatorRoot = styled.div`
   z-index: 99999;
   padding: ${spacing["3"]} ${spacing["4"]};
   position: fixed;
-  top: ${({ pin }) =>
-    pin ? `calc(${dimensions.headerHeight} + ${spacing["4"]})` : spacing["4"]};
+  top: ${({ headerVisible }) =>
+    headerVisible
+      ? `calc(${dimensions.headerHeight} + ${spacing["4"]})`
+      : spacing["4"]};
   transition: all 0.3s ease-in-out;
   @media (min-width: 1550px) {
     right: 10%;
@@ -59,16 +61,10 @@ const CartIndicatorRoot = styled.div`
   ${({ width }) => (width < 650 ? mobileScreens : medScreens)}
 `;
 
-// width={width}
-// adding={adding}
-// itemsInCart={itemsInCart}
-// pin={pin}
-// cartStatus={cartStatus}
-// menuStatus={menuStatus}
 const CartIndicator = ({
   adding,
   itemsInCart,
-  pin,
+  headerVisible,
   width,
   cartStatus,
   menuStatus,
@@ -107,7 +103,7 @@ const CartIndicator = ({
     <>
       <CartIndicatorRoot
         visible={visible}
-        pin={pin}
+        headerVisible={headerVisible}
         width={width}
         cartStatus={cartStatus}
         menuStatus={menuStatus}
@@ -129,7 +125,7 @@ CartIndicator.propTypes = {
   cartStatus: string.isRequired,
   menuStatus: string.isRequired,
   width: number.isRequired,
-  pin: bool.isRequired,
+  headerVisible: bool.isRequired,
 };
 
 export default CartIndicator;

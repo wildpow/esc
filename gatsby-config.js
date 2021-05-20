@@ -55,6 +55,25 @@ const cfg = {
           },
           // SOURCE PLUG-INS
           {
+            resolve: "gatsby-source-apiserver",
+            options: {
+              entitiesArray: [
+                {
+                  url: process.env.REST2,
+                  method: "GET",
+                  headers: {
+                    "Content-Type": "application/json",
+                    accept: "application/json",
+                    Connection: "keep-alive",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Max-Age": 3600,
+                  },
+                  name: `widget`,
+                },
+              ],
+            },
+          },
+          {
             resolve: `gatsby-source-datocms`,
             options: {
               apiToken: process.env.DATO_API,
