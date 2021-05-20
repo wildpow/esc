@@ -51,14 +51,14 @@ export default function ProductThumbnail({ product, url, mattress }) {
           </MattImgContainer>
           {mattress && <FirmnessScale firmNum={product.firmness} />}
         </BannerWrapper>
-        <PriceRange>
+        {/* <PriceRange>
           {`$${Math.trunc(
-            product.shopifyInfo[0].priceRange.minVariantPrice.amount
+            product.shopifyInfo[0].priceRangeV2.minVariantPrice.amount
           )}
         - $${Math.trunc(
-          product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+          product.shopifyInfo[0].priceRangeV2.maxVariantPrice.amount
         )}`}
-        </PriceRange>
+        </PriceRange> */}
       </Topper>
       <Name>{name()}</Name>
     </StyledLink>

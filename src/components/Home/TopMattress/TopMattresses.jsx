@@ -75,16 +75,19 @@ const ThreeMattWrapper = styled(Wrapper)`
 
 const TopThreeMatts = () => {
   const { header, newmattress, footerUrl, footer } = useTop3();
-  const sortedMatt = newmattress.sort(
-    (a, b) =>
-      Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
-      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
-  );
+
+  console.log(newmattress);
+
+  // const sortedMatt = newmattress.sort(
+  //   (a, b) =>
+  //     Number(a.shopifyInfo[0].priceRangeV2.minVariantPrice.amount) -
+  //     Number(b.shopifyInfo[0].priceRangeV2.minVariantPrice.amount)
+  // );
   return (
     <NewWrapper>
       <Headline>{header}</Headline>
       <ThreeMattWrapper>
-        {sortedMatt.map((mattress) => (
+        {newmattress.map((mattress) => (
           <ProductThumbnail
             key={mattress.id}
             product={mattress}

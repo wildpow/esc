@@ -20,7 +20,7 @@ const CartThumbnail = ({
   ...imageProps
 }) => {
   const image = shopifyImages.find(({ id }) => id === imageId);
-  console.log(imageProps);
+  console.log(shopifyImages);
   if (image) {
     imageProps.fluid = image.localFile.childImageSharp.fluid;
   } else {
@@ -39,13 +39,6 @@ export default (props) => (
             node {
               images {
                 id
-                localFile {
-                  childImageSharp {
-                    fluid {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
               }
             }
           }

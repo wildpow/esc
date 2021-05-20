@@ -68,10 +68,10 @@ const Mattress = ({ data }) => {
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
         "highPrice": ${
-          mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount
+          mattress.shopifyInfo[0].priceRangeV2.maxVariantPrice.amount
         },
         "lowPrice": ${
-          mattress.shopifyInfo[0].priceRange.minVariantPrice.amount
+          mattress.shopifyInfo[0].priceRangeV2.minVariantPrice.amount
         },
         "priceValidUntil": "${dateSEO()}",
         "itemCondition": "New",
@@ -122,10 +122,10 @@ const Mattress = ({ data }) => {
             <ProductForm
               variants={mattress.shopifyInfo[0].variants}
               priceMin={
-                mattress.shopifyInfo[0].priceRange.minVariantPrice.amount
+                mattress.shopifyInfo[0].priceRangeV2.minVariantPrice.amount
               }
               priceMax={
-                mattress.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                mattress.shopifyInfo[0].priceRangeV2.maxVariantPrice.amount
               }
               matt
               maxQty={4}
@@ -274,7 +274,7 @@ export const query = graphql`
         title
         vendor
         shopifyId
-        priceRange {
+        priceRangeV2 {
           minVariantPrice {
             amount
           }

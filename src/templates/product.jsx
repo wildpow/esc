@@ -64,10 +64,10 @@ const Base = ({ data }) => {
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
         "highPrice": "${Math.trunc(
-          product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+          product.shopifyInfo[0].priceRangeV2.maxVariantPrice.amount
         )}",
         "lowPrice": "${Math.trunc(
-          product.shopifyInfo[0].priceRange.minVariantPrice.amount
+          product.shopifyInfo[0].priceRangeV2.minVariantPrice.amount
         )}",
         "priceValidUntil": "${dateSEO()}",
         "itemCondition": "New",
@@ -106,10 +106,10 @@ const Base = ({ data }) => {
                 titleOfProduct={product.title}
                 variants={product.shopifyInfo[0].variants}
                 priceMin={
-                  product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                  product.shopifyInfo[0].priceRangeV2.minVariantPrice.amount
                 }
                 priceMax={
-                  product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                  product.shopifyInfo[0].priceRangeV2.maxVariantPrice.amount
                 }
                 maxQty={4}
               >
@@ -124,10 +124,10 @@ const Base = ({ data }) => {
               <ProductForm
                 variants={product.shopifyInfo[0].variants}
                 priceMin={
-                  product.shopifyInfo[0].priceRange.minVariantPrice.amount
+                  product.shopifyInfo[0].priceRangeV2.minVariantPrice.amount
                 }
                 priceMax={
-                  product.shopifyInfo[0].priceRange.maxVariantPrice.amount
+                  product.shopifyInfo[0].priceRangeV2.maxVariantPrice.amount
                 }
                 maxQty={4}
               >
@@ -261,7 +261,7 @@ export const query = graphql`
           shopifyId
           compareAtPrice
         }
-        priceRange {
+        priceRangeV2 {
           minVariantPrice {
             amount
           }

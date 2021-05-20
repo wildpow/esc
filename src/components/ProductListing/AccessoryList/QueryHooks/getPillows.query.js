@@ -25,7 +25,7 @@ const usePillows = () => {
             shopifyInfo {
               productType
               vendor
-              priceRange {
+              priceRangeV2 {
                 minVariantPrice {
                   amount
                 }

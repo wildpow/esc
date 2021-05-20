@@ -119,7 +119,7 @@ exports.createResolvers = ({ createResolvers }) => {
           return context.nodeModel.runQuery({
             query: { filter: { shopifyId: { eq: fieldValue } } },
             type: `ShopifyProduct`,
-            // firstOnly: true,
+            firstOnly: true,
           });
         },
       },
@@ -129,6 +129,13 @@ exports.createResolvers = ({ createResolvers }) => {
         type: [`ShopifyProduct`],
         resolve(source, args, context, info) {
           const fieldValue = source.entityPayload.attributes.shopify_connection;
+          console.log(
+            context.nodeModel.runQuery({
+              query: { filter: { shopifyId: { eq: fieldValue } } },
+              type: `ShopifyProduct`,
+              // firstOnly: true,
+            })
+          );
           return context.nodeModel.runQuery({
             query: { filter: { shopifyId: { eq: fieldValue } } },
             type: `ShopifyProduct`,

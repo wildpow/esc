@@ -299,8 +299,8 @@ const Adjustables = ({ data }) => {
   const { allDatoCmsProduct } = data;
   const sortedBases = allDatoCmsProduct.nodes.sort(
     (a, b) =>
-      Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
-      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
+      Number(a.shopifyInfo[0].priceRangeV2.minVariantPrice.amount) -
+      Number(b.shopifyInfo[0].priceRangeV2.minVariantPrice.amount)
   );
   return (
     <Layout>
@@ -337,20 +337,20 @@ const Adjustables = ({ data }) => {
                 </AdjMarkdown>
                 <PriceRangeLg>
                   {`$${Math.trunc(
-                    base.shopifyInfo[0].priceRange.minVariantPrice.amount
+                    base.shopifyInfo[0].priceRangeV2.minVariantPrice.amount
                   )}
           - $${Math.trunc(
-            base.shopifyInfo[0].priceRange.maxVariantPrice.amount
+            base.shopifyInfo[0].priceRangeV2.maxVariantPrice.amount
           )}`}
                 </PriceRangeLg>
               </FeaturePriceWrapper>
             </InfoWrapper>
             <PriceRangeSm>
               {`$${Math.trunc(
-                base.shopifyInfo[0].priceRange.minVariantPrice.amount
+                base.shopifyInfo[0].priceRangeV2.minVariantPrice.amount
               )}
           - $${Math.trunc(
-            base.shopifyInfo[0].priceRange.maxVariantPrice.amount
+            base.shopifyInfo[0].priceRangeV2.maxVariantPrice.amount
           )}`}
             </PriceRangeSm>
           </StyledLink>
@@ -390,7 +390,7 @@ export const allAdjustables = graphql`
           id
         }
         shopifyInfo {
-          priceRange {
+          priceRangeV2 {
             minVariantPrice {
               amount
             }

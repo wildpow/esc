@@ -84,10 +84,9 @@ const cfg = {
           {
             resolve: `gatsby-source-shopify`,
             options: {
-              shopName: `${process.env.GATSBY_SHOPIFY_STORE}.myshopify.com`,
-              accessToken: process.env.GATSBY_SHOPIFY_API,
-              verbose: true,
-              apiVersion: "2020-10",
+              storeUrl: `${process.env.GATSBY_SHOPIFY_STORE}.myshopify.com`,
+              apiKey: process.env.SHOPIFY_ADMIN_API_KEY,
+              password: process.env.SHOPIFY_ADMIN_PASSWORD,
             },
           },
           {

@@ -5,7 +5,7 @@ import Headroom from "react-headroom";
 import Header from "./Header";
 import { useOnClickOutside, useKeyboardEvent, useIntersect } from "../../hooks";
 import MobileMenu from "./MobileMenu";
-import Cart from "../Cart";
+// import Cart from "../Cart";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import GlobalStyle from "../../styles/global.styled";
 import { breakpoints } from "../../styles/theme.styled";
@@ -129,14 +129,14 @@ export default function Layout({ children }) {
         />
       </Headroom>
       <div ref={node}>
-        <FocusLock disabled={cartStatus === "closed"}>
+        {/* <FocusLock disabled={cartStatus === "closed"}>
           <Cart
             status={cartStatus}
             toggle={cartToggle}
             menuStatus={menuStatus}
             headerVisible={headerVisible}
           />
-        </FocusLock>
+        </FocusLock> */}
         <FocusLock disabled={menuStatus === "closed"}>
           <MobileMenu
             searchFocus={searchFocus}

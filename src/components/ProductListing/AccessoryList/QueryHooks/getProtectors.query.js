@@ -25,7 +25,7 @@ const useProtector = () => {
             shopifyInfo {
               productType
               vendor
-              priceRange {
+              priceRangeV2 {
                 minVariantPrice {
                   amount
                 }

@@ -25,7 +25,7 @@ const useFoundation = () => {
             shopifyInfo {
               productType
               vendor
-              priceRange {
+              priceRangeV2 {
                 minVariantPrice {
                   amount
                 }
