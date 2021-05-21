@@ -49,7 +49,7 @@ export default function Search({
       <InstantSearch
         searchClient={searchClient}
         indexName={indices[0].name}
-        onSearchStateChange={({ q }) => setQuery(q)}
+        onSearchStateChange={(e) => setQuery(e.query)}
       >
         <StyledSearchBox
           headerVisible={headerVisible}
