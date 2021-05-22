@@ -6,7 +6,16 @@ import Layout from "../components/Layout";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import Header from "../components/ProductListing/ProductListingHeader";
 import LifeStyleCard from "../components/BrandsCard";
+import TestCard from "../components/BrandsCard/test";
 
+const NewSectionContainer = styled.div`
+  display: grid;
+  grid-gap: 20px;
+  padding-top: 15px;
+  max-width: 1536px;
+  grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+  grid-gap: 1em;
+`;
 const SectionContainer = styled.div`
   padding-left: 5px;
   padding-right: 5px;
@@ -61,21 +70,18 @@ export default function Brands({ data }) {
           button={{ label: "Shop all Mattresses", url: "/brands/list" }}
           title="Our Brands"
         />
-        <SectionContainer>
+        <NewSectionContainer>
           {data.allDatoCmsBrand.nodes.map((brand) => (
-            <LifeStyleCard
+            <TestCard
               key={brand.id}
-              mobileHeight="228px"
-              height="228px"
+              description={brand.lifeStyleText}
               title={brand.displayName}
               bgImg={brand.lifeStyleImg}
               logo={brand.brandLogo}
               url={`/brands/${brand.urlName}`}
-            >
-              {brand.lifeStyleText}
-            </LifeStyleCard>
+            />
           ))}
-        </SectionContainer>
+        </NewSectionContainer>
       </BrandsRoot>
       <BreadWrapper hiddenLarge>
         <BreadCrumbs here="Brands" />
@@ -108,7 +114,7 @@ export const brandsSEO = graphql`
         lifeStyleImg {
           alt
           title
-          gatsbyImageData(layout: CONSTRAINED, width: 560)
+          gatsbyImageData(layout: FULL_WIDTH)
         }
         brandLogo {
           alt
