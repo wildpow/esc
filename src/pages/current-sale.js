@@ -23,7 +23,7 @@ const Sale = ({ data }) => {
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsFrontPage.currentSaleSeoLink.seoMetaTags} />
-      <BreadWrapper hidenLarge>
+      <BreadWrapper hiddenLarge>
         <BreadCrumbs here="Current Sale" />
       </BreadWrapper>
       <BrandsRoot>
@@ -35,7 +35,7 @@ const Sale = ({ data }) => {
           button={{ label: "Shop all Mattresses", url: "/brands/list" }}
         />
       </BrandsRoot>
-      <BreadWrapper hidenLarge Bottom>
+      <BreadWrapper hiddenLarge Bottom>
         <BreadCrumbs here="Current Sale" />
       </BreadWrapper>
     </Layout>

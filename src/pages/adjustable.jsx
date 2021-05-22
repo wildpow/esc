@@ -305,7 +305,7 @@ const Adjustables = ({ data }) => {
   return (
     <Layout>
       <Main MarginTop>
-        <BreadWrapper hidenLarge>
+        <BreadWrapper hiddenLarge>
           <BreadCrumbs here="Adjustable" />
         </BreadWrapper>
         <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
@@ -355,7 +355,7 @@ const Adjustables = ({ data }) => {
             </PriceRangeSm>
           </StyledLink>
         ))}
-        <BreadWrapper hidenLarge Bottom>
+        <BreadWrapper hiddenLarge Bottom>
           <BreadCrumbs here="Adjustable" />
         </BreadWrapper>
       </Main>

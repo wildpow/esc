@@ -40,7 +40,7 @@ const MainWrapper = styled.div`
 `;
 
 const NewWrapper = styled(MainWrapper)`
-  background-color: ${colors.gray["100"]};
+  background-color: ${colors.white};
 
   margin-top: 15px;
   @media (min-width: 1024px) {

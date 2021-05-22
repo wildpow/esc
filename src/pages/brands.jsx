@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
-import BreadCrumbs from "../components/BreadCrumbs";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import Header from "../components/ProductListing/ProductListingHeader";
 import LifeStyleCard from "../components/BrandsCard";
 
@@ -51,7 +51,9 @@ export default function Brands({ data }) {
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsSeo.seoMetaTags} />
-      <BreadCrumbs here="Brands" hiddenLarge />
+      <BreadWrapper hiddenLarge>
+        <BreadCrumbs here="Brands" />
+      </BreadWrapper>
       <BrandsRoot>
         <Header
           description={data.datoCmsHeader.tagLine}
@@ -75,7 +77,9 @@ export default function Brands({ data }) {
           ))}
         </SectionContainer>
       </BrandsRoot>
-      <BreadCrumbs here="Brands" hiddenLarge />
+      <BreadWrapper hiddenLarge>
+        <BreadCrumbs here="Brands" />
+      </BreadWrapper>
     </Layout>
   );
 }

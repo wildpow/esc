@@ -7,7 +7,7 @@ import { P, Headline } from "./home.styled";
 const FrontCard = styled.div`
   display: flex;
   flex-direction: column;
-  /* background-color: ${(props) => props.theme.newColor1}; */
+  background-color: white;
   box-shadow: ${boxShadow.md};
   margin-top: 10px;
   margin-right: 0px;
