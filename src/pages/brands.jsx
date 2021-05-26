@@ -5,43 +5,38 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import Header from "../components/ProductListing/ProductListingHeader";
-import LifeStyleCard from "../components/BrandsCard";
+import BrandsCard from "../components/BrandsCard/BrandsCard";
 
-const SectionContainer = styled.div`
-  padding-left: 5px;
-  padding-right: 5px;
+const NewSectionContainer = styled.div`
   min-width: 320px;
   max-width: 1536px;
-  margin: auto;
-  padding-top: 0px;
-  scroll-behavior: smooth;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, minmax(300px, 760px));
   grid-gap: 20px;
+  grid-template-rows: repeat(auto-fit, minmax(220px, 228px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 768px));
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
   align-items: stretch;
   justify-items: center;
   justify-content: center;
   align-content: flex-start;
-  padding-top: 10px;
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  @media screen and (max-width: 650px) {
-    grid-gap: 20px;
-    grid-template-rows: repeat(auto-fit, minmax(220px, 228px));
-    grid-template-columns: repeat(auto-fit, minmax(300px, 486px));
-    padding-top: 0px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  @media screen and (min-width: 1022px) {
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(300px, 790px));
+    grid-template-rows: repeat(auto-fit, minmax(220px, 250px));
     padding-top: 20px;
-    padding-bottom: 40px;
-    padding-left: 0px;
-    padding-right: 0px;
+  }
+  @media (min-width: 1024px) {
+    padding-bottom: 20px;
+  }
+  @media (min-width: 1536px) {
+    padding-right: 0;
+    padding-left: 0;
+    grid-template-rows: repeat(auto-fit, minmax(220px, 275px));
   }
 `;
+
 const BrandsRoot = styled.div`
   @media (min-width: 1022px) {
     padding-top: 20px;
@@ -61,21 +56,18 @@ export default function Brands({ data }) {
           button={{ label: "Shop all Mattresses", url: "/brands/list" }}
           title="Our Brands"
         />
-        <SectionContainer>
+        <NewSectionContainer>
           {data.allDatoCmsBrand.nodes.map((brand) => (
-            <LifeStyleCard
+            <BrandsCard
               key={brand.id}
-              mobileHeight="228px"
-              height="228px"
+              description={brand.lifeStyleText}
               title={brand.displayName}
               bgImg={brand.lifeStyleImg}
               logo={brand.brandLogo}
               url={`/brands/${brand.urlName}`}
-            >
-              {brand.lifeStyleText}
-            </LifeStyleCard>
+            />
           ))}
-        </SectionContainer>
+        </NewSectionContainer>
       </BrandsRoot>
       <BreadWrapper hiddenLarge>
         <BreadCrumbs here="Brands" />
@@ -108,7 +100,7 @@ export const brandsSEO = graphql`
         lifeStyleImg {
           alt
           title
-          gatsbyImageData(layout: CONSTRAINED, width: 560)
+          gatsbyImageData(layout: FULL_WIDTH)
         }
         brandLogo {
           alt
