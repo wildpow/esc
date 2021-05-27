@@ -261,7 +261,7 @@ export const query = graphql`
           shopifyId
           compareAtPrice
         }
-        priceRange {
+        priceRange: priceRangeV2 {
           minVariantPrice {
             amount
           }

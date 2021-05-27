@@ -274,7 +274,7 @@ export const query = graphql`
         title
         vendor
         shopifyId
-        priceRange {
+        priceRange: priceRangeV2 {
           minVariantPrice {
             amount
           }
