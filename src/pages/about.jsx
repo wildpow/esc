@@ -211,7 +211,7 @@ export const about = graphql`
           title
           description
           picture {
-            gatsbyImageData(layout: CONSTRAINED, width: 528)
+            gatsbyImageData(layout: CONSTRAINED, width: 728)
             alt
             title
             url
