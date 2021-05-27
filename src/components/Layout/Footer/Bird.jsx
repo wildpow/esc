@@ -80,7 +80,7 @@ const AvgContainer = styled.div`
   margin-top: 2px;
   font-size: 0.8em;
   margin-left: 4px;
-  font-family: ${(props) => props.theme.MainFont1};
+  font-family: ${fonts.sans};
   @media (min-width: 812px) {
     margin-top: 0px;
     font-size: 0.9em;
@@ -100,7 +100,7 @@ const Bird = () => {
         }
       `}
       render={(data) => {
-        const { avgRating, reviewCount } = data;
+        const { avgRating, reviewCount } = data.widget;
         for (let i = 0; i < avgRating; i += 1) {
           starsArr.push(
             <img src="/star.png" alt="start for rating" key={i + 200} />
