@@ -15,7 +15,7 @@ import Twitter from "../../../svgs/twitter-brands.svg";
 import FaceBook from "../../../svgs/facebook-f-brands.svg";
 import useFooterIcons from "./getFooterIcons.query";
 import useReaders from "./getReadersChoice.query";
-// import Bird from "./Bird";
+import Bird from "./Bird";
 
 const FooterRoot = styled.footer`
   @media print {
@@ -432,7 +432,7 @@ const Footer = ({ moved }) => {
           <div>
             <h3>Reviews / Awards</h3>
             <div className="iconWrapper">
-              {/* <Bird /> */}
+              <Bird />
               <Link
                 to="/blog/esc-mattress-center-wins-best-mattress-store-in-snohomish-county"
                 className="link"
