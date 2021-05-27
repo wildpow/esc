@@ -85,7 +85,7 @@ const BrandsWrapper = styled.div`
 const StyledCarousel = styled.div`
   background-color: ${colors.blue[900]};
   width: 100%;
-  padding: 4em 0;
+  padding: 3em 0 4em 0;
 
   .brand_img {
     padding-right: 40px;
@@ -94,13 +94,13 @@ const StyledCarousel = styled.div`
     display: flex;
     justify-content: center;
     img {
-      width: 400px;
+      /* width: 400px; */
     }
   }
   p {
     color: white;
     font-family: ${fonts.serif};
-    padding-top: 6em;
+    padding-top: 2em;
     font-size: ${fontSize.base};
     max-width: 768px;
     line-height: ${spacing[6]};
@@ -137,9 +137,10 @@ const AboutBrands = ({ brandImages, brandText }) => {
             infiniteLoop
             autoPlay
             showThumbs={false}
-            interval={2000}
+            interval={3500}
+            transitionTime={3500}
             centerMode
-            centerSlidePercentage={100}
+            centerSlidePercentage={50}
             showStatus={false}
             showArrows={false}
             showIndicators={false}
