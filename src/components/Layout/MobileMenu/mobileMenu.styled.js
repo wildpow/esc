@@ -15,17 +15,17 @@ export const AppearKeyframe = keyframes`
 export const FadeIn = styled.div`
   opacity: 0;
   animation: 0.7s ${AppearKeyframe} forwards;
-  animation-delay: ${(props) => props.delay};
+  animation-delay: ${({ delay }) => delay};
   transition: all 0.5s ease-in-out;
 `;
 export const SlideIn = styled.div`
   animation: 0.5s ${SlideInKeyframe} forwards;
-  animation-delay: ${(props) => props.delay};
+  animation-delay: ${({ delay }) => delay};
 `;
 
 export const ShrinkKeyframe = keyframes`
-  0% {width: 0%; }
-  100% { width: 100%; }
+from {width: 0%; }
+  to { width: 100%; }
 `;
 
 // export const HomeSmallSlide = styled.div`

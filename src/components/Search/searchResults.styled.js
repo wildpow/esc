@@ -29,7 +29,7 @@ const Popover = css`
 export default styled(SearchResult)`
   font-family: ${fonts.sans};
   background-color: white;
-  display: ${(props) => (props.show ? `block` : `none`)};
+  display: ${({ show }) => (show ? `block` : `none`)};
   ${Popover}
   .HitCount {
     display: flex;
