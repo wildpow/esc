@@ -78,7 +78,7 @@ const SocialIcons = ({ bottom }) => (
         <SocImg src="/twitter.png" alt="twitter logo" />
       </OutboundLink>
       <OutboundLink
-        href="https://www.instagram.com/centeresc/"
+        href="https://www.instagram.com/escmattresscenter/"
         target="_blank"
         rel="noopener noreferrer"
       >
