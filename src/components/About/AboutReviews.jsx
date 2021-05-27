@@ -105,7 +105,7 @@ const Name = styled.span`
   font-weight: 700;
   line-height: 21px;
   font-size: 12px;
-  color: ${colors.gray["100"]};
+  color: ${colors.gray["900"]};
   text-align: center;
   justify-self: center;
   @media (min-width: ${breakpoints.sm}) {
