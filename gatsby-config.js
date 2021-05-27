@@ -19,6 +19,7 @@ const cfg = {
   },
   plugins: [
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-netlify`,
     // `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-react-helmet`,
