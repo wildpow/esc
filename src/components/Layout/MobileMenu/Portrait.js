@@ -8,7 +8,7 @@ import {
   // LogoAnimate,
 } from "./mobileMenu.styled";
 import { firstSet, secondSet } from "./items";
-import { colors } from "../../../styles/theme.styled";
+import { colors, fonts } from "../../../styles/theme.styled";
 
 // const Panda = styled.img`
 //   width: 140px;
@@ -26,7 +26,7 @@ import { colors } from "../../../styles/theme.styled";
 //   }
 // `;
 const StyledLink = styled(Link)`
-  font-family: ${(props) => props.theme.MainFont1};
+  font-family: ${fonts.sans};
   font-size: 1.1rem;
   text-decoration: none;
   font-weight: 700;
@@ -85,7 +85,7 @@ const Line = styled.div`
   background: white;
   margin: 0 auto;
   animation: 0.9s ${ShrinkKeyframe} forwards;
-  animation-delay: ${(props) => props.delay};
+  animation-delay: ${({ delay }) => delay};
 `;
 const Wrapper = styled.div`
   display: none;
