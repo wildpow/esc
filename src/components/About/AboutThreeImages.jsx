@@ -89,7 +89,11 @@ const AboutThreeImages = ({ threeImageText, threeImage }) => (
     <div className="threeImageContainer" style={{ maxWidth: "1320px" }}>
       {threeImage.map((img, index) => (
         <div className={`image ${index === 1 && "n"}`} key={img.filename}>
-          <GatsbyImage image={getImage(img)} alt={img.alt} />
+          <GatsbyImage
+            image={getImage(img)}
+            alt={img.alt}
+            formats={["auto", "webp", "avif"]}
+          />
         </div>
       ))}
     </div>

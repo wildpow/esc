@@ -258,7 +258,7 @@ export const query = graphql`
           compareAtPrice
           price
           title
-          shopifyId
+          shopifyId: storefrontId
           compareAtPrice
         }
         priceRange: priceRangeV2 {

@@ -5,14 +5,15 @@ All notable changes to this project will be documented in this file. See [Conven
 ### May 2021
 #### Features
 -  After whole month of stops and starts, hard work and staving feature creep [PR #146](https://github.com/wildpow/esc/pull/146) finally lands with major version dependency migrations, cleaning up technical debit and generally improving developer DX. Just a few bullet points:
-  - 🔥 Moved to Gatsby v3.6 🔥 
-  - Migrated all images to the new `gatsby-plugin-image`.
+  - 🚀 Moved to Gatsby v3.6
+  - 💥 Migrated all images to the new `gatsby-plugin-image`.
+  - :tada: Migrated to Shopify's newest release canidate for their brand new source plug-in.
+  - :ghost: Migrated from Husky version 4 to version 6
+  - Updated most minor dependencies to the latest versions.
   - More consistent file naming conventions.
   - Improved folder structure of the entire project.
   - Moved from deprecated typeface font packages to new fontsource packages.
-  - Migrated from Husky version 4 to version 6
   - Combined all style themes into one crossed project.
-  - Updated all dependencies to the latest versions.
   - Cleaned up and rewrote a majority of components.
 ### April 2021
 #### Features

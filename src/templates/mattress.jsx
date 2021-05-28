@@ -181,48 +181,48 @@ export const query = graphql`
     $shopify5Inch: String!
     $shopify9Inch: String!
   ) {
-    shopifyBase: shopifyProduct(shopifyId: { eq: $shopifyBase }) {
+    shopifyBase: shopifyProduct(storefrontId: { eq: $shopifyBase }) {
       title
       vendor
-      shopifyId
+      shopifyId: storefrontId
       variants {
         compareAtPrice
         price
         title
-        shopifyId
+        shopifyId: storefrontId
       }
     }
-    shopify2Inch: shopifyProduct(shopifyId: { eq: $shopify2Inch }) {
+    shopify2Inch: shopifyProduct(storefrontId: { eq: $shopify2Inch }) {
       title
       vendor
-      shopifyId
+      shopifyId: storefrontId
       variants {
         compareAtPrice
         price
         title
-        shopifyId
+        shopifyId: storefrontId
       }
     }
-    shopify5Inch: shopifyProduct(shopifyId: { eq: $shopify5Inch }) {
+    shopify5Inch: shopifyProduct(storefrontId: { eq: $shopify5Inch }) {
       title
       vendor
-      shopifyId
+      shopifyId: storefrontId
       variants {
         compareAtPrice
         price
         title
-        shopifyId
+        shopifyId: storefrontId
       }
     }
-    shopify9Inch: shopifyProduct(shopifyId: { eq: $shopify9Inch }) {
+    shopify9Inch: shopifyProduct(storefrontId: { eq: $shopify9Inch }) {
       title
       vendor
-      shopifyId
+      shopifyId: storefrontId
       variants {
         compareAtPrice
         price
         title
-        shopifyId
+        shopifyId: storefrontId
       }
     }
     datoCmsNewMattress(slug: { eq: $slug }) {
@@ -273,7 +273,7 @@ export const query = graphql`
       shopifyInfo {
         title
         vendor
-        shopifyId
+        shopifyId: storefrontId
         priceRange: priceRangeV2 {
           minVariantPrice {
             amount
@@ -286,7 +286,7 @@ export const query = graphql`
           compareAtPrice
           price
           title
-          shopifyId
+          shopifyId: storefrontId
         }
       }
     }
