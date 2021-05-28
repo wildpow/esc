@@ -138,12 +138,13 @@ const AboutBrands = ({ brandImages, brandText }) => {
             autoPlay
             showThumbs={false}
             interval={3500}
-            transitionTime={3500}
+            transitionTime={3300}
             centerMode
             centerSlidePercentage={50}
             showStatus={false}
             showArrows={false}
             showIndicators={false}
+            stopOnHover={false}
           >
             {brandImages.map((img) => (
               <div className="brand_img" key={img.alt}>
