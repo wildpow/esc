@@ -62,8 +62,11 @@ const Select = styled.select`
   appearance: none;
 `;
 const Holder = styled.div`
+header {
+
   display: flex;
   flex-direction: column;
+}
   @media screen and (max-width: 981px) {
     height: 90vh;
     margin-bottom: 100px;

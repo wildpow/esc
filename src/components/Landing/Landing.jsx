@@ -17,6 +17,10 @@ const Header = styled.div`
     margin-right: 30px;
     margin-left: 30px;
   }
+  @media screen and (max-width: 1024px) {
+    padding-top: 0;
+  }
+
 `;
 
 const Container = styled.section`
@@ -24,12 +28,20 @@ const Container = styled.section`
   padding-left: 15px; */
   margin-right: auto;
   margin-left: auto;
+  .lastHr {
+    padding-bottom: 0px;
+  }
   @media (min-width: 768px) {
     padding-top: 20px;
     width: 750px;
   }
   @media (min-width: 992px) {
     width: 970px;
+  }
+  @media (min-width: 1024px) {
+    .lastHr {
+      padding-bottom: 80px;
+}
   }
   @media (min-width: 1200px) {
     width: 1170px;
@@ -82,7 +94,7 @@ const Landing = ({ data, buttonName, buttonURL }) => {
             />
           </div>
         ))}
-        <div style={{ paddingBottom: "20px" }}>
+        <div  className="lastHr">
           <Hr style={{ marginBottom: 0, marginTop: 0 }} />
         </div>
       </Container>
