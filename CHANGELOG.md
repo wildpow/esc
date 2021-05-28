@@ -2,14 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-### April 2021
-
+### May 2021
 #### Features
-
+-  After whole month of stops and starts, hard work and staving feature creep [PR #146](https://github.com/wildpow/esc/pull/146) finally lands with major version dependency migrations, cleaning up technical debit and generally improving developer DX. Just a few bullet points:
+  - 🔥 Moved to Gatsby v3.6 🔥 
+  - Migrated all images to the new `gatsby-plugin-image`.
+  - More consistent file naming conventions.
+  - Improved folder structure of the entire project.
+  - Moved from deprecated typeface font packages to new fontsource packages.
+  - Migrated from Husky version 4 to version 6
+  - Combined all style themes into one crossed project.
+  - Updated all dependencies to the latest versions.
+  - Cleaned up and rewrote a majority of components.
+### April 2021
+#### Features
 - Added JSON-LD to blog posts
-
 #### Bug Fix
-
 - Fixed errors in main json-ld. Remove trailing commons. [dd84f52](https://github.com/wildpow/new-esc-gatsby/commit/dd84f52a29cc145cc9820dcbdbe165da1ff580ae)
 - Updated visual sitemap with new mattress model from CMS. Complete rewrite is comming! [d08e7e7](https://github.com/wildpow/new-esc-gatsby/commit/dd84f52a29cc145cc9820dcbdbe165da1ff580ae)
 - Fixed errors in product json-dl. Remove double quotes from descriptions of products. [2849033](https://github.com/wildpow/new-esc-gatsby/commit/28490339d8286351f83ce84fd97536bbd15ab0c8)
