@@ -46,7 +46,7 @@ export const landing = graphql`
         title
         description
         picture {
-          gatsbyImageData(layout: CONSTRAINED, width: 628)
+          gatsbyImageData(layout: CONSTRAINED, width: 728)
           alt
           title
           url
