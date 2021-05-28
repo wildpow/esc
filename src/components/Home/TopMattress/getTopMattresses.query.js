@@ -22,7 +22,7 @@ export default () => {
                 }
               }
               shopifyInfo {
-                priceRange {
+                priceRange: priceRangeV2 {
                   minVariantPrice {
                     amount
                   }

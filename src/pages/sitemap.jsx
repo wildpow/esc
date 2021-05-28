@@ -308,7 +308,7 @@ export const allMattressesSiteMap = graphql`
       nodes {
         slug
         shopifyInfo {
-          priceRange {
+          priceRange: priceRangeV2 {
             minVariantPrice {
               amount
             }

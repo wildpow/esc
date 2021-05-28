@@ -390,7 +390,7 @@ export const allAdjustables = graphql`
           id
         }
         shopifyInfo {
-          priceRange {
+          priceRange: priceRangeV2 {
             minVariantPrice {
               amount
             }
