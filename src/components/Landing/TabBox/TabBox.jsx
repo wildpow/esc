@@ -69,7 +69,7 @@ header {
 }
   @media screen and (max-width: 981px) {
     height: 90vh;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
   }
   @media screen and (max-width: 568px) {
     height: initial;
