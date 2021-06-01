@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import styled, { css } from "styled-components";
 import Popup from "reactjs-popup";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import PropTypes from "prop-types";
 import "reactjs-popup/dist/index.css";
 import {
@@ -316,7 +315,7 @@ export default function FeatureList({ list, top, width, listText }) {
               ))}
               {listText && (
                 <Info>
-                  <AnchorLink href="#moreInfo">
+                  <a href="#moreInfo">
                     <div className="left">
                       <DownArrow />
                     </div>
@@ -324,7 +323,7 @@ export default function FeatureList({ list, top, width, listText }) {
                     <div className="right">
                       <DownArrow />
                     </div>
-                  </AnchorLink>
+                  </a>
                 </Info>
               )}
             </ul>
