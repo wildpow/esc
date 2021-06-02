@@ -158,6 +158,9 @@ if (process.env.NODE_ENV === "production") {
       trackingId: process.env.GOOGLE_ANALYTICS,
     },
   };
+  const preact = `gatsby-plugin-preact`;
+
+  cfg.plugins.push(preact);
   cfg.plugins.push(googleAnalyticsCfg);
 }
 
