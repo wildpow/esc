@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file. See [Conven
   - :tada: Migrated to Shopify's newest release canidate for their brand new source plug-in.
   - :ghost: Migrated from Husky version 4 to version 6
   - Updated most minor dependencies to the latest versions.
+  - Removed `react-anchor-link-smooth-scroll` from project and added prefers-reduced-motion media query.
   - More consistent file naming conventions.
   - Improved folder structure of the entire project.
   - Moved from deprecated typeface font packages to new fontsource packages.
