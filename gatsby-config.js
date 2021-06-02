@@ -18,6 +18,7 @@ const cfg = {
     siteUrl,
   },
   plugins: [
+    `gatsby-plugin-preact`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-webpack-bundle-analyser-v2`,
