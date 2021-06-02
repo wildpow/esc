@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import SearchResult from "./SearchResult";
 import { colors, fonts } from "../../styles/theme.styled";
 

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { colors } from "../../../styles/theme.styled";
 
 const CheckboxContainer = styled.div`
@@ -15,7 +15,7 @@ const Icon = styled.svg`
   stroke-width: 3px;
 `;
 
-const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
+const HiddenCheckbox = styled.input`
   border: 0;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -48,7 +48,7 @@ const StyledCheckbox = styled.div`
 
 const Checkbox = ({ checked, ...props }) => (
   <CheckboxContainer>
-    <HiddenCheckbox checked={checked} {...props} />
+    <HiddenCheckbox checked={checked} {...props} type="checkbox" />
     <StyledCheckbox checked={checked}>
       <Icon viewBox="0 0 24 24">
         <polyline points="20 6 9 17 4 12" />

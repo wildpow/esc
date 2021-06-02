@@ -1,7 +1,8 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql, Link } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import styled, { css } from "styled-components";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import Layout from "../components/Layout";

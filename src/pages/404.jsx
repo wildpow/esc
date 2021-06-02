@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 import OldH2 from "../old/oldHeading.styled";
 import image from "../images/ezgif.com-optimize.gif";

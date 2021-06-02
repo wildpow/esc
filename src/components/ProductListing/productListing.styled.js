@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { BreadWrapper } from "../BreadCrumbs";
 import { colors, fonts, boxShadow } from "../../styles/theme.styled";
 

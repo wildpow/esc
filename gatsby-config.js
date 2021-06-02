@@ -18,9 +18,9 @@ const cfg = {
     siteUrl,
   },
   plugins: [
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
-    // `gatsby-plugin-webpack-bundle-analyser-v2`,
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-curly-newline */
 import { useReducer } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { Input, Label, Select } from "../formElements.styled";
 import { colors, fonts, fontSize } from "../../../styles/theme.styled";

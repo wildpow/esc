@@ -1,5 +1,5 @@
 import { node, bool, string } from "prop-types";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Link } from "gatsby";
 import { colors, fonts, radius } from "./theme.styled";
 

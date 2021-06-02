@@ -1,5 +1,6 @@
 import { useState } from "react";
-import styled, { css } from "styled-components";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useWindowSize } from "../../../contexts/WindowSize.ctx";
@@ -62,11 +63,10 @@ const Select = styled.select`
   appearance: none;
 `;
 const Holder = styled.div`
-header {
-
-  display: flex;
-  flex-direction: column;
-}
+  header {
+    display: flex;
+    flex-direction: column;
+  }
   @media screen and (max-width: 981px) {
     height: 90vh;
     /* margin-bottom: 100px; */

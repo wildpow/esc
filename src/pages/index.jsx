@@ -1,5 +1,5 @@
 import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql, Link } from "gatsby";

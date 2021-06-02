@@ -1,6 +1,6 @@
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import {
   breakpoints,

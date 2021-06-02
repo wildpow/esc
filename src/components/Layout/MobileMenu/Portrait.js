@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Link } from "gatsby";
 // import Logo from "../../../images/logo.png";
 import {

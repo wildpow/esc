@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components";
+import { keyframes } from "@emotion/react";
 
 export const iconEntry = keyframes`
   0%, 50% {

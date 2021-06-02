@@ -1,6 +1,6 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import TabBox from "./TabBox";
 import { P } from "./landing.styled";
@@ -20,7 +20,6 @@ const Header = styled.div`
   @media screen and (max-width: 1024px) {
     padding-top: 0;
   }
-
 `;
 
 const Container = styled.section`
@@ -41,7 +40,7 @@ const Container = styled.section`
   @media (min-width: 1024px) {
     .lastHr {
       padding-bottom: 80px;
-}
+    }
   }
   @media (min-width: 1200px) {
     width: 1170px;
@@ -94,7 +93,7 @@ const Landing = ({ data, buttonName, buttonURL }) => {
             />
           </div>
         ))}
-        <div  className="lastHr">
+        <div className="lastHr">
           <Hr style={{ marginBottom: 0, marginTop: 0 }} />
         </div>
       </Container>

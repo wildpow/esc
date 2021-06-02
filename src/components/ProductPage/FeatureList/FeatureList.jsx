@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-wrap-multilines */
-import styled, { css } from "styled-components";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import Popup from "reactjs-popup";
 import PropTypes from "prop-types";
 import "reactjs-popup/dist/index.css";
