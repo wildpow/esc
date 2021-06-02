@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import AccessoryList from "../../components/Accessories/AccessoryList";
+import AccessoryList from "../../components/ProductListing/AccessoryList";
 import Layout from "../../components/Layout";
 
 const AccessoryListingPage = ({ location, data }) => (

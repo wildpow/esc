@@ -1,25 +1,18 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+/* eslint-disable import/prefer-default-export */
+import "@fontsource/roboto";
+import "@fontsource/roboto/300.css"; // footer brand_text
+import "@fontsource/roboto/500.css"; // footer
+import "@fontsource/roboto/700.css"; // Contact-us h2 -
+import "@fontsource/roboto/900.css"; // logo
+import "@fontsource/roboto/900-italic.css"; // logo
+import "@fontsource/roboto-slab";
+import "@fontsource/roboto-slab/300.css"; // warrant-p
+import "@fontsource/roboto-slab/700.css"; // Header mattress list
+import WindowSizeProvider from "./src/contexts/WindowSize.ctx";
+import StoreProvider from "./src/contexts/Store.ctx";
 
-// You can delete this file if you're not using it
-
-import { ThemeProvider } from "styled-components";
-import WindowSizeProvider from "./src/provider/WindowSizeProvider";
-import { theme } from "./src/styles/mainStyles";
-import StoreProvider from "./src/provider/StoreProvider";
-
-require("typeface-roboto-slab");
-require("typeface-roboto");
-
-export const wrapRootElement = ({ element }) => {
-  return (
-    <StoreProvider>
-      <ThemeProvider theme={theme}>
-        <WindowSizeProvider>{element}</WindowSizeProvider>
-      </ThemeProvider>
-    </StoreProvider>
-  );
-};
+export const wrapRootElement = ({ element }) => (
+  <WindowSizeProvider>
+    <StoreProvider>{element}</StoreProvider>
+  </WindowSizeProvider>
+);

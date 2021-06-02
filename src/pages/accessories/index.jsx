@@ -5,8 +5,8 @@ import Landing from "../../components/Landing";
 import BreadCrumbs, { BreadWrapper } from "../../components/BreadCrumbs";
 
 const AccessoryLanding = ({ data }) => (
-  <Layout>
-    <BreadWrapper hidenLarge>
+  <Layout bgWhite>
+    <BreadWrapper hiddenLarge>
       <BreadCrumbs here="Accessories" />
     </BreadWrapper>
 
@@ -17,8 +17,8 @@ const AccessoryLanding = ({ data }) => (
       buttonURL="/accessories/list"
     />
 
-    <BreadWrapper Brands>
-      <BreadCrumbs here="Accessories" hidenLarge Bottom />
+    <BreadWrapper Brands hiddenLarge>
+      <BreadCrumbs here="Accessories" Bottom />
     </BreadWrapper>
   </Layout>
 );

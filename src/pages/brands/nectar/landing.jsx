@@ -5,7 +5,7 @@ import Landing from "../../../components/Landing";
 import BreadCrumbs, { BreadWrapper } from "../../../components/BreadCrumbs";
 
 const Nectar = ({ data }) => (
-  <Layout>
+  <Layout bgWhite>
     <BreadWrapper Brands>
       <BreadCrumbs next="Brands" here="Nectar" />
     </BreadWrapper>

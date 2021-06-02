@@ -1,7 +1,12 @@
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import { fonts, colors, breakpoints, fontSize } from "../../utils/styles";
+import {
+  fonts,
+  colors,
+  breakpoints,
+  fontSize,
+} from "../../styles/theme.styled";
 
 const StyledLink = styled(Link)`
   display: flex;

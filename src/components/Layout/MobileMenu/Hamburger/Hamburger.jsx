@@ -1,13 +1,17 @@
 import styled from "styled-components";
 import { func, string, bool } from "prop-types";
-import { colors, dimensions, breakpoints } from "../../../../utils/styles";
-import { iconEntry } from "../../../../utils/keyframes";
+import {
+  colors,
+  dimensions,
+  breakpoints,
+} from "../../../../styles/theme.styled";
+import { iconEntry } from "../../../../styles/keyframes.styled";
 
 const BurgerToggle = styled.button`
   background: transparent;
   border: none;
   border-radius: 0;
-  display: ${({ pin }) => (pin ? "flex" : "none")};
+  display: ${({ headerVisible }) => (headerVisible ? "flex" : "none")};
 
   height: ${dimensions.headerHeight};
   justify-content: center;
@@ -108,11 +112,11 @@ const BurgerToggle = styled.button`
   }
 `;
 
-const Hamburger = ({ toggle, status, pin, ...props }) => {
+const Hamburger = ({ toggle, status, headerVisible, ...props }) => {
   const isExpanded = status === "open";
   return (
     <BurgerToggle
-      pin={pin}
+      headerVisible={headerVisible}
       onClick={toggle}
       aria-label="Toggle menu"
       aria-expanded={isExpanded}
@@ -130,13 +134,13 @@ const Hamburger = ({ toggle, status, pin, ...props }) => {
 
 Hamburger.defaultProps = {
   status: "closed",
-  pin: true,
+  headerVisible: true,
 };
 
 Hamburger.propTypes = {
   toggle: func.isRequired,
   status: string,
-  pin: bool,
+  headerVisible: bool,
 };
 
 export default Hamburger;

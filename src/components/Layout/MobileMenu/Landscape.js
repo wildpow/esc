@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { colors, fonts } from "../../../utils/styles";
+import { colors, fonts } from "../../../styles/theme.styled";
 
 const StyledLink = styled(Link)`
   font-family: ${fonts.sans};
@@ -54,11 +54,6 @@ const StyledLink = styled(Link)`
 
 const Wrapper = styled.div`
   display: none;
-  /* @media (min-height: 200px) and (max-height: 280px) {
-    width: 98%;
-    height: 100%;
-  } */
-
   @media (orientation: landscape) and (max-height: 600px) {
     display: flex;
     flex-direction: row;
@@ -163,10 +158,9 @@ const Holder = styled.div`
 //     display: none;
 //   }
 // `;
-const Landscape = () => {
-  return (
-    <>
-      {/* <Div>
+const Landscape = () => (
+  <>
+    {/* <Div>
         <Home
           onClick={() => {
             document.body.style.overflow = "visible";
@@ -180,133 +174,132 @@ const Landscape = () => {
           Home
         </Home>
       </Div> */}
-      <Wrapper>
-        <Holder>
-          <StyledLink
-            onClick={() => {
-              document.body.style.overflow = "visible";
-              document.body.style.position = "initial";
-            }}
-            partiallyActive
-            activeStyle={{
-              backgroundColor: "rgba(235, 28, 26, 0.9)",
-            }}
-            to="/brands"
-          >
-            Mattresses
-          </StyledLink>
-          <StyledLink
-            onClick={() => {
-              document.body.style.overflow = "visible";
-              document.body.style.position = "initial";
-            }}
-            partiallyActive
-            activeStyle={{
-              backgroundColor: "rgba(235, 28, 26, 0.9)",
-            }}
-            to="/adjustable"
-          >
-            Ajustables
-          </StyledLink>
-          <StyledLink
-            onClick={() => {
-              document.body.style.overflow = "visible";
-              document.body.style.position = "initial";
-            }}
-            partiallyActive
-            activeStyle={{
-              backgroundColor: "rgba(235, 28, 26, 0.9)",
-            }}
-            to="/accessories"
-          >
-            Accessories
-          </StyledLink>
-        </Holder>
-        <Holder>
-          <StyledLink
-            onClick={() => {
-              document.body.style.overflow = "visible";
-              document.body.style.position = "initial";
-            }}
-            partiallyActive
-            activeStyle={{
-              backgroundColor: "rgba(235, 28, 26, 0.9)",
-            }}
-            to="/financing"
-          >
-            Financing
-          </StyledLink>
-          <StyledLink
-            onClick={() => {
-              document.body.style.overflow = "visible";
-              document.body.style.position = "initial";
-            }}
-            partiallyActive
-            activeStyle={{
-              backgroundColor: "rgba(235, 28, 26, 0.9)",
-            }}
-            to="/blog"
-          >
-            Our Blog
-          </StyledLink>
-          <StyledLink
-            onClick={() => {
-              document.body.style.overflow = "visible";
-              document.body.style.position = "initial";
-            }}
-            partiallyActive
-            activeStyle={{
-              backgroundColor: "rgba(235, 28, 26, 0.9)",
-            }}
-            to="/about"
-          >
-            About Us
-          </StyledLink>
-        </Holder>
-        <Holder>
-          <StyledLink
-            onClick={() => {
-              document.body.style.overflow = "visible";
-              document.body.style.position = "initial";
-            }}
-            partiallyActive
-            activeStyle={{
-              backgroundColor: "rgba(235, 28, 26, 0.9)",
-            }}
-            to="/warranty"
-          >
-            Warranty
-          </StyledLink>
-          <StyledLink
-            onClick={() => {
-              document.body.style.overflow = "visible";
-              document.body.style.position = "initial";
-            }}
-            partiallyActive
-            activeStyle={{
-              backgroundColor: "rgba(235, 28, 26, 0.9)",
-            }}
-            to="/policies"
-          >
-            Policies
-          </StyledLink>
-          <StyledLink
-            onClick={() => {
-              document.body.style.overflow = "visible";
-              document.body.style.position = "initial";
-            }}
-            partiallyActive
-            activeStyle={{
-              backgroundColor: "rgba(235, 28, 26, 0.9)",
-            }}
-            to="/sitemap"
-          >
-            Site Map
-          </StyledLink>
-        </Holder>
-      </Wrapper>
-    </>
-  );
-};
+    <Wrapper>
+      <Holder>
+        <StyledLink
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+          partiallyActive
+          activeStyle={{
+            backgroundColor: "rgba(235, 28, 26, 0.9)",
+          }}
+          to="/brands"
+        >
+          Mattresses
+        </StyledLink>
+        <StyledLink
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+          partiallyActive
+          activeStyle={{
+            backgroundColor: "rgba(235, 28, 26, 0.9)",
+          }}
+          to="/adjustable"
+        >
+          Ajustables
+        </StyledLink>
+        <StyledLink
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+          partiallyActive
+          activeStyle={{
+            backgroundColor: "rgba(235, 28, 26, 0.9)",
+          }}
+          to="/accessories"
+        >
+          Accessories
+        </StyledLink>
+      </Holder>
+      <Holder>
+        <StyledLink
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+          partiallyActive
+          activeStyle={{
+            backgroundColor: "rgba(235, 28, 26, 0.9)",
+          }}
+          to="/financing"
+        >
+          Financing
+        </StyledLink>
+        <StyledLink
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+          partiallyActive
+          activeStyle={{
+            backgroundColor: "rgba(235, 28, 26, 0.9)",
+          }}
+          to="/blog"
+        >
+          Our Blog
+        </StyledLink>
+        <StyledLink
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+          partiallyActive
+          activeStyle={{
+            backgroundColor: "rgba(235, 28, 26, 0.9)",
+          }}
+          to="/about"
+        >
+          About Us
+        </StyledLink>
+      </Holder>
+      <Holder>
+        <StyledLink
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+          partiallyActive
+          activeStyle={{
+            backgroundColor: "rgba(235, 28, 26, 0.9)",
+          }}
+          to="/warranty"
+        >
+          Warranty
+        </StyledLink>
+        <StyledLink
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+          partiallyActive
+          activeStyle={{
+            backgroundColor: "rgba(235, 28, 26, 0.9)",
+          }}
+          to="/policies"
+        >
+          Policies
+        </StyledLink>
+        <StyledLink
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+          partiallyActive
+          activeStyle={{
+            backgroundColor: "rgba(235, 28, 26, 0.9)",
+          }}
+          to="/sitemap"
+        >
+          Site Map
+        </StyledLink>
+      </Holder>
+    </Wrapper>
+  </>
+);
 
 export default Landscape;

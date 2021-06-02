@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
-import MattressList from "../components/MattressList";
+import MattressList from "../components/ProductListing/MattressList";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 
 const BrandsRoot = styled.div`
@@ -18,12 +18,12 @@ const Sale = ({ data }) => {
   const sortedMatt = allDatoCmsNewMattress.nodes.sort(
     (a, b) =>
       Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
-      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
+      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
   );
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsFrontPage.currentSaleSeoLink.seoMetaTags} />
-      <BreadWrapper hidenLarge>
+      <BreadWrapper hiddenLarge>
         <BreadCrumbs here="Current Sale" />
       </BreadWrapper>
       <BrandsRoot>
@@ -35,7 +35,7 @@ const Sale = ({ data }) => {
           button={{ label: "Shop all Mattresses", url: "/brands/list" }}
         />
       </BrandsRoot>
-      <BreadWrapper hidenLarge Bottom>
+      <BreadWrapper hiddenLarge Bottom>
         <BreadCrumbs here="Current Sale" />
       </BreadWrapper>
     </Layout>

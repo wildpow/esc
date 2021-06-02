@@ -1,49 +1,61 @@
-import { useState, useRef, useEffect, useContext } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
-// import FocusLockUI from "react-focus-lock/UI";
-// import { sidecar } from "use-sidecar";
-import Headroom from "react-headroom";
-// import ModalContextProvider from "./ModalContext";
-import FocusLock from "react-focus-lock";
-import { useOnClickOutside, useKeyboardEvent, useIntersect } from "../Hooks";
-import { useWindowSize } from "../../context/WindowSizeContext";
-import MenuOverLay from "../shared/MenuOverLay";
-import { StructuredDataMain, PageContent, GlobalStyle } from "./Extra";
-import { Footer, MobileMenu, Cart, Header } from "./LayoutComponents";
-import CartIndicator from "./Cart/CartIndicator";
-import StoreContext from "../../context/StoreContext";
 
-const MainRoot = styled.div`
-  max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
-  /* padding-right: ${({ cartStatus, menuStatus }) =>
-    cartStatus === "open" || menuStatus === "open" ? "15px" : "0px"}; */
+import PropTypes from "prop-types";
+import FocusLock from "react-focus-lock";
+import Headroom from "react-headroom";
+import Header from "./Header";
+import { useOnClickOutside, useKeyboardEvent, useIntersect } from "../../hooks";
+import MobileMenu from "./MobileMenu";
+import Cart from "../Cart";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import GlobalStyle from "../../styles/global.styled";
+import { useWindowSize } from "../../contexts/WindowSize.ctx";
+import MenuOverLay from "../../styles/menuOverlay.styled";
+import Footer from "./Footer";
+import { breakpoints, colors, boxShadow } from "../../styles/theme.styled";
+import StructuredDataMain from "./structuredDataMain";
+
+const PageContentRoot = styled.main`
+  position: relative;
+  z-index: 1;
+  box-shadow: ${boxShadow.xl};
+  background-color: ${({ bgWhite }) =>
+    bgWhite ? "white" : colors.gray["100"]};
+
+  will-change: transform;
+  opacity: 1;
+  padding-left: 0;
+  width: 100%;
+  transition: all 0.75s;
+
+  @media (min-width: ${breakpoints.sm}) {
+    transform: translate3d(0vw, 0, 0);
+    &.moved {
+      /* filter: blur(1px); */
+      transform: translate3d(-400px, 0, 0);
+    }
+  }
+  @media print {
+    box-shadow: none;
+  }
 `;
-function Layout({ children }) {
+export default function Layout({ children, bgWhite }) {
+  const { width, height } = useWindowSize();
+
+  // Birdeye customer chat
   const element =
     typeof document !== `undefined`
       ? document.getElementById("bf-revz-widget-1484606125")
       : null;
+  // //////////////////
+
+  // MobileMenu and Cart open/close
   const menuId = "main-menu";
-  const node = useRef();
-  const { width, height } = useWindowSize();
   const [cartStatus, setCartStatus] = useState("closed");
   const [menuStatus, setMenuStatus] = useState("closed");
-  const [searchFocus, setSearchFocus] = useState(false);
-  const [pin, setpen] = useState(true);
   const [moved, setMoved] = useState("");
-  // const FocusLockSidecar = sidecar(() =>
-  //   import(/* webpackPrefetch: true */ "react-focus-lock/sidecar"),
-  // );
-  const {
-    store: { checkout, adding },
-  } = useContext(StoreContext);
-  const itemsInCart = checkout.lineItems.reduce(
-    (total, item) => total + item.quantity,
-    0,
-  );
+
   function menuToggle(e) {
     e.preventDefault();
     if (menuStatus !== "open") {
@@ -73,7 +85,7 @@ function Layout({ children }) {
       element.style.display = "block";
     }
   }
-
+  const node = useRef();
   useOnClickOutside(node, () => {
     setCartStatus("closed");
     setMenuStatus("closed");
@@ -84,6 +96,8 @@ function Layout({ children }) {
     setMenuStatus("closed");
     document.body.style.overflow = "visible";
   });
+  // end of logic for cart and mobile menu
+
   const [ref, entry] = useIntersect({ threshold: 0.1 });
   useEffect(() => {
     if (width > 1022) {
@@ -118,26 +132,22 @@ function Layout({ children }) {
       window.removeEventListener("beforeprint", beforPrint);
     };
   }, []);
+
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const [searchFocus, setSearchFocus] = useState(false);
+
   return (
     <>
-      <CartIndicator
-        width={width}
-        adding={adding}
-        itemsInCart={itemsInCart}
-        pin={pin}
-        cartStatus={cartStatus}
-        menuStatus={menuStatus}
-      />
-      <StructuredDataMain />
       <GlobalStyle />
+      <StructuredDataMain />
       <Headroom
-        onPin={() => setpen(true)}
-        onUnpin={() => setpen(false)}
+        onPin={() => setHeaderVisible(true)}
+        onUnpin={() => setHeaderVisible(false)}
         pinStart={-1}
       >
         <Header
           moved={moved}
-          pin={pin}
+          headerVisible={headerVisible}
           cartStatus={cartStatus}
           menuStatus={menuStatus}
           cartToggle={cartToggle}
@@ -151,7 +161,7 @@ function Layout({ children }) {
             status={cartStatus}
             toggle={cartToggle}
             menuStatus={menuStatus}
-            pin={pin}
+            headerVisible={headerVisible}
           />
         </FocusLock>
         <FocusLock disabled={menuStatus === "closed"}>
@@ -161,24 +171,27 @@ function Layout({ children }) {
             status={menuStatus}
             toggle={menuToggle}
             cartStatus={cartStatus}
-            pin={pin}
+            headerVisible={headerVisible}
           />
         </FocusLock>
       </div>
-      <PageContent moved={moved}>
-        <MainRoot cartStatus={cartStatus} menuStatus={menuStatus}>
+      <PageContentRoot bgWhite={bgWhite} className={moved}>
+        <div style={{ margin: "0 auto", maxWidth: breakpoints["2xl"] }}>
           {children}
-        </MainRoot>
-      </PageContent>
+        </div>
+      </PageContentRoot>
       <div ref={ref}>
         <Footer moved={moved} />
       </div>
-      {menuStatus === "open" || cartStatus === "open" ? <MenuOverLay /> : null}
+      {moved === "moved" ? <MenuOverLay /> : null}
     </>
   );
 }
 
+Layout.defaultProps = {
+  bgWhite: false,
+};
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  bgWhite: PropTypes.bool,
 };
-export default Layout;

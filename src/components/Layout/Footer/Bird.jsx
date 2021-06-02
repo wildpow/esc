@@ -1,16 +1,10 @@
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-// import BirdBig from "./birdBig";
-import { colors } from "../../../utils/styles";
+import { colors, fonts } from "../../../styles/theme.styled";
 
 const BirdLink = styled(OutboundLink)`
   text-decoration: none;
-  /* padding-top: 10px; */
-  /* width: 100px; */
-  /* @media (min-width: 1366px) {
-    display: none;
-  } */
 `;
 
 const CertReview = styled.div`
@@ -25,10 +19,8 @@ const CertReview = styled.div`
   }
   width: 145px;
   height: 96.656px;
-  /* width: 270px;
-  height: 180px; */
-  font-family: ${(props) => props.theme.MainFont1};
-  /* box-shadow: ${(props) => props.theme.BoxShadow}; */
+
+  font-family: ${fonts.sans};
   background-color: ${colors.gray["100"]};
   display: flex;
   color: ${colors.blue["900"]};
@@ -84,18 +76,11 @@ const Rating = styled.div`
   }
 `;
 
-// const BigWrapper = styled.div`
-//   display: none;
-//   @media (min-width: 1366px) {
-//     display: initial;
-//   }
-// `;
-
 const AvgContainer = styled.div`
   margin-top: 2px;
   font-size: 0.8em;
   margin-left: 4px;
-  font-family: ${(props) => props.theme.MainFont1};
+  font-family: ${fonts.sans};
   @media (min-width: 812px) {
     margin-top: 0px;
     font-size: 0.9em;
@@ -108,20 +93,17 @@ const Bird = () => {
     <StaticQuery
       query={graphql`
         query birdeye {
-          allWidget(filter: { id: { ne: "dummy" } }) {
-            nodes {
-              id
-              avgRating
-              reviewCount
-            }
+          widget {
+            avgRating
+            reviewCount
           }
         }
       `}
       render={(data) => {
-        const { avgRating, reviewCount } = data.allWidget.nodes[0];
+        const { avgRating, reviewCount } = data.widget;
         for (let i = 0; i < avgRating; i += 1) {
           starsArr.push(
-            <img src="/star.png" alt="start for rating" key={i + 200} />,
+            <img src="/star.png" alt="start for rating" key={i + 200} />
           );
         }
         return (
@@ -144,9 +126,6 @@ const Bird = () => {
                 <Cert alt="BirdEye certified seal" src="/badge.png" />
               </CertReview>
             </BirdLink>
-            {/* <BigWrapper>
-              <BirdBig avgRating={avgRating} reviewCount={reviewCount} />
-            </BigWrapper> */}
           </>
         );
       }}

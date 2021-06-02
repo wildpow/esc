@@ -7,7 +7,7 @@ import {
   fontSize,
   fonts,
   boxShadow,
-} from "../../../utils/styles";
+} from "../../../styles/theme.styled";
 
 const menuData = [
   { name: "Mattresses", url: "/brands" },
@@ -25,7 +25,7 @@ const NavRoot = styled.nav`
   box-shadow: ${boxShadow.md};
   display: none;
   ul {
-    max-width: 1440px;
+    max-width: ${breakpoints["2xl"]};
     justify-content: space-evenly;
     margin: 0 auto;
     /* margin: 0; */
@@ -72,25 +72,23 @@ const NavRoot = styled.nav`
   }
 `;
 
-const Nav = ({ cartStatus }) => {
-  return (
-    <NavRoot cartStatus={cartStatus}>
-      <ul>
-        {menuData.map((item) => (
-          <li key={item.name}>
-            <Link
-              to={item.url}
-              partiallyActive
-              activeStyle={{ background: colors.blue["900"] }}
-            >
-              {item.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </NavRoot>
-  );
-};
+const Nav = ({ cartStatus }) => (
+  <NavRoot cartStatus={cartStatus}>
+    <ul>
+      {menuData.map((item) => (
+        <li key={item.name}>
+          <Link
+            to={item.url}
+            partiallyActive
+            activeStyle={{ background: colors.blue["900"] }}
+          >
+            {item.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </NavRoot>
+);
 
 Nav.defaultProps = {
   cartStatus: "closed",

@@ -8,10 +8,10 @@ import {
   fontSize,
   breakpoints,
   radius,
-} from "../../utils/styles";
-import { PrimaryButton } from "../shared/Buttons";
-import SendIcon from "../../assets/paper-plane-solid.svg";
-import ResetIcon from "../../assets/redo-solid.svg";
+} from "../../styles/theme.styled";
+import { PrimaryButton } from "../../styles/buttons.old.styled";
+import SendIcon from "../../svgs/paper-plane-solid.svg";
+import ResetIcon from "../../svgs/redo-solid.svg";
 
 const FormRoot = styled.form`
   border-radius: ${radius.large}px;
@@ -158,11 +158,10 @@ const FormButtons = styled(PrimaryButton)`
   padding-left: 20px;
 `;
 
-const encode = (data) => {
-  return Object.keys(data)
+const encode = (data) =>
+  Object.keys(data)
     .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
     .join("&");
-};
 const ContactUsForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const handleSubmit = (e) => {
