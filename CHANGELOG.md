@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ### May 2021
 #### Features
-- ###### [PR #148](https://github.com/wildpow/esc/pull/148) Big bundle savings and impor lighthouse scores.
+- ###### [PR #148](https://github.com/wildpow/esc/pull/148) Big bundle savings.
   - Now using [Preact](https://preactjs.com/) in production. -100Kb :tada:
   - The move from [Styled-Components](https://styled-components.com/) to [Emotion](https://emotion.sh/docs/introduction) and [Styled-Normalize](https://github.com/sergeysova/styled-normalize) to plain [normalize.css](https://github.com/necolas/normalize.css).
    (Not 100% sure why so much but, I'll take it) -124Kb :tada:
