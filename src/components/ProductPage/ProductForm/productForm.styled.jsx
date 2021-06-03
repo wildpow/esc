@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Button from "../../../styles/button.new.styled";
 import { PrimaryButton } from "../../../styles/buttons.old.styled";
 

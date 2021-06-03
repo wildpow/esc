@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import { string, bool, func } from "prop-types";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import {
   colors,
   dimensions,

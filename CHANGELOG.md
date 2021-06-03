@@ -4,8 +4,12 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ### May 2021
 #### Features
--  After whole month of stops and starts, hard work and staving feature creep [PR #146](https://github.com/wildpow/esc/pull/146) finally lands with major version dependency migrations, cleaning up technical debit and generally improving developer DX. Just a few bullet points:
-  - 🚀 Moved to Gatsby v3.6
+- ###### [PR #148](https://github.com/wildpow/esc/pull/148) Big bundle savings.
+  - Now using [Preact](https://preactjs.com/) in production. -100Kb :tada:
+  - The move from [Styled-Components](https://styled-components.com/) to [Emotion](https://emotion.sh/docs/introduction) and [Styled-Normalize](https://github.com/sergeysova/styled-normalize) to plain [normalize.css](https://github.com/necolas/normalize.css).
+   (Not 100% sure why so much but, I'll take it) -124Kb :tada:
+- ###### [PR #146](https://github.com/wildpow/esc/pull/146) Technical debit and dependancy upgrades.
+  - 🚀 Moved to Gatsby v3.6 from v2
   - 💥 Migrated all images to the new `gatsby-plugin-image`.
   - :tada: Migrated to Shopify's newest release canidate for their brand new source plug-in.
   - :ghost: Migrated from Husky version 4 to version 6

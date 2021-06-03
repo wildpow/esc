@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
+import { Global } from "@emotion/react";
 
 import PropTypes from "prop-types";
 import FocusLock from "react-focus-lock";
@@ -138,7 +139,7 @@ export default function Layout({ children, bgWhite }) {
 
   return (
     <>
-      <GlobalStyle />
+      <Global styles={GlobalStyle} />
       <StructuredDataMain />
       <Headroom
         onPin={() => setHeaderVisible(true)}

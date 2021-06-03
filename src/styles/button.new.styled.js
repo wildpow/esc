@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { colors, fonts, radius } from "./theme.styled";
 
 const Button = styled.button`

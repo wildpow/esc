@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { connectSearchBox } from "react-instantsearch-dom";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import VisuallyHidden from "@reach/visually-hidden";
 import SearchIcon from "../../svgs/search-solid.svg";
 import { colors, dimensions } from "../../styles/theme.styled";

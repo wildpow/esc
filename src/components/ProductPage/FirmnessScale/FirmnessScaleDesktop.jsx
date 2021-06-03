@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import Popup from "reactjs-popup";
 import { colors, fonts } from "../../../styles/theme.styled";

@@ -18,9 +18,9 @@ const cfg = {
     siteUrl,
   },
   plugins: [
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
-    // `gatsby-plugin-webpack-bundle-analyser-v2`,
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
@@ -158,6 +158,9 @@ if (process.env.NODE_ENV === "production") {
       trackingId: process.env.GOOGLE_ANALYTICS,
     },
   };
+  const preact = `gatsby-plugin-preact`;
+
+  cfg.plugins.push(preact);
   cfg.plugins.push(googleAnalyticsCfg);
 }
 

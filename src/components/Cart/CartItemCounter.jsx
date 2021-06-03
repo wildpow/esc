@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import { number, bool } from "prop-types";
 import { fonts, colors } from "../../styles/theme.styled";
 import { numberEntry2 } from "../../styles/keyframes.styled";

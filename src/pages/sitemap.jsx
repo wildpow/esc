@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 import H2 from "../old/oldHeading.styled";
 import {

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { func, string, bool } from "prop-types";
 import Hamburger from "./Hamburger";
 import {

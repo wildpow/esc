@@ -15,7 +15,7 @@ A JAM Stack solution for a local mattress company.
 
 ### Other Technologies
 
-- CSS: [Styled-Components](https://www.styled-components.com/)
+- CSS: [Emotion](https://emotion.sh/docs/introduction)
 - Animation: [React-Move](https://react-move.js.org/#/)
 - Style Guide: [AirBnB](https://github.com/airbnb/javascript)
 - Commit guide: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)

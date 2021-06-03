@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { func, string, bool } from "prop-types";
 import VisuallyHidden from "@reach/visually-hidden";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { useStore } from "../../contexts/Store.ctx";
 import CloseIcon from "../../svgs/times-solid.svg";
 import CartIcon from "../../svgs/shopping-cart-solid.svg";

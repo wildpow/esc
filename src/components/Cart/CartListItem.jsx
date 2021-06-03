@@ -1,8 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import styled from "styled-components";
-
+import styled from "@emotion/styled";
 import CloseIcon from "../../svgs/times-solid.svg";
 
 // import CartThumbnail from "./CartThumbnail";

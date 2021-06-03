@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { StaticImage } from "gatsby-plugin-image";
 import { colors, fonts, spacing } from "../../../styles/theme.styled";
 

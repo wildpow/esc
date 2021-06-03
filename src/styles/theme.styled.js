@@ -1,4 +1,4 @@
-import { css, keyframes } from "styled-components";
+import { keyframes, css } from "@emotion/react";
 
 export const colors = {
   transparent: "transparent",

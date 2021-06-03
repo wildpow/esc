@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { StaticQuery, graphql, Link } from "gatsby";
 import SocialIcons from "./SocialIcons";
 import { boxShadow, colors } from "../../styles/theme.styled";

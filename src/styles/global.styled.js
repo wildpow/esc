@@ -1,36 +1,38 @@
-import { createGlobalStyle } from "styled-components";
-import styledNormalize from "styled-normalize";
+// import styledNormalize from "styled-normalize";
+import { css } from "@emotion/react";
 
-const GlobalStyle = createGlobalStyle`
-  ${styledNormalize}
+// ${styledNormalize}
+const GlobalStyle = css`
   html {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-.headroom {
-  z-index: 2 !important;
-}
-
-body {
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-@media print {
-  #bf-revz-widget-1484606125{
-    display: none !important;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
   }
-}
-@media screen and (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
-}
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  .headroom {
+    z-index: 2 !important;
+  }
+
+  body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  @media print {
+    #bf-revz-widget-1484606125 {
+      display: none !important;
+    }
+  }
+  @media screen and (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 `;
 
 export default GlobalStyle;

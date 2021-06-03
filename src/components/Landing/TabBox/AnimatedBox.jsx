@@ -1,5 +1,5 @@
 import { NodeGroup } from "react-move";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { GatsbyImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import { fonts } from "../../../styles/theme.styled";

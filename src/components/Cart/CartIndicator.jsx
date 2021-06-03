@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { bool, number, string } from "prop-types";
-import styled, { css } from "styled-components";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import usePrevious from "../../hooks";
 // import { numberEntry } from "../../../utils/keyframes";
 import {

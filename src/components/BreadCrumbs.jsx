@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { DisplayNonePrint } from "../styles/print.styled";
 import { colors, fonts } from "../styles/theme.styled";
 

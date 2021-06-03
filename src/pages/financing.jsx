@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import { OutboundLink } from "gatsby-plugin-google-analytics";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Synchrony from "../images/synchrony_Card_Image.jpg";
 import Acima from "../images/acima_Logo.png";
 import Layout from "../components/Layout";
@@ -29,7 +28,7 @@ const FinancingBottomText = styled.p`
   }
 `;
 
-const ApplyNow = styled(OutboundLink)`
+const ApplyNow = styled.a`
   font-size: 1rem;
   width: 90%;
   text-decoration: none;
@@ -43,7 +42,7 @@ const ApplyNow = styled(OutboundLink)`
   border-radius: 0.17rem;
   transition: all 0.25s ease-in;
   box-shadow: ${boxShadow.default};
-  &:hover {
+  :hover {
     box-shadow: ${boxShadow.md};
     transform: scale3d(1.05, 1.05, 1);
   }

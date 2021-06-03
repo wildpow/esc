@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import chevron from "../../../images/new/chevron-down-solid.svg";
 import { useWindowSize } from "../../../contexts/WindowSize.ctx";
 import { colors, fonts } from "../../../styles/theme.styled";

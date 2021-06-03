@@ -1,6 +1,7 @@
 import { bool, string, func, number } from "prop-types";
 import { Link } from "gatsby";
-import styled, { css } from "styled-components";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import VisuallyHidden from "@reach/visually-hidden";
 import { useStore } from "../../../contexts/Store.ctx";
 import Phone from "../../../svgs/phone-solid.svg";

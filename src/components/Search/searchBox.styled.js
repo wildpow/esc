@@ -1,4 +1,5 @@
-import styled, { css } from "styled-components";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import SearchBox from "./SearchBox";
 import { colors, dimensions, fonts } from "../../styles/theme.styled";
 

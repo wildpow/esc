@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { colors } from "../../../styles/theme.styled";
 import { Banner } from "../../ProductListing/ProductThumbnail/productThumbnail.styled";
 // ../../MattressList/MattressThumbnail/MattressThumbnail.Styled

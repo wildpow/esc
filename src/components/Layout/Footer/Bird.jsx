@@ -1,6 +1,6 @@
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { StaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { colors, fonts } from "../../../styles/theme.styled";
 
 const BirdLink = styled(OutboundLink)`
