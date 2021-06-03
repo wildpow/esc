@@ -1,4 +1,6 @@
-import styled from "@emotion/styled";
+// import styled from "@emotion/styled";
+import { css, styled } from "goober";
+
 import { Link } from "gatsby";
 import { P, Headline } from "../home.styled";
 import ProductThumbnail from "../../ProductListing/ProductThumbnail";
@@ -6,7 +8,7 @@ import useTop3 from "./getTopMattresses.query";
 import {
   boxShadow,
   colors,
-  FadeInAnimation,
+  // FadeInAnimation,
 } from "../../../styles/theme.styled";
 
 const FooterLink = styled(Link)`
@@ -18,38 +20,29 @@ const FooterLink = styled(Link)`
     text-decoration-color: ${colors.gray["500"]};
   }
 `;
-const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-  grid-auto-rows: minmax(300px, auto);
-  grid-gap: 1rem;
-  margin-left: 7px;
-  margin-right: 7px;
-  @media screen and (min-width: 768px) {
-    margin: 0;
-  }
-`;
 
-const MainWrapper = styled.div`
+// ${FadeInAnimation}
+
+const TopMattressRoot = css`
   display: flex;
   flex-direction: column;
-  ${FadeInAnimation}
   justify-content: space-between;
   padding-left: 5px;
   padding-right: 5px;
-`;
-
-const NewWrapper = styled(MainWrapper)`
   background-color: ${colors.white};
-
   margin-top: 15px;
   @media (min-width: 1024px) {
     box-shadow: ${boxShadow.md};
   }
 `;
 
-const ThreeMattWrapper = styled(Wrapper)`
-  margin-bottom: 10px;
+const MattWrapper = css`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  grid-auto-rows: minmax(300px, auto);
+  grid-gap: 1rem;
+  margin-left: 7px;
+  margin-right: 7px;
   @media (min-width: 375px) {
     margin-top: 5px;
     margin-bottom: 10px;
@@ -64,6 +57,9 @@ const ThreeMattWrapper = styled(Wrapper)`
   @media (min-width: 731px) {
     margin-bottom: 5px;
     margin-top: 5px;
+  }
+  @media screen and (min-width: 768px) {
+    margin: 0;
   }
   @media (min-width: 1024px) {
     margin-bottom: 10px;
@@ -81,9 +77,9 @@ const TopThreeMatts = () => {
       Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
   );
   return (
-    <NewWrapper>
+    <div className={TopMattressRoot}>
       <Headline>{header}</Headline>
-      <ThreeMattWrapper>
+      <div className={MattWrapper}>
         {sortedMatt.map((mattress) => (
           <ProductThumbnail
             key={mattress.id}
@@ -92,7 +88,7 @@ const TopThreeMatts = () => {
             url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
           />
         ))}
-      </ThreeMattWrapper>
+      </div>
       <P>
         We believe that no mattress is a one-size-fits-all solution, which is
         why we have over 50 mattresses to choose from at our Everett location.
@@ -104,7 +100,7 @@ const TopThreeMatts = () => {
       <Headline red>
         <FooterLink to={footerUrl}>{footer}</FooterLink>
       </Headline>
-    </NewWrapper>
+    </div>
   );
 };
 

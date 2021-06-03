@@ -10,21 +10,6 @@ import {
 import { firstSet, secondSet } from "./items";
 import { colors, fonts } from "../../../styles/theme.styled";
 
-// const Panda = styled.img`
-//   width: 140px;
-//   margin-right: 15px;
-//   align-self: center;
-//   ${LogoAnimate}
-//   @media (orientation: portrait) and (min-height: 800px) {
-//     width: 200px;
-//   }
-//   @media (min-width: 500px) and (min-height: 850px) {
-//     width: 200px;
-//   }
-//   @media (max-height: 480px) {
-//     display: none;
-//   }
-// `;
 const StyledLink = styled(Link)`
   font-family: ${fonts.sans};
   font-size: 1.1rem;
@@ -257,7 +242,6 @@ const Portrait = () => (
         ))}
       </LargeItemsContainer>
     </div>
-    {/* <Panda src={Logo} /> */}
   </Wrapper>
 );
 

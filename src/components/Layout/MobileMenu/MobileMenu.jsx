@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "goober";
 import { func, string, bool } from "prop-types";
 import Hamburger from "./Hamburger";
 import {
@@ -11,7 +11,7 @@ import {
 import Landscape from "./Landscape";
 import Portrait from "./Portrait";
 
-const MobileMenuRoot = styled.div`
+const MobileMenuRoot = styled("div")`
   display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
   background: ${colors.blue["900"]};
   bottom: 0;
@@ -78,31 +78,13 @@ const MobileMenuRoot = styled.div`
   /* z-index: ${({ searchFocus }) => (searchFocus ? 0 : 10)}; */
 `;
 
-const Heading = styled.header`
+const Heading = styled("header")`
   align-items: center;
   display: flex;
   height: ${dimensions.headerHeight};
   justify-content: flex-start;
   color: ${colors.gray["900"]};
 `;
-
-// const Title = styled.h2`
-//   flex-grow: 1;
-//   font-family: ${fonts.sans};
-//   font-size: 1.8rem;
-//   left: -${dimensions.headerHeight};
-//   margin: 0;
-//   margin-left: ${spacing["4"]};
-//   position: relative;
-
-//   .open & {
-//     margin-left: calc(${dimensions.headerHeight} + ${spacing["4"]});
-
-//     @media (min-width: ${breakpoints.lg}) {
-//       margin-left: ${spacing["4"]};
-//     }
-//   }
-// `;
 
 const MobileMenu = ({
   status,

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import styled from "@emotion/styled";
+import { styled } from "goober";
 import { Global } from "@emotion/react";
 
 import PropTypes from "prop-types";
@@ -17,7 +17,7 @@ import Footer from "./Footer";
 import { breakpoints, colors, boxShadow } from "../../styles/theme.styled";
 import StructuredDataMain from "./structuredDataMain";
 
-const PageContentRoot = styled.main`
+const PageContentRoot = styled("main")`
   position: relative;
   z-index: 1;
   box-shadow: ${boxShadow.xl};

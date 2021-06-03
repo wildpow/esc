@@ -21,12 +21,12 @@ import {
 } from "../components/About";
 import TabBox from "../components/Landing/TabBox";
 
-const AboutRoot = styled.div`
+const AboutRoot = styled("div")`
   background-color: white;
   box-shadow: ${boxShadow.default};
 `;
 
-const PopWrapper = styled.div`
+const PopWrapper = styled("div")`
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -80,7 +80,7 @@ const PopWrapper = styled.div`
     background: linear-gradient(to top, ${colors.red[900]} 42%, white 0%);
   }
 `;
-const Flow = styled.div`
+const Flow = styled("div")`
   margin-top: ${({ mt }) => mt}em;
   @media (min-width: ${breakpoints.lg}) {
     margin-top: ${({ mt }) => mt + 5}em;

@@ -1,12 +1,12 @@
 import { Link } from "gatsby";
-import styled from "@emotion/styled";
+import { styled } from "goober";
 import Layout from "../components/Layout";
 import OldH2 from "../old/oldHeading.styled";
 import image from "../images/ezgif.com-optimize.gif";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 import { boxShadow, fonts, FadeInAnimation } from "../styles/theme.styled";
 
-const Main = styled.div`
+const Main = styled("div")`
   display: flex;
   flex-direction: column;
   font-family: ${fonts.sans};
@@ -22,7 +22,7 @@ const Main = styled.div`
   }
 `;
 
-const Img = styled.img`
+const Img = styled("img")`
   color: white;
   margin: auto;
   max-width: 20rem;

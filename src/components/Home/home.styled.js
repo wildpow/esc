@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
+import { styled } from "goober";
 import { colors, fonts } from "../../styles/theme.styled";
 
-export const Headline = styled.h2`
+export const Headline = styled("h2")`
   color: ${colors.gray["100"]};
   font-family: ${fonts.sans};
   text-align: center;
@@ -27,7 +27,7 @@ export const Headline = styled.h2`
   }
 `;
 
-export const P = styled.p`
+export const P = styled("p")`
   font-family: ${fonts.serif};
   text-align: justify;
   text-justify: inter-character !important;

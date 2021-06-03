@@ -7261,6 +7261,11 @@ gatsby-plugin-emotion@^6.6.0:
     "@babel/runtime" "^7.11.2"
     "@emotion/babel-preset-css-prop" "^11.2.0"
 
+gatsby-plugin-goober@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-goober/-/gatsby-plugin-goober-2.4.0.tgz#49c205654908078f0145915f95e32b310f4cf29b"
+  integrity sha512-w4ZVpk/1LGob0UTQ84DqoNpUlavL5XWARPPRU4mnX9da6x2g6u+4JGCZxpV4wrSsxEWbdmDVKp7OFt/cBjvLcQ==
+
 gatsby-plugin-google-analytics@^3.5.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-3.6.0.tgz#5b4826044cc626eb56783ceec5e7eabe3ff8ee37"
@@ -8093,6 +8098,11 @@ globby@^6.1.0:
     object-assign "^4.0.1"
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
+
+goober@^2.0.37:
+  version "2.0.37"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.0.37.tgz#5598c41f4c19bc1fca2c926e876a58a685faffb8"
+  integrity sha512-wgj5C7IJX2+MyHZ4TgOA+hLL1mCDW+jGorQ5KCMLF1ofE9gQkfbo1s8txIrzIsAX65XRTm0qaipolId2KMYUkw==
 
 got@8.3.2, got@^8.3.1:
   version "8.3.2"

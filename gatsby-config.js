@@ -20,6 +20,7 @@ const cfg = {
   plugins: [
     `gatsby-plugin-netlify`,
     `gatsby-plugin-emotion`,
+    `gatsby-plugin-goober`,
     `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-react-helmet`,

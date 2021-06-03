@@ -1,6 +1,6 @@
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-import styled from "@emotion/styled";
+import { styled } from "goober";
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import {
   breakpoints,
@@ -17,7 +17,7 @@ import useFooterIcons from "./getFooterIcons.query";
 import useReaders from "./getReadersChoice.query";
 import Bird from "./Bird";
 
-const FooterRoot = styled.footer`
+const FooterRoot = styled("footer")`
   @media print {
     display: none;
   }

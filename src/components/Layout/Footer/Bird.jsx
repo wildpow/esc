@@ -1,13 +1,13 @@
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { StaticQuery, graphql } from "gatsby";
-import styled from "@emotion/styled";
+import { styled } from "goober";
 import { colors, fonts } from "../../../styles/theme.styled";
 
 const BirdLink = styled(OutboundLink)`
   text-decoration: none;
 `;
 
-const CertReview = styled.div`
+const CertReview = styled("div")`
   transition: all 0.25s ease-in;
   &:hover {
     transform: scale3d(1.05, 1.05, 1);
@@ -46,7 +46,7 @@ const CertReview = styled.div`
   }
 `;
 
-const Words = styled.div`
+const Words = styled("div")`
   padding: 7px 0 0 9px;
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@ const Words = styled.div`
     padding-left: 10px;
   }
 `;
-const Cert = styled.img`
+const Cert = styled("img")`
   margin-top: -3px;
   margin-right: 7px;
   width: 45px;
@@ -64,7 +64,7 @@ const Cert = styled.img`
   transform: scale(0.9);
 `;
 
-const Rating = styled.div`
+const Rating = styled("div")`
   padding-top: 10px;
   display: flex;
   img {
@@ -76,7 +76,7 @@ const Rating = styled.div`
   }
 `;
 
-const AvgContainer = styled.div`
+const AvgContainer = styled("div")`
   margin-top: 2px;
   font-size: 0.8em;
   margin-left: 4px;

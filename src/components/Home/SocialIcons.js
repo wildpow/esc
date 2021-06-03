@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { OutboundLink } from "gatsby-plugin-google-analytics";
-import styled from "@emotion/styled";
+import { styled } from "goober";
 
-const Wrapper = styled.div`
+const Wrapper = styled("div")`
   display: flex;
   justify-content: center;
   @media print {
@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const DIVY = styled.div`
+const DIVY = styled("div")`
   width: 100%;
   justify-content: space-around;
   display: flex;
@@ -24,7 +24,7 @@ const DIVY = styled.div`
   }
 `;
 
-const SocImg = styled.img`
+const SocImg = styled("img")`
   color: white;
   transition: transform 0.25s ease-in;
   max-width: 3rem;
@@ -36,7 +36,7 @@ const SocImg = styled.img`
   }
 `;
 
-const YelpHolder = styled.div`
+const YelpHolder = styled("div")`
   background-color: #d32323;
   width: 3rem;
   max-height: 3rem;
@@ -50,7 +50,7 @@ const YelpHolder = styled.div`
     max-height: 3.45rem;
   }
 `;
-const YelpImg = styled.img`
+const YelpImg = styled("img")`
   color: white;
   width: 3rem;
   /* max-height: 2.9rem; */

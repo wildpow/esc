@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "goober";
 import { Link } from "gatsby";
 import { colors, fonts } from "../../../styles/theme.styled";
 
@@ -52,7 +52,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled("div")`
   display: none;
   @media (orientation: landscape) and (max-height: 600px) {
     display: flex;
@@ -69,7 +69,7 @@ const Wrapper = styled.div`
     display: none;
   }
 `;
-const Holder = styled.div`
+const Holder = styled("div")`
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -82,98 +82,8 @@ const Holder = styled.div`
   }
 `;
 
-// const Div = styled.div`
-//   height: 140px;
-//   position: relative;
-//   @media (min-height: 200px) and (max-height: 280px) {
-//     display: initial;
-//     height: 1px;
-//   }
-
-//   @media (orientation: portrait) {
-//     display: none;
-//   }
-//   @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
-//     display: none;
-//   }
-//   @media (max-width: 400px) and (max-height: 400px) {
-//     display: none;
-//   }
-//   @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
-//     display: none;
-//   }
-//   @media (orientation: portrait) {
-//     display: none;
-//   }
-//   @media (max-width: 400px) and (max-height: 450px) {
-//     display: none;
-//   }
-//   @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
-//     display: none;
-//   }
-// `;
-// const Home = styled(StyledLink)`
-//   position: absolute;
-//   top: 53px;
-//   left: 5px;
-//   padding: 15px;
-//   width: 30.5%;
-//   text-align: center;
-//   /* @media (min-height: 200px) and (max-height: 280px) and (min-width: 610px) {
-
-//   } */
-//   @media (min-height: 200px) and (max-height: 280px) {
-//     top: 20px;
-//     width: 31%;
-//   }
-//   @media (max-height: 315px) {
-//     display: none;
-//   }
-//   @media (min-height: 200px) and (max-height: 280px) {
-//     display: initial;
-//     padding: 10px;
-//   }
-//   @media (orientation: portrait) {
-//     display: none;
-//   }
-//   @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
-//     display: none;
-//   }
-//   @media (max-width: 400px) and (max-height: 400px) {
-//     display: none;
-//   }
-//   @media (min-width: 800px) and (min-height: 375px) {
-//     width: 31%;
-//   }
-//   @media (min-width: 900px) and (max-width: 1022px) and (min-height: 500px) {
-//     display: none;
-//   }
-//   @media (orientation: portrait) {
-//     display: none;
-//   }
-//   @media (max-width: 400px) and (max-height: 450px) {
-//     display: none;
-//   }
-//   @media (min-height: 600px) and (max-height: 899px) and (min-width: 605px) and (max-width: 900px) {
-//     display: none;
-//   }
-// `;
 const Landscape = () => (
   <>
-    {/* <Div>
-        <Home
-          onClick={() => {
-            document.body.style.overflow = "visible";
-            document.body.style.position = "initial";
-          }}
-          activeStyle={{
-            backgroundColor: "rgba(235, 28, 26, 0.9)",
-          }}
-          to="/"
-        >
-          Home
-        </Home>
-      </Div> */}
     <Wrapper>
       <Holder>
         <StyledLink

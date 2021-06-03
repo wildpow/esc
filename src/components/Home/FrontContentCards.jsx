@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
+import { styled } from "goober";
 import { StaticQuery, graphql, Link } from "gatsby";
 import SocialIcons from "./SocialIcons";
 import { boxShadow, colors } from "../../styles/theme.styled";
 import { P, Headline } from "./home.styled";
 
-const FrontCard = styled.div`
+const FrontCard = styled("div")`
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -32,12 +32,12 @@ export const BottomLinks = styled(Link)`
   }
 `;
 
-const Container = styled.div`
+const Container = styled("div")`
   border-top: 2px solid #f8f8ff;
   background-color: white;
 `;
 
-const FrontRoot = styled.div`
+const FrontRoot = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
