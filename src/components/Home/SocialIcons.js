@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { OutboundLink } from "gatsby-plugin-google-analytics";
 import styled from "@emotion/styled";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,7 +25,7 @@ const DIVY = styled.div`
   }
 `;
 
-const SocImg = styled.img`
+const SocImg = styled(StaticImage)`
   color: white;
   transition: transform 0.25s ease-in;
   max-width: 3rem;
@@ -67,7 +68,12 @@ const SocialIcons = ({ bottom }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src="/facebook.png" alt="FaceBook logo" />
+        <StaticImage
+          src="../../images/facebook.png"
+          alt="FaceBook logo"
+          formats={["auto", "avif", "webp"]}
+          width={56}
+        />
       </OutboundLink>
       <OutboundLink
         href="https://twitter.com/CenterEsc?ref_src=twsrc%5Etfw"
@@ -75,14 +81,24 @@ const SocialIcons = ({ bottom }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src="/twitter.png" alt="twitter logo" />
+        <StaticImage
+          src="../../images/twitter.png"
+          alt="twitter logo"
+          formats={["auto", "avif", "webp"]}
+          width={56}
+        />
       </OutboundLink>
       <OutboundLink
         href="https://www.instagram.com/escmattresscenter/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <SocImg src="/instagram.png" alt="Instagram logo" />
+        <StaticImage
+          src="../../images/instagram.png"
+          alt="Instagram logo"
+          formats={["auto", "avif", "webp"]}
+          width={56}
+        />
       </OutboundLink>
       <OutboundLink
         href="https://www.yelp.com/biz/esc-mattress-center-everett-3"
@@ -90,7 +106,11 @@ const SocialIcons = ({ bottom }) => (
         rel="noopener noreferrer"
       >
         <YelpHolder>
-          <YelpImg src="/yelp.png" alt="yelp logo" />
+          <StaticImage
+            src="../../images/yelp.png"
+            alt="yelp logo"
+            formats={["auto", "avif", "webp"]}
+          />
         </YelpHolder>
       </OutboundLink>
       <OutboundLink
