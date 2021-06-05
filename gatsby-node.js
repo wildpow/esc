@@ -20,6 +20,13 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {
+      xChairs: allDatoCmsXChair {
+        nodes {
+          headrest
+          wheelOptions
+          slug
+        }
+      }
       adjustables: allDatoCmsProduct(
         filter: { typeOfProduct: { title: { eq: "Adjustable" } } }
       ) {
@@ -60,6 +67,17 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `);
+  data.xChairs.nodes.forEach((chair) => {
+    actions.createPage({
+      path: `/x-chair/${chair.slug}`,
+      component: path.resolve(`src/templates/x-chair.jsx`),
+      context: {
+        slug: chair.slug,
+        headrest: chair.headrest,
+        wheels: chair.wheelOptions,
+      },
+    });
+  });
   data.products.nodes.forEach((product) => {
     actions.createPage({
       path: `/accessories/${product.slug}`,
