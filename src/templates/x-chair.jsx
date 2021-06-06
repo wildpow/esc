@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 
-export default function XChair(data) {
+export default function XChair({ data }) {
   const test = "X-Chair";
   return (
     <Layout>
