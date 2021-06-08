@@ -1,6 +1,6 @@
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 import {
   breakpoints,
