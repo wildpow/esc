@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
-import { Suspense } from "react";
 import { string, bool, func } from "prop-types";
-import loadable, { lazy } from "@loadable/component";
+import loadable from "@loadable/component";
 
 import styled from "@emotion/styled";
 import {
@@ -18,11 +17,9 @@ import Nav from "./Nav";
 import MenuOverLay from "../../../styles/menuOverlay.styled";
 import useLogo from "./getLogo.query";
 
-const OtherComponent = lazy(() => import("./NavIcons"));
-
-// const OtherComponent = loadable(() => import("./NavIcons"), {
-//   fallback: <h1>Loading...</h1>,
-// });
+const OtherComponent = loadable(() => import("./NavIcons"), {
+  fallback: <h1>Loading...</h1>,
+});
 const HeaderRoot = styled.header`
   transition: all 0.75s;
   /* will-change: transform; */
@@ -191,16 +188,14 @@ const Header = ({
           </Link>
         </div>
         {/* {width > 768 ? <ExtraNavIcons /> : null} */}
-        <Suspense fallback={<div>Loading...</div>}>
-          <OtherComponent
-            headerVisible={headerVisible}
-            cartToggle={cartToggle}
-            menuStatus={menuStatus}
-            cartStatus={cartStatus}
-            searchFocus={searchFocus}
-            setSearchFocus={setSearchFocus}
-          />
-        </Suspense>
+        <OtherComponent
+          headerVisible={headerVisible}
+          cartToggle={cartToggle}
+          menuStatus={menuStatus}
+          cartStatus={cartStatus}
+          searchFocus={searchFocus}
+          setSearchFocus={setSearchFocus}
+        />
         <PrintOnlyContact>
           <div>10121 Evergreen Way, #30, Everett, WA 98204</div>
           <div>(425) 512.0017</div>
