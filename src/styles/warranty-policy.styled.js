@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { OutboundLink } from "gatsby-plugin-google-analytics";
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 import { FadeInAnimation, boxShadow, colors, fonts } from "./theme.styled";
 
 export const MainArticle = styled.article`

@@ -153,9 +153,9 @@ const cfg = {
 
 if (process.env.NODE_ENV === "production") {
   const googleAnalyticsCfg = {
-    resolve: "gatsby-plugin-google-analytics",
+    resolve: "gatsby-plugin-google-gtag",
     options: {
-      trackingId: process.env.GOOGLE_ANALYTICS,
+      trackingIds: [process.env.GOOGLE_ANALYTICS],
     },
   };
   const preact = `gatsby-plugin-preact`;
