@@ -29,6 +29,7 @@ const cfg = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-loadable-components-ssr",
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
