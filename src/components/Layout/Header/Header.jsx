@@ -1,5 +1,7 @@
 import { Link } from "gatsby";
 import { string, bool, func } from "prop-types";
+import loadable from "@loadable/component";
+
 import styled from "@emotion/styled";
 import {
   colors,
@@ -11,10 +13,13 @@ import {
   fonts,
 } from "../../../styles/theme.styled";
 import Nav from "./Nav";
-import NavIcons from "./NavIcons";
+// import NavIcons from "./NavIcons";
 import MenuOverLay from "../../../styles/menuOverlay.styled";
 import useLogo from "./getLogo.query";
 
+const OtherComponent = loadable(() => import("./NavIcons"), {
+  fallback: <h1>Loading...</h1>,
+});
 const HeaderRoot = styled.header`
   transition: all 0.75s;
   /* will-change: transform; */
@@ -183,7 +188,7 @@ const Header = ({
           </Link>
         </div>
         {/* {width > 768 ? <ExtraNavIcons /> : null} */}
-        <NavIcons
+        <OtherComponent
           headerVisible={headerVisible}
           cartToggle={cartToggle}
           menuStatus={menuStatus}
