@@ -1,4 +1,5 @@
 import { Link } from "gatsby";
+import React from "react";
 import { string, bool, func } from "prop-types";
 import styled from "@emotion/styled";
 import {
@@ -15,6 +16,7 @@ import NavIcons from "./NavIcons";
 import MenuOverLay from "../../../styles/menuOverlay.styled";
 import useLogo from "./getLogo.query";
 
+const ClientSideOnlyLazy = React.lazy(() => import("./NavIcons"));
 const HeaderRoot = styled.header`
   transition: all 0.75s;
   /* will-change: transform; */
@@ -153,6 +155,8 @@ const Header = ({
   setSearchFocus,
 }) => {
   const { pandaLogo } = useLogo();
+  const isSSR = typeof window === "undefined";
+
   return (
     <HeaderRoot
       cartStatus={cartStatus}
@@ -183,14 +187,19 @@ const Header = ({
           </Link>
         </div>
         {/* {width > 768 ? <ExtraNavIcons /> : null} */}
-        <NavIcons
-          headerVisible={headerVisible}
-          cartToggle={cartToggle}
-          menuStatus={menuStatus}
-          cartStatus={cartStatus}
-          searchFocus={searchFocus}
-          setSearchFocus={setSearchFocus}
-        />
+        {!isSSR && (
+          <React.Suspense fallback={<h1>loadding</h1>}>
+            <ClientSideOnlyLazy
+              headerVisible={headerVisible}
+              cartToggle={cartToggle}
+              menuStatus={menuStatus}
+              cartStatus={cartStatus}
+              searchFocus={searchFocus}
+              setSearchFocus={setSearchFocus}
+            />
+          </React.Suspense>
+        )}
+
         <PrintOnlyContact>
           <div>10121 Evergreen Way, #30, Everett, WA 98204</div>
           <div>(425) 512.0017</div>
