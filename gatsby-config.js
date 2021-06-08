@@ -152,16 +152,16 @@ const cfg = {
 };
 
 if (process.env.NODE_ENV === "production") {
-  // const googleAnalyticsCfg = {
-  //   resolve: "gatsby-plugin-google-analytics",
-  //   options: {
-  //     trackingId: process.env.GOOGLE_ANALYTICS,
-  //   },
-  // };
+  const googleAnalyticsCfg = {
+    resolve: "gatsby-plugin-google-analytics",
+    options: {
+      trackingId: process.env.GOOGLE_ANALYTICS,
+    },
+  };
   const preact = `gatsby-plugin-preact`;
 
   cfg.plugins.push(preact);
-  // cfg.plugins.push(googleAnalyticsCfg);
+  cfg.plugins.push(googleAnalyticsCfg);
 }
 
 module.exports = cfg;
