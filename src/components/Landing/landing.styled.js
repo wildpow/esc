@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import { fonts } from "../../styles/theme.styled";
 
 // eslint-disable-next-line import/prefer-default-export

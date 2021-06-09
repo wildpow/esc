@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import { colors } from "../../../styles/theme.styled";
 
 const CheckboxContainer = styled.div`

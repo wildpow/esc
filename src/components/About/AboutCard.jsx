@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import {

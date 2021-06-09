@@ -1,7 +1,7 @@
 import { Children } from "react";
 import PropTypes from "prop-types";
 
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import { colors, fonts } from "../../../styles/theme.styled";
 
 const FilterByCardRoot = styled.div`

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { OutboundLink } from "gatsby-plugin-google-gtag";
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 
 const Wrapper = styled.div`
   display: flex;

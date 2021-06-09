@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import Synchrony from "../images/synchrony_Card_Image.jpg";
 import Acima from "../images/acima_Logo.png";
 import Layout from "../components/Layout";
@@ -173,7 +173,6 @@ const FinancingHeading = styled.h3`
 const MainFinancingRoot = styled.section`
   display: flex;
   flex-direction: column;
-  ${FadeInAnimation}
   margin-top: 15px;
   margin-left: 0px;
   margin-right: 0px;

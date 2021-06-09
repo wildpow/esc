@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import PropTypes from "prop-types";
 import { fonts } from "../../../styles/theme.styled";
 
