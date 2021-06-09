@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import { NodeGroup } from "react-move";
 import star from "../../images/stars.svg";
 import {
@@ -21,7 +21,6 @@ const ReviewWrapper = styled.div`
   .relativeWrapper {
     height: 100%;
   }
-  ${FadeInAnimation}
 
   .stars-image {
     height: 22px;

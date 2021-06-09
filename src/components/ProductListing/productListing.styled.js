@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import { BreadWrapper } from "../BreadCrumbs";
 import { colors, fonts, boxShadow } from "../../styles/theme.styled";
 

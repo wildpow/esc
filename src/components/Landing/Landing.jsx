@@ -1,6 +1,6 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import TabBox from "./TabBox";
 import { P } from "./landing.styled";

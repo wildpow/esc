@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import Layout from "../components/Layout";
 import OldH2 from "../old/oldHeading.styled";
 import image from "../images/ezgif.com-optimize.gif";
@@ -12,8 +12,7 @@ const Main = styled.div`
   font-family: ${fonts.sans};
   border: 1px solid #eee;
   box-shadow: ${boxShadow.md};
-  ${FadeInAnimation}
-  border-radius: .11rem;
+  border-radius: 0.11rem;
   text-align: center;
   justify-content: center;
   @media (min-width: 1300px) {

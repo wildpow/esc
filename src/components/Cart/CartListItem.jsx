@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import CloseIcon from "../../svgs/times-solid.svg";
 
 // import CartThumbnail from "./CartThumbnail";

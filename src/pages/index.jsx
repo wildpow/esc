@@ -1,5 +1,5 @@
 import { GatsbyImage, getImage, withArtDirection } from "gatsby-plugin-image";
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql, Link } from "gatsby";
@@ -10,7 +10,6 @@ import TopThreeMatts from "../components/Home/TopMattress";
 import { FadeInAnimation, breakpoints } from "../styles/theme.styled";
 
 const IndexRoot = styled.div`
-  ${FadeInAnimation}
   margin-right: auto;
   margin-left: auto;
   padding-top: 1px;

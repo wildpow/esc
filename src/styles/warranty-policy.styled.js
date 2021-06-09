@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "linaria/react";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
 import { FadeInAnimation, boxShadow, colors, fonts } from "./theme.styled";
 
@@ -6,7 +6,6 @@ export const MainArticle = styled.article`
   box-shadow: ${boxShadow.md};
   background-color: white;
   color: ${colors.gray["800"]};
-  ${FadeInAnimation}
   margin-top: 15px;
   padding-bottom: 1px;
   padding-left: 5px;
