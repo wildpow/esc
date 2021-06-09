@@ -7,8 +7,12 @@ import { Carousel } from "react-responsive-carousel";
 import Layout from "../components/Layout";
 import Front from "../components/Home/FrontContentCards";
 import TopThreeMatts from "../components/Home/TopMattress";
-import { FadeInAnimation, breakpoints } from "../styles/theme.styled";
+import {
+  // FadeInAnimation,
+  breakpoints,
+} from "../styles/theme.styled";
 
+/* ${FadeInAnimation} */
 const IndexRoot = styled.div`
   margin-right: auto;
   margin-left: auto;
