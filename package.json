@@ -99,11 +99,6 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
-  "babelMacros": {
-    "twin": {
-      "preset": "emotion",
-      "config": "tailwind.config.js"
-    }
   }
+ 
 }
