@@ -13,6 +13,12 @@ const isNetlifyProduction = NETLIFY_ENV === "production";
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 
 const cfg = {
+  flags: {
+    PRESERVE_WEBPACK_CACHE: true,
+    FAST_DEV: true,
+    PRESERVE_FILE_DOWNLOAD_CACHE: true,
+    PARALLEL_SOURCING: true,
+  },
   siteMetadata: {
     title: "E.S.C Mattress Center",
     siteUrl,
@@ -153,9 +159,9 @@ const cfg = {
 
 if (process.env.NODE_ENV === "production") {
   const googleAnalyticsCfg = {
-    resolve: "gatsby-plugin-google-analytics",
+    resolve: "gatsby-plugin-google-gtag",
     options: {
-      trackingId: process.env.GOOGLE_ANALYTICS,
+      trackingIds: [process.env.GOOGLE_ANALYTICS],
     },
   };
   const preact = `gatsby-plugin-preact`;

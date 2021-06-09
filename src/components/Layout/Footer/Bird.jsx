@@ -1,4 +1,4 @@
-import { OutboundLink } from "gatsby-plugin-google-analytics";
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "@emotion/styled";
 import { colors, fonts } from "../../../styles/theme.styled";

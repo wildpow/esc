@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { OutboundLink } from "gatsby-plugin-google-analytics";
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
