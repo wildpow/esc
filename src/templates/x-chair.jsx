@@ -1,13 +1,31 @@
+/* eslint-disable react/prop-types */
 import { graphql } from "gatsby";
+import { useState } from "react";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+
 import Layout from "../components/Layout";
 
 export default function XChair(props) {
-  const test = "X-Chair";
+  const { pageContext, data } = props;
+  const { datoCmsXChair, headrest, wheels } = data;
+  const { images } = pageContext;
+  const [headrestBool, setHeadrestBool] = useState(false);
   return (
     <Layout>
       <div>
         <h1>X-Chair</h1>
-        {console.log(test, props)}
+        {console.log(headrest.images[0])}
+        <div>
+          <h2>Headrest</h2>
+          <div>
+            <div>
+              <input type="checkbox" id="noHeadrest" />
+              <label htmlFor="noHeadrest">
+                <GatsbyImage image={getImage(headrest.images[0])} />
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
     </Layout>
   );
@@ -57,6 +75,7 @@ export const chairQuery = graphql`
       description
       title
       storefrontId
+
       variants {
         storefrontId
         price
