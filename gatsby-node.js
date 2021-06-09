@@ -1,5 +1,37 @@
 const path = require("path");
 
+const chairImages = {
+  "Flex Mesh": {
+    "Grey Flex Mesh": {
+      default: [
+        "./src/images/xChair/xOne/x-1 gray angle.jpg",
+        "./src/images/xChair/xOne/x-1 gray front.jpeg",
+        "./src/images/xChair/xOne/x-1 gray side.jpg",
+        "./src/images/xChair/xOne/x-1 gray back.jpeg",
+      ],
+      headrest: [
+        "./src/images/xChair/xOne/x-1 gray angle headrest.jpg",
+        "./src/images/xChair/xOne/x-1 gray front headrest.jpg",
+        "./src/images/xChair/xOne/x-1 gray side headrest.jpg",
+        "./src/images/xChair/xOne/x-1 gray side headrest.jpg",
+      ],
+    },
+    "Black Flex Mesh": {
+      default: [
+        "./src/images/xChair/xOne/x-1 black angle.jpg",
+        "./src/images/xChair/xOne/x-1 black front.jpeg",
+        "./src/images/xChair/xOne/x-1 black side.jpg",
+        "./src/images/xChair/xOne/x-1 black back.jpeg",
+      ],
+      headrest: [
+        "./src/images/xChair/xOne/x-1 black angle headrest.jpg",
+        "./src/images/xChair/xOne/x-1 black front headrest.jpg",
+        "./src/images/xChair/xOne/x-1 black side headrest.jpg",
+        "./src/images/xChair/xOne/x-1 black side headrest.jpg",
+      ],
+    },
+  },
+};
 exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
     name: "@babel/plugin-transform-react-jsx",
@@ -22,6 +54,7 @@ exports.createPages = async ({ actions, graphql }) => {
     query {
       xChairs: allDatoCmsXChair {
         nodes {
+          title
           headrest
           wheelOptions
           slug
@@ -75,6 +108,7 @@ exports.createPages = async ({ actions, graphql }) => {
         slug: chair.slug,
         headrest: chair.headrest,
         wheels: chair.wheelOptions,
+        images: chairImages[chair.title],
       },
     });
   });
@@ -126,9 +160,22 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 };
-
+// DatoCmsXChair
 exports.createResolvers = ({ createResolvers }) => {
   createResolvers({
+    DatoCmsXChair: {
+      shopifyInfo: {
+        type: [`ShopifyProduct`],
+        resolve(source, args, context, info) {
+          const fieldValue = source.entityPayload.attributes.shopify_connection;
+          return context.nodeModel.runQuery({
+            query: { filter: { storefrontId: { eq: fieldValue } } },
+            type: `ShopifyProduct`,
+            // firstOnly: true,
+          });
+        },
+      },
+    },
     DatoCmsNewMattress: {
       shopifyInfo: {
         type: [`ShopifyProduct`],

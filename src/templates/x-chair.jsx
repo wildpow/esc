@@ -1,13 +1,13 @@
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 
-export default function XChair({ data }) {
+export default function XChair(props) {
   const test = "X-Chair";
   return (
     <Layout>
       <div>
         <h1>X-Chair</h1>
-        {console.log(test, data)}
+        {console.log(test, props)}
       </div>
     </Layout>
   );
@@ -19,6 +19,38 @@ export const chairQuery = graphql`
       title
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
+      }
+      shopifyInfo {
+        variants {
+          compareAtPrice
+          price
+          storefrontId
+          title
+          image {
+            gatsbyImageData(layout: FIXED, width: 150)
+          }
+        }
+        title
+        description
+        hasOnlyDefaultVariant
+        images {
+          gatsbyImageData(layout: FIXED, width: 50)
+          altText
+        }
+        featuredImage {
+          gatsbyImageData(width: 50, layout: FIXED)
+        }
+        priceRangeV2 {
+          maxVariantPrice {
+            amount
+          }
+          minVariantPrice {
+            amount
+          }
+        }
+        productType
+        storefrontId
+        totalVariants
       }
     }
     headrest: shopifyProduct(storefrontId: { eq: $headrest }) {
