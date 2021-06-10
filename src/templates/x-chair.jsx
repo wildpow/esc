@@ -1,9 +1,92 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import { graphql } from "gatsby";
 import { useState } from "react";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import styled from "@emotion/styled";
 import Layout from "../components/Layout";
+
+const Checkbox = styled.div`
+  background-color: white;
+  padding: 20px;
+  .borderOneInput {
+    display: none;
+  }
+  .borderOneLabel {
+    border-top: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
+    /* border-bottom: 4px solid transparent; */
+    outline: 1px solid #dadada;
+    padding: 10px 10px 0 10px;
+    display: block;
+    position: relative;
+    /* margin: 10px; */
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  .borderOneLabel::after {
+    height: 4px;
+    position: absolute;
+    content: "";
+    width: calc(100% + 2px);
+    left: -1px;
+    bottom: 0;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+  }
+  .borderOneInput:hover + .borderOneLabel::after {
+    background-color: #ec1221;
+  }
+  .borderOneInput:checked + .borderOneLabel::after {
+    background-color: #ec1221;
+  }
+  .borderOneLabel::before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 36px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+    z-index: 10;
+  }
+  .borderOneLabel div {
+    height: 90px;
+    width: 120px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+  }
+  .borderOneInput:hover + label {
+    border-top: 1px solid #ec1221;
+    border-right: 1px solid #ec1221;
+    border-left: 1px solid #ec1221;
+    /* border-bottom: 4px solid #ec1221; */
+  }
+  .borderOneInput:checked + label {
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    /* border-bottom: 4px solid #ec1221; */
+  }
+  .borderOneInput:checked + label::before {
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+  }
+  .borderOneInput:checked:checked + label div {
+    transform: scale(1);
+    z-index: -1;
+  }
+`;
 
 export default function XChair(props) {
   const { pageContext, data } = props;
@@ -17,13 +100,32 @@ export default function XChair(props) {
         {console.log(headrest.images[0])}
         <div>
           <h2>Headrest</h2>
-          <div>
-            <div>
-              <input type="checkbox" id="noHeadrest" />
-              <label htmlFor="noHeadrest">
-                <GatsbyImage image={getImage(headrest.images[0])} />
+          <div style={{ display: "flex" }}>
+            <Checkbox>
+              <input
+                type="checkbox"
+                id="noHeadrest"
+                className="borderOneInput"
+              />
+              <label htmlFor="noHeadrest" className="borderOneLabel">
+                <div>
+                  <StaticImage
+                    src="../images/xChair/standardCasterSet.jpeg"
+                    layout="constrained"
+                    width={150}
+                    height={103}
+                  />
+                </div>
               </label>
-            </div>
+            </Checkbox>
+            <Checkbox>
+              <input type="checkbox" id="headrest" className="borderOneInput" />
+              <label htmlFor="headrest" className="borderOneLabel">
+                <div>
+                  <GatsbyImage image={getImage(headrest.images[0])} />
+                </div>
+              </label>
+            </Checkbox>
           </div>
         </div>
       </div>
@@ -90,7 +192,7 @@ export const chairQuery = graphql`
         }
       }
       images {
-        gatsbyImageData(layout: CONSTRAINED, width: 150)
+        gatsbyImageData(layout: CONSTRAINED, width: 290)
       }
     }
     wheels: shopifyProduct(storefrontId: { eq: $wheels }) {
