@@ -49,18 +49,18 @@ const Checkbox = styled.div`
     border-radius: 50%;
     border: 1px solid grey;
     position: absolute;
-    top: -15px;
-    left: -15px;
-    width: 35px;
-    height: 35px;
+    top: -12px;
+    left: -12px;
+    width: 30px;
+    height: 30px;
     text-align: center;
-    line-height: 36px;
+    line-height: 31px;
     transition-duration: 0.4s;
     transform: scale(0);
     z-index: 10;
   }
   .borderOneLabel div {
-    height: 90px;
+    height: 100px;
     width: 120px;
     transition-duration: 0.2s;
     transform-origin: 50% 50%;
@@ -87,7 +87,8 @@ const Checkbox = styled.div`
     z-index: -1;
   }
 `;
-
+// TODO Sending image paths throuhg page context does not work with StaticImage
+// TODO Need to use filesystem source plug-in instead..
 export default function XChair(props) {
   const { pageContext, data } = props;
   const { datoCmsXChair, headrest, wheels } = data;
@@ -97,7 +98,13 @@ export default function XChair(props) {
     <Layout>
       <div>
         <h1>X-Chair</h1>
-        {console.log(headrest.images[0])}
+
+        <StaticImage
+          src="../images/xChair/xOne/x-1 gray side headrest.jpg"
+          layout="constrained"
+          width={150}
+          height={103}
+        />
         <div>
           <h2>Headrest</h2>
           <div style={{ display: "flex" }}>
@@ -106,11 +113,13 @@ export default function XChair(props) {
                 type="checkbox"
                 id="noHeadrest"
                 className="borderOneInput"
+                onChange={() => setHeadrestBool(!headrestBool)}
+                checked={!headrestBool}
               />
               <label htmlFor="noHeadrest" className="borderOneLabel">
                 <div>
                   <StaticImage
-                    src="../images/xChair/standardCasterSet.jpeg"
+                    src="../images/xChair/xOne/noHeadrest.jpg"
                     layout="constrained"
                     width={150}
                     height={103}
@@ -119,7 +128,13 @@ export default function XChair(props) {
               </label>
             </Checkbox>
             <Checkbox>
-              <input type="checkbox" id="headrest" className="borderOneInput" />
+              <input
+                type="checkbox"
+                id="headrest"
+                className="borderOneInput"
+                onChange={() => setHeadrestBool(!headrestBool)}
+                checked={headrestBool}
+              />
               <label htmlFor="headrest" className="borderOneLabel">
                 <div>
                   <GatsbyImage image={getImage(headrest.images[0])} />
@@ -127,6 +142,40 @@ export default function XChair(props) {
               </label>
             </Checkbox>
           </div>
+        </div>
+      </div>
+      <div>
+        <h2>Wheels</h2>
+        <div style={{ display: "flex" }}>
+          <Checkbox>
+            <input type="checkbox" id="noHeadrest" className="borderOneInput" />
+            <label htmlFor="noHeadrest" className="borderOneLabel">
+              <div>
+                <StaticImage
+                  src="../images/xChair/standardCasterSet.jpeg"
+                  layout="constrained"
+                  width={150}
+                  height={103}
+                />
+              </div>
+            </label>
+          </Checkbox>
+          {wheels.variants.map((wheel) => (
+            <Checkbox key={wheel.title}>
+              <input
+                type="checkbox"
+                id="headrest"
+                className="borderOneInput"
+                // onChange={() => setHeadrestBool(!headrestBool)}
+                // checked={headrestBool}
+              />
+              <label htmlFor="headrest" className="borderOneLabel">
+                <div>
+                  <GatsbyImage image={wheel.image.gatsbyImageData} />
+                </div>
+              </label>
+            </Checkbox>
+          ))}
         </div>
       </div>
     </Layout>
@@ -204,7 +253,7 @@ export const chairQuery = graphql`
         price
         title
         image {
-          gatsbyImageData(layout: CONSTRAINED, width: 150)
+          gatsbyImageData(layout: CONSTRAINED, width: 350)
         }
       }
       priceRangeV2 {
