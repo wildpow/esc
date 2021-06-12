@@ -24,7 +24,7 @@ const GlobalStyle = css`
   }
 
   @media print {
-    #bf-revz-widget-2354903707 {
+    #bf-revz-widget-900941696 {
       display: none !important;
     }
   }

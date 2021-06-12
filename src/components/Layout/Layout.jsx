@@ -47,7 +47,7 @@ export default function Layout({ children, bgWhite }) {
   // Birdeye customer chat
   const element =
     typeof document !== `undefined`
-      ? document.getElementById("bf-revz-widget-2354903707")
+      ? document.getElementById("bf-revz-widget-900941696")
       : null;
   // //////////////////
 

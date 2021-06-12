@@ -32,9 +32,9 @@ export default class HTML extends React.Component {
           {this.props.postBodyComponents}
           <script
             type="text/javascript"
-            src="https://birdeye.com/embed/v6/154743410851424/1/2354903707/22ec84ab14ce488a6070e219984acd2460c92822aa3fd316"
+            src="https://birdeye.com//embed/v6/154743411347922/1/900941696/b05e6962db603884439e32ac46441ee35b22fe79baaa83b3"
           />
-          <div id="bf-revz-widget-2354903707" />
+          <div id="bf-revz-widget-900941696" />
         </body>
       </html>
     );
