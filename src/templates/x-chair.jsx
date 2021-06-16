@@ -5,6 +5,7 @@ import { useState } from "react";
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
 import Layout from "../components/Layout";
+import getNoHeadrest from "../components/X-Chair/getNoHeadrest.query";
 
 const Checkbox = styled.div`
   background-color: white;
@@ -91,20 +92,21 @@ const Checkbox = styled.div`
 // TODO Need to use filesystem source plug-in instead..
 export default function XChair(props) {
   const { pageContext, data } = props;
-  const { datoCmsXChair, headrest, wheels } = data;
+  const { datoCmsXChair, headrest, wheels, memoryFoam, width } = data;
   const { images } = pageContext;
+  const stuff = getNoHeadrest(datoCmsXChair.title);
   const [headrestBool, setHeadrestBool] = useState(false);
   return (
     <Layout>
       <div>
         <h1>X-Chair</h1>
-
-        <StaticImage
+        {console.log(stuff)}
+        {/* <StaticImage
           src="../images/xChair/xOne/x-1 gray side headrest.jpg"
           layout="constrained"
           width={150}
           height={103}
-        />
+        /> */}
         <div>
           <h2>Headrest</h2>
           <div style={{ display: "flex" }}>
@@ -119,10 +121,11 @@ export default function XChair(props) {
               <label htmlFor="noHeadrest" className="borderOneLabel">
                 <div>
                   <StaticImage
-                    src="../images/xChair/xOne/noHeadrest.jpg"
+                    src="../images/xChair/xFour/noHeadrest.jpeg"
                     layout="constrained"
                     width={150}
                     height={103}
+                    alt="alt stuff"
                   />
                 </div>
               </label>
@@ -137,7 +140,10 @@ export default function XChair(props) {
               />
               <label htmlFor="headrest" className="borderOneLabel">
                 <div>
-                  <GatsbyImage image={getImage(headrest.images[0])} />
+                  <GatsbyImage
+                    image={getImage(headrest.images[0])}
+                    alt="alt stuff"
+                  />
                 </div>
               </label>
             </Checkbox>
@@ -152,6 +158,7 @@ export default function XChair(props) {
             <label htmlFor="noHeadrest" className="borderOneLabel">
               <div>
                 <StaticImage
+                  alt="alt stuff"
                   src="../images/xChair/standardCasterSet.jpeg"
                   layout="constrained"
                   width={150}
@@ -171,7 +178,10 @@ export default function XChair(props) {
               />
               <label htmlFor="headrest" className="borderOneLabel">
                 <div>
-                  <GatsbyImage image={wheel.image.gatsbyImageData} />
+                  <GatsbyImage
+                    image={wheel.image.gatsbyImageData}
+                    alt="alt stuff"
+                  />
                 </div>
               </label>
             </Checkbox>
@@ -183,7 +193,12 @@ export default function XChair(props) {
 }
 
 export const chairQuery = graphql`
-  query chair($slug: String!, $headrest: String!, $wheels: String!) {
+  query chair(
+    $slug: String!
+    $headrest: String!
+    $wheels: String!
+    $memoryFoam: String
+  ) {
     datoCmsXChair(slug: { eq: $slug }) {
       title
       seoMetaTags {
@@ -220,6 +235,38 @@ export const chairQuery = graphql`
         productType
         storefrontId
         totalVariants
+      }
+    }
+    memoryFoam: shopifyProduct(storefrontId: { eq: $memoryFoam }) {
+      description
+      title
+      storefrontId
+      images {
+        gatsbyImageData(layout: CONSTRAINED, width: 290)
+      }
+      priceRangeV2 {
+        maxVariantPrice {
+          amount
+        }
+        minVariantPrice {
+          amount
+        }
+      }
+    }
+    width: shopifyProduct(storefrontId: { eq: $memoryFoam }) {
+      description
+      title
+      storefrontId
+      images {
+        gatsbyImageData(layout: CONSTRAINED, width: 290)
+      }
+      priceRangeV2 {
+        maxVariantPrice {
+          amount
+        }
+        minVariantPrice {
+          amount
+        }
       }
     }
     headrest: shopifyProduct(storefrontId: { eq: $headrest }) {

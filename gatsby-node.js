@@ -1,37 +1,5 @@
 const path = require("path");
 
-const chairImages = {
-  "Flex Mesh": {
-    "Grey Flex Mesh": {
-      default: [
-        "../images/xChair/xOne/x-1 gray angle.jpg",
-        "../images/xChair/xOne/x-1 gray front.jpeg",
-        "../images/xChair/xOne/x-1 gray side.jpg",
-        "../images/xChair/xOne/x-1 gray back.jpeg",
-      ],
-      headrest: [
-        "../images/xChair/xOne/x-1 gray angle headrest.jpg",
-        "../images/xChair/xOne/x-1 gray front headrest.jpg",
-        "../images/xChair/xOne/x-1 gray side headrest.jpg",
-        "../images/xChair/xOne/x-1 gray side headrest.jpg",
-      ],
-    },
-    "Black Flex Mesh": {
-      default: [
-        "../images/xChair/xOne/x-1 black angle.jpg",
-        "../images/xChair/xOne/x-1 black front.jpeg",
-        "../images/xChair/xOne/x-1 black side.jpg",
-        "../images/xChair/xOne/x-1 black back.jpeg",
-      ],
-      headrest: [
-        "../images/xChair/xOne/x-1 black angle headrest.jpg",
-        "../images/xChair/xOne/x-1 black front headrest.jpg",
-        "../images/xChair/xOne/x-1 black side headrest.jpg",
-        "../images/xChair/xOne/x-1 black side headrest.jpg",
-      ],
-    },
-  },
-};
 exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
     name: "@babel/plugin-transform-react-jsx",
@@ -57,6 +25,8 @@ exports.createPages = async ({ actions, graphql }) => {
           title
           headrest
           wheelOptions
+          chairWidth
+          memoryFoam
           slug
         }
       }
@@ -108,7 +78,8 @@ exports.createPages = async ({ actions, graphql }) => {
         slug: chair.slug,
         headrest: chair.headrest,
         wheels: chair.wheelOptions,
-        images: chairImages[chair.title],
+        width: chair.chairWidth,
+        memoryFoam: chair.memoryFoam,
       },
     });
   });
