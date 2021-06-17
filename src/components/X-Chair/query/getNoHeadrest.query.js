@@ -9,7 +9,7 @@ export default (title) => {
             gatsbyImageData(
               width: 150
               height: 103
-              layout: FIXED
+              layout: CONSTRAINED
               formats: [AVIF, AUTO, WEBP, JPG]
             )
           }
@@ -19,7 +19,7 @@ export default (title) => {
             gatsbyImageData(
               width: 150
               height: 103
-              layout: FIXED
+              layout: CONSTRAINED
               formats: [AVIF, AUTO, WEBP, JPG]
             )
           }
@@ -29,7 +29,7 @@ export default (title) => {
             gatsbyImageData(
               width: 150
               height: 103
-              layout: FIXED
+              layout: CONSTRAINED
               formats: [AVIF, AUTO, WEBP, JPG]
             )
           }
@@ -39,7 +39,7 @@ export default (title) => {
             gatsbyImageData(
               width: 150
               height: 103
-              layout: FIXED
+              layout: CONSTRAINED
               formats: [AVIF, AUTO, WEBP, JPG]
             )
           }
