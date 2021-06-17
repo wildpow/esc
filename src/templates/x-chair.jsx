@@ -2,19 +2,24 @@
 /* eslint-disable react/prop-types */
 import { graphql } from "gatsby";
 import { useReducer } from "react";
+import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 import GenerateInitialState from "../components/X-Chair/generateInitialState";
 import xChairReducer from "../components/X-Chair/xChair.reducer";
 import Headrest from "../components/X-Chair/prototype/Headrest";
+import Wheels from "../components/X-Chair/prototype/Wheels";
 
+const XchairRoot = styled.section`
+  background-color: white;
+`;
 export default function XChair({ data }) {
   const { datoCmsXChair, headrest, wheels, memoryFoam, width } = data;
   const initialState = GenerateInitialState();
   const [state, dispatch] = useReducer(xChairReducer, initialState);
   return (
     <Layout>
-      <div>
-        {/* {console.log("state", state)} */}
+      <XchairRoot>
+        {console.log("state", state)}
         <h1>X-Chair</h1>
         <Headrest
           title={datoCmsXChair.title}
@@ -22,7 +27,8 @@ export default function XChair({ data }) {
           dispatch={dispatch}
           headrestBool={state.headrest}
         />
-      </div>
+        <Wheels wheels={wheels.variants} wheelsCB={state.wheelsCB} />
+      </XchairRoot>
     </Layout>
   );
 }
