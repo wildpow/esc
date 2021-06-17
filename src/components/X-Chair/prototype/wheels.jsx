@@ -3,21 +3,22 @@
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
 
-export default function Wheels({ wheels, wheelsCB }) {
+export default function Wheels({ wheels, wheelsCB, dispatch }) {
   const poop = "";
   return (
     <div>
-      {console.log(poop)}
+      {console.log(wheelsCB)}
       <h2>Wheels</h2>
       <div style={{ display: "flex" }}>
         <Checkbox>
           <input
             type="checkbox"
-            id="noHeadrest"
+            id="basicWheel"
             className="borderOneInput"
-            checked={wheelsCB[3].checked}
+            checked={wheelsCB[3]}
+            onChange={() => dispatch({ type: "wheels", index: 3 })}
           />
-          <label htmlFor="noHeadrest" className="borderOneLabel">
+          <label htmlFor="basicWheel" className="borderOneLabel">
             <div>
               <StaticImage
                 alt="alt stuff"
@@ -29,21 +30,22 @@ export default function Wheels({ wheels, wheelsCB }) {
             </div>
           </label>
         </Checkbox>
-        {wheelsCB.map((checkBox) => {
-          if (checkBox.index === 3) return null;
+        {wheelsCB.map((checkBox, index) => {
+          if (index === 3) return null;
           return (
-            <Checkbox key={checkBox.index}>
+            <Checkbox key={index}>
+              {console.log(checkBox)}
               <input
                 type="checkbox"
-                id="headrest"
+                id={`wheel${index}`}
                 className="borderOneInput"
-                // onChange={() => setHeadrestBool(!headrestBool)}
-                checked={checkBox.checked}
+                onChange={() => dispatch({ type: "wheels", index })}
+                checked={checkBox}
               />
-              <label htmlFor="headrest" className="borderOneLabel">
+              <label htmlFor={`wheel${index}`} className="borderOneLabel">
                 <div>
                   <GatsbyImage
-                    image={getImage(wheels[checkBox.index].image)}
+                    image={getImage(wheels[index].image)}
                     alt="alt stuff"
                   />
                 </div>

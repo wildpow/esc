@@ -27,7 +27,11 @@ export default function XChair({ data }) {
           dispatch={dispatch}
           headrestBool={state.headrest}
         />
-        <Wheels wheels={wheels.variants} wheelsCB={state.wheelsCB} />
+        <Wheels
+          wheels={wheels.variants}
+          wheelsCB={state.wheelsCB}
+          dispatch={dispatch}
+        />
       </XchairRoot>
     </Layout>
   );
