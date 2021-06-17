@@ -24,7 +24,6 @@ exports.createPages = async ({ actions, graphql }) => {
         nodes {
           title
           headrest
-          wheelOptions
           chairWidth
           memoryFoam
           slug
@@ -77,7 +76,6 @@ exports.createPages = async ({ actions, graphql }) => {
       context: {
         slug: chair.slug,
         headrest: chair.headrest,
-        wheels: chair.wheelOptions,
         width: chair.chairWidth,
         memoryFoam: chair.memoryFoam,
       },

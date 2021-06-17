@@ -38,12 +38,7 @@ export default function XChair({ data }) {
 }
 
 export const chairQuery = graphql`
-  query chair(
-    $slug: String!
-    $headrest: String!
-    $wheels: String!
-    $memoryFoam: String
-  ) {
+  query chair($slug: String!, $headrest: String!, $memoryFoam: String) {
     datoCmsXChair(slug: { eq: $slug }) {
       title
       seoMetaTags {
@@ -136,7 +131,7 @@ export const chairQuery = graphql`
         gatsbyImageData(layout: CONSTRAINED, width: 290)
       }
     }
-    wheels: shopifyProduct(storefrontId: { eq: $wheels }) {
+    wheels: shopifyProduct(title: { eq: "X-Chair Wheels" }) {
       title
       storefrontId
       description
