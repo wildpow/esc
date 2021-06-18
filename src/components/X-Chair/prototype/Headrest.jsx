@@ -13,12 +13,6 @@ export default function Headrest({
   const noHeadrest = getNoHeadrest(title);
   return (
     <div>
-      {/* {console.log("title", title)}
-      {console.log("dispatch", dispatch)}
-
-      {console.log("headrestImg", headrestImg)}
-      {console.log("headrestBool", headrestBool)} */}
-
       <h2>Headrest</h2>
       <div style={{ display: "flex" }}>
         <Checkbox>

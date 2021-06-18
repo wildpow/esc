@@ -1,16 +1,27 @@
 const xChairReducer = (state, action) => {
   let newWheelsCB;
+  let newModelCB;
   switch (action.type) {
+    case "width":
+      return {
+        ...state,
+        width: !state.width,
+      };
+    case "model":
+      newModelCB = [false, false, false];
+      newModelCB[action.index] = true;
+      return {
+        ...state,
+        modelCB: newModelCB,
+      };
     case "headrest":
       return {
         ...state,
         headrest: !state.headrest,
       };
     case "wheels":
-      console.log("action", action);
       newWheelsCB = [false, false, false, false];
       newWheelsCB[action.index] = true;
-      console.log(newWheelsCB, "newWheelsCB");
       return {
         ...state,
         wheelsCB: newWheelsCB,

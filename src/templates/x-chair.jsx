@@ -8,12 +8,15 @@ import GenerateInitialState from "../components/X-Chair/generateInitialState";
 import xChairReducer from "../components/X-Chair/xChair.reducer";
 import Headrest from "../components/X-Chair/prototype/Headrest";
 import Wheels from "../components/X-Chair/prototype/Wheels";
+import Model from "../components/X-Chair/prototype/Model";
+import Width from "../components/X-Chair/prototype/Width";
 
 const XchairRoot = styled.section`
   background-color: white;
 `;
 export default function XChair({ data }) {
-  const { datoCmsXChair, headrest, wheels, memoryFoam, width } = data;
+  const { datoCmsXChair, headrest, wheels, memoryFoam, width, hmt, elemax } =
+    data;
   const initialState = GenerateInitialState();
   const [state, dispatch] = useReducer(xChairReducer, initialState);
   return (
@@ -21,6 +24,7 @@ export default function XChair({ data }) {
       <XchairRoot>
         {console.log("state", state)}
         <h1>X-Chair</h1>
+        <Model modelCB={state.modelCB} dispatch={dispatch} />
         <Headrest
           title={datoCmsXChair.title}
           headrestImg={headrest.images[0]}
@@ -32,6 +36,13 @@ export default function XChair({ data }) {
           wheelsCB={state.wheelsCB}
           dispatch={dispatch}
         />
+        {width ? (
+          <Width
+            title={datoCmsXChair.title}
+            dispatch={dispatch}
+            widthBool={state.width}
+          />
+        ) : null}
       </XchairRoot>
     </Layout>
   );
@@ -153,6 +164,32 @@ export const chairQuery = graphql`
       }
       images {
         gatsbyImageData(layout: CONSTRAINED, width: 150)
+      }
+    }
+    hmt: shopifyProduct(title: { eq: "X-HMT" }) {
+      title
+      storefrontId
+      description
+      priceRangeV2 {
+        maxVariantPrice {
+          amount
+        }
+        minVariantPrice {
+          amount
+        }
+      }
+    }
+    elemax: shopifyProduct(title: { eq: "Elemax" }) {
+      title
+      storefrontId
+      description
+      priceRangeV2 {
+        maxVariantPrice {
+          amount
+        }
+        minVariantPrice {
+          amount
+        }
       }
     }
   }

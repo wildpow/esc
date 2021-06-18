@@ -3,6 +3,8 @@ const GenerateInitialState = () => {
     activeColor: "grey",
     headrest: false,
     wheelsCB: [false, false, false, true],
+    modelCB: [true, false, false],
+    width: false,
   };
   return initialState;
 };

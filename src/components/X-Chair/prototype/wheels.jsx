@@ -4,10 +4,8 @@ import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
 
 export default function Wheels({ wheels, wheelsCB, dispatch }) {
-  const poop = "";
   return (
     <div>
-      {console.log(wheelsCB)}
       <h2>Wheels</h2>
       <div style={{ display: "flex" }}>
         <Checkbox>
@@ -34,7 +32,6 @@ export default function Wheels({ wheels, wheelsCB, dispatch }) {
           if (index === 3) return null;
           return (
             <Checkbox key={index}>
-              {console.log(checkBox)}
               <input
                 type="checkbox"
                 id={`wheel${index}`}
