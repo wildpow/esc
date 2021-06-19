@@ -22,157 +22,77 @@ export default () => {
             eq: "xChair/xThree/black/attribute_swatch_0000_x3black.jpg"
           }
         ) {
-          childImageSharp {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              width: 150
-              formats: [AUTO, WEBP, AVIF]
-            )
-          }
+          ...colorSwatch
         }
         greyColorImg: file(
           relativePath: {
             eq: "xChair/xThree/grey/attribute_swatch_0003_x3grey.jpg"
           }
         ) {
-          childImageSharp {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              width: 150
-              formats: [AUTO, WEBP, AVIF]
-            )
-          }
+          ...colorSwatch
         }
         glacierColorImg: file(
           relativePath: {
             eq: "xChair/xThree/glacier/x3_glacier_thumb_120_80.jpg"
           }
         ) {
-          childImageSharp {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              width: 150
-              formats: [AUTO, WEBP, AVIF]
-            )
-          }
+          ...colorSwatch
         }
         blueColorImg: file(
           relativePath: {
             eq: "xChair/xThree/blue/attribute_swatch_0001_x3blue.jpg"
           }
         ) {
-          childImageSharp {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              width: 150
-              formats: [AUTO, WEBP, AVIF]
-            )
-          }
+          ...colorSwatch
         }
 
         greyHeadrest: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/grey/headrest" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
         greyDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/grey/default" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
         blackDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/black/default" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
         blackHeadrest: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/black/headrest" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
         blueDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/blue/default" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
         blueHeadrest: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/blue/headrest" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
         glacierDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/glacier/default" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
         glacierHeadrest: allFile(
@@ -181,15 +101,7 @@ export default () => {
           }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
       }
@@ -202,9 +114,12 @@ export default () => {
       { title: "Blue A.T.R.", img: blueColorImg },
       { title: "Glacier A.T.R.", img: glacierColorImg },
     ],
-    "Black A.T.R.": { default: blackDefault, headrest: blackHeadrest },
-    "Grey A.T.R.": { default: greyDefault, headrest: greyHeadrest },
-    "Blue A.T.R.": { default: blueDefault, headrest: blueHeadrest },
-    "Glacier A.T.R.": { default: glacierDefault, headrest: glacierHeadrest },
+    colorCB: [true, false, false, false],
+    data: {
+      "Black A.T.R.": { default: blackDefault, headrest: blackHeadrest },
+      "Grey A.T.R.": { default: greyDefault, headrest: greyHeadrest },
+      "Blue A.T.R.": { default: blueDefault, headrest: blueHeadrest },
+      "Glacier A.T.R.": { default: glacierDefault, headrest: glacierHeadrest },
+    },
   };
 };

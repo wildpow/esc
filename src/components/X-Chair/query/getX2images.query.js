@@ -20,75 +20,35 @@ export default () => {
         greyColorImg: file(
           relativePath: { eq: "xChair/xTwo/grey/grey-ksport-mesh.png" }
         ) {
-          childImageSharp {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              width: 150
-              formats: [AUTO, WEBP, AVIF]
-            )
-          }
+          ...colorSwatch
         }
         blackColorImg: file(
           relativePath: { eq: "xChair/xTwo/black/black-ksport-mesh.png" }
         ) {
-          childImageSharp {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              width: 150
-              formats: [AUTO, WEBP, AVIF]
-            )
-          }
+          ...colorSwatch
         }
         redColorImg: file(
           relativePath: { eq: "xChair/xTwo/red/red-ksport-mesh.png" }
         ) {
-          childImageSharp {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              width: 150
-              formats: [AUTO, WEBP, AVIF]
-            )
-          }
+          ...colorSwatch
         }
         whiteColorImg: file(
           relativePath: { eq: "xChair/xTwo/white/white-ksport-mesh.jpg" }
         ) {
-          childImageSharp {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              width: 150
-              formats: [AUTO, WEBP, AVIF]
-            )
-          }
+          ...colorSwatch
         }
         whiteDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xTwo/white/default" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
         whiteHeadrest: allFile(
           filter: { relativeDirectory: { eq: "xChair/xTwo/white/headrest" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
 
@@ -96,45 +56,21 @@ export default () => {
           filter: { relativeDirectory: { eq: "xChair/xTwo/red/default" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
         redHeadrest: allFile(
           filter: { relativeDirectory: { eq: "xChair/xTwo/red/headrest" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
         grayDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xTwo/grey/default" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
 
@@ -142,15 +78,7 @@ export default () => {
           filter: { relativeDirectory: { eq: "xChair/xTwo/grey/headrest" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
 
@@ -158,15 +86,7 @@ export default () => {
           filter: { relativeDirectory: { eq: "xChair/xTwo/black/default" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
 
@@ -174,15 +94,7 @@ export default () => {
           filter: { relativeDirectory: { eq: "xChair/xTwo/black/headrest" } }
         ) {
           nodes {
-            base
-            childImageSharp {
-              gatsbyImageData(
-                layout: CONSTRAINED
-                width: 1000
-                formats: [AUTO, WEBP, AVIF]
-                placeholder: TRACED_SVG
-              )
-            }
+            ...fullChairImages
           }
         }
       }
@@ -195,9 +107,12 @@ export default () => {
       { title: "Red K-Sport", img: redColorImg },
       { title: "Black K-Sport", img: blackColorImg },
     ],
-    "White K-Sport": { default: whiteDefault, headrest: whiteHeadrest },
-    "Grey K-Sport": { default: greyDefault, headrest: greyHeadrest },
-    "Red K-Sport": { default: redDefault, headrest: redHeadrest },
-    "Black K-Sport": { default: blackDefault, headrest: blackHeadrest },
+    colorCB: [true, false, false, false],
+    data: {
+      "White K-Sport": { default: whiteDefault, headrest: whiteHeadrest },
+      "Grey K-Sport": { default: greyDefault, headrest: greyHeadrest },
+      "Red K-Sport": { default: redDefault, headrest: redHeadrest },
+      "Black K-Sport": { default: blackDefault, headrest: blackHeadrest },
+    },
   };
 };
