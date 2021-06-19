@@ -1,15 +1,9 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
 
-export default function Width({
-  widthBool,
-  title,
-  widthData,
-  dispatch,
-  activeColor,
-}) {
+export default function Width({ widthBool, title, dispatch, activeColor }) {
   // Attach data to active option
   // const needsAttention = widthData;
   const width = (s) => {
@@ -84,3 +78,21 @@ export default function Width({
     </div>
   );
 }
+// widthBool,
+//   title,
+//   widthData,
+//   dispatch,
+//   activeColor,
+Width.propTypes = {
+  widthBool: PropTypes.bool,
+  title: PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
+  activeColor: PropTypes.string,
+  // widthData: PropTypes.instanceOf(Object),
+};
+
+Width.defaultProps = {
+  activeColor: "Some color from state",
+  widthBool: false,
+  title: "Title of product",
+};

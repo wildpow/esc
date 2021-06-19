@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
 
@@ -67,3 +67,16 @@ export default function MemoryFoam({ foamBool, title, activeColor, dispatch }) {
     </div>
   );
 }
+MemoryFoam.propTypes = {
+  foamBool: PropTypes.bool,
+  title: PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
+  activeColor: PropTypes.string,
+  // widthData: PropTypes.instanceOf(Object),
+};
+
+MemoryFoam.defaultProps = {
+  activeColor: "Some color from state",
+  foamBool: false,
+  title: "Title of product",
+};
