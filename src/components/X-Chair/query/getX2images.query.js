@@ -109,10 +109,19 @@ export default () => {
     ],
     colorCB: [true, false, false, false],
     data: {
-      "White K-Sport": { default: whiteDefault, headrest: whiteHeadrest },
-      "Grey K-Sport": { default: greyDefault, headrest: greyHeadrest },
-      "Red K-Sport": { default: redDefault, headrest: redHeadrest },
-      "Black K-Sport": { default: blackDefault, headrest: blackHeadrest },
+      "White K-Sport": {
+        default: whiteDefault.nodes,
+        headrest: whiteHeadrest.nodes,
+      },
+      "Grey K-Sport": {
+        default: greyDefault.nodes,
+        headrest: greyHeadrest.nodes,
+      },
+      "Red K-Sport": { default: redDefault.nodes, headrest: redHeadrest.nodes },
+      "Black K-Sport": {
+        default: blackDefault.nodes,
+        headrest: blackHeadrest.nodes,
+      },
     },
   };
 };

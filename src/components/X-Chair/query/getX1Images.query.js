@@ -62,8 +62,14 @@ export default () => {
     ],
     colorCB: [true, false],
     data: {
-      "Grey Flex Mesh": { default: greyDefault, headrest: greyHeadrest },
-      "Black Flex Mesh": { default: blackDefault, headrest: blackHeadrest },
+      "Grey Flex Mesh": {
+        default: greyDefault.nodes,
+        headrest: greyHeadrest.nodes,
+      },
+      "Black Flex Mesh": {
+        default: blackDefault.nodes,
+        headrest: blackHeadrest.nodes,
+      },
     },
   };
 };

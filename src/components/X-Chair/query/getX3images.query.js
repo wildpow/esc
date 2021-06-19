@@ -116,10 +116,22 @@ export default () => {
     ],
     colorCB: [true, false, false, false],
     data: {
-      "Black A.T.R.": { default: blackDefault, headrest: blackHeadrest },
-      "Grey A.T.R.": { default: greyDefault, headrest: greyHeadrest },
-      "Blue A.T.R.": { default: blueDefault, headrest: blueHeadrest },
-      "Glacier A.T.R.": { default: glacierDefault, headrest: glacierHeadrest },
+      "Black A.T.R.": {
+        default: blackDefault.nodes,
+        headrest: blackHeadrest.nodes,
+      },
+      "Grey A.T.R.": {
+        default: greyDefault.nodes,
+        headrest: greyHeadrest.nodes,
+      },
+      "Blue A.T.R.": {
+        default: blueDefault.nodes,
+        headrest: blueHeadrest.nodes,
+      },
+      "Glacier A.T.R.": {
+        default: glacierDefault.nodes,
+        headrest: glacierHeadrest.nodes,
+      },
     },
   };
 };
