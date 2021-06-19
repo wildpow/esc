@@ -23,6 +23,7 @@ export default () => {
         }
         greyDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xOne/grey/default" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
@@ -31,6 +32,7 @@ export default () => {
 
         greyHeadrest: allFile(
           filter: { relativeDirectory: { eq: "xChair/xOne/grey/headrest" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
@@ -39,6 +41,7 @@ export default () => {
 
         blackDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xOne/black/default" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
@@ -47,6 +50,7 @@ export default () => {
 
         blackHeadrest: allFile(
           filter: { relativeDirectory: { eq: "xChair/xOne/black/headrest" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages

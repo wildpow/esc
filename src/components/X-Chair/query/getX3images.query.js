@@ -48,6 +48,7 @@ export default () => {
 
         greyHeadrest: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/grey/headrest" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
@@ -55,6 +56,7 @@ export default () => {
         }
         greyDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/grey/default" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
@@ -62,6 +64,7 @@ export default () => {
         }
         blackDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/black/default" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
@@ -69,6 +72,7 @@ export default () => {
         }
         blackHeadrest: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/black/headrest" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
@@ -76,6 +80,7 @@ export default () => {
         }
         blueDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/blue/default" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
@@ -83,6 +88,7 @@ export default () => {
         }
         blueHeadrest: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/blue/headrest" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
@@ -90,6 +96,7 @@ export default () => {
         }
         glacierDefault: allFile(
           filter: { relativeDirectory: { eq: "xChair/xThree/glacier/default" } }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
@@ -99,6 +106,7 @@ export default () => {
           filter: {
             relativeDirectory: { eq: "xChair/xThree/glacier/headrest" }
           }
+          sort: { fields: base, order: ASC }
         ) {
           nodes {
             ...fullChairImages
