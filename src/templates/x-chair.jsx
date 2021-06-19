@@ -58,7 +58,7 @@ export default function XChair({ data }) {
   return (
     <Layout>
       <XchairRoot>
-        {/* {console.log(state)} */}
+        {console.log(state)}
         <h1>X-Chair</h1>
         <div className="content">
           <div className="gallery">
@@ -81,6 +81,7 @@ export default function XChair({ data }) {
             />
             {width ? (
               <Width
+                activeColor={state.activeColor}
                 title={datoCmsXChair.title}
                 dispatch={dispatch}
                 widthBool={state.width}
@@ -88,6 +89,7 @@ export default function XChair({ data }) {
             ) : null}
             {memoryFoam ? (
               <MemoryFoam
+                activeColor={state.activeColor}
                 title={datoCmsXChair.title}
                 dispatch={dispatch}
                 foamBool={state.foam}

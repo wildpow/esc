@@ -1,6 +1,34 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import { fonts } from "../../../styles/theme.styled";
+
+const notAvailable = ({ colorCheck }) =>
+  colorCheck &&
+  css`
+    pointer-events: none;
+    .container:after {
+      position: absolute;
+      content: "Not available in this color";
+      top: -1px;
+      left: -1px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-family: ${fonts.sans};
+      opacity: 0.8;
+      font-weight: 700;
+      width: calc(2px + 100%);
+      height: calc(1px + 100%);
+    }
+    .borderOneInput {
+      pointer-events: none;
+    }
+  `;
 
 const Checkbox = styled.div`
+  ${notAvailable};
+
   background-color: white;
   padding: 20px;
   .borderOneInput {
@@ -12,13 +40,14 @@ const Checkbox = styled.div`
     border-left: 1px solid transparent;
     /* border-bottom: 4px solid transparent; */
     outline: 1px solid #dadada;
-    padding: 10px 10px 0 10px;
+    /* padding: 10px 10px 0 10px; */
     display: block;
     position: relative;
     /* margin: 10px; */
     cursor: pointer;
     transition: all 0.2s ease-in-out;
   }
+
   .borderOneLabel::after {
     height: 4px;
     position: absolute;

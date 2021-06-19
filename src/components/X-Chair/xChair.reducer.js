@@ -1,3 +1,7 @@
+const availableInColor = (title, current) => {
+  if (!title.includes("Black") && title !== "Grey A.T.R.") return false;
+  return current;
+};
 const xChairReducer = (state, action) => {
   let newWheelsCB;
   let newModelCB;
@@ -8,6 +12,8 @@ const xChairReducer = (state, action) => {
       newColorCB[action.index] = true;
       return {
         ...state,
+        width: availableInColor(action.title, state.width),
+        foam: !action.title.includes("Black") && false,
         activeColor: action.title,
         colorCB: newColorCB,
       };

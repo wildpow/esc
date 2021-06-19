@@ -3,7 +3,13 @@
 import { StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
 
-export default function Width({ widthBool, title, widthData, dispatch }) {
+export default function Width({
+  widthBool,
+  title,
+  widthData,
+  dispatch,
+  activeColor,
+}) {
   // Attach data to active option
   // const needsAttention = widthData;
   const width = (s) => {
@@ -44,6 +50,8 @@ export default function Width({ widthBool, title, widthData, dispatch }) {
     }
   };
   const modelWidth = width(title);
+  const isNotBlackOrX3Grey =
+    !activeColor.includes("Black") && activeColor !== "Grey A.T.R.";
   return (
     <div>
       <h2>Seat Width</h2>
@@ -60,7 +68,7 @@ export default function Width({ widthBool, title, widthData, dispatch }) {
             <div>{modelWidth[0]}</div>
           </label>
         </Checkbox>
-        <Checkbox>
+        <Checkbox colorCheck={isNotBlackOrX3Grey}>
           <input
             type="checkbox"
             id="wideWidth"
@@ -69,7 +77,7 @@ export default function Width({ widthBool, title, widthData, dispatch }) {
             checked={widthBool}
           />
           <label htmlFor="wideWidth" className="borderOneLabel">
-            <div>{modelWidth[1]}</div>
+            <div className="container">{modelWidth[1]}</div>
           </label>
         </Checkbox>
       </div>
