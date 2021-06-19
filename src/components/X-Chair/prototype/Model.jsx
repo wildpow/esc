@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
@@ -16,7 +17,7 @@ const GifModelImg = styled.img`
 export default function ModelSelect({ dispatch, modelCB }) {
   return (
     <div>
-      <h2>Wheels</h2>
+      <h2>Choose Model</h2>
       <div style={{ display: "flex" }}>
         <Checkbox>
           <input

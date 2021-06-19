@@ -5,7 +5,7 @@ import Checkbox from "./checkbox.styled";
 
 export default function Width({ widthBool, title, widthData, dispatch }) {
   // Attach data to active option
-  const needsAttention = widthData;
+  // const needsAttention = widthData;
   const width = (s) => {
     switch (s) {
       case "Leather Exec":

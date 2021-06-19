@@ -58,7 +58,7 @@ export default function XChair({ data }) {
   return (
     <Layout>
       <XchairRoot>
-        {console.log(state)}
+        {/* {console.log(state)} */}
         <h1>X-Chair</h1>
         <div className="content">
           <div className="gallery">

@@ -31,7 +31,7 @@ export default function Wheels({ wheels, wheelsCB, dispatch }) {
         {wheelsCB.map((checkBox, index) => {
           if (index === 3) return null;
           return (
-            <Checkbox key={index}>
+            <Checkbox key={`index${index + 1}`}>
               <input
                 type="checkbox"
                 id={`wheel${index}`}

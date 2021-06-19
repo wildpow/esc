@@ -24,10 +24,9 @@ const ColorRoot = styled.div`
   }
 `;
 export default function ColorOptions({ colors, colorCB, dispatch }) {
-  const stuff = "123";
+  // const stuff = "123";
   return (
     <ColorRoot>
-      {console.log("colorCB", colorCB)}
       <h3>Select Fabric</h3>
       <div className="colorsWrapper">
         {colors.map((c, i) => (

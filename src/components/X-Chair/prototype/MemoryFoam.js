@@ -5,7 +5,7 @@ import Checkbox from "./checkbox.styled";
 
 export default function MemoryFoam({ foamBool, title, foamData, dispatch }) {
   // Attach data to active option
-  const needsAttention = foamData;
+  // const needsAttention = foamData;
   const foam = (s) => {
     switch (s) {
       case "Leather Exec":
