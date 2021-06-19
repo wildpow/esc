@@ -10,6 +10,11 @@ import Headrest from "../components/X-Chair/prototype/Headrest";
 import Wheels from "../components/X-Chair/prototype/Wheels";
 import Model from "../components/X-Chair/prototype/Model";
 import Width from "../components/X-Chair/prototype/Width";
+import Colors from "../components/X-Chair/prototype/Colors";
+import MemoryFoam from "../components/X-Chair/prototype/MemoryFoam";
+import getX1images from "../components/X-Chair/query/getX1Images.query";
+import getX2images from "../components/X-Chair/query/getX2images.query";
+import getX3images from "../components/X-Chair/query/getX3images.query";
 
 const XchairRoot = styled.section`
   background-color: white;
@@ -17,24 +22,39 @@ const XchairRoot = styled.section`
 export default function XChair({ data }) {
   const { datoCmsXChair, headrest, wheels, memoryFoam, width, hmt, elemax } =
     data;
-  const initialState = GenerateInitialState();
+  let colors;
+  let colorCB;
+  let colorData;
+  if (datoCmsXChair.title === "K-Sport") {
+    const data2 = getX2images();
+    colors = data2.colors;
+    colorCB = data2.colorCB;
+    colorData = data2.data;
+  } else if (datoCmsXChair.title === "ATR Fabric") {
+    const data3 = getX3images();
+    colors = data3.colors;
+    colorCB = data3.colorCB;
+    colorData = data3.data;
+  } else {
+    const data1 = getX1images();
+    colors = data1.colors;
+    colorCB = data1.colorCB;
+    colorData = data1.data;
+  }
+  const initialState = GenerateInitialState(colorCB, colors[0].title);
   const [state, dispatch] = useReducer(xChairReducer, initialState);
   return (
     <Layout>
       <XchairRoot>
-        {console.log("state", state)}
+        {console.log(state)}
         <h1>X-Chair</h1>
         <Model modelCB={state.modelCB} dispatch={dispatch} />
+        <Colors colors={colors} colorCB={state.colorCB} dispatch={dispatch} />
         <Headrest
           title={datoCmsXChair.title}
           headrestImg={headrest.images[0]}
           dispatch={dispatch}
           headrestBool={state.headrest}
-        />
-        <Wheels
-          wheels={wheels.variants}
-          wheelsCB={state.wheelsCB}
-          dispatch={dispatch}
         />
         {width ? (
           <Width
@@ -43,13 +63,30 @@ export default function XChair({ data }) {
             widthBool={state.width}
           />
         ) : null}
+        {memoryFoam ? (
+          <MemoryFoam
+            title={datoCmsXChair.title}
+            dispatch={dispatch}
+            foamBool={state.foam}
+          />
+        ) : null}
+        <Wheels
+          wheels={wheels.variants}
+          wheelsCB={state.wheelsCB}
+          dispatch={dispatch}
+        />
       </XchairRoot>
     </Layout>
   );
 }
 
 export const chairQuery = graphql`
-  query chair($slug: String!, $headrest: String!, $memoryFoam: String) {
+  query chair(
+    $slug: String!
+    $headrest: String!
+    $memoryFoam: String
+    $width: String
+  ) {
     datoCmsXChair(slug: { eq: $slug }) {
       title
       seoMetaTags {
@@ -104,7 +141,7 @@ export const chairQuery = graphql`
         }
       }
     }
-    width: shopifyProduct(storefrontId: { eq: $memoryFoam }) {
+    width: shopifyProduct(storefrontId: { eq: $width }) {
       description
       title
       storefrontId

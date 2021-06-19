@@ -8,6 +8,7 @@ import elemax from "../../../images/xChair/models/elemax.gif";
 const GifModelImg = styled.img`
   background-image: url(${({ bg }) => bg});
   background-size: cover;
+  object-position: 50% 50%;
   background-repeat: no-repeat;
   height: 90px;
   width: 100%;

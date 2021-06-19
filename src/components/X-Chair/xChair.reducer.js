@@ -1,7 +1,20 @@
 const xChairReducer = (state, action) => {
   let newWheelsCB;
   let newModelCB;
+  let newColorCB;
   switch (action.type) {
+    case "color":
+      newColorCB = Array(state.colorCB.length).fill(false);
+      newColorCB[action.index] = true;
+      return {
+        ...state,
+        colorCB: newColorCB,
+      };
+    case "foam":
+      return {
+        ...state,
+        foam: !state.foam,
+      };
     case "width":
       return {
         ...state,
