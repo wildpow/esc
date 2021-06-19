@@ -48,7 +48,7 @@ export default function ModelSelect({ dispatch, modelCB }) {
           />
           <label htmlFor="hmtModel" className="borderOneLabel">
             <div>
-              <GifModelImg bg={hmt} />
+              <GifModelImg bg={hmt} loading="lazy" />
             </div>
           </label>
         </Checkbox>
@@ -62,7 +62,7 @@ export default function ModelSelect({ dispatch, modelCB }) {
           />
           <label htmlFor="elemaxModel" className="borderOneLabel">
             <div>
-              <GifModelImg bg={elemax} />
+              <GifModelImg bg={elemax} loading="lazy" />
             </div>
           </label>
         </Checkbox>
