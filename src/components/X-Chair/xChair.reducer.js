@@ -8,6 +8,7 @@ const xChairReducer = (state, action) => {
       newColorCB[action.index] = true;
       return {
         ...state,
+        activeColor: action.title,
         colorCB: newColorCB,
       };
     case "foam":
@@ -30,6 +31,7 @@ const xChairReducer = (state, action) => {
     case "headrest":
       return {
         ...state,
+        activeHeadrest: !state.headrest ? "headrest" : "default",
         headrest: !state.headrest,
       };
     case "wheels":

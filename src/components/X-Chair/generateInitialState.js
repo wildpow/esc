@@ -1,6 +1,7 @@
 const GenerateInitialState = (colorCB, activeColor) => {
   const initialState = {
     activeColor,
+    activeHeadrest: "default",
     headrest: false,
     wheelsCB: [false, false, false, true],
     modelCB: [true, false, false],

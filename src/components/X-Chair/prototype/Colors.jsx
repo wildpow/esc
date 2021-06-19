@@ -10,7 +10,13 @@ const ColorRoot = styled.div`
     display: none;
   } */
   .colorsWrapper {
-    display: flex;
+    display: grid;
+    grid-gap: 20px;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
+    /* grid-template-rows: repeat(auto, 60px); */
+    align-items: center;
+    justify-content: center;
   }
   .color {
     border-radius: 50%;
@@ -30,7 +36,9 @@ export default function ColorOptions({ colors, colorCB, dispatch }) {
               type="checkbox"
               id={`colorSelect${i}`}
               className="borderOneInput"
-              onChange={() => dispatch({ type: "color", index: i })}
+              onChange={() =>
+                dispatch({ type: "color", index: i, title: c.title })
+              }
               checked={colorCB[i]}
             />
             <label htmlFor={`colorSelect${i}`} className="borderOneLabel">
