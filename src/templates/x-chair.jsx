@@ -16,6 +16,7 @@ import MemoryFoam from "../components/X-Chair/prototype/MemoryFoam";
 import getX1images from "../components/X-Chair/query/getX1Images.query";
 import getX2images from "../components/X-Chair/query/getX2images.query";
 import getX3images from "../components/X-Chair/query/getX3images.query";
+import getX4images from "../components/X-Chair/query/getX4Images.query";
 
 const XchairRoot = styled.section`
   background-color: white;
@@ -47,6 +48,11 @@ export default function XChair({ data }) {
     colors = data3.colors;
     colorCB = data3.colorCB;
     colorData = data3.data;
+  } else if (datoCmsXChair.title === "Leather Exec") {
+    const data4 = getX4images();
+    colors = data4.colors;
+    colorCB = data4.colorCB;
+    colorData = data4.data;
   } else {
     const data1 = getX1images();
     colors = data1.colors;
@@ -58,7 +64,7 @@ export default function XChair({ data }) {
   return (
     <Layout>
       <XchairRoot>
-        {console.log(state)}
+        {console.log(colors, colorCB, colorData)}
         <h1>X-Chair</h1>
         <div className="content">
           <div className="gallery">
