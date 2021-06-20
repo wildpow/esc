@@ -31,8 +31,6 @@ const foam = (s) => {
   }
 };
 export default function MemoryFoam({ foamBool, title, activeColor, dispatch }) {
-  // Attach data to active option
-  // const needsAttention = foamData;
   const memoryFoamOptions = foam(title);
   const isNotBlack = !activeColor.includes("Black");
   return (

@@ -3,46 +3,44 @@ import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
 
+const width = (s) => {
+  switch (s) {
+    case "Leather Exec":
+      return [
+        <StaticImage
+          src="../../../images/xChair/widths/x4_blk_le_std_1.jpg"
+          alt="stuf"
+        />,
+        <StaticImage
+          src="../../../images/xChair/widths/x4_blk_ws.jpg"
+          alt="stuf"
+        />,
+      ];
+    case "ATR Fabric":
+      return [
+        <StaticImage
+          src="../../../images/xChair/widths/x3_blk_std_1__1.jpg"
+          alt="stuf"
+        />,
+        <StaticImage
+          src="../../../images/xChair/widths/x3_blk_ws_1__2.jpg"
+          alt="stuf"
+        />,
+      ];
+    default:
+      return [
+        <StaticImage
+          src="../../../images/xChair/widths/x2_std_4.jpg"
+          alt="stuf"
+        />,
+        <StaticImage
+          src="../../../images/xChair/widths/x2_ws_2_.jpg"
+          alt="stuf"
+        />,
+      ];
+  }
+};
 export default function Width({ widthBool, title, dispatch, activeColor }) {
-  // Attach data to active option
-  // const needsAttention = widthData;
-  const width = (s) => {
-    switch (s) {
-      case "Leather Exec":
-        return [
-          <StaticImage
-            src="../../../images/xChair/widths/x4_blk_le_std_1.jpg"
-            alt="stuf"
-          />,
-          <StaticImage
-            src="../../../images/xChair/widths/x4_blk_ws.jpg"
-            alt="stuf"
-          />,
-        ];
-      case "ATR Fabric":
-        return [
-          <StaticImage
-            src="../../../images/xChair/widths/x3_blk_std_1__1.jpg"
-            alt="stuf"
-          />,
-          <StaticImage
-            src="../../../images/xChair/widths/x3_blk_ws_1__2.jpg"
-            alt="stuf"
-          />,
-        ];
-      default:
-        return [
-          <StaticImage
-            src="../../../images/xChair/widths/x2_std_4.jpg"
-            alt="stuf"
-          />,
-          <StaticImage
-            src="../../../images/xChair/widths/x2_ws_2_.jpg"
-            alt="stuf"
-          />,
-        ];
-    }
-  };
   const modelWidth = width(title);
   const isNotBlackOrX3Grey =
     !activeColor.includes("Black") && activeColor !== "Grey A.T.R.";
@@ -78,11 +76,7 @@ export default function Width({ widthBool, title, dispatch, activeColor }) {
     </div>
   );
 }
-// widthBool,
-//   title,
-//   widthData,
-//   dispatch,
-//   activeColor,
+
 Width.propTypes = {
   widthBool: PropTypes.bool,
   title: PropTypes.string,
