@@ -31,8 +31,21 @@ const Checkbox = styled.div`
 
   background-color: white;
   padding: 20px;
+
   .borderOneInput {
     display: none;
+  }
+  .titleContainer {
+    display: flex;
+    flex-direction: column;
+    font-family: ${fonts.sans};
+    h4 {
+      font-weight: 400;
+    }
+    span {
+      font-weight: 700;
+      font-style: italic;
+    }
   }
   .borderOneLabel {
     border-top: 1px solid transparent;

@@ -84,6 +84,7 @@ export default function XChair({ data }) {
               headrestImg={headrest.images[0]}
               dispatch={dispatch}
               headrestBool={state.headrest}
+              price={headrest.priceRangeV2.maxVariantPrice.amount}
             />
             {width ? (
               <Width
@@ -91,6 +92,7 @@ export default function XChair({ data }) {
                 title={datoCmsXChair.title}
                 dispatch={dispatch}
                 widthBool={state.width}
+                price={width.priceRangeV2.maxVariantPrice.amount}
               />
             ) : null}
             {memoryFoam ? (
@@ -99,6 +101,7 @@ export default function XChair({ data }) {
                 title={datoCmsXChair.title}
                 dispatch={dispatch}
                 foamBool={state.foam}
+                price={memoryFoam.priceRangeV2.maxVariantPrice.amount}
               />
             ) : null}
             <Wheels

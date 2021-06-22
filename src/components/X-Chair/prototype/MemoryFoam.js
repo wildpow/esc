@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
+import { OptionContainer } from "./Headrest";
 
 const foam = (s) => {
   switch (s) {
@@ -30,12 +31,18 @@ const foam = (s) => {
       ];
   }
 };
-export default function MemoryFoam({ foamBool, title, activeColor, dispatch }) {
+export default function MemoryFoam({
+  foamBool,
+  title,
+  activeColor,
+  dispatch,
+  price,
+}) {
   const memoryFoamOptions = foam(title);
   const isNotBlack = !activeColor.includes("Black");
   return (
-    <div>
-      <h2>Seat Width</h2>
+    <OptionContainer>
+      <h3>Seat Foam</h3>
       <div style={{ display: "flex" }}>
         <Checkbox>
           <input
@@ -48,6 +55,9 @@ export default function MemoryFoam({ foamBool, title, activeColor, dispatch }) {
           <label htmlFor="memoryFoamOptions" className="borderOneLabel">
             <div>{memoryFoamOptions[0]}</div>
           </label>
+          <div className="titleContainer">
+            <h4>Standard Foam</h4>
+          </div>
         </Checkbox>
         <Checkbox colorCheck={isNotBlack}>
           <input
@@ -60,9 +70,13 @@ export default function MemoryFoam({ foamBool, title, activeColor, dispatch }) {
           <label htmlFor="memoryFoamOptions2" className="borderOneLabel">
             <div className="container">{memoryFoamOptions[1]}</div>
           </label>
+          <div className="titleContainer">
+            <h4>Memory Foam</h4>
+            <span>{`+ $${price}`}</span>
+          </div>
         </Checkbox>
       </div>
-    </div>
+    </OptionContainer>
   );
 }
 MemoryFoam.propTypes = {

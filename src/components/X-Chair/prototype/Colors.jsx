@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { useState } from "react";
 import styled from "@emotion/styled";
+import { fonts } from "../../../styles/theme.styled";
 
 const ColorRoot = styled.div`
   display: flex;
@@ -9,6 +11,9 @@ const ColorRoot = styled.div`
   /* input {
     display: none;
   } */
+  h3 {
+    font-family: ${fonts.sans};
+  }
   .colorsWrapper {
     display: grid;
     grid-gap: 20px;
@@ -24,10 +29,14 @@ const ColorRoot = styled.div`
   }
 `;
 export default function ColorOptions({ colors, colorCB, dispatch }) {
-  // const stuff = "123";
+  const [activeColor, setActiveColor] = useState(colors[0].title);
+  const onColorChange = (index, title) => {
+    setActiveColor(colors[index].title);
+    dispatch({ type: "color", index, title });
+  };
   return (
     <ColorRoot>
-      <h3>Select Fabric</h3>
+      <h3>{`Select Fabric: ${activeColor}`}</h3>
       <div className="colorsWrapper">
         {colors.map((c, i) => (
           <div key={c.title}>
@@ -35,9 +44,7 @@ export default function ColorOptions({ colors, colorCB, dispatch }) {
               type="checkbox"
               id={`colorSelect${i}`}
               className="borderOneInput"
-              onChange={() =>
-                dispatch({ type: "color", index: i, title: c.title })
-              }
+              onChange={() => onColorChange(i, c.title)}
               checked={colorCB[i]}
             />
             <label htmlFor={`colorSelect${i}`} className="borderOneLabel">

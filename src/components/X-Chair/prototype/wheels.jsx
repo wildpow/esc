@@ -2,11 +2,12 @@
 /* eslint-disable react/prop-types */
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
+import { OptionContainer } from "./Headrest";
 
 export default function Wheels({ wheels, wheelsCB, dispatch }) {
   return (
-    <div>
-      <h2>Wheels</h2>
+    <OptionContainer>
+      <h3>Wheels</h3>
       <div style={{ display: "flex" }}>
         <Checkbox>
           <input
@@ -27,6 +28,9 @@ export default function Wheels({ wheels, wheelsCB, dispatch }) {
               />
             </div>
           </label>
+          <div className="titleContainer">
+            <h4>Basic Caster </h4>
+          </div>
         </Checkbox>
         {wheelsCB.map((checkBox, index) => {
           if (index === 3) return null;
@@ -47,10 +51,14 @@ export default function Wheels({ wheels, wheelsCB, dispatch }) {
                   />
                 </div>
               </label>
+              <div className="titleContainer">
+                <h4>{wheels[index].title}</h4>
+                <span>{`+ $${wheels[index].price}`}</span>
+              </div>
             </Checkbox>
           );
         })}
       </div>
-    </div>
+    </OptionContainer>
   );
 }

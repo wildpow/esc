@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import Checkbox from "./checkbox.styled";
 import hmt from "../../../images/xChair/models/hmt.gif";
 import elemax from "../../../images/xChair/models/elemax.gif";
+import { OptionContainer } from "./Headrest";
 
 const GifModelImg = styled.img`
   background-image: url(${({ bg }) => bg});
@@ -16,8 +17,8 @@ const GifModelImg = styled.img`
 `;
 export default function ModelSelect({ dispatch, modelCB }) {
   return (
-    <div>
-      <h2>Choose Model</h2>
+    <OptionContainer>
+      <h3>Choose Model</h3>
       <div style={{ display: "flex" }}>
         <Checkbox>
           <input
@@ -38,6 +39,9 @@ export default function ModelSelect({ dispatch, modelCB }) {
               />
             </div>
           </label>
+          <div className="titleContainer">
+            <h4>Office Chair</h4>
+          </div>
         </Checkbox>
         <Checkbox>
           <input
@@ -52,6 +56,10 @@ export default function ModelSelect({ dispatch, modelCB }) {
               <GifModelImg bg={hmt} loading="lazy" />
             </div>
           </label>
+          <div className="titleContainer">
+            <h4>Heat and Massage Chair</h4>
+            <span>+ $100.00</span>
+          </div>
         </Checkbox>
         <Checkbox>
           <input
@@ -66,8 +74,12 @@ export default function ModelSelect({ dispatch, modelCB }) {
               <GifModelImg bg={elemax} loading="lazy" />
             </div>
           </label>
+          <div className="titleContainer">
+            <h4>Cooling, Heat & Massage Chair</h4>
+            <span>+ $130.00</span>
+          </div>
         </Checkbox>
       </div>
-    </div>
+    </OptionContainer>
   );
 }

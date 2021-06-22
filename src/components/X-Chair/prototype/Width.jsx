@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
+import { OptionContainer } from "./Headrest";
 
 const width = (s) => {
   switch (s) {
@@ -40,13 +41,19 @@ const width = (s) => {
       ];
   }
 };
-export default function Width({ widthBool, title, dispatch, activeColor }) {
+export default function Width({
+  widthBool,
+  title,
+  dispatch,
+  activeColor,
+  price,
+}) {
   const modelWidth = width(title);
   const isNotBlackOrX3Grey =
     !activeColor.includes("Black") && activeColor !== "Grey A.T.R.";
   return (
-    <div>
-      <h2>Seat Width</h2>
+    <OptionContainer>
+      <h3>Seat Width</h3>
       <div style={{ display: "flex" }}>
         <Checkbox>
           <input
@@ -59,6 +66,9 @@ export default function Width({ widthBool, title, dispatch, activeColor }) {
           <label htmlFor="standardWidth" className="borderOneLabel">
             <div>{modelWidth[0]}</div>
           </label>
+          <div className="titleContainer">
+            <h4>Standard Width</h4>
+          </div>
         </Checkbox>
         <Checkbox colorCheck={isNotBlackOrX3Grey}>
           <input
@@ -71,9 +81,13 @@ export default function Width({ widthBool, title, dispatch, activeColor }) {
           <label htmlFor="wideWidth" className="borderOneLabel">
             <div className="container">{modelWidth[1]}</div>
           </label>
+          <div className="titleContainer">
+            <h4>Extended Width</h4>
+            <span>{`+ $${price}`}</span>
+          </div>
         </Checkbox>
       </div>
-    </div>
+    </OptionContainer>
   );
 }
 
