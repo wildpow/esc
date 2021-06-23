@@ -307,7 +307,7 @@ const Footer = ({ moved }) => {
                 <Yelp />
               </OutboundLink>
               <OutboundLink
-                href="https://www.instagram.com/centeresc/"
+                href="https://www.instagram.com/escmattresscenter/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Vist our Instagram page"
