@@ -197,15 +197,22 @@ export default () => {
   `);
   return {
     colors: [
-      { title: "Black Leather", img: blackColorImg },
-      { title: "Cognac Leather", img: cognacColorImg },
-      { title: "Brown Leather", img: brownColorImg },
-      { title: "Red Premium Leather", img: redColorImg },
-      { title: "White Premium Leather", img: whiteColorImg },
-      { title: "Rose Brisa", img: roseColorImg },
-      { title: "Brown Brisa", img: brownBrisaColorImg },
-      { title: "Black Brisa", img: blackBrisaColorImg },
+      { title: "Black Leather", img: blackColorImg, index: 0 },
+      { title: "Cognac Leather", img: cognacColorImg, index: 1 },
+      { title: "Brown Leather", img: brownColorImg, index: 2 },
     ],
+    extraColors: {
+      "Premium Leather": [
+        { title: "Red Premium Leather", img: redColorImg, index: 3 },
+        { title: "White Premium Leather", img: whiteColorImg, index: 4 },
+      ],
+      Brisa: [
+        { title: "Rose Brisa", img: roseColorImg, index: 5 },
+        { title: "Brown Brisa", img: brownBrisaColorImg, index: 6 },
+        { title: "Black Brisa", img: blackBrisaColorImg, index: 7 },
+      ],
+    },
+
     colorCB: [true, false, false, false, false, false, false, false],
     data: {
       "Black Leather": {
