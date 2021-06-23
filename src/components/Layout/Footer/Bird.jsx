@@ -89,18 +89,28 @@ const AvgContainer = styled.div`
 
 const Bird = () => {
   const starsArr = [];
+  let avgRating;
+  let reviewCount;
   return (
     <StaticQuery
       query={graphql`
         query birdeye {
-          widget {
-            avgRating
-            reviewCount
+          allWidget {
+            nodes {
+              reviewCount
+              avgRating
+            }
           }
         }
       `}
       render={(data) => {
-        const { avgRating, reviewCount } = data.widget;
+        if (data.allWidget.nodes[0].avgRating) {
+          avgRating = data.allWidget.nodes[0].avgRating;
+          reviewCount = data.allWidget.nodes[0].reviewCount;
+        } else {
+          avgRating = data.allWidget.nodes[1].avgRating;
+          reviewCount = data.allWidget.nodes[1].reviewCount;
+        }
         for (let i = 0; i < avgRating; i += 1) {
           starsArr.push(
             <img src="/star.png" alt="start for rating" key={i + 200} />

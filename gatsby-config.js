@@ -67,7 +67,7 @@ const cfg = {
               entitiesArray: [
                 {
                   url: process.env.REST2,
-                  method: "GET",
+                  method: "get",
                   headers: {
                     "Content-Type": "application/json",
                     accept: "application/json",
