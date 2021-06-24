@@ -17,13 +17,21 @@ import getX1images from "../components/X-Chair/query/getX1Images.query";
 import getX2images from "../components/X-Chair/query/getX2images.query";
 import getX3images from "../components/X-Chair/query/getX3images.query";
 import getX4images from "../components/X-Chair/query/getX4Images.query";
+import { colors, spacing } from "../styles/theme.styled";
+import { useStore } from "../contexts/Store.ctx";
 
 const XchairRoot = styled.section`
   background-color: white;
+  /* display: flex;
+  flex-direction: column;
+  align-items: flex-end; */
+  width: 100%;
   .content {
+    position: relative;
     display: flex;
     width: 100%;
     justify-content: center;
+    padding: 20px;
   }
   .gallery {
     width: 50%;
@@ -32,41 +40,67 @@ const XchairRoot = styled.section`
     width: 50%;
   }
 `;
+const CartWrapper = styled.div`
+  position: sticky;
+  width: 100%;
+  height: 100px;
+  background-color: ${colors.gray[200]};
+  border: 2px solid ${colors.gray[800]};
+  bottom: 0;
+  right: 0;
+  z-index: 20;
+  .cartContent {
+    input {
+      width: 40px;
+    }
+    button {
+      padding: 10px;
+    }
+    padding: ${spacing[8]};
+    display: flex;
+    gap: 10px;
+  }
+`;
 export default function XChair({ data }) {
   const { datoCmsXChair, headrest, wheels, memoryFoam, width, hmt, elemax } =
     data;
-  let colors;
+  let colorSwatchs;
   let colorCB;
   let colorData;
   let extraColors;
   if (datoCmsXChair.title === "K-Sport") {
     const data2 = getX2images();
-    colors = data2.colors;
+    colorSwatchs = data2.colors;
     colorCB = data2.colorCB;
     colorData = data2.data;
   } else if (datoCmsXChair.title === "ATR Fabric") {
     const data3 = getX3images();
-    colors = data3.colors;
+    colorSwatchs = data3.colors;
     colorCB = data3.colorCB;
     colorData = data3.data;
   } else if (datoCmsXChair.title === "Leather Exec") {
     const data4 = getX4images();
-    colors = data4.colors;
+    colorSwatchs = data4.colors;
     colorCB = data4.colorCB;
     colorData = data4.data;
     extraColors = data4.extraColors;
   } else {
     const data1 = getX1images();
-    colors = data1.colors;
+    colorSwatchs = data1.colors;
     colorCB = data1.colorCB;
     colorData = data1.data;
   }
-  const initialState = GenerateInitialState(colorCB, colors[0].title);
+  const { addVariantToCart } = useStore();
+  const initialState = GenerateInitialState(colorCB, colorSwatchs[0].title);
   const [state, dispatch] = useReducer(xChairReducer, initialState);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("SUBMIT!!!!");
+  };
   return (
     <Layout>
       <XchairRoot>
-        {console.log(state)}
+        {console.log(datoCmsXChair.shopifyInfo[0], "colorData", colorData)}
         <h1>X-Chair</h1>
         <div className="content">
           <div className="gallery">
@@ -74,10 +108,10 @@ export default function XChair({ data }) {
               images={colorData[state.activeColor][state.activeHeadrest]}
             />
           </div>
-          <div className="features">
+          <form className="features" onSubmit={handleSubmit}>
             <Model modelCB={state.modelCB} dispatch={dispatch} />
             <Colors
-              colors={colors}
+              colors={colorSwatchs}
               colorCB={state.colorCB}
               dispatch={dispatch}
               extraColors={extraColors}
@@ -112,7 +146,17 @@ export default function XChair({ data }) {
               wheelsCB={state.wheelsCB}
               dispatch={dispatch}
             />
-          </div>
+            <CartWrapper>
+              <div className="cartContent">
+                <input type="number" name="" id="" />
+                <button type="submit">Add to Cart</button>
+                <div className="cartPrice">
+                  <div>Regular Price: $10,000</div>
+                  <div>Sale Price: $8,000</div>
+                </div>
+              </div>
+            </CartWrapper>
+          </form>
         </div>
       </XchairRoot>
     </Layout>
