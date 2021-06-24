@@ -8,6 +8,10 @@ import { fonts } from "../../../styles/theme.styled";
 const ColorRoot = styled.div`
   display: flex;
   flex-direction: column;
+  .borderOneInput {
+    display: none;
+  }
+
   /* input {
     display: none;
   } */
@@ -23,9 +27,24 @@ const ColorRoot = styled.div`
     align-items: center;
     justify-content: center;
   }
-  .color {
+  .borderOneLabel img {
     border-radius: 50%;
     overflow: hidden;
+    border: 3px solid white;
+  }
+  .borderOneLabel div {
+    border: 4px solid white;
+    border-radius: 50%;
+  }
+  .borderOneInput:checked + label div {
+    border: 4px solid #ec1221;
+  }
+  /* .borderOneInput:checked + label div img {
+    border: 1px solid #ec1221;
+  } */
+  h4 {
+    font-family: ${fonts.sans};
+    font-weight: 400;
   }
 `;
 export default function ColorOptions({
@@ -53,15 +72,14 @@ export default function ColorOptions({
               checked={colorCB[c.index]}
             />
             <label htmlFor={`colorSelect${c.index}`} className="borderOneLabel">
-              <div className="color">
-                <GatsbyImage
-                  image={getImage(c.img)}
-                  alt={`X-Chair's X-4 ${c.title} fabric option`}
-                />
-              </div>
+              <GatsbyImage
+                image={getImage(c.img)}
+                alt={`X-Chair's X-4 ${c.title} fabric option`}
+              />
             </label>
           </div>
         ))}
+        {extraColors && <h4>Leather</h4>}
       </div>
       {extraColors && (
         <>
@@ -79,15 +97,14 @@ export default function ColorOptions({
                   htmlFor={`colorSelect${c.index}`}
                   className="borderOneLabel"
                 >
-                  <div className="color">
-                    <GatsbyImage
-                      image={getImage(c.img)}
-                      alt={`X-Chair's X-4 ${c.title} fabric option`}
-                    />
-                  </div>
+                  <GatsbyImage
+                    image={getImage(c.img)}
+                    alt={`X-Chair's X-4 ${c.title} fabric option`}
+                  />
                 </label>
               </div>
             ))}
+            <h4>Premium Leather +$50</h4>
           </div>
           <div className="colorsWrapper">
             {extraColors.Brisa.map((c) => (
@@ -103,15 +120,14 @@ export default function ColorOptions({
                   htmlFor={`colorSelect${c.index}`}
                   className="borderOneLabel"
                 >
-                  <div className="color">
-                    <GatsbyImage
-                      image={getImage(c.img)}
-                      alt={`X-Chair's X-4 ${c.title} fabric option`}
-                    />
-                  </div>
+                  <GatsbyImage
+                    image={getImage(c.img)}
+                    alt={`X-Chair's X-4 ${c.title} fabric option`}
+                  />
                 </label>
               </div>
             ))}
+            <h4>Brisa +$200</h4>
           </div>
         </>
       )}
