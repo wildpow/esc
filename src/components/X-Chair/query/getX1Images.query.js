@@ -61,8 +61,8 @@ export default () => {
   );
   return {
     colors: [
-      { title: "Grey Flex Mesh", img: greyColorImg },
-      { title: "Black Flex Mesh", img: blackColorImg },
+      { title: "Grey Flex Mesh", img: greyColorImg, index: 0 },
+      { title: "Black Flex Mesh", img: blackColorImg, index: 1 },
     ],
     colorCB: [true, false],
     data: {

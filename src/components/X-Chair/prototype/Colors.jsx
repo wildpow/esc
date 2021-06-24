@@ -28,26 +28,31 @@ const ColorRoot = styled.div`
     overflow: hidden;
   }
 `;
-export default function ColorOptions({ colors, colorCB, dispatch }) {
+export default function ColorOptions({
+  colors,
+  colorCB,
+  dispatch,
+  extraColors,
+}) {
   const [activeColor, setActiveColor] = useState(colors[0].title);
   const onColorChange = (index, title) => {
-    setActiveColor(colors[index].title);
+    setActiveColor(title);
     dispatch({ type: "color", index, title });
   };
   return (
     <ColorRoot>
       <h3>{`Select Fabric: ${activeColor}`}</h3>
       <div className="colorsWrapper">
-        {colors.map((c, i) => (
+        {colors.map((c) => (
           <div key={c.title}>
             <input
               type="checkbox"
-              id={`colorSelect${i}`}
+              id={`colorSelect${c.index}`}
               className="borderOneInput"
-              onChange={() => onColorChange(i, c.title)}
-              checked={colorCB[i]}
+              onChange={() => onColorChange(c.index, c.title)}
+              checked={colorCB[c.index]}
             />
-            <label htmlFor={`colorSelect${i}`} className="borderOneLabel">
+            <label htmlFor={`colorSelect${c.index}`} className="borderOneLabel">
               <div className="color">
                 <GatsbyImage
                   image={getImage(c.img)}
@@ -58,6 +63,58 @@ export default function ColorOptions({ colors, colorCB, dispatch }) {
           </div>
         ))}
       </div>
+      {extraColors && (
+        <>
+          <div className="colorsWrapper">
+            {extraColors["Premium Leather"].map((c) => (
+              <div key={c.title}>
+                <input
+                  type="checkbox"
+                  id={`colorSelect${c.index}`}
+                  className="borderOneInput"
+                  onChange={() => onColorChange(c.index, c.title)}
+                  checked={colorCB[c.index]}
+                />
+                <label
+                  htmlFor={`colorSelect${c.index}`}
+                  className="borderOneLabel"
+                >
+                  <div className="color">
+                    <GatsbyImage
+                      image={getImage(c.img)}
+                      alt={`X-Chair's X-4 ${c.title} fabric option`}
+                    />
+                  </div>
+                </label>
+              </div>
+            ))}
+          </div>
+          <div className="colorsWrapper">
+            {extraColors.Brisa.map((c) => (
+              <div key={c.title}>
+                <input
+                  type="checkbox"
+                  id={`colorSelect${c.index}`}
+                  className="borderOneInput"
+                  onChange={() => onColorChange(c.index, c.title)}
+                  checked={colorCB[c.index]}
+                />
+                <label
+                  htmlFor={`colorSelect${c.index}`}
+                  className="borderOneLabel"
+                >
+                  <div className="color">
+                    <GatsbyImage
+                      image={getImage(c.img)}
+                      alt={`X-Chair's X-4 ${c.title} fabric option`}
+                    />
+                  </div>
+                </label>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </ColorRoot>
   );
 }

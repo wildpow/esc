@@ -117,10 +117,10 @@ export default () => {
   );
   return {
     colors: [
-      { title: "Black A.T.R.", img: blackColorImg },
-      { title: "Grey A.T.R.", img: greyColorImg },
-      { title: "Blue A.T.R.", img: blueColorImg },
-      { title: "Glacier A.T.R.", img: glacierColorImg },
+      { title: "Black A.T.R.", img: blackColorImg, index: 0 },
+      { title: "Grey A.T.R.", img: greyColorImg, index: 1 },
+      { title: "Blue A.T.R.", img: blueColorImg, index: 2 },
+      { title: "Glacier A.T.R.", img: glacierColorImg, index: 3 },
     ],
     colorCB: [true, false, false, false],
     data: {

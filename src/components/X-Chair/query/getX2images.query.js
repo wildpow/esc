@@ -110,10 +110,10 @@ export default () => {
   );
   return {
     colors: [
-      { title: "White K-Sport", img: whiteColorImg },
-      { title: "Grey K-Sport", img: greyColorImg },
-      { title: "Red K-Sport", img: redColorImg },
-      { title: "Black K-Sport", img: blackColorImg },
+      { title: "White K-Sport", img: whiteColorImg, index: 0 },
+      { title: "Grey K-Sport", img: greyColorImg, index: 1 },
+      { title: "Red K-Sport", img: redColorImg, index: 2 },
+      { title: "Black K-Sport", img: blackColorImg, index: 3 },
     ],
     colorCB: [true, false, false, false],
     data: {

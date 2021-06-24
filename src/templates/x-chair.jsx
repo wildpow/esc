@@ -38,6 +38,7 @@ export default function XChair({ data }) {
   let colors;
   let colorCB;
   let colorData;
+  let extraColors;
   if (datoCmsXChair.title === "K-Sport") {
     const data2 = getX2images();
     colors = data2.colors;
@@ -53,6 +54,7 @@ export default function XChair({ data }) {
     colors = data4.colors;
     colorCB = data4.colorCB;
     colorData = data4.data;
+    extraColors = data4.extraColors;
   } else {
     const data1 = getX1images();
     colors = data1.colors;
@@ -64,7 +66,7 @@ export default function XChair({ data }) {
   return (
     <Layout>
       <XchairRoot>
-        {console.log(colors, colorCB, colorData)}
+        {console.log(state)}
         <h1>X-Chair</h1>
         <div className="content">
           <div className="gallery">
@@ -78,6 +80,7 @@ export default function XChair({ data }) {
               colors={colors}
               colorCB={state.colorCB}
               dispatch={dispatch}
+              extraColors={extraColors}
             />
             <Headrest
               title={datoCmsXChair.title}
