@@ -17,8 +17,9 @@ import getX1images from "../components/X-Chair/query/getX1Images.query";
 import getX2images from "../components/X-Chair/query/getX2images.query";
 import getX3images from "../components/X-Chair/query/getX3images.query";
 import getX4images from "../components/X-Chair/query/getX4Images.query";
-import { colors, spacing } from "../styles/theme.styled";
+// import { colors, spacing } from "../styles/theme.styled";
 import { useStore } from "../contexts/Store.ctx";
+import ChairCart from "../components/X-Chair/prototype/ChairCart";
 
 const XchairRoot = styled.section`
   background-color: white;
@@ -40,30 +41,19 @@ const XchairRoot = styled.section`
     width: 50%;
   }
 `;
-const CartWrapper = styled.div`
-  position: sticky;
-  width: 100%;
-  height: 100px;
-  background-color: ${colors.gray[200]};
-  border: 2px solid ${colors.gray[800]};
-  bottom: 0;
-  right: 0;
-  z-index: 20;
-  .cartContent {
-    input {
-      width: 40px;
-    }
-    button {
-      padding: 10px;
-    }
-    padding: ${spacing[8]};
-    display: flex;
-    gap: 10px;
-  }
-`;
+
 export default function XChair({ data }) {
-  const { datoCmsXChair, headrest, wheels, memoryFoam, width, hmt, elemax } =
-    data;
+  const {
+    datoCmsXChair,
+    headrest,
+    wheels,
+    memoryFoam,
+    width,
+    hmt,
+    elemax,
+    premiumLeather,
+    brisa,
+  } = data;
   let colorSwatchs;
   let colorCB;
   let colorData;
@@ -91,16 +81,24 @@ export default function XChair({ data }) {
     colorData = data1.data;
   }
   const { addVariantToCart } = useStore();
-  const initialState = GenerateInitialState(colorCB, colorSwatchs[0].title);
+  const initialState = GenerateInitialState(
+    colorCB,
+    colorSwatchs[0].title,
+    datoCmsXChair.shopifyInfo[0].variants
+  );
   const [state, dispatch] = useReducer(xChairReducer, initialState);
   const handleSubmit = (e) => {
     e.preventDefault();
+    addVariantToCart(
+      state.chairVariants[state.activeChairVariant].storefrontId,
+      1
+    );
     console.log("SUBMIT!!!!");
   };
   return (
     <Layout>
       <XchairRoot>
-        {console.log(datoCmsXChair.shopifyInfo[0], "colorData", colorData)}
+        {console.log(memoryFoam, width)}
         <h1>X-Chair</h1>
         <div className="content">
           <div className="gallery">
@@ -129,7 +127,7 @@ export default function XChair({ data }) {
                 title={datoCmsXChair.title}
                 dispatch={dispatch}
                 widthBool={state.width}
-                price={width.priceRangeV2.maxVariantPrice.amount}
+                price={width.variants[0].price}
               />
             ) : null}
             {memoryFoam ? (
@@ -138,7 +136,7 @@ export default function XChair({ data }) {
                 title={datoCmsXChair.title}
                 dispatch={dispatch}
                 foamBool={state.foam}
-                price={memoryFoam.priceRangeV2.maxVariantPrice.amount}
+                price={memoryFoam.variants[0].price}
               />
             ) : null}
             <Wheels
@@ -146,29 +144,48 @@ export default function XChair({ data }) {
               wheelsCB={state.wheelsCB}
               dispatch={dispatch}
             />
-            <CartWrapper>
-              <div className="cartContent">
-                <input type="number" name="" id="" />
-                <button type="submit">Add to Cart</button>
-                <div className="cartPrice">
-                  <div>Regular Price: $10,000</div>
-                  <div>Sale Price: $8,000</div>
-                </div>
-              </div>
-            </CartWrapper>
+            <ChairCart
+              price={state.chairVariants[state.activeChairVariant].price}
+              comparePrice={
+                state.chairVariants[state.activeChairVariant].compareAtPrice
+              }
+            />
           </form>
         </div>
       </XchairRoot>
     </Layout>
   );
 }
-
+// storefrontId
+// productType
+// totalVariants
+// priceRangeV2 {
+//   maxVariantPrice {
+//     amount
+//   }
+//   minVariantPrice {
+//     amount
+//   }
+// }
+// hasOnlyDefaultVariant
+// image {
+//   gatsbyImageData(layout: FIXED, width: 150)
+// }
+// images {
+//   gatsbyImageData(layout: FIXED, width: 50)
+//   altText
+// }
+// featuredImage {
+//   gatsbyImageData(width: 50, layout: FIXED)
+// }
 export const chairQuery = graphql`
   query chair(
     $slug: String!
     $headrest: String!
     $memoryFoam: String
     $width: String
+    $brisa: String
+    $premiumLeather: String
   ) {
     datoCmsXChair(slug: { eq: $slug }) {
       title
@@ -181,63 +198,37 @@ export const chairQuery = graphql`
           price
           storefrontId
           title
-          image {
-            gatsbyImageData(layout: FIXED, width: 150)
-          }
         }
         title
         description
-        hasOnlyDefaultVariant
-        images {
-          gatsbyImageData(layout: FIXED, width: 50)
-          altText
-        }
-        featuredImage {
-          gatsbyImageData(width: 50, layout: FIXED)
-        }
-        priceRangeV2 {
-          maxVariantPrice {
-            amount
-          }
-          minVariantPrice {
-            amount
-          }
-        }
-        productType
-        storefrontId
-        totalVariants
       }
     }
     memoryFoam: shopifyProduct(storefrontId: { eq: $memoryFoam }) {
-      description
       title
-      storefrontId
-      images {
-        gatsbyImageData(layout: CONSTRAINED, width: 290)
+      variants {
+        price
+        storefrontId
       }
-      priceRangeV2 {
-        maxVariantPrice {
-          amount
-        }
-        minVariantPrice {
-          amount
-        }
+    }
+    premiumLeather: shopifyProduct(storefrontId: { eq: $premiumLeather }) {
+      title
+      variants {
+        price
+        storefrontId
+      }
+    }
+    brisa: shopifyProduct(storefrontId: { eq: $brisa }) {
+      title
+      variants {
+        price
+        storefrontId
       }
     }
     width: shopifyProduct(storefrontId: { eq: $width }) {
-      description
       title
-      storefrontId
-      images {
-        gatsbyImageData(layout: CONSTRAINED, width: 290)
-      }
-      priceRangeV2 {
-        maxVariantPrice {
-          amount
-        }
-        minVariantPrice {
-          amount
-        }
+      variants {
+        price
+        storefrontId
       }
     }
     headrest: shopifyProduct(storefrontId: { eq: $headrest }) {
@@ -288,28 +279,16 @@ export const chairQuery = graphql`
     }
     hmt: shopifyProduct(title: { eq: "X-HMT" }) {
       title
-      storefrontId
-      description
-      priceRangeV2 {
-        maxVariantPrice {
-          amount
-        }
-        minVariantPrice {
-          amount
-        }
+      variants {
+        price
+        storefrontId
       }
     }
     elemax: shopifyProduct(title: { eq: "Elemax" }) {
       title
-      storefrontId
-      description
-      priceRangeV2 {
-        maxVariantPrice {
-          amount
-        }
-        minVariantPrice {
-          amount
-        }
+      variants {
+        price
+        storefrontId
       }
     }
   }

@@ -18,6 +18,8 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
 };
 
 exports.createPages = async ({ actions, graphql }) => {
+  // let brisa = "";
+  // let premiumLeather = "";
   const { data } = await graphql(`
     query {
       xChairs: allDatoCmsXChair {
@@ -27,6 +29,9 @@ exports.createPages = async ({ actions, graphql }) => {
           chairWidth
           memoryFoam
           slug
+          extraColors {
+            shopifyConnection
+          }
         }
       }
       adjustables: allDatoCmsProduct(
@@ -70,6 +75,11 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `);
   data.xChairs.nodes.forEach((chair) => {
+    // if (chair.extraColors.length !== 0) {
+    //   premiumLeather = chair.extraColors[0].shopifyConnection;
+    //   brisa = chair.extraColors[1].shopifyConnection;
+    // }
+
     actions.createPage({
       path: `/x-chair/${chair.slug}`,
       component: path.resolve(`src/templates/x-chair.jsx`),
@@ -78,6 +88,14 @@ exports.createPages = async ({ actions, graphql }) => {
         headrest: chair.headrest,
         width: chair.chairWidth,
         memoryFoam: chair.memoryFoam,
+        premiumLeather:
+          chair.extraColors.length === 0
+            ? null
+            : chair.extraColors[0].shopifyConnection,
+        brisa:
+          chair.extraColors.length === 0
+            ? null
+            : chair.extraColors[1].shopifyConnection,
       },
     });
   });

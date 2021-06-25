@@ -14,6 +14,7 @@ const xChairReducer = (state, action) => {
         ...state,
         width: availableInColor(action.title, state.width),
         foam: !action.title.includes("Black") && false,
+        activeChairVariant: action.index,
         activeColor: action.title,
         colorCB: newColorCB,
       };
