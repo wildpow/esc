@@ -43,17 +43,8 @@ const XchairRoot = styled.section`
 `;
 
 export default function XChair({ data }) {
-  const {
-    datoCmsXChair,
-    headrest,
-    wheels,
-    memoryFoam,
-    width,
-    hmt,
-    elemax,
-    premiumLeather,
-    brisa,
-  } = data;
+  const { datoCmsXChair, headrest, wheels, memoryFoam, width, hmt, elemax } =
+    data;
   let colorSwatchs;
   let colorCB;
   let colorData;
@@ -208,8 +199,6 @@ export const chairQuery = graphql`
     $headrest: String!
     $memoryFoam: String
     $width: String
-    $brisa: String
-    $premiumLeather: String
   ) {
     datoCmsXChair(slug: { eq: $slug }) {
       title
@@ -228,20 +217,6 @@ export const chairQuery = graphql`
       }
     }
     memoryFoam: shopifyProduct(storefrontId: { eq: $memoryFoam }) {
-      title
-      variants {
-        price
-        storefrontId
-      }
-    }
-    premiumLeather: shopifyProduct(storefrontId: { eq: $premiumLeather }) {
-      title
-      variants {
-        price
-        storefrontId
-      }
-    }
-    brisa: shopifyProduct(storefrontId: { eq: $brisa }) {
       title
       variants {
         price
