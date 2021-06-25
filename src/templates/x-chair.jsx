@@ -88,17 +88,41 @@ export default function XChair({ data }) {
   );
   const [state, dispatch] = useReducer(xChairReducer, initialState);
   const handleSubmit = (e) => {
+    const extra = [];
     e.preventDefault();
-    addVariantToCart(
-      state.chairVariants[state.activeChairVariant].storefrontId,
-      1
-    );
-    console.log("SUBMIT!!!!");
+    if (state.headrest) {
+      extra.push({ variantId: headrest.variants[0].storefrontId, quantity: 1 });
+    }
+    if (state.foam) {
+      extra.push({
+        variantId: memoryFoam.variants[0].storefrontId,
+        quantity: 1,
+      });
+    }
+    if (state.width) {
+      extra.push({
+        variantId: width.variants[0].storefrontId,
+        quantity: 1,
+      });
+    }
+    if (extra.length === 0) {
+      addVariantToCart(
+        state.chairVariants[state.activeChairVariant].storefrontId,
+        1
+      );
+    } else {
+      addVariantToCart(
+        state.chairVariants[state.activeChairVariant].storefrontId,
+        1,
+        extra
+      );
+    }
+    console.log("SUBMIT!!!!", extra);
   };
   return (
     <Layout>
       <XchairRoot>
-        {console.log(memoryFoam, width)}
+        {console.log(state)}
         <h1>X-Chair</h1>
         <div className="content">
           <div className="gallery">
