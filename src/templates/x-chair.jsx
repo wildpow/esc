@@ -20,6 +20,7 @@ import getX4images from "../components/X-Chair/query/getX4Images.query";
 // import { colors, spacing } from "../styles/theme.styled";
 import { useStore } from "../contexts/Store.ctx";
 import ChairCart from "../components/X-Chair/prototype/ChairCart";
+import getModels from "../components/X-Chair/query/getModel.query";
 
 const XchairRoot = styled.section`
   background-color: white;
@@ -43,8 +44,8 @@ const XchairRoot = styled.section`
 `;
 
 export default function XChair({ data }) {
-  const { datoCmsXChair, headrest, wheels, memoryFoam, width, hmt, elemax } =
-    data;
+  const { datoCmsXChair, headrest, wheels, memoryFoam, width } = data;
+  const models = getModels();
   let colorSwatchs;
   let colorCB;
   let colorData;
@@ -96,6 +97,13 @@ export default function XChair({ data }) {
         quantity: 1,
       });
     }
+    const modelIndex = state.modelCB.indexOf(true);
+    if (modelIndex !== 0) {
+      extra.push({
+        variantId: models[modelIndex].variants[0].storefrontId,
+        quantity: 1,
+      });
+    }
     if (extra.length === 0) {
       addVariantToCart(
         state.chairVariants[state.activeChairVariant].storefrontId,
@@ -121,6 +129,7 @@ export default function XChair({ data }) {
               images={colorData[state.activeColor][state.activeHeadrest]}
             />
           </div>
+          {console.log(models)}
           <form className="features" onSubmit={handleSubmit}>
             <Model modelCB={state.modelCB} dispatch={dispatch} />
             <Colors
@@ -274,20 +283,6 @@ export const chairQuery = graphql`
       }
       images {
         gatsbyImageData(layout: CONSTRAINED, width: 150)
-      }
-    }
-    hmt: shopifyProduct(title: { eq: "X-HMT" }) {
-      title
-      variants {
-        price
-        storefrontId
-      }
-    }
-    elemax: shopifyProduct(title: { eq: "Elemax" }) {
-      title
-      variants {
-        price
-        storefrontId
       }
     }
   }

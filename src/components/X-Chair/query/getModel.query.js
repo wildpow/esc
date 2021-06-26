@@ -6,28 +6,16 @@ export default () => {
       query getModels {
         hmt: shopifyProduct(title: { eq: "X-HMT" }) {
           title
-          storefrontId
-          description
-          priceRangeV2 {
-            maxVariantPrice {
-              amount
-            }
-            minVariantPrice {
-              amount
-            }
+          variants {
+            price
+            storefrontId
           }
         }
         elemax: shopifyProduct(title: { eq: "Elemax" }) {
           title
-          storefrontId
-          description
-          priceRangeV2 {
-            maxVariantPrice {
-              amount
-            }
-            minVariantPrice {
-              amount
-            }
+          variants {
+            price
+            storefrontId
           }
         }
       }
