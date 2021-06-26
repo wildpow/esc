@@ -44,18 +44,15 @@ const DescriptionRoot = styled.section`
       padding-right: 15px;
       padding-left: 15px;
     }
-    .extra {
-      justify-content: flex-end;
-    }
   }
   @media (min-width: 1075px) {
     .wrapper {
-      max-width: 1125px;
+      max-width: 1000px;
     }
   }
   @media (min-width: 1275px) {
     .wrapper {
-      max-width: 1205px;
+      max-width: 1000px;
       padding-right: 0;
       padding-left: 0;
     }

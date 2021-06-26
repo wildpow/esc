@@ -33,21 +33,21 @@ export const Description = styled.p`
   }
   @media (min-width: 768px) {
     font-size: 1.1rem;
-    padding-right: 40px;
-    padding-left: 40px;
+    /* padding-right: 40px;
+    padding-left: 40px; */
     line-height: 1.7rem;
   }
   @media (min-width: 1022px) {
     font-size: 1.35rem;
-    padding-right: 60px;
-    padding-left: 60px;
+    /* padding-right: 60px;
+    padding-left: 60px; */
     line-height: 2.3rem;
   }
   @media (min-width: 1300px) {
     font-size: 1.4rem;
     padding-top: 10px;
-    padding-right: 80px;
-    padding-left: 80px;
+    /* padding-right: 80px;
+    padding-left: 80px; */
     line-height: 2.35rem;
     padding-bottom: 10px;
   }
