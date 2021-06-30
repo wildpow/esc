@@ -184,11 +184,9 @@ const ProductForm = ({
         variantId: state.boxVariants[state.boxIndex].shopifyId,
         quantity: parseInt(state.quantity, 10),
       };
-      addVariantToCart(
-        variants[state.variantIndex].shopifyId,
-        state.quantity,
-        extra
-      );
+      addVariantToCart(variants[state.variantIndex].shopifyId, state.quantity, [
+        extra,
+      ]);
     }
   };
 
