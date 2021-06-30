@@ -9,7 +9,6 @@ const GenerateInitialState = (colorCB, activeColor, chairVariants) => {
     width: false,
     foam: false,
     chairVariants,
-    activeChairVariant: 0,
     price: chairVariants[0].price,
   };
   return initialState;

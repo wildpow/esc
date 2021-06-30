@@ -79,6 +79,7 @@ export default function XChair({ data }) {
     datoCmsXChair.shopifyInfo[0].variants
   );
   const [state, dispatch] = useReducer(xChairReducer, initialState);
+  const chairIndex = state.colorCB.indexOf(true);
   const handleSubmit = (e) => {
     const extra = [];
     e.preventDefault();
@@ -97,6 +98,13 @@ export default function XChair({ data }) {
         quantity: 1,
       });
     }
+    const wheelIndex = state.wheelsCB.indexOf(true);
+    if (wheelIndex !== 3) {
+      extra.push({
+        variantId: wheels.variants[wheelIndex].storefrontId,
+        quantity: 1,
+      });
+    }
     const modelIndex = state.modelCB.indexOf(true);
     if (modelIndex !== 0) {
       extra.push({
@@ -105,19 +113,13 @@ export default function XChair({ data }) {
       });
     }
     if (extra.length === 0) {
-      addVariantToCart(
-        state.chairVariants[state.activeChairVariant].storefrontId,
-        1
-      );
+      addVariantToCart(state.chairVariants[chairIndex].storefrontId, 1);
     } else {
-      addVariantToCart(
-        state.chairVariants[state.activeChairVariant].storefrontId,
-        1,
-        extra
-      );
+      addVariantToCart(state.chairVariants[chairIndex].storefrontId, 1, extra);
     }
     console.log("SUBMIT!!!!", extra);
   };
+
   return (
     <Layout>
       <XchairRoot>
@@ -129,7 +131,7 @@ export default function XChair({ data }) {
               images={colorData[state.activeColor][state.activeHeadrest]}
             />
           </div>
-          {console.log(models)}
+          {console.log(wheels)}
           <form className="features" onSubmit={handleSubmit}>
             <Model modelCB={state.modelCB} dispatch={dispatch} />
             <Colors
@@ -169,10 +171,8 @@ export default function XChair({ data }) {
               dispatch={dispatch}
             />
             <ChairCart
-              price={state.chairVariants[state.activeChairVariant].price}
-              comparePrice={
-                state.chairVariants[state.activeChairVariant].compareAtPrice
-              }
+              price={state.chairVariants[chairIndex].price}
+              comparePrice={state.chairVariants[chairIndex].compareAtPrice}
             />
           </form>
         </div>
