@@ -357,7 +357,11 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
     const tax = Number(subTotal) * 0.098;
     return tax.toFixed(2);
   };
-
+  const total =
+    checkout.totalTax !== "0.00"
+      ? checkout.totalPrice
+      : Number(taxCheck(checkout.subtotalPrice, checkout.totalTax)) +
+        Number(checkout.subtotalPrice);
   return (
     <CartRoot
       className={`${status} ${loading ? "loading" : ""}`}
@@ -418,14 +422,7 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
               </Cost> */}
               <Total>
                 <span>Total Price:</span>
-                <strong>
-                  USD $
-                  {checkout.totalTax !== "0.00"
-                    ? checkout.totalPrice
-                    : Number(
-                        taxCheck(checkout.subtotalPrice, checkout.totalTax)
-                      ) + Number(checkout.subtotalPrice)}
-                </strong>
+                <strong>USD ${total.toFixed(2)}</strong>
               </Total>
             </Costs>
             <CheckOut href={checkout.webUrl}>
