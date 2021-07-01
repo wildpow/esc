@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file. See [Conven
 - Review data in footer was not displaying in random production builds. [ec0d664]()
 - Instagram link now goes to currect page. [534d0ca]()
 - Web chat now works again. [72b1934]()
+- Removed extra digits after decimal in cart total.[fd23a60]()
 ### May 2021
 #### Features
 - ###### [PR #148](https://github.com/wildpow/esc/pull/148) Big bundle savings.
