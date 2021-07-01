@@ -29,7 +29,7 @@ export default function Headrest({
             type="checkbox"
             id="noHeadrest"
             className="borderOneInput"
-            onChange={() => dispatch({ type: "headrest" })}
+            onChange={() => dispatch({ type: "headrest", price })}
             checked={!headrestBool}
           />
           <label htmlFor="noHeadrest" className="borderOneLabel">
@@ -47,7 +47,7 @@ export default function Headrest({
             type="checkbox"
             id="headrest"
             className="borderOneInput"
-            onChange={() => dispatch({ type: "headrest" })}
+            onChange={() => dispatch({ type: "headrest", price })}
             checked={headrestBool}
           />{" "}
           <label htmlFor="headrest" className="borderOneLabel">

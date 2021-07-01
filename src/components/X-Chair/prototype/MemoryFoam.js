@@ -49,7 +49,7 @@ export default function MemoryFoam({
             type="checkbox"
             id="memoryFoamOptions"
             className="borderOneInput"
-            onChange={() => dispatch({ type: "foam" })}
+            onChange={() => dispatch({ type: "foam", price })}
             checked={!foamBool}
           />
           <label htmlFor="memoryFoamOptions" className="borderOneLabel">
@@ -64,7 +64,7 @@ export default function MemoryFoam({
             type="checkbox"
             id="memoryFoamOptions2"
             className="borderOneInput"
-            onChange={() => dispatch({ type: "foam" })}
+            onChange={() => dispatch({ type: "foam", price })}
             checked={foamBool}
           />
           <label htmlFor="memoryFoamOptions2" className="borderOneLabel">

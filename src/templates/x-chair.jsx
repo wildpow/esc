@@ -131,7 +131,6 @@ export default function XChair({ data }) {
               images={colorData[state.activeColor][state.activeHeadrest]}
             />
           </div>
-          {console.log(wheels)}
           <form className="features" onSubmit={handleSubmit}>
             <Model modelCB={state.modelCB} dispatch={dispatch} />
             <Colors
@@ -171,8 +170,8 @@ export default function XChair({ data }) {
               dispatch={dispatch}
             />
             <ChairCart
-              price={state.chairVariants[chairIndex].price}
-              comparePrice={state.chairVariants[chairIndex].compareAtPrice}
+              price={state.price}
+              comparePrice={state.compareAtPrice}
             />
           </form>
         </div>

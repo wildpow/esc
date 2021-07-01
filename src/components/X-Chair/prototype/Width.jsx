@@ -60,7 +60,7 @@ export default function Width({
             type="checkbox"
             id="standardWidth"
             className="borderOneInput"
-            onChange={() => dispatch({ type: "width" })}
+            onChange={() => dispatch({ type: "width", price })}
             checked={!widthBool}
           />
           <label htmlFor="standardWidth" className="borderOneLabel">
@@ -75,7 +75,7 @@ export default function Width({
             type="checkbox"
             id="wideWidth"
             className="borderOneInput"
-            onChange={() => dispatch({ type: "width" })}
+            onChange={() => dispatch({ type: "width", price })}
             checked={widthBool}
           />
           <label htmlFor="wideWidth" className="borderOneLabel">
