@@ -138,6 +138,8 @@ export default function XChair({ data }) {
               colorCB={state.colorCB}
               dispatch={dispatch}
               extraColors={extraColors}
+              seatWidth={state.width}
+              memoryFoam={state.foam}
             />
             <Headrest
               title={datoCmsXChair.title}

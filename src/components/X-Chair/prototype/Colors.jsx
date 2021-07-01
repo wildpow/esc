@@ -2,19 +2,42 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useState } from "react";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { fonts } from "../../../styles/theme.styled";
+import {
+  memoryFoamAvailableColors,
+  widthAvailableColors,
+} from "./availableColorVaraints";
 
+const notAvailable = ({ width, foam, title }) => {
+  if (
+    (width && widthAvailableColors.indexOf(title) === -1) ||
+    (foam && memoryFoamAvailableColors.indexOf(title) === -1)
+  ) {
+    return css`
+      opacity: 0.6;
+      pointer-events: none;
+      position: relative;
+      ::after {
+        opacity: 1;
+        content: "";
+        position: absolute;
+        width: 2px;
+        top: 0;
+        right: 50%;
+        transform: rotate(45deg);
+        background-color: black;
+        height: 100%;
+        z-index: 100;
+      }
+    `;
+  }
+  return null;
+};
 const ColorRoot = styled.div`
   display: flex;
   flex-direction: column;
-  .borderOneInput {
-    display: none;
-  }
-
-  /* input {
-    display: none;
-  } */
   h3 {
     font-family: ${fonts.sans};
   }
@@ -23,35 +46,42 @@ const ColorRoot = styled.div`
     grid-gap: 20px;
     grid-auto-flow: column;
     grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
-    /* grid-template-rows: repeat(auto, 60px); */
     align-items: center;
     justify-content: center;
   }
-  .borderOneLabel img {
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid white;
-  }
-  .borderOneLabel div {
-    border: 4px solid white;
-    border-radius: 50%;
-  }
-  .borderOneInput:checked + label div {
-    border: 4px solid #ec1221;
-  }
-  /* .borderOneInput:checked + label div img {
-    border: 1px solid #ec1221;
-  } */
   h4 {
     font-family: ${fonts.sans};
     font-weight: 400;
   }
+`;
+const SingleColor = styled.div`
+  label {
+    cursor: pointer;
+  }
+  input {
+    display: none;
+  }
+  label img {
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid white;
+  }
+  label div {
+    border: 4px solid white;
+    border-radius: 50%;
+  }
+  input:checked + label div {
+    border: 4px solid #ec1221;
+  }
+  ${notAvailable}
 `;
 export default function ColorOptions({
   colors,
   colorCB,
   dispatch,
   extraColors,
+  seatWidth,
+  memoryFoam,
 }) {
   const [activeColor, setActiveColor] = useState(colors[0].title);
   const onColorChange = (index, title) => {
@@ -63,21 +93,25 @@ export default function ColorOptions({
       <h3>{`Select Fabric: ${activeColor}`}</h3>
       <div className="colorsWrapper">
         {colors.map((c) => (
-          <div key={c.title}>
+          <SingleColor
+            key={c.title}
+            width={seatWidth}
+            foam={memoryFoam}
+            title={c.title}
+          >
             <input
               type="checkbox"
               id={`colorSelect${c.index}`}
-              className="borderOneInput"
               onChange={() => onColorChange(c.index, c.title)}
               checked={colorCB[c.index]}
             />
-            <label htmlFor={`colorSelect${c.index}`} className="borderOneLabel">
+            <label htmlFor={`colorSelect${c.index}`}>
               <GatsbyImage
                 image={getImage(c.img)}
                 alt={`X-Chair's X-4 ${c.title} fabric option`}
               />
             </label>
-          </div>
+          </SingleColor>
         ))}
         {extraColors && <h4>Leather</h4>}
       </div>
@@ -85,47 +119,49 @@ export default function ColorOptions({
         <>
           <div className="colorsWrapper">
             {extraColors["Premium Leather"].map((c) => (
-              <div key={c.title}>
+              <SingleColor
+                key={c.title}
+                width={seatWidth}
+                foam={memoryFoam}
+                title={c.title}
+              >
                 <input
                   type="checkbox"
                   id={`colorSelect${c.index}`}
-                  className="borderOneInput"
                   onChange={() => onColorChange(c.index, c.title)}
                   checked={colorCB[c.index]}
                 />
-                <label
-                  htmlFor={`colorSelect${c.index}`}
-                  className="borderOneLabel"
-                >
+                <label htmlFor={`colorSelect${c.index}`}>
                   <GatsbyImage
                     image={getImage(c.img)}
                     alt={`X-Chair's X-4 ${c.title} fabric option`}
                   />
                 </label>
-              </div>
+              </SingleColor>
             ))}
             <h4>Premium Leather +$50</h4>
           </div>
           <div className="colorsWrapper">
             {extraColors.Brisa.map((c) => (
-              <div key={c.title}>
+              <SingleColor
+                key={c.title}
+                width={seatWidth}
+                foam={memoryFoam}
+                title={c.title}
+              >
                 <input
                   type="checkbox"
                   id={`colorSelect${c.index}`}
-                  className="borderOneInput"
                   onChange={() => onColorChange(c.index, c.title)}
                   checked={colorCB[c.index]}
                 />
-                <label
-                  htmlFor={`colorSelect${c.index}`}
-                  className="borderOneLabel"
-                >
+                <label htmlFor={`colorSelect${c.index}`}>
                   <GatsbyImage
                     image={getImage(c.img)}
                     alt={`X-Chair's X-4 ${c.title} fabric option`}
                   />
                 </label>
-              </div>
+              </SingleColor>
             ))}
             <h4>Brisa +$200</h4>
           </div>

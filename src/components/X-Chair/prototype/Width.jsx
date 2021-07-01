@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
 import { OptionContainer } from "./Headrest";
+import { widthAvailableColors } from "./availableColorVaraints";
 
 const width = (s) => {
   switch (s) {
@@ -49,10 +50,12 @@ export default function Width({
   price,
 }) {
   const modelWidth = width(title);
-  const isNotBlackOrX3Grey =
-    !activeColor.includes("Black") && activeColor !== "Grey A.T.R.";
+
+  const availableInColor = widthAvailableColors.indexOf(activeColor) === -1;
+
   return (
     <OptionContainer>
+      {console.log("availableInColor", availableInColor, title)}
       <h3>Seat Width</h3>
       <div style={{ display: "flex" }}>
         <Checkbox>
@@ -70,7 +73,7 @@ export default function Width({
             <h4>Standard Width</h4>
           </div>
         </Checkbox>
-        <Checkbox colorCheck={isNotBlackOrX3Grey}>
+        <Checkbox colorCheck={availableInColor}>
           <input
             type="checkbox"
             id="wideWidth"

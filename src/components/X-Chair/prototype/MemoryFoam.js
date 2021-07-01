@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
 import { OptionContainer } from "./Headrest";
+import { memoryFoamAvailableColors } from "./availableColorVaraints";
 
 const foam = (s) => {
   switch (s) {
@@ -39,7 +40,8 @@ export default function MemoryFoam({
   price,
 }) {
   const memoryFoamOptions = foam(title);
-  const isNotBlack = !activeColor.includes("Black");
+  const availableInColor =
+    memoryFoamAvailableColors.indexOf(activeColor) === -1;
   return (
     <OptionContainer>
       <h3>Seat Foam</h3>
@@ -59,7 +61,7 @@ export default function MemoryFoam({
             <h4>Standard Foam</h4>
           </div>
         </Checkbox>
-        <Checkbox colorCheck={isNotBlack}>
+        <Checkbox colorCheck={availableInColor}>
           <input
             type="checkbox"
             id="memoryFoamOptions2"

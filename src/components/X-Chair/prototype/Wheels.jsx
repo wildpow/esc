@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
-import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
 import { OptionContainer } from "./Headrest";
 
