@@ -4,7 +4,7 @@ const GenerateInitialState = (colorCB, activeColor, chairVariants) => {
     activeChairIndex: 0,
     activeHeadrest: "default",
     headrest: 0,
-    wheelsCB: [false, false, false, true],
+    wheelsCB: [false, false, false],
     modelCB: [true, false, false],
     colorCB,
     width: 0,
@@ -12,6 +12,8 @@ const GenerateInitialState = (colorCB, activeColor, chairVariants) => {
     chairVariants,
     price: chairVariants[0].price,
     compareAtPrice: chairVariants[0].compareAtPrice,
+    activeWheelIndex: 0,
+    activeModelIndex: 0,
   };
   return initialState;
 };

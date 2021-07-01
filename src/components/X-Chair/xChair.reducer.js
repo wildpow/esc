@@ -1,3 +1,7 @@
+const addonPricing = {
+  wheels: [49.99, 54.99, 74.99],
+  model: [0, 100, 130],
+};
 const availableInColor = (title, current) => {
   if (!title.includes("Black") && title !== "Grey A.T.R.") return 0;
   return current;
@@ -30,13 +34,17 @@ const xChairReducer = (state, action) => {
           state.chairVariants[action.index].price,
           newWidth,
           state.headrest,
-          newFoam
+          newFoam,
+          addonPricing.model[state.activeModelIndex],
+          addonPricing.wheels[state.activeWheelIndex]
         ),
         compareAtPrice: calculatePrice(
           state.chairVariants[action.index].compareAtPrice,
           newWidth,
           state.headrest,
-          newFoam
+          newFoam,
+          addonPricing.model[state.activeModelIndex],
+          addonPricing.wheels[state.activeWheelIndex]
         ),
       };
     case "foam":
@@ -49,13 +57,17 @@ const xChairReducer = (state, action) => {
           state.chairVariants[state.activeChairIndex].price,
           newFoam,
           state.width,
-          state.headrest
+          state.headrest,
+          addonPricing.model[state.activeModelIndex],
+          addonPricing.wheels[state.activeWheelIndex]
         ),
         compareAtPrice: calculatePrice(
           state.chairVariants[state.activeChairIndex].compareAtPrice,
           newFoam,
           state.width,
-          state.headrest
+          state.headrest,
+          addonPricing.model[state.activeModelIndex],
+          addonPricing.wheels[state.activeWheelIndex]
         ),
       };
     case "width":
@@ -68,13 +80,17 @@ const xChairReducer = (state, action) => {
           state.chairVariants[state.activeChairIndex].price,
           newWidth,
           state.foam,
-          state.headrest
+          state.headrest,
+          addonPricing.model[state.activeModelIndex],
+          addonPricing.wheels[state.activeWheelIndex]
         ),
         compareAtPrice: calculatePrice(
           state.chairVariants[state.activeChairIndex].compareAtPrice,
           newWidth,
           state.foam,
-          state.headrest
+          state.headrest,
+          addonPricing.model[state.activeModelIndex],
+          addonPricing.wheels[state.activeWheelIndex]
         ),
       };
     case "model":
@@ -83,6 +99,23 @@ const xChairReducer = (state, action) => {
       return {
         ...state,
         modelCB: newModelCB,
+        activeModelIndex: action.index,
+        price: calculatePrice(
+          state.chairVariants[state.activeChairIndex].price,
+          state.width,
+          state.foam,
+          state.headrest,
+          addonPricing.model[action.index],
+          addonPricing.wheels[state.activeWheelIndex]
+        ),
+        compareAtPrice: calculatePrice(
+          state.chairVariants[state.activeChairIndex].compareAtPrice,
+          state.width,
+          state.foam,
+          state.headrest,
+          addonPricing.model[action.index],
+          addonPricing.wheels[state.activeWheelIndex]
+        ),
       };
     case "headrest":
       newBool = !state.headrest;
@@ -95,21 +128,42 @@ const xChairReducer = (state, action) => {
           state.chairVariants[state.activeChairIndex].price,
           newHeadrest,
           state.foam,
-          state.width
+          state.width,
+          addonPricing.model[state.activeModelIndex],
+          addonPricing.wheels[state.activeWheelIndex]
         ),
         compareAtPrice: calculatePrice(
           state.chairVariants[state.activeChairIndex].compareAtPrice,
           newHeadrest,
           state.foam,
-          state.width
+          state.width,
+          addonPricing.model[state.activeModelIndex],
+          addonPricing.wheels[state.activeWheelIndex]
         ),
       };
     case "wheels":
-      newWheelsCB = [false, false, false, false];
+      newWheelsCB = [false, false, false];
       newWheelsCB[action.index] = true;
       return {
         ...state,
+        activeWheelIndex: action.index,
         wheelsCB: newWheelsCB,
+        price: calculatePrice(
+          state.chairVariants[state.activeChairIndex].price,
+          state.headrest,
+          state.foam,
+          state.width,
+          addonPricing.model[state.activeModelIndex],
+          addonPricing.wheels[action.index]
+        ),
+        compareAtPrice: calculatePrice(
+          state.chairVariants[state.activeChairIndex].compareAtPrice,
+          state.headrest,
+          state.foam,
+          state.width,
+          addonPricing.model[state.activeModelIndex],
+          addonPricing.wheels[action.index]
+        ),
       };
     default:
       throw new Error();
