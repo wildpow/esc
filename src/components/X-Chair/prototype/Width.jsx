@@ -55,7 +55,6 @@ export default function Width({
 
   return (
     <OptionContainer>
-      {console.log("availableInColor", availableInColor, title)}
       <h3>Seat Width</h3>
       <div style={{ display: "flex" }}>
         <Checkbox>

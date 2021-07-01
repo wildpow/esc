@@ -117,13 +117,11 @@ export default function XChair({ data }) {
     } else {
       addVariantToCart(state.chairVariants[chairIndex].storefrontId, 1, extra);
     }
-    console.log("SUBMIT!!!!", extra);
   };
 
   return (
     <Layout>
       <XchairRoot>
-        {console.log(state)}
         <h1>X-Chair</h1>
         <div className="content">
           <div className="gallery">
