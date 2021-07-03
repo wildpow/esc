@@ -3,6 +3,7 @@
 import { graphql } from "gatsby";
 import { useReducer } from "react";
 import styled from "@emotion/styled";
+import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import GenerateInitialState from "../components/X-Chair/generateInitialState";
 import xChairReducer from "../components/X-Chair/xChair.reducer";
@@ -21,6 +22,9 @@ import getX4images from "../components/X-Chair/query/getX4Images.query";
 import { useStore } from "../contexts/Store.ctx";
 import ChairCart from "../components/X-Chair/prototype/ChairCart";
 import getModels from "../components/X-Chair/query/getModel.query";
+import getLogos from "../components/X-Chair/query/getLogos.query";
+import { fonts } from "../styles/theme.styled";
+import Details from "../components/X-Chair/prototype/Details";
 
 const XchairRoot = styled.section`
   background-color: white;
@@ -42,10 +46,42 @@ const XchairRoot = styled.section`
     width: 50%;
   }
 `;
-
+const Heading = styled.header`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  .xchair {
+    width: 100%;
+    height: auto;
+  }
+  h2 {
+    width: 100%;
+    font-family: ${fonts.sans};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .poop {
+      max-width: 50px;
+      padding-top: -3px;
+    }
+    span {
+      position: relative;
+      ::after {
+        content: "";
+        position: absolute;
+        width: 110%;
+        height: 4px;
+        bottom: 0;
+        left: 0;
+        background-color: #dadada;
+      }
+    }
+  }
+`;
 export default function XChair({ data }) {
   const { datoCmsXChair, headrest, wheels, memoryFoam, width } = data;
   const models = getModels();
+  const logos = getLogos();
   let colorSwatchs;
   let colorCB;
   let colorData;
@@ -121,8 +157,27 @@ export default function XChair({ data }) {
 
   return (
     <Layout>
+      {console.log(logos)}
       <XchairRoot>
-        <h1>X-Chair</h1>
+        <Heading>
+          <div className="xchair">
+            <StaticImage
+              src="../images/xChair/logo.png"
+              formats={["avif", "png"]}
+              layout="constrained"
+              width={250}
+            />
+          </div>
+          <h2>
+            <div className="poop">
+              <GatsbyImage
+                image={getImage(logos[datoCmsXChair.title].image)}
+                alt={logos[datoCmsXChair.title].alt}
+              />
+            </div>
+            <span>{`${datoCmsXChair.title} Chair`}</span>
+          </h2>
+        </Heading>
         <div className="content">
           <div className="gallery">
             <ChairGallery
@@ -175,6 +230,7 @@ export default function XChair({ data }) {
             />
           </form>
         </div>
+        <Details logoImg={logos[datoCmsXChair.title]} />
       </XchairRoot>
     </Layout>
   );

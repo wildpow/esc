@@ -7,7 +7,7 @@ export const colorSwatch = graphql`
         layout: CONSTRAINED
         width: 60
         height: 60
-        formats: [AUTO, WEBP, AVIF]
+        formats: [AUTO, AVIF, WEBP]
       )
     }
   }
@@ -20,7 +20,7 @@ export const fullChairImages = graphql`
       gatsbyImageData(
         layout: CONSTRAINED
         width: 1000
-        formats: [AUTO, WEBP, AVIF]
+        formats: [AUTO, AVIF, WEBP]
         placeholder: TRACED_SVG
       )
     }
