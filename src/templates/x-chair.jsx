@@ -93,7 +93,7 @@ const Heading = styled.header`
   }
 `;
 export default function XChair({ data }) {
-  const { datoCmsXChair, headrest, wheels, memoryFoam, width } = data;
+  const { datoCmsXChair, headrest, wheels, memoryFoam, width, features } = data;
   const models = getModels();
   const logos = getLogos();
   let colorSwatchs;
@@ -170,7 +170,7 @@ export default function XChair({ data }) {
   };
 
   return (
-    <Layout>
+    <Layout bgWhite>
       <XchairRoot>
         <Heading>
           <div className="xchair">
@@ -243,7 +243,10 @@ export default function XChair({ data }) {
             />
           </form>
         </div>
-        <Details logoImg={logos[datoCmsXChair.title]} />
+        <Details
+          logoImg={logos[datoCmsXChair.title]}
+          features={datoCmsXChair.features}
+        />
       </XchairRoot>
     </Layout>
   );
@@ -278,6 +281,16 @@ export const chairQuery = graphql`
     $width: String
   ) {
     datoCmsXChair(slug: { eq: $slug }) {
+      features: chairFeatures {
+        smallTitle
+        largeTitle
+        description
+        imageOnTheLeftOrRight
+        featureImage {
+          alt
+          gatsbyImageData(layout: CONSTRAINED, width: 450)
+        }
+      }
       title
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags

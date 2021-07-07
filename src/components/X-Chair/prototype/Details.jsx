@@ -1,14 +1,19 @@
+/* eslint-disable react/prop-types */
 import styled from "@emotion/styled";
-import { fonts, fontSize } from "../../../styles/theme.styled";
+import { fonts, fontSize, spacing } from "../../../styles/theme.styled";
 import ModelDetails from "./ModelDetails";
+import ChairFeatures from "./ChairFeatures";
 
 const DetailSection = styled.div`
   width: 100%;
+  padding: 0 ${spacing[4]};
+
   h3 {
+    margin-bottom: ${spacing[3]};
     font-family: ${fonts.sans};
     width: 100%;
     font-size: ${fontSize["5xl"]};
-    font-weight: 400;
+    font-weight: 500;
     position: relative;
     ::after {
       content: "";
@@ -23,7 +28,7 @@ const DetailSection = styled.div`
   .modelWrapper {
   }
 `;
-export default function Details({ logoImg }) {
+export default function Details({ logoImg, features }) {
   const spe = "";
   return (
     <DetailSection>
@@ -31,6 +36,7 @@ export default function Details({ logoImg }) {
       <div className="modelWrapper">
         <ModelDetails logoImg={logoImg} />
       </div>
+      <ChairFeatures features={features} />
     </DetailSection>
   );
 }
