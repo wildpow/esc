@@ -12,7 +12,6 @@ import Wheels from "../components/X-Chair/prototype/Wheels";
 import Model from "../components/X-Chair/prototype/Model";
 import Width from "../components/X-Chair/prototype/Width";
 import Colors from "../components/X-Chair/prototype/Colors";
-import ChairGallery from "../components/X-Chair/prototype/ChairGallery";
 import MemoryFoam from "../components/X-Chair/prototype/MemoryFoam";
 import getX1images from "../components/X-Chair/query/getX1Images.query";
 import getX2images from "../components/X-Chair/query/getX2images.query";
@@ -25,6 +24,7 @@ import getModels from "../components/X-Chair/query/getModel.query";
 import getLogos from "../components/X-Chair/query/getLogos.query";
 import { fonts } from "../styles/theme.styled";
 import Details from "../components/X-Chair/prototype/Details";
+import ImageCarousel from "../components/X-Chair/prototype/NewImageCaroucel";
 
 const XchairRoot = styled.section`
   background-color: white;
@@ -44,6 +44,20 @@ const XchairRoot = styled.section`
   }
   .features {
     width: 50%;
+    /* height: 700px;
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+      width: 1em;
+    }
+
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #ec1221;
+      outline: 1px solid black;
+    } */
   }
 `;
 const Heading = styled.header`
@@ -60,7 +74,7 @@ const Heading = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-    .poop {
+    .title {
       max-width: 50px;
       padding-top: -3px;
     }
@@ -157,7 +171,6 @@ export default function XChair({ data }) {
 
   return (
     <Layout>
-      {console.log(logos)}
       <XchairRoot>
         <Heading>
           <div className="xchair">
@@ -169,7 +182,7 @@ export default function XChair({ data }) {
             />
           </div>
           <h2>
-            <div className="poop">
+            <div className="title">
               <GatsbyImage
                 image={getImage(logos[datoCmsXChair.title].image)}
                 alt={logos[datoCmsXChair.title].alt}
@@ -180,8 +193,8 @@ export default function XChair({ data }) {
         </Heading>
         <div className="content">
           <div className="gallery">
-            <ChairGallery
-              images={colorData[state.activeColor][state.activeHeadrest]}
+            <ImageCarousel
+              imagesArray={colorData[state.activeColor][state.activeHeadrest]}
             />
           </div>
           <form className="features" onSubmit={handleSubmit}>
