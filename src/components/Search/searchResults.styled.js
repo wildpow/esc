@@ -1,9 +1,11 @@
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import SearchResult from "./SearchResult";
 import { colors, fonts } from "../../styles/theme.styled";
 
-const Popover = css`
+export default styled(SearchResult)`
+  font-family: ${fonts.sans};
+  background-color: white;
+  display: ${({ show }) => (show ? `block` : `none`)};
   max-height: 80vh;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
@@ -26,12 +28,6 @@ const Popover = css`
     margin-right: 0px;
     margin-left: 0px;
   }
-`;
-export default styled(SearchResult)`
-  font-family: ${fonts.sans};
-  background-color: white;
-  display: ${({ show }) => (show ? `block` : `none`)};
-  ${Popover}
   .HitCount {
     display: flex;
     justify-content: flex-end;

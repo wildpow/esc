@@ -5,37 +5,39 @@ import PropTypes from "prop-types";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { boxShadowHover, fonts, fontSize } from "../../styles/theme.styled";
 import useMobileDetect from "../../hooks/useMobileDect";
-
-const MobileCardStyles = css`
-  .overlay {
-    h4 {
-      background: rgba(20, 20, 40, 0.5);
-    }
-  }
-`;
-const DesktopStyles = css`
-  .overlay {
-    opacity: 0;
-    background: rgba(20, 20, 40, 0);
-    justify-content: center;
-  }
-  .brandImage {
-    padding-top: 0px;
-    padding-bottom: 20px;
-    justify-self: center;
-    align-self: flex-end;
-    transition: transform 0.25s ease-in;
-  }
-  :hover .overlay,
-  :focus .overlay {
-    opacity: 1;
-    background: rgba(20, 20, 40, 0.5);
-  }
-  :hover .brandImage,
-  :focus .brandImage {
-    transform: translateY(-60%);
-  }
-`;
+// ${({ isMobile }) => (isMobile ? MobileCardStyles : DesktopStyles)}
+const mobileOrDesktop = (props) =>
+  props.ismobile
+    ? css`
+        .overlay {
+          h4 {
+            background: rgba(20, 20, 40, 0.5);
+          }
+        }
+      `
+    : css`
+        .overlay {
+          opacity: 0;
+          background: rgba(20, 20, 40, 0);
+          justify-content: center;
+        }
+        .brandImage {
+          padding-top: 0px;
+          padding-bottom: 20px;
+          justify-self: center;
+          align-self: flex-end;
+          transition: transform 0.25s ease-in;
+        }
+        :hover .overlay,
+        :focus .overlay {
+          opacity: 1;
+          background: rgba(20, 20, 40, 0.5);
+        }
+        :hover .brandImage,
+        :focus .brandImage {
+          transform: translateY(-60%);
+        }
+      `;
 
 const CardWraper = styled(Link)`
   text-decoration: none;
@@ -114,14 +116,14 @@ const CardWraper = styled(Link)`
     height: 275px;
   }
 
-  ${({ isMobile }) => (isMobile ? MobileCardStyles : DesktopStyles)}
+  ${mobileOrDesktop}
 `;
 
 const TestCard = ({ bgImg, title, description, logo, url }) => {
   const detectMobile = useMobileDetect();
 
   return (
-    <CardWraper to={url} isMobile={detectMobile.isMobile()}>
+    <CardWraper to={url} ismobile={detectMobile.isMobile() ? 1 : 0}>
       <GatsbyImage
         image={getImage(bgImg)}
         title={title}
