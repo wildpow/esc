@@ -105,7 +105,7 @@ const TabBox = ({
     topButtonName.length !== 0 || topButtonUrl.length !== 0
   );
   return (
-    <Holder about={about}>
+    <Holder about={about ? 1 : 0}>
       <header>
         <TabHeroImg
           image={getImage(hero)}
