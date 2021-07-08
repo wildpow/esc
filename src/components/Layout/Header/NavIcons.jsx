@@ -91,7 +91,7 @@ const ExtraNavRoot = styled.div`
 
 const StyledLinks = styled.a`
   align-items: center;
-  display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
+  display: ${({ headervisible }) => (headervisible ? "initial" : "none")};
 
   transition: all 0.2s ease;
   :hover {
@@ -115,7 +115,7 @@ const StyledLinks = styled.a`
   }
 
   .fa-phone {
-    display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
+    display: ${({ headervisible }) => (headervisible ? "initial" : "none")};
     animation: ${iconEntry} 0.35s ease forwards;
     height: 28px;
     margin: 0;
@@ -175,7 +175,7 @@ const NavIcons = ({
       />
       <StyledLinks
         href="tel:1-425-512-0017"
-        headerVisible={headerVisible}
+        headervisible={headerVisible}
         aria-label="Store phone number"
       >
         <span aria-hidden>
@@ -187,7 +187,7 @@ const NavIcons = ({
         as={Link}
         to="/contact-us"
         aria-label="get in contact with us via email"
-        headerVisible={headerVisible}
+        headervisible={headerVisible ? 1 : 0}
       >
         <span aria-hidden>
           <VisuallyHidden>Contact Us</VisuallyHidden>
@@ -198,7 +198,7 @@ const NavIcons = ({
         href="https://goo.gl/maps/nqXkkkAGRdu"
         target="_blank"
         rel="noopener noreferrer"
-        headerVisible={headerVisible}
+        headervisible={headerVisible ? 1 : 0}
         aria-label="Google maps link to our store"
       >
         <span aria-hidden>

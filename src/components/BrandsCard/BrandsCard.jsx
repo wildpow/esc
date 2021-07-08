@@ -7,7 +7,7 @@ import { boxShadowHover, fonts, fontSize } from "../../styles/theme.styled";
 import useMobileDetect from "../../hooks/useMobileDect";
 // ${({ isMobile }) => (isMobile ? MobileCardStyles : DesktopStyles)}
 const mobileOrDesktop = (props) =>
-  props.isMobile
+  props.ismobile
     ? css`
         .overlay {
           h4 {
@@ -123,7 +123,7 @@ const TestCard = ({ bgImg, title, description, logo, url }) => {
   const detectMobile = useMobileDetect();
 
   return (
-    <CardWraper to={url} isMobile={detectMobile.isMobile()}>
+    <CardWraper to={url} ismobile={detectMobile.isMobile() ? 1 : 0}>
       <GatsbyImage
         image={getImage(bgImg)}
         title={title}
