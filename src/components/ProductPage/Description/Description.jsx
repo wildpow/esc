@@ -139,7 +139,7 @@ DescriptionSection.defaultProps = {
 DescriptionSection.propTypes = {
   mattress: PropTypes.bool,
   warranty: PropTypes.string,
-  profile: PropTypes.number,
+  profile: PropTypes.string,
   description: PropTypes.string.isRequired,
   featureList: PropTypes.instanceOf(Object),
   width: PropTypes.number.isRequired,
