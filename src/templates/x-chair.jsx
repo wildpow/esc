@@ -179,6 +179,7 @@ export default function XChair({ data }) {
               formats={["avif", "png"]}
               layout="constrained"
               width={250}
+              alt="x-chair logo"
             />
           </div>
           <h2>
