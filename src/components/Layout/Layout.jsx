@@ -162,7 +162,6 @@ export default function Layout({ children, bgWhite }) {
             status={cartStatus}
             toggle={cartToggle}
             menuStatus={menuStatus}
-            headerVisible={headerVisible}
           />
         </FocusLock>
         <FocusLock disabled={menuStatus === "closed"}>

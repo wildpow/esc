@@ -121,7 +121,7 @@ const MobileMenu = ({
       className={status}
       aria-hidden={!isHidden}
       headerVisible={headerVisible}
-      {...props}
+      // {...props}
     >
       <Heading>
         <Hamburger
