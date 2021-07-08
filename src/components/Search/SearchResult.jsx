@@ -16,7 +16,24 @@ const HitCount = connectStateResults(({ searchResults }) => {
       &nbsp;result
       {hitCount !== 1 ? `s` : ``}
     </div>
-  ) : null;
+  ) : (
+    <div>
+      <div className="HitCount">0 results</div>
+      <div>
+        <h4>
+          Can't find what your looking for?
+          <br /> Try these helpful links.
+        </h4>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <Link to="/brands/list">Shop all mattress brands</Link>
+          <Link to="/accessories/list">Shop all accessories</Link>
+          <h5>
+            Or contact us <Link to="/contact-us">here</Link>
+          </h5>
+        </div>
+      </div>
+    </div>
+  );
 });
 const PageHit = ({ hit }) => (
   <div>
@@ -42,4 +59,5 @@ const SearchResult = ({ indices, className }) => (
     <PoweredBy />
   </div>
 );
+
 export default SearchResult;
