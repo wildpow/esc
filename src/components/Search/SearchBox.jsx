@@ -44,7 +44,7 @@ const SearchButton = styled.button`
     pointer-events: none;
   }
   .searchIcon {
-    display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
+    display: ${({ headervisible }) => (headervisible ? "initial" : "none")};
     color: ${({ hasFocus }) => (!hasFocus ? colors.gray["600"] : colors.white)};
     animation: ${iconEntry} 0.35s ease forwards;
   }
@@ -76,7 +76,7 @@ export default connectSearchBox(
       <form className={className}>
         <SearchButton
           type="button"
-          headerVisible={headerVisible}
+          headervisible={headerVisible}
           onClick={() => setOpen()}
           hasFocus={hasFocus}
           title={hasFocus ? "close search" : "Search our site"}

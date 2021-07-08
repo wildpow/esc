@@ -12,20 +12,24 @@ import {
   fonts,
   boxShadow,
 } from "../../styles/theme.styled";
+// ${({ width }) => (width < 650 ? mobileScreens : medScreens)}
 
-const medScreens = css`
-  transform: ${({ visible }) =>
-    visible ? `translateX(0%) scale(1.2)` : `translateX(100%) scale(1)`};
-  width: auto;
-  left: auto;
-  right: 5%;
-`;
-const mobileScreens = css`
-  left: 50%;
-  transform: ${({ visible }) =>
-    visible ? `translateX(-50%) scale(1)` : `translateX(100%) scale(.8)`};
-  width: 95%;
-`;
+const screenDiff = (props) =>
+  props.width < 650
+    ? css`
+        left: 50%;
+        transform: ${({ visible }) =>
+          visible ? `translateX(-50%) scale(1)` : `translateX(100%) scale(.8)`};
+        width: 95%;
+      `
+    : css`
+        transform: ${({ visible }) =>
+          visible ? `translateX(0%) scale(1.2)` : `translateX(100%) scale(1)`};
+        width: auto;
+        left: auto;
+        right: 5%;
+      `;
+
 const CartIndicatorRoot = styled.div`
   box-shadow: ${boxShadow.md};
   font-family: ${fonts.sans};
@@ -59,7 +63,7 @@ const CartIndicatorRoot = styled.div`
   @media (min-width: 2350px) {
     right: 23%;
   }
-  ${({ width }) => (width < 650 ? mobileScreens : medScreens)}
+  ${screenDiff}
 `;
 
 const CartIndicator = ({

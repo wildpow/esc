@@ -64,16 +64,16 @@ const BurgerToggle = styled.button`
       position: relative;
       transform-origin: 3px;
 
-      :first-child {
+      :first-of-type {
         transform: rotate(0);
       }
 
-      :nth-child(2) {
+      :nth-of-type(2) {
         opacity: 1;
         transform: translateX(0);
       }
 
-      :nth-child(3) {
+      :nth-of-type(3) {
         transform: rotate(0);
       }
     }
@@ -86,14 +86,14 @@ const BurgerToggle = styled.button`
     .hamburger {
       span {
         background: white;
-        :first-child {
+        :first-of-type {
           transform: rotate(45deg);
         }
-        :nth-child(2) {
+        :nth-of-type(2) {
           opacity: 0;
           transform: translateX(20px);
         }
-        :nth-child(3) {
+        :nth-of-type(3) {
           transform: rotate(-45deg);
         }
       }
