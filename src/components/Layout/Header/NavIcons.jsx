@@ -19,16 +19,20 @@ const searchIndices = [{ name: `Products`, title: `Products` }];
 
 // TODO Change name or combine and import from different file to avoid
 // TODO duplication in Cart component.
-const emptyCart = css`
-  cursor: pointer;
-  opacity: 1;
-  :hover {
-    transform: scale(1.2);
-    .fa-shopping-cart {
-      color: ${colors.blue["900"]};
+// ${({ itemsInCart }) => itemsInCart !== 0 && emptyCart}
+
+const emptyCart = (props) =>
+  props.itemsInCart &&
+  css`
+    cursor: pointer;
+    opacity: 1;
+    :hover {
+      transform: scale(1.2);
+      .fa-shopping-cart {
+        color: ${colors.blue["900"]};
+      }
     }
-  }
-`;
+  `;
 const CartToggle = styled.button`
   cursor: not-allowed;
   .fa-shopping-cart {
@@ -66,7 +70,7 @@ const CartToggle = styled.button`
     transition: box-shadow 0.15s ease-in-out;
   }
   opacity: 0.3;
-  ${({ itemsInCart }) => itemsInCart !== 0 && emptyCart}
+  ${emptyCart}
 `;
 
 const ExtraNavRoot = styled.div`

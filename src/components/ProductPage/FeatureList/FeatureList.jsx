@@ -129,17 +129,20 @@ const Info = styled.li`
     width: 14px;
   }
 `;
+// ${({ top }) => !top && BottomList}
 
-const BottomList = css`
-  max-width: initial;
-  padding: 0 !important;
-  ul {
-    padding-top: 5px;
-  }
-  ul li {
-    padding-bottom: 7px;
-  }
-`;
+const BottomList = (props) =>
+  !props.top &&
+  css`
+    max-width: initial;
+    padding: 0 !important;
+    ul {
+      padding-top: 5px;
+    }
+    ul li {
+      padding-bottom: 7px;
+    }
+  `;
 const List = styled.div`
   display: ${({ top }) => (top ? "none" : "flex")};
 
@@ -243,7 +246,7 @@ const List = styled.div`
       font-size: 0.9rem;
     }
   }
-  ${({ top }) => !top && BottomList}
+  ${BottomList}
 `;
 const contentStyle = {
   maxWidth: "600px",
