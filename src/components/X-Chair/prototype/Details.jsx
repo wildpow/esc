@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { fonts, fontSize, spacing } from "../../../styles/theme.styled";
 import ModelDetails from "./ModelDetails";
 import ChairFeatures from "./ChairFeatures";
+import Elemax from "./Elemax";
 
 const DetailSection = styled.div`
   width: 100%;
@@ -42,6 +43,7 @@ export default function Details({
       <div className="modelWrapper">
         <ModelDetails logoImg={logoImg} />
       </div>
+      <Elemax />
       <ChairFeatures features={features} />
       <h3>More Information</h3>
       <div>
