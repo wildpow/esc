@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import { graphql } from "gatsby";
+import { HelmetDatoCms } from "gatsby-source-datocms";
 import { useReducer } from "react";
 import styled from "@emotion/styled";
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
@@ -171,8 +172,11 @@ export default function XChair({ data }) {
 
   return (
     <Layout bgWhite>
+      {" "}
+      <HelmetDatoCms seo={datoCmsXChair.seoMetaTags} />
       <XchairRoot>
         <Heading>
+          {console.log(datoCmsXChair)}
           <div className="xchair">
             <StaticImage
               src="../images/xChair/logo.png"
@@ -245,6 +249,7 @@ export default function XChair({ data }) {
           </form>
         </div>
         <Details
+          extraFeatureText={datoCmsXChair.extraFeatureText}
           logoImg={logos[datoCmsXChair.title]}
           features={datoCmsXChair.features}
         />
@@ -252,28 +257,7 @@ export default function XChair({ data }) {
     </Layout>
   );
 }
-// storefrontId
-// productType
-// totalVariants
-// priceRangeV2 {
-//   maxVariantPrice {
-//     amount
-//   }
-//   minVariantPrice {
-//     amount
-//   }
-// }
-// hasOnlyDefaultVariant
-// image {
-//   gatsbyImageData(layout: FIXED, width: 150)
-// }
-// images {
-//   gatsbyImageData(layout: FIXED, width: 50)
-//   altText
-// }
-// featuredImage {
-//   gatsbyImageData(width: 50, layout: FIXED)
-// }
+
 export const chairQuery = graphql`
   query chair(
     $slug: String!
@@ -282,6 +266,10 @@ export const chairQuery = graphql`
     $width: String
   ) {
     datoCmsXChair(slug: { eq: $slug }) {
+      extraFeatureText
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
       features: chairFeatures {
         smallTitle
         largeTitle
