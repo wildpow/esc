@@ -19,20 +19,16 @@ const searchIndices = [{ name: `Products`, title: `Products` }];
 
 // TODO Change name or combine and import from different file to avoid
 // TODO duplication in Cart component.
-// ${({ itemsInCart }) => itemsInCart !== 0 && emptyCart}
-
-const emptyCart = (props) =>
-  props.itemsInCart &&
-  css`
-    cursor: pointer;
-    opacity: 1;
-    :hover {
-      transform: scale(1.2);
-      .fa-shopping-cart {
-        color: ${colors.blue["900"]};
-      }
+const emptyCart = css`
+  cursor: pointer;
+  opacity: 1;
+  :hover {
+    transform: scale(1.2);
+    .fa-shopping-cart {
+      color: ${colors.blue["900"]};
     }
-  `;
+  }
+`;
 const CartToggle = styled.button`
   cursor: not-allowed;
   .fa-shopping-cart {
@@ -70,7 +66,7 @@ const CartToggle = styled.button`
     transition: box-shadow 0.15s ease-in-out;
   }
   opacity: 0.3;
-  ${emptyCart}
+  ${({ itemsInCart }) => itemsInCart !== 0 && emptyCart}
 `;
 
 const ExtraNavRoot = styled.div`
@@ -91,7 +87,7 @@ const ExtraNavRoot = styled.div`
 
 const StyledLinks = styled.a`
   align-items: center;
-  display: ${({ headervisible }) => (headervisible ? "initial" : "none")};
+  display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
 
   transition: all 0.2s ease;
   :hover {
@@ -115,7 +111,7 @@ const StyledLinks = styled.a`
   }
 
   .fa-phone {
-    display: ${({ headervisible }) => (headervisible ? "initial" : "none")};
+    display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
     animation: ${iconEntry} 0.35s ease forwards;
     height: 28px;
     margin: 0;
@@ -175,7 +171,7 @@ const NavIcons = ({
       />
       <StyledLinks
         href="tel:1-425-512-0017"
-        headervisible={headerVisible}
+        headerVisible={headerVisible}
         aria-label="Store phone number"
       >
         <span aria-hidden>
@@ -187,7 +183,7 @@ const NavIcons = ({
         as={Link}
         to="/contact-us"
         aria-label="get in contact with us via email"
-        headervisible={headerVisible ? 1 : 0}
+        headerVisible={headerVisible}
       >
         <span aria-hidden>
           <VisuallyHidden>Contact Us</VisuallyHidden>
@@ -198,7 +194,7 @@ const NavIcons = ({
         href="https://goo.gl/maps/nqXkkkAGRdu"
         target="_blank"
         rel="noopener noreferrer"
-        headervisible={headerVisible ? 1 : 0}
+        headerVisible={headerVisible}
         aria-label="Google maps link to our store"
       >
         <span aria-hidden>

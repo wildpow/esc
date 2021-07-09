@@ -128,7 +128,7 @@ const AboutCardRoot = styled.div`
   }
 `;
 const AboutCard = ({ text, image, rotate, alt }) => (
-  <AboutCardRoot rotate={rotate ? 1 : 0}>
+  <AboutCardRoot rotate={rotate}>
     <article>
       <div className="para-wrapper">
         <p>{text}</p>

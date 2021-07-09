@@ -1,9 +1,6 @@
 # Change log
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-### July 2021
-#### Bug Fix
-- [PR #152](https://github.com/wildpow/esc/pull/152) Silence console warnings, update deps. and PropType fixes.
 ### June 2021
 #### Bug Fix
 - Removed 'Default title' text under product title in cart when product has no variants. [17c6078]()
