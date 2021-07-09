@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from "@emotion/styled";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { fonts, fontSize, spacing } from "../../../styles/theme.styled";
 import ModelDetails from "./ModelDetails";
 import ChairFeatures from "./ChairFeatures";
@@ -28,7 +29,12 @@ const DetailSection = styled.div`
   .modelWrapper {
   }
 `;
-export default function Details({ logoImg, features, extraFeatureText }) {
+export default function Details({
+  logoImg,
+  features,
+  extraFeatureText,
+  specSheet,
+}) {
   const spe = "";
   return (
     <DetailSection>
@@ -89,6 +95,12 @@ export default function Details({ logoImg, features, extraFeatureText }) {
               defect.
             </p>
           </div>
+        </div>
+      </div>
+      <div>
+        <h3>Specs</h3>
+        <div>
+          <GatsbyImage image={getImage(specSheet)} alt={specSheet.alt} />
         </div>
       </div>
     </DetailSection>

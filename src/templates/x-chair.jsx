@@ -252,6 +252,7 @@ export default function XChair({ data }) {
           extraFeatureText={datoCmsXChair.extraFeatureText}
           logoImg={logos[datoCmsXChair.title]}
           features={datoCmsXChair.features}
+          specSheet={datoCmsXChair.specSheet}
         />
       </XchairRoot>
     </Layout>
@@ -267,6 +268,10 @@ export const chairQuery = graphql`
   ) {
     datoCmsXChair(slug: { eq: $slug }) {
       extraFeatureText
+      specSheet {
+        gatsbyImageData(layout: CONSTRAINED, width: 1000)
+        alt
+      }
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
