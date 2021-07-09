@@ -16,16 +16,16 @@ export default function Xchair() {
             alignItems: "center",
           }}
         >
-          <Link to="/x-chair/x1_task">
+          <Link to="/x-chair/x-1">
             <h2>X-1</h2>
           </Link>
-          <Link to="/x-chair/x2_k-sport">
+          <Link to="/x-chair/x-2">
             <h2>X-2</h2>
           </Link>
-          <Link to="/x-chair/x3_atr">
+          <Link to="/x-chair/x-3">
             <h2>X-3</h2>
           </Link>
-          <Link to="/x-chair/x4_leather-exec">
+          <Link to="/x-chair/x-4">
             <h2>X-4</h2>
           </Link>
         </div>
