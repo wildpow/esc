@@ -5,11 +5,21 @@ import styled from "@emotion/styled";
 
 import getNoHeadrest from "../query/getNoHeadrest.query";
 import Checkbox from "./checkbox.styled";
-import { fonts } from "../../../styles/theme.styled";
+import { fonts, fontSize } from "../../../styles/theme.styled";
 
 export const OptionContainer = styled.div`
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
   h3 {
+    font-size: ${fontSize.lg};
     font-family: ${fonts.sans};
+    margin-bottom: 5px;
+    margin-left: 4px;
+    span {
+      padding: 5px 7px;
+      color: white;
+      background-color: gray;
+    }
   }
 `;
 export default function Headrest({
