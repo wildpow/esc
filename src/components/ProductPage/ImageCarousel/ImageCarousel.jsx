@@ -76,6 +76,7 @@ const ImageCarousel = ({
       </NodeGroup>
       <SmallImgHolder base={base}>
         <SmImgWrap
+          active={index === 0}
           onMouseOver={(e) => setIndex(Number(e.currentTarget.dataset.id))}
           onFocus={(e) => setIndex(Number(e.currentTarget.dataset.id))}
           data-id={0}
@@ -86,6 +87,7 @@ const ImageCarousel = ({
           />
         </SmImgWrap>
         <SmImgWrap
+          active={index === 1}
           onMouseOver={(e) => setIndex(Number(e.currentTarget.dataset.id))}
           onFocus={(e) => setIndex(Number(e.currentTarget.dataset.id))}
           data-id={1}
@@ -96,6 +98,7 @@ const ImageCarousel = ({
           />
         </SmImgWrap>
         <SmImgWrap
+          active={index === 2}
           onMouseOver={(e) => setIndex(Number(e.currentTarget.dataset.id))}
           onFocus={(e) => setIndex(Number(e.currentTarget.dataset.id))}
           data-id={2}
