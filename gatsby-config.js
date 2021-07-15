@@ -13,12 +13,12 @@ const isNetlifyProduction = NETLIFY_ENV === "production";
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 
 const cfg = {
-  flags: {
-    PRESERVE_WEBPACK_CACHE: true,
-    FAST_DEV: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: true,
-    PARALLEL_SOURCING: true,
-  },
+  // flags: {
+  //   PRESERVE_WEBPACK_CACHE: true,
+  //   FAST_DEV: true,
+  //   PRESERVE_FILE_DOWNLOAD_CACHE: true,
+  //   PARALLEL_SOURCING: true,
+  // },
   siteMetadata: {
     title: "E.S.C Mattress Center",
     siteUrl,
