@@ -41,15 +41,15 @@ export default () => {
   );
 
   return {
-    "Flex Mesh Task": {
+    "Flex Mesh": {
       image: x1,
       alt: "X-Chair’s X1 Task Chair is the entry level model includes Dynamic Variable Lumbar (DVL) Support that adjusts with your movement and a cool flex-mesh fabric.",
     },
-    "K-Sport Mgmt": {
+    "K-Sport": {
       image: x2,
       alt: "X-Chair’s X2 K-Sport Mgmt Chair includes Dynamic Variable Lumbar (DVL) Support that adjusts with your movement, a more robust frame and K-Sport mesh fabric.",
     },
-    "ATR Mgmt": {
+    "ATR Fabric": {
       image: x3,
       alt: "X-Chair’s X3 ATR Mgmt Chair includes Dynamic Variable Lumbar (DVL) Support that adjusts with your movement, a more robust frame, foam seat, and ATR mesh fabric.",
     },

@@ -23,10 +23,9 @@ import { useStore } from "../contexts/Store.ctx";
 import ChairCart from "../components/X-Chair/prototype/ChairCart";
 import getModels from "../components/X-Chair/query/getModel.query";
 import getLogos from "../components/X-Chair/query/getLogos.query";
-import { fonts, fontSize } from "../styles/theme.styled";
+import { fonts } from "../styles/theme.styled";
 import Details from "../components/X-Chair/prototype/Details";
 import ImageCarousel from "../components/X-Chair/prototype/NewImageCaroucel";
-import NewModelOption from "../components/X-Chair/prototype/newModel";
 
 const XchairRoot = styled.section`
   background-color: white;
@@ -45,67 +44,42 @@ const XchairRoot = styled.section`
     width: 50%;
   }
   .features {
-    scroll-snap-type: both mandatory;
-    position: relative;
     width: 50%;
-    height: 771px;
-    overflow-y: auto;
-    scrollbar-color: #d4aa70 #e4e4e4;
-    scrollbar-width: thin;
+    /* height: 700px;
+    overflow-y: scroll;
     ::-webkit-scrollbar {
-      width: 20px;
+      width: 1em;
     }
 
     ::-webkit-scrollbar-track {
-      background-color: #e4e4e4;
-      border-radius: 100px;
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
     }
 
     ::-webkit-scrollbar-thumb {
-      border-radius: 100px;
-      border: 6px solid rgba(0, 0, 0, 0.18);
-      border-left: 0;
-      border-right: 0;
-      background-color: #cc2228;
-    }
+      background-color: #ec1221;
+      outline: 1px solid black;
+    } */
   }
 `;
 const Heading = styled.header`
   display: flex;
-  /* border-bottom: 2px solid black; */
   justify-content: space-evenly;
   width: 100%;
-  /* .xchair {
+  .xchair {
     width: 100%;
     height: auto;
-  } */
-  margin-bottom: -20px;
+  }
   h2 {
-    margin-bottom: 0;
-    position: relative;
     width: 100%;
     font-family: ${fonts.sans};
-    font-size: ${fontSize["3xl"]};
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    ::after {
-      content: "";
-      position: absolute;
-      width: 110%;
-      height: 6px;
-      border-top-left-radius: 40px;
-      border-bottom-left-radius: 40px;
-      bottom: 10px;
-      left: 65px;
-      background-color: #ec1221;
-      background-color: #cc2228;
-    }
     .title {
-      max-width: 80px;
+      max-width: 50px;
       padding-top: -3px;
     }
-    /* span {
+    span {
       position: relative;
       ::after {
         content: "";
@@ -116,7 +90,7 @@ const Heading = styled.header`
         left: 0;
         background-color: #dadada;
       }
-    } */
+    }
   }
 `;
 export default function XChair({ data }) {
@@ -127,12 +101,12 @@ export default function XChair({ data }) {
   let colorCB;
   let colorData;
   let extraColors;
-  if (datoCmsXChair.title === "K-Sport Mgmt") {
+  if (datoCmsXChair.title === "K-Sport") {
     const data2 = getX2images();
     colorSwatchs = data2.colors;
     colorCB = data2.colorCB;
     colorData = data2.data;
-  } else if (datoCmsXChair.title === "ATR Mgmt") {
+  } else if (datoCmsXChair.title === "ATR Fabric") {
     const data3 = getX3images();
     colorSwatchs = data3.colors;
     colorCB = data3.colorCB;
@@ -202,7 +176,8 @@ export default function XChair({ data }) {
       <HelmetDatoCms seo={datoCmsXChair.seoMetaTags} />
       <XchairRoot>
         <Heading>
-          {/* <div className="xchair">
+          {console.log(datoCmsXChair)}
+          <div className="xchair">
             <StaticImage
               src="../images/xChair/logo.png"
               formats={["avif", "png"]}
@@ -210,9 +185,8 @@ export default function XChair({ data }) {
               width={250}
               alt="x-chair logo"
             />
-          </div> */}
+          </div>
           <h2>
-            {console.log(logos[datoCmsXChair.title].image)}
             <div className="title">
               <GatsbyImage
                 image={getImage(logos[datoCmsXChair.title].image)}
@@ -229,11 +203,7 @@ export default function XChair({ data }) {
             />
           </div>
           <form className="features" onSubmit={handleSubmit}>
-            <NewModelOption
-              modelCB={state.modelCB}
-              dispatch={dispatch}
-              logoImg={logos[datoCmsXChair.title]}
-            />
+            <Model modelCB={state.modelCB} dispatch={dispatch} />
             <Colors
               colors={colorSwatchs}
               colorCB={state.colorCB}
@@ -272,9 +242,12 @@ export default function XChair({ data }) {
               wheelsCB={state.wheelsCB}
               dispatch={dispatch}
             />
+            <ChairCart
+              price={state.price}
+              comparePrice={state.compareAtPrice}
+            />
           </form>
         </div>
-        <ChairCart price={state.price} comparePrice={state.compareAtPrice} />
         <Details
           extraFeatureText={datoCmsXChair.extraFeatureText}
           logoImg={logos[datoCmsXChair.title]}

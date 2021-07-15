@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
 import Checkbox from "./checkbox.styled";
 import hmt from "../../../images/xChair/models/hmt.gif";
@@ -15,7 +15,7 @@ const GifModelImg = styled.img`
   height: 90px;
   width: 100%;
 `;
-export default function ModelSelect({ dispatch, modelCB, logoImg }) {
+export default function ModelSelect({ dispatch, modelCB }) {
   return (
     <OptionContainer>
       <h3>Choose Model</h3>
@@ -28,9 +28,6 @@ export default function ModelSelect({ dispatch, modelCB, logoImg }) {
             checked={modelCB[0]}
             onChange={() => dispatch({ type: "model", index: 0 })}
           />
-          <div style={{ width: "35px", margin: "0 auto" }}>
-            <GatsbyImage image={getImage(logoImg.image)} alt={logoImg.alt} />
-          </div>
           <label htmlFor="standardModel" className="borderOneLabel">
             <div>
               <StaticImage
@@ -54,12 +51,6 @@ export default function ModelSelect({ dispatch, modelCB, logoImg }) {
             checked={modelCB[1]}
             onChange={() => dispatch({ type: "model", index: 1 })}
           />
-          <div style={{ width: "120px", margin: "0 auto" }}>
-            <StaticImage
-              src="../../../images/xChair/modelLogos/X-HMT.png"
-              alt="X-HMT option for X-Chair adding Heat and Massage to the chair"
-            />
-          </div>
           <label htmlFor="hmtModel" className="borderOneLabel">
             <div>
               <GifModelImg bg={hmt} loading="lazy" />
@@ -78,12 +69,6 @@ export default function ModelSelect({ dispatch, modelCB, logoImg }) {
             checked={modelCB[2]}
             onChange={() => dispatch({ type: "model", index: 2 })}
           />
-          <div style={{ width: "120px", margin: "0 auto" }}>
-            <StaticImage
-              src="../../../images/xChair/modelLogos/elemax-logo.jpeg"
-              alt="Elemax option for X-Chair adding Heat, cooling and Massage to the chair"
-            />
-          </div>
           <label htmlFor="elemaxModel" className="borderOneLabel">
             <div>
               <GifModelImg bg={elemax} loading="lazy" />

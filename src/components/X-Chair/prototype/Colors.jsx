@@ -36,11 +36,8 @@ const notAvailable = ({ width, foam, title }) => {
   return null;
 };
 const ColorRoot = styled.div`
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   h3 {
     font-family: ${fonts.sans};
   }
