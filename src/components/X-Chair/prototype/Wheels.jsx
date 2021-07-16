@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Checkbox from "./checkbox.styled";
-import { FeatureTitle, OptionContainer } from "./xChair.styled";
+import { FeatureTitle, OptionContainer, OptionsWrapper } from "./xChair.styled";
 
 const titleNumber = (title) => {
   if (title === "K-Sport Mgmt") {
@@ -21,9 +20,9 @@ export default function Wheels({ wheels, wheelsCB, dispatch, title }) {
 
         <h3>Add X-Wheels</h3>
       </FeatureTitle>
-      <div style={{ display: "flex" }}>
+      <OptionsWrapper>
         {wheelsCB.map((checkBox, index) => (
-          <Checkbox key={`index${index + 1}`}>
+          <div className="singleOption" key={`index${index + 1}`}>
             <input
               type="checkbox"
               id={`wheel${index}`}
@@ -43,9 +42,9 @@ export default function Wheels({ wheels, wheelsCB, dispatch, title }) {
               <h4>{wheels[index].title}</h4>
               <span>{`+ $${wheels[index].price}`}</span>
             </div>
-          </Checkbox>
+          </div>
         ))}
-      </div>
+      </OptionsWrapper>
     </OptionContainer>
   );
 }

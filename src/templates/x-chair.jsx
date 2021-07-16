@@ -388,7 +388,7 @@ export const chairQuery = graphql`
         price
         title
         image {
-          gatsbyImageData(layout: CONSTRAINED, width: 350)
+          gatsbyImageData(layout: CONSTRAINED, height: 103)
         }
       }
       priceRangeV2 {
