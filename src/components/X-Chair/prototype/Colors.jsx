@@ -9,6 +9,7 @@ import {
   memoryFoamAvailableColors,
   widthAvailableColors,
 } from "./availableColorVaraints";
+import { FeatureTitle } from "./xChair.styled";
 
 const notAvailable = ({ width, foam, title }) => {
   if (
@@ -45,6 +46,7 @@ const ColorRoot = styled.div`
     font-family: ${fonts.sans};
   }
   .colorsWrapper {
+    padding-left: 35px;
     display: grid;
     grid-gap: 20px;
     grid-auto-flow: column;
@@ -93,7 +95,12 @@ export default function ColorOptions({
   };
   return (
     <ColorRoot>
-      <h3>{`Select Fabric: ${activeColor}`}</h3>
+      <FeatureTitle>
+        <span>2</span>
+
+        <h3>{`Select Fabric: ${activeColor}`}</h3>
+      </FeatureTitle>
+
       <div className="colorsWrapper">
         {colors.map((c) => (
           <SingleColor

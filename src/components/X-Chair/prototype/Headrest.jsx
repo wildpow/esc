@@ -1,27 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import styled from "@emotion/styled";
-
 import getNoHeadrest from "../query/getNoHeadrest.query";
 import Checkbox from "./checkbox.styled";
-import { fonts, fontSize } from "../../../styles/theme.styled";
+import { FeatureTitle, OptionContainer } from "./xChair.styled";
 
-export const OptionContainer = styled.div`
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
-  h3 {
-    font-size: ${fontSize.lg};
-    font-family: ${fonts.sans};
-    margin-bottom: 5px;
-    margin-left: 4px;
-    span {
-      padding: 5px 7px;
-      color: white;
-      background-color: gray;
-    }
-  }
-`;
 export default function Headrest({
   title,
   dispatch,
@@ -32,8 +15,12 @@ export default function Headrest({
   const noHeadrest = getNoHeadrest(title);
   return (
     <OptionContainer>
-      <h3>Headrest</h3>
-      <div style={{ display: "flex" }}>
+      <FeatureTitle>
+        <span>3</span>
+
+        <h3>Headrest</h3>
+      </FeatureTitle>
+      <div style={{ display: "flex", paddingLeft: "25px" }}>
         <Checkbox>
           <input
             type="checkbox"

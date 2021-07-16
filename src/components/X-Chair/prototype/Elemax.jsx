@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 import coolBackground from "../../../images/xChair/elemax/cooling-background.png";
 import heatBackground from "../../../images/xChair/elemax/heat-background.png";
 import messageBackground from "../../../images/xChair/elemax/modes-background.png";

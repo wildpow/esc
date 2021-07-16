@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
-import { OptionContainer } from "./Headrest";
+import { FeatureTitle, OptionContainer } from "./xChair.styled";
 import { widthAvailableColors } from "./availableColorVaraints";
 
 const width = (s) => {
@@ -55,7 +55,11 @@ export default function Width({
 
   return (
     <OptionContainer>
-      <h3>Seat Width</h3>
+      <FeatureTitle>
+        <span>4</span>
+
+        <h3>Seat Width</h3>
+      </FeatureTitle>
       <div style={{ display: "flex" }}>
         <Checkbox>
           <input

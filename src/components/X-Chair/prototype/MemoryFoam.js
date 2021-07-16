@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
-import { OptionContainer } from "./Headrest";
+import { FeatureTitle, OptionContainer } from "./xChair.styled";
 import { memoryFoamAvailableColors } from "./availableColorVaraints";
 
 const foam = (s) => {
@@ -44,7 +44,11 @@ export default function MemoryFoam({
     memoryFoamAvailableColors.indexOf(activeColor) === -1;
   return (
     <OptionContainer>
-      <h3>Seat Foam</h3>
+      <FeatureTitle>
+        <span>5</span>
+
+        <h3>Seat Foam</h3>
+      </FeatureTitle>
       <div style={{ display: "flex" }}>
         <Checkbox>
           <input

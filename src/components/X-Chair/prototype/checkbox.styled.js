@@ -96,8 +96,8 @@ const Checkbox = styled.div`
     z-index: 10;
   }
   .borderOneLabel div {
-    height: 100px;
-    width: 120px;
+    max-height: 103px;
+    max-width: 150px;
     transition-duration: 0.2s;
     transform-origin: 50% 50%;
   }

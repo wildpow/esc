@@ -2,12 +2,25 @@
 /* eslint-disable react/prop-types */
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Checkbox from "./checkbox.styled";
-import { OptionContainer } from "./Headrest";
+import { FeatureTitle, OptionContainer } from "./xChair.styled";
 
-export default function Wheels({ wheels, wheelsCB, dispatch }) {
+const titleNumber = (title) => {
+  if (title === "K-Sport Mgmt") {
+    return 5;
+  }
+  if (title === "Flex Mesh Task") {
+    return 4;
+  }
+  return 6;
+};
+export default function Wheels({ wheels, wheelsCB, dispatch, title }) {
   return (
     <OptionContainer>
-      <h3>Add X-Wheels</h3>
+      <FeatureTitle>
+        <span>{titleNumber(title)}</span>
+
+        <h3>Add X-Wheels</h3>
+      </FeatureTitle>
       <div style={{ display: "flex" }}>
         {wheelsCB.map((checkBox, index) => (
           <Checkbox key={`index${index + 1}`}>

@@ -57,8 +57,11 @@ const XchairRoot = styled.section`
     width: 50%;
   }
   .features {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     /* scroll-padding: 50px 0px 0px 50px; */
-
+    overscroll-behavior: auto;
     scroll-snap-type: both mandatory;
     position: relative;
     width: 50%;
@@ -105,7 +108,7 @@ const Heading = styled.header`
     ::after {
       content: "";
       position: absolute;
-      width: 110%;
+      width: calc(100% - 85px);
       height: 6px;
       border-top-left-radius: 40px;
       border-bottom-left-radius: 40px;
@@ -225,7 +228,6 @@ export default function XChair({ data }) {
           />
         </div> */}
           <h2>
-            {console.log(logos[datoCmsXChair.title].image)}
             <div className="title">
               <GatsbyImage
                 image={getImage(logos[datoCmsXChair.title].image)}
@@ -284,6 +286,7 @@ export default function XChair({ data }) {
               wheels={wheels.variants}
               wheelsCB={state.wheelsCB}
               dispatch={dispatch}
+              title={datoCmsXChair.title}
             />
           </form>
         </div>
