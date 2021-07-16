@@ -2,8 +2,7 @@
 /* eslint-disable react/prop-types */
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import getNoHeadrest from "../query/getNoHeadrest.query";
-import Checkbox from "./checkbox.styled";
-import { FeatureTitle, OptionContainer } from "./xChair.styled";
+import { FeatureTitle, OptionContainer, OptionsWrapper } from "./xChair.styled";
 
 export default function Headrest({
   title,
@@ -20,44 +19,42 @@ export default function Headrest({
 
         <h3>Headrest</h3>
       </FeatureTitle>
-      <div style={{ display: "flex", paddingLeft: "25px" }}>
-        <Checkbox>
+      <OptionsWrapper>
+        <div className="singleOption">
           <input
             type="checkbox"
             id="noHeadrest"
-            className="borderOneInput"
             onChange={() => dispatch({ type: "headrest", price })}
             checked={!headrestBool}
           />
-          <label htmlFor="noHeadrest" className="borderOneLabel">
+          <label htmlFor="noHeadrest">
             <div>
               <GatsbyImage image={getImage(noHeadrest)} alt="alt stuff" />
             </div>
           </label>
-          <div className="titleContainer">
+          <div className="titleContainer headrest">
             <h4>No Headrest</h4>
             <span />
           </div>
-        </Checkbox>
-        <Checkbox>
+        </div>
+        <div className="singleOption">
           <input
             type="checkbox"
             id="headrest"
-            className="borderOneInput"
             onChange={() => dispatch({ type: "headrest", price })}
             checked={headrestBool}
           />{" "}
-          <label htmlFor="headrest" className="borderOneLabel">
+          <label htmlFor="headrest">
             <div>
               <GatsbyImage image={getImage(headrestImg)} alt="alt stuff" />
             </div>
           </label>
-          <div className="titleContainer">
-            <h4>Headrest</h4>
-            <span>{`+ $${price}`}</span>
+          <div className="titleContainer headrest">
+            <h4>Headrest&nbsp;</h4>
+            <span>{`+$${price}`}</span>
           </div>
-        </Checkbox>
-      </div>
+        </div>
+      </OptionsWrapper>
     </OptionContainer>
   );
 }

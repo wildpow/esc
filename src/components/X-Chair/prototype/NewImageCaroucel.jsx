@@ -78,6 +78,7 @@ const ImageCarousel = ({ imagesArray, alt }) => {
             onMouseOver={(e) => setIndex(Number(e.currentTarget.dataset.id))}
             onFocus={(e) => setIndex(Number(e.currentTarget.dataset.id))}
             data-id={i}
+            active={index === i}
           >
             <GatsbyImage image={getImage(img)} alt={alt} />
           </ChairSmWrap>

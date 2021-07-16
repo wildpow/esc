@@ -24,6 +24,7 @@ export const SmallImgHolder = styled.div`
 `;
 
 export const SmImgWrap = styled.div`
+  cursor: pointer;
   color: white;
   width: 83px;
   height: 83px;
@@ -46,9 +47,11 @@ export const SmImgWrap = styled.div`
     width: calc(500px / 3);
     height: 167px;
   }
-  border: 2px solid white;
+  border: ${({ active }) =>
+    active ? `2px solid ${colors.gray[400]}` : "2px solid white"};
+  transition: all 0.2s ease;
   &:hover {
-    border: 2px solid black;
+    border: 2px solid ${colors.gray[700]};
   }
   @media print {
     width: 83px;
@@ -89,7 +92,6 @@ export const LargeImgWrap = styled.div`
 
 export const BigBanner = styled(Banner)`
   font-size: 0.8rem;
-
   @media (min-width: 360px) and (orientation: portrait) {
     font-size: 1rem;
     margin-left: 5px;

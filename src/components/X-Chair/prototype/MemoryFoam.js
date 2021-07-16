@@ -49,7 +49,7 @@ export default function MemoryFoam({
 
         <h3>Seat Foam</h3>
       </FeatureTitle>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", paddingLeft: "25px" }}>
         <Checkbox>
           <input
             type="checkbox"

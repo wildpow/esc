@@ -60,7 +60,7 @@ export default function Width({
 
         <h3>Seat Width</h3>
       </FeatureTitle>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", paddingLeft: "25px" }}>
         <Checkbox>
           <input
             type="checkbox"
