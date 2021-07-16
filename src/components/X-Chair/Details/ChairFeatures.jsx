@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from "@emotion/styled";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Img from "../../../images/xChair/banner_xchair2_animated2.png";
 import { fonts, fontSize, spacing } from "../../../styles/theme.styled";
 

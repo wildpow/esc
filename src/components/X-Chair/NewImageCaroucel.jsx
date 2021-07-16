@@ -8,7 +8,7 @@ import {
   SmallImgHolder,
   SmImgWrap,
   LargeImgWrap,
-} from "../../ProductPage/ImageCarousel/imageCarousel.styled";
+} from "../ProductPage/ImageCarousel/imageCarousel.styled";
 
 const LargeChairImgWrap = styled(LargeImgWrap)`
   margin: 0 auto;

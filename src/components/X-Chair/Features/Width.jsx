@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
-import Checkbox from "./checkbox.styled";
-import { FeatureTitle, OptionContainer } from "./xChair.styled";
+import { OptionRoot, FeatureTitle, SingleFeature } from "./feature.styled";
 import { widthAvailableColors } from "./availableColorVaraints";
 
 const width = (s) => {
@@ -54,46 +53,44 @@ export default function Width({
   const availableInColor = widthAvailableColors.indexOf(activeColor) === -1;
 
   return (
-    <OptionContainer>
+    <OptionRoot>
       <FeatureTitle>
         <span>4</span>
 
         <h3>Seat Width</h3>
       </FeatureTitle>
-      <div style={{ display: "flex", paddingLeft: "25px" }}>
-        <Checkbox>
+      <div className="optionWrapper">
+        <SingleFeature>
           <input
             type="checkbox"
             id="standardWidth"
-            className="borderOneInput"
             onChange={() => dispatch({ type: "width", price })}
             checked={!widthBool}
           />
-          <label htmlFor="standardWidth" className="borderOneLabel">
+          <label htmlFor="standardWidth">
             <div>{modelWidth[0]}</div>
           </label>
           <div className="titleContainer">
             <h4>Standard Width</h4>
           </div>
-        </Checkbox>
-        <Checkbox colorCheck={availableInColor}>
+        </SingleFeature>
+        <SingleFeature colorCheck={availableInColor}>
           <input
             type="checkbox"
             id="wideWidth"
-            className="borderOneInput"
             onChange={() => dispatch({ type: "width", price })}
             checked={widthBool}
           />
-          <label htmlFor="wideWidth" className="borderOneLabel">
+          <label htmlFor="wideWidth">
             <div className="container">{modelWidth[1]}</div>
           </label>
           <div className="titleContainer">
             <h4>Extended Width</h4>
             <span>{`+ $${price}`}</span>
           </div>
-        </Checkbox>
+        </SingleFeature>
       </div>
-    </OptionContainer>
+    </OptionRoot>
   );
 }
 

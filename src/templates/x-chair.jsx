@@ -4,28 +4,31 @@ import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { useReducer } from "react";
 import styled from "@emotion/styled";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import GenerateInitialState from "../components/X-Chair/generateInitialState";
 import xChairReducer from "../components/X-Chair/xChair.reducer";
-import Headrest from "../components/X-Chair/prototype/Headrest";
-import Wheels from "../components/X-Chair/prototype/Wheels";
-import Model from "../components/X-Chair/prototype/Model";
-import Width from "../components/X-Chair/prototype/Width";
-import Colors from "../components/X-Chair/prototype/Colors";
-import MemoryFoam from "../components/X-Chair/prototype/MemoryFoam";
+import {
+  Headrest,
+  Wheels,
+  Width,
+  Colors,
+  MemoryFoam,
+  Model,
+} from "../components/X-Chair/Features";
+
 import getX1images from "../components/X-Chair/query/getX1Images.query";
 import getX2images from "../components/X-Chair/query/getX2images.query";
 import getX3images from "../components/X-Chair/query/getX3images.query";
 import getX4images from "../components/X-Chair/query/getX4Images.query";
 // import { colors, spacing } from "../styles/theme.styled";
 import { useStore } from "../contexts/Store.ctx";
-import ChairCart from "../components/X-Chair/prototype/ChairCart";
+import ChairCart from "../components/X-Chair/ChairCart";
 import getModels from "../components/X-Chair/query/getModel.query";
 import getLogos from "../components/X-Chair/query/getLogos.query";
 import { fonts, fontSize } from "../styles/theme.styled";
-import Details from "../components/X-Chair/prototype/Details";
-import ImageCarousel from "../components/X-Chair/prototype/NewImageCaroucel";
+import Details from "../components/X-Chair/Details";
+import ImageCarousel from "../components/X-Chair/NewImageCaroucel";
 
 const XchairRoot = styled.section`
   background-color: white;

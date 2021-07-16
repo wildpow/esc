@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { FeatureTitle, OptionContainer, OptionsWrapper } from "./xChair.styled";
+import { OptionRoot, FeatureTitle, SingleFeature } from "./feature.styled";
 
 const titleNumber = (title) => {
   if (title === "K-Sport Mgmt") {
@@ -14,23 +14,22 @@ const titleNumber = (title) => {
 };
 export default function Wheels({ wheels, wheelsCB, dispatch, title }) {
   return (
-    <OptionContainer>
+    <OptionRoot>
       <FeatureTitle>
         <span>{titleNumber(title)}</span>
 
         <h3>Add X-Wheels</h3>
       </FeatureTitle>
-      <OptionsWrapper>
+      <div className="optionWrapper">
         {wheelsCB.map((checkBox, index) => (
-          <div className="singleOption" key={`index${index + 1}`}>
+          <SingleFeature key={`index${index + 1}`}>
             <input
               type="checkbox"
               id={`wheel${index}`}
-              className="borderOneInput"
               onChange={() => dispatch({ type: "wheels", index })}
               checked={checkBox}
             />
-            <label htmlFor={`wheel${index}`} className="borderOneLabel">
+            <label htmlFor={`wheel${index}`}>
               <div>
                 <GatsbyImage
                   image={getImage(wheels[index].image)}
@@ -42,9 +41,9 @@ export default function Wheels({ wheels, wheelsCB, dispatch, title }) {
               <h4>{wheels[index].title}</h4>
               <span>{`+ $${wheels[index].price}`}</span>
             </div>
-          </div>
+          </SingleFeature>
         ))}
-      </OptionsWrapper>
-    </OptionContainer>
+      </div>
+    </OptionRoot>
   );
 }

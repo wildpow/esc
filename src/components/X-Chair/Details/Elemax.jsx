@@ -34,6 +34,7 @@ export default function Elemax() {
   return (
     <ElemaxRoot>
       <header>
+        {/* ../../../images/xChair/modelLogos/elemax-logo.jpeg */}
         <StaticImage
           src="../../../images/xChair/modelLogos/elemax-logo.jpeg"
           alt="Heat and Massage chair"

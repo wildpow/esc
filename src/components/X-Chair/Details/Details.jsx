@@ -36,7 +36,6 @@ export default function Details({
   extraFeatureText,
   specSheet,
 }) {
-  const spe = "";
   return (
     <DetailSection>
       <h3>Details</h3>

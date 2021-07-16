@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
-import Checkbox from "./checkbox.styled";
-import { FeatureTitle, OptionContainer } from "./xChair.styled";
+import { OptionRoot, FeatureTitle, SingleFeature } from "./feature.styled";
 import { memoryFoamAvailableColors } from "./availableColorVaraints";
 
 const foam = (s) => {
@@ -43,46 +42,44 @@ export default function MemoryFoam({
   const availableInColor =
     memoryFoamAvailableColors.indexOf(activeColor) === -1;
   return (
-    <OptionContainer>
+    <OptionRoot>
       <FeatureTitle>
         <span>5</span>
 
         <h3>Seat Foam</h3>
       </FeatureTitle>
-      <div style={{ display: "flex", paddingLeft: "25px" }}>
-        <Checkbox>
+      <div className="optionWrapper">
+        <SingleFeature>
           <input
             type="checkbox"
             id="memoryFoamOptions"
-            className="borderOneInput"
             onChange={() => dispatch({ type: "foam", price })}
             checked={!foamBool}
           />
-          <label htmlFor="memoryFoamOptions" className="borderOneLabel">
+          <label htmlFor="memoryFoamOptions">
             <div>{memoryFoamOptions[0]}</div>
           </label>
           <div className="titleContainer">
             <h4>Standard Foam</h4>
           </div>
-        </Checkbox>
-        <Checkbox colorCheck={availableInColor}>
+        </SingleFeature>
+        <SingleFeature colorCheck={availableInColor}>
           <input
             type="checkbox"
             id="memoryFoamOptions2"
-            className="borderOneInput"
             onChange={() => dispatch({ type: "foam", price })}
             checked={foamBool}
           />
-          <label htmlFor="memoryFoamOptions2" className="borderOneLabel">
+          <label htmlFor="memoryFoamOptions2">
             <div className="container">{memoryFoamOptions[1]}</div>
           </label>
           <div className="titleContainer">
             <h4>Memory Foam</h4>
             <span>{`+ $${price}`}</span>
           </div>
-        </Checkbox>
+        </SingleFeature>
       </div>
-    </OptionContainer>
+    </OptionRoot>
   );
 }
 MemoryFoam.propTypes = {

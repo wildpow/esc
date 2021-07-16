@@ -9,7 +9,7 @@ import {
   memoryFoamAvailableColors,
   widthAvailableColors,
 } from "./availableColorVaraints";
-import { FeatureTitle } from "./xChair.styled";
+import { FeatureTitle } from "./feature.styled";
 
 const notAvailable = ({ width, foam, title }) => {
   if (

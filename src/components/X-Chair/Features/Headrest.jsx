@@ -1,9 +1,21 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import styled from "@emotion/styled";
 import getNoHeadrest from "../query/getNoHeadrest.query";
-import { FeatureTitle, OptionContainer, OptionsWrapper } from "./xChair.styled";
+import { OptionRoot, FeatureTitle, SingleFeature } from "./feature.styled";
 
+const HeadrestRoot = styled(OptionRoot)`
+  .headrest {
+    padding-top: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h4 {
+      margin: 0;
+    }
+  }
+`;
 export default function Headrest({
   title,
   dispatch,
@@ -13,14 +25,14 @@ export default function Headrest({
 }) {
   const noHeadrest = getNoHeadrest(title);
   return (
-    <OptionContainer>
+    <HeadrestRoot>
       <FeatureTitle>
         <span>3</span>
 
         <h3>Headrest</h3>
       </FeatureTitle>
-      <OptionsWrapper>
-        <div className="singleOption">
+      <div className="optionWrapper">
+        <SingleFeature>
           <input
             type="checkbox"
             id="noHeadrest"
@@ -36,8 +48,8 @@ export default function Headrest({
             <h4>No Headrest</h4>
             <span />
           </div>
-        </div>
-        <div className="singleOption">
+        </SingleFeature>
+        <SingleFeature>
           <input
             type="checkbox"
             id="headrest"
@@ -53,8 +65,8 @@ export default function Headrest({
             <h4>Headrest&nbsp;</h4>
             <span>{`+$${price}`}</span>
           </div>
-        </div>
-      </OptionsWrapper>
-    </OptionContainer>
+        </SingleFeature>
+      </div>
+    </HeadrestRoot>
   );
 }

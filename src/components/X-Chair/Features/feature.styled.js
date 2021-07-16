@@ -1,11 +1,66 @@
 import styled from "@emotion/styled";
-import { fonts, fontSize, spacing } from "../../../styles/theme.styled";
+import { css } from "@emotion/react";
+import { fonts, spacing } from "../../../styles/theme.styled";
 
-export const OptionsWrapper = styled.div`
+const notAvailable = ({ colorCheck }) =>
+  colorCheck &&
+  css`
+    pointer-events: none;
+    .container:after {
+      position: absolute;
+      content: "Not available in this color";
+      top: -1px;
+      left: -1px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-family: ${fonts.sans};
+      opacity: 0.8;
+      font-weight: 700;
+      width: calc(2px + 100%);
+      height: calc(1px + 100%);
+    }
+    .borderOneInput {
+      pointer-events: none;
+    }
+  `;
+
+export const OptionRoot = styled.div`
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  .optionWrapper {
+    display: flex;
+    gap: 40px;
+    padding-left: 40px;
+    padding-top: 20px;
+  }
+`;
+
+export const FeatureTitle = styled.div`
   display: flex;
-  gap: 40px;
-  padding-left: 40px;
-  padding-top: ${({ model }) => (model ? "0" : "20px")};
+  justify-items: center;
+  align-items: center;
+  font-family: ${fonts.sans};
+  h3 {
+    margin: 0;
+    padding-left: 10px;
+  }
+  span {
+    width: 30px;
+    height: 30px;
+    color: white;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const SingleFeature = styled.div`
+  ${notAvailable};
+  max-width: 150px;
+  width: 100%;
   input {
     display: none;
   }
@@ -79,26 +134,6 @@ export const OptionsWrapper = styled.div`
     transform: scale(1);
     z-index: -1;
   }
-
-  .singleOption {
-    max-width: 150px;
-  }
-  .modelGif {
-    background-size: cover;
-    object-position: 50% 50%;
-    background-repeat: no-repeat;
-  }
-  .modelGifWrapper {
-    width: 150px;
-    height: 103px;
-    img {
-      width: 150px;
-      height: 103px;
-    }
-  }
-  .modelsWrapper {
-    display: flex;
-  }
   .titleContainer {
     text-align: center;
     font-family: ${fonts.sans};
@@ -109,51 +144,6 @@ export const OptionsWrapper = styled.div`
     }
     span {
       font-weight: 500;
-    }
-  }
-  .headrest {
-    padding-top: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    h4 {
-      margin: 0;
-    }
-  }
-`;
-
-export const FeatureTitle = styled.div`
-  display: flex;
-  justify-items: center;
-  align-items: center;
-  font-family: ${fonts.sans};
-  h3 {
-    margin: 0;
-    padding-left: 10px;
-  }
-  span {
-    width: 30px;
-    height: 30px;
-    color: white;
-    background-color: gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-export const OptionContainer = styled.div`
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
-  h3 {
-    font-size: ${fontSize.lg};
-    font-family: ${fonts.sans};
-    margin-bottom: 5px;
-    margin-left: 4px;
-    span {
-      padding: 5px 7px;
-      color: white;
-      background-color: gray;
     }
   }
 `;

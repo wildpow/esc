@@ -46,7 +46,6 @@ const ModelDetailWrapper = styled.div`
   }
 `;
 export default function ModelDetails({ logoImg }) {
-  const pop = "";
   return (
     <ModelDetailWrapper>
       <div className="singleModel">
@@ -97,7 +96,6 @@ export default function ModelDetails({ logoImg }) {
         </ul>
       </div>
       <div className="singleModel">
-        {" "}
         <div className="otherLogo">
           <StaticImage
             src="../../../images/xChair/modelLogos/elemax-logo.jpeg"

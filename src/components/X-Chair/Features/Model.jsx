@@ -1,20 +1,43 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import styled from "@emotion/styled";
 import hmt from "../../../images/xChair/models/hmt.gif";
 import elemax from "../../../images/xChair/models/elemax.gif";
-import { FeatureTitle, OptionContainer, OptionsWrapper } from "./xChair.styled";
+import { OptionRoot, FeatureTitle, SingleFeature } from "./feature.styled";
+
+const ModelRoot = styled(OptionRoot)`
+  .modelGif {
+    background-size: cover;
+    object-position: 50% 50%;
+    background-repeat: no-repeat;
+  }
+  .modelGifWrapper {
+    width: 150px;
+    height: 103px;
+    img {
+      width: 150px;
+      height: 103px;
+    }
+  }
+  .modelsWrapper {
+    display: flex;
+  }
+  .optionWrapper {
+    padding-top: ${({ model }) => (model ? "0" : "20px")};
+  }
+`;
 
 export default function NewModelOption({ dispatch, modelCB, logoImg }) {
   return (
-    <OptionContainer>
+    <ModelRoot model>
       <FeatureTitle>
         <span>1</span>
 
         <h3>Choose Model</h3>
       </FeatureTitle>
-      <OptionsWrapper model>
-        <div className="singleOption">
+      <div className="optionWrapper">
+        <SingleFeature>
           <div style={{ width: "35px", margin: "0 auto", marginBottom: "3px" }}>
             <GatsbyImage image={getImage(logoImg.image)} alt={logoImg.alt} />
           </div>
@@ -38,9 +61,9 @@ export default function NewModelOption({ dispatch, modelCB, logoImg }) {
           <div className="titleContainer">
             <h4>Office Chair</h4>
           </div>
-        </div>
+        </SingleFeature>
 
-        <div className="singleOption">
+        <SingleFeature>
           <div
             style={{ width: "120px", margin: "0 auto", marginBottom: "3px" }}
           >
@@ -64,9 +87,9 @@ export default function NewModelOption({ dispatch, modelCB, logoImg }) {
             <h4>Heat and Massage Chair</h4>
             <span>+ $100.00</span>
           </div>
-        </div>
+        </SingleFeature>
 
-        <div className="singleOption">
+        <SingleFeature>
           <div style={{ width: "120px", margin: "0 auto" }}>
             <StaticImage
               src="../../../images/xChair/modelLogos/elemax-logo.jpeg"
@@ -88,8 +111,8 @@ export default function NewModelOption({ dispatch, modelCB, logoImg }) {
             <h4>Cooling, Heat & Massage Chair</h4>
             <span>+ $130.00</span>
           </div>
-        </div>
-      </OptionsWrapper>
-    </OptionContainer>
+        </SingleFeature>
+      </div>
+    </ModelRoot>
   );
 }

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from "@emotion/styled";
-import { colors, spacing } from "../../../styles/theme.styled";
+import { colors, spacing } from "../../styles/theme.styled";
 
 const CartWrapper = styled.div`
   position: sticky;
