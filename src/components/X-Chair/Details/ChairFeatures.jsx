@@ -21,16 +21,17 @@ const SingleFeature = styled.div`
   max-width: 1300px; */
   justify-content: space-evenly;
   /* margin: 0 auto; */
-  flex-direction: ${({ leftOrRight }) => (leftOrRight ? "row" : "row-reverse")};
+  flex-direction: column;
   .content {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     max-width: 600px;
   }
   .contentImg {
-    width: 50%;
+    width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
   }
   h4 {
@@ -50,11 +51,32 @@ const SingleFeature = styled.div`
     margin: 0;
     font-size: ${fontSize["2xl"]};
   }
+
+  @media (min-width: 768px) {
+    flex-direction: ${({ leftOrRight }) =>
+      leftOrRight ? "row" : "row-reverse"};
+    .content {
+      width: auto;
+      flex-direction: column;
+    }
+    .contentImg {
+      width: auto;
+      display: flex;
+      justify-content: center;
+    }
+  }
 `;
 export default function ChairFeatures({ features }) {
   return (
     <FeatureWrapper>
       <SingleFeature leftOrRight>
+        <div className="contentImg">
+          <img
+            src={Img}
+            loading="lazy"
+            alt="X-Chair's DVL Support adjusts itself to your body every time you move"
+          />
+        </div>
         <div className="content">
           <h4>
             <span>LUMBAR</span>
@@ -66,13 +88,6 @@ export default function ChairFeatures({ features }) {
             an adjustment to your chair.
           </p>
         </div>
-        <div className="contentImg">
-          <img
-            src={Img}
-            loading="lazy"
-            alt="X-Chair's DVL Support adjusts itself to your body every time you move"
-          />
-        </div>
       </SingleFeature>
       {features &&
         features.map((feat) => (
@@ -80,18 +95,18 @@ export default function ChairFeatures({ features }) {
             key={feat.largeTitle}
             leftOrRight={feat.imageOnTheLeftOrRight}
           >
+            <div className="contentImg">
+              <GatsbyImage
+                image={getImage(feat.featureImage)}
+                alt={feat.featureImage.alt}
+              />
+            </div>
             <div className="content">
               <h4>
                 <span>{feat.smallTitle}</span>
                 {feat.largeTitle}
               </h4>
               <p>{feat.description}</p>
-            </div>
-            <div className="contentImg">
-              <GatsbyImage
-                image={getImage(feat.featureImage)}
-                alt={feat.featureImage.alt}
-              />
             </div>
           </SingleFeature>
         ))}

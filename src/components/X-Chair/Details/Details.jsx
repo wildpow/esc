@@ -9,7 +9,7 @@ import Elemax from "./Elemax";
 const DetailSection = styled.div`
   width: 100%;
   padding: 0 ${spacing[4]};
-
+  font-family: ${fonts.sans};
   h3 {
     margin-bottom: ${spacing[3]};
     font-family: ${fonts.sans};
@@ -28,6 +28,14 @@ const DetailSection = styled.div`
     }
   }
   .modelWrapper {
+  }
+  .specWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .specImg {
+    justify-self: center;
+    align-self: center;
   }
 `;
 export default function Details({
@@ -98,9 +106,9 @@ export default function Details({
           </div>
         </div>
       </div>
-      <div>
+      <div className="specWrapper">
         <h3>Specs</h3>
-        <div>
+        <div className="specImg">
           <GatsbyImage image={getImage(specSheet)} alt={specSheet.alt} />
         </div>
       </div>

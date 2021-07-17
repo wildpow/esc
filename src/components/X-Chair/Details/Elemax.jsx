@@ -4,13 +4,32 @@ import coolBackground from "../../../images/xChair/elemax/cooling-background.png
 import heatBackground from "../../../images/xChair/elemax/heat-background.png";
 import messageBackground from "../../../images/xChair/elemax/modes-background.png";
 import intensityBackground from "../../../images/xChair/elemax/intensity-background.png";
+import { fonts, fontSize } from "../../../styles/theme.styled";
 
 const ElemaxRoot = styled.article`
+  font-family: ${fonts.sans};
   header {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h4 {
+      margin: 0;
+      text-align: center;
+      font-size: ${fontSize.xl};
+    }
+    .topLogo {
+      max-width: 250px;
+    }
   }
   .elemaxFeatRoot {
     display: flex;
+    flex-direction: column;
+  }
+  @media (min-width: 768px) {
+    .elemaxFeatRoot {
+      flex-direction: row;
+    }
   }
   .elemaxFeatureContent {
     background-image: url(${(props) => props.bg});
@@ -19,6 +38,17 @@ const ElemaxRoot = styled.article`
   }
   .elemaxFeatureContent img {
     width: 50px;
+  }
+  @media (min-width: 768px) {
+    header {
+      flex-direction: row;
+      justify-content: flex-start;
+
+      align-items: center;
+      h4 {
+        padding-left: 30px;
+      }
+    }
   }
 `;
 const ElemaxContent = styled.div`
@@ -29,32 +59,36 @@ const ElemaxContent = styled.div`
   img {
     width: 50px;
   }
+  .elemaxFeatureImg {
+    width: 100%;
+  }
 `;
 export default function Elemax() {
   return (
     <ElemaxRoot>
       <header>
-        {/* ../../../images/xChair/modelLogos/elemax-logo.jpeg */}
-        <StaticImage
-          src="../../../images/xChair/modelLogos/elemax-logo.jpeg"
-          alt="Heat and Massage chair"
-          formats={["avif", "webp", "auto"]}
-        />
-        <h3>Cooling, Heat & Massage Chair</h3>
+        <div className="topLogo">
+          <StaticImage
+            src="../../../images/xChair/modelLogos/elemax-logo.jpeg"
+            alt="Heat and Massage chair"
+            formats={["avif", "webp", "auto"]}
+          />
+        </div>
+        <h4>Cooling, Heat & Massage Chair</h4>
       </header>
       <div className="elemaxFeatRoot">
         <div className="elemaxFeature">
           <div className="elemaxFeatureImg">
             <StaticImage
-              src="../../../images/xChair/elemax/massage-intensity-image.jpg"
-              alt="The back of an X-Chair with massage intensity setting lights on"
+              src="../../../images/xChair/elemax/cooling-image.jpg"
+              alt="The back of an X-Chair with cooling setting lights on"
               formats={["avif", "webp", "auto"]}
-              width={300}
+              width={600}
             />
           </div>
           <ElemaxContent bg={coolBackground}>
             <StaticImage
-              width={300}
+              width={500}
               src="../../../images/xChair/elemax/cooling-logo.png"
               alt="icon of a snow flake"
               formats={["avif", "webp", "auto"]}
@@ -75,7 +109,7 @@ export default function Elemax() {
         <div className="elemaxFeature">
           <div className="elemaxFeatureImg">
             <StaticImage
-              width={300}
+              width={600}
               src="../../../images/xChair/elemax/heat-image.jpg"
               alt="The back of an X-Chair with heat setting lights on"
               formats={["avif", "webp", "auto"]}
@@ -97,7 +131,7 @@ export default function Elemax() {
         <div className="elemaxFeature">
           <div className="elemaxFeatureImg">
             <StaticImage
-              width={300}
+              width={600}
               src="../../../images/xChair/elemax/modes-image.jpg"
               alt="The back of an X-Chair with massage setting lights on"
               formats={["avif", "webp", "auto"]}
@@ -124,7 +158,7 @@ export default function Elemax() {
         <div className="elemaxFeature">
           <div className="elemaxFeatureImg">
             <StaticImage
-              width={300}
+              width={600}
               src="../../../images/xChair/elemax/massage-intensity-image.jpg"
               alt="The back of an X-Chair with massage intensity setting lights on"
               formats={["avif", "webp", "auto"]}
