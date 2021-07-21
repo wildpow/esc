@@ -29,11 +29,18 @@ const notAvailable = ({ colorCheck }) =>
 export const OptionRoot = styled.div`
   scroll-snap-align: start;
   scroll-snap-stop: normal;
+
   .optionWrapper {
+    flex-direction: column;
     display: flex;
     gap: 40px;
     padding-left: 40px;
     padding-top: 20px;
+  }
+  @media (min-width: 768px) {
+    .optionWrapper {
+      flex-direction: row;
+    }
   }
 `;
 
