@@ -210,7 +210,7 @@ export default function XChair({ data }) {
       });
     }
     const wheelIndex = state.wheelsCB.indexOf(true);
-    if (wheelIndex !== 3) {
+    if (wheelIndex !== -1) {
       extra.push({
         variantId: wheels.variants[wheelIndex].storefrontId,
         quantity: 1,
