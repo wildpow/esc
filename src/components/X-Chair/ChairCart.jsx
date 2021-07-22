@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 import styled from "@emotion/styled";
-import { colors, fonts, fontSize, spacing } from "../../styles/theme.styled";
+import {
+  boxShadow,
+  colors,
+  fonts,
+  fontSize,
+  spacing,
+} from "../../styles/theme.styled";
 // import ShopingCart from "../../../svgs/shopping-cart-solid.svg";
 // import {
 //   ProductFormRoot,
@@ -15,6 +21,7 @@ import { AddToCartButton } from "../ProductPage/ProductForm/productForm.styled";
 const ChairCartBtn = styled(AddToCartButton)`
   margin: 0;
   max-width: 640px;
+  box-shadow: ${boxShadow.md};
 `;
 const CartWrapper = styled.div`
   position: sticky;
@@ -52,6 +59,9 @@ const CartWrapper = styled.div`
   @media (min-width: 768px) {
     background-color: white;
     border: none;
+    .cartContent {
+      padding: 0;
+    }
   }
 `;
 export default function ChairCart({ comparePrice, price }) {

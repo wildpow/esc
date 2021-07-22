@@ -61,7 +61,7 @@ const XchairRoot = styled.form`
     align-items: flex-start;
     flex-direction: column;
     position: relative;
-    width: 50%;
+    width: 100%;
     border: 2px solid ${colors.gray[500]};
     /* border-bottom: none; */
     /* border-right: none; */
@@ -97,6 +97,9 @@ const XchairRoot = styled.form`
 
   .gallery {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .features {
     display: flex;
@@ -112,7 +115,7 @@ const XchairRoot = styled.form`
       scroll-padding: 50px 0px 50px 0px;
 
       scroll-snap-type: both mandatory;
-      max-height: 871px;
+      max-height: 925px;
       overflow-y: auto;
       scrollbar-color: #d4aa70 #e4e4e4;
       scrollbar-width: thin;
@@ -141,6 +144,9 @@ const XchairRoot = styled.form`
     }
     .features {
       width: 100%;
+    }
+    .featureWrapper {
+      width: 50%;
     }
   }
 `;

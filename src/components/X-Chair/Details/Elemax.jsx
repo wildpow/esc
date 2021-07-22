@@ -5,6 +5,7 @@ import heatBackground from "../../../images/xChair/elemax/heat-background.png";
 import messageBackground from "../../../images/xChair/elemax/modes-background.png";
 import intensityBackground from "../../../images/xChair/elemax/intensity-background.png";
 import { fonts, fontSize } from "../../../styles/theme.styled";
+import HeatIcon from "../../../svgs/icon-heat.svg";
 
 const ElemaxRoot = styled.article`
   font-family: ${fonts.sans};
@@ -27,8 +28,23 @@ const ElemaxRoot = styled.article`
     flex-direction: column;
   }
   @media (min-width: 768px) {
-    .elemaxFeatRoot {
+    header {
       flex-direction: row;
+      justify-content: flex-start;
+
+      align-items: center;
+      h3 {
+        padding-left: 30px;
+      }
+    }
+    .elemaxFeatRoot {
+      max-height: 650px;
+      flex-direction: row;
+    }
+    .elemaxFeature {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
   }
   .elemaxFeatureContent {
@@ -39,24 +55,17 @@ const ElemaxRoot = styled.article`
   .elemaxFeatureContent img {
     width: 50px;
   }
-  @media (min-width: 768px) {
-    header {
-      flex-direction: row;
-      justify-content: flex-start;
-
-      align-items: center;
-      h4 {
-        padding-left: 30px;
-      }
-    }
-  }
 `;
 const ElemaxContent = styled.div`
   background-repeat: no-repeat;
   background-position: center;
+  flex: 1;
+  padding: 0px 10px;
   background-image: url(${(props) => props.bg});
   color: white;
-  img {
+  /* height: 100%; */
+  img,
+  svg {
     width: 50px;
   }
   .elemaxFeatureImg {
@@ -74,7 +83,7 @@ export default function Elemax() {
             formats={["avif", "webp", "auto"]}
           />
         </div>
-        <h4>Cooling, Heat & Massage Chair</h4>
+        <h3>Cooling, Heat & Massage Chair</h3>
       </header>
       <div className="elemaxFeatRoot">
         <div className="elemaxFeature">
@@ -93,7 +102,7 @@ export default function Elemax() {
               alt="icon of a snow flake"
               formats={["avif", "webp", "auto"]}
             />
-            <h4>COOLING</h4>
+            <h5>COOLING</h5>
             <p>
               ELEMAX is powered by dual fans to keep your body temperature cool
               and comfortable. Press the far left button on the panel twice. The
@@ -116,6 +125,7 @@ export default function Elemax() {
             />
           </div>
           <ElemaxContent bg={heatBackground}>
+            <HeatIcon />
             <h4>HEAT</h4>
             <p>
               Relax your muscles with the fast warming technology of the ELEMAX.
