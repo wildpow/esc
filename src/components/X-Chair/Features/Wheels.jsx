@@ -1,8 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import styled from "@emotion/styled";
 import { OptionRoot, FeatureTitle, SingleFeature } from "./feature.styled";
 
+const WheelRoot = styled(OptionRoot)`
+  padding-bottom: 25px;
+`;
 const titleNumber = (title) => {
   if (title === "K-Sport Mgmt") {
     return 5;
@@ -14,7 +18,7 @@ const titleNumber = (title) => {
 };
 export default function Wheels({ wheels, wheelsCB, dispatch, title }) {
   return (
-    <OptionRoot>
+    <WheelRoot>
       <FeatureTitle>
         <span>{titleNumber(title)}</span>
 
@@ -44,6 +48,6 @@ export default function Wheels({ wheels, wheelsCB, dispatch, title }) {
           </SingleFeature>
         ))}
       </div>
-    </OptionRoot>
+    </WheelRoot>
   );
 }

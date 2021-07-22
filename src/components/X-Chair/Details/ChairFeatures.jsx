@@ -57,6 +57,7 @@ const SingleFeature = styled.div`
       leftOrRight ? "row" : "row-reverse"};
     .content {
       width: auto;
+      display: flex;
       flex-direction: column;
     }
     .contentImg {

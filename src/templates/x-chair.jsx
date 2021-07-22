@@ -8,6 +8,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 import GenerateInitialState from "../components/X-Chair/generateInitialState";
 import xChairReducer from "../components/X-Chair/xChair.reducer";
+import { useWindowSize } from "../contexts/WindowSize.ctx";
+
 import {
   Headrest,
   Wheels,
@@ -26,11 +28,46 @@ import { useStore } from "../contexts/Store.ctx";
 import ChairCart from "../components/X-Chair/ChairCart";
 import getModels from "../components/X-Chair/query/getModel.query";
 import getLogos from "../components/X-Chair/query/getLogos.query";
-import { fonts, fontSize } from "../styles/theme.styled";
+import {
+  fonts,
+  fontSize,
+  boxShadow,
+  radius,
+  colors,
+} from "../styles/theme.styled";
 import Details from "../components/X-Chair/Details";
 import ImageCarousel from "../components/X-Chair/NewImageCaroucel";
 
-const XchairRoot = styled.section`
+const XchairRoot = styled.form`
+  .chairTitle {
+    margin: 0;
+    position: absolute;
+    background-color: ${colors.gray[100]};
+    /* padding-right: 5px;
+    padding-left: 5px; */
+    padding: 7px 10px;
+    font-family: ${fonts.sans};
+    border: 2px solid ${colors.blue[800]};
+    top: -20px;
+    z-index: 20;
+    left: 20px;
+    color: ${colors.gray[800]};
+  }
+  .featureWrapper {
+    margin-top: 31px;
+    display: flex;
+    box-shadow: ${boxShadow.md};
+    border-radius: ${radius.default};
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    width: 50%;
+    border: 2px solid ${colors.gray[500]};
+    /* border-bottom: none; */
+    /* border-right: none; */
+    padding-left: 25px;
+    padding-right: 0px;
+  }
   background-color: white;
   /* display: flex;
   flex-direction: column;
@@ -43,8 +80,8 @@ const XchairRoot = styled.section`
     padding: 20px 20px 0 20px;
     position: relative;
     flex-direction: column;
-    .content:after {
-      height: 40px;
+    /* :after {
+      height: 100px;
       width: calc(50% - 20px);
       content: "";
       bottom: 0;
@@ -55,7 +92,7 @@ const XchairRoot = styled.section`
         rgba(255, 255, 255, 1) 0%,
         rgba(255, 255, 255, 0) 100%
       );
-    }
+    } */
   }
 
   .gallery {
@@ -72,21 +109,25 @@ const XchairRoot = styled.section`
   @media (min-width: 768px) {
     .features {
       overscroll-behavior: auto;
+      scroll-padding: 50px 0px 50px 0px;
+
       scroll-snap-type: both mandatory;
-      height: 771px;
+      max-height: 871px;
       overflow-y: auto;
       scrollbar-color: #d4aa70 #e4e4e4;
       scrollbar-width: thin;
       ::-webkit-scrollbar {
-        width: 20px;
+        width: 15px;
       }
+      scroll-behavior: smooth;
+      scrollbar-width: auto;
+      scrollbar-color: #cc2228 ${colors.gray[100]};
+
       ::-webkit-scrollbar-track {
         background-color: #e4e4e4;
-        border-radius: 100px;
       }
       ::-webkit-scrollbar-thumb {
-        border-radius: 100px;
-        border: 6px solid rgba(0, 0, 0, 0.18);
+        border: 61px solid rgba(0, 0, 0, 0.18);
         border-left: 0;
         border-right: 0;
         background-color: #cc2228;
@@ -99,7 +140,7 @@ const XchairRoot = styled.section`
       width: 50%;
     }
     .features {
-      width: 50%;
+      width: 100%;
     }
   }
 `;
@@ -154,8 +195,9 @@ const Heading = styled.header`
   }
 `;
 export default function XChair({ data }) {
-  const { datoCmsXChair, headrest, wheels, memoryFoam, width, features } = data;
+  const { datoCmsXChair, headrest, wheels, memoryFoam, chairWidth } = data;
   const models = getModels();
+  const { width } = useWindowSize();
   const logos = getLogos();
   let colorSwatchs;
   let colorCB;
@@ -205,7 +247,7 @@ export default function XChair({ data }) {
     }
     if (state.width) {
       extra.push({
-        variantId: width.variants[0].storefrontId,
+        variantId: chairWidth.variants[0].storefrontId,
         quantity: 1,
       });
     }
@@ -234,7 +276,7 @@ export default function XChair({ data }) {
     <Layout bgWhite>
       {" "}
       <HelmetDatoCms seo={datoCmsXChair.seoMetaTags} />
-      <XchairRoot>
+      <XchairRoot onSubmit={handleSubmit}>
         <Heading>
           {/* <div className="xchair">
           <StaticImage
@@ -260,55 +302,66 @@ export default function XChair({ data }) {
             <ImageCarousel
               imagesArray={colorData[state.activeColor][state.activeHeadrest]}
             />
+            {width > 768 && (
+              <ChairCart
+                price={state.price}
+                comparePrice={state.compareAtPrice}
+              />
+            )}
           </div>
-          <form className="features" onSubmit={handleSubmit}>
-            <Model
-              modelCB={state.modelCB}
-              dispatch={dispatch}
-              logoImg={logos[datoCmsXChair.title]}
-            />
-            <Colors
-              colors={colorSwatchs}
-              colorCB={state.colorCB}
-              dispatch={dispatch}
-              extraColors={extraColors}
-              seatWidth={state.width}
-              memoryFoam={state.foam}
-            />
-            <Headrest
-              title={datoCmsXChair.title}
-              headrestImg={headrest.images[0]}
-              dispatch={dispatch}
-              headrestBool={state.headrest}
-              price={headrest.priceRangeV2.maxVariantPrice.amount}
-            />
-            {width ? (
-              <Width
-                activeColor={state.activeColor}
-                title={datoCmsXChair.title}
+          <div className="featureWrapper">
+            <h3 className="chairTitle">Chair Options</h3>
+            <div className="features">
+              <Model
+                modelCB={state.modelCB}
                 dispatch={dispatch}
-                widthBool={state.width}
-                price={width.variants[0].price}
+                logoImg={logos[datoCmsXChair.title]}
               />
-            ) : null}
-            {memoryFoam ? (
-              <MemoryFoam
-                activeColor={state.activeColor}
-                title={datoCmsXChair.title}
+              <Colors
+                colors={colorSwatchs}
+                colorCB={state.colorCB}
                 dispatch={dispatch}
-                foamBool={state.foam}
-                price={memoryFoam.variants[0].price}
+                extraColors={extraColors}
+                seatWidth={state.width}
+                memoryFoam={state.foam}
               />
-            ) : null}
-            <Wheels
-              wheels={wheels.variants}
-              wheelsCB={state.wheelsCB}
-              dispatch={dispatch}
-              title={datoCmsXChair.title}
-            />
-          </form>
+              <Headrest
+                title={datoCmsXChair.title}
+                headrestImg={headrest.images[0]}
+                dispatch={dispatch}
+                headrestBool={state.headrest}
+                price={headrest.priceRangeV2.maxVariantPrice.amount}
+              />
+              {chairWidth ? (
+                <Width
+                  activeColor={state.activeColor}
+                  title={datoCmsXChair.title}
+                  dispatch={dispatch}
+                  widthBool={state.width}
+                  price={chairWidth.variants[0].price}
+                />
+              ) : null}
+              {memoryFoam ? (
+                <MemoryFoam
+                  activeColor={state.activeColor}
+                  title={datoCmsXChair.title}
+                  dispatch={dispatch}
+                  foamBool={state.foam}
+                  price={memoryFoam.variants[0].price}
+                />
+              ) : null}
+              <Wheels
+                wheels={wheels.variants}
+                wheelsCB={state.wheelsCB}
+                dispatch={dispatch}
+                title={datoCmsXChair.title}
+              />
+            </div>
+          </div>
         </div>
-        <ChairCart price={state.price} comparePrice={state.compareAtPrice} />
+        {width < 768 && (
+          <ChairCart price={state.price} comparePrice={state.compareAtPrice} />
+        )}{" "}
         <Details
           extraFeatureText={datoCmsXChair.extraFeatureText}
           logoImg={logos[datoCmsXChair.title]}
@@ -368,7 +421,7 @@ export const chairQuery = graphql`
         storefrontId
       }
     }
-    width: shopifyProduct(storefrontId: { eq: $width }) {
+    chairWidth: shopifyProduct(storefrontId: { eq: $width }) {
       title
       variants {
         price

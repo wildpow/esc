@@ -7,6 +7,8 @@ import elemax from "../../../images/xChair/models/elemax.gif";
 import { OptionRoot, FeatureTitle, SingleFeature } from "./feature.styled";
 
 const ModelRoot = styled(OptionRoot)`
+  background-color: transparent;
+  padding-top: 35px;
   .modelGif {
     background-size: cover;
     object-position: 50% 50%;
