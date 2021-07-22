@@ -29,7 +29,7 @@
     "@reach/visually-hidden": "^0.15.0",
     "algoliasearch": "^4.9.1",
     "gatsby": "^3.5.1",
-    "gatsby-plugin-algolia": "^0.20.0",
+    "gatsby-plugin-algolia": "^0.22.0",
     "gatsby-plugin-canonical-urls": "^3.5.0",
     "gatsby-plugin-catch-links": "^3.5.0",
     "gatsby-plugin-emotion": "^6.6.0",
@@ -79,7 +79,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.22",
-    "husky": "^6.0.0",
+    "husky": "^7.0.1",
     "prettier": "^2.3.0",
     "tailwindcss": "^2.1.4",
     "twin.macro": "^2.4.1"
