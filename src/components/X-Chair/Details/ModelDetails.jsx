@@ -37,7 +37,7 @@ const ModelDetailWrapper = styled.div`
   }
   h4 {
     margin: 0;
-    height: 58px;
+    height: 50px;
     max-width: 400px;
     text-align: center;
     font-weight: 300;
@@ -60,9 +60,7 @@ const ModelDetailWrapper = styled.div`
       content: "";
       width: 10px;
     }
-    ::-webkit-scrollbar {
-      display: none;
-    }
+
     grid-gap: calc(var(--gutter) * 1.5 + 1vw);
     grid-template-columns: 1rem;
     grid-template-rows: minmax(10rem, 1fr);
@@ -73,29 +71,51 @@ const ModelDetailWrapper = styled.div`
     scroll-snap-points-x: repeat(100%);
     scroll-snap-type: mandatory;
     scroll-snap-destination: 100% 0%;
-    padding-bottom: calc(0.75 * var(--gutter));
-    margin-bottom: calc(-0.25 * var(--gutter));
+    /* padding-bottom: calc(0.75 * var(--gutter)); */
+    /* margin-bottom: calc(-0.25 * var(--gutter)); */
     -webkit-overflow-scrolling: touch;
-    :hover .item {
-      opacity: 0.6;
-      filter: blur(2px);
+    scrollbar-color: #d4aa70 #e4e4e4;
+    scrollbar-width: thin;
+    ::-webkit-scrollbar {
+      width: 15px;
     }
+    scroll-behavior: smooth;
+    scrollbar-width: auto;
+    scrollbar-color: #cc2228 ${colors.gray[100]};
+
+    ::-webkit-scrollbar-track {
+      background-color: #e4e4e4;
+    }
+    ::-webkit-scrollbar-thumb {
+      border: 61px solid rgba(0, 0, 0, 0.18);
+      border-left: 0;
+      border-right: 0;
+      background-color: #cc2228;
+    }
+    /* scroll-padding: 20px 0px 20px 0px; */
+
     .item {
-      border: 1px solid ${colors.gray[200]};
+      ul {
+        margin-bottom: 0;
+      }
+      /* border: 1px solid ${colors.gray[200]}; */
       background-color: white;
       box-shadow: ${boxShadow.md};
       display: flex;
       flex-direction: column;
       width: 100%;
+      flex: 1;
       scroll-snap-align: center;
       padding: calc(var(--gutter) / 2 * 1.5);
+      padding-top: 0;
+      padding-bottom: 0%;
       transition: all var(--speed);
       font-family: ${fonts.sans};
       /* margin-left: 5rem; */
-      :hover {
+      /* :hover {
         opacity: 1 !important;
         filter: blur(0) !important;
-      }
+      } */
     }
     .item:nth-last-child {
       margin-right: 5rem;

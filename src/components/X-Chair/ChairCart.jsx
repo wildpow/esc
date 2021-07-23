@@ -60,7 +60,7 @@ const CartWrapper = styled.div`
     background-color: white;
     border: none;
     .cartContent {
-      padding: 0;
+      padding: 0 20px;
     }
   }
 `;
