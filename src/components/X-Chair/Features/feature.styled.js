@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { fonts, spacing } from "../../../styles/theme.styled";
+import { fonts, spacing, breakpoints } from "../../../styles/theme.styled";
 
 const notAvailable = ({ colorCheck }) =>
   colorCheck &&
@@ -33,13 +33,21 @@ export const OptionRoot = styled.div`
   .optionWrapper {
     flex-direction: column;
     display: flex;
-    gap: 40px;
-    padding-left: 40px;
+    gap: 20px;
+    padding-left: 50px;
     padding-top: 20px;
+    padding-right: 10px;
   }
-  @media (min-width: 768px) {
+
+  @media (min-width: ${breakpoints.phablet}) {
     .optionWrapper {
       flex-direction: row;
+      justify-content: flex-start;
+    }
+  }
+  @media (min-width: ${breakpoints.md}) {
+    .optionWrapper {
+      gap: 40px;
     }
   }
 `;
@@ -48,6 +56,7 @@ export const FeatureTitle = styled.div`
   display: flex;
   justify-items: center;
   align-items: center;
+  padding-left: 15px;
   font-family: ${fonts.sans};
   h3 {
     margin: 0;

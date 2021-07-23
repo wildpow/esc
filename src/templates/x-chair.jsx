@@ -18,12 +18,11 @@ import {
   MemoryFoam,
   Model,
 } from "../components/X-Chair/Features";
-
+import NewWheel from "../components/X-Chair/Features/newWheels";
 import getX1images from "../components/X-Chair/query/getX1Images.query";
 import getX2images from "../components/X-Chair/query/getX2images.query";
 import getX3images from "../components/X-Chair/query/getX3images.query";
 import getX4images from "../components/X-Chair/query/getX4Images.query";
-// import { colors, spacing } from "../styles/theme.styled";
 import { useStore } from "../contexts/Store.ctx";
 import ChairCart from "../components/X-Chair/ChairCart";
 import getModels from "../components/X-Chair/query/getModel.query";
@@ -43,41 +42,31 @@ const XchairRoot = styled.form`
     margin: 0;
     position: absolute;
     background-color: ${colors.gray[100]};
-    /* padding-right: 5px;
-    padding-left: 5px; */
     padding: 7px 10px;
     font-family: ${fonts.sans};
     border: 2px solid ${colors.blue[800]};
     top: -20px;
     z-index: 20;
-    left: 20px;
+    left: 15px;
     color: ${colors.gray[800]};
   }
   .featureWrapper {
+    padding-left: 0px;
     margin-top: 31px;
     display: flex;
-    box-shadow: ${boxShadow.md};
-    border-radius: ${radius.default};
     align-items: flex-start;
     flex-direction: column;
     position: relative;
     width: 100%;
-    border: 2px solid ${colors.gray[500]};
-    /* border-bottom: none; */
-    /* border-right: none; */
-    padding-left: 25px;
     padding-right: 0px;
   }
   background-color: white;
-  /* display: flex;
-  flex-direction: column;
-  align-items: flex-end; */
   width: 100%;
   .content {
     display: flex;
     width: 100%;
     justify-content: center;
-    padding: 20px 20px 0 20px;
+    padding: 20px 5px 0 5px;
     position: relative;
     flex-direction: column;
     /* :after {
@@ -105,7 +94,7 @@ const XchairRoot = styled.form`
     display: flex;
     flex-direction: column;
     gap: 30px;
-    /* scroll-padding: 50px 0px 0px 50px; */
+    border-top: 2px solid ${colors.gray[500]};
     position: relative;
     width: 100%;
   }
@@ -138,6 +127,7 @@ const XchairRoot = styled.form`
     }
     .content {
       flex-direction: row;
+      padding: 20px 20px 0 20px;
     }
     .gallery {
       width: 50%;
@@ -147,20 +137,17 @@ const XchairRoot = styled.form`
     }
     .featureWrapper {
       width: 50%;
+      border: 2px solid ${colors.gray[500]};
+      box-shadow: ${boxShadow.md};
+      border-radius: ${radius.default};
+      padding-left: 25px;
     }
   }
 `;
 const Heading = styled.header`
   display: flex;
-  /* border-bottom: 2px solid black; */
   justify-content: space-evenly;
   width: 100%;
-  /* .xchair {
-    width: 100%;
-    height: auto;
-  } */
-  /* Not sure about this negitive margin */
-  /* margin-bottom: -20px; */
   h2 {
     margin-bottom: 0;
     position: relative;
@@ -284,15 +271,6 @@ export default function XChair({ data }) {
       <HelmetDatoCms seo={datoCmsXChair.seoMetaTags} />
       <XchairRoot onSubmit={handleSubmit}>
         <Heading>
-          {/* <div className="xchair">
-          <StaticImage
-            src="../images/xChair/logo.png"
-            formats={["avif", "png"]}
-            layout="constrained"
-            width={250}
-            alt="x-chair logo"
-          />
-        </div> */}
           <h2>
             <div className="title">
               <GatsbyImage
@@ -367,7 +345,7 @@ export default function XChair({ data }) {
         </div>
         {width < 768 && (
           <ChairCart price={state.price} comparePrice={state.compareAtPrice} />
-        )}{" "}
+        )}
         <Details
           extraFeatureText={datoCmsXChair.extraFeatureText}
           logoImg={logos[datoCmsXChair.title]}
@@ -465,7 +443,7 @@ export const chairQuery = graphql`
         price
         title
         image {
-          gatsbyImageData(layout: CONSTRAINED, height: 103)
+          gatsbyImageData(layout: CONSTRAINED, height: 206)
         }
       }
       priceRangeV2 {

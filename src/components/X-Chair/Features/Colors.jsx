@@ -46,8 +46,9 @@ const ColorRoot = styled.div`
     font-family: ${fonts.sans};
   }
   .colorsWrapper {
-    padding-left: 35px;
+    padding-left: 45px;
     display: grid;
+    padding-top: 20px;
     grid-gap: 20px;
     grid-auto-flow: column;
     grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
