@@ -4,7 +4,7 @@ export const colorSwatch = graphql`
   fragment colorSwatch on File {
     childImageSharp {
       gatsbyImageData(
-        layout: CONSTRAINED
+        layout: FIXED
         width: 60
         height: 60
         formats: [AUTO, AVIF, WEBP]

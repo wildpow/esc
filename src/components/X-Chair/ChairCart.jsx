@@ -27,11 +27,12 @@ const CartWrapper = styled.div`
   position: sticky;
   /* width: 100%;
   height: 100px; */
-  background-color: ${colors.gray[200]};
-  border: 2px solid ${colors.gray[800]};
+  background-color: ${colors.gray[100]};
+  border: 1px solid ${colors.gray[800]};
   bottom: 0;
   right: 0;
   z-index: 20;
+  width: 70%;
   .cartContent {
     display: flex;
     flex-direction: column;
@@ -43,13 +44,13 @@ const CartWrapper = styled.div`
     margin: 0 auto;
   }
   .salePrice {
-    font-size: ${fontSize["4xl"]};
+    font-size: ${fontSize.lg};
   }
   .regularPrice {
     text-decoration: line-through;
     color: red;
     text-align: end;
-    font-size: ${fontSize.base};
+    font-size: ${fontSize.sm};
   }
   .cartPrice {
     display: flex;
@@ -58,9 +59,13 @@ const CartWrapper = styled.div`
   }
   @media (min-width: 768px) {
     background-color: white;
+    width: 100%;
     border: none;
     .cartContent {
       padding: 0 20px;
+    }
+    .salePrice {
+      font-size: ${fontSize["4xl"]};
     }
   }
 `;

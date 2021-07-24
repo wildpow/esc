@@ -18,7 +18,6 @@ import {
   MemoryFoam,
   Model,
 } from "../components/X-Chair/Features";
-import NewWheel from "../components/X-Chair/Features/newWheels";
 import getX1images from "../components/X-Chair/query/getX1Images.query";
 import getX2images from "../components/X-Chair/query/getX2images.query";
 import getX3images from "../components/X-Chair/query/getX3images.query";
@@ -94,11 +93,14 @@ const XchairRoot = styled.form`
     display: flex;
     flex-direction: column;
     gap: 30px;
-    border-top: 2px solid ${colors.gray[500]};
     position: relative;
     width: 100%;
   }
-  @media (min-width: 768px) {
+  .featureWrapper {
+    border-top: 2px solid ${colors.gray[500]};
+    border-bottom: 2px solid ${colors.gray[500]};
+  }
+  @media (min-width: 1028px) {
     .features {
       overscroll-behavior: auto;
       scroll-padding: 50px 0px 50px 0px;
@@ -136,11 +138,23 @@ const XchairRoot = styled.form`
       width: 100%;
     }
     .featureWrapper {
+      width: 60%;
+      /* border: 2px solid ${colors.gray[500]};
+      box-shadow: ${boxShadow.md};
+      border-radius: ${radius.default}; */
+      /* padding-left: 25px; */
+    }
+  }
+  @media (min-width: 1250px) {
+    .gallery {
       width: 50%;
+    }
+    .featureWrapper {
+      width: 50%;
+      padding-left: 25px;
       border: 2px solid ${colors.gray[500]};
       box-shadow: ${boxShadow.md};
       border-radius: ${radius.default};
-      padding-left: 25px;
     }
   }
 `;

@@ -34,6 +34,8 @@ const ElemaxRoot = styled.article`
   }
   .elemaxFeature {
     flex: 1;
+    max-width: 600px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
   }
@@ -86,6 +88,7 @@ const ElemaxContent = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   flex: 1;
+  background-size: cover;
   padding: 10px 25px 10px 25px;
   background-image: url(${(props) => props.bg});
   color: white;

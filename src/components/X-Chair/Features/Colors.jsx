@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useState } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { fonts } from "../../../styles/theme.styled";
+import { breakpoints, fonts } from "../../../styles/theme.styled";
 import {
   memoryFoamAvailableColors,
   widthAvailableColors,
@@ -46,10 +46,10 @@ const ColorRoot = styled.div`
     font-family: ${fonts.sans};
   }
   .colorsWrapper {
-    padding-left: 45px;
+    margin-top: 10px;
+    padding-left: 15px;
     display: grid;
-    padding-top: 20px;
-    grid-gap: 20px;
+    grid-gap: 10px;
     grid-auto-flow: column;
     grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
     align-items: center;
@@ -58,6 +58,12 @@ const ColorRoot = styled.div`
   h4 {
     font-family: ${fonts.sans};
     font-weight: 400;
+    margin: 10px 0;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    .colorsWrapper {
+      padding-left: 50px;
+    }
   }
 `;
 const SingleColor = styled.div`

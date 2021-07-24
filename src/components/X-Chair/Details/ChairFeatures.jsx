@@ -12,6 +12,7 @@ const FeatureWrapper = styled.div`
   justify-items: center;
   align-items: center; */
   margin: 0 auto;
+  gap: 40px;
 `;
 
 const SingleFeature = styled.div`

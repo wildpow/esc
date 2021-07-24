@@ -34,7 +34,7 @@ export const OptionRoot = styled.div`
     flex-direction: column;
     display: flex;
     gap: 20px;
-    padding-left: 50px;
+    padding-left: 10px;
     padding-top: 20px;
     padding-right: 10px;
   }
@@ -45,9 +45,21 @@ export const OptionRoot = styled.div`
       justify-content: flex-start;
     }
   }
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.lg}) {
+    .optionWrapper {
+      padding-left: 10px;
+    }
+  }
+  @media (min-width: 1300px) {
     .optionWrapper {
       gap: 40px;
+      padding-left: 30px;
+    }
+  }
+  @media (min-width: 1500px) {
+    .optionWrapper {
+      gap: 40px;
+      padding-left: 50px;
     }
   }
 `;
