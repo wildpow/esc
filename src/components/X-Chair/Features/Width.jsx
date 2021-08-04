@@ -3,42 +3,52 @@ import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import { OptionRoot, FeatureTitle, SingleFeature } from "./feature.styled";
 import { widthAvailableColors } from "./availableColorVaraints";
+import FeaturePopup from "./FeaturePopup";
 
 const width = (s) => {
   switch (s) {
     case "Leather Exec":
-      return [
-        <StaticImage
-          src="../../../images/xChair/widths/x4_blk_le_std_1.jpg"
-          alt="stuf"
-        />,
-        <StaticImage
-          src="../../../images/xChair/widths/x4_blk_ws.jpg"
-          alt="stuf"
-        />,
-      ];
+      return {
+        images: [
+          <StaticImage
+            src="../../../images/xChair/widths/x4_blk_le_std_1.jpg"
+            alt="stuf"
+          />,
+          <StaticImage
+            src="../../../images/xChair/widths/x4_blk_ws.jpg"
+            alt="stuf"
+          />,
+        ],
+        popupContent: `Available in Black Leather and Black Brisa, the X4 offers and Extended Width seat option that comes with 1.5" of additional surface area.`,
+      };
     case "ATR Fabric":
-      return [
-        <StaticImage
-          src="../../../images/xChair/widths/x3_blk_std_1__1.jpg"
-          alt="stuf"
-        />,
-        <StaticImage
-          src="../../../images/xChair/widths/x3_blk_ws_1__2.jpg"
-          alt="stuf"
-        />,
-      ];
+      return {
+        images: [
+          <StaticImage
+            src="../../../images/xChair/widths/x3_blk_std_1__1.jpg"
+            alt="stuf"
+          />,
+          <StaticImage
+            src="../../../images/xChair/widths/x3_blk_ws_1__2.jpg"
+            alt="stuf"
+          />,
+        ],
+        popupContent: `"Available in Black and Grey, the X3 offers an Extended Width seat option that comes with 1.5" of additional surface area.`,
+      };
     default:
-      return [
-        <StaticImage
-          src="../../../images/xChair/widths/x2_std_4.jpg"
-          alt="stuf"
-        />,
-        <StaticImage
-          src="../../../images/xChair/widths/x2_ws_2_.jpg"
-          alt="stuf"
-        />,
-      ];
+      return {
+        images: [
+          <StaticImage
+            src="../../../images/xChair/widths/x2_std_4.jpg"
+            alt="stuf"
+          />,
+          <StaticImage
+            src="../../../images/xChair/widths/x2_ws_2_.jpg"
+            alt="stuf"
+          />,
+        ],
+        popupContent: `Available in Black only, the X2 offers and Extended Width seat option that comes with 1" of additional surface area.`,
+      };
   }
 };
 export default function Width({
@@ -58,6 +68,7 @@ export default function Width({
         <span>4</span>
 
         <h3>Seat Width</h3>
+        <FeaturePopup content={modelWidth.popupContent} />
       </FeatureTitle>
       <div className="optionWrapper">
         <SingleFeature>
@@ -68,7 +79,7 @@ export default function Width({
             checked={!widthBool}
           />
           <label htmlFor="standardWidth">
-            <div>{modelWidth[0]}</div>
+            <div>{modelWidth.images[0]}</div>
           </label>
           <div className="titleContainer">
             <h4>Standard Width</h4>
@@ -82,7 +93,7 @@ export default function Width({
             checked={widthBool}
           />
           <label htmlFor="wideWidth">
-            <div className="container">{modelWidth[1]}</div>
+            <div className="container">{modelWidth.images[1]}</div>
           </label>
           <div className="titleContainer">
             <h4>Extended Width</h4>

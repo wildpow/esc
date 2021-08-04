@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
 import getNoHeadrest from "../query/getNoHeadrest.query";
 import { OptionRoot, FeatureTitle, SingleFeature } from "./feature.styled";
+import FeaturePopup from "./FeaturePopup";
 
 const HeadrestRoot = styled(OptionRoot)`
   .headrest {
@@ -30,6 +31,12 @@ export default function Headrest({
         <span>3</span>
 
         <h3>Headrest</h3>
+        <FeaturePopup
+          content="
+            X-Chair's innovative, removable headrest features adjustable
+            height and angle. No matter what position you sit in, X-Chair's
+            headrest can pivot to keep you comfortable."
+        />
       </FeatureTitle>
       <div className="optionWrapper">
         <SingleFeature>

@@ -32,6 +32,8 @@ import {
   boxShadow,
   radius,
   colors,
+  breakpoints,
+  spacing,
 } from "../styles/theme.styled";
 import Details from "../components/X-Chair/Details";
 import ImageCarousel from "../components/X-Chair/NewImageCaroucel";
@@ -100,7 +102,13 @@ const XchairRoot = styled.form`
     border-top: 2px solid ${colors.gray[500]};
     border-bottom: 2px solid ${colors.gray[500]};
   }
-  @media (min-width: 1028px) {
+  @media (min-width: ${breakpoints.phablet}) {
+    .featureWrapper {
+      margin: ${spacing[8]} auto 0 auto;
+      width: auto;
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
     .features {
       overscroll-behavior: auto;
       scroll-padding: 50px 0px 50px 0px;

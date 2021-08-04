@@ -3,9 +3,14 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
 import { OptionRoot, FeatureTitle, SingleFeature } from "./feature.styled";
+import { breakpoints } from "../../../styles/theme.styled";
+import FeaturePopup from "./FeaturePopup";
 
 const WheelRoot = styled(OptionRoot)`
   padding-bottom: 25px;
+  @media (min-width: ${breakpoints.lg}) {
+    padding-bottom: 10px;
+  }
 `;
 const titleNumber = (title) => {
   if (title === "K-Sport Mgmt") {
@@ -23,6 +28,7 @@ export default function Wheels({ wheels, wheelsCB, dispatch, title }) {
         <span>{titleNumber(title)}</span>
 
         <h3>Add X-Wheels</h3>
+        <FeaturePopup content="Featuring 100% rubberized blade wheels and a free ball-bearing core. X-Wheel Casters are quieter and smoother. They work better on hardwood and pile carpet alike, and they are more gentle on tile, hardwood, vinyl, carpet and almost any surface." />
       </FeatureTitle>
       <div className="optionWrapper">
         {wheelsCB.map((checkBox, index) => (
