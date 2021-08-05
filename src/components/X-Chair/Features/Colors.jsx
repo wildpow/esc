@@ -10,6 +10,7 @@ import {
   widthAvailableColors,
 } from "./availableColorVaraints";
 import { FeatureTitle } from "./feature.styled";
+import FeaturePopup from "./FeaturePopup";
 
 const notAvailable = ({ width, foam, title }) => {
   if (
@@ -94,18 +95,28 @@ export default function ColorOptions({
   extraColors,
   seatWidth,
   memoryFoam,
+  popupContent,
 }) {
   const [activeColor, setActiveColor] = useState(colors[0].title);
   const onColorChange = (index, title) => {
     setActiveColor(title);
     dispatch({ type: "color", index, title });
   };
+  const stuff =
+    popupContent === null ? (
+      <div>
+        <h2>X-4 stuff</h2>
+      </div>
+    ) : (
+      popupContent
+    );
   return (
     <ColorRoot>
       <FeatureTitle>
         <span>2</span>
 
         <h3>{`Select Fabric: ${activeColor}`}</h3>
+        <FeaturePopup content={stuff} />
       </FeatureTitle>
 
       <div className="colorsWrapper">

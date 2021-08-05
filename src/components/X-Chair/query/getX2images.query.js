@@ -109,6 +109,7 @@ export default () => {
     `
   );
   return {
+    popupContent: `K-Sport Advanced Performance Material provides all the benefits of standard mesh but with a softer, more adaptive feel. X2's K-Sport Advanced Performance Material features a tighter weave for even more comfort.`,
     colors: [
       { title: "White K-Sport", img: whiteColorImg, index: 0 },
       { title: "Grey K-Sport", img: greyColorImg, index: 1 },
