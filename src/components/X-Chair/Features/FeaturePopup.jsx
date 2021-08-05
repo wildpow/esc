@@ -28,8 +28,11 @@ export default function FeaturePopup({ content }) {
           <QuestionMark />
         </PopupButton>
       )}
-      position="right center"
+      position="top center"
       closeOnDocumentClick
+      closeOnEscape
+      repositionOnResize
+      keepTooltipInside
       arrow="center center"
     >
       <span>{content}</span>
