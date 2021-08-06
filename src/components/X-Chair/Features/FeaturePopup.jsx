@@ -22,7 +22,7 @@ const PopupButton = styled.button`
 export default function FeaturePopup({ content }) {
   return (
     <StyledPopup
-      on={["hover", "focus"]}
+      // on={["hover", "focus"]}
       trigger={() => (
         <PopupButton className="button" type="button">
           <QuestionMark />
@@ -32,6 +32,7 @@ export default function FeaturePopup({ content }) {
       closeOnDocumentClick
       closeOnEscape
       repositionOnResize
+      // modal
       keepTooltipInside
       arrow="center center"
     >

@@ -191,22 +191,15 @@ const Heading = styled.header`
       background-color: #ec1221;
       background-color: #cc2228;
     }
-    .title {
-      max-width: 80px;
-      padding-top: -3px;
+  }
+  .title {
+    max-width: 80px;
+    padding-top: -3px;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    h2 {
+      font-size: ${fontSize["4xl"]};
     }
-    /* span {
-      position: relative;
-      ::after {
-        content: "";
-        position: absolute;
-        width: 110%;
-        height: 4px;
-        bottom: 0;
-        left: 0;
-        background-color: #dadada;
-      }
-    } */
   }
 `;
 export default function XChair({ data }) {

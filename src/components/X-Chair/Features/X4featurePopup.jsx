@@ -4,26 +4,76 @@ import styled from "@emotion/styled";
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
 import "reactjs-popup/dist/index.css";
 import QuestionMark from "../../../svgs/question-circle-solid.svg";
-import { fonts } from "../../../styles/theme.styled";
+import {
+  colors,
+  fonts,
+  fontSize,
+  breakpoints,
+} from "../../../styles/theme.styled";
 
-const X4popup = styled.div`
-  /* padding: 40px;
-  display: flex; */
+const X4popup = styled(Popup)`
+  &-content {
+    width: 85% !important;
+    max-width: 550px;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    &-content {
+      width: 45%;
+    }
+  }
 `;
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 15px 10px;
+  gap: 30px;
+  font-family: ${fonts.sans};
   .popupCard {
     width: 100%;
     display: flex;
+    flex-direction: column;
     flex: 1;
-    /* max-width: 250px; */
   }
   .popupCardImg {
-    width: 30%;
+    width: 100%;
   }
   .popupCardContent {
-    width: 70%;
+    width: 100%;
+    /* padding-right: 10px; */
+    padding-left: 10px;
+    h5 {
+      margin: 0;
+      font-size: ${fontSize.lg};
+    }
+    p {
+      font-weight: 400;
+      max-width: 255px;
+    }
+  }
+  .popupColors {
+    display: flex;
+    gap: 20px;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+  .smImg {
+    border-radius: 50%;
+    border: 1px solid ${colors.gray["800"]};
+  }
+  @media (min-width: ${breakpoints.md}) {
+    .popupCardContent {
+      width: 70%;
+    }
+    .popupCardImg {
+      width: 30%;
+    }
+    .popupCard {
+      flex-direction: row;
+    }
   }
 `;
 const PopupButton = styled.button`
@@ -32,10 +82,10 @@ const PopupButton = styled.button`
   background: none;
 `;
 export default function X4featurePopup() {
-  const contentStyle = { width: "auto" };
+  // const contentStyle = { width: "45%", maxWidth: "550px" };
 
   return (
-    <Popup
+    <X4popup
       // on={["hover", "focus"]}
       // {...{ contentStyle }}
       trigger={() => (
@@ -48,9 +98,14 @@ export default function X4featurePopup() {
       // closeOnEscape
       // repositionOnResize
       // keepTooltipInside
-      // arrow="center center"
-      keepTooltipInside
-      position={["top center", "bottom right", "bottom left"]}
+      closeOnEscape
+      repositionOnResize
+      // keepTooltipInside
+      closeOnDocumentClick
+      // position={["top center", "bottom right", "bottom left"]}
+      // arrow={["top center", "bottom right", "bottom left"]}
+      arrow="top center"
+      position="bottom right"
     >
       {/* <X4popup> */}
       <ContentWrapper>
@@ -60,7 +115,7 @@ export default function X4featurePopup() {
               src="../../../images/xChair/x4Popup/l.png"
               alt="t"
               layout="constrained"
-              width={200}
+              width={150}
             />
           </div>
           <div className="popupCardContent">
@@ -71,8 +126,39 @@ export default function X4featurePopup() {
               and Brown our Top Grain Leather is designed to impress.
             </p>
             <div className="popupColors">
-              <div>Black</div>
-              <div>Cognac</div>
+              <div>
+                <StaticImage
+                  alt="st"
+                  src="../../../images/xChair/xFour/black/black-leather.jpg"
+                  className="smImg"
+                  width={30}
+                  height={30}
+                  layout="fixed"
+                />
+                Black
+              </div>
+              <div>
+                <StaticImage
+                  alt="st"
+                  src="../../../images/xChair/xFour/cognac/cognac-leather.jpg"
+                  className="smImg"
+                  width={30}
+                  height={30}
+                  layout="fixed"
+                />
+                Cognac
+              </div>
+              <div>
+                <StaticImage
+                  alt="st"
+                  src="../../../images/xChair/xFour/brown/brown-leather.jpg"
+                  className="smImg"
+                  width={30}
+                  height={30}
+                  layout="fixed"
+                />
+                brown
+              </div>
             </div>
           </div>
         </div>
@@ -82,7 +168,7 @@ export default function X4featurePopup() {
               src="../../../images/xChair/x4Popup/pl.png"
               alt="t"
               layout="constrained"
-              width={200}
+              width={150}
             />
           </div>
           <div className="popupCardContent">
@@ -94,18 +180,40 @@ export default function X4featurePopup() {
               office stylishly.
             </p>
             <div className="popupColors">
-              <div>White</div>
-              <div>Red</div>
+              <div>
+                <StaticImage
+                  alt="st"
+                  src="../../../images/xChair/xFour/white/attribute_swatch_0005_x4white.jpg"
+                  className="smImg"
+                  width={30}
+                  height={30}
+                  layout="fixed"
+                />
+                White
+              </div>
+              <div>
+                <StaticImage
+                  alt="st"
+                  src="../../../images/xChair/xFour/red/attribute_swatch_0004_x4red.jpg"
+                  className="smImg"
+                  width={30}
+                  height={30}
+                  layout="fixed"
+                />
+                Red
+              </div>
             </div>
           </div>
         </div>
         <div className="popupCard">
-          <StaticImage
-            src="../../../images/xChair/x4Popup/b.png"
-            alt="t"
-            layout="constrained"
-            width={200}
-          />
+          <div className="popupCardImg">
+            <StaticImage
+              src="../../../images/xChair/x4Popup/b.png"
+              alt="t"
+              layout="constrained"
+              width={150}
+            />
+          </div>
           <div className="popupCardContent">
             <h5>Brisa</h5>
             <p>
@@ -115,14 +223,44 @@ export default function X4featurePopup() {
               aesthetic, Brisa is truely a fabric made for the senses.
             </p>
             <div className="popupColors">
-              <div>Black</div>
-              <div>Brown</div>
-              <div>Rose</div>
+              <div>
+                <StaticImage
+                  alt="st"
+                  src="../../../images/xChair/xFour/blackBrisa/black_1_1.jpg"
+                  className="smImg"
+                  width={30}
+                  height={30}
+                  layout="fixed"
+                />
+                Black
+              </div>
+              <div>
+                <StaticImage
+                  alt="st"
+                  src="../../../images/xChair/xFour/brownBrisa/brown.jpg"
+                  className="smImg"
+                  width={30}
+                  height={30}
+                  layout="fixed"
+                />
+                Brown
+              </div>
+              <div>
+                <StaticImage
+                  alt="st"
+                  src="../../../images/xChair/xFour/rose/rose.jpg"
+                  className="smImg"
+                  width={30}
+                  height={30}
+                  layout="fixed"
+                />
+                Rose
+              </div>
             </div>
           </div>
         </div>
       </ContentWrapper>
       {/* </X4popup> */}
-    </Popup>
+    </X4popup>
   );
 }
