@@ -11,6 +11,7 @@ import {
 } from "./availableColorVaraints";
 import { FeatureTitle } from "./feature.styled";
 import FeaturePopup from "./FeaturePopup";
+import X4featurePopup from "./X4featurePopup";
 
 const notAvailable = ({ width, foam, title }) => {
   if (
@@ -102,21 +103,17 @@ export default function ColorOptions({
     setActiveColor(title);
     dispatch({ type: "color", index, title });
   };
-  const stuff =
-    popupContent === null ? (
-      <div>
-        <h2>X-4 stuff</h2>
-      </div>
-    ) : (
-      popupContent
-    );
+
   return (
     <ColorRoot>
       <FeatureTitle>
         <span>2</span>
-
         <h3>{`Select Fabric: ${activeColor}`}</h3>
-        <FeaturePopup content={stuff} />
+        {popupContent ? (
+          <FeaturePopup content={popupContent} />
+        ) : (
+          <X4featurePopup />
+        )}
       </FeatureTitle>
 
       <div className="colorsWrapper">
