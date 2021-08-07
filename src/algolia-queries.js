@@ -1,5 +1,18 @@
 const indexName = `Products`;
 
+const chairs = `{
+ chairs:  allDatoCmsXChair {
+    nodes {
+      title
+      searchDetails
+      slug
+      id
+      typeOfProduct {
+        title
+      }
+    }
+  }
+}`;
 const products = `{
   products: allDatoCmsProduct {
     nodes {
@@ -58,7 +71,24 @@ function productToAlgoliaRecord({
     ...rest,
   };
 }
-
+function xChairtoAlgoliaRecord({
+  id,
+  title,
+  searchDetails,
+  slug,
+  typeOfProduct,
+  ...rest
+}) {
+  return {
+    objectID: id,
+    slug: `/x-chair/${slug}`,
+    title,
+    productType: typeOfProduct.title,
+    brand: "X-Chair",
+    description: searchDetails,
+    ...rest,
+  };
+}
 function mattressesToAlgoliaRecord({
   id,
   slug,
@@ -91,6 +121,15 @@ const queries = [
   {
     query: products,
     transformer: ({ data }) => data.products.nodes.map(productToAlgoliaRecord),
+    indexName,
+    settings: {
+      attributesToSnippet: [`description:20`],
+      searchableAttributes: ["title", `productType`, `brand`, `description`],
+    },
+  },
+  {
+    query: chairs,
+    transformer: ({ data }) => data.chairs.nodes.map(xChairtoAlgoliaRecord),
     indexName,
     settings: {
       attributesToSnippet: [`description:20`],
