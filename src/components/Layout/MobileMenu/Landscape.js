@@ -211,9 +211,9 @@ const Landscape = () => (
           activeStyle={{
             backgroundColor: "rgba(235, 28, 26, 0.9)",
           }}
-          to="/accessories"
+          to="/x-chair"
         >
-          Accessories
+          X-Chair
         </StyledLink>
       </Holder>
       <Holder>
@@ -226,10 +226,11 @@ const Landscape = () => (
           activeStyle={{
             backgroundColor: "rgba(235, 28, 26, 0.9)",
           }}
-          to="/financing"
+          to="/accessories"
         >
-          Financing
+          Accessories
         </StyledLink>
+
         <StyledLink
           onClick={() => {
             document.body.style.overflow = "visible";
@@ -293,10 +294,23 @@ const Landscape = () => (
           activeStyle={{
             backgroundColor: "rgba(235, 28, 26, 0.9)",
           }}
+          to="/financing"
+        >
+          Financing
+        </StyledLink>
+        {/* <StyledLink
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+          partiallyActive
+          activeStyle={{
+            backgroundColor: "rgba(235, 28, 26, 0.9)",
+          }}
           to="/sitemap"
         >
           Site Map
-        </StyledLink>
+        </StyledLink> */}
       </Holder>
     </Wrapper>
   </>

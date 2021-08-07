@@ -12,6 +12,7 @@ import {
 const menuData = [
   { name: "Mattresses", url: "/brands" },
   { name: "Adjustable Bases", url: "/adjustable" },
+  { name: "X-Chair", url: "/x-chair" },
   { name: "Accessories", url: "/accessories" },
   { name: "Financing", url: "/financing" },
   { name: "Our Blog", url: "/blog" },
