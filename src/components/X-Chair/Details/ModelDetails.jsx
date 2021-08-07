@@ -20,6 +20,7 @@ const ModelDetailWrapper = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   column-gap: ${spacing[10]};
+  margin-bottom: ${spacing[10]};
   .item {
     flex: 1;
     display: flex;

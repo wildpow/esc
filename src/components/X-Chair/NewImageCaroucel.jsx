@@ -25,7 +25,7 @@ const ChairSmWrap = styled(SmImgWrap)`
   @media (min-width: 1024px) {
     width: 168px;
     width: calc(400px / 3);
-    height: 167px;
+    height: 135px;
   }
 `;
 const ImageCarousel = ({ imagesArray, alt }) => {

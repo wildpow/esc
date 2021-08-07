@@ -6,6 +6,7 @@ import {
   fonts,
   fontSize,
   spacing,
+  breakpoints,
 } from "../../styles/theme.styled";
 // import ShopingCart from "../../../svgs/shopping-cart-solid.svg";
 // import {
@@ -70,6 +71,9 @@ const CartWrapper = styled.div`
     .salePrice {
       font-size: ${fontSize["4xl"]};
     }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    padding-top: 20px;
   }
 `;
 export default function ChairCart({ comparePrice, price }) {

@@ -11,7 +11,7 @@ const DetailSection = styled.div`
   padding: 0 ${spacing[4]};
   font-family: ${fonts.sans};
   h3 {
-    margin-bottom: ${spacing[3]};
+    margin-bottom: ${spacing[10]};
     font-family: ${fonts.sans};
     width: 100%;
     font-size: ${fontSize["5xl"]};

@@ -4,11 +4,13 @@ import coolBackground from "../../../images/xChair/elemax/cooling-background.png
 import heatBackground from "../../../images/xChair/elemax/heat-background.png";
 import messageBackground from "../../../images/xChair/elemax/modes-background.png";
 import intensityBackground from "../../../images/xChair/elemax/intensity-background.png";
-import { fonts, fontSize } from "../../../styles/theme.styled";
+import { fonts, fontSize, spacing } from "../../../styles/theme.styled";
 import HeatIcon from "../../../svgs/icon-heat.svg";
 
 const ElemaxRoot = styled.article`
   font-family: ${fonts.sans};
+  margin-bottom: ${spacing[10]};
+
   header {
     display: flex;
     flex-direction: column;

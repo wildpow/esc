@@ -125,7 +125,8 @@ const XchairRoot = styled.form`
     }
     .mainRootContent {
       flex-direction: row;
-      padding: 20px 20px 0 20px;
+      padding: 20px 20px 20px 20px;
+      align-items: flex-end;
     }
     .gallery {
       width: 50%;
