@@ -18,8 +18,19 @@ exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
 };
 
 exports.createPages = async ({ actions, graphql }) => {
+  // let brisa = "";
+  // let premiumLeather = "";
   const { data } = await graphql(`
     query {
+      xChairs: allDatoCmsXChair {
+        nodes {
+          title
+          headrest
+          chairWidth
+          memoryFoam
+          slug
+        }
+      }
       adjustables: allDatoCmsProduct(
         filter: { typeOfProduct: { title: { eq: "Adjustable" } } }
       ) {
@@ -60,6 +71,18 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `);
+  data.xChairs.nodes.forEach((chair) => {
+    actions.createPage({
+      path: `/x-chair/${chair.slug}`,
+      component: path.resolve(`src/templates/x-chair.jsx`),
+      context: {
+        slug: chair.slug,
+        headrest: chair.headrest,
+        width: chair.chairWidth,
+        memoryFoam: chair.memoryFoam,
+      },
+    });
+  });
   data.products.nodes.forEach((product) => {
     actions.createPage({
       path: `/accessories/${product.slug}`,
@@ -108,9 +131,22 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 };
-
+// DatoCmsXChair
 exports.createResolvers = ({ createResolvers }) => {
   createResolvers({
+    DatoCmsXChair: {
+      shopifyInfo: {
+        type: [`ShopifyProduct`],
+        resolve(source, args, context, info) {
+          const fieldValue = source.entityPayload.attributes.shopify_connection;
+          return context.nodeModel.runQuery({
+            query: { filter: { storefrontId: { eq: fieldValue } } },
+            type: `ShopifyProduct`,
+            // firstOnly: true,
+          });
+        },
+      },
+    },
     DatoCmsNewMattress: {
       shopifyInfo: {
         type: [`ShopifyProduct`],

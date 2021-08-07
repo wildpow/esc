@@ -10,26 +10,24 @@ import AnimatedBox from "./AnimatedBox";
 import { P } from "../landing.styled";
 import { InBoundLink } from "../LandingHeaderButtons";
 import { colors, fonts } from "../../../styles/theme.styled";
-// ${({ about }) => about && aboutCSS};
-const aboutCSS = (props) =>
-  props.about &&
-  css`
-    @media screen and (max-width: 981px) {
-      height: initial;
-      margin-bottom: 0px;
-    }
-    @media screen and (max-width: 568px) {
-      height: initial;
-      margin-bottom: 0px;
-    }
-    @media screen and (max-width: 320px) {
-      height: initial;
-      margin-bottom: 0px;
-    }
-    @media screen and (orientation: landscape) {
-      height: initial;
-    }
-  `;
+
+const aboutCSS = css`
+  @media screen and (max-width: 981px) {
+    height: initial;
+    margin-bottom: 0px;
+  }
+  @media screen and (max-width: 568px) {
+    height: initial;
+    margin-bottom: 0px;
+  }
+  @media screen and (max-width: 320px) {
+    height: initial;
+    margin-bottom: 0px;
+  }
+  @media screen and (orientation: landscape) {
+    height: initial;
+  }
+`;
 const TabHeroImg = styled(GatsbyImage)`
   /* max-width: 100%;
   height: auto;
@@ -89,7 +87,7 @@ const Holder = styled.div`
     flex-direction: column;
     align-items: center;
   }
-  ${aboutCSS};
+  ${({ about }) => about && aboutCSS};
 `;
 const TabBox = ({
   tabs,
@@ -105,7 +103,7 @@ const TabBox = ({
     topButtonName.length !== 0 || topButtonUrl.length !== 0
   );
   return (
-    <Holder about={about ? 1 : 0}>
+    <Holder about={about}>
       <header>
         <TabHeroImg
           image={getImage(hero)}

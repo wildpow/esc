@@ -7,10 +7,13 @@ import { Carousel } from "react-responsive-carousel";
 import Layout from "../components/Layout";
 import Front from "../components/Home/FrontContentCards";
 import TopThreeMatts from "../components/Home/TopMattress";
-import { FadeInAnimation, breakpoints } from "../styles/theme.styled";
+import {
+  // FadeInAnimation,
+  breakpoints,
+} from "../styles/theme.styled";
 
+/* ${FadeInAnimation} */
 const IndexRoot = styled.div`
-  ${FadeInAnimation}
   margin-right: auto;
   margin-left: auto;
   padding-top: 1px;
@@ -58,7 +61,7 @@ const IndexPage = ({ data }) => {
                   image={sources}
                   alt={item.image.alt}
                   loading={index === 0 ? "eager" : "lazy"}
-                  // fadeIn={index !== 0}
+                  fadeIn={index !== 0}
                   // imgStyle={{ minHeight: "217px", height: "auto" }}
                   style={{ minHeight: "140px", height: "auto" }}
                 />

@@ -12,27 +12,33 @@ export const firstSet = [
     key: 4,
   },
   {
+    to: "/x-chair",
+    label: "X-Chair",
+    delay: 0.2,
+    key: 10,
+  },
+  {
     to: "/accessories",
     label: "Accessories",
-    delay: 0.2,
+    delay: 0.25,
     key: 5,
   },
   {
     to: "/financing",
     label: "Financing",
-    delay: 0.25,
+    delay: 0.3,
     key: 6,
   },
   {
     to: "/blog",
     label: "Our Blog",
-    delay: 0.3,
+    delay: 0.35,
     key: 7,
   },
   {
     to: "/about",
     label: "About Us",
-    delay: 0.35,
+    delay: 0.4,
     key: 8,
   },
 ];

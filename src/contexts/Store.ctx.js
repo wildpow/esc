@@ -84,7 +84,7 @@ const StoreProvider = ({ children }) => {
 
           const checkoutId = checkout.id;
           const lineItemsToUpdate = extra
-            ? [{ variantId, quantity: parseInt(quantity, 10) }, extra]
+            ? [{ variantId, quantity: parseInt(quantity, 10) }, ...extra]
             : [{ variantId, quantity: parseInt(quantity, 10) }];
 
           return client.checkout

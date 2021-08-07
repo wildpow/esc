@@ -1,6 +1,7 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { graphql, Link } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
@@ -254,7 +255,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const PriceRange = styled.div`
+const priceRange = css`
   color: ${colors.gray[700]};
   font-family: ${fonts.sans};
   font-size: ${fontSize.xl};
@@ -264,7 +265,8 @@ const PriceRange = styled.div`
     letter-spacing: 0.05rem;
   }
 `;
-const PriceRangeLg = styled(PriceRange)`
+const PriceRangeLg = styled.div`
+  ${priceRange}
   padding-left: 20px;
   align-self: flex-start;
   @media (min-width: 768px) {
@@ -275,7 +277,8 @@ const PriceRangeLg = styled(PriceRange)`
     font-size: ${fontSize["3xl"]};
   }
 `;
-const PriceRangeSm = styled(PriceRange)`
+const PriceRangeSm = styled.div`
+  ${priceRange}
   padding-right: 20px;
   align-self: flex-end;
   @media (min-width: 568px) {

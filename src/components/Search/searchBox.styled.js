@@ -2,24 +2,21 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import SearchBox from "./SearchBox";
 import { colors, dimensions, fonts } from "../../styles/theme.styled";
-// ${({ hasFocus }) => (hasFocus ? open : closed)}
-const openOrClosed = (props) =>
-  props.hasFocus
-    ? css`
-        width: calc(100% - 60px);
-        ${"" /* width: 100%; */}
-        background: ${colors.gray[100]};
-        cursor: text;
-        padding-left: 1.6em;
-      `
-    : css`
-        width: 0;
-        background: transparent;
-        cursor: pointer;
-        margin-left: -1em;
-        padding-left: 1em;
-      `;
 
+const open = css`
+  width: calc(100% - 60px);
+  ${"" /* width: 100%; */}
+  background: ${colors.gray[100]};
+  cursor: text;
+  padding-left: 1.6em;
+`;
+const closed = css`
+  width: 0;
+  background: transparent;
+  cursor: pointer;
+  margin-left: -1em;
+  padding-left: 1em;
+`;
 export default styled(SearchBox)`
   display: flex;
   flex-direction: row;
@@ -40,6 +37,6 @@ export default styled(SearchBox)`
     ::placeholder {
       color: ${colors.gray[600]};
     }
-    ${openOrClosed}
+    ${({ hasFocus }) => (hasFocus ? open : closed)}
   }
 `;

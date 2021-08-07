@@ -3,17 +3,13 @@ import styled from "@emotion/styled";
 import { number, bool } from "prop-types";
 import { fonts, colors } from "../../styles/theme.styled";
 import { numberEntry2 } from "../../styles/keyframes.styled";
-// ${({ adding }) => (adding ? addingProduct : notAddingProduct)}
 
-const productsInCart = (props) =>
-  props.adding
-    ? css`
-        transform: ${({ adding }) => (adding ? "scale(.3)" : "scale(0.75)")};
-      `
-    : css`
-        animation: ${numberEntry2} 0.75s ease forwards;
-      `;
-
+const notAddingProduct = css`
+  animation: ${numberEntry2} 0.75s ease forwards;
+`;
+const addingProduct = css`
+  transform: ${({ adding }) => (adding ? "scale(.3)" : "scale(0.75)")};
+`;
 const ItemsNumber = styled.span`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -34,7 +30,7 @@ const ItemsNumber = styled.span`
   top: 0rem;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  ${productsInCart}
+  ${({ adding }) => (adding ? addingProduct : notAddingProduct)}
 `;
 const Numbery = styled.span`
   transition: all 0.2s ease-in-out;
