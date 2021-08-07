@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import { StaticImage, GatsbyImage, getImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 import {

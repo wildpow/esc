@@ -24,7 +24,7 @@ import getX2images from "../components/X-Chair/query/getX2images.query";
 import getX3images from "../components/X-Chair/query/getX3images.query";
 import getX4images from "../components/X-Chair/query/getX4Images.query";
 import { useStore } from "../contexts/Store.ctx";
-import ChairCart from "../components/X-Chair/ChairCart";
+import ChairCart from "../components/X-Chair/NewChairCart";
 import getModels from "../components/X-Chair/query/getModel.query";
 import getLogos from "../components/X-Chair/query/getLogos.query";
 import {
@@ -101,7 +101,7 @@ const XchairRoot = styled.form`
   }
   .featureWrapper {
     border-top: 2px solid ${colors.gray[500]};
-    border-bottom: 2px solid ${colors.gray[500]};
+    /* border-bottom: 2px solid ${colors.gray[500]}; */
   }
   @media (min-width: ${breakpoints.phablet}) {
     .featureWrapper {
@@ -337,7 +337,7 @@ export default function XChair({ data }) {
             <ImageCarousel
               imagesArray={colorData[state.activeColor][state.activeHeadrest]}
             />
-            {width > 768 && (
+            {width >= 1024 && (
               <ChairCart
                 price={state.price}
                 comparePrice={state.compareAtPrice}
@@ -395,7 +395,7 @@ export default function XChair({ data }) {
             </div>
           </div>
         </div>
-        {width < 768 && (
+        {width < 1024 && (
           <ChairCart price={state.price} comparePrice={state.compareAtPrice} />
         )}
         <Details
