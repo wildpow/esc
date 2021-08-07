@@ -15,6 +15,10 @@ const DetailSection = styled.div`
   width: 100%;
   padding: 0 ${spacing[4]};
   font-family: ${fonts.sans};
+  .detailsWarranty {
+    max-width: 1250px;
+    margin: 0 auto;
+  }
   h3 {
     margin-bottom: ${spacing[10]};
     font-family: ${fonts.sans};
