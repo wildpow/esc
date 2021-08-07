@@ -24,15 +24,17 @@ const ChairCartBtn = styled(AddToCartButton)`
   box-shadow: ${boxShadow.md};
 `;
 const CartWrapper = styled.div`
-  position: sticky;
+  /* position: sticky; */
   /* width: 100%;
   height: 100px; */
-  background-color: ${colors.gray[100]};
-  border: 1px solid ${colors.gray[800]};
+  /* background-color: ${colors.gray[100]};
+  border: 1px solid ${colors.gray[800]}; */
   bottom: 0;
   right: 0;
-  z-index: 20;
-  width: 70%;
+  /* z-index: 20; */
+  padding-left: 10px;
+  padding-right: 10px;
+  /* width: 70%; */
   .cartContent {
     display: flex;
     flex-direction: column;
@@ -44,18 +46,19 @@ const CartWrapper = styled.div`
     margin: 0 auto;
   }
   .salePrice {
-    font-size: ${fontSize.lg};
+    font-size: ${fontSize["2xl"]};
   }
   .regularPrice {
     text-decoration: line-through;
     color: red;
     text-align: end;
-    font-size: ${fontSize.sm};
+    font-size: ${fontSize.base};
   }
   .cartPrice {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
+    margin-bottom: 10px;
   }
   @media (min-width: 768px) {
     background-color: white;

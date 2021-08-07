@@ -24,7 +24,7 @@ import getX2images from "../components/X-Chair/query/getX2images.query";
 import getX3images from "../components/X-Chair/query/getX3images.query";
 import getX4images from "../components/X-Chair/query/getX4Images.query";
 import { useStore } from "../contexts/Store.ctx";
-import ChairCart from "../components/X-Chair/NewChairCart";
+import ChairCart from "../components/X-Chair/ChairCart";
 import getModels from "../components/X-Chair/query/getModel.query";
 import getLogos from "../components/X-Chair/query/getLogos.query";
 import {
