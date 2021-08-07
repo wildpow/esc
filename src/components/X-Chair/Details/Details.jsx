@@ -1,7 +1,12 @@
 /* eslint-disable react/prop-types */
 import styled from "@emotion/styled";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { fonts, fontSize, spacing } from "../../../styles/theme.styled";
+import {
+  breakpoints,
+  fonts,
+  fontSize,
+  spacing,
+} from "../../../styles/theme.styled";
 import ModelDetails from "./ModelDetails";
 import ChairFeatures from "./ChairFeatures";
 import Elemax from "./Elemax";
@@ -37,6 +42,11 @@ const DetailSection = styled.div`
     justify-self: center;
     align-self: center;
   }
+  @media (min-width: ${breakpoints.lg}) {
+    .detailsWarranty {
+      font-size: ${fontSize.lg};
+    }
+  }
 `;
 export default function Details({
   logoImg,
@@ -53,7 +63,7 @@ export default function Details({
       <Elemax />
       <ChairFeatures features={features} />
       <h3>More Information</h3>
-      <div>
+      <div className="detailsWarranty">
         {extraFeatureText && (
           <div>
             <h4>Features</h4>
