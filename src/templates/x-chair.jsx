@@ -9,6 +9,7 @@ import Layout from "../components/Layout";
 import GenerateInitialState from "../components/X-Chair/generateInitialState";
 import xChairReducer from "../components/X-Chair/xChair.reducer";
 import { useWindowSize } from "../contexts/WindowSize.ctx";
+import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 
 import {
   Headrest,
@@ -67,7 +68,7 @@ const XchairRoot = styled.form`
     display: flex;
     width: 100%;
     justify-content: center;
-    padding: 20px 5px 0 5px;
+    padding: 0px 5px 0 5px;
     position: relative;
     flex-direction: column;
     /* :after {
@@ -171,30 +172,59 @@ const Heading = styled.header`
   justify-content: space-evenly;
   width: 100%;
   h2 {
+    margin-top: 0;
     margin-bottom: 0;
     position: relative;
     width: 100%;
     font-family: ${fonts.sans};
-    font-size: ${fontSize["3xl"]};
+    font-size: ${fontSize.xl};
     display: flex;
     justify-content: start;
     align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
     ::after {
       content: "";
       position: absolute;
-      width: calc(100% - 85px);
+      width: calc(100% - 55px);
       height: 6px;
-      border-top-left-radius: 40px;
-      border-bottom-left-radius: 40px;
-      bottom: 10px;
-      left: 65px;
+      border-radius: 40px;
+
+      bottom: 5px;
+      left: 45px;
       background-color: #ec1221;
       background-color: #cc2228;
     }
   }
   .title {
-    max-width: 80px;
+    max-width: 45px;
     padding-top: -3px;
+  }
+  @media (min-width: ${breakpoints.phablet}) {
+    .title {
+      max-width: 60px;
+    }
+    h2 {
+      font-size: ${fontSize["2xl"]};
+      ::after {
+        width: calc(100% - 85px);
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 40px;
+        bottom: 10px;
+        left: 65px;
+      }
+    }
+  }
+  @media (min-width: ${breakpoints.md}) {
+    h2 {
+      font-size: ${fontSize["3xl"]};
+      ::after {
+        left: 75px;
+      }
+    }
+    .title {
+      max-width: 80px;
+    }
   }
   @media (min-width: ${breakpoints.lg}) {
     h2 {
@@ -286,9 +316,11 @@ export default function XChair({ data }) {
 
   return (
     <Layout bgWhite>
-      {" "}
       <HelmetDatoCms seo={datoCmsXChair.seoMetaTags} />
       <XchairRoot onSubmit={handleSubmit}>
+        <BreadWrapper>
+          <BreadCrumbs next="x-chair" here={datoCmsXChair.slug} />
+        </BreadWrapper>
         <Heading>
           <h2>
             <div className="title">
@@ -372,6 +404,9 @@ export default function XChair({ data }) {
           features={datoCmsXChair.features}
           specSheet={datoCmsXChair.specSheet}
         />
+        <BreadWrapper>
+          <BreadCrumbs next="x-chair" here={datoCmsXChair.slug} />
+        </BreadWrapper>
       </XchairRoot>
     </Layout>
   );
@@ -385,6 +420,7 @@ export const chairQuery = graphql`
     $width: String
   ) {
     datoCmsXChair(slug: { eq: $slug }) {
+      slug
       extraFeatureText
       specSheet {
         gatsbyImageData(layout: CONSTRAINED, width: 1000)
