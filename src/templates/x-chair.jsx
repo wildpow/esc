@@ -64,26 +64,13 @@ const XchairRoot = styled.form`
   }
   background-color: white;
   width: 100%;
-  .content {
+  .mainRootContent {
     display: flex;
     width: 100%;
     justify-content: center;
     padding: 0px 5px 0 5px;
     position: relative;
     flex-direction: column;
-    /* :after {
-      height: 100px;
-      width: calc(50% - 20px);
-      content: "";
-      bottom: 0;
-      position: absolute;
-      right: 40px;
-      background: linear-gradient(
-        to top,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0) 100%
-      );
-    } */
   }
 
   .gallery {
@@ -136,7 +123,7 @@ const XchairRoot = styled.form`
         background-color: #cc2228;
       }
     }
-    .content {
+    .mainRootContent {
       flex-direction: row;
       padding: 20px 20px 0 20px;
     }
@@ -332,7 +319,7 @@ export default function XChair({ data }) {
             <span>{`${datoCmsXChair.title} Chair`}</span>
           </h2>
         </Heading>
-        <div className="content">
+        <div className="mainRootContent">
           <div className="gallery">
             <ImageCarousel
               imagesArray={colorData[state.activeColor][state.activeHeadrest]}

@@ -56,7 +56,11 @@ const SingleFeature = styled.div`
   @media (min-width: 768px) {
     flex-direction: ${({ leftOrRight }) =>
       leftOrRight ? "row" : "row-reverse"};
+    align-items: center;
+    gap: 35px;
+
     .content {
+      padding: 10px;
       width: auto;
       display: flex;
       flex-direction: column;
