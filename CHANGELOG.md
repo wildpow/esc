@@ -1,13 +1,17 @@
 # Change log
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### July 2021
+#### Bug Fix
+- [PR #152](https://github.com/wildpow/esc/pull/152) Silence console warnings, update deps. and PropType fixes.
+- Indicates which small image in carousel is still active after hover. [47d8e91]()
 ### June 2021
 #### Bug Fix
 - Removed 'Default title' text under product title in cart when product has no variants. [17c6078]()
 - Review data in footer was not displaying in random production builds. [ec0d664]()
-- Instagram link now goes to currect page. [534d0ca]()
-- Web chat now works again. [72b1934]()
-- Removed extra digits after decimal in cart total.[fd23a60]()
+- Instagram link now goes to currect page. [534d0ca](https://github.com/wildpow/esc/commit/534d0ca2307b92f2f9ba24f6417de1c2c94d5eb5)
+- Web chat now works again. [72b1934](https://github.com/wildpow/esc/commit/72b1934b41cfbcb823c7d136853277047362907b)
+- Removed extra digits after decimal in cart total.[fd23a60](https://github.com/wildpow/esc/commit/fd23a60ae2f1482306049906e03ae873ca58da22)
 ### May 2021
 #### Features
 - ###### [PR #148](https://github.com/wildpow/esc/pull/148) Big bundle savings.
@@ -85,11 +89,11 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ##### Bug Fix
 
-- Addressed structured data errors in Google Search console. [a8780d3]()
-- Curser now displays as 'pointer' in single product view, shopping cart and nav icons [89cb345]()
-- Product list sorting from Z-A now works as expected. [4723e8b]()
-- Single product tri-image component does not get cut off at the bottom anymore. [1d5b64e]()
-- All Mattress view now uses the correct header. [f006df5]()
+- Addressed structured data errors in Google Search console. [a8780d3](https://github.com/wildpow/esc/commit/a8780d34b91383d589aebfa2ba955cadd22ed489)
+- Curser now displays as 'pointer' in single product view, shopping cart and nav icons [89cb345](https://github.com/wildpow/esc/commit/89cb34568f90e00e0b1ab52e456fb87f2e8c81c4)
+- Product list sorting from Z-A now works as expected. [4723e8b](https://github.com/wildpow/esc/commit/4723e8b80342fadc2b179adb7026a234d1d3fa16)
+- Single product tri-image component does not get cut off at the bottom anymore. [1d5b64e](https://github.com/wildpow/esc/commit/1d5b64e2b36cfd53707b31caf11c0a62a95e35dc)
+- All Mattress view now uses the correct header. [f006df5](https://github.com/wildpow/esc/commit/f006df5efc481dc51359caec74d85bf07da4a0c1)
 
 ### December 2020
 
