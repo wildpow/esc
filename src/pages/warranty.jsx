@@ -6,26 +6,52 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
 import HeroCard from "../components/HeroCard";
 import {
+  boxShadow,
   breakpoints,
   colors,
   fonts,
   fontSize,
+  rounded,
   spacing,
 } from "../styles/theme.styled";
 import { Title, InfoPara } from "../styles/warranty-policy.styled";
 
-const SecondTitle = styled.h3`
-  margin: 0;
+const ContentSection = styled.article`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-family: ${fonts.sans};
-  padding-bottom: ${spacing[2]};
-  font-size: ${fontSize["2xl"]};
-  line-height: 1.5rem /* 24px */;
-  font-weight: 500;
-  border-bottom: 4px solid ${colors.red[800]};
-  color: ${colors.gray[700]};
-  @media (min-width: ${breakpoints.xl}) {
-    font-size: ${fontSize["3xl"]};
-    line-height: 2.25rem /* 36px */;
+  max-width: 665px;
+  margin: 0 auto;
+  padding-bottom: ${spacing[6]};
+  border: 2px solid ${colors.gray[500]};
+  border-radius: ${rounded.default};
+  align-items: center;
+  box-shadow: ${boxShadow.sm};
+  h3 {
+    padding-top: ${spacing[3]};
+    padding-bottom: ${spacing[3]};
+
+    font-weight: 400;
+    text-align: center;
+    margin: 0;
+    font-size: ${fontSize["2xl"]};
+    line-height: 2rem /* 32px */;
+    color: ${colors.gray[100]};
+    background-color: ${colors.blue[800]};
+    border-bottom: 2px solid ${colors.gray[500]};
+  }
+  h4 {
+    color: ${colors.gray[700]};
+    font-weight: 500;
+    border-bottom: 4px solid ${colors.red[800]};
+    font-size: ${fontSize.xl};
+    margin-bottom: ${spacing[2]};
+    /* align-self: flex-start; */
+  }
+  a {
+    color: ${colors.blue[800]};
+    font-size: ${fontSize.xl};
   }
 `;
 const Warranty = ({ data }) => {
@@ -57,11 +83,11 @@ const Warranty = ({ data }) => {
           curves, to give you the proper support and comfort that your body
           needs.
         </InfoPara>
-        <SecondTitle>
-          To initiate a mattress warranty claim you may contact your mattress
-          manufacturer via the phone number below.
-        </SecondTitle>
-        <div className="flex flex-col justify-center">
+        <ContentSection>
+          <h3>
+            To initiate a mattress warranty claim you may contact your mattress
+            manufacturer via the phone number below.
+          </h3>
           <h4>Sealy Mattress Warranty Service</h4>
           <OutboundLink href="tel:1-800-697-3259">1-800-697-3259</OutboundLink>
 
@@ -70,7 +96,7 @@ const Warranty = ({ data }) => {
 
           <h4>Tempur-PEDIC Mattress Warranty Service</h4>
           <OutboundLink href="tel:1-800-821-6621">1-800-821-6621</OutboundLink>
-        </div>
+        </ContentSection>
       </HeroCard>
     </Layout>
   );

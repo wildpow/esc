@@ -165,9 +165,9 @@ export const Title = styled.h2`
   margin: 0;
   font-family: ${fonts.sans};
   font-size: ${fontSize["2xl"]};
-  border-bottom: 4px solid ${colors.blue[800]};
+  border-bottom: 4px solid ${colors.blue[700]};
   color: ${colors.gray[800]};
-  /* margin-bottom: ${spacing[7]}; */
+  margin-bottom: ${spacing[10]};
   @media (min-width: ${breakpoints.sm}) {
     font-size: ${fontSize["3xl"]};
     line-height: 2.25rem /* 36px */;
@@ -175,24 +175,5 @@ export const Title = styled.h2`
   @media (min-width: ${breakpoints.lg}) {
     font-size: ${fontSize["5xl"]};
     line-height: 1;
-  }
-`;
-
-export const SecondTitle = styled.h3`
-  margin: 0;
-  margin-bottom: ${spacing[3]};
-  margin-top: ${spacing[10]};
-  font-family: ${fonts.sans};
-  font-size: ${fontSize.xl};
-  line-height: 1.75rem;
-  font-weight: 500;
-  border-bottom: 4px solid ${colors.red[800]};
-  color: ${colors.gray[700]};
-  @media (min-width: ${breakpoints.sm}) {
-    font-size: ${fontSize["2xl"]};
-  }
-  @media (min-width: ${breakpoints.xl}) {
-    font-size: ${fontSize["3xl"]};
-    line-height: 2.25rem /* 36px */;
   }
 `;

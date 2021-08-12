@@ -51,11 +51,11 @@ const HeroCardWrapper = styled.section`
       margin-top: -${spacing[20]};
     }
   }
-  @media (min-width: ${breakpoints.xl}) {
+  @media (min-width: 1152px) {
     .heroCard__content {
-      margin-top: -${spacing[24]};
       margin-left: auto;
       margin-right: auto;
+      margin-top: -${spacing[24]};
     }
   }
 `;

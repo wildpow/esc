@@ -1,13 +1,39 @@
 import { graphql } from "gatsby";
+import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
 import HeroCard from "../components/HeroCard";
-import { Title, InfoPara, SecondTitle } from "../styles/warranty-policy.styled";
+import { Title, InfoPara } from "../styles/warranty-policy.styled";
+import {
+  colors,
+  spacing,
+  fonts,
+  breakpoints,
+  fontSize,
+} from "../styles/theme.styled";
+
+const SecondTitle = styled.h3`
+  margin: 0;
+  margin-bottom: ${spacing[3]};
+  /* margin-top: ${spacing[10]}; */
+  font-family: ${fonts.sans};
+  font-size: ${fontSize.xl};
+  line-height: 1.75rem;
+  font-weight: 500;
+  border-bottom: 4px solid ${colors.red[800]};
+  color: ${colors.gray[700]};
+  @media (min-width: ${breakpoints.sm}) {
+    font-size: ${fontSize["2xl"]};
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    font-size: ${fontSize["3xl"]};
+    line-height: 2.25rem /* 36px */;
+  }
+`;
 
 const Policies = ({ data }) => {
   const { panda, seo } = data;
-
   return (
     <Layout>
       <HelmetDatoCms seo={seo.seoMetaTags} />
