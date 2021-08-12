@@ -1,6 +1,14 @@
 import styled from "@emotion/styled";
 import { OutboundLink } from "gatsby-plugin-google-gtag";
-import { FadeInAnimation, boxShadow, colors, fonts } from "./theme.styled";
+import {
+  FadeInAnimation,
+  boxShadow,
+  colors,
+  spacing,
+  fonts,
+  breakpoints,
+  fontSize,
+} from "./theme.styled";
 
 export const MainArticle = styled.article`
   box-shadow: ${boxShadow.md};
@@ -127,5 +135,64 @@ export const Heading = styled.h3`
     padding-top: 10px;
     margin-bottom: 20px;
     font-size: 1.8rem;
+  }
+`;
+
+// New Styles
+
+export const InfoPara = styled.p`
+  margin: 0;
+  padding-bottom: ${spacing[2]};
+  font-family: ${fonts.serif};
+  font-size: ${fontSize.base};
+  line-height: 1.5rem /* 24px */;
+  font-weight: 400;
+  color: ${colors.gray[700]};
+  @media (min-width: ${breakpoints.sm}) {
+    font-size: ${fontSize.xl};
+    line-height: 1.75rem /* 28px */;
+    padding-bottom: ${spacing[4]};
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: ${fontSize["2xl"]};
+    line-height: 2rem /* 32px */;
+    padding-bottom: ${spacing[6]};
+  }
+`;
+
+export const Title = styled.h2`
+  align-self: center;
+  margin: 0;
+  font-family: ${fonts.sans};
+  font-size: ${fontSize["2xl"]};
+  border-bottom: 4px solid ${colors.blue[800]};
+  color: ${colors.gray[800]};
+  /* margin-bottom: ${spacing[7]}; */
+  @media (min-width: ${breakpoints.sm}) {
+    font-size: ${fontSize["3xl"]};
+    line-height: 2.25rem /* 36px */;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: ${fontSize["5xl"]};
+    line-height: 1;
+  }
+`;
+
+export const SecondTitle = styled.h3`
+  margin: 0;
+  margin-bottom: ${spacing[3]};
+  margin-top: ${spacing[10]};
+  font-family: ${fonts.sans};
+  font-size: ${fontSize.xl};
+  line-height: 1.75rem;
+  font-weight: 500;
+  border-bottom: 4px solid ${colors.red[800]};
+  color: ${colors.gray[700]};
+  @media (min-width: ${breakpoints.sm}) {
+    font-size: ${fontSize["2xl"]};
+  }
+  @media (min-width: ${breakpoints.xl}) {
+    font-size: ${fontSize["3xl"]};
+    line-height: 2.25rem /* 36px */;
   }
 `;
