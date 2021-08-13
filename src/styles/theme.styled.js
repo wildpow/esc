@@ -137,7 +137,17 @@ export const radius = {
   default: 2,
   large: 4,
 };
-
+export const rounded = {
+  none: "0",
+  sm: "0.125rem",
+  default: "0.25rem",
+  md: "0.375rem",
+  lg: "0.5rem",
+  xl: "0.75rem",
+  "2xl": "1rem",
+  "3xl": "1.5rem",
+  full: "9999px",
+};
 export const dimensions = {
   headerHeight: "60px",
   cartWidthDesktop: "515px",
@@ -162,6 +172,7 @@ export const spacing = {
   4: "1rem",
   5: "1.25rem",
   6: "1.5rem",
+  7: "1.75rem",
   8: "2rem",
   10: "2.5rem",
   12: "3rem",
