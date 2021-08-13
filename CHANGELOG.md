@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. See [Conven
 ### August 2021
 #### Features
 - [PR #153](https://github.com/wildpow/esc/pull/153) X-Chair's added!
-
+- [PR #154](https://github.com/wildpow/esc/pull/154) New brand Mattress America
 ### July 2021
 #### Bug Fix
 - [PR #152](https://github.com/wildpow/esc/pull/152) Silence console warnings, update deps. and PropType fixes.
