@@ -1,6 +1,10 @@
 # Change log
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### August 2021
+#### Features
+- [PR #153](https://github.com/wildpow/esc/pull/153) X-Chair's added!
+
 ### July 2021
 #### Bug Fix
 - [PR #152](https://github.com/wildpow/esc/pull/152) Silence console warnings, update deps. and PropType fixes.
