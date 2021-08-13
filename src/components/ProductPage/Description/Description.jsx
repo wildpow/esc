@@ -112,7 +112,6 @@ export default function DescriptionSection({
         </MainTitleBottom>
       </header>
       <div className="wrapper">
-        {console.log(description)}
         <NewlineText text={description} />
         <div className="extra bottomSpacing">
           {warranty && (
