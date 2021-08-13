@@ -22,36 +22,86 @@ const ContentSection = styled.article`
   justify-content: center;
   font-family: ${fonts.sans};
   max-width: 665px;
-  margin: 0 auto;
+  margin: ${spacing[2]} auto;
+  margin-top: ${spacing[2]};
   padding-bottom: ${spacing[6]};
   border: 2px solid ${colors.gray[500]};
   border-radius: ${rounded.default};
   align-items: center;
   box-shadow: ${boxShadow.sm};
   h3 {
-    padding-top: ${spacing[3]};
-    padding-bottom: ${spacing[3]};
-
+    padding: ${spacing[3]};
     font-weight: 400;
     text-align: center;
     margin: 0;
-    font-size: ${fontSize["2xl"]};
-    line-height: 2rem /* 32px */;
+    font-size: ${fontSize.base};
+    line-height: 1.35rem /* 32px */;
     color: ${colors.gray[100]};
     background-color: ${colors.blue[800]};
     border-bottom: 2px solid ${colors.gray[500]};
   }
   h4 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     color: ${colors.gray[700]};
     font-weight: 500;
     border-bottom: 4px solid ${colors.red[800]};
-    font-size: ${fontSize.xl};
+    font-size: ${fontSize.base};
     margin-bottom: ${spacing[2]};
     /* align-self: flex-start; */
   }
   a {
     color: ${colors.blue[800]};
-    font-size: ${fontSize.xl};
+    font-size: ${fontSize.base};
+    transition: all 0.2s ease;
+    :hover {
+      color: ${colors.red[700]};
+    }
+  }
+  @media (min-width: 400px) {
+    h4 {
+      flex-direction: row;
+      span {
+        padding-left: 3px;
+      }
+    }
+  }
+  @media (min-width: ${breakpoints.sm}) {
+    h3 {
+      padding-top: ${spacing[3]};
+      padding-bottom: ${spacing[3]};
+      font-size: ${fontSize.lg};
+    }
+    h4 {
+      font-size: ${fontSize.lg};
+    }
+    a {
+      font-size: ${fontSize.lg};
+    }
+  }
+  @media (min-width: ${breakpoints.md}) {
+    h3 {
+      font-size: ${fontSize.xl};
+      line-height: 2rem /* 32px */;
+    }
+    h4 {
+      font-size: ${fontSize.xl};
+    }
+    a {
+      font-size: ${fontSize.xl};
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    h3 {
+      font-size: ${fontSize["2xl"]};
+    }
+    h4 {
+      font-size: ${fontSize["2xl"]};
+    }
+    a {
+      font-size: ${fontSize["2xl"]};
+    }
   }
 `;
 const Warranty = ({ data }) => {
@@ -88,13 +138,19 @@ const Warranty = ({ data }) => {
             To initiate a mattress warranty claim you may contact your mattress
             manufacturer via the phone number below.
           </h3>
-          <h4>Sealy Mattress Warranty Service</h4>
+          <h4>
+            Sealy Mattress <span>Warranty Service</span>
+          </h4>
           <OutboundLink href="tel:1-800-697-3259">1-800-697-3259</OutboundLink>
 
-          <h4>Stearns & Foster Mattress Warranty Service</h4>
+          <h4>
+            Stearns & Foster Mattress <span>Warranty Service</span>
+          </h4>
           <OutboundLink href="tel:1-866-783-2767">1-866-783-2767</OutboundLink>
 
-          <h4>Tempur-PEDIC Mattress Warranty Service</h4>
+          <h4>
+            Tempur-PEDIC Mattress <span>Warranty Service</span>
+          </h4>
           <OutboundLink href="tel:1-800-821-6621">1-800-821-6621</OutboundLink>
         </ContentSection>
       </HeroCard>

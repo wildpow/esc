@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import {
   spacing,
   FadeInAnimation,
-  radius,
   rounded,
   boxShadow,
   breakpoints,
@@ -39,16 +38,18 @@ const HeroCardWrapper = styled.section`
       margin-left: ${spacing[5]};
       margin-right: ${spacing[5]};
       padding: ${spacing[10]};
+      margin-top: -${spacing[20]};
     }
   }
   @media (min-width: ${breakpoints.md}) {
     .heroCard__content {
       padding: ${spacing[10]};
+      margin-top: -${spacing[22]};
     }
   }
   @media (min-width: ${breakpoints.lg}) {
     .heroCard__content {
-      margin-top: -${spacing[20]};
+      margin-top: -${spacing[24]};
     }
   }
   @media (min-width: 1152px) {
@@ -56,6 +57,11 @@ const HeroCardWrapper = styled.section`
       margin-left: auto;
       margin-right: auto;
       margin-top: -${spacing[24]};
+    }
+  }
+  @media (min-width: ${breakpoints["2xl"]}) {
+    .heroCard__content {
+      margin-top: -${spacing[32]};
     }
   }
 `;
