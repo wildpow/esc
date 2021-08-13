@@ -73,6 +73,7 @@ const DescriptionRoot = styled.section`
   }
 `;
 const DescriptionBottom = styled(Description)`
+  white-space: pre-wrap;
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;
@@ -99,6 +100,10 @@ export default function DescriptionSection({
   width,
   mattress,
 }) {
+  function NewlineText(props) {
+    const { text } = props;
+    return <DescriptionBottom>{text}</DescriptionBottom>;
+  }
   return (
     <DescriptionRoot>
       <header id="moreInfo">
@@ -107,7 +112,8 @@ export default function DescriptionSection({
         </MainTitleBottom>
       </header>
       <div className="wrapper">
-        <DescriptionBottom>{description}</DescriptionBottom>
+        {console.log(description)}
+        <NewlineText text={description} />
         <div className="extra bottomSpacing">
           {warranty && (
             <h5 style={{ marginRight: "20px" }}>{`Warranty: ${warranty}`}</h5>

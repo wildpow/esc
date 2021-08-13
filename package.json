@@ -49,7 +49,7 @@
     "gatsby-source-apiserver": "^2.1.8",
     "gatsby-source-datocms": "^2.6.15",
     "gatsby-source-filesystem": "^3.5.0",
-    "gatsby-source-shopify": "^5.0.0",
+    "gatsby-source-shopify": "^5.5.0-next.0",
     "gatsby-transformer-remark": "^4.2.0",
     "gatsby-transformer-sharp": "^3.5.0",
     "normalize.css": "^8.0.1",
