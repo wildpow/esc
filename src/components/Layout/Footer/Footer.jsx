@@ -283,6 +283,7 @@ const Footer = ({ moved }) => {
     if (img.title === "clothes_for_kids") clothsForKids = img;
     return null;
   });
+  const copyrightYear = new Date();
   return (
     <FooterRoot className={moved}>
       <div className="topWrapper">
@@ -476,7 +477,9 @@ const Footer = ({ moved }) => {
             <Link to="/sitemap">Site Map</Link>
             <Link to="/warranty">Warranty Info</Link>
           </aside>
-          <small>&copy; 2020 E.S.C. Mattress Center</small>
+          <small>
+            &copy; {copyrightYear.getFullYear()} E.S.C. Mattress Center
+          </small>
         </section>
       </div>
     </FooterRoot>
