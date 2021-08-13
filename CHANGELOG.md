@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file. See [Conven
 - [PR #153](https://github.com/wildpow/esc/pull/153) X-Chair's added!
 - [PR #154](https://github.com/wildpow/esc/pull/154) New brand Mattress America.
 - [PR #155](https://github.com/wildpow/esc/pull/155) Updated policies and warranty pages.
+- [5f3b51d]() Added script to run dev server over local network.
+#### Bug Fix
+- [8118e3a]() Copyright year updates automatically now.
 ### July 2021
 #### Bug Fix
 - [PR #152](https://github.com/wildpow/esc/pull/152) Silence console warnings, update deps. and PropType fixes.
