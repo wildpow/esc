@@ -11,14 +11,10 @@ export default () => {
   } = useStaticQuery(
     graphql`
       query getX1images {
-        greyColorImg: file(
-          relativePath: { eq: "xChair/xOne/grey/grey-flex-mesh.png" }
-        ) {
+        greyColorImg: file(base: { eq: "grey-flex-mesh.png" }) {
           ...colorSwatch
         }
-        blackColorImg: file(
-          relativePath: { eq: "xChair/xOne/black/black-flex-mesh.png" }
-        ) {
+        blackColorImg: file(base: { eq: "black-flex-mesh.png" }) {
           ...colorSwatch
         }
         greyDefault: allFile(

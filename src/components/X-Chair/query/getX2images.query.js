@@ -17,24 +17,16 @@ export default () => {
   } = useStaticQuery(
     graphql`
       query getX2images {
-        greyColorImg: file(
-          relativePath: { eq: "xChair/xTwo/grey/grey-ksport-mesh.png" }
-        ) {
+        greyColorImg: file(base: { eq: "grey-ksport-mesh.png" }) {
           ...colorSwatch
         }
-        blackColorImg: file(
-          relativePath: { eq: "xChair/xTwo/black/black-ksport-mesh.png" }
-        ) {
+        blackColorImg: file(base: { eq: "black-ksport-mesh.png" }) {
           ...colorSwatch
         }
-        redColorImg: file(
-          relativePath: { eq: "xChair/xTwo/red/red-ksport-mesh.png" }
-        ) {
+        redColorImg: file(base: { eq: "red-ksport-mesh.png" }) {
           ...colorSwatch
         }
-        whiteColorImg: file(
-          relativePath: { eq: "xChair/xTwo/white/white-ksport-mesh.jpg" }
-        ) {
+        whiteColorImg: file(base: { eq: "white-ksport-mesh.jpg" }) {
           ...colorSwatch
         }
         whiteDefault: allFile(

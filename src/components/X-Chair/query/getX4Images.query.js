@@ -28,42 +28,28 @@ export default () => {
     blackBrisaDefault,
   } = useStaticQuery(graphql`
     query getX4images {
-      roseColorImg: file(relativePath: { eq: "xChair/xFour/rose/rose.jpg" }) {
+      roseColorImg: file(base: { eq: "rose.jpg" }) {
         ...colorSwatch
       }
-      brownBrisaColorImg: file(
-        relativePath: { eq: "xChair/xFour/brownBrisa/brown.jpg" }
-      ) {
+      brownBrisaColorImg: file(base: { eq: "brown.jpg" }) {
         ...colorSwatch
       }
-      blackBrisaColorImg: file(
-        relativePath: { eq: "xChair/xFour/blackBrisa/black_1_1.jpg" }
-      ) {
+      blackBrisaColorImg: file(base: { eq: "black_1_1.jpg" }) {
         ...colorSwatch
       }
-      whiteColorImg: file(
-        relativePath: {
-          eq: "xChair/xFour/white/attribute_swatch_0005_x4white.jpg"
-        }
-      ) {
+      whiteColorImg: file(base: { eq: "attribute_swatch_0005_x4white.jpg" }) {
         ...colorSwatch
       }
-      redColorImg: file(
-        relativePath: { eq: "xChair/xFour/red/attribute_swatch_0004_x4red.jpg" }
-      ) {
+      redColorImg: file(base: { eq: "attribute_swatch_0004_x4red.jpg" }) {
         ...colorSwatch
       }
-      blackColorImg: file(
-        relativePath: { eq: "xChair/xFour/black/black-leather.jpg" }
-      ) {
+      blackColorImg: file(base: { eq: "black-leather.jpg" }) {
         ...colorSwatch
       }
-      cognacColorImg: file(
-        relativePath: { eq: "xChair/xFour/cognac/cognac-leather.jpg" }
-      ) {
+      cognacColorImg: file(base: { eq: "cognac-leather.jpg" }) {
         ...colorSwatch
       }
-      brownColorImg: file(relativePath: { eq: "xChair/xFour/brown/test.png" }) {
+      brownColorImg: file(base: { eq: "test.png" }) {
         ...colorSwatch
       }
       roseDefault: allFile(

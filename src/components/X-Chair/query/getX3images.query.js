@@ -17,32 +17,16 @@ export default () => {
   } = useStaticQuery(
     graphql`
       query getX3images {
-        blackColorImg: file(
-          relativePath: {
-            eq: "xChair/xThree/black/attribute_swatch_0000_x3black.jpg"
-          }
-        ) {
+        blackColorImg: file(base: { eq: "attribute_swatch_0000_x3black.jpg" }) {
           ...colorSwatch
         }
-        greyColorImg: file(
-          relativePath: {
-            eq: "xChair/xThree/grey/attribute_swatch_0003_x3grey.jpg"
-          }
-        ) {
+        greyColorImg: file(base: { eq: "attribute_swatch_0003_x3grey.jpg" }) {
           ...colorSwatch
         }
-        glacierColorImg: file(
-          relativePath: {
-            eq: "xChair/xThree/glacier/x3_glacier_thumb_120_80.jpg"
-          }
-        ) {
+        glacierColorImg: file(base: { eq: "x3_glacier_thumb_120_80.jpg" }) {
           ...colorSwatch
         }
-        blueColorImg: file(
-          relativePath: {
-            eq: "xChair/xThree/blue/attribute_swatch_0001_x3blue.jpg"
-          }
-        ) {
+        blueColorImg: file(base: { eq: "attribute_swatch_0001_x3blue.jpg" }) {
           ...colorSwatch
         }
 
