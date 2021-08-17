@@ -100,7 +100,6 @@ export default () => {
     `
   );
   return {
-    popupContent: `Advanced Tensile Recovery or A.T.R. is a woven multilayered nylon that is both responsive and supportive. A.T.R. is water, spill, and stain-resistant. It provides more give and spring than traditional fabrics.`,
     colors: [
       { title: "Black A.T.R.", img: blackColorImg, index: 0 },
       { title: "Grey A.T.R.", img: greyColorImg, index: 1 },

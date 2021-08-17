@@ -229,19 +229,16 @@ export default function XChair({ data }) {
   let colorCB;
   let colorData;
   let extraColors;
-  let colorPopupContent = null;
   if (datoCmsXChair.title === "K-Sport Mgmt") {
     const data2 = getX2images();
     colorSwatchs = data2.colors;
     colorCB = data2.colorCB;
     colorData = data2.data;
-    colorPopupContent = data2.popupContent;
   } else if (datoCmsXChair.title === "ATR Mgmt") {
     const data3 = getX3images();
     colorSwatchs = data3.colors;
     colorCB = data3.colorCB;
     colorData = data3.data;
-    colorPopupContent = data3.popupContent;
   } else if (datoCmsXChair.title === "Leather Exec") {
     const data4 = getX4images();
     colorSwatchs = data4.colors;
@@ -253,7 +250,6 @@ export default function XChair({ data }) {
     colorSwatchs = data1.colors;
     colorCB = data1.colorCB;
     colorData = data1.data;
-    colorPopupContent = data1.popupContent;
   }
   const { addVariantToCart } = useStore();
   const initialState = GenerateInitialState(
@@ -347,7 +343,7 @@ export default function XChair({ data }) {
                 extraColors={extraColors}
                 seatWidth={state.width}
                 memoryFoam={state.foam}
-                popupContent={colorPopupContent}
+                popupContent={datoCmsXChair.colorPopupContent}
               />
               <Headrest
                 title={datoCmsXChair.title}
@@ -408,6 +404,14 @@ export const chairQuery = graphql`
     $width: String
   ) {
     datoCmsXChair(slug: { eq: $slug }) {
+      colorPopupContent
+      colors {
+        colorTitle
+        colorSwatch {
+          alt
+          gatsbyImageData(layout: FIXED, width: 60, height: 60)
+        }
+      }
       slug
       extraFeatureText
       specSheet {

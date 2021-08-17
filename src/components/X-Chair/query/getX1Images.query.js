@@ -56,7 +56,6 @@ export default () => {
     `
   );
   return {
-    popupContent: `Flex Mesh Technology privides a soft and adaptive feel. Experience the breathable conforming performance of an X-Chair with Flex Mesh and ditch the feeling of overheating.`,
     colors: [
       { title: "Grey Flex Mesh", img: greyColorImg, index: 0 },
       { title: "Black Flex Mesh", img: blackColorImg, index: 1 },
