@@ -166,7 +166,6 @@ export default function ColorOptions({
             ))}
             <h4>Premium Leather +$50</h4>
           </div>
-          {console.log(extraColors)}
           <div className="colorsWrapper">
             {extraColors.Brisa.map((c) => (
               <SingleColor

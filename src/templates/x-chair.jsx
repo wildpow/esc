@@ -10,7 +10,6 @@ import GenerateInitialState from "../components/X-Chair/generateInitialState";
 import xChairReducer from "../components/X-Chair/xChair.reducer";
 import { useWindowSize } from "../contexts/WindowSize.ctx";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
-
 import {
   Headrest,
   Wheels,
@@ -19,10 +18,6 @@ import {
   MemoryFoam,
   Model,
 } from "../components/X-Chair/Features";
-import getX1images from "../components/X-Chair/query/getX1Images.query";
-import getX2images from "../components/X-Chair/query/getX2images.query";
-import getX3images from "../components/X-Chair/query/getX3images.query";
-import getX4images from "../components/X-Chair/query/getX4Images.query";
 import { useStore } from "../contexts/Store.ctx";
 import ChairCart from "../components/X-Chair/ChairCart";
 import getModels from "../components/X-Chair/query/getModel.query";
@@ -222,140 +217,11 @@ const Heading = styled.header`
 `;
 export default function XChair({ data }) {
   const { datoCmsXChair, headrest, wheels, memoryFoam, chairWidth } = data;
-  function generateColorData(mainColors, extra1, extra2) {
-    const colorData = {};
-    const mainColorSwatchs = [];
-    const extraColorSwatchs = [];
-    const extraColorSwatchs2 = [];
-    let extraColors = null;
-    let indexCount = 0;
-    if (extra1 && extra2) {
-      console.log("POOP");
-      mainColors.forEach((element, index) => {
-        colorData[element.colorTitle] = {
-          default: element.default,
-          headrest: element.withHeadrestImages,
-        };
-        mainColorSwatchs.push({
-          title: element.colorTitle,
-          img: element.colorSwatch.gatsbyImageData,
-          alt: element.colorSwatch.alt,
-          index: indexCount ? indexCount + 1 : indexCount,
-        });
-        indexCount += 1;
-      });
-      extra1.forEach((element, index) => {
-        colorData[element.colorTitle] = {
-          default: element.default,
-          headrest: element.withHeadrestImages,
-        };
-        extraColorSwatchs.push({
-          title: element.colorTitle,
-          img: element.colorSwatch.gatsbyImageData,
-          alt: element.colorSwatch.alt,
-          index: indexCount ? indexCount + 1 : indexCount,
-        });
-        indexCount += 1;
-      });
-      extra2.forEach((element, index) => {
-        colorData[element.colorTitle] = {
-          default: element.default,
-          headrest: element.withHeadrestImages,
-        };
-        extraColorSwatchs2.push({
-          title: element.colorTitle,
-          img: element.colorSwatch.gatsbyImageData,
-          alt: element.colorSwatch.alt,
-          index: indexCount ? indexCount + 1 : indexCount,
-        });
-        indexCount += 1;
-      });
-      extraColors = {
-        "Premium Leather": extraColorSwatchs,
-        Brisa: extraColorSwatchs2,
-      };
-    } else {
-      mainColors.forEach((element, index) => {
-        colorData[element.colorTitle] = {
-          default: element.default,
-          headrest: element.withHeadrestImages,
-        };
-        mainColorSwatchs.push({
-          title: element.colorTitle,
-          img: element.colorSwatch.gatsbyImageData,
-          alt: element.colorSwatch.alt,
-          index,
-        });
-      });
-    }
-    return {
-      allColorData: colorData,
-      mainSwatches: mainColorSwatchs,
-      extraColors,
-    };
-  }
+  const { initialState, colorData } = GenerateInitialState(datoCmsXChair);
   const models = getModels();
   const { width } = useWindowSize();
   const logos = getLogos();
-  let colorSwatchs;
-  let colorCB;
-  let colorData;
-  let extraColors;
-  console.log(
-    generateColorData(
-      datoCmsXChair.colors,
-      datoCmsXChair.premiumLeather,
-      datoCmsXChair.brisa
-    )
-  );
-  const newColorData = [
-    ...datoCmsXChair.colors,
-    ...datoCmsXChair.premiumLeather,
-    ...datoCmsXChair.brisa,
-  ];
-  const poop = {};
-  const poop2 = [];
-  newColorData.forEach((element, i) => {
-    poop[element.colorTitle] = {
-      default: element.default,
-      headrest: element.withHeadrestImages,
-    };
-    poop2.push({
-      title: element.colorTitle,
-      img: element.colorSwatch.gatsbyImageData,
-      alt: element.colorSwatch.alt,
-      index: i,
-    });
-  });
-  if (datoCmsXChair.title === "K-Sport Mgmt") {
-    const data2 = getX2images();
-    colorSwatchs = data2.colors;
-    colorCB = data2.colorCB;
-    colorData = data2.data;
-  } else if (datoCmsXChair.title === "ATR Mgmt") {
-    const data3 = getX3images();
-    colorSwatchs = data3.colors;
-    colorCB = data3.colorCB;
-    colorData = data3.data;
-  } else if (datoCmsXChair.title === "Leather Exec") {
-    const data4 = getX4images();
-    colorSwatchs = data4.colors;
-    colorCB = data4.colorCB;
-    colorData = data4.data;
-    extraColors = data4.extraColors;
-  } else {
-    const data1 = getX1images();
-    colorSwatchs = data1.colors;
-    colorCB = data1.colorCB;
-    colorData = data1.data;
-  }
   const { addVariantToCart } = useStore();
-  const initialState = GenerateInitialState(
-    colorCB,
-    colorSwatchs[0].title,
-    datoCmsXChair.shopifyInfo[0].variants,
-    datoCmsXChair
-  );
   const [state, dispatch] = useReducer(xChairReducer, initialState);
   const chairIndex = state.colorCB.indexOf(true);
   const handleSubmit = (e) => {
@@ -396,13 +262,8 @@ export default function XChair({ data }) {
       addVariantToCart(state.chairVariants[chairIndex].storefrontId, 1, extra);
     }
   };
-
   return (
     <Layout bgWhite>
-      {/* {console.log(newColorData, colorData)}
-      {console.log(colorSwatchs, "colorSwatchs")}
-      {console.log(poop2, "poop2")} */}
-      {console.log(extraColors, "extraColors")}
       <HelmetDatoCms seo={datoCmsXChair.seoMetaTags} />
       <XchairRoot onSubmit={handleSubmit}>
         <BreadWrapper>
@@ -422,7 +283,9 @@ export default function XChair({ data }) {
         <div className="mainRootContent">
           <div className="gallery">
             <ImageCarousel
-              imagesArray={poop[state.activeColor][state.activeHeadrest]}
+              imagesArray={
+                colorData.allColorData[state.activeColor][state.activeHeadrest]
+              }
             />
             {width >= 1024 && (
               <ChairCart
@@ -440,10 +303,10 @@ export default function XChair({ data }) {
                 logoImg={logos[datoCmsXChair.title]}
               />
               <Colors
-                colors={colorSwatchs}
+                colors={colorData.mainSwatches}
                 colorCB={state.colorCB}
                 dispatch={dispatch}
-                extraColors={extraColors}
+                extraColors={colorData.extraColors}
                 seatWidth={state.width}
                 memoryFoam={state.foam}
                 popupContent={datoCmsXChair.colorPopupContent}
