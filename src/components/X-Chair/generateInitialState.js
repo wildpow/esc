@@ -1,17 +1,33 @@
-const GenerateInitialState = (colorCB, activeColor, chairVariants) => {
+function generateColorCheckboxes(num) {
+  // Function generates state for color checkboxs feature
+  // input should be the length of all color options from CMS
+  const temp = Array(num).fill(false);
+  temp[0] = true;
+  return temp;
+}
+const GenerateInitialState = (
+  colorCB,
+  activeColor,
+  chairVariants,
+  chairData
+) => {
   const initialState = {
-    activeColor,
+    activeColor: chairData.colors[0].colorTitle,
     activeChairIndex: 0,
     activeHeadrest: "default",
     headrest: 0,
     wheelsCB: [false, false, false],
     modelCB: [true, false, false],
-    colorCB,
+    colorCB: generateColorCheckboxes(
+      chairData.colors.length +
+        chairData.premiumLeather.length +
+        chairData.brisa.length
+    ),
     width: 0,
     foam: 0,
-    chairVariants,
-    price: chairVariants[0].price,
-    compareAtPrice: chairVariants[0].compareAtPrice,
+    chairVariants: chairData.shopifyInfo[0].variants,
+    price: chairData.shopifyInfo[0].price,
+    compareAtPrice: chairData.shopifyInfo[0].compareAtPrice,
     activeWheelIndex: 0,
     activeModelIndex: 0,
   };
