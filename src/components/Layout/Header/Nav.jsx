@@ -1,19 +1,18 @@
 import { Link } from "gatsby";
 import { string } from "prop-types";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import {
   colors,
-  // dimensions,
   breakpoints,
-  // spacing,
   fontSize,
   fonts,
   boxShadow,
-} from "../../../utils/styles";
+} from "../../../styles/theme.styled";
 
 const menuData = [
   { name: "Mattresses", url: "/brands" },
   { name: "Adjustable Bases", url: "/adjustable" },
+  { name: "X-Chair", url: "/x-chair" },
   { name: "Accessories", url: "/accessories" },
   { name: "Financing", url: "/financing" },
   { name: "Our Blog", url: "/blog" },
@@ -25,8 +24,9 @@ const NavRoot = styled.nav`
   background: ${colors.blue["700"]};
   z-index: 0;
   box-shadow: ${boxShadow.md};
+  display: none;
   ul {
-    max-width: 1440px;
+    max-width: ${breakpoints["2xl"]};
     justify-content: space-evenly;
     margin: 0 auto;
     /* margin: 0; */
@@ -58,9 +58,13 @@ const NavRoot = styled.nav`
         }
       }
     }
+
     @media print {
       display: none;
     }
+  }
+  @media (min-width: 1024px) {
+    display: block;
   }
   @media (min-width: ${breakpoints.xl}) {
     ul li a {
@@ -69,25 +73,23 @@ const NavRoot = styled.nav`
   }
 `;
 
-const Nav = ({ cartStatus }) => {
-  return (
-    <NavRoot cartStatus={cartStatus}>
-      <ul>
-        {menuData.map((item) => (
-          <li key={item.name}>
-            <Link
-              to={item.url}
-              partiallyActive
-              activeStyle={{ background: colors.blue["900"] }}
-            >
-              {item.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </NavRoot>
-  );
-};
+const Nav = ({ cartStatus }) => (
+  <NavRoot cartStatus={cartStatus}>
+    <ul>
+      {menuData.map((item) => (
+        <li key={item.name}>
+          <Link
+            to={item.url}
+            partiallyActive
+            activeStyle={{ background: colors.blue["900"] }}
+          >
+            {item.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </NavRoot>
+);
 
 Nav.defaultProps = {
   cartStatus: "closed",

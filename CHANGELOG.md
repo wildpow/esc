@@ -1,6 +1,59 @@
 # Change log
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### August 2021
+#### Features
+- [PR #153](https://github.com/wildpow/esc/pull/153) X-Chair's added!
+- [PR #154](https://github.com/wildpow/esc/pull/154) New brand Mattress America.
+- [PR #155](https://github.com/wildpow/esc/pull/155) Updated policies and warranty pages.
+- [5f3b51d]() Added script to run dev server over local network.
+#### Bug Fix
+- [8118e3a]() Copyright year updates automatically now.
+### July 2021
+#### Bug Fix
+- [PR #152](https://github.com/wildpow/esc/pull/152) Silence console warnings, update deps. and PropType fixes.
+- Indicates which small image in carousel is still active after hover. [47d8e91]()
+### June 2021
+#### Bug Fix
+- Removed 'Default title' text under product title in cart when product has no variants. [17c6078]()
+- Review data in footer was not displaying in random production builds. [ec0d664]()
+- Instagram link now goes to currect page. [534d0ca](https://github.com/wildpow/esc/commit/534d0ca2307b92f2f9ba24f6417de1c2c94d5eb5)
+- Web chat now works again. [72b1934](https://github.com/wildpow/esc/commit/72b1934b41cfbcb823c7d136853277047362907b)
+- Removed extra digits after decimal in cart total.[fd23a60](https://github.com/wildpow/esc/commit/fd23a60ae2f1482306049906e03ae873ca58da22)
+### May 2021
+#### Features
+- ###### [PR #148](https://github.com/wildpow/esc/pull/148) Big bundle savings.
+  - Now using [Preact](https://preactjs.com/) in production. -100Kb :tada:
+  - The move from [Styled-Components](https://styled-components.com/) to [Emotion](https://emotion.sh/docs/introduction) and [Styled-Normalize](https://github.com/sergeysova/styled-normalize) to plain [normalize.css](https://github.com/necolas/normalize.css).
+   (Not 100% sure why so much but, I'll take it) -124Kb :tada:
+- ###### [PR #146](https://github.com/wildpow/esc/pull/146) Technical debit and dependancy upgrades.
+  - 🚀 Moved to Gatsby v3.6 from v2
+  - 💥 Migrated all images to the new `gatsby-plugin-image`.
+  - :tada: Migrated to Shopify's newest release canidate for their brand new source plug-in.
+  - :ghost: Migrated from Husky version 4 to version 6
+  - Updated most minor dependencies to the latest versions.
+  - Removed `react-anchor-link-smooth-scroll` from project and added prefers-reduced-motion media query.
+  - More consistent file naming conventions.
+  - Improved folder structure of the entire project.
+  - Moved from deprecated typeface font packages to new fontsource packages.
+  - Combined all style themes into one crossed project.
+  - Cleaned up and rewrote a majority of components.
+### April 2021
+#### Features
+- Added JSON-LD to blog posts
+#### Bug Fix
+- Fixed errors in main json-ld. Remove trailing commons. [dd84f52](https://github.com/wildpow/new-esc-gatsby/commit/dd84f52a29cc145cc9820dcbdbe165da1ff580ae)
+- Updated visual sitemap with new mattress model from CMS. Complete rewrite is comming! [d08e7e7](https://github.com/wildpow/new-esc-gatsby/commit/dd84f52a29cc145cc9820dcbdbe165da1ff580ae)
+- Fixed errors in product json-dl. Remove double quotes from descriptions of products. [2849033](https://github.com/wildpow/new-esc-gatsby/commit/28490339d8286351f83ce84fd97536bbd15ab0c8)
+
+### March 2021
+
+#### Features
+
+- [PR #137](https://github.com/wildpow/new-esc-gatsby/pull/137)
+  - Added foundation compatibility chart to mattresses in single product view.
+  - New CSS of below the fold single product description.
+  - Updated alignment and general CSS for single product feature list and form.
 
 ### February 2021
 
@@ -44,11 +97,11 @@ All notable changes to this project will be documented in this file. See [Conven
 
 ##### Bug Fix
 
-- Addressed structured data errors in Google Search console. [a8780d3]()
-- Curser now displays as 'pointer' in single product view, shopping cart and nav icons [89cb345]()
-- Product list sorting from Z-A now works as expected. [4723e8b]()
-- Single product tri-image component does not get cut off at the bottom anymore. [1d5b64e]()
-- All Mattress view now uses the correct header. [f006df5]()
+- Addressed structured data errors in Google Search console. [a8780d3](https://github.com/wildpow/esc/commit/a8780d34b91383d589aebfa2ba955cadd22ed489)
+- Curser now displays as 'pointer' in single product view, shopping cart and nav icons [89cb345](https://github.com/wildpow/esc/commit/89cb34568f90e00e0b1ab52e456fb87f2e8c81c4)
+- Product list sorting from Z-A now works as expected. [4723e8b](https://github.com/wildpow/esc/commit/4723e8b80342fadc2b179adb7026a234d1d3fa16)
+- Single product tri-image component does not get cut off at the bottom anymore. [1d5b64e](https://github.com/wildpow/esc/commit/1d5b64e2b36cfd53707b31caf11c0a62a95e35dc)
+- All Mattress view now uses the correct header. [f006df5](https://github.com/wildpow/esc/commit/f006df5efc481dc51359caec74d85bf07da4a0c1)
 
 ### December 2020
 

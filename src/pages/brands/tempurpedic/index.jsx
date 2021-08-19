@@ -2,14 +2,14 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../../../components/Layout";
-import MattressList from "../../../components/MattressList";
+import MattressList from "../../../components/ProductListing/MattressList";
 
 const Tempurpedic = ({ data }) => {
   const { datoCmsBrand, allDatoCmsNewMattress } = data;
   const sortedMatt = allDatoCmsNewMattress.nodes.sort(
     (a, b) =>
       Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
-      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
+      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
   );
   return (
     <Layout>

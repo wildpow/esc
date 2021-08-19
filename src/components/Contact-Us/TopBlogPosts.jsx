@@ -1,13 +1,14 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Link } from "gatsby";
-import useTopBlogPosts from "./useTopBlogPosts";
+import useTopBlogPosts from "./getTopBlogPosts.query";
 import {
   colors,
   spacing,
   fontSize,
   breakpoints,
   radius,
-} from "../../utils/styles";
+  boxShadowHover,
+} from "../../styles/theme.styled";
 
 const TopBlogRoot = styled.div`
   display: flex;
@@ -21,10 +22,11 @@ const TopBlogRoot = styled.div`
     padding-top: 5px;
     padding-bottom: 5px;
     text-decoration: none;
-    :hover {
+    ${boxShadowHover}
+    /* :hover {
       box-shadow: 0px 5px 5px 0px ${colors.gray["500"]};
       transition: box-shadow 0.15s ease-in-out;
-    }
+    } */
     p {
       margin: 0;
       padding-bottom: 5px;
@@ -133,21 +135,19 @@ const TopBlogPosts = () => {
   const topBlogData = useTopBlogPosts();
   return (
     <TopBlogRoot>
-      {topBlogData.map((item) => {
-        return (
-          <Link
-            key={item.slug}
-            className="post-wrapper"
-            to={`/blog/${item.slug}`}
-          >
-            <div className="post-title">
-              <img src={item.excerptImage.url} alt={item.excerptImage.alt} />
-              <h4>{item.title}</h4>
-            </div>
-            <p>{item.excerpt}</p>
-          </Link>
-        );
-      })}
+      {topBlogData.map((item) => (
+        <Link
+          key={item.slug}
+          className="post-wrapper"
+          to={`/blog/${item.slug}`}
+        >
+          <div className="post-title">
+            <img src={item.excerptImage.url} alt={item.excerptImage.alt} />
+            <h4>{item.title}</h4>
+          </div>
+          <p>{item.excerpt}</p>
+        </Link>
+      ))}
     </TopBlogRoot>
   );
 };

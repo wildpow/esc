@@ -2,14 +2,14 @@ import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import propTypes from "prop-types";
 import Layout from "../../components/Layout";
-import AllMattressList from "../../components/Brands/list";
+import AllMattressList from "../../components/ProductListing/AllMattressList";
 
 const List = ({ location, data }) => {
   const sortedMatt = (list) =>
     list.sort(
       (a, b) =>
         Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
-        Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
+        Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
     );
   const sealyMattressSort = (matts) => {
     const golden = [];

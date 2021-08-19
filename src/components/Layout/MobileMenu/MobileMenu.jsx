@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { func, string, bool } from "prop-types";
 import Hamburger from "./Hamburger";
 import {
@@ -7,12 +7,12 @@ import {
   dimensions,
   // spacing,
   // fonts,
-} from "../../../utils/styles";
+} from "../../../styles/theme.styled";
 import Landscape from "./Landscape";
 import Portrait from "./Portrait";
 
 const MobileMenuRoot = styled.div`
-  display: ${({ pin }) => (pin ? "initial" : "none")};
+  display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
   background: ${colors.blue["900"]};
   bottom: 0;
   @media (max-width: 768px) {
@@ -104,7 +104,14 @@ const Heading = styled.header`
 //   }
 // `;
 
-const MobileMenu = ({ status, pin, toggle, menuId, searchFocus, ...props }) => {
+const MobileMenu = ({
+  status,
+  headerVisible,
+  toggle,
+  menuId,
+  searchFocus,
+  ...props
+}) => {
   const isHidden = status === "open";
   const tabIndex = isHidden ? 0 : -1;
 
@@ -113,7 +120,7 @@ const MobileMenu = ({ status, pin, toggle, menuId, searchFocus, ...props }) => {
       searchFocus={searchFocus}
       className={status}
       aria-hidden={!isHidden}
-      pin={pin}
+      headerVisible={headerVisible}
       {...props}
     >
       <Heading>
@@ -121,7 +128,7 @@ const MobileMenu = ({ status, pin, toggle, menuId, searchFocus, ...props }) => {
           toggle={toggle}
           status={status}
           aria-controls={menuId}
-          pin={pin}
+          headerVisible={headerVisible}
         />
         {/* <Title>Mobile Menu</Title> */}
       </Heading>
@@ -138,12 +145,12 @@ const MobileMenu = ({ status, pin, toggle, menuId, searchFocus, ...props }) => {
 
 MobileMenu.defaultProps = {
   status: "closed",
-  pin: true,
+  headerVisible: true,
   menuId: "main-menu",
 };
 MobileMenu.propTypes = {
   status: string,
-  pin: bool,
+  headerVisible: bool,
   toggle: func.isRequired,
   menuId: string,
 };

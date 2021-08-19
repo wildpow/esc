@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../../../components/Layout";
-import MattressList from "../../../components/MattressList";
+import MattressList from "../../../components/ProductListing/MattressList";
 
 const Sealy = ({ data }) => {
   const { datoCmsBrand, allDatoCmsNewMattress } = data;
@@ -22,7 +22,7 @@ const Sealy = ({ data }) => {
     list.sort(
       (a, b) =>
         Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
-        Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount),
+        Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
     );
   const combinedMatts = sortedMatt([
     ...golden,

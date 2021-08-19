@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { Link } from "gatsby";
 // import Logo from "../../../images/logo.png";
 import {
@@ -6,9 +6,9 @@ import {
   SlideIn,
   ShrinkKeyframe,
   // LogoAnimate,
-} from "./MobileMenu.styled";
+} from "./mobileMenu.styled";
 import { firstSet, secondSet } from "./items";
-import { colors } from "../../../utils/styles";
+import { colors, fonts } from "../../../styles/theme.styled";
 
 // const Panda = styled.img`
 //   width: 140px;
@@ -26,7 +26,7 @@ import { colors } from "../../../utils/styles";
 //   }
 // `;
 const StyledLink = styled(Link)`
-  font-family: ${(props) => props.theme.MainFont1};
+  font-family: ${fonts.sans};
   font-size: 1.1rem;
   text-decoration: none;
   font-weight: 700;
@@ -85,7 +85,7 @@ const Line = styled.div`
   background: white;
   margin: 0 auto;
   animation: 0.9s ${ShrinkKeyframe} forwards;
-  animation-delay: ${(props) => props.delay};
+  animation-delay: ${({ delay }) => delay};
 `;
 const Wrapper = styled.div`
   display: none;
@@ -167,100 +167,98 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const Portrait = () => {
-  return (
-    <Wrapper>
-      <div>
-        <Space />
-      </div>
-      <div>
-        <SmallItemsContainer>
+const Portrait = () => (
+  <Wrapper>
+    <div>
+      <Space />
+    </div>
+    <div>
+      <SmallItemsContainer>
+        <Container
+          onClick={() => {
+            document.body.style.overflow = "visible";
+            document.body.style.position = "initial";
+          }}
+        >
+          <StyledLink
+            to="/"
+            activeStyle={{
+              backgroundColor: colors.red["900"],
+            }}
+          >
+            <SlideIn delay={`${0}s`}>
+              <FadeIn delay={`${0}s`}>
+                <ShiftTextOnHover>Home</ShiftTextOnHover>
+              </FadeIn>
+            </SlideIn>
+          </StyledLink>
+        </Container>
+        <Line delay="0s" />
+
+        {firstSet.map((item) => (
           <Container
+            key={item.key}
             onClick={() => {
               document.body.style.overflow = "visible";
               document.body.style.position = "initial";
             }}
           >
             <StyledLink
-              to="/"
+              to={item.to}
+              partiallyActive
               activeStyle={{
                 backgroundColor: colors.red["900"],
               }}
             >
-              <SlideIn delay={`${0}s`}>
-                <FadeIn delay={`${0}s`}>
-                  <ShiftTextOnHover>Home</ShiftTextOnHover>
+              <SlideIn delay={`${item.delay}s`}>
+                <FadeIn delay={`${item.delay}s`}>
+                  <ShiftTextOnHover>{item.label}</ShiftTextOnHover>
                 </FadeIn>
               </SlideIn>
             </StyledLink>
+            {item.key !== 8 ? (
+              <Line delay={`${item.delay}s`} />
+            ) : (
+              <LargeItemsContainer>
+                <Line delay={`${item.delay}s`} />
+              </LargeItemsContainer>
+            )}
           </Container>
-          <Line delay="0s" />
-
-          {firstSet.map((item) => (
-            <Container
-              key={item.key}
-              onClick={() => {
-                document.body.style.overflow = "visible";
-                document.body.style.position = "initial";
+        ))}
+      </SmallItemsContainer>
+      <LargeItemsContainer>
+        {secondSet.map((item) => (
+          <Container
+            key={item.key}
+            onClick={() => {
+              document.body.style.overflow = "visible";
+              document.body.style.position = "initial";
+            }}
+          >
+            <StyledLink
+              to={item.to}
+              partiallyActive
+              activeStyle={{
+                backgroundColor: "rgba(235, 28, 26, 0.9)",
               }}
             >
-              <StyledLink
-                to={item.to}
-                partiallyActive
-                activeStyle={{
-                  backgroundColor: colors.red["900"],
-                }}
-              >
-                <SlideIn delay={`${item.delay}s`}>
-                  <FadeIn delay={`${item.delay}s`}>
-                    <ShiftTextOnHover>{item.label}</ShiftTextOnHover>
-                  </FadeIn>
-                </SlideIn>
-              </StyledLink>
-              {item.key !== 8 ? (
-                <Line delay={`${item.delay}s`} />
-              ) : (
-                <LargeItemsContainer>
-                  <Line delay={`${item.delay}s`} />
-                </LargeItemsContainer>
-              )}
-            </Container>
-          ))}
-        </SmallItemsContainer>
-        <LargeItemsContainer>
-          {secondSet.map((item) => (
-            <Container
-              key={item.key}
-              onClick={() => {
-                document.body.style.overflow = "visible";
-                document.body.style.position = "initial";
-              }}
-            >
-              <StyledLink
-                to={item.to}
-                partiallyActive
-                activeStyle={{
-                  backgroundColor: "rgba(235, 28, 26, 0.9)",
-                }}
-              >
-                <SlideIn delay={`${item.delay}s`}>
-                  <FadeIn delay={`${item.delay}s`}>
-                    <ShiftTextOnHover>{item.label}</ShiftTextOnHover>
-                  </FadeIn>
-                </SlideIn>
-              </StyledLink>
-              {item.key !== 11 ? (
-                <Line delay={`${item.delay}s`} />
-              ) : (
-                <HideLine delay={`${item.delay}s`} />
-              )}
-            </Container>
-          ))}
-        </LargeItemsContainer>
-      </div>
-      {/* <Panda src={Logo} /> */}
-    </Wrapper>
-  );
-};
+              <SlideIn delay={`${item.delay}s`}>
+                <FadeIn delay={`${item.delay}s`}>
+                  <ShiftTextOnHover>{item.label}</ShiftTextOnHover>
+                </FadeIn>
+              </SlideIn>
+            </StyledLink>
+            {item.key !== 11 ? (
+              <Line delay={`${item.delay}s`} />
+            ) : (
+              <HideLine delay={`${item.delay}s`} />
+            )}
+          </Container>
+        ))}
+      </LargeItemsContainer>
+    </div>
+    {/* <Panda src={Logo} /> */}
+  </Wrapper>
+);
 
 export default Portrait;

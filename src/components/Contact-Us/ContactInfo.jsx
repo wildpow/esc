@@ -1,12 +1,12 @@
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import {
   radius,
   colors,
   spacing,
   fontSize,
   breakpoints,
-} from "../../utils/styles";
+} from "../../styles/theme.styled";
 
 const ContactRoot = styled.aside`
   border-radius: ${radius.large};
@@ -82,53 +82,51 @@ const ContactRoot = styled.aside`
   }
 `;
 
-const ContactInfo = () => {
-  return (
-    <ContactRoot>
-      <h4>Contact Info</h4>
-      <address>
-        <div>
-          <h5>Address</h5>
-          <p>
-            <a
-              href="https://goo.gl/maps/nqXkkkAGRdu"
-              rel="noopener noreferrer"
-              target="_blank"
-              aria-label="Google maps link to our store"
-            >
-              10121 Evergreen Way,
-              <br />
-              #30 Everett, WA 98204
-            </a>
-          </p>
-        </div>
-        <div>
-          <h5>Hours</h5>
-          <p>
-            Mon-Sat: 10am - 7pm
+const ContactInfo = () => (
+  <ContactRoot>
+    <h4>Contact Info</h4>
+    <address>
+      <div>
+        <h5>Address</h5>
+        <p>
+          <a
+            href="https://goo.gl/maps/nqXkkkAGRdu"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="Google maps link to our store"
+          >
+            10121 Evergreen Way,
             <br />
-            Sunday: 10am - 6pm
-          </p>
-        </div>
-        <div>
-          <h5>Phone</h5>
-          <p>
-            <a href="tel:1-425-512-0017" aria-label="Store phone number">
-              (425) 512-0017
-            </a>
-          </p>
-        </div>
-        <div>
-          <h5>Links</h5>
-          <p>
-            <Link to="/policies">Terms/Policies</Link>
-            <br />
-            <Link to="/warranty"> Warranty Info</Link>
-          </p>
-        </div>
-      </address>
-    </ContactRoot>
-  );
-};
+            #30 Everett, WA 98204
+          </a>
+        </p>
+      </div>
+      <div>
+        <h5>Hours</h5>
+        <p>
+          Mon-Sat: 10am - 7pm
+          <br />
+          Sunday: 10am - 6pm
+        </p>
+      </div>
+      <div>
+        <h5>Phone</h5>
+        <p>
+          <a href="tel:1-425-512-0017" aria-label="Store phone number">
+            (425) 512-0017
+          </a>
+        </p>
+      </div>
+      <div>
+        <h5>Links</h5>
+        <p>
+          <Link to="/policies">Terms/Policies</Link>
+          <br />
+          <Link to="/warranty"> Warranty Info</Link>
+        </p>
+      </div>
+    </address>
+  </ContactRoot>
+);
 
 export default ContactInfo;

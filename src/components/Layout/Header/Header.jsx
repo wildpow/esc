@@ -1,8 +1,6 @@
 import { Link } from "gatsby";
-import Img from "gatsby-image";
 import { string, bool, func } from "prop-types";
-import styled from "styled-components";
-import { useWindowSize } from "../../../context/WindowSizeContext";
+import styled from "@emotion/styled";
 import {
   colors,
   dimensions,
@@ -11,11 +9,11 @@ import {
   spacing,
   fontSize,
   fonts,
-} from "../../../utils/styles";
+} from "../../../styles/theme.styled";
 import Nav from "./Nav";
 import NavIcons from "./NavIcons";
-import MenuOverLay from "../../shared/MenuOverLay";
-import useLogo from "./use-logo";
+import MenuOverLay from "../../../styles/menuOverlay.styled";
+import useLogo from "./getLogo.query";
 
 const HeaderRoot = styled.header`
   transition: all 0.75s;
@@ -32,7 +30,7 @@ const HeaderRoot = styled.header`
   .header__Wrapper {
     display: flex;
     flex-direction: column-reverse;
-    max-width: 1440px;
+    max-width: ${breakpoints["2xl"]};
     margin: 0 auto;
     width: 100%;
   }
@@ -139,8 +137,6 @@ const HeaderRoot = styled.header`
 `;
 const PrintOnlyContact = styled.div`
   display: none;
-  /* color: black;
-  font-size: 40px; */
   font-family: ${fonts.sans};
   @media print {
     display: flex;
@@ -150,13 +146,12 @@ const PrintOnlyContact = styled.div`
 const Header = ({
   cartStatus,
   menuStatus,
-  pin,
+  headerVisible,
   moved,
   cartToggle,
   searchFocus,
   setSearchFocus,
 }) => {
-  const { width } = useWindowSize();
   const { pandaLogo } = useLogo();
   return (
     <HeaderRoot
@@ -169,7 +164,12 @@ const Header = ({
       <div className="header__Wrapper">
         <div className="header__flex">
           <Link className="brand__anchor" to="/" title="Back to home page">
-            <Img fluid={pandaLogo.fluid} alt={pandaLogo.alt} />
+            <img
+              loading="eager"
+              src={pandaLogo.url}
+              alt={pandaLogo.alt}
+              style={{ maxWidth: "180px", maxHeight: "110px", width: "100%" }}
+            />
           </Link>
           <Link
             title="Back to home page"
@@ -184,7 +184,7 @@ const Header = ({
         </div>
         {/* {width > 768 ? <ExtraNavIcons /> : null} */}
         <NavIcons
-          pin={pin}
+          headerVisible={headerVisible}
           cartToggle={cartToggle}
           menuStatus={menuStatus}
           cartStatus={cartStatus}
@@ -197,7 +197,7 @@ const Header = ({
         </PrintOnlyContact>
       </div>
       {/* (425) 512.0017 */}
-      {width >= 1024 ? <Nav cartStatus={cartStatus} /> : null}
+      <Nav cartStatus={cartStatus} />
       {/* {width < 768 ? <ExtraNavIcons /> : null} */}
     </HeaderRoot>
   );
@@ -206,14 +206,17 @@ Header.defaultProps = {
   cartStatus: "closed",
   menuStatus: "closed",
   moved: "",
-  pin: true,
+  headerVisible: true,
+  searchFocus: false,
 };
 Header.propTypes = {
   cartStatus: string,
   menuStatus: string,
   moved: string,
-  pin: bool,
+  headerVisible: bool,
   cartToggle: func.isRequired,
+  setSearchFocus: func.isRequired,
+  searchFocus: bool,
 };
 
 export default Header;

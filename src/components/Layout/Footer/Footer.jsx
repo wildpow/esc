@@ -1,20 +1,20 @@
-import Img from "gatsby-image";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-import styled from "styled-components";
-import { OutboundLink } from "gatsby-plugin-google-analytics";
+import styled from "@emotion/styled";
+import { OutboundLink } from "gatsby-plugin-google-gtag";
 import {
   breakpoints,
   colors,
   spacing,
   fontSize,
   fonts,
-} from "../../../utils/styles";
-import Yelp from "../../../assets/yelp-brands.svg";
-import Insta from "../../../assets/instagram-brands.svg";
-import Twitter from "../../../assets/twitter-brands.svg";
-import FaceBook from "../../../assets/facebook-f-brands.svg";
-import useFooterIcons from "./use-footer-icons";
-import useReaders from "./use-readers-choice";
+} from "../../../styles/theme.styled";
+import Yelp from "../../../svgs/yelp-brands.svg";
+import Insta from "../../../svgs/instagram-brands.svg";
+import Twitter from "../../../svgs/twitter-brands.svg";
+import FaceBook from "../../../svgs/facebook-f-brands.svg";
+import useFooterIcons from "./getFooterIcons.query";
+import useReaders from "./getReadersChoice.query";
 import Bird from "./Bird";
 
 const FooterRoot = styled.footer`
@@ -26,13 +26,9 @@ const FooterRoot = styled.footer`
   justify-content: space-between;
   padding-right: ${spacing["5"]};
   padding-left: ${spacing["5"]};
-  /* position: sticky; */
-  /* bottom: 0;
-  left: 0; */
   padding-top: ${spacing["10"]};
   color: ${colors.white};
   background-color: ${colors.blue["900"]};
-  /* height: 300px; */
   margin: 0 auto;
   .topWrapper {
     max-width: 1440px;
@@ -43,7 +39,6 @@ const FooterRoot = styled.footer`
     justify-content: space-evenly;
     section {
       width: 310px;
-      /* height: 300px; */
       h3 {
         font-weight: 500;
         font-family: ${fonts.sans};
@@ -51,14 +46,6 @@ const FooterRoot = styled.footer`
       }
     }
   }
-  /* @media (min-width: ${breakpoints.phablet}) {
-    .topWrapper {
-      flex-wrap: nowrap;
-      section {
-        width: auto;
-      }
-    }
-  } */
 
   .middleWrapper {
     margin: 0 auto;
@@ -106,14 +93,10 @@ const FooterRoot = styled.footer`
   will-change: transform;
   @media (min-width: ${breakpoints.sm}) {
     transform: translate3d(0vw, 0, 0);
-    /* position: sticky; */
     &.moved {
-      /* filter: blur(1px); */
       transform: translate3d(-400px, 0, 0);
     }
-    /* .middleWrapper {
-      flex-direction: column;
-    } */
+
     .bottomWrapper {
       flex-direction: row;
     }
@@ -128,7 +111,6 @@ const FooterRoot = styled.footer`
       margin-top: 0;
       li {
         margin: 0;
-        /* margin-bottom: 1em; */
         padding-left: 1.3em;
         position: relative;
         padding-bottom: ${spacing["4"]};
@@ -231,10 +213,7 @@ const FooterRoot = styled.footer`
     h6 {
       color: ${colors.gray["100"]};
       font-weight: 300;
-      /* max-width: 200px; */
       display: flex;
-      /* justify-content: space-around; */
-      /* padding-bottom: ${spacing["1"]}; */
       margin: 0;
       font-size: ${fontSize.base};
     }
@@ -304,6 +283,7 @@ const Footer = ({ moved }) => {
     if (img.title === "clothes_for_kids") clothsForKids = img;
     return null;
   });
+  const copyrightYear = new Date();
   return (
     <FooterRoot className={moved}>
       <div className="topWrapper">
@@ -328,7 +308,7 @@ const Footer = ({ moved }) => {
                 <Yelp />
               </OutboundLink>
               <OutboundLink
-                href="https://www.instagram.com/centeresc/"
+                href="https://www.instagram.com/escmattresscenter/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Vist our Instagram page"
@@ -414,8 +394,8 @@ const Footer = ({ moved }) => {
                 className="link"
                 style={{ textDecoration: "none" }}
               >
-                <Img
-                  fluid={aquasox.fluid}
+                <GatsbyImage
+                  image={getImage(aquasox)}
                   style={{
                     borderRadius: "5px",
                     width: "140px",
@@ -429,8 +409,8 @@ const Footer = ({ moved }) => {
                 rel="noopener noreferrer"
                 className="clothesForKids link"
               >
-                <Img
-                  fluid={clothsForKids.fluid}
+                <GatsbyImage
+                  image={getImage(clothsForKids)}
                   style={{
                     borderRadius: "5px",
                     width: "140px",
@@ -458,7 +438,11 @@ const Footer = ({ moved }) => {
                 to="/blog/esc-mattress-center-wins-best-mattress-store-in-snohomish-county"
                 className="link"
               >
-                <img src={sticker.url} alt={sticker.alt} className="sticker" />
+                <GatsbyImage
+                  image={getImage(sticker)}
+                  alt={sticker.alt}
+                  className="sticker"
+                />
               </Link>
             </div>
           </div>
@@ -493,7 +477,9 @@ const Footer = ({ moved }) => {
             <Link to="/sitemap">Site Map</Link>
             <Link to="/warranty">Warranty Info</Link>
           </aside>
-          <small>&copy; 2020 E.S.C. Mattress Center</small>
+          <small>
+            &copy; {copyrightYear.getFullYear()} E.S.C. Mattress Center
+          </small>
         </section>
       </div>
     </FooterRoot>

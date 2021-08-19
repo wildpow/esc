@@ -1,21 +1,10 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+/* eslint-disable import/prefer-default-export */
 
-// You can delete this file if you're not using it
-import { ThemeProvider } from "styled-components";
-import { theme } from "./src/styles/mainStyles";
-import StoreProvider from "./src/provider/StoreProvider";
-import WindowSizeProvider from "./src/provider/WindowSizeProvider";
+import WindowSizeProvider from "./src/contexts/WindowSize.ctx";
+import StoreProvider from "./src/contexts/Store.ctx";
 
-export const wrapRootElement = ({ element }) => {
-  return (
-    <StoreProvider>
-      <ThemeProvider theme={theme}>
-        <WindowSizeProvider>{element}</WindowSizeProvider>
-      </ThemeProvider>
-    </StoreProvider>
-  );
-};
+export const wrapRootElement = ({ element }) => (
+  <WindowSizeProvider>
+    <StoreProvider>{element}</StoreProvider>
+  </WindowSizeProvider>
+);

@@ -1,16 +1,16 @@
-import { useContext } from "react";
-import { bool, string, func } from "prop-types";
+import { bool, string, func, number } from "prop-types";
 import { Link } from "gatsby";
-import styled, { css } from "styled-components";
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import VisuallyHidden from "@reach/visually-hidden";
-import StoreContext from "../../../context/StoreContext";
-import Phone from "../../../assets/phone-solid.svg";
-import Email from "../../../assets/envelope-solid.svg";
-import Map from "../../../assets/directions-solid.svg";
-import { iconEntry } from "../../../utils/keyframes";
-import { colors, dimensions, breakpoints } from "../../../utils/styles";
+import { useStore } from "../../../contexts/Store.ctx";
+import Phone from "../../../svgs/phone-solid.svg";
+import Email from "../../../svgs/envelope-solid.svg";
+import Map from "../../../svgs/directions-solid.svg";
+import { iconEntry } from "../../../styles/keyframes.styled";
+import { colors, dimensions, breakpoints } from "../../../styles/theme.styled";
 import Search from "../../Search";
-import CartItemCounter from "../Cart/CartItemCounter";
+import CartItemCounter from "../../Cart/CartItemCounter";
 
 const searchIndices = [{ name: `Products`, title: `Products` }];
 
@@ -32,7 +32,7 @@ const emptyCart = css`
 const CartToggle = styled.button`
   cursor: not-allowed;
   .fa-shopping-cart {
-    animation: ${iconEntry} 0.75s ease forwards;
+    animation: ${iconEntry} 0.35s ease forwards;
     height: 28px;
     margin: 0;
     width: 28px;
@@ -46,7 +46,7 @@ const CartToggle = styled.button`
   background: transparent;
   border: none;
   border-radius: 0;
-  display: ${({ pin }) => (pin ? "flex" : "none")};
+  display: ${({ headerVisible }) => (headerVisible ? "flex" : "none")};
   height: ${dimensions.headerHeight};
   justify-content: center;
   align-items: center;
@@ -87,7 +87,7 @@ const ExtraNavRoot = styled.div`
 
 const StyledLinks = styled.a`
   align-items: center;
-  display: ${({ pin }) => (pin ? "initial" : "none")};
+  display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
 
   transition: all 0.2s ease;
   :hover {
@@ -111,8 +111,8 @@ const StyledLinks = styled.a`
   }
 
   .fa-phone {
-    display: ${({ pin }) => (pin ? "initial" : "none")};
-    animation: ${iconEntry} 0.75s ease forwards;
+    display: ${({ headerVisible }) => (headerVisible ? "initial" : "none")};
+    animation: ${iconEntry} 0.35s ease forwards;
     height: 28px;
     margin: 0;
     width: 28px;
@@ -143,8 +143,11 @@ const ShoppingCartIcon = ({ itemCount }) => (
     <title>{itemCount !== 0 ? "Shopping Cart" : "Cart is empty"}</title>
   </svg>
 );
+ShoppingCartIcon.propTypes = {
+  itemCount: number.isRequired,
+};
 const NavIcons = ({
-  pin,
+  headerVisible,
   cartToggle,
   menuStatus,
   cartStatus,
@@ -153,22 +156,22 @@ const NavIcons = ({
 }) => {
   const {
     store: { checkout, adding },
-  } = useContext(StoreContext);
+  } = useStore();
   const itemsInCart = checkout.lineItems.reduce(
     (total, item) => total + item.quantity,
-    0,
+    0
   );
   return (
     <ExtraNavRoot adding={adding}>
       <Search
-        pin={pin}
+        headerVisible={headerVisible}
         indices={searchIndices}
         searchFocus={searchFocus}
         setSearchFocus={setSearchFocus}
       />
       <StyledLinks
         href="tel:1-425-512-0017"
-        pin={pin}
+        headerVisible={headerVisible}
         aria-label="Store phone number"
       >
         <span aria-hidden>
@@ -179,8 +182,8 @@ const NavIcons = ({
       <ContactUS
         as={Link}
         to="/contact-us"
-        pin={pin}
         aria-label="get in contact with us via email"
+        headerVisible={headerVisible}
       >
         <span aria-hidden>
           <VisuallyHidden>Contact Us</VisuallyHidden>
@@ -191,7 +194,7 @@ const NavIcons = ({
         href="https://goo.gl/maps/nqXkkkAGRdu"
         target="_blank"
         rel="noopener noreferrer"
-        pin={pin}
+        headerVisible={headerVisible}
         aria-label="Google maps link to our store"
       >
         <span aria-hidden>
@@ -202,7 +205,7 @@ const NavIcons = ({
       <CartToggle
         aria-label={`Shopping cart with ${itemsInCart} items`}
         onClick={cartToggle}
-        pin={pin}
+        headerVisible={headerVisible}
         menuStatus={menuStatus}
         cartStatus={cartStatus}
         disabled={itemsInCart === 0}
@@ -211,11 +214,6 @@ const NavIcons = ({
         <VisuallyHidden>shoping cart</VisuallyHidden>
         <span aria-hidden>
           <ShoppingCartIcon itemCount={itemsInCart} />
-          {/* <CartIcon
-            alt="Shopping cart icon"
-            className="fa-shopping-cart"
-            title="Open shopping cart menu"
-          /> */}
         </span>
         {itemsInCart > 0 && (
           <CartItemCounter count={itemsInCart} adding={adding} />
@@ -225,15 +223,18 @@ const NavIcons = ({
   );
 };
 NavIcons.defaultProps = {
-  pin: true,
+  headerVisible: true,
   menuStatus: "closed",
   cartStatus: "closed",
+  searchFocus: false,
 };
 NavIcons.propTypes = {
-  pin: bool,
+  headerVisible: bool,
   menuStatus: string,
   cartStatus: string,
   cartToggle: func.isRequired,
+  setSearchFocus: func.isRequired,
+  searchFocus: bool,
 };
 
 export default NavIcons;
