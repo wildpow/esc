@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
-import { keyframes, css } from "@emotion/react";
+import { keyframes } from "@emotion/react";
 import { bool, func } from "prop-types";
 import { useState } from "react";
 import {
   colors,
   fonts,
+  radius,
   spacing,
 } from "../../../../styles/theme.styled";
 import ShoppingCart from "../../../../svgs/shopping-cart-solid.svg";
@@ -197,9 +198,6 @@ export default function Another({ disabled, cb }) {
       disabled={disabled}
       checkCartEnd={checkCartEnd}
     >
-      {console.log(added, "added")}
-      {console.log(checkCart, "checkCart")}
-      {console.log(checkCartEnd, "checkCartEnd")}
       <div className="start">
         Add to Cart
         <ShoppingCart />
