@@ -77,6 +77,7 @@ function generateColorData(mainColors, extra1, extra2) {
     extraColors,
   };
 }
+
 const GenerateInitialState = (chairData) => {
   const colorData = generateColorData(
     chairData.colors,
@@ -98,8 +99,8 @@ const GenerateInitialState = (chairData) => {
     width: 0,
     foam: 0,
     chairVariants: chairData.shopifyInfo[0].variants,
-    price: chairData.shopifyInfo[0].price,
-    compareAtPrice: chairData.shopifyInfo[0].compareAtPrice,
+    price: chairData.shopifyInfo[0].variants[0].price,
+    compareAtPrice: chairData.shopifyInfo[0].variants[0].compareAtPrice,
     activeWheelIndex: 0,
     activeModelIndex: 0,
   };
