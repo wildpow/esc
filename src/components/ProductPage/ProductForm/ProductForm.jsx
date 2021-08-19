@@ -11,7 +11,7 @@ import {
   QtyFieldset,
   SizeFieldset,
   AddToCartButton,
-} from "./ProductForm.styled";
+} from "./productForm.styled";
 import Another from "./fancySubmit/AnotherFancyButton";
 
 const ProductForm = ({
@@ -194,6 +194,7 @@ const ProductForm = ({
   const hasVariants = variants.length > 1;
   return (
     <ProductFormRoot onSubmit={handleSubmit} matt={matt}>
+      {console.log(state, "state")}
       <div className="children">
         {children}
         <div className="formItems">
@@ -306,36 +307,33 @@ const ProductForm = ({
                   value={state.quantity}
                 />
               </QtyFieldset>
-              <AddToCartButton type="submit">
+              {/* <AddToCartButton type="submit">
                 Add to Cart
                 <ShopingCart />
-              </AddToCartButton>
+              </AddToCartButton> */}
+              <Another
+                disabled={state.variantIndex.length === 0}
+                cb={handleSubmit}
+              />
             </div>
           ) : (
-            <AddToCartButton
+            <>
+              {/* <AddToCartButton
               type="submit"
               disabled={state.variantIndex.length === 0}
             >
               Add to Cart
               <ShopingCart />
-            </AddToCartButton>
+            </AddToCartButton> */}
+              <Another
+                disabled={state.variantIndex.length === 0}
+                cb={handleSubmit}
+              />
+            </>
           )}
         </div>
-      ) : (
-        <>
-          <Another
-            disabled={state.variantIndex.length === 0}
-            cb={handleSubmit}
-          />
-          {/* <AddToCartButton
-            type="submit"
-            disabled={state.variantIndex.length === 0}
-          >
-            Add to Cart
-            <ShopingCart />
-          </AddToCartButton> */}
-        </>
-      )}
+      </div>
+
       <PriceRange compareAtPrice={state.compareAtPrice}>
         {state.variantIndex === "" ? (
           <>
@@ -363,6 +361,7 @@ ProductForm.defaultProps = {
   maxQty: 10,
 };
 ProductForm.propTypes = {
+  children: PropTypes.node.isRequired,
   variants: PropTypes.instanceOf(Object).isRequired,
   priceMin: PropTypes.string.isRequired,
   priceMax: PropTypes.string.isRequired,

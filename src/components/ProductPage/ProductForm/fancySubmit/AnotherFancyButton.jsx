@@ -1,10 +1,15 @@
-import styled, { keyframes } from "styled-components";
+import styled from "@emotion/styled";
+import { keyframes, css } from "@emotion/react";
 import { bool, func } from "prop-types";
 import { useState } from "react";
-import { colors, fonts, radius, spacing } from "../../../../utils/styles";
-import ShoppingCart from "../../../../assets/shopping-cart-solid.svg";
-import Check from "../../../../assets/check-solid.svg";
-import Arrow from "../../../../assets/arrow-right-solid.svg";
+import {
+  colors,
+  fonts,
+  spacing,
+} from "../../../../styles/theme.styled";
+import ShoppingCart from "../../../../svgs/shopping-cart-solid.svg";
+import Check from "../../../../svgs/check-solid.svg";
+import Arrow from "../../../../svgs/arrow-right-solid.svg";
 
 const addedKey = keyframes`
 0% {
@@ -192,6 +197,9 @@ export default function Another({ disabled, cb }) {
       disabled={disabled}
       checkCartEnd={checkCartEnd}
     >
+      {console.log(added, "added")}
+      {console.log(checkCart, "checkCart")}
+      {console.log(checkCartEnd, "checkCartEnd")}
       <div className="start">
         Add to Cart
         <ShoppingCart />
