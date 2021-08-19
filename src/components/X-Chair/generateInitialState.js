@@ -14,7 +14,7 @@ function generateColorData(mainColors, extra1, extra2) {
   let extraColors = null;
   let indexCount = 0;
   if (extra1.length !== 0 && extra2.length !== 0) {
-    mainColors.forEach((element) => {
+    mainColors.forEach((element, index) => {
       colorData[element.colorTitle] = {
         default: element.default,
         headrest: element.withHeadrestImages,
@@ -23,9 +23,9 @@ function generateColorData(mainColors, extra1, extra2) {
         title: element.colorTitle,
         img: element.colorSwatch.gatsbyImageData,
         alt: element.colorSwatch.alt,
-        index: indexCount ? indexCount + 1 : indexCount,
+        index,
       });
-      indexCount += 1;
+      indexCount = index;
     });
     extra1.forEach((element) => {
       colorData[element.colorTitle] = {
@@ -36,7 +36,7 @@ function generateColorData(mainColors, extra1, extra2) {
         title: element.colorTitle,
         img: element.colorSwatch.gatsbyImageData,
         alt: element.colorSwatch.alt,
-        index: indexCount ? indexCount + 1 : indexCount,
+        index: indexCount + 1,
       });
       indexCount += 1;
     });
@@ -49,7 +49,7 @@ function generateColorData(mainColors, extra1, extra2) {
         title: element.colorTitle,
         img: element.colorSwatch.gatsbyImageData,
         alt: element.colorSwatch.alt,
-        index: indexCount ? indexCount + 1 : indexCount,
+        index: indexCount + 1,
       });
       indexCount += 1;
     });
