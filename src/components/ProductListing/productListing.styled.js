@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 import { BreadWrapper } from "../BreadCrumbs";
-import { colors, fonts, boxShadow } from "../../styles/theme.styled";
+import {
+  colors,
+  fonts,
+  boxShadow,
+  FadeInAnimation,
+} from "../../styles/theme.styled";
 
 export const NewBread = styled(BreadWrapper)`
   margin-left: 0;
@@ -24,6 +29,7 @@ export const NewBread = styled(BreadWrapper)`
 `;
 
 export const MattListWrapper = styled.div`
+  ${FadeInAnimation}
   display: flex;
   padding-left: 5px;
   padding-right: 5px;

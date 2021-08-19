@@ -16,24 +16,24 @@ import Arrow from "../../../../svgs/arrow-right-solid.svg";
 const mobileAddedKey = keyframes`
 0% {
   opacity: .1;
-  transform: translateY(-110%) scale(1.2);
+  transform: translateY(-110%) scale(1.1);
 }
 20% {
   opacity: 1;
-  transform: translateY(-10%) scale(1.2);
+  transform: translateY(-10%) scale(1.1);
 }
 30% {
-  transform: translateY(0%) scale(1.2);
+  transform: translateY(0%) scale(1.1);
 }
 50% {
-  transform: translateY(0%) scale(1.3);
+  transform: translateY(0%) scale(1.2);
   opacity: 1;
 }
 70% {
-  transform: translateY(0%) scale(1.2);
+  transform: translateY(0%) scale(1.1);
 }
 80% {
-  transform: translateY(0%) scale(1.2) ;
+  transform: translateY(0%) scale(1.1) ;
   opacity: 1;
 }
 
