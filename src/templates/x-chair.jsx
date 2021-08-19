@@ -348,16 +348,18 @@ export default function XChair({ data }) {
         {width < 1024 && (
           <ChairCart price={state.price} comparePrice={state.compareAtPrice} />
         )}
-        <Details
-          extraFeatureText={datoCmsXChair.extraFeatureText}
-          logoImg={logos[datoCmsXChair.title]}
-          features={datoCmsXChair.features}
-          specSheet={datoCmsXChair.specSheet}
-        />
-        <BreadWrapper>
-          <BreadCrumbs next="x-chair" here={datoCmsXChair.slug} />
-        </BreadWrapper>
+        <div>
+          <Details
+            extraFeatureText={datoCmsXChair.extraFeatureText}
+            logoImg={logos[datoCmsXChair.title]}
+            features={datoCmsXChair.features}
+            specSheet={datoCmsXChair.specSheet}
+          />
+        </div>
       </XchairRoot>
+      <BreadWrapper>
+        <BreadCrumbs next="x-chair" here={datoCmsXChair.slug} />
+      </BreadWrapper>
     </Layout>
   );
 }
