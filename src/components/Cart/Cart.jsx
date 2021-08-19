@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useEffect, useState } from "react";
+import { Link } from "gatsby";
 import { func, string, bool } from "prop-types";
 import VisuallyHidden from "@reach/visually-hidden";
 import styled from "@emotion/styled";
@@ -448,6 +449,12 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
                 </span>
               </>
               <p>Your Cart is empty.</p>
+              <div>
+                <Link to="/brands/list">SHOP MATTRESSES</Link>
+                <Link to="/adjustable">SHOP ADJUSTABLES</Link>
+                <Link to="/x-chair">SHOP X-CHAIR</Link>
+                <Link to="/accessories/list">SHOP ACCESSORIES</Link>
+              </div>
             </EmptyCartRoot>
             <BackLink onClick={toggle}>
               <BackArrow />
