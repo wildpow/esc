@@ -7,41 +7,73 @@ import {
   fonts,
   radius,
   spacing,
+  breakpoints,
 } from "../../../../styles/theme.styled";
 import ShoppingCart from "../../../../svgs/shopping-cart-solid.svg";
 import Check from "../../../../svgs/check-solid.svg";
 import Arrow from "../../../../svgs/arrow-right-solid.svg";
 
-const addedKey = keyframes`
+const mobileAddedKey = keyframes`
 0% {
   opacity: .1;
-  transform: translateY(-110%) scale(1.4);
+  transform: translateY(-110%) scale(1.2);
 }
 20% {
   opacity: 1;
-  transform: translateY(-10%) scale(1.4);
+  transform: translateY(-10%) scale(1.2);
 }
 30% {
-  transform: translateY(0%) scale(1.4);
+  transform: translateY(0%) scale(1.2);
 }
 50% {
-  transform: translateY(0%) scale(1.4);
+  transform: translateY(0%) scale(1.3);
   opacity: 1;
 }
 70% {
-  transform: translateY(0%) scale(1.4);
+  transform: translateY(0%) scale(1.2);
 }
 80% {
-  transform: translateY(10%) scale(1.4) ;
+  transform: translateY(0%) scale(1.2) ;
   opacity: 1;
 }
 
 100% {
-  transform: translateY(110%) scale(1.4);
+  transform: translateY(110%) scale(1.2);
   opacity: .1;
 }
 
 `;
+// OLD keyframe kept it because I'm not sure which one I like best
+// const addedKey = keyframes`
+// 0% {
+//   opacity: .1;
+//   transform: translateY(-110%) scale(1.4);
+// }
+// 20% {
+//   opacity: 1;
+//   transform: translateY(-10%) scale(1.4);
+// }
+// 30% {
+//   transform: translateY(0%) scale(1.4);
+// }
+// 50% {
+//   transform: translateY(0%) scale(1.4);
+//   opacity: 1;
+// }
+// 70% {
+//   transform: translateY(0%) scale(1.4);
+// }
+// 80% {
+//   transform: translateY(10%) scale(1.4) ;
+//   opacity: 1;
+// }
+
+// 100% {
+//   transform: translateY(110%) scale(1.4);
+//   opacity: .1;
+// }
+
+// `;
 const Button = styled.button`
   .start {
     transition: ${({ added, checkCart }) =>
@@ -65,7 +97,7 @@ const Button = styled.button`
     right: 0;
     background-color: ${colors.blue[500]};
     /* transition: all 0.3s ease-in-out; */
-    animation: ${addedKey} 2100ms ease-in-out;
+    animation: ${mobileAddedKey} 2100ms ease-in-out;
     transform: translateY(-110%) scale(1.4);
     opacity: 0;
     /* transform: ${({ added }) =>
@@ -163,6 +195,11 @@ const Button = styled.button`
   font-family: ${fonts.sans};
   align-self: flex-end;
   flex-grow: 1;
+  /* @media (min-width: ${breakpoints.sm}) {
+    .add {
+      animation: ${mobileAddedKey} 2100ms ease-in-out;
+    }
+  } */
   @media print {
     display: none;
   }
