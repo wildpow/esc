@@ -14,6 +14,12 @@ import {
 } from "./productForm.styled";
 import Another from "./fancySubmit/AnotherFancyButton";
 
+function calculateQty(qty, boxIndex) {
+  const qtyNum = Number(qty);
+  const boxIndexNum = boxIndex.length === 0 || boxIndex === "4" ? 0 : 1;
+  return boxIndexNum ? 2 * qtyNum : qtyNum;
+}
+
 const ProductForm = ({
   variants,
   priceMin,
@@ -192,6 +198,7 @@ const ProductForm = ({
   };
 
   const hasVariants = variants.length > 1;
+  const qty = calculateQty(state.quantity, state.boxIndex);
   return (
     <ProductFormRoot onSubmit={handleSubmit} matt={matt}>
       <div className="children">
@@ -313,6 +320,7 @@ const ProductForm = ({
               <Another
                 disabled={state.variantIndex.length === 0}
                 cb={handleSubmit}
+                qty={qty}
               />
             </div>
           ) : (
@@ -327,6 +335,7 @@ const ProductForm = ({
               <Another
                 disabled={state.variantIndex.length === 0}
                 cb={handleSubmit}
+                qty={qty}
               />
             </>
           )}

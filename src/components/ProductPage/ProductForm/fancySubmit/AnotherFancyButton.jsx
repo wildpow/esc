@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-import { bool, func } from "prop-types";
+import { bool, func, number } from "prop-types";
 import { useState } from "react";
 import {
   colors,
@@ -127,8 +127,12 @@ const Button = styled.button`
     added || checkCartEnd ? "none" : "auto"};
   @media (hover: hover) {
     &:hover {
-      background: ${({ inverse }) =>
-        inverse ? colors.white : colors.blue["900"]};
+      background: ${({ inverse, added, checkCartEnd, checkCart }) =>
+        inverse
+          ? colors.white
+          : added || checkCartEnd || checkCart
+          ? colors.blue["500"]
+          : colors.blue["900"]};
       box-shadow: 0 0 0 1px ${colors.gray["900"]};
     }
   }
@@ -167,7 +171,7 @@ const Button = styled.button`
 //  move the corresponding text through each animation.
 //  The 3rd 'checkCartEnd' sets transform to the opposite
 //  direction of where the text came in from.
-export default function Another({ disabled, cb }) {
+export default function Another({ disabled, cb, qty }) {
   const [added, setAdded] = useState(false);
   const [checkCart, setCheckCart] = useState(false);
   const [checkCartEnd, setCheckCartEnd] = useState(false);
@@ -204,7 +208,7 @@ export default function Another({ disabled, cb }) {
       </div>
       {added && (
         <div className="add">
-          Added to Cart
+          {`${qty} Item${qty === 1 ? "" : "s"} Added to Cart`}
           <Check />
         </div>
       )}
@@ -221,4 +225,9 @@ export default function Another({ disabled, cb }) {
 Another.propTypes = {
   disabled: bool.isRequired,
   cb: func.isRequired,
+  qty: number,
+};
+
+Another.defaultProps = {
+  qty: 1,
 };
