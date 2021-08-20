@@ -82,7 +82,7 @@ function xChairtoAlgoliaRecord({
   return {
     objectID: id,
     slug: `/x-chair/${slug}`,
-    title,
+    title: `X-Chair ${slug.toUpperCase()} ${title}`,
     productType: typeOfProduct.title,
     brand: "X-Chair",
     description: searchDetails,
