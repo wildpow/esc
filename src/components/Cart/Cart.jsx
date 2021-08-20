@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useEffect, useState } from "react";
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import { func, string, bool } from "prop-types";
 import VisuallyHidden from "@reach/visually-hidden";
 import styled from "@emotion/styled";

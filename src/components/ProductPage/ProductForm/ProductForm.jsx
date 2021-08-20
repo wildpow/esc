@@ -3,14 +3,14 @@
 import { useReducer } from "react";
 import PropTypes from "prop-types";
 import { Input, Label, Select } from "../formElements.styled";
-import ShopingCart from "../../../svgs/shopping-cart-solid.svg";
+// import ShopingCart from "../../../svgs/shopping-cart-solid.svg";
 import { useStore } from "../../../contexts/Store.ctx";
 import {
   ProductFormRoot,
   PriceRange,
   QtyFieldset,
   SizeFieldset,
-  AddToCartButton,
+  // AddToCartButton,
 } from "./productForm.styled";
 import Another from "./fancySubmit/AnotherFancyButton";
 

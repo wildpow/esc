@@ -1,6 +1,5 @@
 import { bool, string, func, number } from "prop-types";
 import { Link } from "gatsby";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import VisuallyHidden from "@reach/visually-hidden";
 import { useStore } from "../../../contexts/Store.ctx";
@@ -19,16 +18,16 @@ const searchIndices = [{ name: `Products`, title: `Products` }];
 
 // TODO Change name or combine and import from different file to avoid
 // TODO duplication in Cart component.
-const emptyCart = css`
-  cursor: pointer;
-  opacity: 1;
-  :hover {
-    transform: scale(1.2);
-    .fa-shopping-cart {
-      color: ${colors.blue["900"]};
-    }
-  }
-`;
+// const emptyCart = css`
+//   cursor: pointer;
+//   opacity: 1;
+//   :hover {
+//     transform: scale(1.2);
+//     .fa-shopping-cart {
+//       color: ${colors.blue["900"]};
+//     }
+//   }
+// `;
 // TODO: Hover icon overflow's X axis after 1024 PX
 const CartToggle = styled.button`
   /* cursor: not-allowed; */
