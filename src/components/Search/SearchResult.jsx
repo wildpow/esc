@@ -57,12 +57,7 @@ const HitCount = connectStateResults(({ searchResults }) => {
           <Button to="/brands/list">Shop all Mattressess</Button>
           <Button to="/brands/list">Shop all Adjustables</Button>
           <Button to="/accessories/list">Shop all Accessories</Button>
-          <Button to="/accessories/list?type=foundation">
-            Shop all Foundations
-          </Button>
-
-          <Button to="/x-chair">Shop all X-Chair's</Button>
-
+          <Button to="/x-chair">Shop all X-Chairs</Button>
           <Button inverse to="/contact-us">
             Contact Us
           </Button>
