@@ -6,9 +6,10 @@ All notable changes to this project will be documented in this file. See [Conven
 - [PR #153](https://github.com/wildpow/esc/pull/153) X-Chair's added!
 - [PR #154](https://github.com/wildpow/esc/pull/154) New brand Mattress America.
 - [PR #155](https://github.com/wildpow/esc/pull/155) Updated policies and warranty pages.
-- [5f3b51d]() Added script to run dev server over local network.
+- [5f3b51d](https://github.com/wildpow/esc/commit/5f3b51d700ed052b6a9609b0ba4554adbb5467d3) Added script to run dev server over local network.
 #### Bug Fix
-- [8118e3a]() Copyright year updates automatically now.
+- [8118e3a](https://github.com/wildpow/esc/commit/8118e3a4bf7ed79b08e3ec38620f308b10084607) Copyright year updates automatically now.
+- [PR #158](https://github.com/wildpow/esc/pull/158) Reduced proudction build times from 22 to 6 minutes.
 ### July 2021
 #### Bug Fix
 - [PR #152](https://github.com/wildpow/esc/pull/152) Silence console warnings, update deps. and PropType fixes.
