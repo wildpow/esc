@@ -1,5 +1,4 @@
-[![time tracker](https://wakatime.com/badge/github/wildpow/new-esc-gatsby.svg)](https://wakatime.com/badge/github/wildpow/new-esc-gatsby) [![Netlify Status](https://api.netlify.com/api/v1/badges/cd08353a-e6d4-496a-8ab1-192bc169ac7a/deploy-status)](https://app.netlify.com/sites/reverent-wescoff-a83870/deploys)
-
+[![wakatime](https://wakatime.com/badge/github/wildpow/esc.svg)](https://wakatime.com/badge/github/wildpow/esc) [![Netlify Status](https://api.netlify.com/api/v1/badges/cd08353a-e6d4-496a-8ab1-192bc169ac7a/deploy-status)](https://app.netlify.com/sites/reverent-wescoff-a83870/deploys)
 # E.S.C Mattress Center
 
 A JAM Stack solution for a local mattress company.
