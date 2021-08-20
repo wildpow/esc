@@ -12,7 +12,7 @@ import {
   SizeFieldset,
   // AddToCartButton,
 } from "./productForm.styled";
-import Another from "./fancySubmit/AnotherFancyButton";
+import AnimatedSubmitBtn from "./AnimatedSubmitBtn";
 
 function calculateQty(qty, boxIndex) {
   const qtyNum = Number(qty);
@@ -317,7 +317,7 @@ const ProductForm = ({
                 Add to Cart
                 <ShopingCart />
               </AddToCartButton> */}
-              <Another
+              <AnimatedSubmitBtn
                 disabled={state.variantIndex.length === 0}
                 cb={handleSubmit}
                 qty={qty}
@@ -332,7 +332,7 @@ const ProductForm = ({
               Add to Cart
               <ShopingCart />
             </AddToCartButton> */}
-              <Another
+              <AnimatedSubmitBtn
                 disabled={state.variantIndex.length === 0}
                 cb={handleSubmit}
                 qty={qty}

@@ -8,11 +8,11 @@ import {
   radius,
   spacing,
   breakpoints,
-} from "../../../../styles/theme.styled";
-import ShoppingCart from "../../../../svgs/shopping-cart-solid.svg";
-import Check from "../../../../svgs/check-solid.svg";
-import Arrow from "../../../../svgs/arrow-right-solid.svg";
-import { useCart } from "../../../../contexts/InterfaceContext.ctx";
+} from "../../../styles/theme.styled";
+import ShoppingCart from "../../../svgs/shopping-cart-solid.svg";
+import Check from "../../../svgs/check-solid.svg";
+import Arrow from "../../../svgs/arrow-right-solid.svg";
+import { useCart } from "../../../contexts/InterfaceContext.ctx";
 
 const mobileAddedKey = keyframes`
 0% {
@@ -209,7 +209,7 @@ const Button = styled.button`
 //  move the corresponding text through each animation.
 //  The 3rd 'checkCartEnd' sets transform to the opposite
 //  direction of where the text came in from.
-export default function Another({ disabled, cb, qty }) {
+export default function AnimatedSubmitBtn({ disabled, cb, qty }) {
   const { setCartStatus } = useCart();
   const [added, setAdded] = useState(false);
   const [checkCart, setCheckCart] = useState(false);
@@ -261,12 +261,12 @@ export default function Another({ disabled, cb, qty }) {
     </Button>
   );
 }
-Another.propTypes = {
+AnimatedSubmitBtn.propTypes = {
   disabled: bool.isRequired,
   cb: func.isRequired,
   qty: number,
 };
 
-Another.defaultProps = {
+AnimatedSubmitBtn.defaultProps = {
   qty: 1,
 };
