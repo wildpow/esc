@@ -6,6 +6,7 @@ import { widthAvailableColors } from "./availableColorVaraints";
 import FeaturePopup from "./FeaturePopup";
 
 const width = (s) => {
+  console.log(s);
   switch (s) {
     case "Leather Exec":
       return {
@@ -21,7 +22,7 @@ const width = (s) => {
         ],
         popupContent: `Available in Black Leather and Black Brisa, the X4 offers and Extended Width seat option that comes with 1.5" of additional surface area.`,
       };
-    case "ATR Fabric":
+    case "ATR Mgmt":
       return {
         images: [
           <StaticImage

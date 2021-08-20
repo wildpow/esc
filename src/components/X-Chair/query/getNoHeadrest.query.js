@@ -47,10 +47,10 @@ export default (title) => {
       }
     `
   );
-  if (title === "ATR Fabric") {
+  if (title === "ATR Mgmt") {
     return xThree;
   }
-  if (title === "K-Sport") {
+  if (title === "K-Sport Mgmt") {
     return xTwo;
   }
   if (title === "Leather Exec") {
