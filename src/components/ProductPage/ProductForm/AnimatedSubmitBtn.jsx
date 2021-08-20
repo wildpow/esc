@@ -129,6 +129,7 @@ export default function AnimatedBtn({ disabled, cb, qty }) {
   const [added, setAdded] = useState(false);
   const submit = (e) => {
     setAdded(true);
+    cb(e);
     setTimeout(() => {
       setAdded(false);
     }, 6500);
