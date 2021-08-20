@@ -9,9 +9,10 @@ import {
   PoweredBy,
 } from "react-instantsearch-dom";
 import { PrimaryButton, Button } from "../../styles/buttons.old.styled";
-import { fontSize, spacing } from "../../styles/theme.styled";
+import { fontSize, spacing, FadeInAnimation } from "../../styles/theme.styled";
 
 const EmptySearch = styled.div`
+  ${FadeInAnimation}
   .emptySeachLinkWrapper {
     /* padding-: ${spacing[8]} 0; */
     width: 100%;
@@ -39,7 +40,7 @@ const EmptySearch = styled.div`
 
 const HitCount = connectStateResults(({ searchResults }) => {
   const hitCount = searchResults && searchResults.nbHits;
-  return hitCount > 0 ? (
+  return hitCount >= 1 && searchResults.hits.length >= 1 ? (
     <div className="HitCount">
       {hitCount}
       &nbsp;result

@@ -12,6 +12,7 @@ import {
 import ShoppingCart from "../../../../svgs/shopping-cart-solid.svg";
 import Check from "../../../../svgs/check-solid.svg";
 import Arrow from "../../../../svgs/arrow-right-solid.svg";
+import { useCart } from "../../../../contexts/InterfaceContext.ctx";
 
 const mobileAddedKey = keyframes`
 0% {
@@ -209,12 +210,13 @@ const Button = styled.button`
 //  The 3rd 'checkCartEnd' sets transform to the opposite
 //  direction of where the text came in from.
 export default function Another({ disabled, cb, qty }) {
+  const { setCartStatus } = useCart();
   const [added, setAdded] = useState(false);
   const [checkCart, setCheckCart] = useState(false);
   const [checkCartEnd, setCheckCartEnd] = useState(false);
   const submit = (e) => {
     if (checkCart) {
-      console.log("Go to cart");
+      setCartStatus("open");
     } else {
       cb(e);
       setAdded(true);
