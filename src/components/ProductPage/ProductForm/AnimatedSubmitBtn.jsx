@@ -221,8 +221,8 @@ export default function AnimatedSubmitBtn({ disabled, cb, qty }) {
       cb(e);
       setAdded(true);
       setTimeout(() => {
-        setCheckCart(true);
         setAdded(false);
+        setCheckCart(true);
         setTimeout(() => {
           setCheckCart(false);
           setCheckCartEnd(true);
