@@ -5,7 +5,7 @@ import { colors, fonts } from "../../styles/theme.styled";
 
 const Popover = css`
   max-height: 80vh;
-  overflow: scroll;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
   position: absolute;
   z-index: 2;

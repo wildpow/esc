@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useEffect, useState } from "react";
+import { navigate } from "gatsby";
 import { func, string, bool } from "prop-types";
 import VisuallyHidden from "@reach/visually-hidden";
 import styled from "@emotion/styled";
@@ -19,6 +20,7 @@ import {
   fonts,
   boxShadow,
   spacing,
+  fontSize,
 } from "../../styles/theme.styled";
 
 const CartRoot = styled.div`
@@ -215,7 +217,9 @@ const Content = styled.div`
   position: absolute;
   top: ${dimensions.headerHeight};
   width: 100%;
-
+  /* display: flex;
+  flex-direction: column; */
+  /* justify-content: space-between; */
   @media (min-width: ${breakpoints.lg}) {
     ::-webkit-scrollbar {
       height: 6px;
@@ -293,22 +297,33 @@ const CheckOut = styled(PrimaryButton)`
 `;
 const BackLink = styled(Button)`
   font-size: 1.25rem;
-  margin-bottom: ${spacing["4"]};
+  /* margin-bottom: ${spacing["4"]}; */
   width: 100%;
 `;
 const EmptyCartRoot = styled.div`
   align-items: center;
   display: flex;
+  padding-top: ${spacing["4"]};
   flex-direction: column;
-  height: 350px;
+  /* height: 350px; */
   justify-content: center;
   font-family: ${fonts.sans};
   .fa-empty-cart {
     color: ${colors.red["900"]};
-    width: 45px;
+    width: 65px;
   }
   p {
     color: ${colors.blue["900"]};
+    margin: 0px;
+    font-size: ${fontSize.xl};
+    font-weight: 500;
+  }
+  .emptyCartLinks {
+    padding: ${spacing["8"]} 0;
+    width: 100%;
+    display: flex;
+    gap: ${spacing["4"]};
+    flex-direction: column;
   }
 `;
 const Cart = ({ toggle, status, menuStatus, pin }) => {
@@ -362,6 +377,14 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
       ? checkout.totalPrice
       : Number(taxCheck(checkout.subtotalPrice, checkout.totalTax)) +
         Number(checkout.subtotalPrice);
+
+  const closeCartBeforeNav = (e, url) => {
+    e.preventDefault();
+    toggle(e);
+    setTimeout(() => {
+      navigate(url);
+    }, 250);
+  };
   return (
     <CartRoot
       className={`${status} ${loading ? "loading" : ""}`}
@@ -448,8 +471,26 @@ const Cart = ({ toggle, status, menuStatus, pin }) => {
                 </span>
               </>
               <p>Your Cart is empty.</p>
+              <div className="emptyCartLinks">
+                <BackLink
+                  onClick={(e) => closeCartBeforeNav(e, "/brands/list")}
+                >
+                  Shop All Mattresses
+                </BackLink>
+                <BackLink onClick={(e) => closeCartBeforeNav(e, "/adjustable")}>
+                  Shop All Adjustables
+                </BackLink>
+                <BackLink
+                  onClick={(e) => closeCartBeforeNav(e, "/accessories/list")}
+                >
+                  Shop All Accessories
+                </BackLink>
+                <BackLink onClick={(e) => closeCartBeforeNav(e, "/x-chair")}>
+                  Shop X-Chair
+                </BackLink>
+              </div>
             </EmptyCartRoot>
-            <BackLink onClick={toggle}>
+            <BackLink onClick={toggle} inverse>
               <BackArrow />
               Back to shopping
             </BackLink>

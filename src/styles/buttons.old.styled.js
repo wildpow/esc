@@ -5,12 +5,11 @@ import { colors, fonts, radius } from "./theme.styled";
 
 export const ButtonBase = styled.button`
   align-items: center;
-  background: ${({ inverse }) =>
-    inverse ? colors.colors.blue["900"] : colors.white};
+  background: ${({ inverse }) => (inverse ? colors.blue["900"] : colors.white)};
   border: 1px solid
     ${({ inverse }) => (inverse ? colors.blue["700"] : colors.blue["800"])};
   color: ${({ inverse }) =>
-    inverse ? colors.blue["800"] : colors.blue["700"]};
+    inverse ? colors.blue["100"] : colors.blue["700"]};
   border-radius: ${radius.default}px;
   cursor: pointer;
   display: inline-flex;

@@ -11,9 +11,12 @@ import "@fontsource/roboto-slab/700.css"; // Header mattress list
 import WindowSizeProvider from "./src/contexts/WindowSize.ctx";
 import StoreProvider from "./src/contexts/Store.ctx";
 import "normalize.css";
+import CartProvider from "./src/contexts/InterfaceContext.ctx";
 
 export const wrapRootElement = ({ element }) => (
   <WindowSizeProvider>
-    <StoreProvider>{element}</StoreProvider>
+    <StoreProvider>
+      <CartProvider>{element}</CartProvider>
+    </StoreProvider>
   </WindowSizeProvider>
 );

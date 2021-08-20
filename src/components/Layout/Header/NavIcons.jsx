@@ -1,6 +1,5 @@
 import { bool, string, func, number } from "prop-types";
 import { Link } from "gatsby";
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import VisuallyHidden from "@reach/visually-hidden";
 import { useStore } from "../../../contexts/Store.ctx";
@@ -19,18 +18,21 @@ const searchIndices = [{ name: `Products`, title: `Products` }];
 
 // TODO Change name or combine and import from different file to avoid
 // TODO duplication in Cart component.
-const emptyCart = css`
-  cursor: pointer;
-  opacity: 1;
-  :hover {
-    transform: scale(1.2);
-    .fa-shopping-cart {
-      color: ${colors.blue["900"]};
-    }
-  }
-`;
+// const emptyCart = css`
+//   cursor: pointer;
+//   opacity: 1;
+//   :hover {
+//     transform: scale(1.2);
+//     .fa-shopping-cart {
+//       color: ${colors.blue["900"]};
+//     }
+//   }
+// `;
+// TODO: Hover icon overflow's X axis after 1024 PX
 const CartToggle = styled.button`
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
+  cursor: pointer;
+  /* overflow: hidden; */
   .fa-shopping-cart {
     animation: ${iconEntry} 0.35s ease forwards;
     height: 28px;
@@ -56,8 +58,7 @@ const CartToggle = styled.button`
   top: 0;
 
   transition: all 0.2s ease;
-  pointer-events: ${({ menuStatus, cartStatus }) =>
-    menuStatus === "open" || cartStatus === "open" ? "none" : "auto"};
+
   width: ${dimensions.headerHeight};
 
   :focus {
@@ -65,10 +66,18 @@ const CartToggle = styled.button`
     outline: 0;
     transition: box-shadow 0.15s ease-in-out;
   }
-  opacity: 0.3;
-  ${({ itemsInCart }) => itemsInCart !== 0 && emptyCart}
+  :hover {
+    transform: scale(1.2);
+    .fa-shopping-cart {
+      color: ${colors.blue["900"]};
+    }
+  }
+  /* opacity: 0.3; */
+  opacity: 1;
 `;
-
+// ${({ itemsInCart }) => itemsInCart !== 0 && emptyCart}
+// pointer-events: ${({ menuStatus, cartStatus }) =>
+// menuStatus === "open" || cartStatus === "open" ? "none" : "auto"};
 const ExtraNavRoot = styled.div`
   display: flex;
   overflow: ${({ adding }) => (adding ? "hidden" : "initial")};
@@ -208,7 +217,7 @@ const NavIcons = ({
         headerVisible={headerVisible}
         menuStatus={menuStatus}
         cartStatus={cartStatus}
-        disabled={itemsInCart === 0}
+        // disabled={itemsInCart === 0}
         itemsInCart={itemsInCart}
       >
         <VisuallyHidden>shoping cart</VisuallyHidden>

@@ -16,6 +16,7 @@ import MenuOverLay from "../../styles/menuOverlay.styled";
 import Footer from "./Footer";
 import { breakpoints, colors, boxShadow } from "../../styles/theme.styled";
 import StructuredDataMain from "./structuredDataMain";
+import { useCart } from "../../contexts/InterfaceContext.ctx";
 
 const PageContentRoot = styled.main`
   position: relative;
@@ -43,6 +44,12 @@ const PageContentRoot = styled.main`
 `;
 export default function Layout({ children, bgWhite }) {
   const { width, height } = useWindowSize();
+  const { cartStatus, setCartStatus } = useCart();
+  const menuId = "main-menu";
+  const [menuStatus, setMenuStatus] = useState("closed");
+  const [moved, setMoved] = useState("");
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const [searchFocus, setSearchFocus] = useState(false);
 
   // Birdeye customer chat
   const element =
@@ -50,12 +57,6 @@ export default function Layout({ children, bgWhite }) {
       ? document.getElementById("bf-revz-widget-900941696")
       : null;
   // //////////////////
-
-  // MobileMenu and Cart open/close
-  const menuId = "main-menu";
-  const [cartStatus, setCartStatus] = useState("closed");
-  const [menuStatus, setMenuStatus] = useState("closed");
-  const [moved, setMoved] = useState("");
 
   function menuToggle(e) {
     e.preventDefault();
@@ -133,10 +134,6 @@ export default function Layout({ children, bgWhite }) {
       window.removeEventListener("beforeprint", beforPrint);
     };
   }, []);
-
-  const [headerVisible, setHeaderVisible] = useState(true);
-  const [searchFocus, setSearchFocus] = useState(false);
-
   return (
     <>
       <Global styles={GlobalStyle} />

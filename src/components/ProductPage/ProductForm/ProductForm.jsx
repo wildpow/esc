@@ -3,15 +3,22 @@
 import { useReducer } from "react";
 import PropTypes from "prop-types";
 import { Input, Label, Select } from "../formElements.styled";
-import ShopingCart from "../../../svgs/shopping-cart-solid.svg";
+// import ShopingCart from "../../../svgs/shopping-cart-solid.svg";
 import { useStore } from "../../../contexts/Store.ctx";
 import {
   ProductFormRoot,
   PriceRange,
   QtyFieldset,
   SizeFieldset,
-  AddToCartButton,
+  // AddToCartButton,
 } from "./productForm.styled";
+import AnimatedSubmitBtn from "./AnimatedSubmitBtn";
+
+function calculateQty(qty, boxIndex) {
+  const qtyNum = Number(qty);
+  const boxIndexNum = boxIndex.length === 0 || boxIndex === "4" ? 0 : 1;
+  return boxIndexNum ? 2 * qtyNum : qtyNum;
+}
 
 const ProductForm = ({
   variants,
@@ -191,6 +198,7 @@ const ProductForm = ({
   };
 
   const hasVariants = variants.length > 1;
+  const qty = calculateQty(state.quantity, state.boxIndex);
   return (
     <ProductFormRoot onSubmit={handleSubmit} matt={matt}>
       <div className="children">
@@ -305,19 +313,31 @@ const ProductForm = ({
                   value={state.quantity}
                 />
               </QtyFieldset>
-              <AddToCartButton type="submit">
+              {/* <AddToCartButton type="submit">
                 Add to Cart
                 <ShopingCart />
-              </AddToCartButton>
+              </AddToCartButton> */}
+              <AnimatedSubmitBtn
+                disabled={state.variantIndex.length === 0}
+                cb={handleSubmit}
+                qty={qty}
+              />
             </div>
           ) : (
-            <AddToCartButton
+            <>
+              {/* <AddToCartButton
               type="submit"
               disabled={state.variantIndex.length === 0}
             >
               Add to Cart
               <ShopingCart />
-            </AddToCartButton>
+            </AddToCartButton> */}
+              <AnimatedSubmitBtn
+                disabled={state.variantIndex.length === 0}
+                cb={handleSubmit}
+                qty={qty}
+              />
+            </>
           )}
         </div>
       </div>
@@ -349,6 +369,7 @@ ProductForm.defaultProps = {
   maxQty: 10,
 };
 ProductForm.propTypes = {
+  children: PropTypes.node.isRequired,
   variants: PropTypes.instanceOf(Object).isRequired,
   priceMin: PropTypes.string.isRequired,
   priceMax: PropTypes.string.isRequired,
