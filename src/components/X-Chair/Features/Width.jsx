@@ -6,7 +6,6 @@ import { widthAvailableColors } from "./availableColorVaraints";
 import FeaturePopup from "./FeaturePopup";
 
 const width = (s) => {
-  console.log(s);
   switch (s) {
     case "Leather Exec":
       return {
