@@ -7,9 +7,11 @@ import GenerateInitialState from "./generateInitialState";
 import reducer from "./allMattress.reducer";
 import ProductThumbnail from "../ProductThumbnail";
 import FilterSortPanel from "./FilterSortPanel";
+import getMattressTypes from "./mattressType.query";
 
 const MattressList = ({ location, data }) => {
-  const initialState = GenerateInitialState(location, data);
+  const types = getMattressTypes();
+  const initialState = GenerateInitialState(location, data, types);
   const [state, dispatch] = useReducer(reducer, initialState);
   const createButton = (checkBoxs) => {
     if (
@@ -47,6 +49,7 @@ const MattressList = ({ location, data }) => {
           dispatch={dispatch}
           comfortCheckBoxes={state.comfortCheckBoxes}
           brandCheckBoxes={state.brandCheckBoxes}
+          typeCheckBoxes={state.typeCheckBoxes}
         />
         {state.currentMattresses.length > 0 ? (
           <div className="mattList__grid">

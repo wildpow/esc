@@ -8,6 +8,10 @@ export const newMattressList = graphql`
     firmness
     id
     saleBanner
+    mattressType {
+      title
+      slug
+    }
     images {
       coverImage {
         alt

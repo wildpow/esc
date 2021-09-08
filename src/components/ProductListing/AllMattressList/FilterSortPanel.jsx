@@ -8,7 +8,12 @@ import {
   Checkbox,
 } from "../FilterSortPanel";
 
-const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => (
+const FilterSortPanel = ({
+  dispatch,
+  comfortCheckBoxes,
+  brandCheckBoxes,
+  typeCheckBoxes,
+}) => (
   <FilterSortRoot>
     <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
     <Accordion title="FILTER BY">
@@ -51,6 +56,25 @@ const FilterSortPanel = ({ dispatch, comfortCheckBoxes, brandCheckBoxes }) => (
           </label>
         ))}
       </FilterByCard>
+      <FilterByCard heading="Mattress Type">
+        {typeCheckBoxes.map((type, index) => (
+          <label htmlFor={type.displayName} key={type.displayName}>
+            <Checkbox
+              id={type.displayName}
+              checked={type.checked}
+              onChange={(e) =>
+                dispatch({
+                  type: "type",
+                  index,
+                  value: type.urlParam,
+                  checked: e.target.checked,
+                })
+              }
+            />
+            <span style={{ marginLeft: 8 }}>{type.displayName}</span>
+          </label>
+        ))}
+      </FilterByCard>
     </Accordion>
   </FilterSortRoot>
 );
@@ -59,5 +83,6 @@ FilterSortPanel.propTypes = {
   dispatch: PropTypes.func.isRequired,
   comfortCheckBoxes: PropTypes.instanceOf(Object).isRequired,
   brandCheckBoxes: PropTypes.instanceOf(Object).isRequired,
+  typeCheckBoxes: PropTypes.instanceOf(Object).isRequired,
 };
 export default FilterSortPanel;

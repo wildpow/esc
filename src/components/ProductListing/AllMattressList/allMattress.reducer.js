@@ -2,9 +2,9 @@ import { navigate } from "gatsby";
 
 const queryString = require("query-string");
 
-function filterCurrentMattresses(mattresses, brands, comfort) {
+function filterCurrentMattresses(mattresses, brands, comfort, type) {
   let newMattresses = mattresses;
-  if (brands.length === 0 && comfort.length === 0) {
+  if (brands.length === 0 && comfort.length === 0 && type.length === 0) {
     return mattresses;
   }
   if (brands.length >= 1) {
@@ -17,12 +17,19 @@ function filterCurrentMattresses(mattresses, brands, comfort) {
       comfort.includes(matt.firmness)
     );
   }
+  if (type.length >= 1) {
+    newMattresses = newMattresses.filter((t) =>
+      type.includes(t.mattressType.slug)
+    );
+  }
   return newMattresses;
 }
 export default function (state, action) {
   let newComfortNumbers;
   let newComfortCheckBoxes;
   let newBrandCheckBoxes;
+  let newTypeCheckBoxes;
+  let newSelectedType;
   let newSelectedBrand;
   let newCurrentHeader;
   switch (action.type) {
@@ -86,6 +93,39 @@ export default function (state, action) {
           }
         ),
       };
+    case "type": {
+      newTypeCheckBoxes = [...state.typeCheckBoxes];
+      newTypeCheckBoxes[action.index].checked = action.checked;
+      newSelectedType = [...state.selectedTypesCheckBoxes];
+      if (newSelectedType.includes(action.value)) {
+        newSelectedType = newSelectedType.filter(
+          (item) => item !== action.value
+        );
+      } else {
+        newSelectedType.push(action.value);
+      }
+      navigate(
+        `${state.locationPath}?${queryString.stringify(
+          {
+            brand: state.selectedBrandCheckBoxes,
+            comfort: state.selectedComfortCheckBoxes,
+            type: newSelectedType,
+          },
+          { arrayFormat: "comma" }
+        )}`
+      );
+      return {
+        ...state,
+        selectedTypesCheckBoxes: newSelectedType,
+        typeCheckBoxes: newTypeCheckBoxes,
+        currentMattresses: filterCurrentMattresses(
+          state.beforeFilterMattresses,
+          state.selectedBrandCheckBoxes,
+          state.selectedComfortCheckBoxes,
+          newSelectedType
+        ),
+      };
+    }
     case "brand":
       newBrandCheckBoxes = [...state.brandCheckBoxes];
       newBrandCheckBoxes[action.index].checked = action.checked;
@@ -113,7 +153,8 @@ export default function (state, action) {
         currentMattresses: filterCurrentMattresses(
           state.beforeFilterMattresses,
           newSelectedBrand,
-          state.selectedComfortCheckBoxes
+          state.selectedComfortCheckBoxes,
+          state.selectedTypesCheckBoxes
         ),
         brandCheckBoxes: newBrandCheckBoxes,
         selectedBrandCheckBoxes: newSelectedBrand,
@@ -143,7 +184,8 @@ export default function (state, action) {
         currentMattresses: filterCurrentMattresses(
           state.beforeFilterMattresses,
           state.selectedBrandCheckBoxes,
-          newComfortNumbers
+          newComfortNumbers,
+          state.selectedTypesCheckBoxes
         ),
         selectedComfortCheckBoxes: newComfortNumbers,
       };

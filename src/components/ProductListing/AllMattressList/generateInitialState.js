@@ -1,10 +1,11 @@
 const queryString = require("query-string");
 
-const GenerateInitialState = (location, data) => {
+const GenerateInitialState = (location, data, types) => {
   const query = queryString.parse(location.search.toLowerCase(), {
     arrayFormat: "comma",
   });
   const initialState = {
+    ...types,
     currentMattresses: [],
     beforeFilterMattresses: data.all.mattresses,
     currentHeader: data.all.header,
