@@ -72,6 +72,7 @@ const List = ({ location, data }) => {
         ...data.stearnsMattress.nodes,
         ...data.nectarMattress.nodes,
         ...data.poshMattress.nodes,
+        ...data.mattressAmerica.nodes,
       ]),
       header: data.all,
     },
@@ -90,6 +91,25 @@ export const list = graphql`
     seo: datoCmsSeo(name: { eq: "brands" }) {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+
+    mattressAmerica: allDatoCmsNewMattress(
+      filter: { brand: { urlName: { eq: "mattress-america" } } }
+    ) {
+      nodes {
+        ...newMattressList
+      }
+    }
+    mattressAmericaHeader: datoCmsBrand(urlName: { eq: "mattress-america" }) {
+      headerLink {
+        title
+        tagLine
+        bgImg {
+          url
+          alt
+          title
+        }
       }
     }
 
