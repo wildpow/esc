@@ -7,9 +7,7 @@ const GenerateInitialState = (location, data, types, brandData) => {
   const query = queryString.parse(location.search.toLowerCase(), {
     arrayFormat: "comma",
   });
-  // todo: working on programmatically getting checkbox brand data
-  console.log("brandState, brandNames", brandState, brandNames);
-  // TODO
+
   const initialState = {
     ...types,
     currentMattresses: [],
@@ -26,6 +24,11 @@ const GenerateInitialState = (location, data, types, brandData) => {
         urlParam: "posh-and-lavish",
         checked: false,
         displayName: "Posh + Lavish",
+      },
+      {
+        urlParam: "mattress-america",
+        checked: false,
+        displayName: "Mattress America",
       },
     ],
     selectedBrandCheckBoxes: [],
@@ -75,6 +78,7 @@ const GenerateInitialState = (location, data, types, brandData) => {
       stearns: data.stearns.header,
       nectar: data.nectar.header,
       "posh-and-lavish": data["posh-and-lavish"].header,
+      "mattress-america": data["mattress-america"].header,
       all: data.all.header,
     },
     locationPath: location.pathname,
@@ -102,9 +106,22 @@ const GenerateInitialState = (location, data, types, brandData) => {
       "stearns",
       "nectar",
       "posh-and-lavish",
+      "mattress-america",
     ];
     isItAnArray.forEach((a) =>
       brands.forEach((b) => {
+        if (a === b) resault.push(b);
+      })
+    );
+    // return brands.filter((brand) => arr.includes(brand));
+    return resault;
+  };
+  const filterTypeQuery = (arr) => {
+    const resault = [];
+    const isItAnArray = typeof arr === "string" ? [arr] : arr;
+    const currentTypes = ["latex", "inner-spring", "memory-foam", "hybrid"];
+    isItAnArray.forEach((a) =>
+      currentTypes.forEach((b) => {
         if (a === b) resault.push(b);
       })
     );
@@ -120,7 +137,7 @@ const GenerateInitialState = (location, data, types, brandData) => {
   };
   let filteredComfortQuery = null;
   let filteredBrandQuery = null;
-
+  const filteredTypeQuery = null;
   // Build state for all mattress query conditions
   if (
     Object.entries(query).length === 0 ||
@@ -132,6 +149,14 @@ const GenerateInitialState = (location, data, types, brandData) => {
     allMattresses();
     return initialState;
   }
+  // TODO working on type query building
+  // if(query.type) {
+  //   filteredTypeQuery = filterTypeQuery(query.type);
+  //   if(filteredTypeQuery.length > 0) {
+
+  //   }
+  // }
+  // _____________________________
 
   // build state for brand query
   if (query.brand) {

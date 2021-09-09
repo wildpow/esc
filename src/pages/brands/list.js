@@ -63,6 +63,11 @@ const List = ({ location, data }) => {
       header: data.poshHeader.headerLink,
       checkBoxIndex: 6,
     },
+    "mattress-america": {
+      mattresses: sortedMatt([...data.mattressAmerica.nodes]),
+      header: data.mattressAmericaHeader.headerLink,
+      checkBoxIndex: 7,
+    },
     all: {
       mattresses: sortedMatt([
         ...sealyMattressSort(data.sealyMattress.nodes),
