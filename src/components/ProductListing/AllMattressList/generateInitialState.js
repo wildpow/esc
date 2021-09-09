@@ -1,9 +1,15 @@
 const queryString = require("query-string");
 
-const GenerateInitialState = (location, data, types) => {
+const GenerateInitialState = (location, data, types, brandData) => {
+  // /////////
+  const { brandState, brandNames } = brandData;
+  // ////////
   const query = queryString.parse(location.search.toLowerCase(), {
     arrayFormat: "comma",
   });
+  // todo: working on programmatically getting checkbox brand data
+  console.log("brandState, brandNames", brandState, brandNames);
+  // TODO
   const initialState = {
     ...types,
     currentMattresses: [],

@@ -8,10 +8,17 @@ import reducer from "./allMattress.reducer";
 import ProductThumbnail from "../ProductThumbnail";
 import FilterSortPanel from "./FilterSortPanel";
 import getMattressTypes from "./mattressType.query";
+import getMattressBrands from "./mattressBrand.query";
 
 const MattressList = ({ location, data }) => {
-  const types = getMattressTypes();
-  const initialState = GenerateInitialState(location, data, types);
+  const mattressTypes = getMattressTypes();
+  const mattressBrands = getMattressBrands();
+  const initialState = GenerateInitialState(
+    location,
+    data,
+    mattressTypes,
+    mattressBrands
+  );
   const [state, dispatch] = useReducer(reducer, initialState);
   const createButton = (checkBoxs) => {
     if (
