@@ -13,25 +13,8 @@ const GenerateInitialState = (location, data, types, brandData) => {
     currentMattresses: [],
     beforeFilterMattresses: data.all.mattresses,
     currentHeader: data.all.header,
-    brandCheckBoxes: [
-      { urlParam: "sealy", checked: false, displayName: "Sealy" },
-      { urlParam: "beautyrest", checked: false, displayName: "Beautyrest" },
-      { urlParam: "tempurpedic", checked: false, displayName: "Tempur-PEDIC" },
-      { urlParam: "serta", checked: false, displayName: "Serta" },
-      { urlParam: "stearns", checked: false, displayName: "Stearns & Foster" },
-      { urlParam: "nectar", checked: false, displayName: "Nectar" },
-      {
-        urlParam: "posh-and-lavish",
-        checked: false,
-        displayName: "Posh + Lavish",
-      },
-      {
-        urlParam: "mattress-america",
-        checked: false,
-        displayName: "Mattress America",
-      },
-    ],
-    selectedBrandCheckBoxes: [],
+    brandCheckBoxes: brandState.brandCheckBoxes,
+    selectedBrandCheckBoxes: brandState.selectedBrandCheckBoxes,
     comfortCheckBoxes: [
       {
         id: 0,
@@ -95,27 +78,48 @@ const GenerateInitialState = (location, data, types, brandData) => {
     // return comfortIndex.filter((index) => arr.includes(index)).map(Number);
     return resault.map(Number);
   };
-  const filterBrandQuery = (arr) => {
-    const resault = [];
-    const isItAnArray = typeof arr === "string" ? [arr] : arr;
-    const brands = [
-      "sealy",
-      "beautyrest",
-      "tempurpedic",
-      "serta",
-      "stearns",
-      "nectar",
-      "posh-and-lavish",
-      "mattress-america",
-    ];
-    isItAnArray.forEach((a) =>
-      brands.forEach((b) => {
-        if (a === b) resault.push(b);
+  const filterBadQueryInputs = (originalQuery, keys) => {
+    const results = [];
+    const isQueryAnArray =
+      typeof originalQuery === "string" ? [originalQuery] : originalQuery;
+    isQueryAnArray.forEach((a) =>
+      keys.forEach((b) => {
+        if (a === b) results.push(b);
       })
     );
-    // return brands.filter((brand) => arr.includes(brand));
-    return resault;
+    return results;
   };
+  const brands = [
+    "sealy",
+    "beautyrest",
+    "tempurpedic",
+    "serta",
+    "stearns",
+    "nectar",
+    "posh-and-lavish",
+    "mattress-america",
+  ];
+  // const filterBrandQuery = (arr) => {
+  //   const resault = [];
+  //   const isItAnArray = typeof arr === "string" ? [arr] : arr;
+  //   const brands = [
+  //     "sealy",
+  //     "beautyrest",
+  //     "tempurpedic",
+  //     "serta",
+  //     "stearns",
+  //     "nectar",
+  //     "posh-and-lavish",
+  //     "mattress-america",
+  //   ];
+  //   isItAnArray.forEach((a) =>
+  //     brands.forEach((b) => {
+  //       if (a === b) resault.push(b);
+  //     })
+  //   );
+  //   // return brands.filter((brand) => arr.includes(brand));
+  //   return resault;
+  // };
   const filterTypeQuery = (arr) => {
     const resault = [];
     const isItAnArray = typeof arr === "string" ? [arr] : arr;
@@ -159,21 +163,31 @@ const GenerateInitialState = (location, data, types, brandData) => {
   // _____________________________
 
   // build state for brand query
+  const newBrandCBState = [...initialState.brandCheckBoxes];
   if (query.brand) {
-    filteredBrandQuery = filterBrandQuery(query.brand);
+    filteredBrandQuery = filterBadQueryInputs(query.brand, brandNames);
     if (filteredBrandQuery.length === 1) {
+      console.log("PPOOOPPOUT", brandState);
       initialState.currentMattresses = data[filteredBrandQuery[0]].mattresses;
       initialState.currentHeader = data[filteredBrandQuery[0]].header;
       initialState.selectedBrandCheckBoxes.push(filteredBrandQuery[0]);
-      initialState.brandCheckBoxes[
-        data[filteredBrandQuery[0]].checkBoxIndex
-      ].checked = true;
+      newBrandCBState[brandNames.indexOf(filteredBrandQuery[0])].checked = true;
+      // initialState.brandCheckBoxes[
+      //   data[filteredBrandQuery[0]].checkBoxIndex
+      // ].checked = true;
+      initialState.brandCheckBoxes = newBrandCBState;
     } else {
       initialState.currentMattresses = data.all.mattresses.filter((matt) =>
         filteredBrandQuery.includes(matt.brand.urlName)
       );
+      console.log(filteredBrandQuery, "filteredBrandQuery");
       initialState.currentHeader = data.all.header;
       filteredBrandQuery.forEach((q) => {
+        console.log(
+          data[q].checkBoxIndex,
+          "!@W@DFWQQQQQ",
+          initialState.brandCheckBoxes
+        );
         initialState.brandCheckBoxes[data[q].checkBoxIndex].checked = true;
       });
     }
@@ -224,6 +238,7 @@ const GenerateInitialState = (location, data, types, brandData) => {
       );
     }
   }
+  console.log(newBrandCBState);
   return initialState;
 };
 
