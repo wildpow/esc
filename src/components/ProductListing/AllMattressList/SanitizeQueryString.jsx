@@ -12,11 +12,14 @@ const filterBadQueryInputs = (originalQuery, keys) => {
       if (a === b) results.push(b);
     })
   );
-  return results;
+  const dedup = results.filter(
+    (item, index, self) => self.indexOf(item) === index
+  );
+  return dedup;
 };
 const SanitizeQueryString = (ComponentToWrap) => (props) => {
-  const didQueryKeyFail = false;
-  const didQueryValueFail = false;
+  let didQueryKeyFail = false;
+  let didQueryValueFail = false;
   const mattressTypes = getMattressTypes();
   const mattressBrands = getMattressBrands();
   const masterList = {
@@ -29,7 +32,6 @@ const SanitizeQueryString = (ComponentToWrap) => (props) => {
     <Location>
       {({ location, navigate }) => {
         let search = false;
-        const newSearchObj = {};
         if (Object.keys(location.search).length !== 0) {
           search = queryString.parse(location.search.toLocaleLowerCase(), {
             arrayFormat: "comma",
@@ -39,28 +41,28 @@ const SanitizeQueryString = (ComponentToWrap) => (props) => {
             if (masterList.queryKeys.includes(k)) {
               const filter = filterBadQueryInputs(search[k], masterList[k]);
               if (filter.length === 0) {
-                console.log("filter.length === 0", search[k]);
+                didQueryKeyFail = true;
                 delete search[k];
               } else if (filter.length !== search[k].length) {
+                didQueryValueFail = true;
                 search[k] = filter;
               }
             } else {
+              didQueryKeyFail = true;
               delete search[k];
-              console.log("FALES");
             }
           });
-          if (Object.keys(search).length !== searchKeys.length) {
-            if (Object.keys(search).length === 0) {
-              console.log("search.length === 0", search);
 
+          if (didQueryValueFail || didQueryKeyFail) {
+            if (Object.keys(search).length === 0) {
               if (typeof window !== `undefined`) {
                 window.history.replaceState({}, "", `${location.pathname}`);
               }
-            } else if (typeof window !== `undefined`) {
+            } else {
               window.history.replaceState(
                 {},
                 "",
-                `/brands/list?${queryString.stringify(search, {
+                `/brands/newer-list?${queryString.stringify(search, {
                   arrayFormat: "comma",
                 })}`
               );
