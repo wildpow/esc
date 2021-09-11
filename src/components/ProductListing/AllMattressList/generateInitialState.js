@@ -89,16 +89,7 @@ const GenerateInitialState = (location, data, types, brandData) => {
     );
     return results;
   };
-  const brands = [
-    "sealy",
-    "beautyrest",
-    "tempurpedic",
-    "serta",
-    "stearns",
-    "nectar",
-    "posh-and-lavish",
-    "mattress-america",
-  ];
+
   // const filterBrandQuery = (arr) => {
   //   const resault = [];
   //   const isItAnArray = typeof arr === "string" ? [arr] : arr;
@@ -167,7 +158,6 @@ const GenerateInitialState = (location, data, types, brandData) => {
   if (query.brand) {
     filteredBrandQuery = filterBadQueryInputs(query.brand, brandNames);
     if (filteredBrandQuery.length === 1) {
-      console.log("PPOOOPPOUT", brandState);
       initialState.currentMattresses = data[filteredBrandQuery[0]].mattresses;
       initialState.currentHeader = data[filteredBrandQuery[0]].header;
       initialState.selectedBrandCheckBoxes.push(filteredBrandQuery[0]);
@@ -180,14 +170,8 @@ const GenerateInitialState = (location, data, types, brandData) => {
       initialState.currentMattresses = data.all.mattresses.filter((matt) =>
         filteredBrandQuery.includes(matt.brand.urlName)
       );
-      console.log(filteredBrandQuery, "filteredBrandQuery");
       initialState.currentHeader = data.all.header;
       filteredBrandQuery.forEach((q) => {
-        console.log(
-          data[q].checkBoxIndex,
-          "!@W@DFWQQQQQ",
-          initialState.brandCheckBoxes
-        );
         initialState.brandCheckBoxes[data[q].checkBoxIndex].checked = true;
       });
     }
@@ -238,7 +222,6 @@ const GenerateInitialState = (location, data, types, brandData) => {
       );
     }
   }
-  console.log(newBrandCBState);
   return initialState;
 };
 

@@ -15,8 +15,13 @@ export default () => {
       }
     `
   );
-  const initialState = { selectedTypesCheckBoxes: [], typeCheckBoxes: [] };
+  const initialState = {
+    selectedTypesCheckBoxes: [],
+    typeCheckBoxes: [],
+    typeKeyList: [],
+  };
   types.nodes.forEach((element, i) => {
+    initialState.typeKeyList.push(element.slug);
     initialState.typeCheckBoxes.push({
       id: i,
       description: element.description,
