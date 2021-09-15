@@ -96,7 +96,7 @@ export default function (state, action) {
     case "type": {
       newTypeCheckBoxes = [...state.typeCheckBoxes];
       newTypeCheckBoxes[action.index].checked = action.checked;
-      newSelectedType = [...state.selectedTypesCheckBoxes];
+      newSelectedType = [...state.selectedTypeCheckBoxes];
       if (newSelectedType.includes(action.value)) {
         newSelectedType = newSelectedType.filter(
           (item) => item !== action.value
@@ -116,7 +116,7 @@ export default function (state, action) {
       );
       return {
         ...state,
-        selectedTypesCheckBoxes: newSelectedType,
+        selectedTypeCheckBoxes: newSelectedType,
         typeCheckBoxes: newTypeCheckBoxes,
         currentMattresses: filterCurrentMattresses(
           state.beforeFilterMattresses,
@@ -154,7 +154,7 @@ export default function (state, action) {
           state.beforeFilterMattresses,
           newSelectedBrand,
           state.selectedComfortCheckBoxes,
-          state.selectedTypesCheckBoxes
+          state.selectedTypeCheckBoxes
         ),
         brandCheckBoxes: newBrandCheckBoxes,
         selectedBrandCheckBoxes: newSelectedBrand,
@@ -185,7 +185,7 @@ export default function (state, action) {
           state.beforeFilterMattresses,
           state.selectedBrandCheckBoxes,
           newComfortNumbers,
-          state.selectedTypesCheckBoxes
+          state.selectedTypeCheckBoxes
         ),
         selectedComfortCheckBoxes: newComfortNumbers,
       };
