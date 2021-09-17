@@ -16,7 +16,7 @@ export default () => {
     `
   );
   const initialState = {
-    selectedTypesCheckBoxes: [],
+    selectedTypeCheckBoxes: [],
     typeCheckBoxes: [],
     typeKeyList: [],
   };
