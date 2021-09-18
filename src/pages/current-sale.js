@@ -5,6 +5,7 @@ import { HelmetDatoCms } from "gatsby-source-datocms";
 import Layout from "../components/Layout";
 import MattressList from "../components/ProductListing/MattressList";
 import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
+import { sortProductByPrice } from "../components/New-Feature/helperFunctions";
 
 const BrandsRoot = styled.div`
   @media (min-width: 1022px) {
@@ -15,11 +16,7 @@ const BrandsRoot = styled.div`
 
 const Sale = ({ data }) => {
   const { allDatoCmsNewMattress, datoCmsFrontPage } = data;
-  const sortedMatt = allDatoCmsNewMattress.nodes.sort(
-    (a, b) =>
-      Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
-      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
-  );
+  const sortedMatt = sortProductByPrice(allDatoCmsNewMattress.nodes);
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsFrontPage.currentSaleSeoLink.seoMetaTags} />

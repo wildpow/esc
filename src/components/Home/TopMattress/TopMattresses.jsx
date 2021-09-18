@@ -8,6 +8,7 @@ import {
   colors,
   FadeInAnimation,
 } from "../../../styles/theme.styled";
+import { sortProductByPrice } from "../../New-Feature/helperFunctions";
 
 const FooterLink = styled(Link)`
   text-decoration-color: white;
@@ -75,11 +76,7 @@ const ThreeMattWrapper = styled(Wrapper)`
 
 const TopThreeMatts = () => {
   const { header, newmattress, footerUrl, footer } = useTop3();
-  const sortedMatt = newmattress.sort(
-    (a, b) =>
-      Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
-      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
-  );
+  const sortedMatt = sortProductByPrice(newmattress);
   return (
     <NewWrapper>
       <Headline>{header}</Headline>
