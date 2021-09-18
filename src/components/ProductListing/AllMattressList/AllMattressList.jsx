@@ -7,8 +7,8 @@ import GenerateInitialState from "./generateInitialState";
 import reducer from "./allMattress.reducer";
 import ProductThumbnail from "../ProductThumbnail";
 import FilterSortPanel from "./FilterSortPanel";
-import getMattressTypes from "../../New-Feature/mattressType.query";
-import getMattressBrands from "../../New-Feature/mattressBrand.query";
+import getMattressTypes from "../../New-Feature/Queries/getMattressTypes.query";
+import getMattressBrands from "../../New-Feature/Queries/getMattressBrands.query";
 
 const MattressList = ({ location, data }) => {
   const mattressTypes = getMattressTypes();
