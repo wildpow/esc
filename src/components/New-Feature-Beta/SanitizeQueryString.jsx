@@ -1,7 +1,7 @@
 import { Location } from "@reach/router";
 import queryString from "query-string";
-import getMattressTypes from "./mattressType.query";
-import getMattressBrands from "./mattressBrand.query";
+import getMattressTypes from "../New-Feature/mattressType.query";
+import getMattressBrands from "../New-Feature/mattressBrand.query";
 
 // Component sanitizes location.search parsed by queryString package.
 // If query string exists, compare it to materList object. If
