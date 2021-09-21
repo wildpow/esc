@@ -2,10 +2,10 @@ import { useStaticQuery, graphql } from "gatsby";
 import { sortProductByPrice } from "../helperFunctions";
 
 export default () => {
-  const { allMattresses } = useStaticQuery(
+  const { mattresses } = useStaticQuery(
     graphql`
-      query allMatts {
-        allMattresses: allDatoCmsNewMattress {
+      query newFeatureAllMattresses {
+        mattresses: allDatoCmsNewMattress {
           nodes {
             ...newMattressList
           }
@@ -14,5 +14,5 @@ export default () => {
     `
   );
 
-  return sortProductByPrice(allMattresses.nodes);
+  return sortProductByPrice(mattresses.nodes);
 };
