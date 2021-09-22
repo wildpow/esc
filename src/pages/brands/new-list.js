@@ -15,7 +15,7 @@ import {
   MattListWrapper,
 } from "../../components/ProductListing/productListing.styled";
 import ProductThumbnail from "../../components/ProductListing/ProductThumbnail";
-import FilterSortPanel from "../../components/ProductListing/AllMattressList/FilterSortPanel";
+import FilterSortPanel from "../../components/New-Feature/FilterSortPanel";
 import ClientOnly from "../../components/New-Feature/ClientOnlyCheck";
 
 const createButton = (checkBoxs) => {
