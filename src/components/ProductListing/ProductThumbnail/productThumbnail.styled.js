@@ -9,6 +9,8 @@ export const StyledLink = styled(Link)`
   flex-direction: column;
   justify-content: space-around;
   background-color: white;
+  height: 100%;
+  width: 100%;
   ${boxShadowHover}
 `;
 

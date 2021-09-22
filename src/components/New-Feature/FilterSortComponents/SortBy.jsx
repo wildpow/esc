@@ -32,7 +32,7 @@ const SortBySelect = styled.select`
   background-repeat: no-repeat, repeat;
   background-position: right 0.7em top 50%, 0 0;
   background-size: 1.2em auto, 100%;
-  margin-bottom: 20px;
+
   padding: 1rem 2rem 1rem 1rem;
   transition: background 250ms ease-in-out, transform 150ms ease;
 

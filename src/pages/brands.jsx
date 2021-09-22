@@ -53,7 +53,7 @@ export default function Brands({ data }) {
         <Header
           description={data.datoCmsHeader.tagLine}
           headerBG={data.datoCmsHeader.bgImg.url}
-          button={{ label: "Shop all Mattresses", url: "/brands/list" }}
+          button={{ label: "Shop all Mattresses", url: "/brands/new-list" }}
           title="Our Brands"
         />
         <NewSectionContainer>
