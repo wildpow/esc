@@ -5,7 +5,7 @@ const sortedMatt = (list) =>
       Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
   );
 
-function filterCurrentMattresses(mattresses, brands, comfort, type) {
+const filterCurrentMattresses = (mattresses, brands, comfort, type) => {
   let newMattresses = mattresses;
   if (brands.length === 0 && comfort.length === 0 && type.length === 0) {
     return mattresses;
@@ -25,11 +25,9 @@ function filterCurrentMattresses(mattresses, brands, comfort, type) {
       type.includes(t.mattressType.slug)
     );
   }
-  console.log("mattresses, brands, comfort, type", newMattresses);
   return newMattresses;
-}
+};
 const GenerateInitialState = (search, initialFilterState, headers, data) => {
-  console.log(search);
   const sortedMattresses = sortedMatt([...data.nodes]);
   const stuff = {
     beforeFilterMattresses: sortedMattresses,
