@@ -15,11 +15,11 @@ export default function FilterSortPanel({
 }) {
   return (
     <FilterSortRoot>
-      <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
-      <Accordion title="Brands">
-        {brandCheckBoxes.map((brandBox, index) => (
-          <label htmlFor={brandBox.displayName} key={brandBox.displayName}>
-            <ClientOnly>
+      {/* <SortBy onChange={(e) => dispatch({ type: e.target.value })} /> */}
+      <ClientOnly>
+        <Accordion title="Brands">
+          {brandCheckBoxes.map((brandBox, index) => (
+            <label htmlFor={brandBox.displayName} key={brandBox.displayName}>
               <Checkbox
                 id={brandBox.displayName}
                 checked={brandBox.checked}
@@ -32,50 +32,54 @@ export default function FilterSortPanel({
                   })
                 }
               />
-            </ClientOnly>
-            <span style={{ marginLeft: 8 }}>{brandBox.displayName}</span>
-          </label>
-        ))}
-      </Accordion>
-      <Accordion title="Comfort">
-        {comfortCheckBoxes.map((checkBox) => (
-          <label htmlFor={checkBox.displayName} key={checkBox.displayName}>
-            <Checkbox
-              id={checkBox.displayName}
-              checked={checkBox.checked}
-              firmness={checkBox.firmness}
-              onChange={(e) =>
-                dispatch({
-                  type: "comfort",
-                  index: checkBox.id,
-                  id: checkBox.firmness,
-                  checked: e.target.checked,
-                })
-              }
-            />
-            <span style={{ marginLeft: 8 }}>{checkBox.displayName}</span>
-          </label>
-        ))}
-      </Accordion>
-      <Accordion title="Type">
-        {typeCheckBoxes.map((type, index) => (
-          <label htmlFor={type.displayName} key={type.displayName}>
-            <Checkbox
-              id={type.displayName}
-              checked={type.checked}
-              onChange={(e) =>
-                dispatch({
-                  type: "type",
-                  index,
-                  value: type.urlParam,
-                  checked: e.target.checked,
-                })
-              }
-            />
-            <span style={{ marginLeft: 8 }}>{type.displayName}</span>
-          </label>
-        ))}
-      </Accordion>
+              <span style={{ marginLeft: 8 }}>{brandBox.displayName}</span>
+            </label>
+          ))}
+        </Accordion>
+      </ClientOnly>
+      <ClientOnly>
+        <Accordion title="Comfort">
+          {comfortCheckBoxes.map((checkBox) => (
+            <label htmlFor={checkBox.displayName} key={checkBox.displayName}>
+              <Checkbox
+                id={checkBox.displayName}
+                checked={checkBox.checked}
+                firmness={checkBox.firmness}
+                onChange={(e) =>
+                  dispatch({
+                    type: "comfort",
+                    index: checkBox.id,
+                    id: checkBox.firmness,
+                    checked: e.target.checked,
+                  })
+                }
+              />
+              <span style={{ marginLeft: 8 }}>{checkBox.displayName}</span>
+            </label>
+          ))}
+        </Accordion>
+      </ClientOnly>
+      <ClientOnly>
+        <Accordion title="Type">
+          {typeCheckBoxes.map((type, index) => (
+            <label htmlFor={type.displayName} key={type.displayName}>
+              <Checkbox
+                id={type.displayName}
+                checked={type.checked}
+                onChange={(e) =>
+                  dispatch({
+                    type: "type",
+                    index,
+                    value: type.urlParam,
+                    checked: e.target.checked,
+                  })
+                }
+              />
+              <span style={{ marginLeft: 8 }}>{type.displayName}</span>
+            </label>
+          ))}
+        </Accordion>
+      </ClientOnly>
     </FilterSortRoot>
   );
 }

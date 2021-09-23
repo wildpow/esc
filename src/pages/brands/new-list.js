@@ -13,10 +13,11 @@ import Header from "../../components/ProductListing/ProductListingHeader";
 import {
   NewBread,
   MattListWrapper,
-} from "../../components/ProductListing/productListing.styled";
+} from "../../components/New-Feature/productListing.styled";
 import ProductThumbnail from "../../components/ProductListing/ProductThumbnail";
 import FilterSortPanel from "../../components/New-Feature/FilterSortPanel";
 import ClientOnly from "../../components/New-Feature/ClientOnlyCheck";
+import { SortBy } from "../../components/New-Feature/FilterSortComponents";
 
 const createButton = (checkBoxs) => {
   if (
@@ -71,25 +72,30 @@ const NewList = ({ location, data, search, initialFilterState }) => {
             brandCheckBoxes={state.brandCheckBoxes}
             typeCheckBoxes={state.typeCheckBoxes}
           />
-
-          {state.currentMattresses.length > 0 ? (
-            <div className="mattList__grid">
-              {state.currentMattresses.map((mattress) => (
-                <ClientOnly>
-                  <ProductThumbnail
-                    key={mattress.id}
-                    product={mattress}
-                    mattress
-                    url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-                  />
-                </ClientOnly>
-              ))}
+          <div className="mattList__container">
+            <div className="mattList__sortResults">
+              <h4>{state.currentMattresses.length} results</h4>
+              <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
             </div>
-          ) : (
-            <div className="noFilter">
-              <h3>No products match these filters</h3>
-            </div>
-          )}
+            {state.currentMattresses.length > 0 ? (
+              <div className="mattList__grid">
+                {state.currentMattresses.map((mattress) => (
+                  <ClientOnly>
+                    <ProductThumbnail
+                      key={mattress.id}
+                      product={mattress}
+                      mattress
+                      url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
+                    />
+                  </ClientOnly>
+                ))}
+              </div>
+            ) : (
+              <div className="noFilter">
+                <h3>No products match these filters</h3>
+              </div>
+            )}
+          </div>
         </div>
         <NewBread Brands>
           <BreadCrumbs

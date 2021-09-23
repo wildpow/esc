@@ -1,18 +1,43 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
-import { fonts, colors, boxShadow } from "../../../styles/theme.styled";
-import DownArrow from "../../../svgs/arrow-down-solid.svg";
-import UpArrow from "../../../svgs/arrow-up-solid.svg";
+import {
+  fonts,
+  colors,
+  boxShadow,
+  fontSize,
+  radius,
+  rounded,
+} from "../../../styles/theme.styled";
+import DownArrow from "../../../svgs/chevron-down-solid.svg";
+import UpArrow from "../../../svgs/chevron-up-solid.svg";
 
 const AccordionWrapper = styled.div`
   .accordion {
+    border-top: ${({ active }) =>
+      active ? "none" : `4px solid ${colors.red[900]}`};
+    border-left: ${({ active }) =>
+      active ? "none" : `4px solid ${colors.red[900]}`};
+    border-right: ${({ active }) =>
+      active ? "none" : `4px solid ${colors.red[900]}`};
+    border-bottom-right-radius: ${({ active }) =>
+      active ? rounded.none : rounded.md};
+    border-bottom-left-radius: ${({ active }) =>
+      active ? rounded.none : rounded.md};
+
+    border-bottom: 4px solid ${colors.red[900]};
+    border-top-right-radius: ${rounded.md};
+    border-top-left-radius: ${rounded.md};
     background-color: white;
-    color: #444;
+    color: ${colors.brandBlue};
     cursor: pointer;
     width: 100%;
-    border: ${({ active }) =>
-      active ? "2px solid white" : `2px solid ${colors.red[900]}`};
+    /* border-top: none;
+    border-left: none;
+    border-right: none; */
+    /* outline: ${({ active }) => (active ? "" : "2px solid red")}; */
+    /* border: ${({ active }) =>
+      active ? "4px solid transparent" : `4px solid ${colors.red[900]}`}; */
     text-align: left;
     outline: none;
     transition: 0.4s;
@@ -20,36 +45,35 @@ const AccordionWrapper = styled.div`
     justify-content: space-between;
     font-family: ${fonts.sans};
     color: ${colors.blue["900"]};
-    padding-left: 20px;
     font-weight: 400;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    font-size: 1.3rem;
+    padding: 10px 20px;
+    font-size: ${fontSize.xl};
     border-bottom: 4px solid ${colors.brandRed};
     box-shadow: ${boxShadow.md};
-    font-weight: 700;
+    font-weight: 500;
     svg {
       width: 20px;
     }
   }
   .accordion:hover {
-    box-shadow: ${boxShadow.lg};
-    transform: ${({ active }) => (active ? "" : "translateY(-1px)")};
+    /* box-shadow: ${boxShadow.lg}; */
+    transform: ${({ active }) => (active ? "" : "translateY(-2px)")};
   }
   .panel {
     /* padding: 0 18px; */
+    border-bottom: 4px solid white;
     background-color: white;
     /* max-height: 0; */
     overflow: hidden;
-    transition: all 0.2s ease-out;
-    padding-top: ${({ active }) => (active ? "20px" : "0")};
+    transition: all 0.1s ease-out;
+    padding-top: 0;
     background-color: white;
     font-family: ${fonts.sans};
     background-color: white;
-    opacity: ${({ active }) => (active ? 1 : 0.4)};
+    opacity: 0.4;
     display: flex;
     flex-direction: column;
-    max-height: ${({ active }) => (active ? "100%" : `0`)};
+    max-height: 0;
     label {
       padding-left: 20px;
       padding-bottom: 15px;
@@ -59,6 +83,12 @@ const AccordionWrapper = styled.div`
     label:last-child {
       /* padding-bottom: 20px; */
     }
+  }
+  .active {
+    padding-top: 20px;
+    opacity: 1;
+    max-height: 100%;
+    border-bottom: 4px solid ${colors.blue[700]};
   }
 `;
 export default function Accordion({ title, children }) {
@@ -73,7 +103,7 @@ export default function Accordion({ title, children }) {
         {title}
         {active ? <UpArrow /> : <DownArrow />}
       </button>
-      <div className="panel">{children}</div>
+      <div className={`${active && "active"} panel`}>{children}</div>
     </AccordionWrapper>
   );
 }
