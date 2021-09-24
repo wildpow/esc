@@ -13,7 +13,6 @@ const HarvestGreen = ({ data }) => {
   );
   return (
     <Layout>
-      {console.log(datoCmsBrand)}
       <HelmetDatoCms seo={datoCmsBrand.seoLink.seoMetaTags} />
       <MattressList
         headerBG={datoCmsBrand.headerLink.bgImg.url}
