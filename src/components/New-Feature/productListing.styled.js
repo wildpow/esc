@@ -34,10 +34,32 @@ export const MattListWrapper = styled.div`
   padding-left: 5px;
   padding-right: 5px;
   flex-direction: column;
+  .collapseAll {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    button {
+      width: 30px;
+      color: ${colors.brandBlue};
+      border: none;
+      height: 30px;
+
+      background-color: transparent;
+      transition: transform 0.2s ease;
+      :hover {
+        transform: scale(1.25);
+      }
+      :active {
+        transform: scale(0.95);
+      }
+    }
+  }
   .mattList__sortResults {
     display: flex;
-    border-bottom: 4px solid ${colors.brandBlue};
-    padding: 10px 20px;
+    border-bottom: 4px solid ${colors.brandRed};
+    padding: 10px 0px;
+    padding-right: 20px;
+    padding-left: 5px;
     background-color: white;
     margin: 0 7px;
     box-shadow: ${boxShadow.default};

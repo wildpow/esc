@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import PropTypes from "prop-types";
@@ -18,6 +18,7 @@ import ProductThumbnail from "../../components/ProductListing/ProductThumbnail";
 import FilterSortPanel from "../../components/New-Feature/FilterSortPanel";
 import ClientOnly from "../../components/New-Feature/ClientOnlyCheck";
 import { SortBy } from "../../components/New-Feature/FilterSortComponents";
+import CollapseAllIcon from "../../svgs/sort-solid.svg";
 
 const createButton = (checkBoxs) => {
   if (
@@ -42,6 +43,7 @@ const NewList = ({ location, data, search, initialFilterState }) => {
     mattresses
   );
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [allActive, setAllActive] = useState(true);
 
   return (
     <Layout>
@@ -67,6 +69,7 @@ const NewList = ({ location, data, search, initialFilterState }) => {
         </ClientOnly>
         <div className="mattList__flex">
           <FilterSortPanel
+            allActive={allActive}
             dispatch={dispatch}
             comfortCheckBoxes={state.comfortCheckBoxes}
             brandCheckBoxes={state.brandCheckBoxes}
@@ -74,8 +77,17 @@ const NewList = ({ location, data, search, initialFilterState }) => {
           />
           <div className="mattList__container">
             <div className="mattList__sortResults">
+              <div className="collapseAll">
+                <button
+                  type="button"
+                  title="Collapse All Filters"
+                  onClick={() => setAllActive(!allActive)}
+                >
+                  <CollapseAllIcon />
+                </button>
+                <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
+              </div>
               <h4>{state.currentMattresses.length} results</h4>
-              <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
             </div>
             {state.currentMattresses.length > 0 ? (
               <div className="mattList__grid">

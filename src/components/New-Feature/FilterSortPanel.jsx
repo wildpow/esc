@@ -1,10 +1,5 @@
 import PropTypes from "prop-types";
-import {
-  FilterSortRoot,
-  SortBy,
-  Accordion,
-  Checkbox,
-} from "./FilterSortComponents";
+import { FilterSortRoot, Accordion, Checkbox } from "./FilterSortComponents";
 import ClientOnly from "./ClientOnlyCheck";
 
 export default function FilterSortPanel({
@@ -12,12 +7,12 @@ export default function FilterSortPanel({
   comfortCheckBoxes,
   brandCheckBoxes,
   typeCheckBoxes,
+  allActive,
 }) {
   return (
     <FilterSortRoot>
-      {/* <SortBy onChange={(e) => dispatch({ type: e.target.value })} /> */}
       <ClientOnly>
-        <Accordion title="Brands">
+        <Accordion title="Brands" allActive={allActive}>
           {brandCheckBoxes.map((brandBox, index) => (
             <label htmlFor={brandBox.displayName} key={brandBox.displayName}>
               <Checkbox
@@ -38,7 +33,7 @@ export default function FilterSortPanel({
         </Accordion>
       </ClientOnly>
       <ClientOnly>
-        <Accordion title="Comfort">
+        <Accordion title="Comfort" allActive={allActive}>
           {comfortCheckBoxes.map((checkBox) => (
             <label htmlFor={checkBox.displayName} key={checkBox.displayName}>
               <Checkbox
@@ -60,7 +55,7 @@ export default function FilterSortPanel({
         </Accordion>
       </ClientOnly>
       <ClientOnly>
-        <Accordion title="Type">
+        <Accordion title="Type" allActive={allActive}>
           {typeCheckBoxes.map((type, index) => (
             <label htmlFor={type.displayName} key={type.displayName}>
               <Checkbox

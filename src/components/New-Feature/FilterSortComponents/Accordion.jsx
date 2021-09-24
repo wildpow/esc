@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import {
@@ -90,18 +90,28 @@ const AccordionWrapper = styled.div`
     max-height: 100%;
     border-bottom: 4px solid ${colors.blue[700]};
   }
+  .rotateChevron {
+    transition: all 0.25s ease;
+    transform: ${({ active }) => (active ? "rotate(0deg)" : "rotate(180deg)")};
+  }
 `;
-export default function Accordion({ title, children }) {
+export default function Accordion({ title, children, allActive }) {
   const [active, setActive] = useState(true);
+  useEffect(() => {
+    setActive(!!allActive);
+  }, [allActive]);
   return (
     <AccordionWrapper active={active}>
+      {console.log(allActive)}
       <button
         type="button"
         className="accordion"
         onClick={() => setActive(!active)}
       >
         {title}
-        {active ? <UpArrow /> : <DownArrow />}
+        <div className="rotateChevron">
+          <UpArrow />
+        </div>
       </button>
       <div className={`${active && "active"} panel`}>{children}</div>
     </AccordionWrapper>

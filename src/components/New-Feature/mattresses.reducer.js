@@ -24,7 +24,7 @@ function filterCurrentMattresses(mattresses, brands, comfort, type) {
   }
   return newMattresses;
 }
-export default function (state, action) {
+export default function reducer(state, action) {
   let newComfortNumbers;
   let newComfortCheckBoxes;
   let newBrandCheckBoxes;
@@ -32,6 +32,7 @@ export default function (state, action) {
   let newSelectedType;
   let newSelectedBrand;
   let newCurrentHeader;
+  let allfitersEmpty;
   switch (action.type) {
     case "low-high":
       return {
@@ -104,11 +105,10 @@ export default function (state, action) {
       } else {
         newSelectedType.push(action.value);
       }
-      const allfitersEmpty =
+      allfitersEmpty =
         state.selectedBrandCheckBoxes.length === 0 &&
         state.selectedComfortCheckBoxes.length === 0 &&
         newSelectedType.length === 0;
-      console.log("allfitersEmpty", allfitersEmpty);
       navigate(
         `/brands/new-list${allfitersEmpty ? "" : "?"}${queryString.stringify(
           {
@@ -147,8 +147,12 @@ export default function (state, action) {
       } else {
         newCurrentHeader = state.headers[newSelectedBrand[0]];
       }
+      allfitersEmpty =
+        newSelectedBrand.length === 0 &&
+        state.selectedComfortCheckBoxes.length === 0 &&
+        state.selectedTypeCheckBoxes.length === 0;
       navigate(
-        `/brands/new-list?${queryString.stringify(
+        `/brands/new-list${allfitersEmpty ? "" : "?"}${queryString.stringify(
           { brand: newSelectedBrand, comfort: state.selectedComfortCheckBoxes },
           { arrayFormat: "comma" }
         )}`
@@ -177,8 +181,13 @@ export default function (state, action) {
       } else {
         newComfortNumbers.push(action.id);
       }
+      allfitersEmpty =
+        state.selectedBrandCheckBoxes.length === 0 &&
+        newComfortNumbers.length === 0 &&
+        state.selectedTypeCheckBoxes.length === 0;
+      console.log(allfitersEmpty);
       navigate(
-        `/brands/new-list?${queryString.stringify(
+        `/brands/new-list${allfitersEmpty ? "" : "?"}${queryString.stringify(
           { brand: state.selectedBrandCheckBoxes, comfort: newComfortNumbers },
           { arrayFormat: "comma" }
         )}`
