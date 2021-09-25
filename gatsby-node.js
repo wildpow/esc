@@ -22,6 +22,15 @@ exports.createPages = async ({ actions, graphql }) => {
   // let premiumLeather = "";
   const { data } = await graphql(`
     query {
+      landingBrands: allDatoCmsBrand {
+        nodes {
+          urlName
+          landingPage {
+            title
+          }
+        }
+      }
+
       xChairs: allDatoCmsXChair {
         nodes {
           title
@@ -71,6 +80,15 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `);
+  data.landingBrands.nodes.forEach((brand) => {
+    if (brand.landingPage) {
+      actions.createPage({
+        path: `brands/${brand.urlName}`,
+        component: path.resolve(`src/templates/landingPage.jsx`),
+        context: { urlName: brand.urlName },
+      });
+    }
+  });
   data.xChairs.nodes.forEach((chair) => {
     actions.createPage({
       path: `/x-chair/${chair.slug}`,

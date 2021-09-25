@@ -25,11 +25,9 @@ const Sale = ({ data }) => {
       </BreadWrapper>
       <BrandsRoot>
         <MattressList
-          headerBG={datoCmsFrontPage.currentSaleHeaderLink.bgImg.url}
+          headerData={datoCmsFrontPage.currentSaleHeaderLink}
+          allBtnOption
           mattresses={sortedMatt}
-          title={datoCmsFrontPage.currentSaleHeaderLink.title}
-          description={datoCmsFrontPage.currentSaleHeaderLink.tagLine}
-          button={{ label: "Shop all Mattresses", url: "/brands/list" }}
         />
       </BrandsRoot>
       <BreadWrapper hiddenLarge Bottom>

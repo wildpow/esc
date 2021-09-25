@@ -60,12 +60,8 @@ const NewList = ({ location, data, search, initialFilterState }) => {
           />
         </NewBread>
         <ClientOnly location={location}>
-          <Header
-            title={state.currentHeader.title}
-            description={state.currentHeader.tagLine}
-            headerBG={state.currentHeader.bgImg.url}
-            button={createButton(state.selectedBrandCheckBoxes)}
-          />
+          <Header headerData={state.currentHeader} />
+          {console.log(headers)}
         </ClientOnly>
         <div className="mattList__flex">
           <FilterSortPanel

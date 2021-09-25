@@ -7,15 +7,7 @@ import BreadCrumbs from "../../BreadCrumbs";
 import { NewBread, MattListWrapper } from "../productListing.styled";
 import ProductThumbnail from "../ProductThumbnail";
 
-const MattressList = ({
-  mattresses,
-  title,
-  description,
-  breadCrumbs,
-  brandName,
-  headerBG,
-  button,
-}) => {
+const MattressList = ({ mattresses, headerData, breadCrumbs, brandName }) => {
   const initalState = {
     mattresses,
     beforeFilter: mattresses,
@@ -36,13 +28,7 @@ const MattressList = ({
           <BreadCrumbs next="Brands" here={brandName} />
         </NewBread>
       )}
-      <Header
-        title={title}
-        description={description}
-        headerBG={headerBG}
-        brandName={brandName}
-        button={button}
-      />
+      <Header headerData={headerData} allBtnOption />
 
       <div className="mattList__flex">
         <FilterSortPanel

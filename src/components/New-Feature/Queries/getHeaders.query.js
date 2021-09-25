@@ -16,6 +16,9 @@ export default () => {
         brands: allDatoCmsBrand(sort: { fields: position }) {
           nodes {
             urlName
+            landingPage {
+              title
+            }
             headerLink {
               title
               tagLine
@@ -33,6 +36,9 @@ export default () => {
   const brandHeaders = {};
   brands.nodes.forEach((element) => {
     brandHeaders[element.urlName] = element.headerLink;
+    brandHeaders[element.urlName].urlName = element.urlName;
+
+    brandHeaders[element.urlName].landing = element.landingPage !== null;
   });
   brandHeaders.all = all;
   return { brandHeaders };

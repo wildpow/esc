@@ -42,11 +42,7 @@ const AccessoryList = ({ location }) => {
           }
         />
       </NewBread>
-      <Header
-        title={state.selectedAccInfo.title}
-        description={state.selectedAccInfo.tagLine}
-        headerBG={state.selectedAccInfo.bgImg.url}
-      />
+      <Header headerData={state.selectedAccInfo} />
       <div className="mattList__flex">
         <FilterSortPanel
           dispatch={dispatch}
