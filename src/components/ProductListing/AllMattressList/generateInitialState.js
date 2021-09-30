@@ -10,9 +10,7 @@ const GenerateInitialState = (location, data) => {
     currentHeader: data.all.header,
     brandCheckBoxes: [
       { urlParam: "sealy", checked: false, displayName: "Sealy" },
-      { urlParam: "beautyrest", checked: false, displayName: "Beautyrest" },
       { urlParam: "tempurpedic", checked: false, displayName: "Tempur-PEDIC" },
-      { urlParam: "serta", checked: false, displayName: "Serta" },
       { urlParam: "stearns", checked: false, displayName: "Stearns & Foster" },
       { urlParam: "nectar", checked: false, displayName: "Nectar" },
       {
@@ -62,9 +60,7 @@ const GenerateInitialState = (location, data) => {
     selectedComfortCheckBoxes: [],
     headers: {
       sealy: data.sealy.header,
-      beautyrest: data.beautyrest.header,
       tempurpedic: data.tempurpedic.header,
-      serta: data.serta.header,
       stearns: data.stearns.header,
       nectar: data.nectar.header,
       "posh-and-lavish": data["posh-and-lavish"].header,

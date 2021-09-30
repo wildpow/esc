@@ -33,20 +33,10 @@ const List = ({ location, data }) => {
       header: data.sealyHeader.headerLink,
       checkBoxIndex: 0,
     },
-    beautyrest: {
-      mattresses: sortedMatt([...data.beautyrestMattress.nodes]),
-      header: data.beautyrestHeader.headerLink,
-      checkBoxIndex: 1,
-    },
     tempurpedic: {
       mattresses: sortedMatt([...data.tempurMattress.nodes]),
       header: data.tempurHeader.headerLink,
       checkBoxIndex: 2,
-    },
-    serta: {
-      mattresses: sortedMatt([...data.sertaMattress.nodes]),
-      header: data.sertaHeader.headerLink,
-      checkBoxIndex: 3,
     },
     stearns: {
       mattresses: sortedMatt([...data.stearnsMattress.nodes]),
@@ -66,9 +56,7 @@ const List = ({ location, data }) => {
     all: {
       mattresses: sortedMatt([
         ...sealyMattressSort(data.sealyMattress.nodes),
-        ...data.beautyrestMattress.nodes,
         ...data.tempurMattress.nodes,
-        ...data.sertaMattress.nodes,
         ...data.stearnsMattress.nodes,
         ...data.nectarMattress.nodes,
         ...data.poshMattress.nodes,
@@ -93,13 +81,6 @@ export const list = graphql`
       }
     }
 
-    beautyrestMattress: allDatoCmsNewMattress(
-      filter: { brand: { urlName: { eq: "beautyrest" } } }
-    ) {
-      nodes {
-        ...newMattressList
-      }
-    }
     nectarMattress: allDatoCmsNewMattress(
       filter: { brand: { urlName: { eq: "nectar" } } }
     ) {
@@ -136,25 +117,6 @@ export const list = graphql`
     ) {
       nodes {
         ...newMattressList
-      }
-    }
-    sertaMattress: allDatoCmsNewMattress(
-      filter: { brand: { urlName: { eq: "serta" } } }
-    ) {
-      nodes {
-        ...newMattressList
-      }
-    }
-
-    beautyrestHeader: datoCmsBrand(urlName: { eq: "beautyrest" }) {
-      headerLink {
-        title
-        tagLine
-        bgImg {
-          url
-          alt
-          title
-        }
       }
     }
     nectarHeader: datoCmsBrand(urlName: { eq: "nectar" }) {
@@ -202,17 +164,6 @@ export const list = graphql`
       }
     }
     tempurHeader: datoCmsBrand(urlName: { eq: "tempurpedic" }) {
-      headerLink {
-        title
-        tagLine
-        bgImg {
-          url
-          alt
-          title
-        }
-      }
-    }
-    sertaHeader: datoCmsBrand(urlName: { eq: "serta" }) {
       headerLink {
         title
         tagLine
