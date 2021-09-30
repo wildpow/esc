@@ -82,7 +82,7 @@ export const brandsSEO = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    datoCmsHeader(title: { eq: "AllMattressSort" }) {
+    datoCmsHeader(title: { eq: "Our Brands" }) {
       title
       tagLine
       bgImg {
