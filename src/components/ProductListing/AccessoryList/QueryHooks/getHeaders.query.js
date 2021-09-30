@@ -5,7 +5,7 @@ const useHeaders = () => {
     useStaticQuery(
       graphql`
         query Headers {
-          sheets: datoCmsHeader(title: { eq: "Sheets" }) {
+          sheets: datoCmsHeader(titleUsedInBuilds: { eq: "sheets" }) {
             title
             tagLine
             bgImg {
@@ -15,7 +15,7 @@ const useHeaders = () => {
             }
           }
 
-          pillows: datoCmsHeader(title: { eq: "Pillows" }) {
+          pillows: datoCmsHeader(titleUsedInBuilds: { eq: "pillows" }) {
             title
             tagLine
             bgImg {
@@ -24,7 +24,9 @@ const useHeaders = () => {
               title
             }
           }
-          protectors: datoCmsHeader(title: { eq: "Mattress Protectors" }) {
+          protectors: datoCmsHeader(
+            titleUsedInBuilds: { eq: "mattress-protectors" }
+          ) {
             title
             tagLine
             bgImg {
@@ -33,7 +35,7 @@ const useHeaders = () => {
               title
             }
           }
-          foundation: datoCmsHeader(title: { eq: "Foundation" }) {
+          foundation: datoCmsHeader(titleUsedInBuilds: { eq: "foundation" }) {
             title
             tagLine
             bgImg {
@@ -42,7 +44,7 @@ const useHeaders = () => {
               title
             }
           }
-          accessories: datoCmsHeader(title: { eq: "Accessories" }) {
+          accessories: datoCmsHeader(titleUsedInBuilds: { eq: "accessories" }) {
             title
             tagLine
             bgImg {
