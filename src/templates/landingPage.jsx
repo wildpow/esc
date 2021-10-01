@@ -7,7 +7,11 @@ import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
 const BRLanding = ({ data }) => (
   <Layout bgWhite>
     <BreadWrapper Brands>
-      <BreadCrumbs next="Brands" here={data.datoCmsBrand.displayName} />
+      <BreadCrumbs
+        next="Brands"
+        here2={data.datoCmsBrand.displayName}
+        here="Landing"
+      />
     </BreadWrapper>
     <Landing
       data={data.datoCmsBrand.landingPage}

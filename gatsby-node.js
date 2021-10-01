@@ -83,7 +83,7 @@ exports.createPages = async ({ actions, graphql }) => {
   data.landingBrands.nodes.forEach((brand) => {
     if (brand.landingPage) {
       actions.createPage({
-        path: `brands/${brand.urlName}`,
+        path: `brands/${brand.urlName}/landing`,
         component: path.resolve(`src/templates/landingPage.jsx`),
         context: { urlName: brand.urlName },
       });
