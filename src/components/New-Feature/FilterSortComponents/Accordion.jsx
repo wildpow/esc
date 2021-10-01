@@ -102,7 +102,6 @@ export default function Accordion({ title, children, allActive }) {
   }, [allActive]);
   return (
     <AccordionWrapper active={active}>
-      {console.log(allActive)}
       <button
         type="button"
         className="accordion"

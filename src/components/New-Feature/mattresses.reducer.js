@@ -185,7 +185,6 @@ export default function reducer(state, action) {
         state.selectedBrandCheckBoxes.length === 0 &&
         newComfortNumbers.length === 0 &&
         state.selectedTypeCheckBoxes.length === 0;
-      console.log(allfitersEmpty);
       navigate(
         `/brands/new-list${allfitersEmpty ? "" : "?"}${queryString.stringify(
           { brand: state.selectedBrandCheckBoxes, comfort: newComfortNumbers },

@@ -14,7 +14,7 @@ export default () => {
       }
     `
   );
-  const brandState = { selectedBrandCheckBoxes: [], brandCheckBoxes: [] };
+  const brandState = { brandCheckBoxes: [] };
   const brandNames = [];
   brands.nodes.forEach((element) => {
     brandNames.push(element.urlName);
