@@ -1,8 +1,9 @@
 import { Location } from "@reach/router";
 import queryString from "query-string";
+import { capitalizeFirstLetter } from "./helperFunctions";
 import getMattressTypes from "./Queries/getMattressTypes.query";
 import getMattressBrands from "./Queries/getMattressBrands.query";
-
+import getBanners from "./Queries/getBanners.query";
 // Component sanitizes location.search parsed by queryString package.
 // If query string exists, compare it to materList object. If
 // one of the masterList -> queryKeys exists compare keys value to same key for
@@ -22,9 +23,7 @@ const filterBadQueryInputs = (originalQuery, keys) => {
   );
   return dedup;
 };
-function capitalizeFirstLetter(string) {
-  return string[0].toUpperCase() + string.slice(1);
-}
+
 const updateInitialState = (master, queryArr, state) => {
   const newState = state;
   queryArr.forEach((q) => {
@@ -37,41 +36,37 @@ const GenerateQueryAndInitialFilters = (ComponentToWrap) => (props) => {
   let didQueryValueFail = false;
   const mattressTypes = getMattressTypes();
   const mattressBrands = getMattressBrands();
+  const banners = getBanners();
   // Initial State of mattress filters
   const initialFilterState = {
     comfort: {
       selectedComfortCheckBoxes: [],
       comfortCheckBoxes: [
         {
-          id: 0,
           displayName: "Extra Firm",
           firmness: 1,
           urlParam: "extrafirm",
           checked: false,
         },
         {
-          id: 1,
           displayName: "Firm",
           firmness: 2,
           urlParam: "firm",
           checked: false,
         },
         {
-          id: 2,
           displayName: "Medium",
           firmness: 3,
           urlParam: "medium",
           checked: false,
         },
         {
-          id: 3,
           displayName: "Plush",
           firmness: 4,
           urlParam: "plush",
           checked: false,
         },
         {
-          id: 4,
           displayName: "Ultra Plush",
           firmness: 5,
           urlParam: "ultraplush",
@@ -87,13 +82,19 @@ const GenerateQueryAndInitialFilters = (ComponentToWrap) => (props) => {
       selectedBrandCheckBoxes: [],
       brandCheckBoxes: mattressBrands.brandState.brandCheckBoxes,
     },
+    banner: {
+      selectedBannerCheckBoxes: [],
+      bannerCheckBoxes: banners.bannerCheckBoxes,
+      currentSaleBannerKeyList: banners.currentSaleBannerKeyList,
+    },
   };
   // -------------------
   const masterSanitizeList = {
-    queryKeys: ["brand", "type", "comfort"],
+    queryKeys: ["brand", "type", "comfort", "banner"],
     comfort: ["1", "2", "3", "4", "5"],
     type: mattressTypes.typeKeyList,
     brand: mattressBrands.brandNames,
+    banner: [banners.bannerCheckBoxes[0].urlParam, ...banners.bannerKeyList],
   };
 
   return (
@@ -105,35 +106,36 @@ const GenerateQueryAndInitialFilters = (ComponentToWrap) => (props) => {
             arrayFormat: "comma",
           });
           const searchKeys = Object.keys(search);
-          searchKeys.forEach((k) => {
-            if (masterSanitizeList.queryKeys.includes(k)) {
+          searchKeys.forEach((key) => {
+            if (masterSanitizeList.queryKeys.includes(key)) {
               const filter = filterBadQueryInputs(
-                search[k],
-                masterSanitizeList[k]
+                search[key],
+                masterSanitizeList[key]
               );
               if (filter.length === 0) {
                 didQueryKeyFail = true;
-                delete search[k];
+                delete search[key];
               } else if (
-                filter.length !== search[k].length ||
-                filter.length === search[k].length
+                filter.length !== search[key].length ||
+                filter.length === search[key].length
               ) {
                 didQueryValueFail = true;
-                search[k] = filter;
+                search[key] = filter;
                 // Generate initial filter state
-                initialFilterState[k][
-                  `selected${capitalizeFirstLetter(k)}CheckBoxes`
+                initialFilterState[key][
+                  `selected${capitalizeFirstLetter(key)}CheckBoxes`
                 ] = [...filter];
-                initialFilterState[k][`${k}CheckBoxes`] = updateInitialState(
-                  masterSanitizeList[k],
-                  filter,
-                  initialFilterState[k][`${k}CheckBoxes`]
-                );
+                initialFilterState[key][`${key}CheckBoxes`] =
+                  updateInitialState(
+                    masterSanitizeList[key],
+                    filter,
+                    initialFilterState[key][`${key}CheckBoxes`]
+                  );
                 // ---------------
               }
             } else {
               didQueryKeyFail = true;
-              delete search[k];
+              delete search[key];
             }
           });
 

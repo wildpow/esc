@@ -8,6 +8,7 @@ export default function FilterSortPanel({
   brandCheckBoxes,
   typeCheckBoxes,
   allActive,
+  bannerCheckBoxes,
 }) {
   return (
     <FilterSortRoot>
@@ -34,7 +35,7 @@ export default function FilterSortPanel({
       </ClientOnly>
       <ClientOnly>
         <Accordion title="Comfort" allActive={allActive}>
-          {comfortCheckBoxes.map((checkBox) => (
+          {comfortCheckBoxes.map((checkBox, index) => (
             <label htmlFor={checkBox.displayName} key={checkBox.displayName}>
               <Checkbox
                 id={checkBox.displayName}
@@ -43,7 +44,7 @@ export default function FilterSortPanel({
                 onChange={(e) =>
                   dispatch({
                     type: "comfort",
-                    index: checkBox.id,
+                    index,
                     id: checkBox.firmness,
                     checked: e.target.checked,
                   })
@@ -75,6 +76,27 @@ export default function FilterSortPanel({
           ))}
         </Accordion>
       </ClientOnly>
+      <ClientOnly>
+        <Accordion title="Sale Banner" allActive={allActive}>
+          {bannerCheckBoxes.map((banner, index) => (
+            <label htmlFor={banner.displayName} key={banner.displayName}>
+              <Checkbox
+                id={banner.displayName}
+                checked={banner.checked}
+                onChange={(e) =>
+                  dispatch({
+                    type: "banner",
+                    index,
+                    value: banner.urlParam,
+                    checked: e.target.checked,
+                  })
+                }
+              />
+              <span style={{ marginLeft: 8 }}>{banner.displayName}</span>
+            </label>
+          ))}
+        </Accordion>
+      </ClientOnly>
     </FilterSortRoot>
   );
 }
@@ -83,4 +105,5 @@ FilterSortPanel.propTypes = {
   comfortCheckBoxes: PropTypes.instanceOf(Object).isRequired,
   brandCheckBoxes: PropTypes.instanceOf(Object).isRequired,
   typeCheckBoxes: PropTypes.instanceOf(Object).isRequired,
+  bannerCheckBoxes: PropTypes.instanceOf(Object).isRequired,
 };

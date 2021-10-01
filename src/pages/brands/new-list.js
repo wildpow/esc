@@ -47,6 +47,7 @@ const NewList = ({ location, data, search, initialFilterState }) => {
 
   return (
     <Layout>
+      {console.log(state, "state")}
       <HelmetDatoCms seo={data.seo.seoMetaTags} />
       <MattListWrapper>
         <NewBread Brands>
@@ -61,7 +62,6 @@ const NewList = ({ location, data, search, initialFilterState }) => {
         </NewBread>
         <ClientOnly location={location}>
           <Header headerData={state.currentHeader} />
-          {console.log(headers)}
         </ClientOnly>
         <div className="mattList__flex">
           <FilterSortPanel
@@ -70,6 +70,7 @@ const NewList = ({ location, data, search, initialFilterState }) => {
             comfortCheckBoxes={state.comfortCheckBoxes}
             brandCheckBoxes={state.brandCheckBoxes}
             typeCheckBoxes={state.typeCheckBoxes}
+            bannerCheckBoxes={state.bannerCheckBoxes}
           />
           <div className="mattList__container">
             <div className="mattList__sortResults">

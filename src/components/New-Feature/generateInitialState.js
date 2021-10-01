@@ -28,6 +28,7 @@ const GenerateInitialState = (initialFilterState, headers, allMattresses) => ({
     initialFilterState.comfort.selectedComfortCheckBoxes,
     initialFilterState.type.selectedTypeCheckBoxes
   ),
+  ...initialFilterState.banner,
   ...initialFilterState.brand,
   ...initialFilterState.type,
   ...initialFilterState.comfort,
