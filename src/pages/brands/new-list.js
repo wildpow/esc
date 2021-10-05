@@ -20,20 +20,6 @@ import ClientOnly from "../../components/New-Feature/ClientOnlyCheck";
 import { SortBy } from "../../components/New-Feature/FilterSortComponents";
 import CollapseAllIcon from "../../svgs/sort-solid.svg";
 
-const createButton = (checkBoxs) => {
-  if (
-    checkBoxs.length === 0 ||
-    checkBoxs.length > 1 ||
-    checkBoxs[0] === "serta"
-  ) {
-    return null;
-  }
-  return {
-    label: "Learn More",
-    url: `/brands/${checkBoxs[0]}/landing`,
-  };
-};
-
 const NewList = ({ location, data, search, initialFilterState }) => {
   const mattresses = getAllMattressesQuery();
   const headers = getHeadersQuery();
@@ -44,7 +30,7 @@ const NewList = ({ location, data, search, initialFilterState }) => {
   );
   const [state, dispatch] = useReducer(reducer, initialState);
   const [allActive, setAllActive] = useState(true);
-
+  console.log(location);
   return (
     <Layout>
       {console.log(state, "state")}

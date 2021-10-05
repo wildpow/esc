@@ -86,6 +86,7 @@ const GenerateQueryAndInitialFilters = (ComponentToWrap) => (props) => {
       selectedBannerCheckBoxes: [],
       bannerCheckBoxes: banners.bannerCheckBoxes,
       currentSaleBannerKeyList: banners.currentSaleBannerKeyList,
+      bannerMasterKeyList: banners.bannerMasterKeyList,
     },
   };
   // -------------------
@@ -94,7 +95,7 @@ const GenerateQueryAndInitialFilters = (ComponentToWrap) => (props) => {
     comfort: ["1", "2", "3", "4", "5"],
     type: mattressTypes.typeKeyList,
     brand: mattressBrands.brandNames,
-    banner: [banners.bannerCheckBoxes[0].urlParam, ...banners.bannerKeyList],
+    banner: [...Array(banners.bannerCheckBoxes.length).keys()],
   };
 
   return (
@@ -156,13 +157,15 @@ const GenerateQueryAndInitialFilters = (ComponentToWrap) => (props) => {
           }
         }
         return (
-          <ComponentToWrap
-            {...props}
-            location={location}
-            navigate={navigate}
-            search={search}
-            initialFilterState={initialFilterState}
-          />
+          <>
+            <ComponentToWrap
+              {...props}
+              location={location}
+              navigate={navigate}
+              search={search}
+              initialFilterState={initialFilterState}
+            />
+          </>
         );
       }}
     </Location>

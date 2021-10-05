@@ -26,19 +26,20 @@ export default () => {
         displayName: "Current Sale",
       },
     ],
-    bannerKeyList: [],
+    bannerMasterKeyList: [],
     currentSaleBannerKeyList: [],
   };
-  banners.currentSaleTags.forEach((element) => {
+  banners.currentSaleTags.forEach((element, index) => {
     initialState.currentSaleBannerKeyList.push(element.slug);
   });
   banners.otherFilters.forEach((element) => {
-    initialState.bannerKeyList.push(element.slug);
+    initialState.bannerMasterKeyList.push(element.slug);
     initialState.bannerCheckBoxes.push({
       checked: false,
       urlParam: element.slug,
       displayName: capitalizeFirstLetter(element.banner.toLowerCase()),
     });
   });
+
   return initialState;
 };

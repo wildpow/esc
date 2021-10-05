@@ -77,7 +77,7 @@ export default function FilterSortPanel({
         </Accordion>
       </ClientOnly>
       <ClientOnly>
-        <Accordion title="Sale Banner" allActive={allActive}>
+        <Accordion title="Special Offers" allActive={allActive}>
           {bannerCheckBoxes.map((banner, index) => (
             <label htmlFor={banner.displayName} key={banner.displayName}>
               <Checkbox
@@ -87,7 +87,7 @@ export default function FilterSortPanel({
                   dispatch({
                     type: "banner",
                     index,
-                    value: banner.urlParam,
+                    // value: banner.urlParam,
                     checked: e.target.checked,
                   })
                 }

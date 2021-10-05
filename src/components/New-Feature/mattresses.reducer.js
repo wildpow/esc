@@ -24,6 +24,15 @@ function filterCurrentMattresses(mattresses, brands, comfort, type) {
   }
   return newMattresses;
 }
+const filterSelected = (oldState, newItem) => {
+  let newSate = [...oldState];
+  if (newSate.includes(newItem)) {
+    newSate = newSate.filter((item) => item !== newItem);
+  } else {
+    newSate.push(newItem);
+  }
+  return newSate;
+};
 export default function reducer(state, action) {
   let newComfortNumbers;
   let newComfortCheckBoxes;
@@ -33,6 +42,8 @@ export default function reducer(state, action) {
   let newSelectedBrand;
   let newCurrentHeader;
   let allfitersEmpty;
+  let newBannerCheckBoxes;
+  let newBannerSelected;
   switch (action.type) {
     case "low-high":
       return {
@@ -94,17 +105,26 @@ export default function reducer(state, action) {
           }
         ),
       };
+    case "banner": {
+      newBannerCheckBoxes = [...state.bannerCheckBoxes];
+      newBannerCheckBoxes[action.index].checked = action.checked;
+      newBannerSelected = filterSelected(
+        state.selectedBannerCheckBoxes,
+        action.index
+      );
+      return {
+        ...state,
+        selectedBannerCheckBoxes: newBannerSelected,
+        bannerCheckBoxes: newBannerCheckBoxes,
+      };
+    }
     case "type": {
       newTypeCheckBoxes = [...state.typeCheckBoxes];
       newTypeCheckBoxes[action.index].checked = action.checked;
-      newSelectedType = [...state.selectedTypeCheckBoxes];
-      if (newSelectedType.includes(action.value)) {
-        newSelectedType = newSelectedType.filter(
-          (item) => item !== action.value
-        );
-      } else {
-        newSelectedType.push(action.value);
-      }
+      newSelectedType = filterSelected(
+        state.selectedTypeCheckBoxes,
+        action.value
+      );
       allfitersEmpty =
         state.selectedBrandCheckBoxes.length === 0 &&
         state.selectedComfortCheckBoxes.length === 0 &&
@@ -134,14 +154,10 @@ export default function reducer(state, action) {
     case "brand":
       newBrandCheckBoxes = [...state.brandCheckBoxes];
       newBrandCheckBoxes[action.index].checked = action.checked;
-      newSelectedBrand = [...state.selectedBrandCheckBoxes];
-      if (newSelectedBrand.includes(action.value)) {
-        newSelectedBrand = newSelectedBrand.filter(
-          (item) => item !== action.value
-        );
-      } else {
-        newSelectedBrand.push(action.value);
-      }
+      newSelectedBrand = filterSelected(
+        state.selectedBrandCheckBoxes,
+        action.value
+      );
       if (newSelectedBrand.length === 0 || newSelectedBrand.length >= 2) {
         newCurrentHeader = state.headers.all;
       } else {
@@ -173,14 +189,11 @@ export default function reducer(state, action) {
       newComfortCheckBoxes = [...state.comfortCheckBoxes];
       newComfortCheckBoxes[action.index].checked = action.checked;
 
-      newComfortNumbers = [...state.selectedComfortCheckBoxes];
-      if (newComfortNumbers.includes(action.id)) {
-        newComfortNumbers = newComfortNumbers.filter(
-          (item) => item !== action.id
-        );
-      } else {
-        newComfortNumbers.push(action.id);
-      }
+      newComfortNumbers = filterSelected(
+        state.selectedComfortCheckBoxes,
+        action.id
+      );
+
       allfitersEmpty =
         state.selectedBrandCheckBoxes.length === 0 &&
         newComfortNumbers.length === 0 &&
