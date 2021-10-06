@@ -1,3 +1,5 @@
+import { sortProductByPrice } from "../New-Feature/helperFunctions";
+
 const currentSaleInit = (
   mattresses,
   banners,
@@ -5,8 +7,8 @@ const currentSaleInit = (
   mattressComfort,
   mattressTypes
 ) => {
-  const newFilteredMattresses = mattresses.filter((matt) =>
-    banners.includes(matt.newSaleBanner.banner)
+  const newFilteredMattresses = sortProductByPrice(
+    mattresses.filter((matt) => banners.includes(matt.newSaleBanner.banner))
   );
   const typesInSale = {};
   const comfortInSale = {};
