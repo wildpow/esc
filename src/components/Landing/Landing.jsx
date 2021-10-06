@@ -58,7 +58,9 @@ const Hero = styled(GatsbyImage)`
     margin-left: 0px;
   }
 `;
-const LandingRoot = styled.article``;
+const LandingRoot = styled.article`
+  margin: 0 auto;
+`;
 const Hr = styled.hr`
   border-top: 1px solid #eee;
   border-bottom: 2px solid #7ea9c8;
