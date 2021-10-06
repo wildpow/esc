@@ -30,7 +30,7 @@ export default () => {
     currentSaleBannerKeyList: [],
   };
   banners.currentSaleTags.forEach((element, index) => {
-    initialState.currentSaleBannerKeyList.push(element.slug);
+    initialState.currentSaleBannerKeyList.push(element.banner);
   });
   banners.otherFilters.forEach((element) => {
     initialState.bannerMasterKeyList.push(element.slug);

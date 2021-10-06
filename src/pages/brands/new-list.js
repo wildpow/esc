@@ -30,10 +30,8 @@ const NewList = ({ location, data, search, initialFilterState }) => {
   );
   const [state, dispatch] = useReducer(reducer, initialState);
   const [allActive, setAllActive] = useState(true);
-  console.log(location);
   return (
     <Layout>
-      {console.log(state, "state")}
       <HelmetDatoCms seo={data.seo.seoMetaTags} />
       <MattListWrapper>
         <NewBread Brands>

@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
 import { FilterSortRoot, Accordion, Checkbox } from "./FilterSortComponents";
-import ClientOnly from "./ClientOnlyCheck";
+import ClientOnly from "../FinalFeature/ClientOnlyCheck";
 
+const ConditionalWrapper = ({ condition, wrapper, children }) => {
+  console.log(condition);
+  return condition ? wrapper(children) : children;
+};
 export default function FilterSortPanel({
   dispatch,
   comfortCheckBoxes,
@@ -9,10 +13,14 @@ export default function FilterSortPanel({
   typeCheckBoxes,
   allActive,
   bannerCheckBoxes,
+  queryString,
 }) {
   return (
     <FilterSortRoot>
-      <ClientOnly>
+      <ConditionalWrapper
+        condition={queryString === undefined}
+        wrapper={(children) => <ClientOnly>{children}</ClientOnly>}
+      >
         <Accordion title="Brands" allActive={allActive}>
           {brandCheckBoxes.map((brandBox, index) => (
             <label htmlFor={brandBox.displayName} key={brandBox.displayName}>
@@ -32,8 +40,12 @@ export default function FilterSortPanel({
             </label>
           ))}
         </Accordion>
-      </ClientOnly>
-      <ClientOnly>
+      </ConditionalWrapper>
+
+      <ConditionalWrapper
+        condition={queryString === undefined}
+        wrapper={(children) => <ClientOnly>{children}</ClientOnly>}
+      >
         <Accordion title="Comfort" allActive={allActive}>
           {comfortCheckBoxes.map((checkBox, index) => (
             <label htmlFor={checkBox.displayName} key={checkBox.displayName}>
@@ -54,8 +66,11 @@ export default function FilterSortPanel({
             </label>
           ))}
         </Accordion>
-      </ClientOnly>
-      <ClientOnly>
+      </ConditionalWrapper>
+      <ConditionalWrapper
+        condition={queryString === undefined}
+        wrapper={(children) => <ClientOnly>{children}</ClientOnly>}
+      >
         <Accordion title="Type" allActive={allActive}>
           {typeCheckBoxes.map((type, index) => (
             <label htmlFor={type.displayName} key={type.displayName}>
@@ -75,28 +90,33 @@ export default function FilterSortPanel({
             </label>
           ))}
         </Accordion>
-      </ClientOnly>
-      <ClientOnly>
-        <Accordion title="Special Offers" allActive={allActive}>
-          {bannerCheckBoxes.map((banner, index) => (
-            <label htmlFor={banner.displayName} key={banner.displayName}>
-              <Checkbox
-                id={banner.displayName}
-                checked={banner.checked}
-                onChange={(e) =>
-                  dispatch({
-                    type: "banner",
-                    index,
-                    // value: banner.urlParam,
-                    checked: e.target.checked,
-                  })
-                }
-              />
-              <span style={{ marginLeft: 8 }}>{banner.displayName}</span>
-            </label>
-          ))}
-        </Accordion>
-      </ClientOnly>
+      </ConditionalWrapper>
+      {bannerCheckBoxes && (
+        <ConditionalWrapper
+          condition={queryString === undefined}
+          wrapper={(children) => <ClientOnly>{children}</ClientOnly>}
+        >
+          <Accordion title="Special Offers" allActive={allActive}>
+            {bannerCheckBoxes.map((banner, index) => (
+              <label htmlFor={banner.displayName} key={banner.displayName}>
+                <Checkbox
+                  id={banner.displayName}
+                  checked={banner.checked}
+                  onChange={(e) =>
+                    dispatch({
+                      type: "banner",
+                      index,
+                      // value: banner.urlParam,
+                      checked: e.target.checked,
+                    })
+                  }
+                />
+                <span style={{ marginLeft: 8 }}>{banner.displayName}</span>
+              </label>
+            ))}
+          </Accordion>
+        </ConditionalWrapper>
+      )}
     </FilterSortRoot>
   );
 }
