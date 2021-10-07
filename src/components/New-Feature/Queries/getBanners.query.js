@@ -40,6 +40,8 @@ export default () => {
       displayName: capitalizeFirstLetter(element.banner.toLowerCase()),
     });
   });
-
+  initialState.bannerQueryStringKeys = [
+    ...Array(initialState.bannerCheckBoxes.length).keys(),
+  ];
   return initialState;
 };

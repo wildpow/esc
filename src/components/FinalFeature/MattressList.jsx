@@ -51,7 +51,7 @@ export default function MattressList({
         headerData={state.currentHeader}
         allBtnOption={!state.multipleHeaders}
       />
-      {console.log(state)}
+
       <div className="mattList__flex">
         <FilterSortPanel
           queryString={queryString}

@@ -24,7 +24,7 @@ const currentSaleInit = (
   mattressTypes
 ) => {
   const masterList = {
-    comfort: ["1", "2", "3", "4", "5"],
+    comfort: mattressComfort.comfortKeys,
     type: mattressTypes.typeKeyList,
     brand: mattBrand.brandNames,
   };
@@ -55,7 +55,7 @@ const currentSaleInit = (
   const comfortFilter = updateDisabled(
     masterList.comfort,
     comfortKeys,
-    mattressComfort
+    mattressComfort.comfortCheckBoxes
   );
 
   const brandFilter = updateDisabled(
