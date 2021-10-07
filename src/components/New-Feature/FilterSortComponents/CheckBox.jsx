@@ -5,7 +5,7 @@ import { colors } from "../../../styles/theme.styled";
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
-  pointer-events: auto;
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
   cursor: pointer;
 `;
 
@@ -30,6 +30,7 @@ const HiddenCheckbox = styled.input`
 
 const StyledCheckbox = styled.div`
   display: inline-block;
+  opacity: ${({ disabled }) => (disabled ? 0.2 : 1)};
   width: 30px;
   height: 30px;
   background: ${({ checked }) => (checked ? colors.brandBlue : "white")};
@@ -46,10 +47,16 @@ const StyledCheckbox = styled.div`
   }
 `;
 
-const Checkbox = ({ checked, ...props }) => (
-  <CheckboxContainer>
-    <HiddenCheckbox checked={checked} {...props} type="checkbox" />
-    <StyledCheckbox checked={checked}>
+const Checkbox = ({ disabled, checked, ...props }) => (
+  <CheckboxContainer disabled={disabled}>
+    {console.log(props)}
+    <HiddenCheckbox
+      checked={checked}
+      disabled={disabled}
+      {...props}
+      type="checkbox"
+    />
+    <StyledCheckbox checked={checked} disabled={disabled}>
       <Icon viewBox="0 0 24 24">
         <polyline points="20 6 9 17 4 12" />
       </Icon>

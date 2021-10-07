@@ -27,9 +27,9 @@ export default function CurrentSale({ data }) {
   const currentSale = currentSaleInit(
     allDatoCmsNewMattress.nodes,
     banners.currentSaleBannerKeyList,
-    mattressBrands.brandState.brandCheckBoxes,
+    mattressBrands,
     mattressComfort,
-    mattressTypes.typeCheckBoxes
+    mattressTypes
   );
 
   return (

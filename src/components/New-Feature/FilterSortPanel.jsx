@@ -2,10 +2,9 @@ import PropTypes from "prop-types";
 import { FilterSortRoot, Accordion, Checkbox } from "./FilterSortComponents";
 import ClientOnly from "../FinalFeature/ClientOnlyCheck";
 
-const ConditionalWrapper = ({ condition, wrapper, children }) => {
-  console.log(condition);
-  return condition ? wrapper(children) : children;
-};
+const ConditionalWrapper = ({ condition, wrapper, children }) =>
+  // console.log(condition);
+  condition ? wrapper(children) : children;
 export default function FilterSortPanel({
   dispatch,
   comfortCheckBoxes,
@@ -27,6 +26,7 @@ export default function FilterSortPanel({
               <Checkbox
                 id={brandBox.displayName}
                 checked={brandBox.checked}
+                disabled={brandBox.disabled}
                 onChange={(e) =>
                   dispatch({
                     type: "brand",
@@ -36,7 +36,11 @@ export default function FilterSortPanel({
                   })
                 }
               />
-              <span style={{ marginLeft: 8 }}>{brandBox.displayName}</span>
+              <span
+                style={{ marginLeft: 8, opacity: brandBox.disabled ? 0.3 : 1 }}
+              >
+                {brandBox.displayName}
+              </span>
             </label>
           ))}
         </Accordion>
@@ -53,6 +57,7 @@ export default function FilterSortPanel({
                 id={checkBox.displayName}
                 checked={checkBox.checked}
                 firmness={checkBox.firmness}
+                disabled={checkBox.disabled}
                 onChange={(e) =>
                   dispatch({
                     type: "comfort",
@@ -62,7 +67,11 @@ export default function FilterSortPanel({
                   })
                 }
               />
-              <span style={{ marginLeft: 8 }}>{checkBox.displayName}</span>
+              <span
+                style={{ marginLeft: 8, opacity: checkBox.disabled ? 0.3 : 1 }}
+              >
+                {checkBox.displayName}
+              </span>
             </label>
           ))}
         </Accordion>
@@ -77,6 +86,7 @@ export default function FilterSortPanel({
               <Checkbox
                 id={type.displayName}
                 checked={type.checked}
+                disabled={type.disabled}
                 onChange={(e) =>
                   dispatch({
                     type: "type",
@@ -86,7 +96,9 @@ export default function FilterSortPanel({
                   })
                 }
               />
-              <span style={{ marginLeft: 8 }}>{type.displayName}</span>
+              <span style={{ marginLeft: 8, opacity: type.disabled ? 0.3 : 1 }}>
+                {type.displayName}
+              </span>
             </label>
           ))}
         </Accordion>
@@ -102,6 +114,7 @@ export default function FilterSortPanel({
                 <Checkbox
                   id={banner.displayName}
                   checked={banner.checked}
+                  disabled={banner.disabled}
                   onChange={(e) =>
                     dispatch({
                       type: "banner",
@@ -111,7 +124,11 @@ export default function FilterSortPanel({
                     })
                   }
                 />
-                <span style={{ marginLeft: 8 }}>{banner.displayName}</span>
+                <span
+                  style={{ marginLeft: 8, opacity: banner.disabled ? 0.3 : 1 }}
+                >
+                  {banner.displayName}
+                </span>
               </label>
             ))}
           </Accordion>
@@ -126,4 +143,5 @@ FilterSortPanel.propTypes = {
   brandCheckBoxes: PropTypes.instanceOf(Object).isRequired,
   typeCheckBoxes: PropTypes.instanceOf(Object).isRequired,
   bannerCheckBoxes: PropTypes.instanceOf(Object).isRequired,
+  allActive: PropTypes.bool.isRequired,
 };

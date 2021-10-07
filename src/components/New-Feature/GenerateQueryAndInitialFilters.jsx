@@ -24,10 +24,15 @@ const filterBadQueryInputs = (originalQuery, keys) => {
   return dedup;
 };
 
-const updateInitialState = (master, queryArr, state) => {
+export const updateInitialState = (
+  master,
+  queryArr,
+  state,
+  propertyToUpdate = "checked"
+) => {
   const newState = state;
   queryArr.forEach((q) => {
-    newState[master.indexOf(q)].checked = true;
+    newState[master.indexOf(q)][propertyToUpdate] = true;
   });
   return newState;
 };

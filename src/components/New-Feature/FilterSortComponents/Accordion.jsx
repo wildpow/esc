@@ -6,10 +6,9 @@ import {
   colors,
   boxShadow,
   fontSize,
-  radius,
+  // radius,
   rounded,
 } from "../../../styles/theme.styled";
-import DownArrow from "../../../svgs/chevron-down-solid.svg";
 import UpArrow from "../../../svgs/chevron-up-solid.svg";
 
 const AccordionWrapper = styled.div`
@@ -24,7 +23,7 @@ const AccordionWrapper = styled.div`
       active ? rounded.none : rounded.md};
     border-bottom-left-radius: ${({ active }) =>
       active ? rounded.none : rounded.md};
-
+    align-items: center;
     border-bottom: 4px solid ${colors.red[900]};
     border-top-right-radius: ${rounded.md};
     border-top-left-radius: ${rounded.md};

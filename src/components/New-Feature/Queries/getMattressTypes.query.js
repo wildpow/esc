@@ -24,6 +24,7 @@ export default () => {
     initialState.typeCheckBoxes.push({
       description: element.description,
       checked: false,
+      disabled: false,
       urlParam: element.slug,
       displayName: element.title,
     });

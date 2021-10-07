@@ -1,4 +1,20 @@
 import { sortProductByPrice } from "../New-Feature/helperFunctions";
+// Why does this function exist:
+// - Filter and sort mattresses by current sale from CMS
+// - Disable filter checkboxes with no results,
+// - Do not use the banner filter.
+export const updateDisabled = (master, queryArr, state) => {
+  const newState = [];
+  state.forEach((s) => {
+    const updatedItem = s;
+    updatedItem.disabled = true;
+    newState.push(updatedItem);
+  });
+  queryArr.forEach((q) => {
+    newState[master.indexOf(q)].disabled = false;
+  });
+  return newState;
+};
 
 const currentSaleInit = (
   mattresses,
@@ -7,9 +23,16 @@ const currentSaleInit = (
   mattressComfort,
   mattressTypes
 ) => {
+  const masterList = {
+    comfort: ["1", "2", "3", "4", "5"],
+    type: mattressTypes.typeKeyList,
+    brand: mattBrand.brandNames,
+  };
+
   const newFilteredMattresses = sortProductByPrice(
     mattresses.filter((matt) => banners.includes(matt.newSaleBanner.banner))
   );
+
   const typesInSale = {};
   const comfortInSale = {};
   const brandsInSale = {};
@@ -18,16 +41,28 @@ const currentSaleInit = (
     comfortInSale[mat.firmness] = "";
     typesInSale[mat.mattressType.slug] = "";
   });
+
   const typeKeys = Object.keys(typesInSale);
   const brandkeys = Object.keys(brandsInSale);
   const comfortKeys = Object.keys(comfortInSale);
-  const typesFilter = mattressTypes.filter((t) =>
-    typeKeys.includes(t.urlParam)
+
+  const typesFilter = updateDisabled(
+    masterList.type,
+    typeKeys,
+    mattressTypes.typeCheckBoxes
   );
-  const comfortFilter = mattressComfort.filter((b) =>
-    comfortKeys.includes(`${b.firmness}`)
+
+  const comfortFilter = updateDisabled(
+    masterList.comfort,
+    comfortKeys,
+    mattressComfort
   );
-  const brandFilter = mattBrand.filter((a) => brandkeys.includes(a.urlParam));
+
+  const brandFilter = updateDisabled(
+    masterList.brand,
+    brandkeys,
+    mattBrand.brandState.brandCheckBoxes
+  );
   return {
     mattresses: newFilteredMattresses,
     filters: {

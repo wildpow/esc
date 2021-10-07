@@ -20,6 +20,7 @@ export default () => {
     brandNames.push(element.urlName);
     brandState.brandCheckBoxes.push({
       checked: false,
+      disabled: false,
       urlParam: element.urlName,
       displayName: element.displayName,
     });
