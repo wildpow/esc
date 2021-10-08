@@ -26,6 +26,7 @@ export default () => {
         displayName: "Current Sale",
       },
     ],
+
     bannerMasterKeyList: [],
     currentSaleBannerKeyList: [],
   };

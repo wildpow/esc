@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import propTypes from "prop-types";
@@ -8,10 +10,10 @@ import getMattressTypes from "../../components/New-Feature/Queries/getMattressTy
 import getMattressBrands from "../../components/New-Feature/Queries/getMattressBrands.query";
 import getBannersQuery from "../../components/New-Feature/Queries/getBanners.query";
 import QueryStringChecker from "../../components/FinalFeature/QueryStringChecker";
-import MattressListInit from "../../components/FinalFeature/mattressListInit";
+import mattressListInit from "../../components/FinalFeature/mattressListInit";
 import getComfortFilter from "../../components/FinalFeature/getComfortFilter";
 
-const Tester = ({ queryString }) => <div>{console.log(queryString)}</div>;
+const Tester = ({ queryString, filters }) => <div>{console.log(filters)}</div>;
 const List = ({ location, data }) => {
   const banners = getBannersQuery();
   const types = getMattressTypes();
@@ -20,7 +22,7 @@ const List = ({ location, data }) => {
   const headers = getHeadersQuery();
   const mattresses = getAllMattressesQuery();
 
-  const initialStateAndMasterKeys = MattressListInit(
+  const initialStateAndMasterKeys = mattressListInit(
     brands,
     types,
     comfort,
@@ -30,9 +32,10 @@ const List = ({ location, data }) => {
     <Layout>
       <HelmetDatoCms seo={data.seo.seoMetaTags} />
       <QueryStringChecker
-        data={initialStateAndMasterKeys}
+        filterState={initialStateAndMasterKeys.initialFilters}
+        masterList={initialStateAndMasterKeys.masterSanitizeList}
         location={location}
-        render={(updatedQS) => <Tester queryString={updatedQS} />}
+        render={(finalFilterState) => <Tester filters={finalFilterState} />}
       />
       <h2>All Mattress List</h2>
     </Layout>
