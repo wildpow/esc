@@ -20,6 +20,10 @@ const HarvestGreen = ({ data }) => {
         title={datoCmsBrand.displayName}
         description={datoCmsBrand.headerLink.tagLine}
         breadCrumbs
+        button={{
+          label: "Learn More",
+          url: `/brands/${datoCmsBrand.urlName}/landing`,
+        }}
         brandName={datoCmsBrand.urlName}
       />
     </Layout>

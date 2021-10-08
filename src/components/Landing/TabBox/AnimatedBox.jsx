@@ -3,13 +3,52 @@ import styled from "@emotion/styled";
 import { GatsbyImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
 import { fonts } from "../../../styles/theme.styled";
+import ExternalLinkSvg from "../../../svgs/external-link-alt-solid.svg";
 
+const LinkWrapper = styled.div`
+  @media screen and (max-width: 1024px) {
+    a {
+      width: 100%;
+    }
+  }
+  font-family: ${fonts.sans};
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00103b;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    padding: 10px 25px;
+
+    :hover {
+      background: #c8645d;
+    }
+  }
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  svg {
+    height: 1em;
+    margin-left: ${({ iconOnLeft }) => (iconOnLeft ? 0 : "0.5em")};
+    margin-right: ${({ iconOnLeft }) => (iconOnLeft ? "0.5em" : 0)};
+    width: 1em;
+  }
+`;
 const Holder = styled.div`
   position: relative;
   height: 316px;
   margin-top: 20px;
   @media screen and (min-width: 1200px) {
     margin-bottom: 90px;
+  }
+  @media screen and (min-width: 1024px) and (orientation: landscape) {
+    height: 416px;
+  }
+  @media screen and (min-width: 1024px) and (orientation: portrait) {
+    height: 400px;
   }
   @media screen and (max-width: 992px) {
     height: 632px;
@@ -20,13 +59,19 @@ const Holder = styled.div`
     margin-bottom: 0px;
   }
   @media screen and (max-width: 375px) {
-    height: 450px;
+    height: 520px;
     margin-bottom: 50px;
     margin-top: 0px;
   }
 `;
 
 const TabContent = styled.div`
+  .tabContent__lastWrapper {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -100,6 +145,7 @@ const TabContainer = styled.div`
   @media screen and (max-width: 992px) {
     flex-direction: column;
     align-items: center;
+    height: 570px;
   }
 `;
 
@@ -134,11 +180,25 @@ const AnimatedBox = ({ tabs, current }) => (
             <TabContent>
               <h4>{tabs[data].title.toUpperCase()}</h4>
               <div
+                className="tabContent__lastWrapper"
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   __html: tabs[data].description,
                 }}
               />
+              {tabs[data].buttonUrl && tabs[data].buttonText ? (
+                <LinkWrapper iconOnLeft>
+                  <a
+                    href={tabs[data].buttonUrl}
+                    inverse
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLinkSvg />
+                    {tabs[data].buttonText}
+                  </a>
+                </LinkWrapper>
+              ) : null}
             </TabContent>
           </TabContainer>
         ))}
