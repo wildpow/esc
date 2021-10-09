@@ -49,7 +49,6 @@ const StyledCheckbox = styled.div`
 
 const Checkbox = ({ disabled, checked, ...props }) => (
   <CheckboxContainer disabled={disabled}>
-    {console.log(props)}
     <HiddenCheckbox
       checked={checked}
       disabled={disabled}
@@ -66,6 +65,7 @@ const Checkbox = ({ disabled, checked, ...props }) => (
 
 Checkbox.propTypes = {
   checked: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default Checkbox;

@@ -131,7 +131,7 @@ export default function reducer(state, action) {
           state.selectedComfortCheckBoxes.length === 0 &&
           newSelectedType.length === 0;
         navigate(
-          `/brands/new-list${allfitersEmpty ? "" : "?"}${queryString.stringify(
+          `/brands/list${allfitersEmpty ? "" : "?"}${queryString.stringify(
             {
               brand: state.selectedBrandCheckBoxes,
               comfort: state.selectedComfortCheckBoxes,
@@ -173,7 +173,7 @@ export default function reducer(state, action) {
           state.selectedComfortCheckBoxes.length === 0 &&
           state.selectedTypeCheckBoxes.length === 0;
         navigate(
-          `/brands/new-list${allfitersEmpty ? "" : "?"}${queryString.stringify(
+          `/brands/list${allfitersEmpty ? "" : "?"}${queryString.stringify(
             {
               brand: newSelectedBrand,
               comfort: state.selectedComfortCheckBoxes,
@@ -210,7 +210,7 @@ export default function reducer(state, action) {
           newComfortNumbers.length === 0 &&
           state.selectedTypeCheckBoxes.length === 0;
         navigate(
-          `/brands/new-list${allfitersEmpty ? "" : "?"}${queryString.stringify(
+          `/brands/list${allfitersEmpty ? "" : "?"}${queryString.stringify(
             {
               brand: state.selectedBrandCheckBoxes,
               comfort: newComfortNumbers,

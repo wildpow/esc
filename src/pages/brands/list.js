@@ -12,8 +12,8 @@ import getBannersQuery from "../../components/New-Feature/Queries/getBanners.que
 import QueryStringChecker from "../../components/FinalFeature/QueryStringChecker";
 import mattressListInit from "../../components/FinalFeature/mattressListInit";
 import getComfortFilter from "../../components/FinalFeature/getComfortFilter";
+import MattressList from "../../components/FinalFeature/MattressList";
 
-const Tester = ({ queryString, filters }) => <div>{console.log(filters)}</div>;
 const List = ({ location, data }) => {
   const banners = getBannersQuery();
   const types = getMattressTypes();
@@ -35,7 +35,15 @@ const List = ({ location, data }) => {
         filterState={initialStateAndMasterKeys.initialFilters}
         masterList={initialStateAndMasterKeys.masterSanitizeList}
         location={location}
-        render={(finalFilterState) => <Tester filters={finalFilterState} />}
+        render={(finalFilterState) => (
+          <MattressList
+            queryString
+            mattresses={mattresses}
+            multipleHeaders
+            headers={headers}
+            initialFilterState={finalFilterState}
+          />
+        )}
       />
       <h2>All Mattress List</h2>
     </Layout>

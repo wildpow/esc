@@ -9,6 +9,7 @@ import {
   NewBread,
   MattListWrapper,
 } from "../New-Feature/productListing.styled";
+import ClientOnly from "./ClientOnlyCheck";
 
 const GenerateInitialState = (
   initialFilterState,
@@ -16,19 +17,35 @@ const GenerateInitialState = (
   allMattresses,
   queryString,
   multipleHeaders
-) => ({
-  beforeFilterMattresses: allMattresses,
-  currentMattresses: queryString ? allMattresses : allMattresses,
-  ...initialFilterState.banner,
-  ...initialFilterState.brand,
-  ...initialFilterState.type,
-  ...initialFilterState.comfort,
-  headers: multipleHeaders ? headers.brandHeaders : headers,
-  currentHeader: multipleHeaders ? headers : headers,
-  queryString,
-  multipleHeaders,
-});
-
+) => {
+  let currentHeader1 = null;
+  if (multipleHeaders) {
+    currentHeader1 =
+      initialFilterState.brand.selectedBrandCheckBoxes.length === 1
+        ? headers.brandHeaders[
+            initialFilterState.brand.selectedBrandCheckBoxes[0]
+          ]
+        : headers.brandHeaders.all;
+  } else {
+    currentHeader1 = headers;
+  }
+  const state = {
+    beforeFilterMattresses: allMattresses,
+    currentMattresses: queryString ? allMattresses : allMattresses,
+    ...initialFilterState.banner,
+    ...initialFilterState.brand,
+    ...initialFilterState.type,
+    ...initialFilterState.comfort,
+    headers: multipleHeaders ? headers.brandHeaders : headers,
+    currentHeader: currentHeader1,
+    queryString,
+    multipleHeaders,
+  };
+  return state;
+};
+const ConditionalWrapper = ({ condition, wrapper, children }) =>
+  // console.log(condition);
+  condition ? wrapper(children) : children;
 export default function MattressList({
   queryString,
   mattresses,
@@ -47,11 +64,18 @@ export default function MattressList({
   const [allActive, setAllActive] = useState(true);
   return (
     <MattListWrapper>
-      <Header
-        headerData={state.currentHeader}
-        allBtnOption={!state.multipleHeaders}
-      />
+      {console.log(state.currentHeader)}
 
+      <ConditionalWrapper
+        condition={queryString === undefined}
+        wrapper={(children) => <ClientOnly>{children}</ClientOnly>}
+      >
+        <Header
+          headerData={state.currentHeader}
+          allBtnOption={state.multipleHeaders === false}
+        />
+      </ConditionalWrapper>
+      {console.log(state)}
       <div className="mattList__flex">
         <FilterSortPanel
           queryString={queryString}

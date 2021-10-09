@@ -3,6 +3,7 @@ import { FilterSortRoot, Accordion, Checkbox } from "./FilterSortComponents";
 import ClientOnly from "../FinalFeature/ClientOnlyCheck";
 
 const ConditionalWrapper = ({ condition, wrapper, children }) =>
+  // console.log(condition);
   condition ? wrapper(children) : children;
 export default function FilterSortPanel({
   dispatch,

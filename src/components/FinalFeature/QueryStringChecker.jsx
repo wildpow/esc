@@ -32,12 +32,13 @@ const updateInitialState = (
   queryArr.forEach((q) => {
     newState[master.indexOf(q)][propertyToUpdate] = true;
   });
-  console.log(master, queryArr, state);
+  // console.log(master, queryArr, state);
   return newState;
 };
 
 const QueryStringChecker = ({ location, render, filterState, masterList }) => {
-  const [finalFilterState, setFinalFilterState] = useState(null);
+  const [finalFilterState, setFinalFilterState] = useState(filterState);
+
   useEffect(() => {
     if (Object.keys(location.search).length === 0) {
       setFinalFilterState(filterState);
@@ -62,20 +63,16 @@ const QueryStringChecker = ({ location, render, filterState, masterList }) => {
           } else if (filter.length !== searchArr.length) {
             didQueryValueFail = true;
             newSearch[key] = filter;
-          } else {
-            console.log(
-              "Comfort is not working!!!!!!!!!!!! http://localhost:8000/brands/list?banner=0,1,2&brand=sealy&comfort=1"
-            );
-
-            newFilterState[key][
-              `selected${capitalizeFirstLetter(key)}CheckBoxes`
-            ] = [...filter];
-            newFilterState[key][`${key}CheckBoxes`] = updateInitialState(
-              masterList[key],
-              filter,
-              newFilterState[key][`${key}CheckBoxes`]
-            );
           }
+
+          newFilterState[key][
+            `selected${capitalizeFirstLetter(key)}CheckBoxes`
+          ] = [...filter];
+          newFilterState[key][`${key}CheckBoxes`] = updateInitialState(
+            masterList[key],
+            filter,
+            newFilterState[key][`${key}CheckBoxes`]
+          );
         } else {
           didQueryKeyFail = true;
           delete newSearch[key];
