@@ -1,6 +1,9 @@
 # Change log
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### October 2021
+#### Features
+- Brand landing pages now are generated on build instead of manually created.
 ### August 2021
 #### Features
 - [PR #159](https://github.com/wildpow/esc/pull/159) 
