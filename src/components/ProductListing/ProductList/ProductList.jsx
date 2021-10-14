@@ -11,7 +11,7 @@ export default function ProductList({
 }) {
   return (
     <div>
-      <h2>Poop</h2>
+      <h2>New Product List</h2>
     </div>
   );
 }
