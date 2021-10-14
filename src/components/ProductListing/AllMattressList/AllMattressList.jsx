@@ -36,12 +36,7 @@ const MattressList = ({ location, data }) => {
           }
         />
       </NewBread>
-      <Header
-        title={state.currentHeader.title}
-        description={state.currentHeader.tagLine}
-        headerBG={state.currentHeader.bgImg.url}
-        button={createButton(state.selectedBrandCheckBoxes)}
-      />
+      <Header headerData={state.currentHeader} />
       <div className="mattList__flex">
         <FilterSortPanel
           dispatch={dispatch}

@@ -116,27 +116,32 @@ const HeaderWrapper = styled.div`
     }
   }
 `;
-const ListingHeader = ({ description, title, headerBG, button }) => (
-  <HeaderWrapper headerBG={headerBG}>
+
+const ListingHeader = ({ headerData, allBtnOption }) => (
+  <HeaderWrapper headerBG={headerData.bgImg.url}>
     <div className="heading__content">
       <div>
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <h2>{headerData.title}</h2>
+        <p>{headerData.tagLine}</p>
       </div>
-      {button && <HeaderButton to={button.url}>{button.label}</HeaderButton>}
+      {allBtnOption && (
+        <HeaderButton to="/brands/list">Shop all Mattresses</HeaderButton>
+      )}
+      {headerData.landing && (
+        <HeaderButton to={`/brands/${headerData.urlName}/landing`}>
+          Learn More
+        </HeaderButton>
+      )}
     </div>
   </HeaderWrapper>
 );
 ListingHeader.propTypes = {
-  description: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  headerBG: PropTypes.string,
-  button: PropTypes.shape({ label: PropTypes.string, url: PropTypes.string }),
+  headerData: PropTypes.instanceOf(Object).isRequired,
+  allBtnOption: PropTypes.bool,
 };
 
 ListingHeader.defaultProps = {
-  headerBG: "",
-  button: null,
+  allBtnOption: false,
 };
 
 export default ListingHeader;
