@@ -87,7 +87,7 @@ export const MattListWrapper = styled.div`
   }
   .mattList__flex {
     border-top: 8px solid ${colors.brandBlue};
-    padding-top: 20px;
+    padding-top: 15px;
     padding-bottom: 0px;
     display: flex;
     flex-direction: column;
@@ -117,5 +117,16 @@ export const MattListWrapper = styled.div`
       border-bottom: 4px solid ${colors.red[800]};
     }
     border-bottom: 4px solid ${colors.red[800]};
+  }
+  @media (min-width: 1300px) {
+    .mattList__grid {
+      margin-right: 0px;
+    }
+    .noFilter {
+      margin-right: 0px;
+    }
+    .mattList__sortResults {
+      margin-right: 0px;
+    }
   }
 `;
