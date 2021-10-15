@@ -34,7 +34,7 @@ export default () => {
     initialState.currentSaleBannerKeyList.push(element.banner);
   });
   banners.otherFilters.forEach((element) => {
-    initialState.bannerMasterKeyList.push(element.slug);
+    initialState.bannerMasterKeyList.push(element.banner);
     initialState.bannerCheckBoxes.push({
       checked: false,
       urlParam: element.slug,

@@ -2,25 +2,54 @@ import { navigate } from "gatsby";
 
 const queryString = require("query-string");
 
-function filterCurrentMattresses(mattresses, brands, comfort, type) {
+function filterCurrentMattresses(
+  mattresses,
+  currentBrands,
+  currentComforts,
+  currentTypes,
+  currentBanners = [],
+  bannerKeys
+) {
   let newMattresses = mattresses;
-  if (brands.length === 0 && comfort.length === 0 && type.length === 0) {
+  if (
+    currentBrands.length === 0 &&
+    currentComforts.length === 0 &&
+    currentTypes.length === 0 &&
+    currentBanners.length === 0
+  ) {
     return mattresses;
   }
-  if (brands.length >= 1) {
+  if (currentBrands.length >= 1) {
     newMattresses = newMattresses.filter((matt) =>
-      brands.includes(matt.brand.urlName)
+      currentBrands.includes(matt.brand.urlName)
     );
   }
-  if (comfort.length >= 1) {
+  if (currentComforts.length >= 1) {
     newMattresses = newMattresses.filter((matt) =>
-      comfort.includes(matt.firmness)
+      currentComforts.includes(matt.firmness)
     );
   }
-  if (type.length >= 1) {
+  if (currentTypes.length >= 1) {
     newMattresses = newMattresses.filter((t) =>
-      type.includes(t.mattressType.slug)
+      currentTypes.includes(t.mattressType.slug)
     );
+  }
+  if (currentBanners.length >= 1) {
+    let newCurrentBanners = [];
+    const testKeys = ["current sale", ...bannerKeys.otherKeys];
+    currentBanners.forEach((element) => {
+      if (element === 0) {
+        newCurrentBanners = [newCurrentBanners, ...bannerKeys.currentSale];
+      } else {
+        newCurrentBanners.push(testKeys[element]);
+      }
+      newMattresses = newMattresses.filter((b) => {
+        console.log("Only one Item is working");
+        return b.newSaleBanner
+          ? newCurrentBanners.includes(b.newSaleBanner.banner)
+          : null;
+      });
+    });
   }
   return newMattresses;
 }
@@ -112,10 +141,40 @@ export default function reducer(state, action) {
         state.selectedBannerCheckBoxes,
         action.index
       );
+
+      if (state.queryString === true) {
+        allfitersEmpty =
+          state.selectedBrandCheckBoxes.length === 0 &&
+          state.selectedComfortCheckBoxes.length === 0 &&
+          state.selectedTypeCheckBoxes === 0 &&
+          newBannerSelected.length === 0;
+        navigate(
+          `/brands/list${allfitersEmpty ? "" : "?"}${queryString.stringify(
+            {
+              brand: state.selectedBrandCheckBoxes,
+              comfort: state.selectedComfortCheckBoxes,
+              type: state.selectedTypeCheckBoxes,
+              banner: newBannerSelected,
+            },
+            { arrayFormat: "comma" }
+          )}`
+        );
+      }
       return {
         ...state,
         selectedBannerCheckBoxes: newBannerSelected,
         bannerCheckBoxes: newBannerCheckBoxes,
+        currentMattresses: filterCurrentMattresses(
+          state.beforeFilterMattresses,
+          state.selectedBrandCheckBoxes,
+          state.selectedComfortCheckBoxes,
+          state.selectedTypeCheckBoxes,
+          newBannerSelected,
+          {
+            currentSale: state.currentSaleBannerKeyList,
+            otherKeys: state.bannerMasterKeyList,
+          }
+        ),
       };
     }
     case "type": {
