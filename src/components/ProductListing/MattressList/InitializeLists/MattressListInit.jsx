@@ -1,10 +1,10 @@
 import { Location } from "@reach/router";
 import queryString from "query-string";
-import getBrands from "../QueryHooks/Mattresses/Filters/getBrands.query";
-import getBanners from "../QueryHooks/Mattresses/Filters/getBanners.query";
-import getTypes from "../QueryHooks/Mattresses/Filters/getTypes.query";
-import getComfort from "../QueryHooks/Mattresses/Filters/getComfort";
-import { capitalizeFirstLetter } from "./helperFunctions";
+import getBrands from "../../QueryHooks/Mattresses/Filters/getBrands.query";
+import getBanners from "../../QueryHooks/Mattresses/Filters/getBanners.query";
+import getTypes from "../../QueryHooks/Mattresses/Filters/getTypes.query";
+import getComfort from "../../QueryHooks/Mattresses/Filters/getComfort";
+import { capitalizeFirstLetter } from "../helperFunctions";
 
 const filterBadQueryInputs = (originalQuery, keys) => {
   const results = [];
@@ -68,7 +68,7 @@ const filterStateAndMasterList = (brands, types, comfort, banners) => ({
   },
 });
 
-const QueryStringFilterState = (ComponentToWrap) => (props) => {
+const MattressListInit = (ComponentToWrap) => (props) => {
   const banners = getBanners();
   const types = getTypes();
   const brands = getBrands();
@@ -148,4 +148,4 @@ const QueryStringFilterState = (ComponentToWrap) => (props) => {
   );
 };
 
-export default QueryStringFilterState;
+export default MattressListInit;

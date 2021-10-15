@@ -1,4 +1,4 @@
-import { sortProductByPrice } from "./helperFunctions";
+import { sortProductByPrice } from "../helperFunctions";
 // Why does this function exist:
 // - Filter and sort mattresses by current sale from CMS
 // - Disable filter checkboxes with no results,

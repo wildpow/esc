@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
-import { colors } from "../../../styles/theme.styled";
+import { colors } from "../../../../styles/theme.styled";
 
 const CheckboxContainer = styled.div`
   display: inline-block;

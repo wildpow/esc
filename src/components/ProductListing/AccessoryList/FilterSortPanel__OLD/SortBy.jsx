@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
-import { colors, fonts } from "../../../styles/theme.styled";
-import chevron from "../../../images/new/chevron-down-solid.svg";
+import { colors, fonts } from "../../../../styles/theme.styled";
+import chevron from "../../../../images/new/chevron-down-solid.svg";
 
 const SortBySelect = styled.select`
   cursor: pointer;

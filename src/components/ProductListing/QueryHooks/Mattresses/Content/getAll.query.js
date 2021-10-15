@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby";
-import { sortProductByPrice } from "../../../Mattresses/helperFunctions";
+import { sortProductByPrice } from "../../../MattressList/helperFunctions";
 
 export default () => {
   const { mattresses } = useStaticQuery(

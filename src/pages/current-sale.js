@@ -6,8 +6,8 @@ import getMattressBrandsQuery from "../components/ProductListing/QueryHooks/Matt
 import getMattressTypesQuery from "../components/ProductListing/QueryHooks/Mattresses/Filters/getTypes.query";
 import getComfortFilter from "../components/ProductListing/QueryHooks/Mattresses/Filters/getComfort";
 import Layout from "../components/Layout";
-import ProductList from "../components/ProductListing/ProductList";
-import currentSaleInit from "../components/ProductListing/Mattresses/currentSaleInit";
+import ProductList from "../components/ProductListing/MattressList";
+import currentSaleInit from "../components/ProductListing/MattressList/InitializeLists/currentSaleInit";
 
 export default function CurrentSale({ data }) {
   const { datoCmsFrontPage, allDatoCmsNewMattress } = data;

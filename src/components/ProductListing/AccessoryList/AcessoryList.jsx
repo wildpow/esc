@@ -14,7 +14,7 @@ import {
   getSheets,
   getHeaders,
   getFoundation,
-} from "./QueryHooks";
+} from "../QueryHooks/Accessories/Content";
 import {
   colors,
   fonts,
