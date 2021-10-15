@@ -93,6 +93,7 @@ const Mattress = ({ data }) => {
             next="Brands"
             next2={mattress.brand.urlName}
             here={`${mattress.subline.name} ${mattress.nameWithout}`}
+            brandLanding
           />
         </BreadWrapper>
         <Wrapper>

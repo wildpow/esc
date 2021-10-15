@@ -9,14 +9,15 @@ const LandingPage = ({ data }) => (
     <BreadWrapper Brands>
       <BreadCrumbs
         next="Brands"
-        here2={data.datoCmsBrand.displayName}
+        next2={data.datoCmsBrand.displayName}
         here="Landing"
+        brandLanding
       />
     </BreadWrapper>
     <Landing
       data={data.datoCmsBrand.landingPage}
-      buttonName="Beautyrest"
-      buttonURL="/brands/beautyrest"
+      buttonName={data.datoCmsBrand.displayName}
+      buttonURL={`/brands/list?brand=${data.datoCmsBrand.urlName}`}
     />
     <BreadWrapper Brands>
       <BreadCrumbs next="Brands" here={data.datoCmsBrand.displayName} />

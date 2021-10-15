@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby";
-import { capitalizeFirstLetter } from "../helperFunctions";
+import { capitalizeFirstLetter } from "../../../Mattresses/helperFunctions";
 
 export default () => {
   const { banners } = useStaticQuery(
