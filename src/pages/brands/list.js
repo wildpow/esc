@@ -7,7 +7,7 @@ import ProductList from "../../components/ProductListing/ProductList";
 import getMattresses from "../../components/ProductListing/QueryHooks/Mattresses/Content/getAll.query";
 import getHeaders from "../../components/ProductListing/QueryHooks/Mattresses/Content/getHeaders.query";
 
-const List = ({ location, data, search, initialFilterState }) => {
+const List = ({ location, data, initialFilterState }) => {
   const headers = getHeaders();
   const mattresses = getMattresses();
   return (
@@ -42,5 +42,6 @@ export const list = graphql`
 List.propTypes = {
   data: propTypes.instanceOf(Object).isRequired,
   location: propTypes.instanceOf(Object).isRequired,
+  initialFilterState: propTypes.instanceOf(Object).isRequired,
 };
 export default QueryStringFilterState(List);
