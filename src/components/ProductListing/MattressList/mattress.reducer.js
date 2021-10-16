@@ -1,58 +1,8 @@
 import { navigate } from "gatsby";
+import { filterCurrentMattresses } from "./helperFunctions";
 
 const queryString = require("query-string");
 
-function filterCurrentMattresses(
-  mattresses,
-  currentBrands,
-  currentComforts,
-  currentTypes,
-  currentBanners = [],
-  bannerKeys
-) {
-  let newMattresses = mattresses;
-  if (
-    currentBrands.length === 0 &&
-    currentComforts.length === 0 &&
-    currentTypes.length === 0 &&
-    currentBanners.length === 0
-  ) {
-    return mattresses;
-  }
-  if (currentBrands.length >= 1) {
-    newMattresses = newMattresses.filter((matt) =>
-      currentBrands.includes(matt.brand.urlName)
-    );
-  }
-  if (currentComforts.length >= 1) {
-    newMattresses = newMattresses.filter((matt) =>
-      currentComforts.includes(matt.firmness)
-    );
-  }
-  if (currentTypes.length >= 1) {
-    newMattresses = newMattresses.filter((t) =>
-      currentTypes.includes(t.mattressType.slug)
-    );
-  }
-  if (currentBanners.length >= 1) {
-    let newCurrentBanners = [];
-    const testKeys = ["current sale", ...bannerKeys.otherKeys];
-    currentBanners.forEach((element) => {
-      if (element === 0) {
-        newCurrentBanners = [newCurrentBanners, ...bannerKeys.currentSale];
-      } else {
-        newCurrentBanners.push(testKeys[element]);
-      }
-      newMattresses = newMattresses.filter((b) => {
-        console.log("Only one Item is working");
-        return b.newSaleBanner
-          ? newCurrentBanners.includes(b.newSaleBanner.banner)
-          : null;
-      });
-    });
-  }
-  return newMattresses;
-}
 const filterSelected = (oldState, newItem) => {
   let newSate = [...oldState];
   if (newSate.includes(newItem)) {
@@ -146,7 +96,7 @@ export default function reducer(state, action) {
         allfitersEmpty =
           state.selectedBrandCheckBoxes.length === 0 &&
           state.selectedComfortCheckBoxes.length === 0 &&
-          state.selectedTypeCheckBoxes === 0 &&
+          state.selectedTypeCheckBoxes.length === 0 &&
           newBannerSelected.length === 0;
         navigate(
           `/brands/list${allfitersEmpty ? "" : "?"}${queryString.stringify(
@@ -188,13 +138,15 @@ export default function reducer(state, action) {
         allfitersEmpty =
           state.selectedBrandCheckBoxes.length === 0 &&
           state.selectedComfortCheckBoxes.length === 0 &&
-          newSelectedType.length === 0;
+          newSelectedType.length === 0 &&
+          state.selectedBannerCheckBoxes.length === 0;
         navigate(
           `/brands/list${allfitersEmpty ? "" : "?"}${queryString.stringify(
             {
               brand: state.selectedBrandCheckBoxes,
               comfort: state.selectedComfortCheckBoxes,
               type: newSelectedType,
+              banner: state.selectedBannerCheckBoxes,
             },
             { arrayFormat: "comma" }
           )}`
@@ -208,7 +160,12 @@ export default function reducer(state, action) {
           state.beforeFilterMattresses,
           state.selectedBrandCheckBoxes,
           state.selectedComfortCheckBoxes,
-          newSelectedType
+          newSelectedType,
+          state.selectedBannerCheckBoxes,
+          {
+            currentSale: state.currentSaleBannerKeyList,
+            otherKeys: state.bannerMasterKeyList,
+          }
         ),
       };
     }
@@ -230,12 +187,15 @@ export default function reducer(state, action) {
         allfitersEmpty =
           newSelectedBrand.length === 0 &&
           state.selectedComfortCheckBoxes.length === 0 &&
-          state.selectedTypeCheckBoxes.length === 0;
+          state.selectedTypeCheckBoxes.length === 0 &&
+          state.selectedBannerCheckBoxes.length === 0;
         navigate(
           `/brands/list${allfitersEmpty ? "" : "?"}${queryString.stringify(
             {
               brand: newSelectedBrand,
               comfort: state.selectedComfortCheckBoxes,
+              type: state.selectedTypeCheckBoxes,
+              banner: state.selectedBannerCheckBoxes,
             },
             { arrayFormat: "comma" }
           )}`
@@ -247,7 +207,12 @@ export default function reducer(state, action) {
           state.beforeFilterMattresses,
           newSelectedBrand,
           state.selectedComfortCheckBoxes,
-          state.selectedTypeCheckBoxes
+          state.selectedTypeCheckBoxes,
+          state.selectedBannerCheckBoxes,
+          {
+            currentSale: state.currentSaleBannerKeyList,
+            otherKeys: state.bannerMasterKeyList,
+          }
         ),
         brandCheckBoxes: newBrandCheckBoxes,
         selectedBrandCheckBoxes: newSelectedBrand,
@@ -267,12 +232,15 @@ export default function reducer(state, action) {
         allfitersEmpty =
           state.selectedBrandCheckBoxes.length === 0 &&
           newComfortNumbers.length === 0 &&
-          state.selectedTypeCheckBoxes.length === 0;
+          state.selectedTypeCheckBoxes.length === 0 &&
+          state.selectedBannerCheckBoxes.length === 0;
         navigate(
           `/brands/list${allfitersEmpty ? "" : "?"}${queryString.stringify(
             {
               brand: state.selectedBrandCheckBoxes,
               comfort: newComfortNumbers,
+              type: state.selectedTypeCheckBoxes,
+              banner: state.selectedBannerCheckBoxes,
             },
             { arrayFormat: "comma" }
           )}`
@@ -285,7 +253,12 @@ export default function reducer(state, action) {
           state.beforeFilterMattresses,
           state.selectedBrandCheckBoxes,
           newComfortNumbers,
-          state.selectedTypeCheckBoxes
+          state.selectedTypeCheckBoxes,
+          state.selectedBannerCheckBoxes,
+          {
+            currentSale: state.currentSaleBannerKeyList,
+            otherKeys: state.bannerMasterKeyList,
+          }
         ),
         selectedComfortCheckBoxes: newComfortNumbers,
       };

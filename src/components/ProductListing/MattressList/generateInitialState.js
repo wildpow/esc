@@ -1,33 +1,4 @@
-const filterCurrentMattresses = (mattresses, brands, comfort, type, banner) => {
-  let newMattresses = mattresses;
-  if (
-    brands.length === 0 &&
-    comfort.length === 0 &&
-    type.length === 0 &&
-    banner.length === 0
-  ) {
-    return mattresses;
-  }
-  if (brands.length >= 1) {
-    newMattresses = newMattresses.filter((matt) =>
-      brands.includes(matt.brand.urlName)
-    );
-  }
-  if (comfort.length >= 1) {
-    newMattresses = newMattresses.filter((matt) =>
-      comfort.includes(matt.firmness)
-    );
-  }
-  if (type.length >= 1) {
-    newMattresses = newMattresses.filter((t) =>
-      type.includes(t.mattressType.slug)
-    );
-  }
-  // if (type.length >= 1) {
-  // Finish
-  // }
-  return newMattresses;
-};
+import { filterCurrentMattresses } from "./helperFunctions";
 
 const headerSetup = (multipleHeaders, headerData, selectedBrands) => {
   let currentHeader = null;
@@ -56,7 +27,11 @@ export default function GenerateInitialState(
         filterState.brand.selectedBrandCheckBoxes,
         filterState.comfort.selectedComfortCheckBoxes,
         filterState.type.selectedTypeCheckBoxes,
-        filterState.banner.selectedBannerCheckBoxes
+        filterState.banner.selectedBannerCheckBoxes,
+        {
+          currentSale: filterState.banner.currentSaleBannerKeyList,
+          otherKeys: filterState.banner.bannerMasterKeyList,
+        }
       )
     : products;
   const headerState = headerSetup(
