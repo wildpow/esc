@@ -11,7 +11,7 @@ const LandingPage = ({ data }) => (
         next="Brands"
         next2={data.datoCmsBrand.displayName}
         here="Landing"
-        brandLanding
+        brandLanding={data.datoCmsBrand.urlName}
       />
     </BreadWrapper>
     <Landing

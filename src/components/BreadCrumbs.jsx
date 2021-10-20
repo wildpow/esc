@@ -111,7 +111,7 @@ const BreadCrumbs = (props) => {
       )}
       {next2 && brandLanding ? (
         <div>
-          <Crumbs to={`/brands/list?brand=${next2}`}>{next2}</Crumbs>
+          <Crumbs to={`/brands/list?brand=${brandLanding}`}>{next2}</Crumbs>
           {!only3Links ? <Span>&gt;</Span> : ""}
         </div>
       ) : null}
