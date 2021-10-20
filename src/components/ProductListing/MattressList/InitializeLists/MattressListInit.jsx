@@ -4,39 +4,11 @@ import getBrands from "../../QueryHooks/Mattresses/Filters/getBrands.query";
 import getBanners from "../../QueryHooks/Mattresses/Filters/getBanners.query";
 import getTypes from "../../QueryHooks/Mattresses/Filters/getTypes.query";
 import getComfort from "../../QueryHooks/Mattresses/Filters/getComfort";
-import { capitalizeFirstLetter } from "../helperFunctions";
-
-const filterBadQueryInputs = (originalQuery, keys) => {
-  const results = [];
-  const isQueryAnArray =
-    typeof originalQuery === "string" || originalQuery === null
-      ? [originalQuery]
-      : originalQuery;
-  isQueryAnArray.forEach((a) =>
-    keys.forEach((b) => {
-      if (a === b) results.push(b);
-    })
-  );
-
-  const dedup = results.filter(
-    (item, index, self) => self.indexOf(item) === index
-  );
-
-  return dedup;
-};
-
-const updateFilter = (
-  master,
-  queryArr,
-  state,
-  propertyToUpdate = "checked"
-) => {
-  const newState = state;
-  queryArr.forEach((q) => {
-    newState[master.indexOf(q)][propertyToUpdate] = true;
-  });
-  return newState;
-};
+import {
+  capitalizeFirstLetter,
+  filterBadQueryInputs,
+  updateFilter,
+} from "../helperFunctions";
 
 const filterStateAndMasterList = (brands, types, comfort, banners) => ({
   masterSanitizeList: {
@@ -125,6 +97,9 @@ const MattressListInit = (ComponentToWrap) => (props) => {
                 window.history.replaceState({}, "", `${location.pathname}`);
               }
             } else {
+              /* should get /brand/list from location.pathname
+              to make this component more universal. */
+
               window.history.replaceState(
                 {},
                 "",

@@ -9,6 +9,38 @@ export const capitalizeFirstLetter = (string) =>
   // return string[0].toUpperCase() + string.slice(1);
   string.replace(/(^\w{1})|(\s+\w{1})/g, (letter) => letter.toUpperCase());
 
+export const updateFilter = (
+  master,
+  queryArr,
+  state,
+  propertyToUpdate = "checked"
+) => {
+  const newState = state;
+  queryArr.forEach((q) => {
+    newState[master.indexOf(q)][propertyToUpdate] = true;
+  });
+  return newState;
+};
+
+export const filterBadQueryInputs = (originalQuery, keys) => {
+  const results = [];
+  const isQueryAnArray =
+    typeof originalQuery === "string" || originalQuery === null
+      ? [originalQuery]
+      : originalQuery;
+  isQueryAnArray.forEach((a) =>
+    keys.forEach((b) => {
+      if (a === b) results.push(b);
+    })
+  );
+
+  const dedup = results.filter(
+    (item, index, self) => self.indexOf(item) === index
+  );
+
+  return dedup;
+};
+
 export const filterCurrentMattresses = (
   mattresses,
   currentBrands,
