@@ -5,6 +5,7 @@ import chevron from "../../../../images/new/chevron-down-solid.svg";
 
 const SortBySelect = styled.select`
   border: none;
+  background-color: white;
   border-bottom: 2px solid ${colors.brandBlue};
   font-family: ${fonts.sans};
   font-weight: 700;

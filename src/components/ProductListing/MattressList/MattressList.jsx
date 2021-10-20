@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import PropTypes from "prop-types";
 import BreadCrumbs from "../../BreadCrumbs";
 import Header from "../ProductListingHeader";
@@ -10,6 +10,7 @@ import FilterSortPanel from "./FilterSortPanel";
 import { SortBy } from "./FilterSortComponents";
 import CollapseAllIcon from "../../../svgs/sort-solid.svg";
 import { ConditionalClientOnly, ClientOnly } from "./ClientOnly";
+import { useWindowSize } from "../../../contexts/WindowSize.ctx";
 
 export default function ProductList({
   queryString,
@@ -29,6 +30,10 @@ export default function ProductList({
   );
   const [state, dispatch] = useReducer(reducer, initialState);
   const [allActive, setAllActive] = useState(true);
+  const { width } = useWindowSize();
+  useEffect(() => {
+    setAllActive(!(width < 768));
+  }, [width]);
   return (
     <MattListWrapper>
       <NewBread hiddenLarge={extraFeatures.hiddenLarge}>
