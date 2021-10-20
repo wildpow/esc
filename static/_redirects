@@ -5,3 +5,10 @@
 /brands/tempurpedic/tempur-contour-elite-breeze      /brands/tempurpedic/contour-elite-breeze    301
 /landing/stearns/    /brands/stearns/landing  301
 /landing/stearns    /brands/stearns/landing  301
+/brands/tempurpedic    /brands/list?brand=tempurpedic 301
+/brands/sealy   /brands/list?brand=sealy 301
+/brands/stearns    /brands/list?brand=stearns 301
+/brands/posh-and-lavish    /brands/list?brand=posh-and-lavish 301
+/brands/harvest-green    /brands/list?brand=harvest-green 301
+/brands/nectar    /brands/list?brand=nectar 301
+/brands/mattress-america    /brands/list?brand=mattress-america 301

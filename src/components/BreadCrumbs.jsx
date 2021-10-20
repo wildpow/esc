@@ -65,7 +65,16 @@ const Location = styled.div`
 `;
 
 const BreadCrumbs = (props) => {
-  const { next, only2Links, only3Links, next2, error, here, acc } = props;
+  const {
+    next,
+    only2Links,
+    only3Links,
+    next2,
+    error,
+    here,
+    acc,
+    brandLanding,
+  } = props;
   const accessoryBackURL = (propStr) => {
     if (propStr === "Pillow") return `/accessories/list?type=pillow`;
     if (propStr === "Sheets") return `/accessories/list?type=sheets`;
@@ -100,7 +109,13 @@ const BreadCrumbs = (props) => {
           {!only2Links ? <Span>&gt;</Span> : ""}
         </div>
       )}
-      {next2 && (
+      {next2 && brandLanding ? (
+        <div>
+          <Crumbs to={`/brands/list?brand=${next2}`}>{next2}</Crumbs>
+          {!only3Links ? <Span>&gt;</Span> : ""}
+        </div>
+      ) : null}
+      {next2 && !brandLanding && (
         <div>
           <Crumbs
             to={

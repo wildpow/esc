@@ -50,12 +50,7 @@ export default function Brands({ data }) {
         <BreadCrumbs here="Brands" />
       </BreadWrapper>
       <BrandsRoot>
-        <Header
-          description={data.datoCmsHeader.tagLine}
-          headerBG={data.datoCmsHeader.bgImg.url}
-          button={{ label: "Shop all Mattresses", url: "/brands/list" }}
-          title="Our Brands"
-        />
+        <Header headerData={data.datoCmsHeader} allBtnOption />
         <NewSectionContainer>
           {data.allDatoCmsBrand.nodes.map((brand) => (
             <BrandsCard
@@ -64,7 +59,7 @@ export default function Brands({ data }) {
               title={brand.displayName}
               bgImg={brand.lifeStyleImg}
               logo={brand.brandLogo}
-              url={`/brands/${brand.urlName}`}
+              url={`/brands/list?brand=${brand.urlName}`}
             />
           ))}
         </NewSectionContainer>
@@ -82,7 +77,7 @@ export const brandsSEO = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    datoCmsHeader(titleUsedInBuilds: { eq: "our-brands" }) {
+    datoCmsHeader(title: { eq: "Our Brands" }) {
       title
       tagLine
       bgImg {

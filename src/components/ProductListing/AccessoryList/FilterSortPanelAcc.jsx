@@ -5,7 +5,7 @@ import {
   FilterSortRoot,
   Accordion,
   Checkbox,
-} from "../FilterSortPanel";
+} from "./FilterSortPanel__OLD";
 
 const FilterSortPanel = ({ dispatch, typeCheckBoxs }) => {
   const toggleCheck = (e, index, value) => {

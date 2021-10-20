@@ -1,6 +1,14 @@
 # Change log
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### October 2021
+#### Features
+- [PR #160](https://github.com/wildpow/esc/pull/160)
+  - Brands and landing pages are now generated on build instead of manually created.
+  - Type and Special offer filters for mattress lists.
+  - Universal mattress list component for all mattress brands, all mattresses, and sale pages.
+  - New mattress list header with sort, number of results and collapse all accordions toggle.
+  - Removed 21 redundant and unused files. 🎉
 ### August 2021
 #### Features
 - [PR #159](https://github.com/wildpow/esc/pull/159) 

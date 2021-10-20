@@ -1,64 +1,58 @@
-import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
+import getBanners from "../components/ProductListing/QueryHooks/Mattresses/Filters/getBanners.query";
+import getMattressBrandsQuery from "../components/ProductListing/QueryHooks/Mattresses/Filters/getBrands.query";
+import getMattressTypesQuery from "../components/ProductListing/QueryHooks/Mattresses/Filters/getTypes.query";
+import getComfortFilter from "../components/ProductListing/QueryHooks/Mattresses/Filters/getComfort";
 import Layout from "../components/Layout";
-import MattressList from "../components/ProductListing/MattressList";
-import BreadCrumbs, { BreadWrapper } from "../components/BreadCrumbs";
+import ProductList from "../components/ProductListing/MattressList";
+import currentSaleInit from "../components/ProductListing/MattressList/InitializeLists/currentSaleInit";
 
-const BrandsRoot = styled.div`
-  @media (min-width: 1022px) {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-`;
-
-const Sale = ({ data }) => {
-  const { allDatoCmsNewMattress, datoCmsFrontPage } = data;
-  const sortedMatt = allDatoCmsNewMattress.nodes.sort(
-    (a, b) =>
-      Number(a.shopifyInfo[0].priceRange.minVariantPrice.amount) -
-      Number(b.shopifyInfo[0].priceRange.minVariantPrice.amount)
+export default function CurrentSale({ data }) {
+  const { datoCmsFrontPage, allDatoCmsNewMattress } = data;
+  const banners = getBanners();
+  const mattressTypes = getMattressTypesQuery();
+  const mattressBrands = getMattressBrandsQuery();
+  const mattressComfort = getComfortFilter();
+  const currentSale = currentSaleInit(
+    allDatoCmsNewMattress.nodes,
+    banners.currentSaleBannerKeyList,
+    mattressBrands,
+    mattressComfort,
+    mattressTypes
   );
+
   return (
     <Layout>
       <HelmetDatoCms seo={datoCmsFrontPage.currentSaleSeoLink.seoMetaTags} />
-      <BreadWrapper hiddenLarge>
-        <BreadCrumbs here="Current Sale" />
-      </BreadWrapper>
-      <BrandsRoot>
-        <MattressList
-          headerBG={datoCmsFrontPage.currentSaleHeaderLink.bgImg.url}
-          mattresses={sortedMatt}
-          title={datoCmsFrontPage.currentSaleHeaderLink.title}
-          description={datoCmsFrontPage.currentSaleHeaderLink.tagLine}
-          button={{ label: "Shop all Mattresses", url: "/brands/list" }}
-        />
-      </BrandsRoot>
-      <BreadWrapper hiddenLarge Bottom>
-        <BreadCrumbs here="Current Sale" />
-      </BreadWrapper>
+      <ProductList
+        queryString={false}
+        multipleHeaders={false}
+        headers={datoCmsFrontPage.currentSaleHeaderLink}
+        products={currentSale.mattresses}
+        initialFilterState={currentSale.filters}
+        breadCrumbSettings={{
+          here: () => "Current Sale",
+          next: "",
+          extraFeatures: { hiddenLarge: true },
+        }}
+      />
     </Layout>
   );
-};
+}
 
-Sale.propTypes = {
+CurrentSale.propTypes = {
   data: PropTypes.instanceOf(Object).isRequired,
 };
 
 export const currentSaleQuery = graphql`
   query currentSaleQuery {
-    allDatoCmsNewMattress(
-      filter: {
-        meta: { status: { eq: "published" } }
-        saleBanner: { ne: "NEW MODEL", regex: "/[a-z]/gi" }
-      }
-    ) {
+    allDatoCmsNewMattress(filter: { newSaleBanner: { banner: { ne: null } } }) {
       nodes {
         ...newMattressList
       }
     }
-
     datoCmsFrontPage {
       currentSaleSeoLink {
         seoMetaTags {
@@ -77,13 +71,3 @@ export const currentSaleQuery = graphql`
     }
   }
 `;
-
-export default Sale;
-
-// datoCmsCurrentSale {
-//   title
-//   description
-//   seoMetaTags {
-//     ...GatsbyDatoCmsSeoMetaTags
-//   }
-// }

@@ -1,96 +1,122 @@
-import { useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import PropTypes from "prop-types";
-import Header from "../ProductListingHeader";
-import FilterSortPanel from "./FilterSortPanelMatt";
-import filterSortReducer from "./mattressList.reducer";
 import BreadCrumbs from "../../BreadCrumbs";
-import { NewBread, MattListWrapper } from "../productListing.styled";
+import Header from "../ProductListingHeader";
 import ProductThumbnail from "../ProductThumbnail";
+import { NewBread, MattListWrapper } from "../productListing.styled";
+import GenerateInitialState from "./generateInitialState";
+import reducer from "./mattress.reducer";
+import FilterSortPanel from "./FilterSortPanel";
+import { SortBy } from "./FilterSortComponents";
+import CollapseAllIcon from "../../../svgs/sort-solid.svg";
+import { ConditionalClientOnly, ClientOnly } from "./ClientOnly";
+import { useWindowSize } from "../../../contexts/WindowSize.ctx";
 
-const MattressList = ({
-  mattresses,
-  title,
-  description,
-  breadCrumbs,
-  brandName,
-  headerBG,
-  button,
-}) => {
-  const initalState = {
-    mattresses,
-    beforeFilter: mattresses,
-    checkBoxs: [
-      { id: 0, value: "Extra Firm", firmness: 1 },
-      { id: 1, value: "Firm", firmness: 2 },
-      { id: 2, value: "Medium", firmness: 3 },
-      { id: 3, value: "Plush", firmness: 4 },
-      { id: 4, value: "Ultra Plush", firmness: 5 },
-    ],
-    firmnessNums: [],
-  };
-  const [state, dispatch] = useReducer(filterSortReducer, initalState);
+export default function ProductList({
+  queryString,
+  multipleHeaders,
+  headers,
+  products,
+  initialFilterState,
+  breadCrumbSettings,
+}) {
+  const { next, here, extraFeatures } = breadCrumbSettings;
+  const initialState = GenerateInitialState(
+    queryString,
+    multipleHeaders,
+    products,
+    headers,
+    initialFilterState
+  );
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [allActive, setAllActive] = useState(true);
+  const { width } = useWindowSize();
+  useEffect(() => {
+    setAllActive(!(width < 768));
+  }, [width]);
   return (
     <MattListWrapper>
-      {breadCrumbs && (
-        <NewBread>
-          <BreadCrumbs next="Brands" here={brandName} />
-        </NewBread>
-      )}
-      <Header
-        title={title}
-        description={description}
-        headerBG={headerBG}
-        brandName={brandName}
-        button={button}
-      />
-
+      <NewBread hiddenLarge={extraFeatures.hiddenLarge}>
+        <BreadCrumbs
+          next={next.length === 0 ? null : next}
+          here={here(state.currentHeader.title)}
+        />
+      </NewBread>
+      <ConditionalClientOnly
+        condition={queryString}
+        wrapper={(children) => <ClientOnly>{children}</ClientOnly>}
+      >
+        <Header
+          headerData={state.currentHeader}
+          allBtnOption={state.multipleHeaders === false}
+        />
+      </ConditionalClientOnly>
       <div className="mattList__flex">
         <FilterSortPanel
+          queryString={queryString}
+          allActive={allActive}
           dispatch={dispatch}
-          checkBoxs={state.checkBoxs}
-          length={state.mattresses.length}
+          comfortCheckBoxes={state.comfortCheckBoxes}
+          brandCheckBoxes={state.brandCheckBoxes}
+          typeCheckBoxes={state.typeCheckBoxes}
+          bannerCheckBoxes={state.bannerCheckBoxes}
         />
-        {state.mattresses.length > 0 ? (
-          <div className="mattList__grid">
-            {state.mattresses.map((mattress) => (
-              <ProductThumbnail
-                mattress
-                key={mattress.id}
-                product={mattress}
-                url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
-              />
-            ))}
+        <div className="mattList__container">
+          <div className="mattList__sortResults">
+            <div className="collapseAll">
+              <button
+                type="button"
+                title="Collapse All Filters"
+                onClick={() => setAllActive(!allActive)}
+              >
+                <CollapseAllIcon />
+              </button>
+              <SortBy onChange={(e) => dispatch({ type: e.target.value })} />
+            </div>
+            <h4>{state.currentMattresses.length} results</h4>
           </div>
-        ) : (
-          <div className="noFilter">
-            <h3>No products match these filters</h3>
-          </div>
-        )}
+          {state.currentMattresses.length > 0 ? (
+            <div className="mattList__grid">
+              {state.currentMattresses.map((mattress) => (
+                <ConditionalClientOnly
+                  condition={queryString}
+                  wrapper={(children) => <ClientOnly>{children}</ClientOnly>}
+                >
+                  <ProductThumbnail
+                    key={mattress.id}
+                    product={mattress}
+                    mattress
+                    url={`/brands/${mattress.brand.urlName}/${mattress.slug}`}
+                  />
+                </ConditionalClientOnly>
+              ))}
+            </div>
+          ) : (
+            <div className="noFilter">
+              <h3>No products match these filters</h3>
+            </div>
+          )}
+        </div>
       </div>
-      {breadCrumbs && (
-        <NewBread Brands Bottom>
-          <BreadCrumbs next="Brands" here={brandName} />
-        </NewBread>
-      )}
+      <NewBread hiddenLarge={extraFeatures.hiddenLarge}>
+        <BreadCrumbs
+          next={next.length === 0 ? null : next}
+          here={here(state.currentHeader.title)}
+        />
+      </NewBread>
     </MattListWrapper>
   );
-};
+}
 
-MattressList.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  mattresses: PropTypes.instanceOf(Object).isRequired,
-  breadCrumbs: PropTypes.bool,
-  brandName: PropTypes.string,
-  button: PropTypes.shape({ label: PropTypes.string, url: PropTypes.string }),
-  headerBG: PropTypes.string,
+ProductList.defaultProps = {
+  queryString: false,
+  multipleHeaders: false,
 };
-
-MattressList.defaultProps = {
-  breadCrumbs: false,
-  brandName: "Nothing",
-  headerBG: "",
-  button: null,
+ProductList.propTypes = {
+  queryString: PropTypes.bool,
+  multipleHeaders: PropTypes.bool,
+  headers: PropTypes.instanceOf(Object).isRequired,
+  products: PropTypes.instanceOf(Object).isRequired,
+  initialFilterState: PropTypes.instanceOf(Object).isRequired,
+  breadCrumbSettings: PropTypes.instanceOf(Object).isRequired,
 };
-
-export default MattressList;

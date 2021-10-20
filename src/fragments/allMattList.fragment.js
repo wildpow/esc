@@ -3,11 +3,18 @@ import { graphql } from "gatsby";
 
 export const newMattressList = graphql`
   fragment newMattressList on DatoCmsNewMattress {
+    newSaleBanner {
+      banner
+    }
     nameWithout
     slug
     firmness
     id
     saleBanner
+    mattressType {
+      title
+      slug
+    }
     images {
       coverImage {
         alt
