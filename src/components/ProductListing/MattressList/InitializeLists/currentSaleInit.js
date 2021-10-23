@@ -79,7 +79,7 @@ const currentSaleInit = (
         brandCheckBoxes: brandFilter,
       },
       banner: {
-        selectedBannerCheckBoxes: false,
+        selectedBannerCheckBoxes: [],
         bannerCheckBoxes: false,
         currentSaleBannerKeyList: false,
         bannerMasterKeyList: false,

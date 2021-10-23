@@ -21,13 +21,21 @@ export default function GenerateInitialState(
   headers,
   filterState
 ) {
+  const selectedBannerCheckBoxes =
+    filterState.banner.selectedBannerCheckBoxes.length === 0
+      ? filterState.banner.selectedBannerCheckBoxes
+      : filterState.banner.selectedBannerCheckBoxes.map((i) => Number(i));
+  const selectedComfortCheckBoxes =
+    filterState.comfort.selectedComfortCheckBoxes.length === 0
+      ? filterState.comfort.selectedComfortCheckBoxes
+      : filterState.comfort.selectedComfortCheckBoxes.map((i) => Number(i));
   const currentMattresses = queryString
     ? filterCurrentMattresses(
         products,
         filterState.brand.selectedBrandCheckBoxes,
-        filterState.comfort.selectedComfortCheckBoxes,
+        selectedComfortCheckBoxes,
         filterState.type.selectedTypeCheckBoxes,
-        filterState.banner.selectedBannerCheckBoxes,
+        selectedBannerCheckBoxes,
         {
           currentSale: filterState.banner.currentSaleBannerKeyList,
           otherKeys: filterState.banner.bannerMasterKeyList,
@@ -43,9 +51,11 @@ export default function GenerateInitialState(
     beforeFilterMattresses: products,
     currentMattresses,
     ...filterState.banner,
+    selectedBannerCheckBoxes,
     ...filterState.brand,
     ...filterState.type,
     ...filterState.comfort,
+    selectedComfortCheckBoxes,
     ...headerState,
     queryString,
     multipleHeaders,
