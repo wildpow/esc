@@ -26,7 +26,7 @@ const HomeRoot = styled.div`
     ::after {
       content: "";
       width: 100%;
-      background-color: rgba(155, 44, 44, 1);
+      background-color: rgba(44, 82, 130, 1);
 
       height: 16px;
       grid-row: 3/4;
@@ -48,7 +48,7 @@ const HomeRoot = styled.div`
       ::after {
         content: "";
         width: 100%;
-        background-color: rgba(44, 82, 130, 0.6);
+        background-color: rgba(155, 44, 44, 0.4);
         height: 16px;
         grid-row: 1/1;
         align-self: flex-end;

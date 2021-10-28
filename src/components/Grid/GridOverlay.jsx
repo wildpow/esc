@@ -5,11 +5,19 @@ const GridWrapper = styled.div`
   max-width: 1536px;
   margin: 0 auto;
   .grid__controls {
-    position: absolute;
-    top: 0px;
-    left: 0px;
+    position: fixed;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+    background-color: rgba(255, 255, 155, 0.8);
+    top: 20px;
+    left: 20px;
     z-index: 999999999999;
     input {
+      transform: scale(2);
       max-width: 60px;
     }
   }
@@ -23,7 +31,7 @@ const GridWrapper = styled.div`
     grid-auto-rows: minmax(100%, auto);
     width: calc(100% - 32px);
     width: 100%;
-    height: 100%;
+    height: 500vh;
     opacity: 0.4;
     background-color: transparent;
     padding: 0;
