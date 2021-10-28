@@ -17,6 +17,7 @@ import Footer from "./Footer";
 import { breakpoints, colors, boxShadow } from "../../styles/theme.styled";
 import StructuredDataMain from "./structuredDataMain";
 import { useCart } from "../../contexts/InterfaceContext.ctx";
+import GridOverlay from "../Grid/GridOverlay";
 
 const PageContentRoot = styled.main`
   position: relative;
@@ -136,6 +137,7 @@ export default function Layout({ children, bgWhite }) {
   }, []);
   return (
     <>
+      <GridOverlay />
       <Global styles={GlobalStyle} />
       <StructuredDataMain />
       <Headroom
