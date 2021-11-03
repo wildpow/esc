@@ -140,7 +140,38 @@ const AvgContainer = styled.div`
 `;
 
 const Bird = () => {
-  const starsArr = [];
+  const starsArr = [
+    <img
+      src="/star.png"
+      alt="start for rating"
+      loading="lazy"
+      className="bird__star"
+    />,
+    <img
+      src="/star.png"
+      alt="start for rating"
+      loading="lazy"
+      className="bird__star"
+    />,
+    <img
+      src="/star.png"
+      alt="start for rating"
+      loading="lazy"
+      className="bird__star"
+    />,
+    <img
+      src="/star.png"
+      alt="start for rating"
+      loading="lazy"
+      className="bird__star"
+    />,
+    <img
+      src="/star.png"
+      alt="start for rating"
+      loading="lazy"
+      className="bird__star"
+    />,
+  ];
   let avgRating;
   let reviewCount;
   return (
@@ -163,17 +194,17 @@ const Bird = () => {
           avgRating = data.allWidget.nodes[1].avgRating;
           reviewCount = data.allWidget.nodes[1].reviewCount;
         }
-        for (let i = 0; i < avgRating; i += 1) {
-          starsArr.push(
-            <img
-              src="/star.png"
-              alt="start for rating"
-              key={i + 200}
-              loading="lazy"
-              className="bird__star"
-            />
-          );
-        }
+        // for (let i = 0; i < avgRating; i += 1) {
+        //   starsArr.push(
+        //     <img
+        //       src="/star.png"
+        //       alt="start for rating"
+        //       key={i + 200}
+        //       loading="lazy"
+        //       className="bird__star"
+        //     />
+        //   );
+        // }
         return (
           <>
             <BrideyeWrapper
@@ -190,6 +221,7 @@ const Bird = () => {
                   Reviews
                 </p>
               </div>
+              <div style={{ display: "none" }}>{avgRating}</div>
               <div className="bird__starWrapper">{starsArr}</div>
               <img
                 alt="BirdEye certified seal"
