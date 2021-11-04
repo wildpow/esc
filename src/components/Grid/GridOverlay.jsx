@@ -26,18 +26,18 @@ const GridWrapper = styled.div`
     position: absolute;
     display: grid;
     top: 0;
-    left: 16px;
+    /* left: 16px; */
     grid-template-columns: repeat(12, 1fr);
     grid-auto-rows: minmax(100%, auto);
     width: calc(100% - 32px);
     width: 100%;
-    height: 500vh;
+    height: 1000vh;
     opacity: 0.4;
     background-color: transparent;
     padding: 0;
     display: ${({ grid }) => (grid ? "grid" : "none")};
     z-index: 1000;
-    padding: 0 16px;
+    /* padding: 0 16px; */
     max-width: 1536px;
     margin: 0 auto;
     left: 50%;
@@ -47,6 +47,11 @@ const GridWrapper = styled.div`
       background-color: #000;
       margin: 0;
       opacity: ${({ opacity }) => opacity};
+    }
+  }
+  @media (min-width: 650px) {
+    .grid {
+      padding: 0 16px;
     }
   }
 `;

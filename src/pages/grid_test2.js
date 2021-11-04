@@ -13,10 +13,11 @@ import {
 } from "../styles/theme.styled";
 import Bird from "../components/Grid/NewBird";
 import AboveTheFold from "../components/Grid/AboveTheFold";
+import WhyEsc from "../components/Grid/WhyEsc";
 
 const HomeRoot = styled.div`
   position: relative;
-  padding: 0 16px;
+  /* padding: 0 16px; */
   display: grid;
   grid-auto-rows: minmax(60px, auto);
   grid-template-columns: repeat(12, 1fr);
@@ -127,6 +128,7 @@ const HomeRoot = styled.div`
   }
 
   @media (min-width: 650px) {
+    padding: 0 16px;
   }
   @media (min-width: 1250px) {
   }
@@ -137,7 +139,7 @@ export default function GridTest2() {
     <Layout>
       <HomeRoot>
         <AboveTheFold />
-        <div className="home__why">
+        {/* <div className="home__why">
           <div className="home__why__img">
             <StaticImage
               src="../images/gridTest/harvestgreenlifestylebrandimage560x228.jpeg"
@@ -188,7 +190,8 @@ export default function GridTest2() {
               />
             </div>
           </div>
-        </div>
+        </div> */}
+        <WhyEsc />
       </HomeRoot>
     </Layout>
   );
