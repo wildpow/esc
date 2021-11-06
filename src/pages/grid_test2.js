@@ -1,17 +1,15 @@
 import styled from "@emotion/styled";
-import { StaticImage } from "gatsby-plugin-image";
+// import { StaticImage } from "gatsby-plugin-image";
 // import GridOverlay from "../components/Grid/GridOverlay";
 import Layout from "../components/Layout";
 import {
-  boxShadow,
-  boxShadowHover,
   colors,
   fonts,
   fontSize,
   rounded,
   spacing,
 } from "../styles/theme.styled";
-import Bird from "../components/Grid/NewBird";
+// import Bird from "../components/Grid/NewBird";
 import AboveTheFold from "../components/Grid/AboveTheFold";
 import WhyEsc from "../components/Grid/WhyEsc";
 

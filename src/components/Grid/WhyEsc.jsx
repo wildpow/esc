@@ -43,28 +43,13 @@ const WhyRoot = styled.section`
       position: absolute;
       bottom: 0px;
       left: 0;
-      /* grid-column: 1/8; */
     }
     box-shadow: ${boxShadow.md};
-    /* position: relative;
-    ::after {
-      content: "";
-      width: 100%;
-      background-color: ${colors.brandBlue};
-      height: 16px;
-
-      align-self: flex-end;
-      position: absolute;
-      bottom: 0px;
-      left: 0;
-    } */
     padding: 10px 10px 10px 10px;
-    /* margin: 0 16px; */
     grid-row: 2/3;
     grid-column: 2/12;
     background-color: white;
     margin-top: -75px;
-    /* position: relative; */
     z-index: 1;
     h2 {
       margin: 0;
@@ -114,21 +99,86 @@ const WhyRoot = styled.section`
     .why__info {
       margin-top: -50px;
     }
-
-    /* .why__info {
-      padding: 10px 0;
-      grid-template-columns: repeat(10, 1fr);
-      column-gap: 16px;
+  }
+  @media (min-width: 568px) {
+    ::after {
+      z-index: 1;
+      background-color: ${colors.brandBlue};
+      /* display: none; */
+    }
+    .why__icons {
+      background: transparent;
+      align-items: center;
+      padding: 0;
+      grid-row: 3/3;
+      /* display: grid; */
+      grid-column: 2/10;
+      /* grid-template-columns: repeat(8, 1fr); */
+      /* grid-gap: 16px; */
+      /* justify-content: center;
+      align-items: center; */
+      .why__icons__bbb {
+        grid-column: 1/3;
+        max-width: 181px;
+        padding: 5px 8px;
+      }
+      .why__icons__reviews {
+        grid-column: 5/7;
+      }
+      .why__icons__readers {
+        grid-column: 9/11;
+      }
+    }
+    .why__info {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      display: flex;
+      flex-direction: column;
       display: grid;
+      justify-content: center;
+      align-items: center;
+      grid-template-columns: repeat(10, 1fr);
+      grid-gap: 16px;
+      padding: 16px 0;
+      grid-column: 2/12;
+      margin-top: -81px;
       h2 {
-        grid-column: 2/9;
-        grid-row: 1/2;
+        grid-row: 1/1;
+        grid-column: 2/10;
+        text-align: center;
+        font-size: 2.2rem;
+        justify-self: center;
+        align-self: center;
       }
       p {
-        grid-column: 2/9;
-        grid-row: 2/3;
+        grid-row: 2/2;
+        grid-column: 2/10;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+        font-weight: 300;
+        margin: 0;
+        padding: 32px 0 16px 0;
       }
-    } */
+      /* ::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 16px;
+        background-color: ${colors.brandRed};
+        bottom: -16px;
+        left: 0;
+        grid-column: 1/11;
+        grid-row: 1/1;
+      } */
+      ::after {
+        grid-row: 3/3;
+        align-self: center;
+        justify-self: center;
+        bottom: 50%;
+        z-index: -1;
+        background-color: ${colors.brandRed};
+      }
+    }
   }
 `;
 
@@ -139,8 +189,10 @@ export default function WhyEsc() {
       <div className="why__img">
         <StaticImage
           src="../../images/gridTest/harvestgreenlifestylebrandimage560x228.jpeg"
-          width={830}
-          height={520}
+          // width={830}
+          // height={520}
+          width={1530}
+          height={620}
           layout="constrained"
           alt="test"
         />

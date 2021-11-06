@@ -112,7 +112,7 @@ export default function AboveTheFold() {
     <>
       <HeroRoot>
         <StaticImage
-          src="../../images/gridTest/stuff.png"
+          src="../../images/homePage/hEROwITHtEXT.jpeg"
           width={1536}
           height={1236}
           layout="constrained"
@@ -123,7 +123,7 @@ export default function AboveTheFold() {
         <Link className="shop__item --matt" to="/brands/list">
           <div className="shop__img">
             <StaticImage
-              src="../../images/gridTest/satisfiediiptroom.jpeg"
+              src="../../images/homePage/Mattress630x420.jpeg"
               width={630}
               height={420}
               layout="constrained"
@@ -137,7 +137,7 @@ export default function AboveTheFold() {
         <Link className="shop__item --adj" to="/adjustable">
           <div className="shop__img">
             <StaticImage
-              src="../../images/gridTest/satisfiediiptroom.jpeg"
+              src="../../images/homePage/Adjustable630x420.jpeg"
               width={630}
               height={420}
               layout="constrained"
@@ -151,7 +151,7 @@ export default function AboveTheFold() {
         <Link className="shop__item --acc" to="/accessories/list">
           <div className="shop__img">
             <StaticImage
-              src="../../images/gridTest/satisfiediiptroom.jpeg"
+              src="../../images/homePage/Accessories630x420.jpeg"
               width={630}
               height={420}
               layout="constrained"
@@ -165,7 +165,7 @@ export default function AboveTheFold() {
         <Link className="shop__item --chair" to="/x-chair">
           <div className="shop__img">
             <StaticImage
-              src="../../images/gridTest/satisfiediiptroom.jpeg"
+              src="../../images/homePage/XChair630x420.jpeg"
               width={630}
               height={420}
               layout="constrained"
