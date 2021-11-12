@@ -152,7 +152,7 @@ const List = styled.div`
   color: ${colors.gray["100"]};
   padding: 0px;
   h3 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-top: 0;
     margin-bottom: 0;
     color: ${colors.blue["900"]};

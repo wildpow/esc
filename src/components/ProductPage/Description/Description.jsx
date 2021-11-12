@@ -4,6 +4,7 @@ import { colors, fonts } from "../../../styles/theme.styled";
 import FoundationCompat from "./FoundationCompat";
 import FeatureList from "../FeatureList";
 import { Description, MainTitle } from "../productPage.styled";
+import Tabs from "../Tabs/Tabs";
 
 const DescriptionRoot = styled.section`
   .bottomSpacing {
@@ -129,6 +130,7 @@ export default function DescriptionSection({
             <FoundationCompat />
           </div>
         )}
+        <Tabs />
       </div>
     </DescriptionRoot>
   );
