@@ -17,8 +17,6 @@ const cfg = {
     FAST_DEV: true,
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
     PARALLEL_SOURCING: true,
-    // LMDB_STORE: true,
-    PARALLEL_QUERY_RUNNING: true,
   },
   siteMetadata: {
     title: "E.S.C Mattress Center",
