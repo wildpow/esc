@@ -4,20 +4,44 @@ import { colors, fonts, rounded } from "../../../styles/theme.styled";
 
 const TabWrapper = styled.li`
   button {
+    transition: all 0.2s ease;
+    :hover {
+      background-color: ${({ selectedTab, index }) =>
+        selectedTab === index ? "" : colors.gray[300]};
+      color: ${({ selectedTab, index }) =>
+        selectedTab === index ? "" : colors.blue[700]};
+    }
+    position: relative;
+    z-index: 10;
     background-color: ${({ selectedTab, index }) =>
       selectedTab === index ? colors.white : colors.gray[200]};
     border: none;
     font-weight: 700;
-
+    padding: 5px 10px 10px 10px;
     color: ${colors.blue["900"]};
     font-family: ${fonts.serif};
     font-size: 0.9rem;
-    border-top: 4px solid ${colors.brandRed};
-    border-left: 4px solid ${colors.brandRed};
     margin-right: 10px;
+    cursor: ${({ selectedTab, index }) =>
+      selectedTab === index ? "default" : "pointer"};
+    border-left: 4px solid ${colors.brandRed};
+    border-right: 4px solid ${colors.brandRed};
+    border-top: 4px solid ${colors.brandRed};
     border-top-left-radius: ${rounded.md};
     border-top-right-radius: ${rounded.md};
-    border-right: 4px solid ${colors.brandRed};
+    ::after {
+      transition: all 0.1s ease;
+
+      bottom: 0px;
+      left: 0px;
+      content: "";
+      width: 100%;
+      z-index: 1;
+      height: 4px;
+      position: absolute;
+      background-color: ${({ selectedTab, index }) =>
+        selectedTab === index ? "transparent" : colors.brandRed};
+    }
   }
   @media (min-width: 360px) {
     button {
@@ -31,13 +55,13 @@ const TabWrapper = styled.li`
   }
   @media (min-width: 992px) {
     button {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
   }
   @media (min-width: 1300px) {
     button {
       font-weight: 700;
-      font-size: 2.1rem;
+      font-size: 1.4rem;
     }
   }
 `;
@@ -75,8 +99,8 @@ Tab.propTypes = {
   index: PropTypes.number.isRequired,
   tabPanelId: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  tabRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  ]).isRequired,
+  // tabRef: PropTypes.oneOfType([
+  //   PropTypes.func,
+  //   PropTypes.shape({ current: PropTypes.instanceOf(Component) }),
+  // ]).isRequired,
 };
