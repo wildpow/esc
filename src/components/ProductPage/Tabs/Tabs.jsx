@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { useState, useRef } from "react";
-import { colors, fonts, fontSize } from "../../../styles/theme.styled";
+import { colors, rounded, fonts, fontSize } from "../../../styles/theme.styled";
 import Tab from "./Tab";
 import TabPanel from "./TabPanel";
 import { useWindowSize } from "../../../contexts/WindowSize.ctx";
@@ -10,6 +10,7 @@ const TabDescription = styled(Description)`
   padding-right: 0;
   padding-left: 0;
   padding: 0;
+
   @media (min-width: 550px) {
     padding: 0;
   }
@@ -17,21 +18,61 @@ const TabDescription = styled(Description)`
     padding: 0;
   }
 `;
-const Select = styled.select`
+const Select = styled.div`
+  display: none;
   width: 100%;
-  text-align: center;
-  border: 4px solid ${colors.brandRed};
-  border-bottom: none;
-  padding: 10px 0;
-  font-weight: 700;
-  color: ${colors.blue[900]};
+  position: relative;
   font-family: ${fonts.sans};
-  font-size: ${fontSize["2xl"]};
-  transition: all 0.2s ease;
-  cursor: pointer;
+  text-align: center;
+  @media (max-width: 570px) {
+    display: inline-block;
+  }
+  ::after {
+    cursor: pointer;
+    content: ">";
+    width: 25px;
+    position: absolute;
+    font-size: 1.9rem;
+    font-weight: 400;
+    top: 50%;
+    line-height: 0.03rem;
+    transform: translateY(-50%) rotate(90deg);
+    right: 15px;
+    color: ${colors.blue[900]};
+
+    z-index: 100;
+  }
+
   :hover {
-    background-color: ${colors.red[900]};
-    color: ${colors.gray[100]};
+    ::after {
+      color: ${colors.gray[100]};
+    }
+    select {
+      background-color: ${colors.red[900]};
+      color: ${colors.gray[100]};
+    }
+  }
+  select {
+    -webkit-appearance: none;
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
+    width: 100%;
+    text-align: center;
+    border: 4px solid ${colors.brandRed};
+    border-bottom: none;
+    padding: 10px 0;
+    font-weight: 700;
+    color: ${colors.blue[900]};
+    font-family: ${fonts.sans};
+    font-size: ${fontSize["2xl"]};
+    background-color: ${colors.gray[200]};
+    transition: all 0.2s ease;
+    cursor: pointer;
+    /* text-align: center; */
+    border-radius: 0px;
+    border-top-left-radius: ${rounded.md};
+    border-top-right-radius: ${rounded.md};
   }
 `;
 const TabsWrapper = styled.section`
@@ -56,13 +97,18 @@ const TabsWrapper = styled.section`
     } */
   }
   ul {
-    display: flex;
+    display: none;
     list-style: none;
     /* border-bottom: 4px solid ${colors.brandRed}; */
     padding-bottom: 2px;
     padding: 0;
     /* padding-bottom: 16px; */
     margin-bottom: 0;
+  }
+  @media (min-width: 570px) {
+    ul {
+      display: flex;
+    }
   }
 `;
 export default function Tabs() {
@@ -112,57 +158,54 @@ export default function Tabs() {
   };
   return (
     <TabsWrapper>
-      {width <= 560 ? (
-        <Select
-          name="test"
-          id="test"
-          onChange={(e) => handleClick(Number(e.target.value))}
-        >
+      <Select onChange={(e) => handleClick(Number(e.target.value))}>
+        <select name="test" id="test">
           <option value={1}>{tabValues[1].title}</option>
           <option value={2}>{tabValues[2].title}</option>
           <option value={3}>{tabValues[3].title}</option>
           <option value={4}>{tabValues[4].title}</option>
-        </Select>
-      ) : (
-        <ul role="tablist" aria-label="List of Tabs" onKeyDown={handleKeyPress}>
-          <Tab
-            id="firstTab"
-            tabPanelId="firstTabPanel"
-            index={1}
-            handleChange={handleClick}
-            selectedTab={selectedTab}
-            tabRef={tabValues[1].ref}
-            title={tabValues[1].title}
-          />
-          <Tab
-            id="secondTab"
-            tabPanelId="secondTabPanel"
-            index={2}
-            handleChange={handleClick}
-            selectedTab={selectedTab}
-            tabRef={tabValues[2].ref}
-            title={tabValues[2].title}
-          />
-          <Tab
-            id="thirdTab"
-            tabPanelId="thirdTabPanel"
-            index={3}
-            handleChange={handleClick}
-            selectedTab={selectedTab}
-            tabRef={tabValues[3].ref}
-            title={tabValues[3].title}
-          />
-          <Tab
-            id="fourthTab"
-            tabPanelId="fourthTabPanel"
-            index={4}
-            handleChange={handleClick}
-            selectedTab={selectedTab}
-            title={tabValues[4].title}
-            tabRef={tabValues[4].ref}
-          />
-        </ul>
-      )}
+        </select>
+      </Select>
+
+      <ul role="tablist" aria-label="List of Tabs" onKeyDown={handleKeyPress}>
+        <Tab
+          id="firstTab"
+          tabPanelId="firstTabPanel"
+          index={1}
+          handleChange={handleClick}
+          selectedTab={selectedTab}
+          tabRef={tabValues[1].ref}
+          title={tabValues[1].title}
+        />
+        <Tab
+          id="secondTab"
+          tabPanelId="secondTabPanel"
+          index={2}
+          handleChange={handleClick}
+          selectedTab={selectedTab}
+          tabRef={tabValues[2].ref}
+          title={tabValues[2].title}
+        />
+        <Tab
+          id="thirdTab"
+          tabPanelId="thirdTabPanel"
+          index={3}
+          handleChange={handleClick}
+          selectedTab={selectedTab}
+          tabRef={tabValues[3].ref}
+          title={tabValues[3].title}
+        />
+        <Tab
+          id="fourthTab"
+          tabPanelId="fourthTabPanel"
+          index={4}
+          handleChange={handleClick}
+          selectedTab={selectedTab}
+          title={tabValues[4].title}
+          tabRef={tabValues[4].ref}
+        />
+      </ul>
+
       <div className="tabPanelWrapper">
         <TabPanel
           id="firstTabPanel"

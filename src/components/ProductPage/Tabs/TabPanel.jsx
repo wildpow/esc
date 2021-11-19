@@ -70,7 +70,7 @@ export default function TabPanel({ children, id, tabId, index, selectedTab }) {
       role="tabpanel"
       id={id}
       aria-labelledby={tabId}
-      hidden={selectedTab === index ? 0 : -1}
+      hidden={selectedTab !== index}
       tabIndex={selectedTab === index ? 0 : -1}
     >
       {children}
