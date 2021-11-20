@@ -74,6 +74,13 @@ const Select = styled.div`
     border-top-left-radius: ${rounded.md};
     border-top-right-radius: ${rounded.md};
   }
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      .safari_only {
+        padding-left: 5%;
+      }
+    }
+  }
 `;
 const TabsWrapper = styled.section`
   margin-bottom: 50px;
@@ -159,7 +166,7 @@ export default function Tabs() {
   return (
     <TabsWrapper>
       <Select onChange={(e) => handleClick(Number(e.target.value))}>
-        <select name="test" id="test">
+        <select name="test" id="test" className="safari_only">
           <option value={1}>{tabValues[1].title}</option>
           <option value={2}>{tabValues[2].title}</option>
           <option value={3}>{tabValues[3].title}</option>
