@@ -164,7 +164,12 @@ export default function Tabs() {
   return (
     <TabsWrapper>
       <Select onChange={(e) => handleClick(Number(e.target.value))}>
-        <select name="test" id="test" className="safari_only">
+        <select
+          name="Drop down list of Tabs"
+          id="test"
+          className="safari_only"
+          aria-label="Drop down list of Tabs"
+        >
           <option value={1}>{tabValues[1].title}</option>
           <option value={2}>{tabValues[2].title}</option>
           <option value={3}>{tabValues[3].title}</option>
