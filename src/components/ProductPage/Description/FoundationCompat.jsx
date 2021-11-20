@@ -14,8 +14,7 @@ const FoundationRoot = styled.div`
   }
   h4 {
     font-family: ${fonts.serif};
-
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-top: 0;
     margin-bottom: 0;
     color: ${colors.blue["900"]};
