@@ -3,7 +3,6 @@ import { useState, useRef } from "react";
 import { colors, rounded, fonts, fontSize } from "../../../styles/theme.styled";
 import Tab from "./Tab";
 import TabPanel from "./TabPanel";
-import { useWindowSize } from "../../../contexts/WindowSize.ctx";
 import { Description } from "../productPage.styled";
 
 const TabDescription = styled(Description)`
@@ -119,7 +118,6 @@ const TabsWrapper = styled.section`
   }
 `;
 export default function Tabs() {
-  const { width } = useWindowSize();
   const tabValues = {
     1: {
       title: "About us",

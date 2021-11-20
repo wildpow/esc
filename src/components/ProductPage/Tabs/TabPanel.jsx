@@ -64,7 +64,6 @@ const TabPanelWrapper = styled.section`
   }
 `;
 export default function TabPanel({ children, id, tabId, index, selectedTab }) {
-  const hidden = selectedTab !== index;
   return (
     <TabPanelWrapper
       role="tabpanel"
